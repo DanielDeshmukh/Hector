@@ -218,3 +218,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 .env
+#ignore the local vector database, which may contain sensitive data and can be regenerated
+/data/hector_db
+#ignore the local book data, which may contain sensitive data and can be regenerated
+/data/Books

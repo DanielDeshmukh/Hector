@@ -1,0 +1,11 @@
+{
+    "IPC_TO_BNS": {
+        "302": {"new": "101", "name": "Murder"},
+        "307": {"new": "109", "name": "Attempt to Murder"},
+        "378": {"new": "303", "name": "Theft"},
+        "391": {"new": "310", "name": "Dacoity"},
+        "420": {"new": "318", "name": "Cheating"},
+        "499": {"new": "356", "name": "Defamation"}
+    },
+    "SYSTEM_NOTES": "Effective from July 1, 2024. BNS replaces IPC."
+}
