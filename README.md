@@ -18,7 +18,7 @@ HECTOR operates on a **Chain-of-Verification (CoVe)** architecture. When a user 
 
 ## **Development Roadmap**
 
-### [ ] **Phase 1: Knowledge Base Acquisition & Curation**
+### [x] **Phase 1: Knowledge Base Acquisition & Curation**
 *   **Tasks:** 
     *   Sourcing and verifying the "Big Three" legal commentaries (Ratanlal & Dhirajlal, Mulla, Sarkar).
     *   Digitizing Bare Acts for BNS, BNSS, and BSA (2025/2026 editions).
