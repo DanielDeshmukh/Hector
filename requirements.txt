@@ -21,6 +21,8 @@ pandas
 marker-pdf
 unstructured[pdf]
 httpx  # For high-speed async calls to NIM endpoints
+pdf2image
+pytesseract
 
 # --- CLI Framework ---
 typer[all]

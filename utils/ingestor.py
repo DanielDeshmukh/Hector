@@ -1,112 +1,211 @@
-import os, base64, uuid, requests, json, time, hashlib
-import fitz
-import chromadb
+import hashlib
+import os
+import time
+import uuid
 from datetime import datetime
+
+import chromadb
+import pytesseract
 from dotenv import load_dotenv
+from pdf2image import convert_from_path
 from rich.console import Console
 from rich.live import Live
 from rich.panel import Panel
-from rich.layout import Layout
 from rich.text import Text
 
 load_dotenv()
-NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
 BOOKS_DIR = r"D:\Vs Code\VS code\Hector\data\Books"
 DB_PATH = "./hector_db"
-OCR_URL = "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1"
+POPPLER_PATH = r"C:\poppler\poppler-25.12.0\Library\bin"
+TESSERACT_CMD = r"C:\Users\Daniel\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+
+CHUNK_SIZE_TOKENS = 800
+CHUNK_OVERLAP_TOKENS = 150
+SESSION_AIR_BREAK_PAGES = 400
+SESSION_AIR_BREAK_MINUTES = 5
+INTER_BOOK_COOLDOWN_MINUTES = 10
+PDF_RENDER_DPI = 300
+
+pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
 
 console = Console()
+
 
 class HectorIngestor:
     def __init__(self):
         self.client = chromadb.PersistentClient(path=DB_PATH)
-        self.embedding_fn = chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
-        self.collection = self.client.get_or_create_collection(
-            name="indian_law_bns", 
-            embedding_function=self.embedding_fn
+        self.embedding_fn = chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
+            model_name="all-MiniLM-L6-v2"
         )
+        self.collection = self.client.get_or_create_collection(
+            name="indian_law_bns",
+            embedding_function=self.embedding_fn,
+        )
+        self.session_processed_pages = 0
 
     def get_page_hash(self, filename, pg_num):
-        """Generates a unique digital fingerprint for the page."""
+        """Generate a stable fingerprint for a source page."""
         return hashlib.md5(f"{filename}_{pg_num}".encode()).hexdigest()
 
-    def cooldown_timer(self, minutes=15):
-        """Displays a high-visibility countdown clock."""
+    def cooldown_timer(self, minutes=15, reason="Resting OCR Pipeline"):
+        """Display a countdown clock during enforced cooldown windows."""
         seconds = minutes * 60
         with Live(auto_refresh=True, console=console) as live:
             while seconds > 0:
                 mins, secs = divmod(seconds, 60)
                 timer_text = Text(f"{mins:02d}:{secs:02d}", style="bold yellow", justify="center")
-                live.update(Panel(timer_text, title="[bold red]Cooldown in Progress[/bold red]", subtitle="Resting API Connection"))
+                live.update(
+                    Panel(
+                        timer_text,
+                        title="[bold red]Cooldown in Progress[/bold red]",
+                        subtitle=reason,
+                    )
+                )
                 time.sleep(1)
                 seconds -= 1
-        console.print("[bold green]✓ Cooldown Complete. Resuming Ingestion...[/bold green]")
+        console.print("[bold green]Cooldown Complete. Resuming Ingestion...[/bold green]")
+
+    def tokenize_text(self, text):
+        """Tokenize OCR output with a simple whitespace strategy."""
+        return text.split()
+
+    def chunk_text(self, text, chunk_size=CHUNK_SIZE_TOKENS, overlap=CHUNK_OVERLAP_TOKENS):
+        """Build overlapping token windows so legal context survives chunk boundaries."""
+        words = self.tokenize_text(text)
+        if not words:
+            return []
+
+        chunks = []
+        index = 0
+        step = max(chunk_size - overlap, 1)
+
+        while index < len(words):
+            chunk = " ".join(words[index:index + chunk_size])
+            if chunk:
+                chunks.append(chunk)
+            index += step
+            if index >= len(words):
+                break
+
+        return chunks
+
+    def extract_text_from_image(self, image):
+        """Run local Tesseract OCR on a single rendered PDF page."""
+        return pytesseract.image_to_string(image, lang="eng").strip()
+
+    def build_chunk_payloads(self, text, filename, page_number, page_hash):
+        """Buffer chunk documents and metadata so each page writes in one Chroma call."""
+        chunk_texts = self.chunk_text(text)
+        if not chunk_texts:
+            return [], [], []
+
+        ingested_at = str(datetime.now())
+        documents = []
+        metadatas = []
+        ids = []
+
+        for chunk_index, chunk in enumerate(chunk_texts):
+            documents.append(chunk)
+            metadatas.append(
+                {
+                    "source": filename,
+                    "page": page_number,
+                    "page_hash": page_hash,
+                    "chunk_index": chunk_index,
+                    "ingested_at": ingested_at,
+                    "mapping_accuracy": "detailed_scan_v3",
+                }
+            )
+            ids.append(str(uuid.uuid4()))
+
+        return documents, metadatas, ids
+
+    def maybe_take_session_air_break(self):
+        """Enforce a 5-minute cooling window every 400 processed pages in this run."""
+        if self.session_processed_pages == 0:
+            return
+        if self.session_processed_pages % SESSION_AIR_BREAK_PAGES != 0:
+            return
+
+        console.print(
+            f"\n[bold yellow]{self.session_processed_pages} pages processed this session.[/bold yellow] "
+            f"Triggering mandatory API air break..."
+        )
+        self.cooldown_timer(
+            minutes=SESSION_AIR_BREAK_MINUTES,
+            reason="Mandatory API Air Break",
+        )
 
     def process_with_heartbeat(self):
+        # 1. Verify Directory
+        if not os.path.exists(BOOKS_DIR):
+            console.print(f"[bold red]Error:[/bold red] Directory not found: {BOOKS_DIR}")
+            return
+
         files = [f for f in os.listdir(BOOKS_DIR) if f.endswith(".pdf")]
         
+        if not files:
+            console.print(f"[bold yellow]No PDF files found in:[/bold yellow] {BOOKS_DIR}")
+            return
+
         try:
             for index, filename in enumerate(files):
                 file_path = os.path.join(BOOKS_DIR, filename)
-                doc = fitz.open(file_path)
-                console.print(f"\n[bold magenta]BOOK {index+1}/{len(files)}[/bold magenta] | [bold cyan]{filename}[/bold cyan] ({len(doc)} pages)")
+                console.print(f"\n[bold magenta]BOOK {index + 1}/{len(files)}[/bold magenta] | [cyan]{filename}[/cyan]")
 
-                for pg_num in range(len(doc)):
+                # Loop through pages one by one
+                pg_num = 1
+                while True:
                     page_hash = self.get_page_hash(filename, pg_num)
-                    
-                    # 1. Duplicate Verification Check
+
+                    # Check for duplicates
                     existing = self.collection.get(where={"page_hash": page_hash})
-                    if len(existing['ids']) > 0:
+                    if existing["ids"]:
+                        # Silent skip for speed, or console.print if you want to see progress
+                        pg_num += 1
                         continue
 
-                    # 2. Page Extraction & High-Res Rendering
-                    page = doc.load_page(pg_num)
-                    pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5))
-                    b64_img = base64.b64encode(pix.tobytes("png")).decode("utf-8")
-                    
-                    # 3. Call NVIDIA Deep OCR
-                    headers = {"Authorization": f"Bearer {NVIDIA_API_KEY}", "Accept": "application/json"}
-                    payload = {"input": [{"type": "image_url", "url": f"data:image/png;base64,{b64_img}"}]}
-                    
                     try:
-                        response = requests.post(OCR_URL, headers=headers, json=payload, timeout=60)
-                        if response.status_code == 200:
-                            ocr_data = response.json().get("data", [])
-                            text = " ".join([d.get("text", "") for d in ocr_data])
+                        # Process one page at a time
+                        page_images = convert_from_path(
+                            file_path,
+                            dpi=PDF_RENDER_DPI,
+                            first_page=pg_num,
+                            last_page=pg_num,
+                            poppler_path=POPPLER_PATH
+                        )
+                        
+                        if not page_images:
+                            break # Reached end of PDF
                             
-                            # 4. Detailed Mapping Metadata
-                            self.collection.add(
-                                documents=[text],
-                                metadatas=[{
-                                    "source": filename,
-                                    "page": pg_num + 1,
-                                    "page_hash": page_hash,
-                                    "ingested_at": str(datetime.now()),
-                                    "mapping_accuracy": "detailed_scan_v3"
-                                }],
-                                ids=[str(uuid.uuid4())]
+                        page_image = page_images[0]
+                        text = self.extract_text_from_image(page_image)
+
+                        if text:
+                            documents, metadatas, ids = self.build_chunk_payloads(
+                                text=text,
+                                filename=filename,
+                                page_number=pg_num,
+                                page_hash=page_hash,
                             )
-                            console.print(f"  [green]✓[/green] Ingested Page {pg_num + 1}")
-                        else:
-                            console.print(f"  [red]×[/red] Error Page {pg_num + 1} | HTTP {response.status_code}")
-                    except Exception as e:
-                        console.print(f"  [bold red]![/bold red] Connection Error Page {pg_num + 1}: {e}")
-                        time.sleep(5) # Small pause to recover connection
-                
-                doc.close()
-                
-                # 5. Inter-book Cooldown
-                if index < len(files) - 1:
-                    console.print(f"\n[bold yellow]Book {index+1} Complete.[/bold yellow] Triggering safety cooldown...")
-                    self.cooldown_timer(minutes=15)
-                
-        except KeyboardInterrupt:
-            console.print("\n[bold red]STOP SIGNAL RECEIVED.[/bold red] Flushing buffers...")
+
+                            if documents:
+                                self.collection.add(documents=documents, metadatas=metadatas, ids=ids)
+                                console.print(f"  [green]+[/green] Ingested Page {pg_num} ({len(documents)} chunks)")
+                        
+                        pg_num += 1
+                        self.session_processed_pages += 1
+                        self.maybe_take_session_air_break()
+
+                    except Exception as page_err:
+                        # This usually triggers when pg_num exceeds total pages
+                        break 
+
+        except Exception as e:
+            console.print(f"[bold red]Critical Error:[/bold red] {e}")
         finally:
-            self.client.heartbeat() # Ensure DB sync
             console.print(f"\n[bold green]INGESTION SUMMARY[/bold green]")
             console.print(f"Total Unique Records in DB: [cyan]{self.collection.count()}[/cyan]")
-            console.print("[dim]Data persisted safely to hector_db[/dim]")
 
 if __name__ == "__main__":
     HectorIngestor().process_with_heartbeat()
