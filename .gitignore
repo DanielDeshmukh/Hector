@@ -223,3 +223,6 @@ __marimo__/
 /data/Books
 #ignore vector db files
 /hector_db
+
+#completion roadmap (project-specific planning)
+/completion-roadmap.md
