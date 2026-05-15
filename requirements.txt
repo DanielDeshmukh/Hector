@@ -12,6 +12,7 @@ langchain-openai
 
 # --- Specialized RAG & Retrieval ---
 pinecone-client[grpc]
+chromadb
 sentence-transformers
 numpy
 pandas

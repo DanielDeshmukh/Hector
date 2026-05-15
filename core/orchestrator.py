@@ -1,11 +1,10 @@
 from core.router import HectorRouter
-# Assuming you have these or similar in your project
-# from core.retriever import HybridRetriever 
+from data.hybrid_retriever import HectorHybridRetriever
 
 class HectorOrchestrator:
     def __init__(self):
         self.router = HectorRouter()
-        # self.retriever = HybridRetriever()
+        self.retriever = HectorHybridRetriever()
 
     def execute(self, query):
         """
@@ -22,6 +21,7 @@ class HectorOrchestrator:
         
         # Step 2: Legal Normalization (only for research)
         normalized_query = query
+        mappings = []
         if route == "LEGAL_RESEARCH":
             normalized_query, mappings = self.router.normalize_query(query)
 
@@ -29,14 +29,15 @@ class HectorOrchestrator:
         # This is where the 'True' error usually happens. 
         # Ensure we return a STRING, not a success status.
         try:
-            response = self._generate_strategic_response(route, normalized_query, intent)
+            response = self._generate_strategic_response(route, normalized_query, intent, mappings)
             return response
         except Exception as e:
             return f"Strategic failure: {str(e)}"
 
-    def _generate_strategic_response(self, route, query, intent):
+    def _generate_strategic_response(self, route, query, intent, mappings=None):
         """Internal logic to fetch either legal data or general scaling advice."""
         hector_msg = intent.get("hector_response", "")
+        mappings = mappings or []
         
         if route == "GENERAL":
             if len(hector_msg) > 5:
@@ -44,7 +45,12 @@ class HectorOrchestrator:
             return "Tactical pivot required. Provide more specific architecture logs."
 
         if route == "LEGAL_RESEARCH":
-            return "The archives are empty on this query. We need to ingest the relevant Gazette files."
+            results = self.retriever.search(query, top_k=5)
+            preface = [hector_msg] if hector_msg else []
+            if mappings:
+                preface.append("Mapped legacy references: " + "; ".join(mappings))
+            preface.append(self.retriever.format_results(results))
+            return "\n\n".join(preface)
 
         if route == "STRATEGIC_ADVICE":
             if len(hector_msg) > 5:
