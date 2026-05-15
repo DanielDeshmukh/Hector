@@ -5,6 +5,28 @@
 
 ---
 
+## **API Quick Start**
+
+HECTOR now exposes a FastAPI backend for search, routing, comparison, ingestion, health checks, and streaming search events.
+
+```bash
+uvicorn api.app:app --reload
+```
+
+Authenticate with either:
+- `X-API-Key: hector-dev-key`
+- `POST /auth/token?api_key=hector-dev-key` for a JWT bearer token
+
+Core endpoints:
+- `POST /search`
+- `POST /compare`
+- `POST /route`
+- `GET /status`
+- `POST /ingest`
+- `WS /ws/search`
+
+---
+
 ## **How HECTOR Works**
 
 HECTOR operates on a **Chain-of-Verification (CoVe)** architecture. When a user inputs a legal query, the system follows a four-stage internal logic:

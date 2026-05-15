@@ -3,7 +3,11 @@ import os
 import re
 
 from dotenv import load_dotenv
-from groq import Groq
+
+try:
+    from groq import Groq
+except ImportError:
+    Groq = None
 
 load_dotenv()
 
@@ -76,7 +80,7 @@ class HectorRouter:
     )
 
     def __init__(self):
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+        self.client = Groq(api_key=os.getenv("GROQ_API_KEY")) if Groq is not None else None
         self.model = os.getenv("HECTOR_ROUTER_MODEL", "llama-3.3-70b-versatile")
         self.system_prompt = (
             "Classify the user query into exactly one route: "
@@ -189,6 +193,8 @@ class HectorRouter:
             return rule_based_intent
 
         try:
+            if self.client is None:
+                return rule_based_intent
             chat = self.client.chat.completions.create(
                 model=self.model,
                 messages=[

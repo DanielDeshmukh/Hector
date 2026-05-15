@@ -4,8 +4,12 @@ import re
 from collections import Counter, defaultdict
 from datetime import datetime
 
-import chromadb
-from chromadb.utils import embedding_functions
+try:
+    import chromadb
+    from chromadb.utils import embedding_functions
+except ImportError:
+    chromadb = None
+    embedding_functions = None
 
 
 DB_PATH = "./hector_db"
@@ -94,6 +98,10 @@ class HectorHybridRetriever:
 
         if collection is not None:
             self.collection = collection
+        elif chromadb is None:
+            self.chroma_client = None
+            self.collection = None
+            self.semantic_disabled = True
         else:
             self.chroma_client = chromadb.PersistentClient(path=db_path)
             self.collection = self.chroma_client.get_or_create_collection(
@@ -534,6 +542,9 @@ class HectorHybridRetriever:
             return None
 
         try:
+            if embedding_functions is None:
+                self.semantic_disabled = True
+                return None
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
             self.embed_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
                 model_name="all-MiniLM-L6-v2"
