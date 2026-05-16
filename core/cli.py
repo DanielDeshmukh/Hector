@@ -190,10 +190,15 @@ def init(
 
         # Wait for API to be ready
         import requests
+        api_key = "hector-dev-key"
         max_retries = 30
         for i in range(max_retries):
             try:
-                response = requests.get(f"http://localhost:{port}/status", timeout=1)
+                response = requests.get(
+                    f"http://localhost:{port}/status",
+                    timeout=1,
+                    headers={"X-API-Key": api_key}
+                )
                 if response.status_code == 200:
                     print_success(f"API Server running on http://localhost:{port}")
                     break
@@ -212,11 +217,17 @@ def init(
             if not frontend_dir.exists():
                 print_warning("Frontend directory not found")
             else:
+                # Set PORT environment variable for Next.js
+                env = os.environ.copy()
+                env["PORT"] = str(frontend_port)
+                env["NODE_OPTIONS"] = "--max-old-space-size=4096"
+
                 frontend_process = subprocess.Popen(
-                    ["npm", "run", "dev", "--", "--port", str(frontend_port)],
+                    ["npm", "run", "dev"],
                     cwd=str(frontend_dir),
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
+                    env=env,
                     creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
                     shell=True
                 )

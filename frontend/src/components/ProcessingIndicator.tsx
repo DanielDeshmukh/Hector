@@ -24,19 +24,24 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function ProcessingIndicator({ query, currentStage, stages }: ProcessingIndicatorProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-full px-6 py-12">
-      {/* Submitted Query */}
-      <div className="w-full max-w-2xl mb-10">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-silver/50 mb-2">Your Query</div>
-        <div className="p-4 bg-charcoal/60 border border-slate/40 rounded-lg">
-          <p className="text-[15px] text-[#e8e8e8] font-serif leading-relaxed">{query}</p>
-        </div>
-      </div>
+    <div className="mx-auto flex min-h-full w-full max-w-7xl items-center px-6 py-10 sm:px-8 lg:px-12">
+      <div className="grid w-full gap-8 lg:grid-cols-[minmax(320px,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+        <div className="rounded-[28px] border border-slate/40 bg-charcoal/35 p-6 sm:p-8 lg:sticky lg:top-8">
+          <div className="mb-3 text-[10px] uppercase tracking-[0.18em] text-silver/50">Your Query</div>
+          <div className="rounded-2xl border border-slate/40 bg-charcoal/60 p-5">
+            <p className="font-serif text-[15px] leading-relaxed text-[#e8e8e8]">{query}</p>
+          </div>
 
-      {/* Processing Stages */}
-      <div className="w-full max-w-2xl">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-silver/50 mb-4">Processing Pipeline</div>
-        <div className="flex flex-col gap-3">
+          <div className="mt-8 flex items-center gap-1">
+            <span className="h-2 w-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '0ms' }} />
+            <span className="h-2 w-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '150ms' }} />
+            <span className="h-2 w-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '300ms' }} />
+          </div>
+        </div>
+
+        <div className="min-w-0">
+          <div className="mb-4 text-[10px] uppercase tracking-[0.18em] text-silver/50">Processing Pipeline</div>
+          <div className="flex flex-col gap-3">
           {stages.map((stage, index) => {
             const IconComponent = ICON_MAP[stage.icon] || Shield
             const isActive = index === currentStage - 1
@@ -84,14 +89,8 @@ export function ProcessingIndicator({ query, currentStage, stages }: ProcessingI
               </div>
             )
           })}
+          </div>
         </div>
-      </div>
-
-      {/* Animated Dots */}
-      <div className="flex items-center gap-1 mt-8">
-        <span className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '0ms' }} />
-        <span className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '150ms' }} />
-        <span className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '300ms' }} />
       </div>
     </div>
   )

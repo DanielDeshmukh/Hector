@@ -153,11 +153,11 @@ export default function Home() {
   }, [handleSubmitQuery])
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="h-screen overflow-hidden bg-cream">
       {/* Error Message Display */}
       <ErrorMessage />
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="mx-auto flex h-full w-full max-w-[1680px] overflow-hidden px-4 py-4 sm:px-6 lg:px-8">
         {/* Sidebar */}
         <SidePanel
           onNewQuery={handleNewQuery}
@@ -165,10 +165,10 @@ export default function Home() {
         />
 
         {/* Main Content Area */}
-        <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${activeSourceId ? 'max-w-[calc(100%-420px)]' : ''}`}>
+        <div className={`relative flex min-w-0 flex-1 flex-col overflow-hidden rounded-[28px] border border-slate/40 bg-charcoal/20 shadow-[0_24px_80px_rgba(0,0,0,0.28)] transition-all duration-300 ${activeSourceId ? 'mr-4' : ''}`}>
           {/* Top Bar / Status */}
-          <div className="flex items-center justify-between px-6 py-3 bg-cream border-b border-slate/30">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate/30 bg-cream/95 px-6 py-4 backdrop-blur-sm">
+            <div className="flex min-w-0 items-center gap-3">
               {appState === 'idle' && (
                 <span className="text-sm text-silver">Ready for queries</span>
               )}
@@ -189,7 +189,7 @@ export default function Home() {
               {isLoadingStatus ? (
                 <span className="text-xs text-silver">Loading...</span>
               ) : status ? (
-                <span className="text-xs text-silver">
+                <span className="rounded-full border border-slate/40 px-3 py-1 text-xs text-silver">
                   {status.document_count?.toLocaleString() || 0} docs indexed
                 </span>
               ) : null}
@@ -220,10 +220,12 @@ export default function Home() {
 
           {/* Query Input (only show when not in compare mode) */}
           {activeTab === 'search' && (
-            <SearchBar
-              onSubmit={handleSubmitQuery}
-              disabled={isSearching}
-            />
+            <div className="border-t border-slate/30 bg-cream/95 backdrop-blur-sm">
+              <SearchBar
+                onSubmit={handleSubmitQuery}
+                disabled={isSearching}
+              />
+            </div>
           )}
         </div>
 
@@ -241,15 +243,19 @@ export default function Home() {
 
       {/* Compare Panel Mode */}
       {activeTab === 'compare' && (
-        <div className="fixed inset-0 z-50 bg-cream">
-          <ComparePanel />
+        <div className="fixed inset-0 z-50 bg-cream px-4 py-4 sm:px-6 lg:px-8">
+          <div className="mx-auto flex h-full w-full max-w-[1680px] flex-col overflow-hidden rounded-[28px] border border-slate/40 bg-charcoal/20 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+            <ComparePanel />
           {compareResult && (
-            <div className="flex-1 px-6 py-4 overflow-auto bg-cream">
-              <pre className="font-mono text-[13px] leading-relaxed text-[#e8e8e8] whitespace-pre-wrap break-word">
+              <div className="flex-1 overflow-auto bg-cream px-6 py-6 sm:px-8">
+                <div className="mx-auto w-full max-w-6xl rounded-[24px] border border-slate/40 bg-charcoal/35 p-6 shadow-[0_18px_48px_rgba(0,0,0,0.2)]">
+                  <pre className="font-mono text-[13px] leading-relaxed text-[#e8e8e8] whitespace-pre-wrap break-word">
                 {compareResult}
-              </pre>
-            </div>
+                  </pre>
+                </div>
+              </div>
           )}
+          </div>
         </div>
       )}
     </div>
