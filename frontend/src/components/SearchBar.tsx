@@ -7,10 +7,15 @@ import { apiClient } from '@/lib/api'
 
 type ResponseFormat = 'summary' | 'detailed' | 'citations'
 
-export function SearchBar() {
+interface SearchBarProps {
+  onSubmit?: (query: string) => void
+  disabled?: boolean
+}
+
+export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
   const {
-    query,
-    setQuery,
+    query: storeQuery,
+    setQuery: setStoreQuery,
     isSearching,
     setIsSearching,
     setSearchResponse,
@@ -18,13 +23,23 @@ export function SearchBar() {
     addSearchHistory,
   } = useAppStore()
 
+  const query = storeQuery
+  const setQuery = setStoreQuery
+
   const [showVerify, setShowVerify] = useState(false)
   const [format, setFormat] = useState<ResponseFormat>('summary')
   const [includeRelated, setIncludeRelated] = useState(true)
 
-  const handleSearch = async () => {
+  // Use onSubmit prop if provided (new design), otherwise use internal search
+  const handleSubmit = async () => {
     if (!query.trim() || isSearching) return
 
+    if (onSubmit) {
+      onSubmit(query.trim())
+      return
+    }
+
+    // Original behavior
     setIsSearching(true)
     setError(null)
     setSearchResponse(null)
@@ -49,8 +64,8 @@ export function SearchBar() {
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      handleSearch()
+    if (e.key === 'Enter' && !disabled) {
+      handleSubmit()
     }
   }
 
@@ -71,7 +86,7 @@ export function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          disabled={isSearching}
+          disabled={disabled || isSearching}
         />
         {query && (
           <button className="text-silver p-1 rounded hover:text-[#e8e8e8] hover:bg-charcoal transition-all" onClick={handleClear}>
@@ -145,8 +160,8 @@ export function SearchBar() {
 
         <button
           className="flex items-center gap-2 px-4 py-2 bg-gold text-cream font-semibold rounded-lg hover:bg-gold-light hover:shadow-[0_0_20px_rgba(201,169,98,0.15)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-          onClick={handleSearch}
-          disabled={!query.trim() || isSearching}
+          onClick={handleSubmit}
+          disabled={disabled || !query.trim() || isSearching}
         >
           {isSearching ? (
             <>

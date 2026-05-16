@@ -6,14 +6,29 @@ import { useAppStore } from '@/lib/store'
 
 type Tab = 'history' | 'bookmarks'
 
-export function SidePanel() {
+interface SidePanelProps {
+  onNewQuery?: () => void
+  onHistoryClick?: (historyItem: { query: string }) => void
+}
+
+export function SidePanel({ onNewQuery, onHistoryClick }: SidePanelProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<Tab>('history')
   const { searchHistory, bookmarks, removeBookmark, setQuery } = useAppStore()
 
-  const handleHistoryClick = (query: string) => {
+  const handleHistoryClickInternal = (query: string) => {
     setQuery(query)
     setIsOpen(false)
+    if (onHistoryClick) {
+      onHistoryClick({ query })
+    }
+  }
+
+  const handleNewQueryClick = () => {
+    setIsOpen(false)
+    if (onNewQuery) {
+      onNewQuery()
+    }
   }
 
   const handleBookmarkClick = (bookmark: typeof bookmarks[0]) => {
@@ -57,6 +72,19 @@ export function SidePanel() {
           </button>
         </div>
 
+        {/* New Query Button */}
+        <div className="px-3 py-3 border-b border-slate/60">
+          <button
+            className="w-full flex items-center gap-2 px-4 py-2.5 bg-charcoal/50 border border-slate/60 rounded-lg text-[13px] text-[#e8e8e8] hover:border-gold/50 hover:bg-charcoal transition-all"
+            onClick={handleNewQueryClick}
+          >
+            <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            New Query
+          </button>
+        </div>
+
         <div className="flex-1 overflow-y-auto p-2">
           {activeTab === 'history' ? (
             searchHistory.length === 0 ? (
@@ -68,7 +96,7 @@ export function SidePanel() {
               <ul className="list-none p-0">
                 {searchHistory.map((item) => (
                   <li key={item.id} className="mb-1">
-                    <button className="w-full flex items-center px-3 py-2 rounded-lg text-left transition-all hover:bg-charcoal" onClick={() => handleHistoryClick(item.query)}>
+                    <button className="w-full flex items-center px-3 py-2 rounded-lg text-left transition-all hover:bg-charcoal" onClick={() => handleHistoryClickInternal(item.query)}>
                       <Search size={14} className="text-silver mr-2 shrink-0" />
                       <span className="flex-1 text-[13px] text-[#e8e8e8] truncate whitespace-nowrap overflow-hidden">{item.query}</span>
                       <span className="text-[10px] text-silver px-1.5 py-0.5 bg-charcoal rounded ml-2">{item.route}</span>
