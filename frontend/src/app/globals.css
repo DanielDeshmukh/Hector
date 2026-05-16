@@ -1,52 +1,32 @@
-:root {
+@import "tailwindcss";
+
+@theme {
   /* Lambo-Dark Theme */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
-  --bg-card: #151515;
-  --bg-card-hover: #1f1f1f;
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-bg-tertiary: #1a1a1a;
+  --color-bg-card: #151515;
+  --color-bg-card-hover: #1f1f1f;
 
   /* Gold Accent */
-  --accent-gold: #D4AF37;
-  --accent-gold-dim: #b8962e;
-  --accent-gold-bright: #e6c255;
+  --color-accent-gold: #D4AF37;
+  --color-accent-gold-dim: #b8962e;
+  --color-accent-gold-bright: #e6c255;
 
   /* Text Colors */
-  --text-primary: #E8E8E8;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
+  --color-text-primary: #E8E8E8;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #666666;
 
   /* Status Colors */
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --error: #ef4444;
-  --info: #3b82f6;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
 
   /* Borders */
-  --border-color: #2a2a2a;
-  --border-gold: #D4AF37;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
-
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
+  --color-border: #2a2a2a;
+  --color-border-gold: #D4AF37;
 }
 
 * {
@@ -59,8 +39,8 @@ html,
 body {
   height: 100%;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   line-height: 1.6;
 }
 
@@ -71,39 +51,39 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--color-bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: var(--radius-sm);
+  background: var(--color-border);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold-dim);
+  background: var(--color-accent-gold-dim);
 }
 
 /* Focus Styles */
 :focus-visible {
-  outline: 2px solid var(--accent-gold);
+  outline: 2px solid var(--color-accent-gold);
   outline-offset: 2px;
 }
 
 /* Selection */
 ::selection {
-  background: var(--accent-gold);
-  color: var(--bg-primary);
+  background: var(--color-accent-gold);
+  color: var(--color-bg-primary);
 }
 
 /* Links */
 a {
-  color: var(--accent-gold);
+  color: var(--color-accent-gold);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: color 150ms ease;
 }
 
 a:hover {
-  color: var(--accent-gold-bright);
+  color: var(--color-accent-gold-bright);
 }
 
 /* Buttons */
@@ -123,9 +103,9 @@ input, textarea {
 /* Code blocks */
 code {
   font-family: 'Fira Code', 'Consolas', monospace;
-  background: var(--bg-tertiary);
+  background: var(--color-bg-tertiary);
   padding: 0.125rem 0.375rem;
-  border-radius: var(--radius-sm);
+  border-radius: 4px;
   font-size: 0.875em;
 }
 
@@ -135,30 +115,24 @@ code {
   to { opacity: 1; }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
 
 .animate-fade-in {
-  animation: fadeIn var(--transition-normal) ease-out;
-}
-
-.animate-slide-up {
-  animation: slideUp var(--transition-normal) ease-out;
+  animation: fadeIn 250ms ease-out;
 }
 
 .animate-pulse {
   animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }

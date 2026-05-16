@@ -27,6 +27,29 @@ Core endpoints:
 
 ---
 
+## **Frontend Quick Start**
+
+The Next.js 14 frontend provides a professional "Lambo-Dark" interface for legal research.
+
+```bash
+# Start API server (in one terminal)
+uvicorn api.app:app --reload
+
+# Start frontend (in another terminal)
+cd frontend
+npm run dev
+```
+
+Access the UI at: http://localhost:3000
+
+Features:
+- Dual-Pane Viewer (AI Summary | PDF Source)
+- Search History & Bookmarks
+- IPC ↔ BNS Comparison Tool
+- High-contrast dark theme with gold accents
+
+---
+
 ## **How HECTOR Works**
 
 HECTOR operates on a **Chain-of-Verification (CoVe)** architecture. When a user inputs a legal query, the system follows a four-stage internal logic:
@@ -82,17 +105,20 @@ HECTOR operates on a **Chain-of-Verification (CoVe)** architecture. When a user 
     *   Implementing a secondary LLM "Verifier" to cross-check the RAG output against the raw source.
 *   **Required Outcome:** A system that achieves near-zero hallucination in testing benchmarks.
 
-### [ ] **Phase 8: API Layer & FastAPI Integration**
-*   **Tasks:** 
+### [x] **Phase 8: API Layer & FastAPI Integration**
+*   **Tasks:**
     *   Exposing the CLI logic via a high-performance FastAPI backend.
     *   Setting up WebSocket support for streaming legal analysis.
 *   **Required Outcome:** A scalable backend capable of supporting a fullstack web application.
 
-### [ ] **Phase 9: Fullstack UI ("Lambo-Dark" Edition)**
-*   **Tasks:** 
+### [x] **Phase 9: Fullstack UI ("Lambo-Dark" Edition)**
+*   **Tasks:**
     *   Designing the Next.js 14 dashboard with a high-contrast, minimalist dark theme.
     *   Building the "Dual-Pane" viewer (AI Summary vs. PDF Source).
+    *   Adding search history and bookmarks functionality.
+    *   Implementing IPC ↔ BNS comparison tool.
 *   **Required Outcome:** A professional-grade, high-performance web interface for legal researchers.
+*   **Frontend Location:** `frontend/` directory
 
 ### [ ] **Phase 10: Live Update & Maintenance Pipeline**
 *   **Tasks:** 
