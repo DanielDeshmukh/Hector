@@ -1,9 +1,11 @@
 'use client'
 
 import { useState, KeyboardEvent } from 'react'
-import { Search, Loader2, X } from 'lucide-react'
+import { Search, Loader2, X, FileText, List, AlignLeft } from 'lucide-react'
 import { useAppStore } from '@/lib/store'
 import { apiClient } from '@/lib/api'
+
+type ResponseFormat = 'summary' | 'detailed' | 'citations'
 
 export function SearchBar() {
   const {
@@ -17,6 +19,8 @@ export function SearchBar() {
   } = useAppStore()
 
   const [showVerify, setShowVerify] = useState(false)
+  const [format, setFormat] = useState<ResponseFormat>('summary')
+  const [includeRelated, setIncludeRelated] = useState(true)
 
   const handleSearch = async () => {
     if (!query.trim() || isSearching) return
@@ -29,6 +33,8 @@ export function SearchBar() {
       const response = await apiClient.search({
         query: query.trim(),
         verify: showVerify,
+        format: format,
+        include_related: includeRelated,
         page: 1,
         page_size: 10,
       })
@@ -75,15 +81,67 @@ export function SearchBar() {
       </div>
 
       <div className="flex items-center justify-between">
-        <label className="flex items-center gap-2 text-sm text-silver cursor-pointer">
-          <input
-            type="checkbox"
-            checked={showVerify}
-            onChange={(e) => setShowVerify(e.target.checked)}
-            className="accent-gold w-4 h-4"
-          />
-          <span>Enable Verification</span>
-        </label>
+        <div className="flex items-center gap-4">
+          {/* Format Selector */}
+          <div className="flex items-center gap-1 bg-charcoal rounded-lg p-1">
+            <button
+              type="button"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                format === 'summary'
+                  ? 'bg-gold text-cream'
+                  : 'text-silver hover:text-[#e8e8e8]'
+              }`}
+              onClick={() => setFormat('summary')}
+            >
+              <AlignLeft size={14} />
+              Summary
+            </button>
+            <button
+              type="button"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                format === 'detailed'
+                  ? 'bg-gold text-cream'
+                  : 'text-silver hover:text-[#e8e8e8]'
+              }`}
+              onClick={() => setFormat('detailed')}
+            >
+              <FileText size={14} />
+              Detailed
+            </button>
+            <button
+              type="button"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                format === 'citations'
+                  ? 'bg-gold text-cream'
+                  : 'text-silver hover:text-[#e8e8e8]'
+              }`}
+              onClick={() => setFormat('citations')}
+            >
+              <List size={14} />
+              Citations
+            </button>
+          </div>
+
+          <label className="flex items-center gap-2 text-sm text-silver cursor-pointer">
+            <input
+              type="checkbox"
+              checked={showVerify}
+              onChange={(e) => setShowVerify(e.target.checked)}
+              className="accent-gold w-4 h-4"
+            />
+            <span>Verify</span>
+          </label>
+
+          <label className="flex items-center gap-2 text-sm text-silver cursor-pointer">
+            <input
+              type="checkbox"
+              checked={includeRelated}
+              onChange={(e) => setIncludeRelated(e.target.checked)}
+              className="accent-gold w-4 h-4"
+            />
+            <span>Related</span>
+          </label>
+        </div>
 
         <button
           className="flex items-center gap-2 px-4 py-2 bg-gold text-cream font-semibold rounded-lg hover:bg-gold-light hover:shadow-[0_0_20px_rgba(201,169,98,0.15)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"

@@ -15,6 +15,8 @@ class SearchRequest(BaseModel):
     page: int = Field(default=1, ge=1)
     page_size: int = Field(default=5, ge=1, le=50)
     verify: bool = True
+    format: Literal["summary", "detailed", "citations"] = "summary"
+    include_related: bool = True
 
 
 class CompareRequest(BaseModel):
@@ -58,6 +60,9 @@ class SearchResponse(BaseModel):
     total_pages: int
     items: list[SearchHit]
     generated_response: str
+    citations: list[dict] = Field(default_factory=list)
+    related_provisions: list[str] = Field(default_factory=list)
+    response_format: str = "summary"
     retrieved_at: datetime
     cached: bool = False
 

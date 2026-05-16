@@ -41,6 +41,10 @@ class HectorApiService:
         self.router = router or self.orchestrator.router
         self.retriever = retriever or self.orchestrator.retriever
 
+        # Initialize response generator
+        from core.response_generator import ContextualResponseGenerator
+        self.response_generator = ContextualResponseGenerator(self.retriever)
+
     def search(self, request: SearchRequest) -> SearchResponse:
         intent = self.router.get_route(request.query)
         normalized_query = request.query
@@ -63,8 +67,27 @@ class HectorApiService:
 
         items = [self._to_hit(item) for item in paginated]
 
+        # Generate response with contextual formatting
+        response_data = {
+            "generated_response": "",
+            "citations": [],
+            "related_provisions": [],
+        }
+
         if intent.get("route") == "LEGAL_RESEARCH":
-            generated_response = self.orchestrator.execute(request.query) if request.verify else self.retriever.format_results(results[: request.page_size])
+            if request.verify:
+                # Use orchestrator with verification
+                generated_response = self.orchestrator.execute(request.query)
+            else:
+                # Use contextual response generator with selected format
+                from core.response_generator import ResponseFormat
+                response_data = self.response_generator.generate(
+                    query=normalized_query,
+                    results=results[: request.page_size],
+                    format=request.format,
+                    include_related=request.include_related,
+                )
+                generated_response = response_data["generated_response"]
         else:
             generated_response = intent.get("hector_response", "")
 
@@ -83,6 +106,9 @@ class HectorApiService:
             total_pages=total_pages,
             items=items,
             generated_response=generated_response,
+            citations=response_data.get("citations", []),
+            related_provisions=response_data.get("related_provisions", []),
+            response_format=request.format,
             retrieved_at=datetime.now(UTC),
         )
 
