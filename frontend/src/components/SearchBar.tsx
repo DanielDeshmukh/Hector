@@ -76,13 +76,13 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-5 sm:px-8">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-8 py-6 sm:px-10 lg:px-14">
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-        <div className="flex min-w-0 items-center gap-3 rounded-2xl border border-slate bg-charcoal px-4 py-3 transition-all focus-within:border-gold focus-within:shadow-[0_0_20px_rgba(201,169,98,0.15)]">
-          <Search className="h-5 w-5 shrink-0 text-silver" />
+        <div className="flex min-w-0 items-center gap-4 rounded-2xl border border-slate/50 bg-charcoal/60 px-5 py-4 transition-all focus-within:border-gold/60 focus-within:shadow-[0_0_20px_rgba(201,169,98,0.15)]">
+          <Search className="h-5 w-5 shrink-0 text-gold/70" />
           <input
             type="text"
-            className="flex-1 border-none bg-transparent py-2 text-base text-[#e8e8e8] outline-none placeholder:text-silver"
+            className="flex-1 border-none bg-transparent py-1 text-base text-[#e8e8e8] outline-none placeholder:text-silver/60"
             placeholder="Search Indian legal sections (e.g., 'Section 302 BNS' or 'murder penalty')..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -90,14 +90,14 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
             disabled={disabled || isSearching}
           />
           {query && (
-            <button className="rounded p-1 text-silver transition-all hover:bg-charcoal hover:text-[#e8e8e8]" onClick={handleClear}>
+            <button className="rounded p-1.5 text-silver/70 transition-all hover:text-gold hover:bg-charcoal" onClick={handleClear}>
               <X size={18} />
             </button>
           )}
         </div>
 
         <button
-          className="flex h-[54px] items-center justify-center gap-2 rounded-2xl bg-gold px-6 text-cream font-semibold transition-all hover:bg-gold-light hover:shadow-[0_0_20px_rgba(201,169,98,0.15)] disabled:cursor-not-allowed disabled:opacity-50 lg:min-w-[148px]"
+          className="flex h-[52px] items-center justify-center gap-2 rounded-2xl bg-gold px-8 text-cream font-semibold transition-all hover:bg-gold-light hover:shadow-[0_0_25px_rgba(201,169,98,0.25)] disabled:cursor-not-allowed disabled:opacity-50 lg:min-w-[160px]"
           onClick={handleSubmit}
           disabled={disabled || !query.trim() || isSearching}
         >
@@ -115,16 +115,16 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
         </button>
       </div>
 
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-5">
           {/* Format Selector */}
-          <div className="flex items-center gap-1 rounded-xl bg-charcoal p-1">
+          <div className="flex items-center gap-1.5 rounded-xl bg-charcoal/60 p-1.5 border border-slate/40">
             <button
               type="button"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 format === 'summary'
-                  ? 'bg-gold text-cream'
-                  : 'text-silver hover:text-[#e8e8e8]'
+                  ? 'bg-gold/20 text-gold border border-gold/30'
+                  : 'text-silver/70 hover:text-[#e8e8e8] border border-transparent'
               }`}
               onClick={() => setFormat('summary')}
             >
@@ -133,10 +133,10 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
             </button>
             <button
               type="button"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 format === 'detailed'
-                  ? 'bg-gold text-cream'
-                  : 'text-silver hover:text-[#e8e8e8]'
+                  ? 'bg-gold/20 text-gold border border-gold/30'
+                  : 'text-silver/70 hover:text-[#e8e8e8] border border-transparent'
               }`}
               onClick={() => setFormat('detailed')}
             >
@@ -145,10 +145,10 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
             </button>
             <button
               type="button"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 format === 'citations'
-                  ? 'bg-gold text-cream'
-                  : 'text-silver hover:text-[#e8e8e8]'
+                  ? 'bg-gold/20 text-gold border border-gold/30'
+                  : 'text-silver/70 hover:text-[#e8e8e8] border border-transparent'
               }`}
               onClick={() => setFormat('citations')}
             >
@@ -157,24 +157,24 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
             </button>
           </div>
 
-          <label className="flex items-center gap-2 text-sm text-silver cursor-pointer">
+          <label className="flex items-center gap-2.5 text-sm text-silver/70 cursor-pointer hover:text-silver transition-all">
             <input
               type="checkbox"
               checked={showVerify}
               onChange={(e) => setShowVerify(e.target.checked)}
-              className="accent-gold w-4 h-4"
+              className="accent-gold w-4 h-4 rounded cursor-pointer"
             />
-            <span>Verify</span>
+            <span className="font-medium">Verify</span>
           </label>
 
-          <label className="flex items-center gap-2 text-sm text-silver cursor-pointer">
+          <label className="flex items-center gap-2.5 text-sm text-silver/70 cursor-pointer hover:text-silver transition-all">
             <input
               type="checkbox"
               checked={includeRelated}
               onChange={(e) => setIncludeRelated(e.target.checked)}
-              className="accent-gold w-4 h-4"
+              className="accent-gold w-4 h-4 rounded cursor-pointer"
             />
-            <span>Related</span>
+            <span className="font-medium">Related</span>
           </label>
         </div>
       </div>

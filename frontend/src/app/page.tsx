@@ -157,7 +157,7 @@ export default function Home() {
       {/* Error Message Display */}
       <ErrorMessage />
 
-      <div className="mx-auto flex h-full w-full max-w-[1680px] overflow-hidden px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-full w-full max-w-[1700px] overflow-hidden px-5 py-5 sm:px-7 lg:px-9">
         {/* Sidebar */}
         <SidePanel
           onNewQuery={handleNewQuery}
@@ -165,31 +165,31 @@ export default function Home() {
         />
 
         {/* Main Content Area */}
-        <div className={`relative flex min-w-0 flex-1 flex-col overflow-hidden rounded-[28px] border border-slate/40 bg-charcoal/20 shadow-[0_24px_80px_rgba(0,0,0,0.28)] transition-all duration-300 ${activeSourceId ? 'mr-4' : ''}`}>
+        <div className={`relative flex min-w-0 flex-1 flex-col overflow-hidden rounded-[32px] border border-slate/40 bg-charcoal/30 shadow-[0_32px_96px_rgba(0,0,0,0.32)] transition-all duration-300 ${activeSourceId ? 'mr-5' : ''}`}>
           {/* Top Bar / Status */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate/30 bg-cream/95 px-6 py-4 backdrop-blur-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate/30 bg-cream/98 px-8 py-4 backdrop-blur-md">
             <div className="flex min-w-0 items-center gap-3">
               {appState === 'idle' && (
-                <span className="text-sm text-silver">Ready for queries</span>
+                <span className="text-sm text-silver/70 font-medium">Ready for queries</span>
               )}
               {appState === 'processing' && (
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                  <span className="text-sm text-gold">Processing...</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
+                  <span className="text-sm text-gold font-medium">Processing...</span>
                 </div>
               )}
               {appState === 'responded' && (
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-success" />
-                  <span className="text-sm text-success">Query Resolved</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-success" />
+                  <span className="text-sm text-success font-medium">Query Resolved</span>
                 </div>
               )}
             </div>
             <div className="flex items-center gap-4">
               {isLoadingStatus ? (
-                <span className="text-xs text-silver">Loading...</span>
+                <span className="text-xs text-silver/50 font-medium">Loading...</span>
               ) : status ? (
-                <span className="rounded-full border border-slate/40 px-3 py-1 text-xs text-silver">
+                <span className="rounded-xl border border-slate/40 bg-charcoal/40 px-4 py-1.5 text-xs text-silver/70 font-medium">
                   {status.document_count?.toLocaleString() || 0} docs indexed
                 </span>
               ) : null}
@@ -220,7 +220,7 @@ export default function Home() {
 
           {/* Query Input (only show when not in compare mode) */}
           {activeTab === 'search' && (
-            <div className="border-t border-slate/30 bg-cream/95 backdrop-blur-sm">
+            <div className="border-t border-slate/30 bg-cream/98 backdrop-blur-md">
               <SearchBar
                 onSubmit={handleSubmitQuery}
                 disabled={isSearching}
@@ -243,12 +243,12 @@ export default function Home() {
 
       {/* Compare Panel Mode */}
       {activeTab === 'compare' && (
-        <div className="fixed inset-0 z-50 bg-cream px-4 py-4 sm:px-6 lg:px-8">
-          <div className="mx-auto flex h-full w-full max-w-[1680px] flex-col overflow-hidden rounded-[28px] border border-slate/40 bg-charcoal/20 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+        <div className="fixed inset-0 z-50 bg-cream px-5 py-5 sm:px-7 lg:px-9">
+          <div className="mx-auto flex h-full w-full max-w-[1700px] flex-col overflow-hidden rounded-[32px] border border-slate/40 bg-charcoal/30 shadow-[0_32px_96px_rgba(0,0,0,0.32)]">
             <ComparePanel />
           {compareResult && (
-              <div className="flex-1 overflow-auto bg-cream px-6 py-6 sm:px-8">
-                <div className="mx-auto w-full max-w-6xl rounded-[24px] border border-slate/40 bg-charcoal/35 p-6 shadow-[0_18px_48px_rgba(0,0,0,0.2)]">
+              <div className="flex-1 overflow-auto bg-cream px-8 py-8 sm:px-10 lg:px-12">
+                <div className="mx-auto w-full max-w-6xl rounded-[28px] border border-slate/40 bg-charcoal/50 p-8 shadow-[0_24px_64px_rgba(0,0,0,0.24)]">
                   <pre className="font-mono text-[13px] leading-relaxed text-[#e8e8e8] whitespace-pre-wrap break-word">
                 {compareResult}
                   </pre>
