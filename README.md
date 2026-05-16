@@ -47,6 +47,51 @@ Features:
 - Search History & Bookmarks
 - IPC ↔ BNS Comparison Tool
 - High-contrast dark theme with gold accents
+- Multi-Language Support (Hindi/English bilingual search)
+- Voice Query Interface (CLI voice commands)
+
+---
+
+## **CLI Commands**
+
+HECTOR provides a command-line interface for easy access to all features.
+
+### Quick Start
+
+```powershell
+# One-time setup from the project root
+venv\Scripts\python.exe -m pip install -e .
+
+# Then use the CLI directly
+hector init
+hector status
+hector ingest
+hector --help
+```
+
+### Commands
+
+| Command | Description | Options |
+|---------|-------------|---------|
+| `hector init` | Start HECTOR (API + Frontend) | `--port, -p` (default: 8000), `--frontend-port, -fp` (default: 3000), `--no-frontend` |
+| `hector ingest` | Ingest books from data/Books | `--force, -f` (re-ingest all), `--verbose, -v` (detailed) |
+| `hector status` | Display system status | - |
+| `hector --help` | Show help message | - |
+| `hector` | Start interactive mode | - |
+
+**Examples:**
+```powershell
+# Install the CLI into the project virtualenv
+venv\Scripts\python.exe -m pip install -e .
+
+# Then use from the terminal as a normal command
+hector init                    # Start both API and frontend
+hector init --port 9000        # Custom API port
+hector init --no-frontend      # API only
+hector ingest                  # Ingest new books
+hector status                  # Check system status
+hector --help                  # Show help
+```
 
 ---
 
