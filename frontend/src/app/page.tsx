@@ -46,23 +46,23 @@ export default function Home() {
         <div className="flex flex-col flex-1 overflow-hidden">
           <ComparePanel />
           {compareResult && (
-            <div className="flex-1 px-6 py-4 overflow-auto bg-bg-primary">
-              <pre className="font-mono text-[13px] leading-relaxed text-text-primary whitespace-pre-wrap wrap-break-word">{compareResult}</pre>
+            <div className="flex-1 px-6 py-4 overflow-auto bg-cream">
+              <pre className="font-mono text-[13px] leading-relaxed text-[#e8e8e8] whitespace-pre-wrap wrap-break-word">{compareResult}</pre>
             </div>
           )}
         </div>
       )}
 
       {/* Status Bar */}
-      <footer className="flex items-center justify-between px-6 py-2 bg-bg-secondary border-t border-border text-xs text-text-muted">
+      <footer className="flex items-center justify-between px-6 py-2 bg-cream border-t border-slate text-xs text-silver">
         <div className="flex gap-6">
           {isLoadingStatus ? (
             <span>Loading status...</span>
           ) : status ? (
             <>
-              <span>Collection: <strong className="text-text-secondary font-medium">{status.collection_name}</strong></span>
-              <span>Documents: <strong className="text-text-secondary font-medium">{status.document_count.toLocaleString()}</strong></span>
-              <span>Router: <strong className="text-text-secondary font-medium">{status.router_model}</strong></span>
+              <span>Collection: <strong className="text-silver font-medium">{status.collection_name}</strong></span>
+              <span>Documents: <strong className="text-silver font-medium">{status.document_count.toLocaleString()}</strong></span>
+              <span>Router: <strong className="text-silver font-medium">{status.router_model}</strong></span>
             </>
           ) : statusError ? (
             <span className="text-error">⚠ {statusError}</span>
@@ -70,7 +70,7 @@ export default function Home() {
             <span>Connecting to API...</span>
           )}
         </div>
-        <div className="text-accent-gold font-semibold tracking-wide">HECTOR v9.0.0</div>
+        <div className="text-gold font-semibold tracking-wide">HECTOR v9.0.0</div>
       </footer>
     </div>
   )

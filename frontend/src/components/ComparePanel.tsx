@@ -41,10 +41,10 @@ export function ComparePanel() {
   }
 
   return (
-    <div className="px-6 py-4 bg-bg-secondary border-b border-border">
+    <div className="px-6 py-4 bg-cream border-b border-slate">
       <div className="flex items-center gap-2 mb-4">
-        <Scale className="text-accent-gold" />
-        <h2 className="text-base font-semibold text-text-primary">IPC ↔ BNS Comparator</h2>
+        <Scale className="text-gold" />
+        <h2 className="text-base font-semibold text-[#e8e8e8]">IPC ↔ BNS Comparator</h2>
       </div>
 
       <div className="flex items-center gap-4">
@@ -52,14 +52,14 @@ export function ComparePanel() {
           <select
             value={act}
             onChange={(e) => setAct(e.target.value as 'IPC' | 'BNS')}
-            className="px-3 py-2 bg-bg-tertiary border border-border rounded-lg text-sm text-text-primary cursor-pointer transition-colors focus:border-accent-gold focus:outline-none"
+            className="px-3 py-2 bg-charcoal border border-slate rounded-lg text-sm text-[#e8e8e8] cursor-pointer transition-colors focus:border-gold focus:outline-none"
           >
             <option value="IPC">IPC (Old)</option>
             <option value="BNS">BNS (New)</option>
           </select>
         </div>
 
-        <div className="text-accent-gold">
+        <div className="text-gold">
           <ArrowRight size={20} />
         </div>
 
@@ -70,13 +70,13 @@ export function ComparePanel() {
             onChange={(e) => setSection(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Enter section number..."
-            className="w-full px-3 py-2 bg-bg-tertiary border border-border rounded-lg text-sm text-text-primary transition-colors focus:border-accent-gold focus:outline-none placeholder:text-text-muted"
+            className="w-full px-3 py-2 bg-charcoal border border-slate rounded-lg text-sm text-[#e8e8e8] transition-colors focus:border-gold focus:outline-none placeholder:text-silver"
             disabled={isComparing}
           />
         </div>
 
         <button
-          className="flex items-center gap-2 px-4 py-2 bg-accent-gold text-bg-primary font-semibold rounded-lg hover:bg-accent-gold-bright transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-4 py-2 bg-gold text-cream font-semibold rounded-lg hover:bg-gold-light transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleCompare}
           disabled={!section.trim() || isComparing}
         >
