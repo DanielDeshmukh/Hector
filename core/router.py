@@ -43,6 +43,57 @@ class HectorRouter:
         "statute",
         "bare act",
     )
+
+    # Civil law keywords for routing
+    CIVIL_KEYWORDS = (
+        "cpc",
+        "civil procedure",
+        "code of civil procedure",
+        "civil court",
+        "district court",
+        "civil suit",
+        "plaint",
+        "written statement",
+        "decree",
+        "execution",
+        "limitation",
+        "limitation act",
+        "civil appeal",
+        "civil revision",
+        "rent act",
+        "tenancy",
+        "eviction",
+        "partition",
+        "succession",
+        "heir",
+        "inheritance",
+        "will",
+        "probate",
+        "contract act",
+        "agreement",
+        "breach of contract",
+        "specific performance",
+        "hindu marriage",
+        "hindu succession",
+        "divorce",
+        "maintenance",
+        "alimony",
+        "transfer of property",
+        "sale deed",
+        "gift deed",
+        "mortgage",
+        "lease",
+        "injunction",
+        "compensation",
+        "damages",
+        "recovery",
+        "order 1 cpc",
+        "order 6 cpc",
+        "order 9 cpc",
+        "order 21 cpc",
+        "order 32 cpc",
+        "order 39 cpc",
+    )
     STRATEGY_KEYWORDS = (
         "strategy",
         "strategic",
@@ -155,6 +206,14 @@ class HectorRouter:
                 route="LEGAL_RESEARCH",
                 message="Legal research signal detected. I will ground this in the statute trail.",
                 confidence=0.97,
+            )
+
+        # Check for civil law keywords (CPC, civil procedure, etc.)
+        if any(keyword in lowered for keyword in self.CIVIL_KEYWORDS):
+            return self._fallback_intent(
+                route="LEGAL_RESEARCH",
+                message="Civil law research signal detected. Routing to civil procedure and statutes.",
+                confidence=0.93,
             )
 
         if any(keyword in lowered for keyword in self.LEGAL_KEYWORDS):
