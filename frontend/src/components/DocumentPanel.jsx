@@ -1,15 +1,7 @@
-'use client'
-
 import { X, FileText, ExternalLink } from 'lucide-react'
-import { SourceReference } from '@/lib/store'
 
-interface DocumentPanelProps {
-  source: SourceReference
-  onClose: () => void
-}
-
-export function DocumentPanel({ source, onClose }: DocumentPanelProps) {
-  const highlightCount = source.highlightRanges.length
+function DocumentPanel({ source, onClose }) {
+  const highlightCount = source.highlightRanges?.length || 0
 
   return (
     <div className="flex h-full w-[440px] shrink-0 flex-col overflow-hidden rounded-[32px] border border-slate/40 bg-cream shadow-[0_32px_96px_rgba(0,0,0,0.32)]">
@@ -72,7 +64,7 @@ export function DocumentPanel({ source, onClose }: DocumentPanelProps) {
       <div className="flex-1 overflow-y-auto px-7 py-6">
         <div className="rounded-[24px] border border-slate/40 bg-charcoal/60 p-6 font-serif text-[14px] leading-[1.95] tracking-[0.01em] text-silver/75 whitespace-pre-wrap">
           {source.fullText.split('').map((char, index) => {
-            const isHighlighted = source.highlightRanges.some(
+            const isHighlighted = source.highlightRanges?.some(
               range => index >= range.start && index < range.end
             )
 
@@ -105,3 +97,5 @@ export function DocumentPanel({ source, onClose }: DocumentPanelProps) {
     </div>
   )
 }
+
+export default DocumentPanel

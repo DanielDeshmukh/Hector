@@ -1,9 +1,7 @@
-'use client'
-
 import { AlertCircle, X } from 'lucide-react'
-import { useAppStore } from '@/lib/store'
+import useAppStore from '../lib/store'
 
-export function ErrorMessage() {
+function ErrorMessage() {
   const { error, setError } = useAppStore()
 
   if (!error) return null
@@ -25,3 +23,5 @@ export function ErrorMessage() {
     </div>
   )
 }
+
+export default ErrorMessage

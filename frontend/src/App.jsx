@@ -1,9 +1,13 @@
-'use client'
-
 import { useEffect, useState, useCallback } from 'react'
-import { SearchBar, ComparePanel, ErrorMessage, SidePanel, WelcomeScreen, ProcessingIndicator, ResponseDisplay, DocumentPanel } from '@/components'
-import { useAppStore } from '@/lib/store'
-import { apiClient } from '@/lib/api'
+import SidePanel from './components/SidePanel'
+import WelcomeScreen from './components/WelcomeScreen'
+import ProcessingIndicator from './components/ProcessingIndicator'
+import ResponseDisplay from './components/ResponseDisplay'
+import DocumentPanel from './components/DocumentPanel'
+import SearchBar from './components/SearchBar'
+import ErrorMessage from './components/ErrorMessage'
+import useAppStore from './lib/store'
+import apiClient from './lib/api'
 
 // Processing stages from design.md
 const PROCESSING_STAGES = [
@@ -15,10 +19,9 @@ const PROCESSING_STAGES = [
 
 const STAGE_DELAYS = [800, 1200, 1000, 900]
 
-export default function Home() {
+function App() {
   const {
     activeTab,
-    compareResult,
     setStatus,
     setIsLoadingStatus,
     isLoadingStatus,
@@ -41,8 +44,6 @@ export default function Home() {
     setQuery,
   } = useAppStore()
 
-  const [statusError, setStatusError] = useState<string | null>(null)
-
   // Load status on mount
   useEffect(() => {
     const loadStatus = async () => {
@@ -51,7 +52,7 @@ export default function Home() {
         const statusData = await apiClient.status()
         setStatus(statusData)
       } catch (err) {
-        setStatusError(err instanceof Error ? err.message : 'Failed to connect to API')
+        console.error('Failed to connect to API:', err)
         setStatus(null)
       } finally {
         setIsLoadingStatus(false)
@@ -64,8 +65,8 @@ export default function Home() {
   }, [setStatus, setIsLoadingStatus])
 
   // Handle query submission
-  const handleSubmitQuery = useCallback(async (searchQuery: string) => {
-    if (!searchQuery.trim() || isSearching) return
+  const handleSubmitQuery = useCallback(async (searchQuery) => {
+    if (!searchQuery?.trim() || isSearching) return
 
     setSubmittedQuery(searchQuery)
     setQuery('')
@@ -98,7 +99,7 @@ export default function Home() {
         answer: response.generated_response || 'No response available',
         domain: response.route || 'LEGAL_RESEARCH',
         confidence: 0.85,
-        sources: response.items?.map((r: any, idx: number) => ({
+        sources: response.items?.map((r, idx) => ({
           id: `source-${idx}`,
           bookTitle: r.metadata?.source || r.metadata?.act || 'Unknown Source',
           author: 'Legal Authority',
@@ -107,7 +108,7 @@ export default function Home() {
           page: r.metadata?.page || parseInt(r.citation?.page) || 1,
           paragraph: 1,
           relevanceScore: r.score ? Math.round(r.score * 100) : 85,
-          matchedText: r.snippet || r.content?.substring(0, 200) || '',
+          matchedText: r.snippet || (r.content ? r.content.substring(0, 200) : ''),
           fullText: r.snippet || r.content || '',
           act: r.act || r.metadata?.act || r.citation?.act || 'BNS',
           highlightRanges: [{ start: 0, end: Math.min(50, (r.snippet || r.content || '').length) }],
@@ -115,7 +116,7 @@ export default function Home() {
         pipeline: PROCESSING_STAGES.map((stage, idx) => ({
           id: stage.id,
           name: stage.name,
-          status: (idx < PROCESSING_STAGES.length ? 'completed' : 'pending') as 'completed' | 'active' | 'pending',
+          status: idx < PROCESSING_STAGES.length ? 'completed' : 'pending',
           detail: stage.detail,
         })),
         timestamp: new Date().toISOString(),
@@ -133,7 +134,7 @@ export default function Home() {
   }, [isSearching, setSubmittedQuery, setQuery, setIsSearching, setAppState, setProcessingStage, setCurrentResponse, addSearchHistory])
 
   // Handle source selection
-  const handleSourceClick = useCallback((source: any) => {
+  const handleSourceClick = useCallback((source) => {
     setActiveSourceId(source.id)
     setActiveSource(source)
   }, [setActiveSourceId, setActiveSource])
@@ -148,25 +149,25 @@ export default function Home() {
   }, [setAppState, setCurrentResponse, setActiveSourceId, setActiveSource, setSubmittedQuery])
 
   // Handle history item click
-  const handleHistoryClick = useCallback((historyItem: { query: string }) => {
+  const handleHistoryClick = useCallback((historyItem) => {
     handleSubmitQuery(historyItem.query)
   }, [handleSubmitQuery])
 
   return (
-    <div className="h-screen overflow-hidden bg-cream">
+    <div className="h-screen w-screen overflow-hidden bg-cream">
       {/* Error Message Display */}
       <ErrorMessage />
 
-      <div className="mx-auto flex h-full w-full max-w-[1700px] overflow-hidden px-5 py-5 sm:px-7 lg:px-9">
-        {/* Sidebar */}
+      <div className="flex h-full w-full overflow-hidden">
+        {/* Sidebar - Fixed 18% width (~15-20% as per spec) */}
         <SidePanel
           onNewQuery={handleNewQuery}
           onHistoryClick={handleHistoryClick}
         />
 
-        {/* Main Content Area */}
-        <div className={`relative flex min-w-0 flex-1 flex-col overflow-hidden rounded-[32px] border border-slate/40 bg-charcoal/30 shadow-[0_32px_96px_rgba(0,0,0,0.32)] transition-all duration-300 ${activeSourceId ? 'mr-5' : ''}`}>
-          {/* Top Bar / Status */}
+        {/* Main Content Area - Flexible width ~82% */}
+        <div className={`relative flex min-w-0 flex-1 flex-col overflow-hidden border border-slate/40 bg-charcoal/30 transition-all duration-300 ${activeSourceId ? 'mr-5' : ''}`}>
+          {/* Top Bar / Status - Per spec: left status, right system breadcrumbs */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate/30 bg-cream/98 px-8 py-4 backdrop-blur-md">
             <div className="flex min-w-0 items-center gap-3">
               {appState === 'idle' && (
@@ -193,6 +194,10 @@ export default function Home() {
                   {status.document_count?.toLocaleString() || 0} docs indexed
                 </span>
               ) : null}
+              {/* System breadcrumbs per spec - right aligned */}
+              <span className="text-xs text-silver/50 font-medium hidden sm:inline">
+                System Architecture · Pipeline Name
+              </span>
             </div>
           </div>
 
@@ -218,15 +223,13 @@ export default function Home() {
             )}
           </div>
 
-          {/* Query Input (only show when not in compare mode) */}
-          {activeTab === 'search' && (
-            <div className="border-t border-slate/30 bg-cream/98 backdrop-blur-md">
-              <SearchBar
-                onSubmit={handleSubmitQuery}
-                disabled={isSearching}
-              />
-            </div>
-          )}
+          {/* Query Input */}
+          <div className="border-t border-slate/30 bg-cream/98 backdrop-blur-md">
+            <SearchBar
+              onSubmit={handleSubmitQuery}
+              disabled={isSearching}
+            />
+          </div>
         </div>
 
         {/* Document Panel - slides in from right */}
@@ -240,24 +243,8 @@ export default function Home() {
           />
         )}
       </div>
-
-      {/* Compare Panel Mode */}
-      {activeTab === 'compare' && (
-        <div className="fixed inset-0 z-50 bg-cream px-5 py-5 sm:px-7 lg:px-9">
-          <div className="mx-auto flex h-full w-full max-w-[1700px] flex-col overflow-hidden rounded-[32px] border border-slate/40 bg-charcoal/30 shadow-[0_32px_96px_rgba(0,0,0,0.32)]">
-            <ComparePanel />
-          {compareResult && (
-              <div className="flex-1 overflow-auto bg-cream px-8 py-8 sm:px-10 lg:px-12">
-                <div className="mx-auto w-full max-w-6xl rounded-[28px] border border-slate/40 bg-charcoal/50 p-8 shadow-[0_24px_64px_rgba(0,0,0,0.24)]">
-                  <pre className="font-mono text-[13px] leading-relaxed text-[#e8e8e8] whitespace-pre-wrap break-word">
-                {compareResult}
-                  </pre>
-                </div>
-              </div>
-          )}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
+
+export default App

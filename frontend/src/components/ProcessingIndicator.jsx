@@ -1,28 +1,13 @@
-'use client'
-
 import { Shield, Search, Layers, FileCheck, Check, Loader2 } from 'lucide-react'
 
-interface ProcessingStage {
-  id: string
-  name: string
-  detail: string
-  icon: string
-}
-
-interface ProcessingIndicatorProps {
-  query: string
-  currentStage: number
-  stages: ProcessingStage[]
-}
-
-const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+const ICON_MAP = {
   Shield,
   Search,
   Layers,
   FileCheck,
 }
 
-export function ProcessingIndicator({ query, currentStage, stages }: ProcessingIndicatorProps) {
+function ProcessingIndicator({ query, currentStage, stages }) {
   return (
     <div className="mx-auto flex min-h-full w-full max-w-7xl items-center px-8 py-12 sm:px-10 lg:px-14">
       <div className="grid w-full gap-10 lg:grid-cols-[minmax(320px,0.95fr)_minmax(0,1.15fr)] lg:gap-12 lg:items-start">
@@ -46,7 +31,6 @@ export function ProcessingIndicator({ query, currentStage, stages }: ProcessingI
             const IconComponent = ICON_MAP[stage.icon] || Shield
             const isActive = index === currentStage - 1
             const isCompleted = index < currentStage - 1
-            const isPending = index > currentStage - 1
 
             return (
               <div
@@ -59,7 +43,6 @@ export function ProcessingIndicator({ query, currentStage, stages }: ProcessingI
                     : 'bg-charcoal/30 border-slate/30'
                 }`}
               >
-                {/* Icon */}
                 <div className={`shrink-0 flex items-center justify-center w-10 h-10 rounded-lg transition-all ${isActive ? 'bg-gold/20 border border-gold/30' : isCompleted ? 'bg-success/20 border border-success/30' : 'bg-slate/40 border border-slate/30'}`}>
                   {isCompleted ? (
                     <Check className="w-4 h-4 text-success" />
@@ -70,7 +53,6 @@ export function ProcessingIndicator({ query, currentStage, stages }: ProcessingI
                   )}
                 </div>
 
-                {/* Stage Info */}
                 <div className="flex-1 min-w-0">
                   <div className={`text-[14px] font-semibold mb-1 ${isActive ? 'text-gold-light' : isCompleted ? 'text-silver/70' : 'text-silver/40'}`}>
                     {stage.name}
@@ -80,7 +62,6 @@ export function ProcessingIndicator({ query, currentStage, stages }: ProcessingI
                   </div>
                 </div>
 
-                {/* Status Label */}
                 <div className={`text-[11px] font-bold uppercase tracking-widest whitespace-nowrap px-3 py-1.5 rounded-lg transition-all ${
                   isCompleted ? 'text-success bg-success/10' : isActive ? 'text-gold bg-gold/10' : 'text-silver/40 bg-slate/20'
                 }`}>
@@ -95,3 +76,5 @@ export function ProcessingIndicator({ query, currentStage, stages }: ProcessingI
     </div>
   )
 }
+
+export default ProcessingIndicator

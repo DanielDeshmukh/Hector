@@ -1,11 +1,20 @@
 # HECTOR Frontend
 
-Next.js 14 dashboard with "Lambo-Dark" theme for the HECTOR Legal Intelligence System.
+Vite + React (JavaScript) + TailwindCSS frontend for the HECTOR Legal Intelligence System.
+
+## Tech Stack
+
+- **Build Tool**: Vite 5.x
+- **Framework**: React 18
+- **Styling**: TailwindCSS 4.x
+- **State Management**: Zustand
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
 
 ## Quick Start
 
 ```bash
-# Install dependencies (already done)
+# Install dependencies
 npm install
 
 # Start development server
@@ -14,40 +23,33 @@ npm run dev
 # Build for production
 npm run build
 
-# Start production server
-npm start
+# Preview production build
+npm run preview
 ```
 
 ## Environment Variables
 
-Create a `.env.local` file (already provided):
+Create a `.env` file:
 
 ```
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_API_KEY=hector-dev-key
+VITE_API_URL=http://localhost:8000
+VITE_API_KEY=hector-dev-key
 ```
 
 ## Features
 
-- **Dual-Pane Viewer**: AI Summary on the left, PDF Source on the right
-- **Search History**: Track your search queries
-- **Bookmarks**: Save important results
-- **IPC ↔ BNS Comparator**: Compare old and new legal sections
-- **High-Contrast Dark Theme**: Gold accents on dark background (#0a0a0a)
+- **Intent Routing**: Classifies queries by legal domain
+- **Hybrid Retrieval**: Semantic + keyword search
+- **Hierarchical Context**: Resolves parent sections
+- **Citation Grounding**: Verifies against source material
+- **Dark Theme**: Gold accents on dark charcoal background
 
-## Running with API
-
-The frontend connects to the FastAPI backend. Start the API first:
+## Running with HECTOR CLI
 
 ```bash
-uvicorn api.app:app --reload
+hector init
 ```
 
-Then start the frontend:
-
-```bash
-cd frontend
-npm run dev
-```
+This automatically starts both the API server (port 8000) and frontend (port 3000).
 
 Access at: http://localhost:3000

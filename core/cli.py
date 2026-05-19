@@ -217,7 +217,7 @@ def init(
             if not frontend_dir.exists():
                 print_warning("Frontend directory not found")
             else:
-                # Set PORT environment variable for Next.js
+                # Set PORT environment variable for Vite
                 env = os.environ.copy()
                 env["PORT"] = str(frontend_port)
                 env["NODE_OPTIONS"] = "--max-old-space-size=4096"

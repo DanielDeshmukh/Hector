@@ -1,18 +1,9 @@
-'use client'
-
-import { useState, KeyboardEvent } from 'react'
+import { useState } from 'react'
 import { Search, Loader2, X, FileText, List, AlignLeft } from 'lucide-react'
-import { useAppStore } from '@/lib/store'
-import { apiClient } from '@/lib/api'
+import useAppStore from '../lib/store'
+import apiClient from '../lib/api'
 
-type ResponseFormat = 'summary' | 'detailed' | 'citations'
-
-interface SearchBarProps {
-  onSubmit?: (query: string) => void
-  disabled?: boolean
-}
-
-export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
+function SearchBar({ onSubmit, disabled }) {
   const {
     query: storeQuery,
     setQuery: setStoreQuery,
@@ -27,19 +18,17 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
   const setQuery = setStoreQuery
 
   const [showVerify, setShowVerify] = useState(false)
-  const [format, setFormat] = useState<ResponseFormat>('summary')
+  const [format, setFormat] = useState('summary')
   const [includeRelated, setIncludeRelated] = useState(true)
 
-  // Use onSubmit prop if provided (new design), otherwise use internal search
   const handleSubmit = async () => {
-    if (!query.trim() || isSearching) return
+    if (!query?.trim() || isSearching) return
 
     if (onSubmit) {
       onSubmit(query.trim())
       return
     }
 
-    // Original behavior
     setIsSearching(true)
     setError(null)
     setSearchResponse(null)
@@ -63,7 +52,7 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
     }
   }
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !disabled) {
       handleSubmit()
     }
@@ -84,7 +73,7 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
             type="text"
             className="flex-1 border-none bg-transparent py-1 text-base text-[#e8e8e8] outline-none placeholder:text-silver/60"
             placeholder="Search Indian legal sections (e.g., 'Section 302 BNS' or 'murder penalty')..."
-            value={query}
+            value={query || ''}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={disabled || isSearching}
@@ -99,7 +88,7 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
         <button
           className="flex h-[52px] items-center justify-center gap-2 rounded-2xl bg-gold px-8 text-cream font-semibold transition-all hover:bg-gold-light hover:shadow-[0_0_25px_rgba(201,169,98,0.25)] disabled:cursor-not-allowed disabled:opacity-50 lg:min-w-[160px]"
           onClick={handleSubmit}
-          disabled={disabled || !query.trim() || isSearching}
+          disabled={disabled || !query?.trim() || isSearching}
         >
           {isSearching ? (
             <>
@@ -117,7 +106,6 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
 
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-wrap items-center gap-4 sm:gap-5">
-          {/* Format Selector */}
           <div className="flex items-center gap-1.5 rounded-xl bg-charcoal/60 p-1.5 border border-slate/40">
             <button
               type="button"
@@ -181,3 +169,5 @@ export function SearchBar({ onSubmit, disabled }: SearchBarProps) {
     </div>
   )
 }
+
+export default SearchBar

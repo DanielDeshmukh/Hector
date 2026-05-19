@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  /* Charcoal Theme - Main backgrounds */
+  --color-charcoal: #1a1a1a;
+  --color-cream: #111315;
+
+  /* Gold Accent */
+  --color-gold: #c9a962;
+  --color-gold-light: #e8d5a3;
+
+  /* Slate - Borders & secondary elements */
+  --color-slate: #2d3748;
+
+  /* Silver - Text muted */
+  --color-silver: #7d8a96;
+
+  /* Semantic colors */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Font families */
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: #e8e8e8;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-silver);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-gold-light);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes highlight-pulse {
+  0%, 100% {
+    background-color: rgba(201, 169, 98, 0.15);
+  }
+  50% {
+    background-color: rgba(201, 169, 98, 0.25);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-highlight {
+  animation: highlight-pulse 2s infinite;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

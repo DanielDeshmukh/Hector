@@ -1,14 +1,7 @@
-'use client'
-
 import { Check, Loader2, Circle, Tag, BarChart3, ExternalLink, BookOpen, FileText, ArrowRight } from 'lucide-react'
-import { useAppStore, QueryResponse } from '@/lib/store'
+import useAppStore from '../lib/store'
 
-interface ResponseDisplayProps {
-  response: QueryResponse
-  onSourceClick: (source: any) => void
-}
-
-function formatResponseText(text: string): JSX.Element {
+function formatResponseText(text) {
   const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|- .*?$)/g)
   return (
     <>
@@ -33,19 +26,19 @@ function formatResponseText(text: string): JSX.Element {
   )
 }
 
-function getScoreColor(score: number): string {
+function getScoreColor(score) {
   if (score >= 95) return 'text-success'
   if (score >= 85) return 'text-gold'
   return 'text-silver'
 }
 
-function getScoreBg(score: number): string {
+function getScoreBg(score) {
   if (score >= 95) return 'bg-success/10 border-success/30'
   if (score >= 85) return 'bg-gold/10 border-gold/30'
   return 'bg-slate/30 border-slate/40'
 }
 
-export function ResponseDisplay({ response, onSourceClick }: ResponseDisplayProps) {
+function ResponseDisplay({ response, onSourceClick }) {
   const { activeSourceId } = useAppStore()
 
   return (
@@ -184,3 +177,5 @@ export function ResponseDisplay({ response, onSourceClick }: ResponseDisplayProp
     </div>
   )
 }
+
+export default ResponseDisplay
