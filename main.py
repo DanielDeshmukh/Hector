@@ -4,14 +4,106 @@ Main entry point with CLI support for: init, ingest, status, --help
 """
 
 import argparse
+import json
 import os
 import shutil
 import socket
 import subprocess
 import sys
+import atexit
+from pathlib import Path
 
 # Suppress HuggingFace symlink warnings on Windows
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+
+# Process tracking file
+PROCESS_FILE = os.path.join(os.path.dirname(__file__), ".hector_processes.json")
+
+
+def save_process_info(port: int, frontend_port: int = None, pid: int = None):
+    """Save process information to file."""
+    try:
+        data = {}
+        if os.path.exists(PROCESS_FILE):
+            with open(PROCESS_FILE, 'r') as f:
+                data = json.load(f)
+        
+        data['last_api_port'] = port
+        if frontend_port:
+            data['last_frontend_port'] = frontend_port
+        if pid:
+            data['pids'] = data.get('pids', [])
+            if pid not in data['pids']:
+                data['pids'].append(pid)
+        
+        with open(PROCESS_FILE, 'w') as f:
+            json.dump(data, f)
+    except Exception:
+        pass
+
+
+def load_process_info():
+    """Load process information from file."""
+    try:
+        if os.path.exists(PROCESS_FILE):
+            with open(PROCESS_FILE, 'r') as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {}
+
+
+def clear_process_info():
+    """Clear process information file."""
+    try:
+        if os.path.exists(PROCESS_FILE):
+            os.remove(PROCESS_FILE)
+    except Exception:
+        pass
+
+
+def get_processes_on_ports(ports: list) -> list:
+    """Get PIDs of processes using specified ports."""
+    pids = []
+    try:
+        if sys.platform == "win32":
+            result = subprocess.run(["netstat", "-ano"], capture_output=True, text=True, check=True)
+            for line in result.stdout.split("\n"):
+                for port in ports:
+                    if f":{port} " in line and "LISTENING" in line:
+                        parts = line.split()
+                        pid = int(parts[-1])
+                        if pid not in pids:
+                            pids.append(pid)
+        else:
+            for port in ports:
+                result = subprocess.run(["lsof", "-i", f":{port}"], capture_output=True, text=True)
+                for line in result.stdout.split("\n")[1:]:
+                    if line.strip():
+                        parts = line.split()
+                        try:
+                            pid = int(parts[1])
+                            if pid not in pids:
+                                pids.append(pid)
+                        except (ValueError, IndexError):
+                            pass
+    except Exception:
+        pass
+    return pids
+
+
+def cleanup_stuck_ports(ports: list):
+    """Clean up any stuck processes on the given ports."""
+    pids = get_processes_on_ports(ports)
+    for pid in pids:
+        try:
+            if sys.platform == "win32":
+                subprocess.run(["taskkill", "/PID", str(pid), "/F"], check=True, capture_output=True)
+            else:
+                subprocess.run(["kill", "-9", str(pid)], check=True)
+            print_success(f"Cleaned up stuck process (PID: {pid})")
+        except Exception:
+            pass
 
 
 def print_error(message: str, details: str = None):
@@ -265,6 +357,9 @@ def cmd_init(args):
             cwd=project_dir,
             creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
         )
+        
+        # Save process information
+        save_process_info(port, frontend_port, api_process.pid)
 
         if not wait_for_http(
             url=f"http://localhost:{port}/docs",
@@ -290,6 +385,9 @@ def cmd_init(args):
                     env=frontend_env,
                     creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
                 )
+                
+                # Save frontend process info
+                save_process_info(port, frontend_port, frontend_process.pid)
 
                 if not wait_for_http(
                     url=f"http://localhost:{frontend_port}",
@@ -308,6 +406,7 @@ def cmd_init(args):
         print("=" * 60 + "\n")
 
         while True:
+            import time
             time.sleep(1)
             if api_process.poll() is not None:
                 print_error("API server stopped unexpectedly", f"Exit code: {api_process.returncode}")
@@ -316,26 +415,38 @@ def cmd_init(args):
                 print_error("Frontend server stopped unexpectedly", f"Exit code: {frontend_process.returncode}")
                 break
     except KeyboardInterrupt:
-        print("\nStopping services...")
+        print("\n\nStopping services...")
     except FileNotFoundError as e:
         print_error("Required command not found", str(e))
         print_info("Make sure Node.js and npm are installed for frontend")
     except Exception as e:
         print_error("Failed to start services", str(e))
     finally:
-        print("Shutting down services...")
+        print("\nShutting down services...")
+        
+        # Terminate gracefully first
         if api_process:
             api_process.terminate()
             try:
-                api_process.wait(timeout=5)
+                api_process.wait(timeout=3)
             except subprocess.TimeoutExpired:
                 api_process.kill()
+        
         if frontend_process:
             frontend_process.terminate()
             try:
-                frontend_process.wait(timeout=5)
+                frontend_process.wait(timeout=3)
             except subprocess.TimeoutExpired:
                 frontend_process.kill()
+        
+        # Clean up any stuck processes on the ports
+        import time
+        time.sleep(0.5)
+        cleanup_stuck_ports([port, frontend_port] if not no_frontend else [port])
+        
+        # Clear process info
+        clear_process_info()
+        
         print_success("All services stopped")
 
 
@@ -445,38 +556,78 @@ def cmd_help(args):
 HECTOR - Legal Intelligence System
 
 Commands:
-  init                   Start HECTOR (API + Frontend)
-    --port, -p           API port (default: 8000)
-    --frontend-port, -fp Frontend port (default: 3000)
-    --no-frontend        Start only backend API
-    --auto-port          Use next available port if default is in use
-    --kill-existing      Kill existing process on the port if it's in use
+  hector init                    Start HECTOR (API + Frontend)
+    --port, -p PORT              API port (default: 8000)
+    --frontend-port, -fp PORT    Frontend port (default: 3000)
+    --no-frontend                Start only backend API
+    --auto-port                  Auto-detect available ports if in use
+    --kill-existing              Kill existing processes on ports
 
-  ingest                 Ingest books from data/Books
+  hector ingest                  Ingest books from data/Books
 
-  status                 Display system status
+  hector status                  Display system status
 
-  --help, help           Show this help message
-
-  (no command)           Start interactive mode
+  hector --help                  Show this help message
 
 Examples:
   hector init                    Start the application
-  hector init --port 9000        Custom API port
-  hector init --no-frontend      API only
+  hector init --no-frontend      Start backend only
+  hector init --port 9000        Use custom API port
   hector init --auto-port        Auto-detect available ports
-  hector init --kill-existing    Kill existing processes on ports
   hector ingest                  Ingest new books
   hector status                  Check system status
   hector --help                  Show help
-  python main.py                 Interactive mode
 """
     )
 
 
+def cmd_ps(args):
+    """List ongoing HECTOR processes."""
+    proc_info = load_process_info()
+    
+    if not proc_info or 'pids' not in proc_info or not proc_info['pids']:
+        print_warning("No active HECTOR processes found")
+        return
+    
+    print("\n" + "=" * 60)
+    print("ACTIVE HECTOR PROCESSES")
+    print("=" * 60)
+    
+    if 'last_api_port' in proc_info:
+        print(f"\nAPI Port: {proc_info['last_api_port']}")
+        print(f"  URL: http://localhost:{proc_info['last_api_port']}")
+    
+    if 'last_frontend_port' in proc_info:
+        print(f"\nFrontend Port: {proc_info['last_frontend_port']}")
+        print(f"  URL: http://localhost:{proc_info['last_frontend_port']}")
+    
+    print(f"\nProcess IDs: {', '.join(map(str, proc_info.get('pids', [])))}")
+    print("\n" + "=" * 60)
+
+
+def cmd_kill(args):
+    """Kill stuck HECTOR processes."""
+    proc_info = load_process_info()
+    
+    ports = []
+    if 'last_api_port' in proc_info:
+        ports.append(proc_info['last_api_port'])
+    if 'last_frontend_port' in proc_info:
+        ports.append(proc_info['last_frontend_port'])
+    
+    if not ports:
+        print_warning("No ports recorded for HECTOR")
+        return
+    
+    print(f"\nKilling processes on ports: {', '.join(map(str, ports))}")
+    cleanup_stuck_ports(ports)
+    clear_process_info()
+    print_success("Cleanup complete")
+
+
 def main():
     """Main entry point."""
-    if "--help" in sys.argv or "-h" in sys.argv:
+    if "--help" in sys.argv or "-h" in sys.argv or len(sys.argv) == 1:
         cmd_help(None)
         return
 
@@ -504,7 +655,7 @@ def main():
     args = parser.parse_args()
 
     if args.command is None:
-        run_interactive()
+        cmd_help(None)
         return
 
     try:
@@ -517,77 +668,11 @@ def main():
         elif args.command == "help":
             cmd_help(args)
     except KeyboardInterrupt:
-        print("\nInterrupted.")
+        print("\n")
         sys.exit(0)
     except Exception as e:
         print(f"[X] Command failed: {args.command}")
         print(f"  {str(e)}")
-        sys.exit(1)
-
-
-def run_interactive():
-    """Run HECTOR in interactive CLI mode."""
-    try:
-        from rich.console import Console
-        from rich.panel import Panel
-        from core.orchestrator import HectorOrchestrator
-
-        console = Console()
-
-        console.clear()
-        console.print(Panel.fit(
-            "[bold gold1]H.E.C.T.O.R. | LEGAL DECISION ENGINE[/bold gold1]\n"
-            "[dim]Status: Operational | Environment: Production (BNS 2023)[/dim]",
-            border_style="gold1",
-            title="[bold white]v2.1.0[/bold white]",
-        ))
-
-        try:
-            with console.status("[bold green]Initializing Hector Core...", spinner="dots"):
-                hector = HectorOrchestrator()
-        except Exception as e:
-            print_error("System Failure during Initialization", str(e))
-            sys.exit(1)
-
-        console.print("[italic white]Let's get started. [/italic white]\n")
-
-        while True:
-            try:
-                query = console.input("[bold gold1]User[/bold gold1] [white]> [/white]").strip()
-
-                if not query:
-                    continue
-                if query.lower() in ["exit", "quit", "done"]:
-                    console.print("\n[bold gold1][Hector]:[/bold gold1] Closing the file. We win.")
-                    break
-
-                with console.status("[bold blue]Processing Intelligence...", spinner="bouncingBar"):
-                    strategy_result = hector.execute(query)
-
-                if strategy_result:
-                    content = strategy_result if isinstance(strategy_result, str) else str(strategy_result)
-
-                    if content.strip() == "True":
-                        content = "[bold red]System Error:[/bold red] Intelligence layer returned an empty boolean. Re-trying analysis..."
-
-                    console.print(Panel(
-                        f"[white]{content}[/white]",
-                        title="[bold gold1]Strategy Response[/bold gold1]",
-                        border_style="gold1",
-                        padding=(1, 2),
-                    ))
-                else:
-                    console.print("[dim red]No data returned from orchestrator.[/dim red]")
-
-            except KeyboardInterrupt:
-                console.print("\n[bold red]Interrupted.[/bold red] Session closed.")
-                break
-            except Exception as e:
-                console.print(f"\n[bold red]Runtime Error:[/bold red] {str(e)}")
-
-    except ImportError as e:
-        print_error("Missing required dependencies", str(e))
-        print_info("Install with: pip install -r requirements.txt")
         sys.exit(1)
 
 
