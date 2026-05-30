@@ -1,30 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Charcoal Theme - Main backgrounds */
+  --color-background: #111315;
+  --color-secondary: #1a1a1a;
   --color-charcoal: #1a1a1a;
   --color-cream: #111315;
-
-  /* Gold Accent */
   --color-gold: #c9a962;
   --color-gold-light: #e8d5a3;
-
-  /* Slate - Borders & secondary elements */
   --color-slate: #2d3748;
-
-  /* Silver - Text muted */
   --color-silver: #7d8a96;
-
-  /* Semantic colors */
   --color-success: #22c55e;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
-
-  /* Font families */
-  --font-serif: 'EB Garamond', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: 'Space Grotesk', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  color-scheme: dark;
+  --color-charcoal: #1a1a1a;
+  --color-cream: #111315;
+  --color-gold: #c9a962;
+  --color-gold-light: #e8d5a3;
+  --color-slate: #2d3748;
+  --color-silver: #7d8a96;
+
+  --bg-app: #111315;
+  --bg-sidebar: #1a1a1a;
+  --bg-topbar: #1a1a1a;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #202329;
+  --bg-input: #1a1a1a;
+  --bg-input-focus: #202329;
+  --bg-chip: #1a1a1a;
+  --bg-chip-hover: #202329;
+  --bg-selected-source: #202329;
+  --bg-source-panel: #1a1a1a;
+  --border-sidebar: rgba(125,138,150,0.18);
+  --border-card: rgba(125,138,150,0.22);
+  --border-input: rgba(125,138,150,0.26);
+  --border-input-focus: rgba(232,213,163,0.4);
+  --border-selected: rgba(201,169,98,0.35);
+  --text-primary: #f3f4f6;
+  --text-secondary: #7d8a96;
+  --text-muted: #5f6b78;
+  --text-gold: #c9a962;
+  --text-gold-dim: #e8d5a3;
+  --gold: #c9a962;
+  --gold-bg: rgba(201,169,98,0.12);
+  --gold-logo-bg: rgba(201,169,98,0.08);
+  --green-dot: #22c55e;
+  --green-text: #22c55e;
+  --badge-criminal-bg: rgba(239,68,68,0.15);
+  --badge-criminal-text: #f87171;
+  --badge-procedural-bg: rgba(59,130,246,0.15);
+  --badge-procedural-text: #60a5fa;
+  --pill-verified-bg: rgba(34,197,94,0.15);
+  --pill-verified-border: rgba(34,197,94,0.3);
+  --pill-verified-text: #22c55e;
+  --badge-criminal-law-bg: rgba(239,68,68,0.12);
+  --badge-criminal-law-border: rgba(239,68,68,0.25);
+  --badge-criminal-law-text: #f87171;
+  --badge-confidence-bg: rgba(59,130,246,0.12);
+  --badge-confidence-border: rgba(59,130,246,0.25);
+  --badge-confidence-text: #60a5fa;
+  --match-96-bg: rgba(34,197,94,0.15);
+  --match-96-text: #22c55e;
+  --match-98-bg: rgba(34,197,94,0.2);
+  --match-98-text: #22c55e;
+  --match-82-bg: rgba(245,158,11,0.15);
+  --match-82-text: #f59e0b;
+  --source-num-bg: #2d3748;
+  --source-num-text: #f3f4f6;
+  --highlight-gold: rgba(201,169,98,0.35);
+  --highlight-gold-border: #c9a962;
 }
 
 * {
@@ -33,15 +87,26 @@
   padding: 0;
 }
 
-html, body {
+html,
+body,
+#root {
   height: 100%;
-  font-family: var(--font-sans);
-  background: var(--color-cream);
-  color: #e8e8e8;
+}
+
+body {
+  @apply bg-background text-gray-100 font-body;
+  background-image: radial-gradient(circle at top, rgba(201, 169, 98, 0.08), transparent 28%);
   line-height: 1.6;
 }
 
-/* Custom Scrollbar */
+.card {
+  @apply bg-secondary rounded-lg shadow-md p-4;
+}
+
+.fade-up {
+  animation: fadeIn 600ms ease-out both;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -60,13 +125,11 @@ html, body {
   background: var(--color-silver);
 }
 
-/* Selection */
 ::selection {
   background: var(--color-gold);
-  color: var(--color-gold-light);
+  color: var(--color-cream);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -87,6 +150,11 @@ html, body {
   }
 }
 
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
 }
@@ -95,7 +163,24 @@ html, body {
   animation: highlight-pulse 2s infinite;
 }
 
-/* Line clamp utilities */
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.hector-query-input::placeholder {
+  color: var(--text-muted);
+}
+
+.hector-input-box:focus-within {
+  border-color: var(--border-input-focus) !important;
+  background: var(--bg-input-focus) !important;
+}
+
+.hector-strong strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
