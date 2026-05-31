@@ -1,11 +1,11 @@
-﻿import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Send, Paperclip, CornerDownLeft } from "lucide-react";
-import { sampleQueries } from "../data/mockData";
 
 export default function QueryInput({
   onSubmit,
   isLoading,
   showSuggestions,
+  suggestions = [],
 }) {
   const [query, setQuery] = useState("");
   const textareaRef = useRef(null);
@@ -33,38 +33,35 @@ export default function QueryInput({
 
   return (
     <div className="w-full">
-      {/* Suggestion chips */}
-      {showSuggestions && (
+      {showSuggestions && suggestions.length > 0 && (
         <div className="mb-4 flex flex-wrap gap-2 animate-fade-in-delay-2">
-          {sampleQueries.map((sq, i) => (
+          {suggestions.map((suggestion) => (
             <button
-              key={i}
+              key={suggestion}
               onClick={() => {
-                setQuery(sq);
+                setQuery(suggestion);
                 textareaRef.current?.focus();
               }}
               className="rounded-lg border border-slate-custom/50 bg-charcoal/50 px-3.5 py-2 text-[12.5px] text-silver transition-all hover:border-gold/30 hover:text-gold-light hover:bg-gold/5"
             >
-              {sq}
+              {suggestion}
             </button>
           ))}
         </div>
       )}
 
-      {/* Input area */}
       <div className="relative rounded-xl border border-slate-custom/60 bg-charcoal/80 transition-all focus-within:border-gold/40 focus-within:shadow-[0_0_0_1px_rgba(201,169,98,0.1)]">
         <textarea
           ref={textareaRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Enter your legal query - e.g., &quot;What is the BNS equivalent of IPC Section 302?&quot;"
+          placeholder='Enter your legal query - e.g., "What is the BNS equivalent of IPC Section 302?"'
           rows={1}
           disabled={isLoading}
           className="w-full resize-none bg-transparent px-4 pt-4 pb-12 text-[14.5px] text-gold-light placeholder-silver/40 outline-none disabled:opacity-50"
         />
 
-        {/* Bottom bar */}
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-3 py-2.5">
           <div className="flex items-center gap-1">
             <button className="flex h-8 w-8 items-center justify-center rounded-lg text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver">

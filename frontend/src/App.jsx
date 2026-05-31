@@ -9,6 +9,12 @@ import { searchHector } from "./api/hectorApi";
 
 const HISTORY_STORAGE_KEY = "hector.searchHistory";
 const MAX_HISTORY_ITEMS = 8;
+const TOP_SEARCH_QUERIES = [
+  "What is the BNS equivalent of IPC Section 302?",
+  "Compare the punishment for theft under IPC and BNS",
+  "What changes were made to sedition laws in BNS?",
+  "Explain Section 356 BNS and its IPC counterpart",
+];
 
 function loadSearchHistory() {
   try {
@@ -23,6 +29,20 @@ function normalizeHistoryDomain(domain) {
   return domain || "Search";
 }
 
+function buildQuerySuggestions(history, response) {
+  const relatedProvisionSuggestions =
+    response?.raw?.related_provisions?.map((provision) => `Explain ${provision}`) || [];
+  const recentQuerySuggestions = history.map((item) => item.query);
+
+  return [
+    ...new Set([
+      ...relatedProvisionSuggestions,
+      ...recentQuerySuggestions,
+      ...TOP_SEARCH_QUERIES,
+    ]),
+  ].slice(0, 4);
+}
+
 export default function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [appState, setAppState] = useState("idle");
@@ -34,6 +54,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [searchHistory, setSearchHistory] = useState(loadSearchHistory);
   const responseRef = useRef(null);
+  const querySuggestions = buildQuerySuggestions(searchHistory, currentResponse);
 
   const startProcessingAnimation = useCallback(() => {
     setAppState("processing");
@@ -251,6 +272,7 @@ export default function App() {
                 onSubmit={handleSubmit}
                 isLoading={appState === "processing"}
                 showSuggestions={appState === "idle"}
+                suggestions={querySuggestions}
               />
             </div>
           </div>
