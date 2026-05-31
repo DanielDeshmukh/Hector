@@ -12,6 +12,7 @@ export default function HectorPage() {
   const [inputText, setInputText] = useState('')
   const [selectedSource, setSelectedSource] = useState(null)
   const [statusText, setStatusText] = useState('Ready for queries')
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
   const submit = (text = inputText) => {
     if (!text.trim()) return
@@ -31,8 +32,10 @@ export default function HectorPage() {
     <div style={layoutStyles.app}>
       <Topbar statusText={statusText} />
       <div style={layoutStyles.shell}>
-        <Sidebar onNewQuery={newQuery} />
+        {!sidebarCollapsed && <Sidebar onNewQuery={newQuery} />}
         <button
+          onClick={() => setSidebarCollapsed((collapsed) => !collapsed)}
+          aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           style={{
             width: 20,
             height: 40,
@@ -40,16 +43,17 @@ export default function HectorPage() {
             border: `1px solid ${color.borderCard}`,
             borderRadius: '0 4px 4px 0',
             position: 'absolute',
-            left: 280,
+            left: sidebarCollapsed ? 0 : 280,
             top: '50%',
             transform: 'translateY(-50%)',
             zIndex: 10,
             color: color.textMuted,
             cursor: 'pointer',
             padding: 0,
+            transition: 'left 0.18s ease, background 0.18s ease, color 0.18s ease',
           }}
         >
-          {'<'}
+          {sidebarCollapsed ? '>' : '<'}
         </button>
         <main style={layoutStyles.main}>
           <div style={{ display: 'flex', flexDirection: 'row', flex: 1, overflow: 'hidden', minHeight: 0 }}>
