@@ -9,13 +9,13 @@ import {
   Gavel,
   FileText,
 } from "lucide-react";
-import { queryHistory } from "../data/mockData";
 
 export default function Sidebar({
   collapsed,
   onToggle,
   onNewQuery,
   onSelectHistory,
+  history,
 }) {
   const [hoveredItem, setHoveredItem] = useState(null);
 
@@ -25,6 +25,9 @@ export default function Sidebar({
         return <Gavel size={14} />;
       case "Procedural":
         return <FileText size={14} />;
+      case "LEGAL_RESEARCH":
+      case "Legal Research":
+        return <Scale size={14} />;
       default:
         return <BookOpen size={14} />;
     }
@@ -80,7 +83,12 @@ export default function Sidebar({
             Recent Queries
           </p>
           <div className="space-y-0.5">
-            {queryHistory.map((item) => (
+            {history.length === 0 && (
+              <div className="rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-3 text-[12px] leading-relaxed text-silver/35">
+                Your live HECTOR searches will appear here.
+              </div>
+            )}
+            {history.map((item) => (
               <button
                 key={item.id}
                 onClick={() => onSelectHistory(item.query)}

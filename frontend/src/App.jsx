@@ -5,7 +5,23 @@ import ResponseDisplay from "./components/ResponseDisplay";
 import DocumentPanel from "./components/DocumentPanel";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ProcessingIndicator from "./components/ProcessingIndicator";
-import { mockResponse } from "./data/mockData";
+import { searchHector } from "./api/hectorApi";
+
+const HISTORY_STORAGE_KEY = "hector.searchHistory";
+const MAX_HISTORY_ITEMS = 8;
+
+function loadSearchHistory() {
+  try {
+    return JSON.parse(window.localStorage.getItem(HISTORY_STORAGE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function normalizeHistoryDomain(domain) {
+  if (domain === "LEGAL_RESEARCH") return "Legal Research";
+  return domain || "Search";
+}
 
 export default function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -15,37 +31,58 @@ export default function App() {
   const [activeSource, setActiveSource] = useState(null);
   const [processingStage, setProcessingStage] = useState(0);
   const [submittedQuery, setSubmittedQuery] = useState("");
+  const [error, setError] = useState("");
+  const [searchHistory, setSearchHistory] = useState(loadSearchHistory);
   const responseRef = useRef(null);
 
-  const simulateProcessing = useCallback(() => {
+  const startProcessingAnimation = useCallback(() => {
     setAppState("processing");
     setProcessingStage(0);
 
-    const stageDelays = [800, 1200, 1000, 900];
-    let elapsed = 0;
+    const intervalId = window.setInterval(() => {
+      setProcessingStage((stage) => (stage >= 3 ? 3 : stage + 1));
+    }, 900);
 
-    stageDelays.forEach((delay, index) => {
-      elapsed += delay;
-      setTimeout(() => {
-        setProcessingStage(index + 1);
-      }, elapsed);
-    });
-
-    // After all stages complete, show response
-    setTimeout(() => {
-      setCurrentResponse(mockResponse);
-      setAppState("responded");
-    }, elapsed + 600);
+    return () => window.clearInterval(intervalId);
   }, []);
 
   const handleSubmit = useCallback(
-    (query) => {
+    async (query) => {
       setSubmittedQuery(query);
       setActiveSourceId(null);
       setActiveSource(null);
-      simulateProcessing();
+      setCurrentResponse(null);
+      setError("");
+
+      const stopProcessingAnimation = startProcessingAnimation();
+      try {
+        const response = await searchHector(query);
+        setProcessingStage(4);
+        setCurrentResponse(response);
+        setSearchHistory((history) => {
+          const normalizedQuery = query.trim();
+          const nextItem = {
+            id: `${Date.now()}-${normalizedQuery}`,
+            query: normalizedQuery,
+            timestamp: response.timestamp || new Date().toISOString(),
+            domain: normalizeHistoryDomain(response.domain),
+          };
+          return [
+            nextItem,
+            ...history.filter(
+              (item) => item.query.toLowerCase() !== normalizedQuery.toLowerCase()
+            ),
+          ].slice(0, MAX_HISTORY_ITEMS);
+        });
+        setAppState("responded");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Unable to reach HECTOR.");
+        setAppState("idle");
+      } finally {
+        stopProcessingAnimation();
+      }
     },
-    [simulateProcessing]
+    [startProcessingAnimation]
   );
 
   const handleNewQuery = useCallback(() => {
@@ -54,7 +91,12 @@ export default function App() {
     setActiveSourceId(null);
     setActiveSource(null);
     setSubmittedQuery("");
+    setError("");
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(searchHistory));
+  }, [searchHistory]);
 
   const handleSourceClick = useCallback(
     (sourceId) => {
@@ -72,12 +114,9 @@ export default function App() {
 
   const handleSelectHistory = useCallback(
     (query) => {
-      setSubmittedQuery(query);
-      setActiveSourceId(null);
-      setActiveSource(null);
-      simulateProcessing();
+      handleSubmit(query);
     },
-    [simulateProcessing]
+    [handleSubmit]
   );
 
   // Auto-scroll response into view
@@ -95,6 +134,7 @@ export default function App() {
         onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
         onNewQuery={handleNewQuery}
         onSelectHistory={handleSelectHistory}
+        history={searchHistory}
       />
 
       {/* Main Area */}
@@ -141,7 +181,16 @@ export default function App() {
           <div className="flex-1 overflow-y-auto">
             <div className="mx-auto max-w-3xl px-6 py-6">
               {/* Idle State */}
-              {appState === "idle" && <WelcomeScreen />}
+              {appState === "idle" && (
+                <>
+                  {error && (
+                    <div className="mb-4 rounded-lg border border-error/25 bg-error/10 px-4 py-3 text-[13px] leading-relaxed text-red-200">
+                      {error}
+                    </div>
+                  )}
+                  <WelcomeScreen />
+                </>
+              )}
 
               {/* Processing State */}
               {appState === "processing" && (
