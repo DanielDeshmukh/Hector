@@ -1,181 +1,165 @@
-import { Check, Loader2, Circle, Tag, BarChart3, ExternalLink, BookOpen, FileText, ArrowRight } from 'lucide-react'
-import useAppStore from '../lib/store'
+﻿import { BookOpen, ExternalLink, Tag, BarChart3 } from "lucide-react";
+import PipelineStatus from "./PipelineStatus";
 
-function formatResponseText(text) {
-  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|- .*?$)/g)
+function renderFormattedText(text) {
+  const lines = text.split("\n");
+  return lines.map((line, i) => {
+    // Bold markers
+    let processed = line.replace(
+      /\*\*(.+?)\*\*/g,
+      '<strong class="text-gold-light font-semibold">$1</strong>'
+    );
+    // Italic markers
+    processed = processed.replace(
+      /\*(.+?)\*/g,
+      '<em class="text-silver italic">$1</em>'
+    );
+
+    if (line.startsWith("- ")) {
+      return (
+        <li
+          key={i}
+          className="ml-4 list-disc text-[13.5px] leading-relaxed text-silver/90 marker:text-gold/40 py-0.5"
+          dangerouslySetInnerHTML={{ __html: processed.substring(2) }}
+        />
+      );
+    }
+
+    if (line.trim() === "") {
+      return <div key={i} className="h-2.5" />;
+    }
+
+    return (
+      <p
+        key={i}
+        className="text-[13.5px] leading-[1.75] text-silver/90"
+        dangerouslySetInnerHTML={{ __html: processed }}
+      />
+    );
+  });
+}
+
+export default function ResponseDisplay({
+  response,
+  onSourceClick,
+  activeSourceId,
+}) {
   return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={i} className="font-semibold text-gold-light">{part.slice(2, -2)}</strong>
-        }
-        if (part.startsWith('*') && part.endsWith('*')) {
-          return <em key={i} className="italic text-silver">{part.slice(1, -1)}</em>
-        }
-        if (part.startsWith('- ')) {
-          return (
-            <div key={i} className="ml-4 flex items-start gap-2">
-              <span className="mt-1 text-gold">-</span>
-              <span>{part.slice(2)}</span>
-            </div>
-          )
-        }
-        return part
-      })}
-    </>
-  )
-}
+    <div className="space-y-5 animate-fade-in">
+      {/* Pipeline Status */}
+      <PipelineStatus stages={response.pipeline} />
 
-function getScoreColor(score) {
-  if (score >= 95) return 'text-success'
-  if (score >= 85) return 'text-gold'
-  return 'text-silver'
-}
+      {/* Domain & Confidence Badge */}
+      <div className="flex items-center gap-3 flex-wrap">
+        <span className="flex items-center gap-1.5 rounded-md border border-gold/20 bg-gold/5 px-2.5 py-1 text-[11px] font-medium text-gold">
+          <Tag size={11} />
+          {response.domain}
+        </span>
+        <span className="flex items-center gap-1.5 rounded-md border border-success/20 bg-success/5 px-2.5 py-1 text-[11px] font-medium text-success">
+          <BarChart3 size={11} />
+          Confidence: {response.confidence}%
+        </span>
+        <span className="text-[11px] text-silver/30">
+          {new Date(response.timestamp).toLocaleString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </span>
+      </div>
 
-function getScoreBg(score) {
-  if (score >= 95) return 'bg-success/10 border-success/30'
-  if (score >= 85) return 'bg-gold/10 border-gold/30'
-  return 'bg-slate/30 border-slate/40'
-}
+      {/* Main Response */}
+      <div className="rounded-lg border border-slate-custom/30 bg-charcoal/40 p-5">
+        <div className="space-y-0">{renderFormattedText(response.answer)}</div>
+      </div>
 
-function ResponseDisplay({ response, onSourceClick }) {
-  const { activeSourceId } = useAppStore()
+      {/* Source Citations */}
+      <div>
+        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/50">
+          Verified Sources ({response.sources.length})
+        </p>
+        <div className="grid gap-2">
+          {response.sources.map((source, index) => (
+            <button
+              key={source.id}
+              onClick={() => onSourceClick(source.id)}
+              className={`group flex items-start gap-3 rounded-lg border p-3.5 text-left transition-all ${
+                activeSourceId === source.id
+                  ? "border-gold/40 bg-gold/5"
+                  : "border-slate-custom/30 bg-cream/50 hover:border-slate-custom/60 hover:bg-cream/80"
+              }`}
+            >
+              {/* Index */}
+              <span
+                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded font-mono text-[11px] font-semibold ${
+                  activeSourceId === source.id
+                    ? "bg-gold/15 text-gold"
+                    : "bg-slate-custom/30 text-silver/50"
+                }`}
+              >
+                {index + 1}
+              </span>
 
-  return (
-    <div className="mx-auto w-full max-w-7xl px-8 py-8 sm:px-10 lg:px-14">
-      <div className="grid gap-10 xl:grid-cols-[minmax(0,1.1fr)_340px] xl:items-start">
-        <div className="min-w-0">
-          <div className="mb-10">
-            <div className="mb-4 text-[10px] uppercase tracking-[0.2em] text-silver/50 font-semibold">Chain of Verification</div>
-            <div className="flex flex-wrap items-center gap-3">
-              {response.pipeline.map((stage, index) => (
-                <div key={stage.id} className="flex items-center">
-                  <div
-                    className={`flex items-center gap-2.5 rounded-full border px-4 py-2 text-xs font-medium transition-all ${
-                      stage.status === 'completed'
-                        ? 'bg-success/15 border-success/40 text-success'
-                        : stage.status === 'active'
-                          ? 'bg-gold/15 border-gold/40 text-gold'
-                          : 'bg-slate/20 border-slate/30 text-silver/40'
-                    }`}
-                  >
-                    {stage.status === 'completed' && <Check className="h-3.5 w-3.5" />}
-                    {stage.status === 'active' && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-                    {stage.status === 'pending' && <Circle className="h-3.5 w-3.5" />}
-                    <span className="hidden sm:inline font-medium">{stage.name}</span>
+              {/* Content */}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p
+                      className={`text-[13px] font-medium leading-snug ${
+                        activeSourceId === source.id
+                          ? "text-gold-light"
+                          : "text-silver group-hover:text-gold-light"
+                      }`}
+                    >
+                      {source.bookTitle}
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-silver/40">
+                      {source.author}
+                    </p>
                   </div>
-                  {index < response.pipeline.length - 1 && (
-                    <ArrowRight className="mx-2 h-4 w-4 text-silver/25" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-10 rounded-[30px] border border-slate/40 bg-charcoal/50 p-8 sm:p-9">
-            <div className="font-serif text-[15px] leading-relaxed text-[#e8e8e8] whitespace-pre-wrap">
-              {formatResponseText(response.answer)}
-            </div>
-          </div>
-
-          <div>
-            <div className="mb-5 text-[10px] uppercase tracking-[0.2em] text-silver/50 font-semibold">
-              Verified Sources ({response.sources.length})
-            </div>
-            <div className="grid grid-cols-1 gap-4">
-              {response.sources.map((source, index) => {
-                const isActive = activeSourceId === source.id
-                return (
-                  <button
-                    key={source.id}
-                    className={`w-full rounded-2xl border p-5 text-left transition-all ${
-                      isActive
-                        ? 'bg-gold/8 border-gold/50 shadow-[0_4px_12px_rgba(201,169,98,0.08)]'
-                        : 'bg-charcoal/40 border-slate/40 hover:border-gold/40 hover:bg-charcoal/60'
+                  <ExternalLink
+                    size={13}
+                    className={`mt-0.5 shrink-0 ${
+                      activeSourceId === source.id
+                        ? "text-gold/60"
+                        : "text-silver/20 group-hover:text-silver/40"
                     }`}
-                    onClick={() => onSourceClick(source)}
+                  />
+                </div>
+
+                <p className="mt-1.5 text-[11.5px] leading-relaxed text-silver/50 line-clamp-2">
+                  "{source.matchedText}"
+                </p>
+
+                <div className="mt-2 flex flex-wrap items-center gap-2 text-[10px]">
+                  <span className="flex items-center gap-1 text-silver/35">
+                    <BookOpen size={10} />
+                    {source.section}
+                  </span>
+                  <span className="text-slate-custom">-</span>
+                  <span className="text-silver/35">
+                    Page {source.page}, para {source.paragraph}
+                  </span>
+                  <span className="text-slate-custom">-</span>
+                  <span
+                    className={`rounded px-1.5 py-0.5 font-medium ${
+                      source.relevanceScore >= 0.95
+                        ? "bg-success/8 text-success"
+                        : source.relevanceScore >= 0.85
+                        ? "bg-gold/8 text-gold"
+                        : "bg-silver/8 text-silver"
+                    }`}
                   >
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[12px] font-bold font-mono transition-all ${
-                          isActive ? 'bg-gold/25 text-gold border border-gold/30' : 'bg-slate/50 text-silver/70 border border-slate/30'
-                        }`}
-                      >
-                        {index + 1}
-                      </div>
-
-                      <div className="min-w-0 flex-1">
-                        <div className={`text-[14px] font-semibold mb-1 ${isActive ? 'text-gold-light' : 'text-[#e8e8e8]'}`}>
-                          {source.bookTitle}
-                        </div>
-                        <div className="mb-2 text-[11px] text-silver/50 font-medium">{source.author}</div>
-                        <div className="mb-3 line-clamp-2 text-[12px] text-silver/60">
-                          {source.matchedText}
-                        </div>
-                        <div className="flex flex-wrap items-center gap-4 text-[11px] text-silver/50">
-                          {source.section && (
-                            <span className="flex items-center gap-1.5">
-                              <FileText className="h-3.5 w-3.5" />
-                              {source.section}
-                            </span>
-                          )}
-                          {source.chapter && (
-                            <span className="flex items-center gap-1.5">
-                              <BookOpen className="h-3.5 w-3.5" />
-                              {source.chapter}
-                            </span>
-                          )}
-                          <span>Page {source.page}</span>
-                          <span>Para {source.paragraph}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex shrink-0 items-start gap-3">
-                        <div
-                          className={`rounded-lg border px-3 py-1.5 text-[11px] font-semibold transition-all ${getScoreBg(source.relevanceScore)} ${getScoreColor(source.relevanceScore)}`}
-                        >
-                          {source.relevanceScore}%
-                        </div>
-                        <ExternalLink className="h-4 w-4 shrink-0 text-silver/50 mt-0.5" />
-                      </div>
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
+                    {Math.round(source.relevanceScore * 100)}% match
+                  </span>
+                </div>
+              </div>
+            </button>
+          ))}
         </div>
-
-        <aside className="xl:sticky xl:top-8">
-          <div className="rounded-[30px] border border-slate/40 bg-charcoal/50 p-6 sm:p-7">
-            <div className="mb-5 text-[10px] uppercase tracking-[0.2em] text-silver/50 font-semibold">Response Metadata</div>
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2 rounded-full border border-gold/40 bg-gold/5 px-4 py-2">
-                <Tag className="h-3.5 w-3.5 text-gold" />
-                <span className="text-xs font-medium text-gold">{response.domain}</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-full border border-success/40 bg-success/5 px-4 py-2">
-                <BarChart3 className="h-3.5 w-3.5 text-success" />
-                <span className="text-xs font-medium text-success">{Math.round(response.confidence * 100)}%</span>
-              </div>
-            </div>
-            <div className="mt-6 text-[11px] leading-relaxed text-silver/50 font-medium">
-              {new Date(response.timestamp).toLocaleString('en-IN', {
-                day: 'numeric',
-                month: 'short',
-                hour: '2-digit',
-                minute: '2-digit',
-              })}
-            </div>
-            <div className="mt-7 rounded-2xl border border-slate/40 bg-charcoal/50 p-5">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-silver/50 font-semibold">Sources Ready</div>
-              <div className="mt-3 font-serif text-4xl text-gold-light font-bold">{response.sources.length}</div>
-            </div>
-          </div>
-        </aside>
       </div>
     </div>
-  )
+  );
 }
-
-export default ResponseDisplay

@@ -1,101 +1,183 @@
-import { X, FileText, ExternalLink } from 'lucide-react'
+﻿import { X, BookOpen, FileText, ChevronUp, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 
-function DocumentPanel({ source, onClose }) {
-  const highlightCount = source.highlightRanges?.length || 0
+function renderHighlightedText(text, ranges) {
+  if (!ranges.length) {
+    return <span>{text}</span>;
+  }
+
+  const sortedRanges = [...ranges].sort((a, b) => a.start - b.start);
+  const parts = [];
+  let lastEnd = 0;
+
+  sortedRanges.forEach((range, i) => {
+    // Text before highlight
+    if (range.start > lastEnd) {
+      parts.push(
+        <span key={`text-${i}`} className="text-silver/70">
+          {text.slice(lastEnd, range.start)}
+        </span>
+      );
+    }
+    // Highlighted text
+    parts.push(
+      <mark
+        key={`hl-${i}`}
+        id={`highlight-${i}`}
+        className="highlight-active rounded-sm bg-gold/15 px-0.5 text-gold-light border-l-2 border-gold/40"
+      >
+        {text.slice(range.start, range.end)}
+      </mark>
+    );
+    lastEnd = range.end;
+  });
+
+  // Remaining text
+  if (lastEnd < text.length) {
+    parts.push(
+      <span key="text-end" className="text-silver/70">
+        {text.slice(lastEnd)}
+      </span>
+    );
+  }
+
+  return <>{parts}</>;
+}
+
+export default function DocumentPanel({ source, onClose }) {
+  const [activeHighlight, setActiveHighlight] = useState(0);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    // Scroll to first highlight
+    const el = document.getElementById(`highlight-${activeHighlight}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [activeHighlight, source.id]);
+
+  const navigateHighlight = (direction) => {
+    const total = source.highlightRanges.length;
+    if (direction === "up") {
+      setActiveHighlight((prev) => (prev - 1 + total) % total);
+    } else {
+      setActiveHighlight((prev) => (prev + 1) % total);
+    }
+  };
 
   return (
-    <div className="flex h-full w-[440px] shrink-0 flex-col overflow-hidden rounded-[32px] border border-slate/40 bg-cream shadow-[0_32px_96px_rgba(0,0,0,0.32)]">
-      <div className="border-b border-slate/40 bg-cream/80 px-7 py-6">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/70">Source Document</div>
-            <h2 className="mb-2 text-[16px] font-serif font-semibold text-gold-light">{source.bookTitle}</h2>
-            <p className="text-[12px] font-medium text-silver/50">{source.author}</p>
+    <div className="flex h-full flex-col bg-cream border-l border-slate-custom/40 animate-fade-in">
+      {/* Header */}
+      <div className="flex items-start justify-between border-b border-slate-custom/40 px-4 py-3.5">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2 mb-1.5">
+            <FileText size={14} className="text-gold shrink-0" />
+            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gold/70">
+              Source Document
+            </p>
           </div>
+          <h3 className="font-serif text-[15px] font-semibold leading-snug text-gold-light">
+            {source.bookTitle}
+          </h3>
+          <p className="mt-0.5 text-[11px] text-silver/40">{source.author}</p>
+        </div>
+        <button
+          onClick={onClose}
+          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver"
+        >
+          <X size={15} />
+        </button>
+      </div>
+
+      {/* Document Metadata Bar */}
+      <div className="flex items-center gap-3 border-b border-slate-custom/30 bg-charcoal/30 px-4 py-2.5">
+        <span className="rounded border border-slate-custom/40 bg-cream/50 px-2 py-0.5 text-[10px] font-medium text-silver/60">
+          {source.act}
+        </span>
+        <span className="text-[10px] text-silver/30">
+          {source.chapter}
+        </span>
+      </div>
+
+      {/* Section info */}
+      <div className="flex items-center justify-between border-b border-slate-custom/30 px-4 py-2.5">
+        <div className="flex items-center gap-2">
+          <BookOpen size={12} className="text-gold/50" />
+          <span className="text-[11px] font-medium text-silver/60">
+            {source.section}
+          </span>
+          <span className="text-silver/20">-</span>
+          <span className="text-[11px] text-silver/40">
+            Page {source.page}, para {source.paragraph}
+          </span>
+        </div>
+
+        {/* Highlight navigator */}
+        <div className="flex items-center gap-1.5">
+          <span className="text-[10px] text-silver/35">
+            {activeHighlight + 1}/{source.highlightRanges.length} matches
+          </span>
           <button
-            className="rounded-lg border border-transparent p-2.5 text-silver/60 transition-all hover:border-slate/40 hover:bg-charcoal/40 hover:text-gold"
-            onClick={onClose}
+            onClick={() => navigateHighlight("up")}
+            className="flex h-5 w-5 items-center justify-center rounded text-silver/30 hover:bg-slate-custom/30 hover:text-silver"
           >
-            <X className="h-5 w-5" />
+            <ChevronUp size={12} />
+          </button>
+          <button
+            onClick={() => navigateHighlight("down")}
+            className="flex h-5 w-5 items-center justify-center rounded text-silver/30 hover:bg-slate-custom/30 hover:text-silver"
+          >
+            <ChevronDown size={12} />
           </button>
         </div>
       </div>
 
-      <div className="border-b border-slate/40 bg-charcoal/38 px-7 py-5">
+      {/* Document Content */}
+      <div ref={containerRef} className="flex-1 overflow-y-auto px-5 py-5">
+        {/* Page number indicator */}
         <div className="mb-4 flex items-center gap-3">
-          <span className="rounded-lg border border-gold/40 bg-gold/15 px-3 py-1.5 text-[11px] font-bold text-gold">
-            {source.act}
+          <div className="h-px flex-1 bg-slate-custom/20"></div>
+          <span className="text-[10px] font-medium tracking-wider text-silver/25 uppercase">
+            Page {source.page}
           </span>
-          {source.chapter && (
-            <span className="truncate text-[12px] font-medium text-silver/60">{source.chapter}</span>
-          )}
+          <div className="h-px flex-1 bg-slate-custom/20"></div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div className="col-span-2 rounded-2xl border border-slate/35 bg-charcoal/40 px-4 py-3">
-            <div className="mb-1 text-[10px] uppercase tracking-[0.16em] text-silver/45">Section</div>
-            <div className="flex min-w-0 items-center gap-2.5">
-              <FileText className="h-4 w-4 shrink-0 text-gold/60" />
-              <span className="truncate text-[13px] font-semibold text-[#e8e8e8]">{source.section || 'Section'}</span>
-            </div>
-          </div>
+        {/* Document text - styled to look like a legal document */}
+        <div className="font-serif text-[14px] leading-[1.9] tracking-[0.01em]">
+          {renderHighlightedText(source.fullText, source.highlightRanges)}
+        </div>
 
-          <div className="rounded-2xl border border-slate/35 bg-charcoal/40 px-4 py-3">
-            <div className="mb-1 text-[10px] uppercase tracking-[0.16em] text-silver/45">Page</div>
-            <div className="text-[13px] font-semibold text-[#e8e8e8]">{source.page}</div>
+        {/* Page footer */}
+        <div className="mt-8 border-t border-slate-custom/20 pt-3">
+          <div className="flex items-center justify-between text-[10px] text-silver/25">
+            <span>{source.act}</span>
+            <span>p. {source.page}</span>
           </div>
-
-          <div className="rounded-2xl border border-slate/35 bg-charcoal/40 px-4 py-3">
-            <div className="mb-1 text-[10px] uppercase tracking-[0.16em] text-silver/45">Paragraph</div>
-            <div className="text-[13px] font-semibold text-[#e8e8e8]">{source.paragraph}</div>
-          </div>
-
-          {highlightCount > 0 && (
-            <div className="col-span-2 rounded-2xl border border-slate/35 bg-charcoal/40 px-4 py-3">
-              <div className="mb-1 text-[10px] uppercase tracking-[0.16em] text-silver/45">Highlights</div>
-              <div className="text-[13px] font-semibold text-[#e8e8e8]">
-                <span className="text-gold">1</span>/{highlightCount}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-7 py-6">
-        <div className="rounded-[24px] border border-slate/40 bg-charcoal/60 p-6 font-serif text-[14px] leading-[1.95] tracking-[0.01em] text-silver/75 whitespace-pre-wrap">
-          {source.fullText.split('').map((char, index) => {
-            const isHighlighted = source.highlightRanges?.some(
-              range => index >= range.start && index < range.end
-            )
-
-            return (
-              <span
-                key={index}
-                className={isHighlighted ? 'bg-gold/20 px-1 [box-shadow:inset_3px_0_0_rgba(201,169,98,0.5)]' : ''}
-              >
-                {char}
-              </span>
-            )
-          })}
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between gap-4 border-t border-slate/40 bg-cream/80 px-7 py-5">
-        <div className="flex items-center gap-3">
-          <span className={`text-[14px] font-bold ${source.relevanceScore >= 95 ? 'text-success' : source.relevanceScore >= 85 ? 'text-gold' : 'text-silver'}`}>
-            {source.relevanceScore}%
-          </span>
-          <span className="rounded-lg border border-slate/40 bg-charcoal/50 px-3 py-1 text-[11px] font-semibold text-silver/70">
-            {source.relevanceScore >= 95 ? 'High' : source.relevanceScore >= 85 ? 'Moderate' : 'Partial'} Match
-          </span>
-        </div>
-        <button className="flex items-center gap-2 text-[12px] font-semibold text-gold transition-colors hover:text-gold-light">
-          <ExternalLink className="h-4 w-4" />
-          View Original
-        </button>
+      {/* Bottom bar */}
+      <div className="border-t border-slate-custom/40 px-4 py-2.5 flex items-center justify-between">
+        <span className="text-[10px] text-silver/30">
+          Relevance: {Math.round(source.relevanceScore * 100)}%
+        </span>
+        <span
+          className={`rounded px-2 py-0.5 text-[10px] font-medium ${
+            source.relevanceScore >= 0.95
+              ? "bg-success/8 text-success border border-success/15"
+              : source.relevanceScore >= 0.85
+              ? "bg-gold/8 text-gold border border-gold/15"
+              : "bg-silver/8 text-silver border border-silver/15"
+          }`}
+        >
+          {source.relevanceScore >= 0.95
+            ? "High Confidence"
+            : source.relevanceScore >= 0.85
+            ? "Moderate Confidence"
+            : "Partial Match"}
+        </span>
       </div>
     </div>
-  )
+  );
 }
-
-export default DocumentPanel
