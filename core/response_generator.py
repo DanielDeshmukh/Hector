@@ -177,21 +177,21 @@ When answering legal queries:
         }
 
     def _format_legal_rag(self, query: str, results: list[dict], related: list[str]) -> str:
-        """Format a response using the Legal RAG source-first contract."""
+        """Format a response using the HECTOR Research Report format."""
         if not results:
             return (
-                f"[Legal RAG] · [0 sources retrieved] · Query: {query}\n\n"
+                f"[HECTOR Intelligence Report] · [0 sources retrieved] · Query: {query}\n\n"
                 "No relevant sources found for this query.\n\n"
                 "RETRIEVED SOURCES\n\n"
                 "Answer confidence: 0% Low confidence — retrieved sources may not fully cover this query.\n\n"
-                "Note: This is for informational purposes only and does not constitute legal advice."
+                "Note: This information is provided for research purposes and does not constitute formal legal advice."
             )
 
         sources = [self._source_payload(item, index, len(results)) for index, item in enumerate(results, start=1)]
         ipc_sources = [source for source in sources if source["act"] == "IPC"]
         bns_sources = [source for source in sources if source["act"] == "BNS"]
 
-        lines = [f"[Legal RAG] · [{len(sources)} sources retrieved] · Query: {query}", ""]
+        lines = [f"[HECTOR Intelligence Report] · [{len(sources)} sources retrieved] · Query: {query}", ""]
 
         if ipc_sources:
             source = self._best_source(ipc_sources)
@@ -227,7 +227,7 @@ When answering legal queries:
         lines.append(f"| Repeat/aggravated offence punishment | {self._table_aggravated(ipc_sources)} | {self._table_aggravated(bns_sources)} |")
         lines.append(f"| Cognisable status | {self._table_status(ipc_sources)} | {self._table_status(bns_sources)} |")
 
-        lines.extend(["", "RETRIEVED SOURCES", ""])
+        lines.extend(["", "STATUTORY SOURCES", ""])
         for source in sources:
             lines.append(f"[§{source['number']}]  {source['title']} Section {source['section']} {source['act']}")
             lines.append(f"        Document type: {source['document_type']}")
@@ -242,7 +242,7 @@ When answering legal queries:
             confidence_line += " Low confidence — retrieved sources may not fully cover this query."
         lines.append(confidence_line)
         lines.append("")
-        lines.append("Note: This is for informational purposes only and does not constitute legal advice.")
+        lines.append("Note: This information is provided for research purposes and does not constitute formal legal advice.")
         return "\n".join(lines)
 
     def _source_payload(self, item: dict, number: int, total_chunks: int) -> dict:
