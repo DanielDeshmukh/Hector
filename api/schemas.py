@@ -42,11 +42,39 @@ class IngestRequest(BaseModel):
 class SearchHit(BaseModel):
     id: str
     score: float
+    similarity_score: float = 0.0
+    reranker_score: float = 0.0
+    hybrid_score: float = 0.0
+    retrieval_score: float = 0.0
+    boost_score: float = 0.0
+    semantic_score: float = 0.0
+    bm25_score: float = 0.0
+    bm25_raw_score: float = 0.0
     act: str | None = None
     citation: dict[str, Any] = Field(default_factory=dict)
     reasons: list[str] = Field(default_factory=list)
     metadata: dict[str, Any] = Field(default_factory=dict)
+    document: str = ""
     snippet: str
+
+
+class AnswerSection(BaseModel):
+    title: str
+    body: str = ""
+    rows: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class SourceSection(BaseModel):
+    number: int
+    title: str
+    act: str
+    section: str
+    document_type: str
+    chunk: int
+    total_chunks: int
+    similarity: float
+    excerpt: str
+    source_id: str | None = None
 
 
 class SearchResponse(BaseModel):
@@ -60,6 +88,9 @@ class SearchResponse(BaseModel):
     total_pages: int
     items: list[SearchHit]
     generated_response: str
+    answer_sections: list[AnswerSection] = Field(default_factory=list)
+    source_sections: list[SourceSection] = Field(default_factory=list)
+    answer_confidence: float = 0.0
     citations: list[dict] = Field(default_factory=list)
     related_provisions: list[str] = Field(default_factory=list)
     response_format: str = "summary"

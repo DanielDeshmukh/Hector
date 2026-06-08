@@ -11,9 +11,16 @@ except ImportError:
     chromadb = None
     embedding_functions = None
 
+try:
+    from sentence_transformers import CrossEncoder
+except ImportError:
+    CrossEncoder = None
 
-DB_PATH = "./hector_db"
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DB_PATH = os.path.join(PROJECT_ROOT, "hector_db")
 DEFAULT_COLLECTION = "indian_law_bns"
+DEFAULT_CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
 
 class SimpleBM25:
@@ -70,7 +77,7 @@ class HectorHybridRetriever:
     )
     TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
     SECTION_IN_TEXT_PATTERN = re.compile(
-        r"\b(?:section|sec\.?|s\.)\s*(\d{1,4}[a-z]?)\b|^\s*(\d{1,4}[a-z]?)\.\s",
+        r"\[s\s*(\d{1,4}[a-z]?)(?:\.\d+)?\]|\b(?:section|sec\.?|s\.)\s*(\d{1,4}[a-z]?)\b|^\s*(\d{1,4}[a-z]?)\.\s",
         re.IGNORECASE | re.MULTILINE,
     )
 
@@ -89,11 +96,35 @@ class HectorHybridRetriever:
         "indian evidence act": "BSA",
         "cpc": "CPC",
     }
+    CONCEPT_STOPWORDS = {
+        "and",
+        "are",
+        "bns",
+        "bnss",
+        "compare",
+        "comparison",
+        "crpc",
+        "difference",
+        "explain",
+        "for",
+        "ipc",
+        "legal",
+        "of",
+        "punishable",
+        "punished",
+        "punishment",
+        "section",
+        "the",
+        "under",
+        "what",
+    }
 
     def __init__(self, collection_name=DEFAULT_COLLECTION, db_path=DB_PATH, collection=None):
         self.collection_name = collection_name
         self.db_path = db_path
         self.embed_fn = None
+        self.cross_encoder = None
+        self.reranker_disabled = False
         self.semantic_disabled = False
 
         if collection is not None:
@@ -120,6 +151,8 @@ class HectorHybridRetriever:
         instance.collection_name = "memory"
         instance.db_path = None
         instance.embed_fn = None
+        instance.cross_encoder = None
+        instance.reranker_disabled = True
         instance.semantic_disabled = True
         instance.collection = None
         instance.records = []
@@ -182,7 +215,8 @@ class HectorHybridRetriever:
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
         deduped = self._deduplicate_results(ranked)
-        return deduped[:top_k]
+        reranked = self._rerank_with_cross_encoder(query, deduped)
+        return reranked[:top_k]
 
     def _tokenize(self, text):
         return self.TOKEN_PATTERN.findall((text or "").lower())
@@ -200,6 +234,7 @@ class HectorHybridRetriever:
             "tokens": self._tokenize(query),
             "section_numbers": list(dict.fromkeys(sections)),
             "acts": list(dict.fromkeys(acts)),
+            "concept_terms": self._extract_concept_terms(query),
             "has_legal_citation": bool(sections or acts),
         }
 
@@ -241,15 +276,20 @@ class HectorHybridRetriever:
             return []
 
         scores = self.bm25.get_scores(query_tokens)
+        positive_scores = [score for score in scores if score > 0]
+        min_score = min(positive_scores, default=0.0)
+        max_score = max(positive_scores, default=0.0)
+
         scored_rows = []
         for index, score in enumerate(scores):
             if score <= 0:
                 continue
-            scored_rows.append((index, score))
+            normalized_score = self._normalize_bm25_score(score, min_score, max_score)
+            scored_rows.append((index, score, normalized_score))
 
         scored_rows.sort(key=lambda item: item[1], reverse=True)
         ranked = []
-        for rank, (index, score) in enumerate(scored_rows[:top_k], start=1):
+        for rank, (index, score, normalized_score) in enumerate(scored_rows[:top_k], start=1):
             record = self.records[index]
             ranked.append(
                 {
@@ -257,6 +297,7 @@ class HectorHybridRetriever:
                     "document": record["document"],
                     "metadata": record["metadata"],
                     "score": score,
+                    "normalized_score": normalized_score,
                     "rank": rank,
                 }
             )
@@ -293,8 +334,6 @@ class HectorHybridRetriever:
             ),
             default=1.0,
         )
-        bm25_max_score = max((item["score"] for item in bm25_rank), default=1.0)
-
         ranked = []
         for doc_id, candidate in fused.items():
             record = self._get_record(doc_id, candidate["document"], candidate["metadata"])
@@ -306,28 +345,23 @@ class HectorHybridRetriever:
             )
 
             bm25_item = bm25_lookup.get(doc_id)
-            bm25_score = (
-                bm25_item["score"] / bm25_max_score if bm25_item and bm25_max_score else 0.0
-            )
+            bm25_score = bm25_item["normalized_score"] if bm25_item else 0.0
 
             legal_boost, boost_reasons = self._legal_boost(record, legal_query)
+            concept_boost, concept_reason = self._concept_term_boost(record, legal_query)
             current_law_boost, current_law_reason = self._current_law_boost(record, legal_query)
             jurisdiction_boost, jurisdiction_reason = self._jurisdiction_recency_boost(record)
 
-            final_score = (
-                candidate["rrf_score"] * 0.45
-                + semantic_score * 0.20
-                + bm25_score * 0.20
-                + legal_boost
-                + current_law_boost
-                + jurisdiction_boost
-            )
+            retrieval_score = candidate["rrf_score"]
+            boost_score = legal_boost + concept_boost + current_law_boost + jurisdiction_boost
+            hybrid_score = retrieval_score + boost_score
 
             reasons = [
                 reason
                 for reason in [
                     "semantic-hit" if semantic_item else None,
                     "bm25-hit" if bm25_item else None,
+                    concept_reason,
                     current_law_reason,
                     jurisdiction_reason,
                 ]
@@ -340,18 +374,88 @@ class HectorHybridRetriever:
                     "id": doc_id,
                     "document": record["document"],
                     "metadata": record["metadata"],
-                    "score": round(final_score, 6),
+                    "score": round(hybrid_score, 6),
+                    "hybrid_score": round(hybrid_score, 6),
+                    "retrieval_score": round(retrieval_score, 6),
+                    "boost_score": round(boost_score, 6),
                     "rrf_score": round(candidate["rrf_score"], 6),
                     "semantic_score": round(semantic_score, 6),
                     "bm25_score": round(bm25_score, 6),
+                    "bm25_raw_score": round(bm25_item["score"], 6) if bm25_item else 0.0,
                     "act": record["act"],
                     "citation": record["citation"],
                     "reasons": reasons,
                 }
             )
 
-        ranked.sort(key=lambda item: item["score"], reverse=True)
+        ranked.sort(key=lambda item: item["retrieval_score"] + item["boost_score"], reverse=True)
         return ranked
+
+    def _normalize_bm25_score(self, raw_score, min_score, max_score):
+        if max_score <= min_score:
+            return 1.0 if raw_score > 0 else 0.0
+        normalized = (raw_score - min_score) / (max_score - min_score)
+        return max(0.0, min(normalized, 1.0))
+
+    def _rerank_with_cross_encoder(self, query, candidates):
+        if not candidates:
+            return []
+
+        reranker = self._get_cross_encoder()
+        if reranker is not None:
+            pairs = [(query, item["document"]) for item in candidates]
+            raw_scores = reranker.predict(pairs)
+            for item, raw_score in zip(candidates, raw_scores):
+                reranker_score = self._sigmoid(float(raw_score))
+                item["reranker_score"] = round(reranker_score, 6)
+                item["score"] = item["reranker_score"]
+                item["similarity_score"] = item["reranker_score"]
+                item["reasons"] = [*item.get("reasons", []), "cross-encoder-reranked"]
+        else:
+            for item in candidates:
+                fallback_score = self._fallback_reranker_score(item)
+                item["reranker_score"] = round(fallback_score, 6)
+                item["score"] = item["reranker_score"]
+                item["similarity_score"] = item["reranker_score"]
+                item["reasons"] = [*item.get("reasons", []), "cross-encoder-unavailable"]
+
+        candidates.sort(key=lambda item: item["reranker_score"], reverse=True)
+        return candidates
+
+    def _get_cross_encoder(self):
+        if self.cross_encoder is not None:
+            return self.cross_encoder
+        if self.reranker_disabled:
+            return None
+        if CrossEncoder is None:
+            self.reranker_disabled = True
+            return None
+
+        try:
+            os.environ.setdefault("HF_HUB_OFFLINE", "1")
+            model_name = os.getenv("HECTOR_CROSS_ENCODER_MODEL", DEFAULT_CROSS_ENCODER_MODEL)
+            self.cross_encoder = CrossEncoder(model_name)
+            return self.cross_encoder
+        except Exception:
+            self.reranker_disabled = True
+            return None
+
+    def _fallback_reranker_score(self, item):
+        base = (
+            item.get("rrf_score", 0.0) * 12.0
+            + item.get("bm25_score", 0.0) * 0.30
+            + item.get("semantic_score", 0.0) * 0.25
+            + item.get("boost_score", 0.0)
+        )
+        return max(0.0, min(base, 1.0))
+
+    @staticmethod
+    def _sigmoid(value):
+        if value >= 0:
+            z = math.exp(-value)
+            return 1 / (1 + z)
+        z = math.exp(value)
+        return z / (1 + z)
 
     def _legal_boost(self, record, legal_query):
         boost = 0.0
@@ -380,6 +484,42 @@ class HectorHybridRetriever:
             reasons.append("section-text-hit")
 
         return boost, reasons
+
+    def _extract_concept_terms(self, query):
+        terms = []
+        for token in self._tokenize(query):
+            if len(token) < 4 or token in self.CONCEPT_STOPWORDS:
+                continue
+            terms.append(token)
+        return list(dict.fromkeys(terms))
+
+    def _concept_term_boost(self, record, legal_query):
+        concept_terms = legal_query.get("concept_terms") or []
+        if not concept_terms:
+            return 0.0, None
+
+        raw_query = (legal_query.get("raw") or "").lower()
+        haystack = " ".join(
+            str(value)
+            for value in [
+                record.get("document", ""),
+                record.get("metadata", {}).get("source", ""),
+                record.get("metadata", {}).get("act_name", ""),
+                record.get("metadata", {}).get("section_title", ""),
+            ]
+        ).lower()
+        matched = [term for term in concept_terms if re.search(rf"\b{re.escape(term)}\b", haystack)]
+
+        if "punishment" in raw_query:
+            for term in matched:
+                if f"punishment for {term}" in haystack or f"{term} shall be punished" in haystack:
+                    return 0.34, f"concept-punishment-match:{term}"
+
+        if len(matched) == len(concept_terms):
+            return 0.24, f"concept-match:{','.join(matched)}"
+        if matched:
+            return 0.12, f"concept-partial:{','.join(matched)}"
+        return -0.10, "concept-missing"
 
     def _current_law_boost(self, record, legal_query):
         if not legal_query["has_legal_citation"]:
@@ -488,9 +628,12 @@ class HectorHybridRetriever:
 
     def _extract_document_citation(self, document, metadata):
         section = None
+        bracket_match = re.search(r"\[s\s*(\d{1,4}[a-z]?)(?:\.\d+)?\]", document or "", re.IGNORECASE)
         match = self.SECTION_IN_TEXT_PATTERN.search(document or "")
-        if match:
-            section = (match.group(1) or match.group(2) or "").lower()
+        if bracket_match:
+            section = bracket_match.group(1).lower()
+        elif match:
+            section = (match.group(1) or match.group(2) or match.group(3) or "").lower()
         return {
             "section": section,
             "page": metadata.get("page"),
@@ -498,6 +641,11 @@ class HectorHybridRetriever:
         }
 
     def _infer_act(self, document, metadata):
+        explicit_act = str(metadata.get("act_name") or metadata.get("act") or "").strip()
+        if explicit_act:
+            canonical = self.ACT_ALIASES.get(explicit_act.lower(), explicit_act.upper())
+            return canonical
+
         source = (metadata.get("source") or "").lower()
         text = (document or "").lower()
         combined = f"{source} {text[:300]}"

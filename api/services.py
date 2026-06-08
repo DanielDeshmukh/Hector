@@ -63,36 +63,35 @@ class HectorApiService:
         total_results = len(results)
         start = (request.page - 1) * request.page_size
         end = start + request.page_size
-        paginated = results[start:end]
+        selected_results = self._select_response_results(
+            results=results,
+            normalized_query=normalized_query,
+            limit=request.page_size,
+        )
+        paginated = selected_results[start:end] if request.page == 1 else results[start:end]
 
         items = [self._to_hit(item) for item in paginated]
 
         # Generate response with contextual formatting
         response_data = {
             "generated_response": "",
+            "answer_sections": [],
+            "source_sections": [],
+            "answer_confidence": 0.0,
             "citations": [],
             "related_provisions": [],
         }
 
         if intent.get("route") == "LEGAL_RESEARCH":
-            if request.verify:
-                # Use orchestrator with verification
-                generated_response = self.orchestrator.execute(request.query)
-            else:
-                # Use contextual response generator with selected format
-                from core.response_generator import ResponseFormat
-                response_data = self.response_generator.generate(
-                    query=normalized_query,
-                    results=results[: request.page_size],
-                    format=request.format,
-                    include_related=request.include_related,
-                )
-                generated_response = response_data["generated_response"]
+            response_data = self.response_generator.generate(
+                query=request.query,
+                results=paginated,
+                format=request.format,
+                include_related=request.include_related,
+            )
+            generated_response = response_data["generated_response"]
         else:
             generated_response = intent.get("hector_response", "")
-
-        if mappings and generated_response:
-            generated_response = f"Mapped legacy references: {'; '.join(mappings)}\n\n{generated_response}"
 
         total_pages = max(1, (total_results + request.page_size - 1) // request.page_size)
         return SearchResponse(
@@ -106,11 +105,44 @@ class HectorApiService:
             total_pages=total_pages,
             items=items,
             generated_response=generated_response,
+            answer_sections=response_data.get("answer_sections", []),
+            source_sections=response_data.get("source_sections", []),
+            answer_confidence=float(response_data.get("answer_confidence", 0.0) or 0.0),
             citations=response_data.get("citations", []),
             related_provisions=response_data.get("related_provisions", []),
             response_format=request.format,
             retrieved_at=datetime.now(UTC),
         )
+
+    def _select_response_results(self, results: list[dict], normalized_query: str, limit: int) -> list[dict]:
+        if not results or limit <= 0:
+            return []
+
+        requested_acts = {
+            act
+            for act in ("IPC", "BNS", "CRPC", "BNSS", "BSA", "CPC")
+            if act.lower() in normalized_query.lower()
+        }
+        if len(requested_acts) < 2:
+            return results[:limit]
+
+        selected = []
+        selected_ids = set()
+        for act in sorted(requested_acts):
+            match = next((item for item in results if item.get("act") == act), None)
+            if match:
+                selected.append(match)
+                selected_ids.add(match.get("id"))
+
+        for item in results:
+            if len(selected) >= limit:
+                break
+            if item.get("id") in selected_ids:
+                continue
+            selected.append(item)
+            selected_ids.add(item.get("id"))
+
+        return selected
 
     def compare(self, request: CompareRequest) -> CompareResponse:
         mapping = self.router.legal_map
@@ -217,6 +249,11 @@ class HectorApiService:
                 "page": result.page,
                 "page_size": result.page_size,
                 "generated_response": result.generated_response,
+                "answer_sections": [section.model_dump() for section in result.answer_sections],
+                "source_sections": [section.model_dump() for section in result.source_sections],
+                "answer_confidence": result.answer_confidence,
+                "citations": result.citations,
+                "related_provisions": result.related_provisions,
             },
         }
 
@@ -244,10 +281,19 @@ class HectorApiService:
         return SearchHit(
             id=str(item.get("id", "")),
             score=float(item.get("score", 0.0)),
+            similarity_score=float(item.get("similarity_score", item.get("score", 0.0)) or 0.0),
+            reranker_score=float(item.get("reranker_score", item.get("similarity_score", 0.0)) or 0.0),
+            hybrid_score=float(item.get("hybrid_score", 0.0) or 0.0),
+            retrieval_score=float(item.get("retrieval_score", 0.0) or 0.0),
+            boost_score=float(item.get("boost_score", 0.0) or 0.0),
+            semantic_score=float(item.get("semantic_score", 0.0) or 0.0),
+            bm25_score=float(item.get("bm25_score", 0.0) or 0.0),
+            bm25_raw_score=float(item.get("bm25_raw_score", 0.0) or 0.0),
             act=item.get("act"),
             citation=dict(item.get("citation") or {}),
             reasons=list(item.get("reasons") or []),
             metadata=metadata,
+            document=document,
             snippet=snippet,
         )
 

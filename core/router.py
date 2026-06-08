@@ -129,6 +129,14 @@ class HectorRouter:
         "analyse this",
         "review this file",
     )
+    TOPICAL_LEGAL_EXPANSIONS = (
+        {
+            "terms": ("theft",),
+            "phrases": ("punishment for theft", "theft punishment"),
+            "expansion": "Theft Section 378 IPC Section 303 BNS Punishment for theft Section 379 IPC Section 304 BNS",
+            "mapping": "IPC Sections 378-379 correspond to BNS Sections 303-304 (theft and punishment for theft)",
+        },
+    )
 
     def __init__(self):
         self.client = Groq(api_key=os.getenv("GROQ_API_KEY")) if Groq is not None else None
@@ -283,9 +291,23 @@ class HectorRouter:
         found_mappings = []
 
         for old_sec, data in self.legal_map.items():
-            if f"IPC {old_sec}" in original_query or f"SECTION {old_sec}" in original_query:
+            escaped_section = re.escape(str(old_sec).upper())
+            mentions_ipc_section = re.search(rf"\bIPC\s+{escaped_section}\b", original_query)
+            mentions_section = re.search(rf"\bSECTION\s+{escaped_section}\b", original_query)
+
+            if mentions_ipc_section or mentions_section:
                 bns_identity = f"BNS Section {data['new']} ({data['name']})"
                 found_mappings.append(bns_identity)
-                query += f" {data['name']} BNS {data['new']}"
+                query += f" {data['name']} Section {data['new']} BNS"
+
+        lowered_query = query.lower()
+        for expansion in self.TOPICAL_LEGAL_EXPANSIONS:
+            has_phrase = any(phrase in lowered_query for phrase in expansion["phrases"])
+            has_terms = all(re.search(rf"\b{re.escape(term)}\b", lowered_query) for term in expansion["terms"])
+            if has_phrase or has_terms:
+                if expansion["mapping"] not in found_mappings:
+                    found_mappings.append(expansion["mapping"])
+                if expansion["expansion"].lower() not in lowered_query:
+                    query += f" {expansion['expansion']}"
 
         return query, found_mappings

@@ -32,42 +32,76 @@ function getCitationValue(citation, key, fallback = "") {
   return citation?.[key] ?? citation?.[key.toLowerCase()] ?? fallback;
 }
 
+function getMetadataValue(metadata, keys, fallback = "") {
+  for (const key of keys) {
+    if (metadata?.[key] !== undefined && metadata?.[key] !== null && metadata?.[key] !== "") {
+      return metadata[key];
+    }
+  }
+  return fallback;
+}
+
 function toSourceReference(item, index) {
   const citation = item.citation || {};
   const metadata = item.metadata || {};
   const score = Number(item.score || 0);
-  const relevanceScore = score > 1 ? score / 100 : score;
+  const similarityScore = Number(item.similarity_score ?? item.score ?? 0);
+  const relevanceScore = similarityScore > 1 ? similarityScore / 100 : similarityScore;
   const snippet = item.snippet || "";
+  const document = item.document || snippet;
+  const page = Number(
+    getMetadataValue(metadata, ["page", "page_number"], getCitationValue(citation, "page", 0))
+  );
+  const paragraph = Number(
+    getMetadataValue(metadata, ["paragraph", "para"], getCitationValue(citation, "paragraph", index + 1))
+  );
 
   return {
     id: item.id || `source-${index + 1}`,
     bookTitle:
-      metadata.book_title ||
-      metadata.title ||
+      getMetadataValue(metadata, ["source", "book_title", "title", "filename"]) ||
       getCitationValue(citation, "book") ||
       getCitationValue(citation, "source") ||
       "Retrieved Legal Source",
-    author: metadata.author || getCitationValue(citation, "author") || "HECTOR corpus",
-    chapter: metadata.chapter || getCitationValue(citation, "chapter") || "Retrieved context",
+    author: getMetadataValue(metadata, ["author", "publisher"]) || getCitationValue(citation, "author") || "HECTOR corpus",
+    chapter: getMetadataValue(metadata, ["chapter", "chapter_title"]) || getCitationValue(citation, "chapter") || "Retrieved context",
     section:
-      metadata.section ||
+      getMetadataValue(metadata, ["section_number", "section", "section_title"]) ||
       getCitationValue(citation, "section") ||
       getCitationValue(citation, "provision") ||
       "Relevant provision",
-    page: Number(metadata.page || getCitationValue(citation, "page", 0)) || 0,
-    paragraph: Number(metadata.paragraph || getCitationValue(citation, "paragraph", index + 1)) || index + 1,
+    page: Number.isFinite(page) ? page : null,
+    paragraph: Number.isFinite(paragraph) ? paragraph : null,
     relevanceScore,
     matchedText: snippet,
-    fullText: snippet,
-    act: item.act || metadata.act || getCitationValue(citation, "act") || "Legal corpus",
-    highlightRanges: snippet ? [{ start: 0, end: Math.min(snippet.length, 180) }] : [],
+    fullText: document,
+    act: item.act || getMetadataValue(metadata, ["act_name", "act"]) || getCitationValue(citation, "act") || "Legal corpus",
+    highlightRanges: document ? [{ start: 0, end: Math.min(document.length, 180) }] : [],
+    citation,
+    metadata,
+    reasons: item.reasons || [],
+    rawScore: score,
+    similarityScore,
+    rerankerScore: Number(item.reranker_score ?? similarityScore),
+    hybridScore: Number(item.hybrid_score ?? 0),
+    retrievalScore: Number(item.retrieval_score ?? 0),
+    boostScore: Number(item.boost_score ?? 0),
+    semanticScore: Number(item.semantic_score ?? 0),
+    bm25Score: Number(item.bm25_score ?? 0),
+    raw: item,
   };
 }
 
 function confidenceFromItems(items) {
   if (!items?.length) return 0;
-  const bestScore = Number(items[0].score || 0);
+  const bestScore = Number(items[0].similarity_score ?? items[0].score ?? 0);
   return Math.round((bestScore > 1 ? bestScore : bestScore * 100) * 10) / 10;
+}
+
+function confidenceFromPayload(payload) {
+  const answerConfidence = Number(payload.answer_confidence ?? 0);
+  if (answerConfidence > 0) return Math.round(answerConfidence * 10) / 10;
+  return confidenceFromItems(payload.items);
 }
 
 function toUiResponse(payload) {
@@ -80,7 +114,10 @@ function toUiResponse(payload) {
       payload.generated_response ||
       "HECTOR returned source matches, but no generated response was available for this query.",
     domain: payload.route || "Search",
-    confidence: confidenceFromItems(payload.items),
+    confidence: confidenceFromPayload(payload),
+    answerSections: payload.answer_sections || [],
+    sourceSections: payload.source_sections || [],
+    citations: payload.citations || [],
     sources,
     pipeline: completedPipeline,
     timestamp: payload.retrieved_at || new Date().toISOString(),

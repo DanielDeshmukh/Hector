@@ -1,4 +1,5 @@
 import json
+from threading import Lock
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
@@ -20,6 +21,7 @@ from .services import HectorApiService, build_cache_key
 cache = TTLCache(ttl_seconds=60, max_items=256)
 rate_limiter = InMemoryRateLimiter(limit=60, window_seconds=60)
 _service: HectorApiService | None = None
+_service_lock = Lock()
 
 
 @asynccontextmanager
@@ -49,7 +51,9 @@ app.add_middleware(
 def get_service() -> HectorApiService:
     global _service
     if _service is None:
-        _service = HectorApiService()
+        with _service_lock:
+            if _service is None:
+                _service = HectorApiService()
     return _service
 
 

@@ -5,6 +5,7 @@ Generates legally accurate, contextually rich responses with proper citations.
 
 from __future__ import annotations
 from dataclasses import dataclass
+import re
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -75,28 +76,287 @@ When answering legal queries:
         Returns:
             Dictionary with generated_response, citations, and related_provisions
         """
-        if not results:
-            return {
-                "generated_response": "No results found for the given query.",
-                "citations": [],
-                "related_provisions": [],
-            }
-
         citations = self._extract_citations(results)
         related = self._find_related_provisions(results) if include_related else []
-
-        if format == ResponseFormat.CITATIONS:
-            response = self._format_citations_only(citations)
-        elif format == ResponseFormat.DETAILED:
-            response = self._format_detailed(query, results, citations, related)
-        else:  # SUMMARY
-            response = self._format_summary(query, results, citations, related)
+        structured = self._build_legal_rag_payload(results)
+        response = self._format_legal_rag(query, results, related)
 
         return {
             "generated_response": response,
+            "answer_sections": structured["answer_sections"],
+            "source_sections": structured["source_sections"],
+            "answer_confidence": structured["answer_confidence"],
             "citations": [self._citation_to_dict(c) for c in citations],
             "related_provisions": related,
         }
+
+    def _build_legal_rag_payload(self, results: list[dict]) -> dict:
+        if not results:
+            return {
+                "answer_sections": [
+                    {
+                        "title": "Result",
+                        "body": "No relevant sources found for this query.",
+                        "rows": [],
+                    }
+                ],
+                "source_sections": [],
+                "answer_confidence": 0.0,
+            }
+
+        sources = [self._source_payload(item, index, len(results)) for index, item in enumerate(results, start=1)]
+        ipc_sources = [source for source in sources if source["act"] == "IPC"]
+        bns_sources = [source for source in sources if source["act"] == "BNS"]
+
+        overview_lines = []
+        if ipc_sources:
+            source = self._best_source(ipc_sources)
+            overview_lines.append(
+                f"Indian Penal Code, 1860 [IPC]: {self._framework_sentence(source)} [S{source['number']}]"
+            )
+        else:
+            overview_lines.append(
+                "Indian Penal Code, 1860 [IPC]: No directly retrieved IPC chunk supports an answer for this query."
+            )
+
+        if bns_sources:
+            source = self._best_source(bns_sources)
+            overview_lines.append(
+                f"Bharatiya Nyaya Sanhita, 2023 [BNS]: {self._framework_sentence(source)} [S{source['number']}]"
+            )
+        else:
+            overview_lines.append(
+                "Bharatiya Nyaya Sanhita, 2023 [BNS]: No directly retrieved BNS chunk supports an answer for this query."
+            )
+
+        if ipc_sources and bns_sources:
+            ipc = self._best_source(ipc_sources)
+            bns = self._best_source(bns_sources)
+            overview_lines.append(
+                f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
+            )
+
+        comparison_rows = [
+            {
+                "point": "Section reference",
+                "ipc": self._table_section(ipc_sources, "IPC"),
+                "bns": self._table_section(bns_sources, "BNS"),
+            },
+            {
+                "point": "Simple/basic offence punishment",
+                "ipc": self._table_punishment(ipc_sources),
+                "bns": self._table_punishment(bns_sources),
+            },
+            {
+                "point": "Repeat/aggravated offence punishment",
+                "ipc": self._table_aggravated(ipc_sources),
+                "bns": self._table_aggravated(bns_sources),
+            },
+            {
+                "point": "Cognisable status",
+                "ipc": self._table_status(ipc_sources),
+                "bns": self._table_status(bns_sources),
+            },
+        ]
+
+        return {
+            "answer_sections": [
+                {
+                    "title": "Grounded Answer",
+                    "body": "\n".join(overview_lines),
+                    "rows": [],
+                },
+                {
+                    "title": "Comparison",
+                    "body": "",
+                    "rows": comparison_rows,
+                },
+            ],
+            "source_sections": sources,
+            "answer_confidence": float(self._answer_confidence(sources)),
+        }
+
+    def _format_legal_rag(self, query: str, results: list[dict], related: list[str]) -> str:
+        """Format a response using the Legal RAG source-first contract."""
+        if not results:
+            return (
+                f"[Legal RAG] · [0 sources retrieved] · Query: {query}\n\n"
+                "No relevant sources found for this query.\n\n"
+                "RETRIEVED SOURCES\n\n"
+                "Answer confidence: 0% Low confidence — retrieved sources may not fully cover this query.\n\n"
+                "Note: This is for informational purposes only and does not constitute legal advice."
+            )
+
+        sources = [self._source_payload(item, index, len(results)) for index, item in enumerate(results, start=1)]
+        ipc_sources = [source for source in sources if source["act"] == "IPC"]
+        bns_sources = [source for source in sources if source["act"] == "BNS"]
+
+        lines = [f"[Legal RAG] · [{len(sources)} sources retrieved] · Query: {query}", ""]
+
+        if ipc_sources:
+            source = self._best_source(ipc_sources)
+            lines.append(
+                f"**Indian Penal Code, 1860** [IPC]: {self._framework_sentence(source)} [§{source['number']}]"
+            )
+        else:
+            lines.append(
+                "**Indian Penal Code, 1860** [IPC]: No directly retrieved IPC chunk supports an answer for this query."
+            )
+
+        if bns_sources:
+            source = self._best_source(bns_sources)
+            lines.append(
+                f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: {self._framework_sentence(source)} [§{source['number']}]"
+            )
+        else:
+            lines.append(
+                "**Bharatiya Nyaya Sanhita, 2023** [BNS]: No directly retrieved BNS chunk supports an answer for this query."
+            )
+
+        if ipc_sources and bns_sources:
+            ipc = self._best_source(ipc_sources)
+            bns = self._best_source(bns_sources)
+            lines.append(
+                f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [§{ipc['number']}] [§{bns['number']}]"
+            )
+
+        lines.extend(["", "| Comparison point | Indian Penal Code, 1860 [IPC] | Bharatiya Nyaya Sanhita, 2023 [BNS] |"])
+        lines.append("| --- | --- | --- |")
+        lines.append(f"| Section reference (definition) | {self._table_section(ipc_sources, 'IPC')} | {self._table_section(bns_sources, 'BNS')} |")
+        lines.append(f"| Simple/basic offence punishment | {self._table_punishment(ipc_sources)} | {self._table_punishment(bns_sources)} |")
+        lines.append(f"| Repeat/aggravated offence punishment | {self._table_aggravated(ipc_sources)} | {self._table_aggravated(bns_sources)} |")
+        lines.append(f"| Cognisable status | {self._table_status(ipc_sources)} | {self._table_status(bns_sources)} |")
+
+        lines.extend(["", "RETRIEVED SOURCES", ""])
+        for source in sources:
+            lines.append(f"[§{source['number']}]  {source['title']} Section {source['section']} {source['act']}")
+            lines.append(f"        Document type: {source['document_type']}")
+            lines.append(f"        Chunk: {source['chunk']} of {source['total_chunks']}")
+            lines.append(f"        Similarity: {source['similarity']:.2f} score")
+            lines.append(f"        Excerpt: \"{source['excerpt']}\"")
+            lines.append("")
+
+        confidence = self._answer_confidence(sources)
+        confidence_line = f"Answer confidence: {confidence}%"
+        if sources[0]["similarity"] < 0.70:
+            confidence_line += " Low confidence — retrieved sources may not fully cover this query."
+        lines.append(confidence_line)
+        lines.append("")
+        lines.append("Note: This is for informational purposes only and does not constitute legal advice.")
+        return "\n".join(lines)
+
+    def _source_payload(self, item: dict, number: int, total_chunks: int) -> dict:
+        metadata = item.get("metadata", {}) or {}
+        citation = item.get("citation", {}) or {}
+        document = " ".join((item.get("document") or "").split())
+        act = (item.get("act") or metadata.get("act_name") or metadata.get("act") or "").upper() or "LEGAL"
+        section = citation.get("section") or metadata.get("section_number") or "unidentified"
+        title = metadata.get("source") or "Retrieved legal source"
+        score = self._normalize_score(
+            float(item.get("similarity_score", item.get("score", 0.0)) or 0.0)
+        )
+
+        return {
+            "number": number,
+            "title": title,
+            "source_id": item.get("id"),
+            "act": act,
+            "section": section,
+            "document_type": self._document_type(metadata),
+            "chunk": int(metadata.get("chunk_index", number - 1) or 0) + 1,
+            "total_chunks": total_chunks,
+            "similarity": score,
+            "excerpt": self._best_excerpt(document),
+            "document": document,
+            "reasons": item.get("reasons") or [],
+        }
+
+    def _best_source(self, sources: list[dict]) -> dict:
+        return max(sources, key=lambda source: source["similarity"])
+
+    def _normalize_score(self, score: float) -> float:
+        if score <= 0:
+            return 0.0
+        if score <= 1:
+            return score
+        return 1.0
+
+    def _document_type(self, metadata: dict) -> str:
+        structure_type = str(metadata.get("structure_type", "")).lower()
+        source = str(metadata.get("source", "")).lower()
+        if "case" in structure_type or "judgment" in source:
+            return "Case law"
+        if "regulation" in structure_type:
+            return "Regulation"
+        if "commentary" in structure_type or "textbook" in source or "ratanlal" in source:
+            return "Legal commentary"
+        return "Statute"
+
+    def _best_excerpt(self, document: str) -> str:
+        sentences = re.split(r"(?<=[.!?])\s+", document)
+        keywords = ("punish", "imprison", "fine", "theft", "section", "cognizable", "cognisable", "community service")
+        for sentence in sentences:
+            if "punishment for theft" in sentence.lower():
+                excerpt = sentence.strip()
+                words = excerpt.split()
+                if len(words) > 40:
+                    excerpt = " ".join(words[:40]).rstrip(",;:") + "..."
+                return excerpt.replace('"', "'")
+
+        ranked = sorted(
+            (sentence.strip() for sentence in sentences if sentence.strip()),
+            key=lambda sentence: sum(keyword in sentence.lower() for keyword in keywords),
+            reverse=True,
+        )
+        excerpt = ranked[0] if ranked else document[:220]
+        words = excerpt.split()
+        if len(words) > 40:
+            excerpt = " ".join(words[:40]).rstrip(",;:") + "..."
+        return excerpt.replace('"', "'")
+
+    def _framework_sentence(self, source: dict) -> str:
+        excerpt = source["excerpt"].rstrip(".")
+        return f"Section {source['section']} {source['act']} is the retrieved provision; the source states: \"{excerpt}.\""
+
+    def _table_section(self, sources: list[dict], act: str) -> str:
+        if not sources:
+            return "No direct source retrieved"
+        source = self._best_source(sources)
+        return f"Section {source['section']} {act} [§{source['number']}]"
+
+    def _table_punishment(self, sources: list[dict]) -> str:
+        source = self._first_matching_source(sources, ("punish", "imprison", "fine", "community service"))
+        if not source:
+            return "Not directly stated"
+        return f"{source['excerpt']} [§{source['number']}]"
+
+    def _table_aggravated(self, sources: list[dict]) -> str:
+        source = self._first_matching_source(sources, ("subsequent", "repeat", "aggravated", "second", "again"))
+        if not source:
+            return "Not directly stated"
+        return f"{source['excerpt']} [§{source['number']}]"
+
+    def _table_status(self, sources: list[dict]) -> str:
+        source = self._first_matching_source(sources, ("cognizable", "cognisable", "bailable", "non-cognizable"))
+        if not source:
+            return "Not directly stated"
+        return f"{source['excerpt']} [§{source['number']}]"
+
+    def _first_matching_source(self, sources: list[dict], keywords: tuple[str, ...]) -> dict | None:
+        for source in sources:
+            haystack = source["document"].lower()
+            if any(keyword in haystack for keyword in keywords):
+                return source
+        return sources[0] if sources else None
+
+    def _answer_confidence(self, sources: list[dict]) -> int:
+        weighted_total = 0.0
+        weight_sum = 0.0
+        for index, source in enumerate(sources[:5], start=1):
+            weight = 1.0 / index
+            weighted_total += source["similarity"] * weight
+            weight_sum += weight
+        return round((weighted_total / max(weight_sum, 1e-9)) * 100)
 
     def _extract_citations(self, results: list[dict]) -> list[LegalCitation]:
         """Extract structured citations from retrieval results."""
