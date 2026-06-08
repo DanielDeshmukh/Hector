@@ -42,6 +42,14 @@ class HectorRouter:
         "supreme court",
         "statute",
         "bare act",
+        "punishment",
+        "theft",
+        "murder",
+        "assault",
+        "liability",
+        "legal",
+        "statutory",
+        "provision",
     )
 
     # Civil law keywords for routing
@@ -139,7 +147,8 @@ class HectorRouter:
     )
 
     def __init__(self):
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY")) if Groq is not None else None
+        groq_api_key = os.getenv("GROQ_API_KEY")
+        self.client = Groq(api_key=groq_api_key) if Groq is not None and groq_api_key else None
         self.model = os.getenv("HECTOR_ROUTER_MODEL", "llama-3.3-70b-versatile")
         self.system_prompt = (
             "Classify the user query into exactly one route: "
@@ -167,7 +176,7 @@ class HectorRouter:
     def _fallback_intent(self, route="GENERAL", message=None, confidence=0.35):
         return {
             "route": route if route in self.VALID_ROUTES else "GENERAL",
-            "hector_response": message or "Acknowledged. Clarify the objective and I will route it precisely.",
+            "hector_response": message or "Query received. Please provide additional details for more precise routing.",
             "confidence": self._coerce_confidence(confidence),
         }
 
@@ -187,7 +196,7 @@ class HectorRouter:
 
         hector_response = str(payload.get("hector_response", "")).strip()
         if not hector_response:
-            hector_response = "Route locked. Proceeding with controlled execution."
+            hector_response = "Route confirmed. Proceeding with standard analytical execution."
 
         return {
             "route": route,
@@ -200,19 +209,19 @@ class HectorRouter:
         lowered = text.lower()
 
         if not text:
-            return self._fallback_intent(message="No query received. Waiting on a defined objective.", confidence=0.1)
+            return self._fallback_intent(message="System standby. Awaiting specific legal or procedural inquiry.", confidence=0.1)
 
         if any(keyword in lowered for keyword in self.DOCUMENT_KEYWORDS):
             return self._fallback_intent(
                 route="DOCUMENT_ANALYSIS",
-                message="Document workflow detected. Route locked for evidence or file analysis.",
+                message="Document analysis workflow activated. Preparing for evidentiary and file review.",
                 confidence=0.94,
             )
 
         if re.search(r"\b(ipc|bns|crpc|bnss)\b", lowered) or re.search(r"\bsection\s+\d+\b", lowered):
             return self._fallback_intent(
                 route="LEGAL_RESEARCH",
-                message="Legal research signal detected. I will ground this in the statute trail.",
+                message="Legal research sequence initiated. Grounding response in statutory provisions.",
                 confidence=0.97,
             )
 
@@ -220,34 +229,34 @@ class HectorRouter:
         if any(keyword in lowered for keyword in self.CIVIL_KEYWORDS):
             return self._fallback_intent(
                 route="LEGAL_RESEARCH",
-                message="Civil law research signal detected. Routing to civil procedure and statutes.",
+                message="Civil law research sequence initiated. Accessing relevant procedural and statutory frameworks.",
                 confidence=0.93,
             )
 
         if any(keyword in lowered for keyword in self.LEGAL_KEYWORDS):
             return self._fallback_intent(
                 route="LEGAL_RESEARCH",
-                message="This reads like a legal research query. Routing to the statute path.",
+                message="Legal research intent identified. Retrieving authoritative statutory context.",
                 confidence=0.88,
             )
 
         if any(keyword in lowered for keyword in self.STRATEGY_KEYWORDS):
             return self._fallback_intent(
                 route="STRATEGIC_ADVICE",
-                message="Strategic intent detected. I will frame the next move, not a citation dump.",
+                message="Strategic advisory mode active. Formulating procedural guidance and tactical considerations.",
                 confidence=0.91,
             )
 
         if len(text.split()) <= 4:
             return self._fallback_intent(
                 route="GENERAL",
-                message="The objective is still ambiguous. Give me one more detail and I will sharpen the route.",
+                message="Query details insufficient for specific routing. Please provide more context for a professional legal assessment.",
                 confidence=0.4,
             )
 
         return self._fallback_intent(
             route="GENERAL",
-            message="General execution path selected. Proceeding without legal or document routing.",
+            message="General research path selected. Proceeding with a broad assessment of the query.",
             confidence=0.7,
         )
 
