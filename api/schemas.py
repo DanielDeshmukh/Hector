@@ -137,3 +137,9 @@ class StatusResponse(BaseModel):
     router_model: str
     uptime_seconds: int
     cached: bool = False
+
+
+class ErrorResponse(BaseModel):
+    error: str
+    detail: str | None = None
+    status_code: int

@@ -1,6 +1,14 @@
 import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck } from "lucide-react";
 import PipelineStatus from "./PipelineStatus";
 
+function sanitizeHtml(html) {
+  return String(html || "")
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, "")
+    .replace(/on\w+="[^"]*"/gi, "")
+    .replace(/on\w+='[^']*'/gi, "");
+}
+
 function formatLocation(source) {
   const parts = [];
   if (source.page) parts.push(`Page ${source.page}`);
@@ -25,7 +33,7 @@ function renderFormattedText(text) {
         <li
           key={i}
           className="ml-4 list-disc py-0.5 text-[13.5px] leading-relaxed text-silver/90 marker:text-gold/40"
-          dangerouslySetInnerHTML={{ __html: processed.substring(2) }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(processed.substring(2)) }}
         />
       );
     }
@@ -38,7 +46,7 @@ function renderFormattedText(text) {
       <p
         key={i}
         className="text-[13.5px] leading-[1.75] text-silver/90"
-        dangerouslySetInnerHTML={{ __html: processed }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(processed) }}
       />
     );
   });

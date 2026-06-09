@@ -4,11 +4,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from .cache import TTLCache
 from .rate_limit import InMemoryRateLimiter, RateLimitExceeded
 from .schemas import (
     CompareRequest,
+    ErrorResponse,
     IngestRequest,
     RouteRequest,
     SearchRequest,
@@ -51,6 +53,41 @@ app.add_middleware(
     expose_headers=["*"],
     max_age=3600,
 )
+
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content=ErrorResponse(
+            error=str(exc.detail),
+            status_code=exc.status_code,
+        ).model_dump(),
+    )
+
+
+@app.exception_handler(ValueError)
+async def value_error_handler(request, exc):
+    return JSONResponse(
+        status_code=400,
+        content=ErrorResponse(
+            error="Invalid request",
+            detail=str(exc),
+            status_code=400,
+        ).model_dump(),
+    )
+
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=500,
+        content=ErrorResponse(
+            error="Internal server error",
+            detail=str(exc),
+            status_code=500,
+        ).model_dump(),
+    )
 
 
 def get_service() -> HectorApiService:
