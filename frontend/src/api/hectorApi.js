@@ -1,33 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const API_KEY = import.meta.env.VITE_API_KEY || "hector-dev-key";
 
-const completedPipeline = [
-  {
-    id: "stage-1",
-    name: "Intent Routing",
-    status: "completed",
-    detail: "Query routed by HECTOR backend.",
-  },
-  {
-    id: "stage-2",
-    name: "Hybrid Retrieval",
-    status: "completed",
-    detail: "Semantic and keyword retrieval completed.",
-  },
-  {
-    id: "stage-3",
-    name: "Hierarchical Context",
-    status: "completed",
-    detail: "Retrieved legal context prepared for display.",
-  },
-  {
-    id: "stage-4",
-    name: "Citation Grounding",
-    status: "completed",
-    detail: "Response returned with source material.",
-  },
-];
-
 function getCitationValue(citation, key, fallback = "") {
   return citation?.[key] ?? citation?.[key.toLowerCase()] ?? fallback;
 }
@@ -104,6 +77,44 @@ function confidenceFromPayload(payload) {
   return confidenceFromItems(payload.items);
 }
 
+function buildPipelineFromPayload(payload) {
+  const stages = [
+    {
+      id: "stage-1",
+      name: "Intent Routing",
+      status: payload.route ? "completed" : "pending",
+      detail: payload.route
+        ? `Routed as: ${payload.route.replace(/_/g, " ")}`
+        : "Awaiting routing...",
+    },
+    {
+      id: "stage-2",
+      name: "Hybrid Retrieval",
+      status: (payload.items?.length > 0) ? "completed" : "pending",
+      detail: payload.items?.length
+        ? `${payload.items.length} results retrieved`
+        : "Awaiting retrieval...",
+    },
+    {
+      id: "stage-3",
+      name: "Hierarchical Context",
+      status: (payload.answer_sections?.length > 0 || payload.source_sections?.length > 0) ? "completed" : "pending",
+      detail: payload.source_sections?.length
+        ? `${payload.source_sections.length} source sections resolved`
+        : "Awaiting context...",
+    },
+    {
+      id: "stage-4",
+      name: "Citation Grounding",
+      status: payload.verification_enabled ? "completed" : "pending",
+      detail: payload.verification_enabled
+        ? "Citations verified"
+        : "Awaiting verification...",
+    },
+  ];
+  return stages;
+}
+
 function toUiResponse(payload) {
   const sources = (payload.items || []).map(toSourceReference);
 
@@ -119,19 +130,23 @@ function toUiResponse(payload) {
     sourceSections: payload.source_sections || [],
     citations: payload.citations || [],
     sources,
-    pipeline: completedPipeline,
+    pipeline: buildPipelineFromPayload(payload),
     timestamp: payload.retrieved_at || new Date().toISOString(),
     raw: payload,
+  };
+}
+
+function authHeaders() {
+  return {
+    "Content-Type": "application/json",
+    "X-API-Key": API_KEY,
   };
 }
 
 export async function searchHector(query) {
   const response = await fetch(`${API_URL}/search`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-API-Key": API_KEY,
-    },
+    headers: authHeaders(),
     body: JSON.stringify({
       query,
       page: 1,
@@ -148,4 +163,97 @@ export async function searchHector(query) {
   }
 
   return toUiResponse(await response.json());
+}
+
+export async function compareHector(section, act = "IPC") {
+  const response = await fetch(`${API_URL}/compare`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ section, act, page_size: 3 }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `HECTOR compare failed with status ${response.status}`);
+  }
+
+  const data = await response.json();
+  return {
+    requestedAct: data.requested_act,
+    requestedSection: data.requested_section,
+    counterpartAct: data.counterpart_act,
+    counterpartSection: data.counterpart_section,
+    note: data.note,
+    requestedResults: (data.requested_results || []).map(toSourceReference),
+    counterpartResults: (data.counterpart_results || []).map(toSourceReference),
+    comparedAt: data.compared_at,
+  };
+}
+
+export async function routeHector(query) {
+  const response = await fetch(`${API_URL}/route`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ query }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `HECTOR route failed with status ${response.status}`);
+  }
+
+  const data = await response.json();
+  return {
+    route: data.route,
+    confidence: data.confidence,
+    response: data.hector_response,
+    normalizedQuery: data.normalized_query,
+    mappings: data.mappings,
+  };
+}
+
+export async function getStatusHector() {
+  const response = await fetch(`${API_URL}/status`, {
+    method: "GET",
+    headers: authHeaders(),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HECTOR status failed with status ${response.status}`);
+  }
+
+  return await response.json();
+}
+
+export function createSearchWebSocket(query, onEvent, onError) {
+  const wsUrl = API_URL.replace(/^http/, "ws") + `/ws/search?api_key=${API_KEY}`;
+  const ws = new WebSocket(wsUrl);
+
+  ws.onopen = () => {
+    ws.send(JSON.stringify({
+      query,
+      page: 1,
+      page_size: 5,
+      verify: true,
+      format: "summary",
+      include_related: true,
+    }));
+  };
+
+  ws.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      onEvent(data);
+    } catch (e) {
+      console.error("WebSocket parse error:", e);
+    }
+  };
+
+  ws.onerror = (error) => {
+    if (onError) onError(error);
+  };
+
+  ws.onclose = () => {};
+
+  return ws;
 }

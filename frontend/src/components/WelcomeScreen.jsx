@@ -34,7 +34,9 @@ export default function WelcomeScreen() {
         <h1 className="font-serif text-3xl font-semibold tracking-wide text-gold-light">
           HECTOR
         </h1>
-        
+        <p className="mt-2 max-w-md text-[13px] leading-relaxed text-silver/50">
+          Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval
+        </p>
       </div>
 
       {/* Feature Grid */}

@@ -17,10 +17,12 @@ from rich.panel import Panel
 from rich.text import Text
 
 load_dotenv()
-BOOKS_DIR = r"D:\Vs Code\VS code\Hector\data\Books"
-DB_PATH = "./hector_db"
-POPPLER_PATH = r"C:\poppler\poppler-25.12.0\Library\bin"
-TESSERACT_CMD = r"C:\Users\Daniel\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BOOKS_DIR = os.getenv("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books"))
+DB_PATH = os.getenv("HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "hector_db"))
+POPPLER_PATH = os.getenv("HECTOR_POPPLER_PATH", "")
+TESSERACT_CMD = os.getenv("HECTOR_TESSERACT_CMD", "tesseract")
 
 CHUNK_SIZE_TOKENS = 800
 CHUNK_OVERLAP_TOKENS = 150
@@ -30,6 +32,7 @@ INTER_BOOK_COOLDOWN_MINUTES = 10
 PDF_RENDER_DPI = 300
 
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
+POPPLER_PATH = POPPLER_PATH or None
 
 console = Console()
 

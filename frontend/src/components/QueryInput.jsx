@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { Send, Paperclip, CornerDownLeft } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Send, Paperclip, CornerDownLeft, Mic, MicOff } from "lucide-react";
 
 export default function QueryInput({
   onSubmit,
@@ -8,7 +8,39 @@ export default function QueryInput({
   suggestions = [],
 }) {
   const [query, setQuery] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
   const textareaRef = useRef(null);
+  const recognitionRef = useRef(null);
+
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      setSpeechSupported(true);
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.lang = "en-IN";
+
+      recognition.onresult = (event) => {
+        const transcript = Array.from(event.results)
+          .map((result) => result[0].transcript)
+          .join("");
+        setQuery(transcript);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognition.onerror = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+    }
+  }, []);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -30,6 +62,19 @@ export default function QueryInput({
       handleSubmit();
     }
   };
+
+  const toggleVoice = useCallback(() => {
+    if (!recognitionRef.current) return;
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      setQuery("");
+      recognitionRef.current.start();
+      setIsListening(true);
+    }
+  }, [isListening]);
 
   return (
     <div className="w-full">
@@ -67,6 +112,20 @@ export default function QueryInput({
             <button className="flex h-8 w-8 items-center justify-center rounded-lg text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver">
               <Paperclip size={15} />
             </button>
+            {speechSupported && (
+              <button
+                onClick={toggleVoice}
+                disabled={isLoading}
+                className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
+                  isListening
+                    ? "bg-error/15 text-error animate-pulse"
+                    : "text-silver/40 hover:bg-slate-custom/30 hover:text-silver"
+                } disabled:opacity-30`}
+                title={isListening ? "Stop listening" : "Start voice input"}
+              >
+                {isListening ? <MicOff size={15} /> : <Mic size={15} />}
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-3">

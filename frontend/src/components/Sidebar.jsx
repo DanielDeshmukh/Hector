@@ -8,6 +8,8 @@ import {
   BookOpen,
   Gavel,
   FileText,
+  Bookmark,
+  BookmarkX,
 } from "lucide-react";
 
 export default function Sidebar({
@@ -16,8 +18,12 @@ export default function Sidebar({
   onNewQuery,
   onSelectHistory,
   history,
+  bookmarks = [],
+  onRemoveBookmark,
+  systemStatus,
 }) {
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [activeTab, setActiveTab] = useState("history");
 
   const domainIcon = (domain) => {
     switch (domain) {
@@ -76,53 +82,116 @@ export default function Sidebar({
         </button>
       </div>
 
-      {/* History */}
+      {/* History & Bookmarks */}
       {!collapsed && (
         <div className="flex-1 overflow-y-auto px-2.5 pt-4">
-          <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/60">
-            Recent Queries
-          </p>
-          <div className="space-y-0.5">
-            {history.length === 0 && (
-              <div className="rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-3 text-[12px] leading-relaxed text-silver/35">
-                Your live HECTOR searches will appear here.
-              </div>
-            )}
-            {history.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onSelectHistory(item.query)}
-                onMouseEnter={() => setHoveredItem(item.id)}
-                onMouseLeave={() => setHoveredItem(null)}
-                className={`group flex w-full items-start gap-2.5 rounded-lg px-2.5 py-2.5 text-left transition-all ${
-                  hoveredItem === item.id
-                    ? "bg-slate-custom/40 text-gold-light"
-                    : "text-silver hover:bg-slate-custom/20 hover:text-silver"
-                }`}
-              >
-                <span className="mt-0.5 shrink-0 text-silver/50 group-hover:text-gold/60">
-                  {domainIcon(item.domain)}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-[13px] leading-snug">
-                    {item.query}
-                  </p>
-                  <div className="mt-1 flex items-center gap-2 text-[10px] text-silver/40">
-                    <Clock size={10} />
-                    <span>
-                      {new Date(item.timestamp).toLocaleDateString("en-IN", {
-                        day: "numeric",
-                        month: "short",
-                      })}
-                    </span>
-                    <span className="rounded bg-slate-custom/50 px-1.5 py-0.5 text-[9px] uppercase tracking-wider">
-                      {item.domain}
-                    </span>
+          <div className="mb-2 flex items-center gap-1 px-2">
+            <button
+              onClick={() => setActiveTab("history")}
+              className={`flex items-center gap-1 rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] transition-colors ${
+                activeTab === "history"
+                  ? "text-gold bg-gold/10"
+                  : "text-silver/60 hover:text-silver"
+              }`}
+            >
+              <Clock size={10} />
+              History
+            </button>
+            <button
+              onClick={() => setActiveTab("bookmarks")}
+              className={`flex items-center gap-1 rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] transition-colors ${
+                activeTab === "bookmarks"
+                  ? "text-gold bg-gold/10"
+                  : "text-silver/60 hover:text-silver"
+              }`}
+            >
+              <Bookmark size={10} />
+              Saved ({bookmarks.length})
+            </button>
+          </div>
+
+          {activeTab === "history" && (
+            <div className="space-y-0.5">
+              {history.length === 0 && (
+                <div className="rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-3 text-[12px] leading-relaxed text-silver/35">
+                  Your live HECTOR searches will appear here.
+                </div>
+              )}
+              {history.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => onSelectHistory(item.query)}
+                  onMouseEnter={() => setHoveredItem(item.id)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                  className={`group flex w-full items-start gap-2.5 rounded-lg px-2.5 py-2.5 text-left transition-all ${
+                    hoveredItem === item.id
+                      ? "bg-slate-custom/40 text-gold-light"
+                      : "text-silver hover:bg-slate-custom/20 hover:text-silver"
+                  }`}
+                >
+                  <span className="mt-0.5 shrink-0 text-silver/50 group-hover:text-gold/60">
+                    {domainIcon(item.domain)}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-[13px] leading-snug">
+                      {item.query}
+                    </p>
+                    <div className="mt-1 flex items-center gap-2 text-[10px] text-silver/40">
+                      <Clock size={10} />
+                      <span>
+                        {new Date(item.timestamp).toLocaleDateString("en-IN", {
+                          day: "numeric",
+                          month: "short",
+                        })}
+                      </span>
+                      <span className="rounded bg-slate-custom/50 px-1.5 py-0.5 text-[9px] uppercase tracking-wider">
+                        {item.domain}
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {activeTab === "bookmarks" && (
+            <div className="space-y-0.5">
+              {bookmarks.length === 0 && (
+                <div className="rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-3 text-[12px] leading-relaxed text-silver/35">
+                  Bookmark sources from search results to save them here.
+                </div>
+              )}
+              {bookmarks.map((item) => (
+                <div
+                  key={item.id}
+                  className="group rounded-lg px-2.5 py-2.5 text-left transition-all"
+                >
+                  <div className="flex items-start justify-between gap-1">
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-[12px] font-medium text-silver/80">
+                        {item.bookTitle}
+                      </p>
+                      <p className="mt-0.5 text-[11px] text-silver/40">
+                        {item.act} &mdash; {item.section}
+                      </p>
+                      <p className="mt-0.5 truncate text-[11px] text-silver/30">
+                        {item.query}
+                      </p>
+                    </div>
+                    {onRemoveBookmark && (
+                      <button
+                        onClick={() => onRemoveBookmark(item.id)}
+                        className="shrink-0 rounded p-1 text-silver/20 opacity-0 transition-all group-hover:opacity-100 hover:text-error"
+                        title="Remove bookmark"
+                      >
+                        <BookmarkX size={12} />
+                      </button>
+                    )}
                   </div>
                 </div>
-              </button>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -130,10 +199,10 @@ export default function Sidebar({
       {!collapsed && (
         <div className="border-t border-slate-custom/40 px-4 py-3">
           <div className="flex items-center justify-between text-[10px] text-silver/40">
-            <span>20+ Legal Texts Indexed</span>
+            <span>{systemStatus?.document_count ?? "—"} documents indexed</span>
             <span className="flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-success"></span>
-              Online
+              <span className={`h-1.5 w-1.5 rounded-full ${systemStatus?.status === "ok" ? "bg-success" : "bg-warning"}`}></span>
+              {systemStatus?.status === "ok" ? "Online" : "Checking..."}
             </span>
           </div>
         </div>

@@ -280,12 +280,38 @@ class HallucinationDetector:
         """Detect laws referenced after their effective date."""
         inconsistencies = []
 
-        # BNS effective date: July 1, 2024 - current law, no action needed
+        response_lower = response.lower()
 
-        # Check for post-effective-date references to repealed laws
-        if "w.e.f" in response.lower() or "effective from" in response.lower():
-            # Would need legal date database to fully implement
-            pass
+        # Check for IPC references (repealed July 1, 2024) alongside BNS references
+        has_ipc = bool(re.search(r"\bipc\b", response_lower))
+        has_bns = bool(re.search(r"\bbns\b", response_lower))
+
+        if has_ipc and has_bns:
+            # Check if the response treats IPC as current law
+            ipc_current_patterns = [
+                r"ipc\s+(?:provides|states|specifies|says|defines)",
+                r"under\s+ipc\s+section",
+                r"as\s+per\s+ipc",
+            ]
+            for pattern in ipc_current_patterns:
+                if re.search(pattern, response_lower):
+                    inconsistencies.append({
+                        "type": "ipc_treated_as_current",
+                        "detail": "Response references IPC as current law, but BNS is effective from July 1, 2024",
+                        "pattern": pattern,
+                    })
+                    break
+
+        # Check for references to specific repealed sections
+        repealed_sections = re.findall(r"section\s+(\d+)\s+ipc", response_lower)
+        for section in repealed_sections:
+            section_num = int(section)
+            # IPC sections 1-511, but many were restructured into BNS
+            if section_num > 511:
+                inconsistencies.append({
+                    "type": "invalid_ipc_section",
+                    "detail": f"Section {section} IPC does not exist (IPC has 511 sections)",
+                })
 
         return inconsistencies
 

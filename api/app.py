@@ -36,12 +36,20 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# CORS middleware must be added FIRST to handle preflight requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=3600,
 )
 
 
@@ -87,7 +95,10 @@ def status_endpoint(
 
 
 @app.post("/auth/token", response_model=TokenResponse)
-def issue_token(x_api_key: str = Query(..., alias="api_key")):
+def issue_token(
+    x_api_key: str = Query(..., alias="api_key"),
+    _: dict = Depends(enforce_rate_limit),
+):
     if not auth_manager.verify_api_key(x_api_key):
         raise HTTPException(status_code=401, detail="Invalid API key.")
     return TokenResponse(
@@ -183,7 +194,12 @@ async def search_websocket(websocket: WebSocket):
     try:
         while True:
             raw_payload = await websocket.receive_text()
-            request = SearchRequest.model_validate(json.loads(raw_payload))
+            try:
+                data = json.loads(raw_payload)
+                request = SearchRequest.model_validate(data)
+            except (json.JSONDecodeError, ValueError):
+                await websocket.send_json({"error": "Invalid request format"})
+                continue
             for event in resolve_service().search_stream_events(request):
                 await websocket.send_json(event)
     except WebSocketDisconnect:

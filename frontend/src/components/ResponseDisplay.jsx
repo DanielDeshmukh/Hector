@@ -1,4 +1,4 @@
-import { BookOpen, ExternalLink, Tag, BarChart3 } from "lucide-react";
+import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck } from "lucide-react";
 import PipelineStatus from "./PipelineStatus";
 
 function formatLocation(source) {
@@ -159,7 +159,10 @@ export default function ResponseDisplay({
   response,
   onSourceClick,
   activeSourceId,
+  bookmarks = [],
+  onToggleBookmark,
 }) {
+  const isBookmarked = (sourceId) => bookmarks.some((b) => b.id === sourceId);
   return (
     <div className="space-y-5 animate-fade-in">
       <PipelineStatus stages={response.pipeline} />
@@ -233,14 +236,36 @@ export default function ResponseDisplay({
                       {source.author}
                     </p>
                   </div>
-                  <ExternalLink
-                    size={13}
-                    className={`mt-0.5 shrink-0 ${
-                      activeSourceId === source.id
-                        ? "text-gold/60"
-                        : "text-silver/20 group-hover:text-silver/40"
-                    }`}
-                  />
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {onToggleBookmark && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onToggleBookmark(source);
+                        }}
+                        className={`rounded p-1 transition-colors ${
+                          isBookmarked(source.id)
+                            ? "text-gold bg-gold/10"
+                            : "text-silver/20 hover:text-gold/60"
+                        }`}
+                        title={isBookmarked(source.id) ? "Remove bookmark" : "Bookmark this source"}
+                      >
+                        {isBookmarked(source.id) ? (
+                          <BookmarkCheck size={13} />
+                        ) : (
+                          <Bookmark size={13} />
+                        )}
+                      </button>
+                    )}
+                    <ExternalLink
+                      size={13}
+                      className={`mt-0.5 shrink-0 ${
+                        activeSourceId === source.id
+                          ? "text-gold/60"
+                          : "text-silver/20 group-hover:text-silver/40"
+                      }`}
+                    />
+                  </div>
                 </div>
 
                 <p className="mt-1.5 line-clamp-2 text-[11.5px] leading-relaxed text-silver/50">

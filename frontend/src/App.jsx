@@ -5,10 +5,14 @@ import ResponseDisplay from "./components/ResponseDisplay";
 import DocumentPanel from "./components/DocumentPanel";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ProcessingIndicator from "./components/ProcessingIndicator";
-import { searchHector } from "./api/hectorApi";
+import ComparisonView from "./components/ComparisonView";
+import { searchHector, compareHector, getStatusHector } from "./api/hectorApi";
+import { useLanguage } from "./i18n/LanguageContext";
 
 const HISTORY_STORAGE_KEY = "hector.searchHistory";
+const BOOKMARKS_STORAGE_KEY = "hector.bookmarks";
 const MAX_HISTORY_ITEMS = 8;
+const MAX_BOOKMARK_ITEMS = 20;
 const TOP_SEARCH_QUERIES = [
   "What is the BNS equivalent of IPC Section 302?",
   "Compare the punishment for theft under IPC and BNS",
@@ -19,6 +23,14 @@ const TOP_SEARCH_QUERIES = [
 function loadSearchHistory() {
   try {
     return JSON.parse(window.localStorage.getItem(HISTORY_STORAGE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function loadBookmarks() {
+  try {
+    return JSON.parse(window.localStorage.getItem(BOOKMARKS_STORAGE_KEY) || "[]");
   } catch {
     return [];
   }
@@ -44,6 +56,7 @@ function buildQuerySuggestions(history, response) {
 }
 
 export default function App() {
+  const { lang, toggleLang, t } = useLanguage();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [appState, setAppState] = useState("idle");
   const [currentResponse, setCurrentResponse] = useState(null);
@@ -53,6 +66,12 @@ export default function App() {
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [error, setError] = useState("");
   const [searchHistory, setSearchHistory] = useState(loadSearchHistory);
+  const [bookmarks, setBookmarks] = useState(loadBookmarks);
+  const [systemStatus, setSystemStatus] = useState(null);
+  const [compareMode, setCompareMode] = useState(false);
+  const [compareData, setCompareData] = useState(null);
+  const [compareLoading, setCompareLoading] = useState(false);
+  const [compareError, setCompareError] = useState("");
   const responseRef = useRef(null);
   const querySuggestions = buildQuerySuggestions(searchHistory, currentResponse);
 
@@ -119,6 +138,38 @@ export default function App() {
     window.localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(searchHistory));
   }, [searchHistory]);
 
+  useEffect(() => {
+    window.localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify(bookmarks));
+  }, [bookmarks]);
+
+  const handleToggleBookmark = useCallback(
+    (source) => {
+      setBookmarks((prev) => {
+        const exists = prev.find((b) => b.id === source.id);
+        if (exists) {
+          return prev.filter((b) => b.id !== source.id);
+        }
+        const bookmark = {
+          id: source.id,
+          query: submittedQuery,
+          bookTitle: source.bookTitle,
+          section: source.section,
+          act: source.act,
+          matchedText: source.matchedText,
+          page: source.page,
+          relevanceScore: source.relevanceScore,
+          timestamp: new Date().toISOString(),
+        };
+        return [bookmark, ...prev].slice(0, MAX_BOOKMARK_ITEMS);
+      });
+    },
+    [submittedQuery]
+  );
+
+  const handleRemoveBookmark = useCallback((bookmarkId) => {
+    setBookmarks((prev) => prev.filter((b) => b.id !== bookmarkId));
+  }, []);
+
   const handleSourceClick = useCallback(
     (sourceId) => {
       if (activeSourceId === sourceId) {
@@ -140,6 +191,33 @@ export default function App() {
     [handleSubmit]
   );
 
+  const handleCompare = useCallback(async (section, act) => {
+    setCompareLoading(true);
+    setCompareError("");
+    setCompareData(null);
+    try {
+      const data = await compareHector(section, act);
+      setCompareData(data);
+    } catch (err) {
+      setCompareError(err instanceof Error ? err.message : "Comparison failed.");
+    } finally {
+      setCompareLoading(false);
+    }
+  }, []);
+
+  const handleToggleCompare = useCallback(() => {
+    setCompareMode((prev) => !prev);
+    setCompareData(null);
+    setCompareError("");
+  }, []);
+
+  // Fetch system status on mount
+  useEffect(() => {
+    getStatusHector()
+      .then(setSystemStatus)
+      .catch(() => setSystemStatus(null));
+  }, []);
+
   // Auto-scroll response into view
   useEffect(() => {
     if (appState === "responded" && responseRef.current) {
@@ -156,6 +234,9 @@ export default function App() {
         onNewQuery={handleNewQuery}
         onSelectHistory={handleSelectHistory}
         history={searchHistory}
+        bookmarks={bookmarks}
+        onRemoveBookmark={handleRemoveBookmark}
+        systemStatus={systemStatus}
       />
 
       {/* Main Area */}
@@ -192,6 +273,24 @@ export default function App() {
               )}
             </div>
             <div className="flex items-center gap-2 text-[10px] text-silver/25">
+              <button
+                onClick={toggleLang}
+                className="rounded-md px-2 py-1 transition-colors hover:bg-slate-custom/30 hover:text-silver font-medium"
+              >
+                {lang === "en" ? "\u0939\u093f\u0928\u094d\u0926\u0940" : "English"}
+              </button>
+              <span className="text-slate-custom">|</span>
+              <button
+                onClick={handleToggleCompare}
+                className={`rounded-md px-2 py-1 transition-colors ${
+                  compareMode
+                    ? "bg-gold/15 text-gold border border-gold/30"
+                    : "hover:bg-slate-custom/30 hover:text-silver"
+                }`}
+              >
+                {compareMode ? t("header.compareMode") : t("header.searchMode")}
+              </button>
+              <span className="text-slate-custom">|</span>
               <span>CoVe Architecture</span>
               <span className="text-slate-custom">-</span>
               <span>Hard-RAG Pipeline</span>
@@ -202,7 +301,7 @@ export default function App() {
           <div className="flex-1 overflow-y-auto">
             <div className="mx-auto max-w-3xl px-6 py-6">
               {/* Idle State */}
-              {appState === "idle" && (
+              {appState === "idle" && !compareMode && (
                 <>
                   {error && (
                     <div className="mb-4 rounded-lg border border-error/25 bg-error/10 px-4 py-3 text-[13px] leading-relaxed text-red-200">
@@ -211,6 +310,16 @@ export default function App() {
                   )}
                   <WelcomeScreen />
                 </>
+              )}
+
+              {/* Compare Mode */}
+              {appState === "idle" && compareMode && (
+                <ComparisonView
+                  onCompare={handleCompare}
+                  compareData={compareData}
+                  compareLoading={compareLoading}
+                  compareError={compareError}
+                />
               )}
 
               {/* Processing State */}
@@ -255,6 +364,8 @@ export default function App() {
                       response={currentResponse}
                       onSourceClick={handleSourceClick}
                       activeSourceId={activeSourceId}
+                      bookmarks={bookmarks}
+                      onToggleBookmark={handleToggleBookmark}
                     />
                   </div>
                 </div>

@@ -232,7 +232,8 @@ class UserManager:
                 email=email,
                 role=role,
                 created_at=time.time(),
-                workspace_id=workspace_id
+                workspace_id=workspace_id,
+                metadata={"password_hash": hashlib.sha256(password.encode()).hexdigest()}
             )
             self._users[user.user_id] = user
             self._save_users()
@@ -240,12 +241,14 @@ class UserManager:
             return user
 
     def authenticate(self, username: str, password: str) -> User | None:
-        """Authenticate a user."""
-        # Note: In production, use proper password hashing (bcrypt/argon2)
+        """Authenticate a user with password verification."""
         password_hash = hashlib.sha256(password.encode()).hexdigest()
 
         for user in self._users.values():
             if user.username == username and user.is_active:
+                stored_hash = user.metadata.get("password_hash", "")
+                if stored_hash and stored_hash != password_hash:
+                    return None
                 user.last_login = time.time()
                 self._save_users()
                 return user
