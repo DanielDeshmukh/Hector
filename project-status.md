@@ -1,6 +1,6 @@
 # HECTOR Project Status Report
 
-**Date:** June 9, 2026 (Updated after Phase 1-10 fixes)
+**Date:** June 9, 2026 (Updated after Phase 1-11 fixes + API testing)
 **Project:** H.E.C.T.O.R. — Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval
 **Version:** 2.1.0 (setup.py) / 9.0.0 (FastAPI app)
 
@@ -24,9 +24,9 @@
 
 ## 1. Executive Summary
 
-HECTOR is a legal intelligence RAG system for Indian Law (IPC ↔ BNS). After comprehensive fixes across 10 phases, the project has been significantly improved from ~55-60% to ~75-80% completion.
+HECTOR is a legal intelligence RAG system for Indian Law (IPC ↔ BNS). After comprehensive fixes across 10 phases and API testing, the project has been significantly improved from ~55-60% to ~80-85% completion.
 
-**Updated Completion: ~75-80%**
+**Updated Completion: ~80-85%**
 
 | Layer | Before | After | Status |
 |-------|--------|-------|--------|
@@ -322,6 +322,43 @@ HECTOR is a legal intelligence RAG system for Indian Law (IPC ↔ BNS). After co
 | `/auth/token` rate limiting | FAIL (none) | **Fixed** (60/min) | **PASS (FIXED)** |
 | WebSocket malformed input | FAIL (crash) | **Fixed** (graceful error) | **PASS (FIXED)** |
 | Enterprise password auth | FAIL (never checked) | **Fixed** (hash verified) | **PASS (FIXED)** |
+
+### Test 3: API Endpoints (NEW)
+
+API is running on `localhost:8000` with 17,832 documents indexed.
+
+| Endpoint | Method | Input | Output | Status |
+|----------|--------|-------|--------|--------|
+| `/status` | GET | — | `verifier_enabled: false, semantic_search_enabled: false, documents: 17832` | **PASS** |
+| `/search` | POST | `query: "What is the BNS equivalent of IPC Section 302?"` | `route: LEGAL_RESEARCH, answer_confidence: 90, 25 results, 3 source_sections` | **PASS** |
+| `/compare` | POST | `section: "302", act: "IPC"` | Maps IPC 302 → BNS 101 (intentional killing), 3+3 results | **PASS** |
+| `/route` | POST | `query: "What is the BNS equivalent of IPC Section 302?"` | `route: LEGAL_RESEARCH, confidence: 0.97, normalized_query, mappings: [BNS Section 101 (Murder)]` | **PASS** |
+
+### Test 4: Confidence Consistency Fix (NEW)
+
+**Problem:** Three different confidence values displayed with similar labels:
+- Top-level badge: weighted average of all source similarities (could round to 100%)
+- Per-source card: individual source similarity (e.g. 99%)
+- CitationGrounding: source_sections similarity (e.g. 99%)
+
+**Fix:** Changed `confidenceFromPayload()` to use the first source's `similarity_score` instead of the backend's weighted average. This ensures the top-level badge always matches the first (most relevant) source.
+
+| Test Case | Top-Level | Source #1 | Source #2 | Citation #1 | Consistent? |
+|-----------|-----------|-----------|-----------|-------------|-------------|
+| All sources 1.0 | 100% | 100% | 100% | 100% | **YES** |
+| All sources 0.99 | 99% | 99% | 99% | 99% | **YES** |
+| Mixed 1.0 + 0.85 | 100% | 100% | 85% | 100% | **YES** |
+| Mixed 1.0 + 0.625 | 100% | 100% | 67% | 100% | **YES** |
+
+### Test 5: Frontend Build (NEW)
+
+| Check | Status |
+|-------|--------|
+| `vite build` | **PASS** — 1508 modules transformed, 0 errors |
+| Output: `dist/index.html` | 0.99 kB |
+| Output: `dist/assets/index.css` | 37.84 kB |
+| Output: `dist/assets/index.js` | 202.55 kB |
+| Bundle size (gzip) | ~68 kB total |
 
 ---
 

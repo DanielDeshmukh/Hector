@@ -72,9 +72,10 @@ function confidenceFromItems(items) {
 }
 
 function confidenceFromPayload(payload) {
-  const answerConfidence = Number(payload.answer_confidence ?? 0);
-  if (answerConfidence > 0) return Math.round(answerConfidence * 10) / 10;
-  return confidenceFromItems(payload.items);
+  const items = payload.items || [];
+  if (!items.length) return 0;
+  const firstScore = Number(items[0].similarity_score ?? items[0].score ?? 0);
+  return Math.round((firstScore > 1 ? firstScore : firstScore * 100) * 10) / 10;
 }
 
 function buildPipelineFromPayload(payload) {

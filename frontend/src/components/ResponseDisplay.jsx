@@ -113,7 +113,7 @@ function CitationGrounding({ sources, onSourceClick, activeSourceId }) {
                 Section {source.section} {source.act}
               </span>
               <span>-</span>
-              <span>{Math.round(Number(source.similarity || 0) * 100)}% confidence</span>
+              <span>{Math.round(Number(source.similarity || 0) * 100)}% relevance</span>
             </div>
             <p className="mt-1 text-[12px] leading-relaxed text-silver/70">
               "{source.excerpt}"
