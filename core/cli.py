@@ -11,6 +11,7 @@ import threading
 import time
 from pathlib import Path
 from typing import Optional
+import logging
 
 try:
     import typer
@@ -96,7 +97,7 @@ def get_indexed_documents_count() -> int:
             try:
                 total_count += coll.count()
             except Exception:
-                pass
+                logging.debug("Failed to get collection count for %s", coll)
 
         return total_count
     except Exception as e:
@@ -146,7 +147,7 @@ def get_indexed_books() -> list[str]:
                         if meta and meta.get('source'):
                             indexed.add(meta['source'])
             except Exception:
-                pass
+                logging.debug("Failed to get source metadata from collection %s", coll)
 
         return list(indexed)
     except Exception:
@@ -203,7 +204,7 @@ def init(
                     print_success(f"API Server running on http://localhost:{port}")
                     break
             except Exception:
-                pass
+                logging.debug("API server not ready yet (attempt %d/%d)", i + 1, max_retries)
             time.sleep(1)
             if i == max_retries - 1:
                 print_warning("API server might not be ready yet")
@@ -240,7 +241,7 @@ def init(
                             print_success(f"Frontend running on http://localhost:{frontend_port}")
                             break
                     except Exception:
-                        pass
+                        logging.debug("Frontend server not ready yet (attempt %d/30)", i + 1)
                     time.sleep(1)
                     if i == 29:
                         print_warning("Frontend server might not be ready yet")
@@ -490,6 +491,137 @@ def status():
 
 
 @app.command()
+def search(
+    query: str = typer.Argument(..., help="Legal query to search"),
+    page: int = typer.Option(1, "--page", "-p", help="Page number"),
+    page_size: int = typer.Option(5, "--size", "-s", help="Results per page"),
+    format: str = typer.Option("summary", "--format", "-f", help="Output format: summary, detailed, citations"),
+    verify: bool = typer.Option(True, "--verify/--no-verify", help="Run verification"),
+):
+    """Search the legal corpus for a query."""
+    import httpx
+
+    api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
+    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+
+    try:
+        with httpx.Client(timeout=30) as client:
+            resp = client.post(
+                f"{api_url}/search",
+                headers={"X-API-Key": api_key, "Content-Type": "application/json"},
+                json={"query": query, "page": page, "page_size": page_size, "verify": verify, "format": format, "include_related": True},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+        if console:
+            console.print(Panel.fit(f"[bold cyan]Search Results[/bold cyan]\nQuery: {query}\nRoute: {data.get('route', 'N/A')}\nConfidence: {data.get('answer_confidence', 0)}%", border_style="cyan"))
+            table = Table(title="Results")
+            table.add_column("#", style="dim")
+            table.add_column("Act", style="bold")
+            table.add_column("Snippet")
+            table.add_column("Score", style="green")
+            for i, item in enumerate(data.get("items", []), 1):
+                table.add_row(str(i), item.get("act", "?"), (item.get("snippet", "")[:80] + "...") if len(item.get("snippet", "")) > 80 else item.get("snippet", ""), f"{item.get('similarity_score', 0):.2f}")
+            console.print(table)
+        else:
+            print(f"Query: {query}")
+            print(f"Route: {data.get('route', 'N/A')}")
+            print(f"Confidence: {data.get('answer_confidence', 0)}%")
+            for i, item in enumerate(data.get("items", []), 1):
+                print(f"  {i}. [{item.get('act', '?')}] {item.get('snippet', '')[:100]}... (score: {item.get('similarity_score', 0):.2f})")
+    except httpx.HTTPError as e:
+        print_error("API request failed", str(e))
+        raise typer.Exit(1)
+
+
+@app.command()
+def compare(
+    section: str = typer.Argument(..., help="Section number to compare"),
+    act: str = typer.Option("IPC", "--act", "-a", help="Act: IPC or BNS"),
+    page_size: int = typer.Option(3, "--size", "-s", help="Results per side"),
+):
+    """Compare a section between IPC and BNS."""
+    import httpx
+
+    api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
+    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+
+    try:
+        with httpx.Client(timeout=30) as client:
+            resp = client.post(
+                f"{api_url}/compare",
+                headers={"X-API-Key": api_key, "Content-Type": "application/json"},
+                json={"section": section, "act": act, "page_size": page_size},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+        counterpart_act = "BNS" if act.upper() == "IPC" else "IPC"
+        if console:
+            console.print(Panel.fit(f"[bold cyan]IPC ↔ BNS Comparison[/bold cyan]\nRequested: {act} Section {data.get('requested_section', section)}\nCounterpart: {counterpart_act} Section {data.get('counterpart_section', '?')}\nNote: {data.get('note', 'N/A')}", border_style="cyan"))
+            for label, items in [("Requested", data.get("requested_results", [])), ("Counterpart", data.get("counterpart_results", []))]:
+                table = Table(title=f"{label} ({act if label == 'Requested' else counterpart_act})")
+                table.add_column("#", style="dim")
+                table.add_column("Score", style="green")
+                table.add_column("Snippet")
+                for i, item in enumerate(items, 1):
+                    table.add_row(str(i), f"{item.get('similarity_score', 0):.2f}", (item.get("snippet", "")[:80] + "...") if len(item.get("snippet", "")) > 80 else item.get("snippet", ""))
+                console.print(table)
+        else:
+            print(f"Requested: {act} Section {data.get('requested_section', section)}")
+            print(f"Counterpart: {counterpart_act} Section {data.get('counterpart_section', '?')}")
+            print(f"Note: {data.get('note', 'N/A')}")
+    except httpx.HTTPError as e:
+        print_error("API request failed", str(e))
+        raise typer.Exit(1)
+
+
+@app.command()
+def deep_cite(
+    query: str = typer.Argument(..., help="Legal query for deep citation analysis"),
+):
+    """Run deep citation verification on a legal query."""
+    import httpx
+
+    api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
+    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+
+    try:
+        with httpx.Client(timeout=60) as client:
+            resp = client.post(
+                f"{api_url}/search",
+                headers={"X-API-Key": api_key, "Content-Type": "application/json"},
+                json={"query": query, "page": 1, "page_size": 10, "verify": True, "format": "citations", "include_related": True},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+        if console:
+            console.print(Panel.fit(f"[bold cyan]Deep Citation Analysis[/bold cyan]\nQuery: {query}\nRoute: {data.get('route', 'N/A')}\nConfidence: {data.get('answer_confidence', 0)}%", border_style="cyan"))
+            sources = data.get("source_sections", [])
+            if sources:
+                table = Table(title="Cited Sources")
+                table.add_column("#", style="dim")
+                table.add_column("Section", style="bold")
+                table.add_column("Relevance", style="green")
+                table.add_column("Text")
+                for i, src in enumerate(sources, 1):
+                    table.add_row(str(i), f"{src.get('section', '?')} {src.get('act', '')}", f"{src.get('similarity', 0):.1%}", (src.get("text", "")[:60] + "...") if len(src.get("text", "")) > 60 else src.get("text", ""))
+                console.print(table)
+            else:
+                console.print("[yellow]No sources found[/yellow]")
+        else:
+            print(f"Query: {query}")
+            print(f"Confidence: {data.get('answer_confidence', 0)}%")
+            for i, src in enumerate(data.get("source_sections", []), 1):
+                print(f"  {i}. {src.get('section', '?')} {src.get('act', '')} ({src.get('similarity', 0):.1%})")
+    except httpx.HTTPError as e:
+        print_error("API request failed", str(e))
+        raise typer.Exit(1)
+
+
+@app.command()
 def help():
     """
     Display HECTOR command help and usage guide.
@@ -517,6 +649,18 @@ def help():
     --force, -f          Re-ingest all books
     --verbose, -v        Show detailed progress
 
+  [bold]search[/bold]            Search the legal corpus
+    --page, -p           Page number (default: 1)
+    --size, -s           Results per page (default: 5)
+    --format, -f         Output format: summary, detailed, citations
+    --verify/--no-verify Run verification
+
+  [bold]compare[/bold]           Compare IPC ↔ BNS sections
+    --act, -a            Act: IPC or BNS (default: IPC)
+    --size, -s           Results per side (default: 3)
+
+  [bold]deep-cite[/bold]         Deep citation verification
+
   [bold]status[/bold]            Display system status and statistics
 
   [bold]--help, help[/bold]      Show this help message
@@ -528,6 +672,9 @@ def help():
   hector init --no-frontend      # API only
   hector ingest                 # Ingest new books
   hector ingest --force         # Re-ingest all books
+  hector search "IPC Section 302" # Search for legal provisions
+  hector compare 302 --act IPC  # Compare IPC 302 with BNS equivalent
+  hector deep-cite "murder punishment" # Deep citation analysis
   hector status                 # Check system status
 
 [bold cyan]Quick Start:[/bold cyan]

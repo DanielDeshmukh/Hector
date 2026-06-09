@@ -6,12 +6,20 @@ Only re-indexes new amendments without re-processing the entire corpus.
 from __future__ import annotations
 
 import json
+import logging
+import os
+import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from data.hybrid_retriever import HectorHybridRetriever
+
+logger = logging.getLogger(__name__)
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BOOKS_DIR = os.getenv("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books"))
 
 
 class ReindexMode:
@@ -143,6 +151,13 @@ class PartialReindexer:
         """
         Re-index only the new amendments.
         Returns statistics about the re-indexing operation.
+
+        Each amendment dict should contain:
+            - id: unique identifier
+            - text: amendment text
+            - source: source PDF filename
+            - chunks: optional pre-chunked text list
+            - metadata: optional dict with additional metadata
         """
         stats = {
             "started_at": datetime.now().isoformat(),
@@ -151,16 +166,77 @@ class PartialReindexer:
             "errors": [],
         }
 
+        collection = self.retriever.collection
+        if collection is None:
+            stats["errors"].append({"error": "No ChromaDB collection available"})
+            stats["completed_at"] = datetime.now().isoformat()
+            return stats
+
+        from utils.enhanced_ingestor import EnhancedHectorIngestor
+        ingestor = EnhancedHectorIngestor(reindex_mode=True)
+
         for amendment in amendments:
             try:
-                # Extract text for the amendment
-                # Chunk the text appropriately
-                # Add to vector database with special metadata
-                # Mark as "amendment" type for Layer 2
+                text = amendment.get("text", "")
+                if not text:
+                    stats["errors"].append({
+                        "amendment_id": amendment.get("id"),
+                        "error": "No text provided",
+                    })
+                    continue
+
+                source = amendment.get("source", "amendment")
+                amendment_id = amendment.get("id", str(uuid.uuid4()))
+                amendment_metadata = amendment.get("metadata", {})
+
+                existing_chunks = amendment.get("chunks")
+                if existing_chunks:
+                    chunk_texts = existing_chunks
+                else:
+                    chunk_texts = ingestor.chunk_text(text)
+
+                if not chunk_texts:
+                    stats["errors"].append({
+                        "amendment_id": amendment_id,
+                        "error": "No chunks produced from text",
+                    })
+                    continue
+
+                documents = []
+                metadatas = []
+                ids = []
+
+                for chunk_index, chunk in enumerate(chunk_texts):
+                    chunk_id = f"amendment_{amendment_id}_chunk_{chunk_index}"
+                    page_hash = ingestor.get_page_hash(source, chunk_index)
+
+                    base_metadata = {
+                        "source": source,
+                        "page": 0,
+                        "page_hash": page_hash,
+                        "chunk_index": chunk_index,
+                        "ingested_at": str(datetime.now()),
+                        "mapping_accuracy": "amendment_v1",
+                        "content_type": "amendment",
+                        "amendment_id": amendment_id,
+                    }
+                    base_metadata.update(amendment_metadata)
+
+                    documents.append(chunk)
+                    metadatas.append(base_metadata)
+                    ids.append(chunk_id)
+
+                collection.upsert(
+                    documents=documents,
+                    metadatas=metadatas,
+                    ids=ids,
+                )
 
                 stats["amendments_processed"] += 1
-                stats["chunks_indexed"] += len(amendment.get("chunks", []))
+                stats["chunks_indexed"] += len(documents)
+
             except Exception as e:
+                logger.error("Error indexing amendment %s: %s", amendment.get("id"), e)
                 stats["errors"].append({
                     "amendment_id": amendment.get("id"),
                     "error": str(e),
@@ -169,46 +245,155 @@ class PartialReindexer:
         stats["completed_at"] = datetime.now().isoformat()
         self.last_partial_reindex = datetime.now()
         self._save_last_reindex("partial", datetime.now())
+        self.retriever.refresh_index()
 
         return stats
 
     def reindex_full(self) -> dict:
-        """Perform a full re-index of the entire corpus."""
+        """
+        Perform a full re-index of the entire corpus.
+        Clears existing ChromaDB collection and re-processes all PDFs.
+        """
+        logger.info("Starting full re-index of corpus.")
         stats = {
+            "status": "running",
             "started_at": datetime.now().isoformat(),
-            "documents_processed": 0,
-            "chunks_indexed": 0,
+            "reindexed_count": 0,
             "errors": [],
+            "timestamp": datetime.now().isoformat(),
         }
 
-        # In production:
-        # 1. Clear existing index
-        # 2. Re-process all source documents
-        # 3. Update all metadata
-        # 4. Refresh retriever
+        try:
+            collection = self.retriever.collection
+            if collection is None:
+                stats["status"] = "failed"
+                stats["errors"].append("No ChromaDB collection available")
+                return stats
+
+            existing = collection.get()
+            if existing["ids"]:
+                collection.delete(ids=existing["ids"])
+                logger.info("Cleared %d existing records from collection.", len(existing["ids"]))
+
+            from utils.enhanced_ingestor import EnhancedHectorIngestor, BOOKS_DIR as INGESTOR_BOOKS_DIR
+
+            books_dir = Path(INGESTOR_BOOKS_DIR)
+            if not books_dir.exists():
+                stats["status"] = "failed"
+                stats["errors"].append(f"Books directory not found: {books_dir}")
+                return stats
+
+            pdf_files = list(books_dir.glob("*.pdf"))
+            if not pdf_files:
+                stats["status"] = "completed"
+                stats["errors"].append("No PDF files found in books directory")
+                return stats
+
+            ingestor = EnhancedHectorIngestor(reindex_mode=True)
+            total_chunks = 0
+
+            for pdf_path in pdf_files:
+                try:
+                    result = ingestor.process_book(pdf_path.name, str(pdf_path))
+                    total_chunks += result.get("chunks", 0)
+                    stats["reindexed_count"] += 1
+                    logger.info("Re-indexed %s: %d chunks", pdf_path.name, result.get("chunks", 0))
+                except Exception as e:
+                    logger.error("Error re-indexing %s: %s", pdf_path.name, e)
+                    stats["errors"].append({"file": pdf_path.name, "error": str(e)})
+
+            stats["chunks_indexed"] = total_chunks
+            stats["status"] = "completed"
+
+            self.last_full_reindex = datetime.now()
+            self._save_last_reindex("full", datetime.now())
+            self.retriever.refresh_index()
+            logger.info("Full re-index completed. %d files, %d chunks total.", stats["reindexed_count"], total_chunks)
+
+        except Exception as e:
+            logger.error("Full re-index failed: %s", e)
+            stats["status"] = "failed"
+            stats["errors"].append(str(e))
 
         stats["completed_at"] = datetime.now().isoformat()
-        self.last_full_reindex = datetime.now()
-        self._save_last_reindex("full", datetime.now())
-
+        stats["timestamp"] = datetime.now().isoformat()
         return stats
 
     def reindex_incremental(self, days: int = 7) -> dict:
-        """Perform an incremental re-index for recent changes."""
+        """
+        Perform an incremental re-index for recent changes.
+        Finds PDFs modified in the last N days and re-indexes them.
+        """
+        logger.info("Starting incremental re-index for files modified in last %d days.", days)
         stats = {
+            "status": "running",
             "started_at": datetime.now().isoformat(),
-            "documents_processed": 0,
-            "chunks_indexed": 0,
+            "reindexed_count": 0,
             "errors": [],
+            "timestamp": datetime.now().isoformat(),
         }
 
-        # Get documents modified in the last N days
-        # Re-index only those
+        try:
+            collection = self.retriever.collection
+            if collection is None:
+                stats["status"] = "failed"
+                stats["errors"].append("No ChromaDB collection available")
+                return stats
+
+            from utils.enhanced_ingestor import BOOKS_DIR as INGESTOR_BOOKS_DIR
+
+            books_dir = Path(INGESTOR_BOOKS_DIR)
+            if not books_dir.exists():
+                stats["status"] = "failed"
+                stats["errors"].append(f"Books directory not found: {books_dir}")
+                return stats
+
+            cutoff = datetime.now() - timedelta(days=days)
+            pdf_files = [
+                f for f in books_dir.glob("*.pdf")
+                if datetime.fromtimestamp(f.stat().st_mtime) >= cutoff
+            ]
+
+            if not pdf_files:
+                stats["status"] = "completed"
+                stats["chunks_indexed"] = 0
+                return stats
+
+            from utils.enhanced_ingestor import EnhancedHectorIngestor
+            ingestor = EnhancedHectorIngestor(reindex_mode=True)
+            total_chunks = 0
+
+            for pdf_path in pdf_files:
+                try:
+                    filename = pdf_path.name
+
+                    existing = collection.get(where={"source": filename})
+                    if existing["ids"]:
+                        collection.delete(ids=existing["ids"])
+
+                    result = ingestor.process_book(filename, str(pdf_path))
+                    total_chunks += result.get("chunks", 0)
+                    stats["reindexed_count"] += 1
+                    logger.info("Re-indexed %s: %d chunks", filename, result.get("chunks", 0))
+                except Exception as e:
+                    logger.error("Error re-indexing %s: %s", pdf_path.name, e)
+                    stats["errors"].append({"file": pdf_path.name, "error": str(e)})
+
+            stats["chunks_indexed"] = total_chunks
+            stats["status"] = "completed"
+
+            self.last_incremental = datetime.now()
+            self._save_last_reindex("incremental", datetime.now())
+            self.retriever.refresh_index()
+            logger.info("Incremental re-index completed. %d files, %d chunks.", stats["reindexed_count"], total_chunks)
+
+        except Exception as e:
+            logger.error("Incremental re-index failed: %s", e)
+            stats["status"] = "failed"
+            stats["errors"].append(str(e))
 
         stats["completed_at"] = datetime.now().isoformat()
-        self.last_incremental = datetime.now()
-        self._save_last_reindex("incremental", datetime.now())
-
+        stats["timestamp"] = datetime.now().isoformat()
         return stats
 
     def get_index_statistics(self) -> dict:
@@ -283,20 +468,66 @@ class VersionManager:
         return sorted(versions, key=lambda x: x.get("created_at", ""), reverse=True)
 
     def rollback_to_version(self, version_name: str) -> dict:
-        """Rollback to a specific version."""
-        version_file = self.versions_dir / f"{version_name}.json"
-        if not version_file.exists():
-            raise FileNotFoundError(f"Version {version_name} not found")
-
-        with open(version_file, "r") as f:
-            version_data = json.load(f)
-
-        # In production, this would:
-        # 1. Clear current index
-        # 2. Restore from version backup
-        # 3. Update metadata
-
-        return {
-            "rolled_back_to": version_name,
-            "rolled_back_at": datetime.now().isoformat(),
+        """
+        Rollback to a specific version by restoring index state from backup.
+        Returns stats dict with status, version, restored_count, timestamp.
+        """
+        logger.info("Attempting rollback to version: %s", version_name)
+        stats = {
+            "status": "running",
+            "version": version_name,
+            "restored_count": 0,
+            "timestamp": datetime.now().isoformat(),
         }
+
+        try:
+            version_file = self.versions_dir / f"{version_name}.json"
+            if not version_file.exists():
+                stats["status"] = "error"
+                stats["error"] = f"Version '{version_name}' not found"
+                logger.error("Version not found: %s", version_name)
+                return stats
+
+            with open(version_file, "r") as f:
+                version_data = json.load(f)
+
+            metadata = version_data.get("metadata", {})
+            source_index = metadata.get("index_path")
+            collection_name = metadata.get("collection_name", "indian_law_bns")
+
+            if source_index and os.path.exists(source_index):
+                import shutil
+
+                project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                db_path = os.path.join(project_root, "hector_db")
+                target_collection_dir = os.path.join(db_path, collection_name)
+
+                if os.path.isdir(target_collection_dir):
+                    shutil.rmtree(target_collection_dir)
+
+                shutil.copytree(source_index, target_collection_dir)
+                stats["restored_count"] = 1
+                logger.info("Restored index from backup: %s", source_index)
+            else:
+                backup_files = metadata.get("files", [])
+                restored = 0
+                for file_info in backup_files:
+                    src = file_info.get("source_path")
+                    dst = file_info.get("dest_path")
+                    if src and dst and os.path.exists(src):
+                        os.makedirs(os.path.dirname(dst), exist_ok=True)
+                        shutil.copy2(src, dst)
+                        restored += 1
+                stats["restored_count"] = restored
+                logger.info("Restored %d files from version %s", restored, version_name)
+
+            stats["status"] = "completed"
+
+        except Exception as e:
+            logger.error("Rollback to version %s failed: %s", version_name, e)
+            stats["status"] = "error"
+            stats["error"] = str(e)
+
+        stats["completed_at"] = datetime.now().isoformat()
+        stats["timestamp"] = datetime.now().isoformat()
+        return stats

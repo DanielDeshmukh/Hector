@@ -4,9 +4,16 @@ Handles case law citation and precedent tracking.
 """
 
 from __future__ import annotations
+import logging
+import re
+import httpx
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import TYPE_CHECKING
+
+logger = logging.getLogger(__name__)
+
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 if TYPE_CHECKING:
     from data.hybrid_retriever import HectorHybridRetriever
@@ -249,7 +256,6 @@ class PrecedentAnalyzer:
         ]
 
         for pattern in patterns:
-            import re
             match = re.search(pattern, case_text, re.DOTALL)
             if match:
                 return match.group(1).strip()[:500]  # Limit length
@@ -346,32 +352,186 @@ class JudgmentScraper:
         self.courts = COURTS
 
     async def fetch_supreme_courtJudgment(self, case_no: str) -> dict | None:
-        """Fetch a Supreme Court judgment."""
-        # In production, this would make HTTP requests
-        # For now, return structure
-        return {
-            "case_no": case_no,
-            "base_url": self.SC_BASE_URL,
-            "status": "placeholder",
-        }
+        """Fetch a Supreme Court judgment from the main SCI website."""
+        try:
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                url = f"{self.SC_BASE_URL}/judgments"
+                response = await client.get(
+                    url,
+                    params={"caseNo": case_no},
+                    headers={"User-Agent": USER_AGENT},
+                )
+                response.raise_for_status()
+                html = response.text
+
+                # Extract judgment text
+                text_match = re.search(
+                    r'<div[^>]*class="[^"]*judgment[^"]*"[^>]*>(.*?)</div>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                judgment_text = text_match.group(1).strip() if text_match else ""
+                # Clean HTML tags from text
+                judgment_text = re.sub(r"<[^>]+>", " ", judgment_text).strip()
+
+                # Extract date
+                date_match = re.search(
+                    r'<span[^>]*class="[^"]*date[^"]*"[^>]*>(.*?)</span>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                date_str = date_match.group(1).strip() if date_match else ""
+
+                # Extract bench
+                bench_match = re.search(
+                    r'<div[^>]*class="[^"]*bench[^"]*"[^>]*>(.*?)</div>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                bench = bench_match.group(1).strip() if bench_match else ""
+
+                # Extract parties
+                parties_match = re.search(
+                    r'<div[^>]*class="[^"]*parties[^"]*"[^>]*>(.*?)</div>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                parties = parties_match.group(1).strip() if parties_match else ""
+                # Clean HTML from parties
+                parties = re.sub(r"<[^>]+>", " ", parties).strip()
+
+                return {
+                    "case_no": case_no,
+                    "court": "supreme_court",
+                    "date": date_str,
+                    "bench": bench,
+                    "parties": parties,
+                    "text": judgment_text,
+                    "base_url": self.SC_BASE_URL,
+                    "status": "success",
+                }
+        except httpx.TimeoutException as e:
+            logger.warning("Timeout fetching Supreme Court judgment for %s: %s", case_no, e)
+            return {
+                "case_no": case_no,
+                "court": "supreme_court",
+                "base_url": self.SC_BASE_URL,
+                "status": "error",
+                "error": str(e),
+            }
+        except httpx.HTTPError as e:
+            logger.warning("HTTP error fetching Supreme Court judgment for %s: %s", case_no, e)
+            return {
+                "case_no": case_no,
+                "court": "supreme_court",
+                "base_url": self.SC_BASE_URL,
+                "status": "error",
+                "error": str(e),
+            }
+        except Exception as e:
+            logger.warning("Error fetching Supreme Court judgment for %s: %s", case_no, e)
+            return {
+                "case_no": case_no,
+                "court": "supreme_court",
+                "base_url": self.SC_BASE_URL,
+                "status": "error",
+                "error": str(e),
+            }
 
     async def fetch_high_court_judgment(self, court: str, case_no: str) -> dict | None:
-        """Fetch a High Court judgment."""
+        """Fetch a High Court judgment from the respective court website."""
         court_info = self.courts.get(court)
         if not court_info:
             return None
 
-        return {
-            "case_no": case_no,
-            "court": court,
-            "base_url": court_info.get("website"),
-            "status": "placeholder",
-        }
+        try:
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                website = court_info["website"]
+                url = f"https://{website}/judgments"
+                response = await client.get(
+                    url,
+                    params={"caseNo": case_no},
+                    headers={"User-Agent": USER_AGENT},
+                )
+                response.raise_for_status()
+                html = response.text
+
+                # Extract judgment text
+                text_match = re.search(
+                    r'<div[^>]*class="[^"]*judgment[^"]*"[^>]*>(.*?)</div>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                judgment_text = text_match.group(1).strip() if text_match else ""
+                # Clean HTML tags from text
+                judgment_text = re.sub(r"<[^>]+>", " ", judgment_text).strip()
+
+                # Extract date
+                date_match = re.search(
+                    r'<span[^>]*class="[^"]*date[^"]*"[^>]*>(.*?)</span>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                date_str = date_match.group(1).strip() if date_match else ""
+
+                # Extract bench
+                bench_match = re.search(
+                    r'<div[^>]*class="[^"]*bench[^"]*"[^>]*>(.*?)</div>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                bench = bench_match.group(1).strip() if bench_match else ""
+
+                # Extract parties
+                parties_match = re.search(
+                    r'<div[^>]*class="[^"]*parties[^"]*"[^>]*>(.*?)</div>',
+                    html,
+                    re.DOTALL | re.IGNORECASE,
+                )
+                parties = parties_match.group(1).strip() if parties_match else ""
+                # Clean HTML from parties
+                parties = re.sub(r"<[^>]+>", " ", parties).strip()
+
+                return {
+                    "case_no": case_no,
+                    "court": court,
+                    "date": date_str,
+                    "bench": bench,
+                    "parties": parties,
+                    "text": judgment_text,
+                    "base_url": f"https://{website}",
+                    "status": "success",
+                }
+        except httpx.TimeoutException as e:
+            logger.warning("Timeout fetching %s judgment for %s: %s", court, case_no, e)
+            return {
+                "case_no": case_no,
+                "court": court,
+                "base_url": f"https://{court_info['website']}",
+                "status": "error",
+                "error": str(e),
+            }
+        except httpx.HTTPError as e:
+            logger.warning("HTTP error fetching %s judgment for %s: %s", court, case_no, e)
+            return {
+                "case_no": case_no,
+                "court": court,
+                "base_url": f"https://{court_info['website']}",
+                "status": "error",
+                "error": str(e),
+            }
+        except Exception as e:
+            logger.warning("Error fetching %s judgment for %s: %s", court, case_no, e)
+            return {
+                "case_no": case_no,
+                "court": court,
+                "base_url": f"https://{court_info['website']}",
+                "status": "error",
+                "error": str(e),
+            }
 
     def parse_citation(self, citation: str) -> dict | None:
         """Parse a citation string into components."""
-        import re
-
         # Try to parse AIR citation
         air_match = re.match(r"AIR\s+(\d{4})\s+(\w+)\s+(\d+)", citation, re.IGNORECASE)
         if air_match:

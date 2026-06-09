@@ -6,13 +6,24 @@ Monitors India Gazette (egazette.nic.in) for new BNS/BNSS/BSA amendments.
 from __future__ import annotations
 
 import json
+import logging
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
+import httpx
+
 if TYPE_CHECKING:
     from datetime import datetime as DT
+
+logger = logging.getLogger(__name__)
+
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/125.0.0.0 Safari/537.36"
+)
 
 # Key acts to monitor
 ACTS_TO_MONITOR = [
@@ -125,22 +136,114 @@ class GazetteScraper:
         Returns list of new amendments since last check.
         """
         new_amendments: list[Amendment] = []
+        cutoff = datetime.now() - timedelta(days=days_back)
 
-        # In production, this would make HTTP requests to egazette.nic.in
-        # For now, we'll simulate the structure
-        for act_name in ACTS_TO_MONITOR:
-            # Placeholder for actual scraping logic
-            # In production: fetch from SEARCH_URL + act_name
-            pass
+        try:
+            async with httpx.AsyncClient(
+                timeout=30.0,
+                headers={"User-Agent": USER_AGENT},
+                follow_redirects=True,
+            ) as client:
+                for act_name in ACTS_TO_MONITOR:
+                    try:
+                        resp = await client.get(
+                            self.SEARCH_URL,
+                            params={"search_field": "All", "search_text": act_name},
+                        )
+                        resp.raise_for_status()
+                        entries = self._parse_gazette_entries(
+                            resp.text, act_name, cutoff
+                        )
+                        new_amendments.extend(entries)
+                    except httpx.HTTPError as exc:
+                        logger.warning(
+                            "HTTP error fetching gazette for %s: %s", act_name, exc
+                        )
+                    except httpx.TimeoutException as exc:
+                        logger.warning(
+                            "Timeout fetching gazette for %s: %s", act_name, exc
+                        )
+        except Exception as exc:
+            logger.warning("Failed to initialise HTTP client: %s", exc)
 
         self.last_checked = datetime.now()
 
-        # Add any found amendments
         if new_amendments:
             self.amendments.extend(new_amendments)
             self._save_amendments()
 
         return new_amendments
+
+    def _parse_gazette_entries(
+        self,
+        html: str,
+        act_name: str,
+        cutoff: datetime,
+    ) -> list[Amendment]:
+        """Parse gazette HTML and extract amendment entries."""
+        entries: list[Amendment] = []
+
+        row_pattern = re.compile(
+            r'<tr[^>]*>(.*?)</tr>', re.DOTALL | re.IGNORECASE
+        )
+        cell_pattern = re.compile(
+            r'<td[^>]*>(.*?)</td>', re.DOTALL | re.IGNORECASE
+        )
+        link_pattern = re.compile(
+            r'<a[^>]+href="([^"]*)"[^>]*>(.*?)</a>', re.DOTALL | re.IGNORECASE
+        )
+        date_pattern = re.compile(
+            r'(\d{1,2}[/-]\d{1,2}[/-]\d{2,4})'
+        )
+
+        for row_match in row_pattern.finditer(html):
+            row_html = row_match.group(1)
+            cells = cell_pattern.findall(row_html)
+            if len(cells) < 3:
+                continue
+
+            raw_title = re.sub(r'<[^>]+>', '', cells[0]).strip()
+            raw_date = re.sub(r'<[^>]+>', '', cells[1]).strip()
+            raw_desc = re.sub(r'<[^>]+>', '', cells[2]).strip()
+
+            title = re.sub(r'\s+', ' ', raw_title)
+            description = re.sub(r'\s+', ' ', raw_desc)
+
+            date_match = date_pattern.search(raw_date)
+            if not date_match:
+                continue
+            try:
+                entry_date = datetime.strptime(date_match.group(1), "%d-%m-%Y")
+            except ValueError:
+                try:
+                    entry_date = datetime.strptime(date_match.group(1), "%d/%m/%Y")
+                except ValueError:
+                    continue
+
+            if entry_date < cutoff:
+                continue
+
+            url = self.BASE_URL
+            link_match = link_pattern.search(row_html)
+            if link_match:
+                href = link_match.group(1)
+                if href.startswith("/"):
+                    url = self.BASE_URL + href
+                elif href.startswith("http"):
+                    url = href
+
+            entry = Amendment(
+                act_name=act_name,
+                notification_number=title[:50],
+                notification_date=entry_date,
+                title=title,
+                description=description,
+                url=url,
+                sections_affected=[],
+            )
+            entries.append(entry)
+
+        return entries
 
     def get_amendments_for_act(self, act_name: str) -> list[Amendment]:
         """Get all amendments for a specific act."""

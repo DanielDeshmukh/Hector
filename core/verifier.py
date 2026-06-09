@@ -1,9 +1,14 @@
 import json
+import logging
 import re
 from typing import Any
 
 from groq import Groq
 from dotenv import load_dotenv
+
+from core.precedent import CITATION_PATTERNS
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -251,13 +256,12 @@ class HallucinationDetector:
 
     @staticmethod
     def detect_fabricated_citations(response: str) -> list[dict]:
-        """Detect potentially fabricated citations."""
-        fabricated = []
+        """Detect potentially fabricated citations via structural validation."""
+        fabricated: list[dict] = []
+        seen_citations: set[str] = set()
 
-        # Pattern: Section numbers that don't match BNS/IPC structure
+        # --- Suspicious section numbers ---
         suspicious_sections = re.findall(r"Section\s+(\d{3,4})", response, re.IGNORECASE)
-
-        # IPC sections go up to 511, BNS to ~358
         for section in suspicious_sections:
             section_num = int(section)
             if section_num > 600:
@@ -267,11 +271,105 @@ class HallucinationDetector:
                     "reason": f"Section {section} exceeds maximum IPC/BNS section number",
                 })
 
-        # Pattern: Case citations that look fabricated (e.g., fake AIR citations)
-        case_patterns = re.findall(r"(AIR\s+\d{4}\s+\w+\s+\d+)", response, re.IGNORECASE)
-        if case_patterns:
-            # Just flag as potential case citation (would need legal database to verify)
-            pass
+        # --- Court codes considered valid in Indian case law ---
+        valid_court_codes: set[str] = {
+            "SC", "Pat", "Del", "Bom", "Cal", "Mad", "KER", "All", "Guj",
+            "Raj", "HP", "J&K", "P&H", "Orissa", "Sikkim", "Manipur",
+            "Meghalaya", "Tripura", "Gauhati", "Imphal", "Shimla", "MP",
+            "AP", "Karn", "Chhatisgarh", "Jharkhand", "Uttarakhand",
+            "NB", "Indore", "Lucknow", "Nagpur", "Panaji", "Gwalior",
+        }
+
+        current_year = 2026  # reference year for future-year checks
+
+        # --- Extract every citation that matches the known patterns ---
+        for pattern in CITATION_PATTERNS:
+            for match in re.finditer(pattern, response, re.IGNORECASE):
+                citation = match.group(0).strip()
+                citation_key = citation.lower()
+
+                # Duplicate citation check
+                if citation_key in seen_citations:
+                    fabricated.append({
+                        "type": "duplicate_citation",
+                        "value": citation,
+                        "reason": f"Citation appears more than once in response",
+                    })
+                    continue
+                seen_citations.add(citation_key)
+
+                # ---- AIR citation validation ----
+                air_m = re.match(
+                    r"AIR\s+(\d{4})\s+(\w+)\s+(\d+)", citation, re.IGNORECASE
+                )
+                if air_m:
+                    year = int(air_m.group(1))
+                    court = air_m.group(2)
+                    case_num = int(air_m.group(3))
+
+                    if year > current_year:
+                        fabricated.append({
+                            "type": "future_year",
+                            "value": citation,
+                            "reason": f"Year {year} is in the future",
+                        })
+                        continue
+
+                    if court not in valid_court_codes:
+                        fabricated.append({
+                            "type": "invalid_court",
+                            "value": citation,
+                            "reason": f"Unknown court code '{court}' in AIR citation",
+                        })
+                        continue
+
+                    if case_num > 0 and case_num % 100 == 0:
+                        fabricated.append({
+                            "type": "suspicious_round_number",
+                            "value": citation,
+                            "reason": f"Case number {case_num} is a suspiciously round number",
+                        })
+
+                # ---- SCC citation validation ----
+                scc_m = re.match(
+                    r"SCC\s+(\d{4})\s+(\w+)\s+(\d+)", citation, re.IGNORECASE
+                )
+                if scc_m:
+                    year = int(scc_m.group(1))
+                    court = scc_m.group(2)
+
+                    if year > current_year:
+                        fabricated.append({
+                            "type": "future_year",
+                            "value": citation,
+                            "reason": f"Year {year} is in the future",
+                        })
+                        continue
+
+                    if court not in valid_court_codes:
+                        fabricated.append({
+                            "type": "invalid_court",
+                            "value": citation,
+                            "reason": f"Unknown court code '{court}' in SCC citation",
+                        })
+
+                # ---- Citation missing court name (e.g. "AIR 2023 123") ----
+                if re.match(r"(?:AIR|SCC)\s+\d{4}\s+\d+\s*$", citation, re.IGNORECASE):
+                    fabricated.append({
+                        "type": "missing_court",
+                        "value": citation,
+                        "reason": "Citation is missing a court name after the year",
+                    })
+
+        # ---- Log detected fabrications ----
+        if fabricated:
+            logger.warning(
+                "Detected %d potentially fabricated citation(s)", len(fabricated)
+            )
+            for item in fabricated:
+                logger.warning(
+                    "  [%s] %s — %s", item["type"], item["value"], item["reason"]
+                )
 
         return fabricated
 

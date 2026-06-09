@@ -226,9 +226,11 @@ export async function getStatusHector() {
   return await response.json();
 }
 
-export function createSearchWebSocket(query, onEvent, onError) {
+export function createSearchWebSocket(query, onEvent, onError, _retries = 0, _maxRetries = 3) {
   const wsUrl = API_URL.replace(/^http/, "ws") + `/ws/search?api_key=${API_KEY}`;
   const ws = new WebSocket(wsUrl);
+  let retries = _retries;
+  const maxRetries = _maxRetries;
 
   ws.onopen = () => {
     ws.send(JSON.stringify({
@@ -254,7 +256,18 @@ export function createSearchWebSocket(query, onEvent, onError) {
     if (onError) onError(error);
   };
 
-  ws.onclose = () => {};
+  ws.onclose = (event) => {
+    if (event.code === 1000 || event.code === 1001) return;
+    if (retries >= maxRetries) {
+      if (onError) onError(new Error(`WebSocket closed after ${maxRetries} retries`));
+      return;
+    }
+    retries++;
+    const delay = Math.min(1000 * Math.pow(2, retries - 1), 10000);
+    setTimeout(() => {
+      createSearchWebSocket(query, onEvent, onError, authHeaders, retries, maxRetries);
+    }, delay);
+  };
 
   return ws;
 }

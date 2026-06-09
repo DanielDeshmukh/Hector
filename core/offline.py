@@ -11,6 +11,7 @@ import hashlib
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Optional, list, Callable
+import logging
 import numpy as np
 
 # Offline embedding model configuration
@@ -18,7 +19,7 @@ OFFLINE_EMBEDDING_CONFIG = {
     "model_name": "sentence-transformers/all-MiniLM-L6-v2",
     "dimension": 384,
     "max_seq_length": 256,
-    " pooling_mode": "mean",
+    "pooling_mode": "mean",
 }
 
 # Compressed bundle configuration
@@ -204,7 +205,7 @@ class OfflineLegalBundle:
                                 checksum=meta.get("checksum", "")
                             ))
                     except Exception:
-                        pass
+                        logging.debug("Failed to load bundle metadata from %s", meta_file, exc_info=True)
 
         self.available_bundles = bundles
         return bundles

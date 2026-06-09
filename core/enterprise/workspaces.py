@@ -9,6 +9,7 @@ import time
 import hashlib
 import threading
 from dataclasses import dataclass, field
+import logging
 from typing import Any
 
 
@@ -116,7 +117,7 @@ class WorkspaceManager:
                             last_activity=an_data.get("last_activity")
                         )
             except Exception:
-                pass
+                logging.debug("Failed to load workspaces from %s", workspace_file, exc_info=True)
 
     def _save_data(self) -> None:
         """Save workspaces to storage."""

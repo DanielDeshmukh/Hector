@@ -10,6 +10,7 @@ import hashlib
 import secrets
 import threading
 from dataclasses import dataclass, field
+import logging
 from typing import Any, Callable
 from enum import Enum
 
@@ -171,7 +172,7 @@ class UserManager:
                         )
                         self._users[user.user_id] = user
             except Exception:
-                pass
+                logging.debug("Failed to load users from %s", user_file, exc_info=True)
 
     def _save_users(self) -> None:
         """Save users to storage."""

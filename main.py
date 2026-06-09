@@ -11,6 +11,7 @@ import socket
 import subprocess
 import sys
 import atexit
+import logging
 from pathlib import Path
 
 # Suppress HuggingFace symlink warnings on Windows
@@ -38,8 +39,8 @@ def save_process_info(port: int, frontend_port: int = None, pid: int = None):
         
         with open(PROCESS_FILE, 'w') as f:
             json.dump(data, f)
-    except Exception:
-        pass
+    except Exception as e:
+        logging.debug("Failed to save process info: %s", e)
 
 
 def load_process_info():
@@ -48,8 +49,8 @@ def load_process_info():
         if os.path.exists(PROCESS_FILE):
             with open(PROCESS_FILE, 'r') as f:
                 return json.load(f)
-    except Exception:
-        pass
+    except Exception as e:
+        logging.debug("Failed to load process info: %s", e)
     return {}
 
 
@@ -58,8 +59,8 @@ def clear_process_info():
     try:
         if os.path.exists(PROCESS_FILE):
             os.remove(PROCESS_FILE)
-    except Exception:
-        pass
+    except Exception as e:
+        logging.debug("Failed to clear process info: %s", e)
 
 
 def get_processes_on_ports(ports: list) -> list:
@@ -85,10 +86,10 @@ def get_processes_on_ports(ports: list) -> list:
                             pid = int(parts[1])
                             if pid not in pids:
                                 pids.append(pid)
-                        except (ValueError, IndexError):
-                            pass
-    except Exception:
-        pass
+                        except (ValueError, IndexError) as e:
+                            logging.debug("Failed to parse PID from lsof output: %s", e)
+    except Exception as e:
+        logging.debug("Failed to get processes on ports: %s", e)
     return pids
 
 
@@ -102,8 +103,8 @@ def cleanup_stuck_ports(ports: list):
             else:
                 subprocess.run(["kill", "-9", str(pid)], check=True)
             print_success(f"Cleaned up stuck process (PID: {pid})")
-        except Exception:
-            pass
+        except Exception as e:
+            logging.debug("Failed to kill stuck process %d: %s", pid, e)
 
 
 def print_error(message: str, details: str = None):
@@ -166,8 +167,8 @@ def kill_process_on_port(port: int) -> bool:
                         subprocess.run(["taskkill", "/PID", pid, "/F"], check=True, capture_output=True)
                         print_success(f"Killed process on port {port} (PID: {pid})")
                         return True
-                    except subprocess.CalledProcessError:
-                        pass
+                    except subprocess.CalledProcessError as e:
+                        logging.debug("Failed to kill process %s on port %d: %s", pid, port, e)
         else:
             # Unix: use lsof and kill
             result = subprocess.run(
@@ -183,8 +184,8 @@ def kill_process_on_port(port: int) -> bool:
                         subprocess.run(["kill", "-9", pid], check=True)
                         print_success(f"Killed process on port {port} (PID: {pid})")
                         return True
-                    except subprocess.CalledProcessError:
-                        pass
+                    except subprocess.CalledProcessError as e:
+                        logging.debug("Failed to kill process %s on port %d: %s", pid, port, e)
     except Exception as e:
         print_warning(f"Could not kill process on port {port}: {e}")
         return False
@@ -213,8 +214,8 @@ def get_indexed_documents_count():
         for coll in collections:
             try:
                 total_count += coll.count()
-            except Exception:
-                pass
+            except Exception as e:
+                logging.debug("Failed to count collection: %s", e)
 
         return total_count
     except Exception as e:
@@ -336,8 +337,8 @@ def cmd_init(args):
                 if response.status_code in accepted_statuses:
                     print_success(f"{label} running on {url}")
                     return True
-            except Exception:
-                pass
+            except Exception as e:
+                logging.debug("HTTP request to %s failed: %s", url, e)
 
             time.sleep(1)
 
@@ -625,6 +626,76 @@ def cmd_kill(args):
     print_success("Cleanup complete")
 
 
+def cmd_search(args):
+    """Search the legal corpus."""
+    import httpx
+    api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
+    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    try:
+        with httpx.Client(timeout=30) as client:
+            resp = client.post(
+                f"{api_url}/search",
+                headers={"X-API-Key": api_key, "Content-Type": "application/json"},
+                json={"query": args.query, "page": args.page, "page_size": args.size, "verify": not args.no_verify, "format": args.format, "include_related": True},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        print(f"\nQuery: {args.query}")
+        print(f"Route: {data.get('route', 'N/A')}")
+        print(f"Confidence: {data.get('answer_confidence', 0)}%")
+        for i, item in enumerate(data.get("items", []), 1):
+            print(f"  {i}. [{item.get('act', '?')}] {item.get('snippet', '')[:100]}... (score: {item.get('similarity_score', 0):.2f})")
+    except httpx.HTTPError as e:
+        print_error("API request failed", str(e))
+        sys.exit(1)
+
+
+def cmd_compare(args):
+    """Compare IPC ↔ BNS sections."""
+    import httpx
+    api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
+    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    try:
+        with httpx.Client(timeout=30) as client:
+            resp = client.post(
+                f"{api_url}/compare",
+                headers={"X-API-Key": api_key, "Content-Type": "application/json"},
+                json={"section": args.section, "act": args.act, "page_size": args.size},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        counterpart = "BNS" if args.act.upper() == "IPC" else "IPC"
+        print(f"\nRequested: {args.act} Section {data.get('requested_section', args.section)}")
+        print(f"Counterpart: {counterpart} Section {data.get('counterpart_section', '?')}")
+        print(f"Note: {data.get('note', 'N/A')}")
+    except httpx.HTTPError as e:
+        print_error("API request failed", str(e))
+        sys.exit(1)
+
+
+def cmd_deep_cite(args):
+    """Deep citation verification."""
+    import httpx
+    api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
+    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    try:
+        with httpx.Client(timeout=60) as client:
+            resp = client.post(
+                f"{api_url}/search",
+                headers={"X-API-Key": api_key, "Content-Type": "application/json"},
+                json={"query": args.query, "page": 1, "page_size": 10, "verify": True, "format": "citations", "include_related": True},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        print(f"\nQuery: {args.query}")
+        print(f"Confidence: {data.get('answer_confidence', 0)}%")
+        for i, src in enumerate(data.get("source_sections", []), 1):
+            print(f"  {i}. {src.get('section', '?')} {src.get('act', '')} ({src.get('similarity', 0):.1%})")
+    except httpx.HTTPError as e:
+        print_error("API request failed", str(e))
+        sys.exit(1)
+
+
 def main():
     """Main entry point."""
     if "--help" in sys.argv or "-h" in sys.argv or len(sys.argv) == 1:
@@ -652,6 +723,24 @@ def main():
     subparsers.add_parser("status", help="Display system status")
     subparsers.add_parser("help", help="Show this help message")
 
+    search_parser = subparsers.add_parser("search", help="Search the legal corpus")
+    search_parser.add_argument("query", help="Legal query to search")
+    search_parser.add_argument("--page", "-p", type=int, default=1, help="Page number")
+    search_parser.add_argument("--size", "-s", type=int, default=5, help="Results per page")
+    search_parser.add_argument("--format", "-f", default="summary", choices=["summary", "detailed", "citations"], help="Output format")
+    search_parser.add_argument("--no-verify", action="store_true", help="Skip verification")
+
+    compare_parser = subparsers.add_parser("compare", help="Compare IPC ↔ BNS sections")
+    compare_parser.add_argument("section", help="Section number to compare")
+    compare_parser.add_argument("--act", "-a", default="IPC", choices=["IPC", "BNS"], help="Act")
+    compare_parser.add_argument("--size", "-s", type=int, default=3, help="Results per side")
+
+    deepcite_parser = subparsers.add_parser("deep-cite", help="Deep citation verification")
+    deepcite_parser.add_argument("query", help="Legal query for deep citation analysis")
+
+    subparsers.add_parser("ps", help="List ongoing HECTOR processes")
+    subparsers.add_parser("kill", help="Kill stuck HECTOR processes")
+
     args = parser.parse_args()
 
     if args.command is None:
@@ -665,8 +754,18 @@ def main():
             cmd_ingest(args)
         elif args.command == "status":
             cmd_status(args)
+        elif args.command == "search":
+            cmd_search(args)
+        elif args.command == "compare":
+            cmd_compare(args)
+        elif args.command == "deep-cite":
+            cmd_deep_cite(args)
         elif args.command == "help":
             cmd_help(args)
+        elif args.command == "ps":
+            cmd_ps(args)
+        elif args.command == "kill":
+            cmd_kill(args)
     except KeyboardInterrupt:
         print("\n")
         sys.exit(0)
