@@ -1,3 +1,5 @@
+⭐ If HECTOR helped you navigate IPC → BNS 2023 mapping without hallucinations — a star helps other legal-AI builders find it. Takes 2 seconds.
+
 # H.E.C.T.O.R.
 ### **Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval**
 

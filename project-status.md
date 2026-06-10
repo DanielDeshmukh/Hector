@@ -313,13 +313,16 @@ HECTOR is a legal intelligence RAG system for Indian Law (IPC ↔ BNS). After co
 | `TESSERACT_CMD` | Hardcoded `C:\Users\Daniel\...` | `os.getenv("HECTOR_TESSERACT_CMD")` |
 | `DB_PATH` | Relative `./hector_db` | `os.getenv("HECTOR_DB_PATH")` with auto-detect |
 
-### Corpus (unchanged — still the critical gap)
+### Corpus (Critical Gap — 2 of 24 books ingested)
 
-| Book | Status |
-|------|--------|
-| `fixed_The_Code_of_Criminal.pdf` | Ingested |
-| `fixed_Whartons_law_Lexicon.pdf` | Ingested |
-| **Missing 18+ texts** | BNS, BNSS, BSA, IPC, IEA, CPC, Constitution, etc. |
+| Status | Count | Books |
+|--------|-------|-------|
+| **Ingested** | 2 | `fixed_The_Code_of_Criminal.pdf` (CrPC), `fixed_Whartons_law_Lexicon.pdf` (lexicon) |
+| **Missing Tier 1** | 6 | IPC, BNS, CrPC, BNSS, Evidence Act, BSA |
+| **Missing Tier 2** | 6 | Constitution, Contract Act, NI Act, TPA, Specific Relief, Limitation |
+| **Missing Tier 3** | 8 | Prevention of Corruption, IT Act, DV Act, JJ Act, Arms Act, NDPS, MV Act, Consumer Protection |
+| **Missing Tier 4** | 4 | Ratanlal Commentary, Bare Act Notes, AIR Digest |
+| **Total Target** | 24 | See "Required Books for Ingestion" in Section 10 |
 
 ---
 
@@ -419,8 +422,10 @@ API is running on `localhost:8000` with 17,832 documents indexed.
 
 | Category | Estimated Hours |
 |----------|----------------|
-| Source 18+ legal PDFs and ingest | 8-12h (mostly document sourcing) |
-| **Total remaining** | **8-12h** |
+| Source 22 legal PDFs (Tier 1-3) | 4-6h (downloading from legislative.gov.in) |
+| Ingest all PDFs into ChromaDB | 2-3h (automated via `python main.py ingest`) |
+| Source 2 Tier 4 reference PDFs | 1-2h (optional, for citation verification) |
+| **Total remaining** | **7-11h** |
 
 ---
 
@@ -445,14 +450,65 @@ API is running on `localhost:8000` with 17,832 documents indexed.
 
 ### What Still Needs Work
 
-1. **Legal corpus** — 2 books is not enough. Need 20+ bare acts and commentaries
+1. **Legal corpus** — 2 books is not enough. Need 20+ bare acts and commentaries (see Required Books list below)
 2. **Restart API** — After installing chromadb/groq, restart to enable semantic search and verifier
+
+### Required Books for Ingestion (20+ PDFs)
+
+The following PDFs must be placed in `data/Books/` and ingested via `python main.py ingest`:
+
+#### Tier 1 — Core Criminal Law (Must Have)
+| # | Filename | Full Title | Why Needed |
+|---|----------|-----------|------------|
+| 1 | `Indian_Penal_Code_1860.pdf` | Indian Penal Code, 1860 | Source act for IPC↔BNS mapping |
+| 2 | `Bharatiya_Nyaya_Sanhita_2023.pdf` | Bharatiya Nyaya Sanhita, 2023 | Target act for IPC↔BNS mapping |
+| 3 | `Code_of_Criminal_Procedure_1973.pdf` | Code of Criminal Procedure, 1973 | Procedural law for criminal cases |
+| 4 | `Bharatiya_Nagarik_Suraksha_Sanhita_2023.pdf` | Bharatiya Nagarik Suraksha Sanhita, 2023 | Replacement for CrPC |
+| 5 | `Indian_Evidence_Act_1872.pdf` | Indian Evidence Act, 1872 | Evidence rules for criminal trials |
+| 6 | `Bharatiya_Sakshya_Adhiniyam_2023.pdf` | Bharatiya Sakshya Adhiniyam, 2023 | Replacement for Evidence Act |
+
+#### Tier 2 — Constitutional & Supporting Acts (Should Have)
+| # | Filename | Full Title | Why Needed |
+|---|----------|-----------|------------|
+| 7 | `Constitution_of_India.pdf` | Constitution of India | Fundamental rights, writs, constitutional remedies |
+| 8 | `Indian_Contract_Act_1872.pdf` | Indian Contract Act, 1872 | Contracts, breach, fraud (overlaps with IPC §420) |
+| 9 | `Negotiable_Instruments_Act_1881.pdf` | Negotiable Instruments Act, 1881 | Cheque bounce (§138 NI Act — most filed case in India) |
+| 10 | `Transfer_of_Property_Act_1882.pdf` | Transfer of Property Act, 1882 | Property offences, criminal breach of trust |
+| 11 | `Specific_Relief_Act_1963.pdf` | Specific Relief Act, 1963 | Injunctions, specific performance |
+| 12 | `Limitation_Act_1963.pdf` | Limitation Act, 1963 | Time bars for legal proceedings |
+
+#### Tier 3 — Special Criminal Laws (Good to Have)
+| # | Filename | Full Title | Why Needed |
+|---|----------|-----------|------------|
+| 13 | `Prevention_of_Corruption_Act_1988.pdf` | Prevention of Corruption Act, 1988 | Public servant offences |
+| 14 | `Information_Technology_Act_2000.pdf` | Information Technology Act, 2000 | Cybercrime, electronic evidence |
+| 15 | `Protection_of_Women_from_Domestic_Violence_Act_2005.pdf` | Protection of Women from Domestic Violence Act, 2005 | Domestic violence offences |
+| 16 | `Juvenile_Justice_Act_2015.pdf` | Juvenile Justice (Care and Protection of Children) Act, 2015 | Juvenile offenders |
+| 17 | `Arms_Act_1959.pdf` | Arms Act, 1959 | Weapons offences |
+| 18 | `Narcotic_Drugs_and_Psychotropic_Substances_Act_1985.pdf` | NDPS Act, 1985 | Drug offences |
+| 19 | `Motor_Vehicles_Act_1988.pdf` | Motor Vehicles Act, 1988 | Road accident offences, hit and run |
+| 20 | `Consumer_Protection_Act_2019.pdf` | Consumer Protection Act, 2019 | Consumer fraud, deficiency in service |
+
+#### Tier 4 — Reference Materials (Nice to Have)
+| # | Filename | Full Title | Why Needed |
+|---|----------|-----------|------------|
+| 21 | `Whartons_Law_Lexicon.pdf` | Wharton's Law Lexicon | Legal dictionary (already ingested) |
+| 22 | `Ratanlal_Dhirajlal_Comentary_on_IPC.pdf` | Ratanlal & Dhirajlal — Commentary on IPC | Leading IPC commentary with case law |
+| 23 | `Bare_Act_With_Short_Notes_IPC.pdf` | Bare Act with Short Notes — IPC | Section-by-section explanations |
+| 24 | `AIR_Digest_Criminal_Law.pdf` | AIR Digest — Criminal Law | Case law digest for citation verification |
+
+**Total: 24 PDFs** (6 Tier 1 + 6 Tier 2 + 8 Tier 3 + 4 Tier 4)
+
+**Source for PDFs:**
+- Bare acts: `legislative.gov.in`, `indiacode.nic.in`, `egazette.nic.in`
+- Commentaries: Indian Kanoon, Law Commission reports
+- Current corpus: `fixed_The_Code_of_Criminal.pdf` (CrPC) + `fixed_Whartons_law_Lexicon.pdf` (lexicon) = 2 of 24 needed
 
 ### Overall Assessment
 
 HECTOR has been **significantly improved** across all layers. The frontend now connects to all API endpoints, supports bookmarks and Hindi/English, includes voice input, and has proper font loading. Security issues (CORS, rate limiting, input validation, XSS) have been addressed. Core module stubs (temporal inconsistency detection, enterprise auth, judgment scraper, gazette scraper, reindexer, hallucination detector) have been implemented. All 17 silent exception handlers have been replaced with proper logging. CLI now supports search, compare, and deep-cite commands.
 
-**The single remaining gap is the legal corpus** — the system has only 2 PDFs when it needs 20+ to be useful for real Indian legal research. This is a document sourcing task, not a code task.
+**The single remaining gap is the legal corpus** — the system has only 2 of 24 required PDFs. A detailed list of all 24 books with filenames, full titles, and rationale is provided in the "Required Books for Ingestion" section above. All Tier 1-3 PDFs (22 books) are available as free downloads from legislative.gov.in and indiacode.nic.in.
 
 **Project status: ~95% complete. All code tasks done. Corpus gap is the only blocker for real-world use.**
 
