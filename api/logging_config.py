@@ -3,7 +3,6 @@ import json
 import logging
 import os
 import sys
-import time
 from contextvars import ContextVar
 from datetime import datetime, timezone
 

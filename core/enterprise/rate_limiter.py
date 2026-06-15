@@ -6,8 +6,7 @@ Provides token bucket and sliding window rate limiters.
 from __future__ import annotations
 import time
 import threading
-from dataclasses import dataclass, field
-from typing import Callable
+from dataclasses import dataclass
 from collections import defaultdict
 import hashlib
 

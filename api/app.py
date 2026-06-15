@@ -255,7 +255,7 @@ def status_endpoint(
 
     # Add health checks
     try:
-        count = svc.retriever.collection.count()
+        svc.retriever.collection.count()
         payload["chromadb_connected"] = True
     except Exception:
         payload["chromadb_connected"] = False

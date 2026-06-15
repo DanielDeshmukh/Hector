@@ -8,7 +8,7 @@ import json
 import time
 import threading
 from dataclasses import dataclass, field, asdict
-from typing import Any, Callable
+from typing import Any
 from enum import Enum
 from pathlib import Path
 import hashlib

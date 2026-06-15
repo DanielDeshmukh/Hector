@@ -10,7 +10,7 @@ import pickle
 import hashlib
 from pathlib import Path
 from dataclasses import dataclass
-from typing import list
+from typing import Callable, list
 import logging
 import numpy as np
 

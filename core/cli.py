@@ -7,7 +7,6 @@ from __future__ import annotations
 import os
 import sys
 import subprocess
-import threading
 import time
 from pathlib import Path
 from typing import Optional
@@ -18,7 +17,6 @@ try:
     from rich.console import Console
     from rich.table import Table
     from rich.panel import Panel
-    from rich import print as rprint
 except ImportError:
     typer = None
     Console = None
@@ -83,7 +81,6 @@ def get_indexed_documents_count() -> int:
     """Get count of indexed documents from ChromaDB."""
     try:
         import chromadb
-        from chromadb.config import Settings
 
         db_path = get_hector_db_path()
         if not db_path.exists():
@@ -128,7 +125,6 @@ def get_indexed_books() -> list[str]:
     """Get list of books already indexed in the database."""
     try:
         import chromadb
-        from chromadb.config import Settings
 
         db_path = get_hector_db_path()
         if not db_path.exists():
@@ -470,19 +466,19 @@ def status():
 
     # Check Python packages
     try:
-        import chromadb
+        import chromadb  # noqa: F401
         env_table.add_row("ChromaDB", "[green]✓ Installed[/green]")
     except ImportError:
         env_table.add_row("ChromaDB", "[red]✗ Not installed[/red]")
 
     try:
-        import fastapi
+        import fastapi  # noqa: F401
         env_table.add_row("FastAPI", "[green]✓ Installed[/green]")
     except ImportError:
         env_table.add_row("FastAPI", "[red]✗ Not installed[/red]")
 
     try:
-        import sentence_transformers
+        import sentence_transformers  # noqa: F401
         env_table.add_row("Embeddings", "[green]✓ Installed[/green]")
     except ImportError:
         env_table.add_row("Embeddings", "[red]✗ Not installed[/red]")

@@ -10,7 +10,6 @@ import hashlib
 import threading
 from dataclasses import dataclass, field
 import logging
-from typing import Any
 
 
 @dataclass
