@@ -490,7 +490,8 @@ cd frontend && npm install && npm run dev  # Start UI
 - [x] Citation grounding — source verification against documents
 - [x] Fabricated citation detection — flags sections > 600
 - [x] Temporal inconsistency detection — detects IPC treated as current law
-- [ ] Add confidence scoring (low confidence → warn user) — deferred
+- [x] Add confidence scoring (low confidence → warn user) — `confidence_level` + `confidence_warning` in SearchResponse
+- [x] Add hallucination check per response (HallucinationDetector.generate_hallucination_report)
 
 ### K2. Cross-Reference Accuracy
 - [x] Build IPC ↔ BNS mapping table — **495 mappings** in `core/mapping.json`

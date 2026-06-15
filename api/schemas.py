@@ -91,6 +91,9 @@ class SearchResponse(BaseModel):
     answer_sections: list[AnswerSection] = Field(default_factory=list)
     source_sections: list[SourceSection] = Field(default_factory=list)
     answer_confidence: float = 0.0
+    confidence_level: str = "unknown"  # "high", "medium", "low", "unknown"
+    confidence_warning: str | None = None
+    hallucination_check: dict | None = None
     citations: list[dict] = Field(default_factory=list)
     related_provisions: list[str] = Field(default_factory=list)
     response_format: str = "summary"

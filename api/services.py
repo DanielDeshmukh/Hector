@@ -94,6 +94,25 @@ class HectorApiService:
             generated_response = intent.get("hector_response", "")
 
         total_pages = max(1, (total_results + request.page_size - 1) // request.page_size)
+
+        # Compute confidence level and warning
+        raw_confidence = float(response_data.get("answer_confidence", 0.0) or 0.0)
+        confidence_level, confidence_warning = self._assess_confidence(
+            raw_confidence, intent.get("route", "GENERAL"), len(paginated)
+        )
+
+        # Run hallucination check on generated response
+        hallucination_check = None
+        if generated_response and intent.get("route") == "LEGAL_RESEARCH":
+            from core.verifier import HallucinationDetector
+            verification_result = {
+                "verified_response": generated_response,
+                "citation_coverage": raw_confidence / 100.0,
+                "total_claims": len(paginated),
+                "claims_verified": int(len(paginated) * raw_confidence / 100.0),
+            }
+            hallucination_check = HallucinationDetector.generate_hallucination_report(verification_result)
+
         return SearchResponse(
             route=intent.get("route", "GENERAL"),
             query=request.query,
@@ -107,12 +126,30 @@ class HectorApiService:
             generated_response=generated_response,
             answer_sections=response_data.get("answer_sections", []),
             source_sections=response_data.get("source_sections", []),
-            answer_confidence=float(response_data.get("answer_confidence", 0.0) or 0.0),
+            answer_confidence=raw_confidence,
+            confidence_level=confidence_level,
+            confidence_warning=confidence_warning,
+            hallucination_check=hallucination_check,
             citations=response_data.get("citations", []),
             related_provisions=response_data.get("related_provisions", []),
             response_format=request.format,
             retrieved_at=datetime.now(UTC),
         )
+
+    def _assess_confidence(self, raw_score: float, route: str, num_results: int) -> tuple[str, str | None]:
+        """Map raw confidence score to level and generate warning if needed."""
+        if route != "LEGAL_RESEARCH":
+            return "unknown", None
+
+        if num_results == 0:
+            return "low", "No matching documents found in the corpus."
+
+        if raw_score >= 75:
+            return "high", None
+        elif raw_score >= 50:
+            return "medium", "Confidence is moderate. Verify critical details against source documents."
+        else:
+            return "low", "Low confidence — response may be incomplete or unreliable. Always cross-reference with official legal texts."
 
     def _select_response_results(self, results: list[dict], normalized_query: str, limit: int) -> list[dict]:
         if not results or limit <= 0:
