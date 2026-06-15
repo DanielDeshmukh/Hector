@@ -463,11 +463,13 @@ cd frontend && npm install && npm run dev  # Start UI
 - [ ] Add sensitive data redaction in logs — deferred
 
 ### J2. Metrics
-- [ ] Add Prometheus metrics endpoint (`/metrics`) — deferred
-- [ ] Track request count, latency, error rate — deferred
-- [ ] Track search query performance — deferred
-- [ ] Track ingestion progress — deferred
-- [ ] Track ChromaDB collection size — deferred
+- [x] Add Prometheus metrics endpoint (`/metrics`) — text format, no external deps
+- [x] Track request count (`http_requests_total`), errors (`http_errors_total`), latency (`http_request_duration`)
+- [x] Track search queries (`search_queries_total`), route distribution, result count
+- [x] Track ChromaDB collection size (`chromadb_records`), disk space (`disk_free_mb`)
+- [x] Track healthcheck results (`healthcheck_total`)
+- [ ] Add Grafana dashboard template — deferred
+- [ ] Add alerting rules — deferred
 
 ### J3. Alerting
 - [ ] Add health check alerts (service down)

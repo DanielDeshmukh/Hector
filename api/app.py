@@ -13,6 +13,7 @@ from fastapi.responses import JSONResponse
 
 from .cache import TTLCache
 from .logging_config import log_request, log_search, request_id_var, setup_logging
+from .metrics import metrics
 from .rate_limit import InMemoryRateLimiter, RateLimitExceeded
 from .schemas import (
     CompareRequest,
@@ -142,6 +143,16 @@ async def security_headers_middleware(request: Request, call_next):
     # Log access
     log_request(request.method, request.url.path, response.status_code, duration_ms, request_id)
 
+    # Record metrics
+    metrics.inc("http_requests_total")
+    path_label = request.url.path
+    if path_label.startswith("/ws"):
+        path_label = "/ws/*"
+    metrics.inc(f"http_requests{{path={path_label}}}")
+    if response.status_code >= 400:
+        metrics.inc("http_errors_total")
+    metrics.observe("http_request_duration", duration_ms / 1000.0)
+
     response.headers["X-Request-Id"] = request_id
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -199,6 +210,7 @@ def readyz(svc: HectorApiService = Depends(get_service)):
     try:
         count = svc.retriever.collection.count()
         checks["chromadb"] = {"status": "ok", "records": count}
+        metrics.set("chromadb_records", count)
     except Exception as exc:
         checks["chromadb"] = {"status": "error", "detail": str(type(exc).__name__)}
         healthy = False
@@ -209,12 +221,21 @@ def readyz(svc: HectorApiService = Depends(get_service)):
         usage = shutil.disk_usage(db_path)
         free_mb = usage.free // (1024 * 1024)
         checks["disk"] = {"status": "ok", "free_mb": free_mb}
+        metrics.set("disk_free_mb", free_mb)
         if free_mb < 100:
             checks["disk"]["status"] = "warning"
     except Exception:
         checks["disk"] = {"status": "unknown"}
 
+    metrics.inc("healthcheck_total")
     return {"status": "ok" if healthy else "degraded", "checks": checks}
+
+
+@app.get("/metrics")
+def metrics_endpoint():
+    """Prometheus-compatible metrics endpoint."""
+    from fastapi.responses import PlainTextResponse
+    return PlainTextResponse(metrics.render(), media_type="text/plain; version=0.0.4; charset=utf-8")
 
 
 @app.get("/status")
@@ -307,6 +328,12 @@ def search_endpoint(
         results_count=len(payload.get("sources", [])),
         duration_ms=duration_ms,
     )
+
+    # Record search metrics
+    metrics.inc("search_queries_total")
+    metrics.inc(f"search_route{{route={payload.get('route', 'unknown')}}}")
+    metrics.observe("search_duration", duration_ms / 1000.0)
+    metrics.set("search_results_last", len(payload.get("sources", [])))
 
     cache.set(cache_key, payload)
     return payload
