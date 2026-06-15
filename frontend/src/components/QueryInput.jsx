@@ -76,6 +76,18 @@ export default function QueryInput({
     }
   }, [isListening]);
 
+  // Ctrl+K / Cmd+K keyboard shortcut to focus search
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        textareaRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
+
   return (
     <div className="w-full">
       {showSuggestions && suggestions.length > 0 && (

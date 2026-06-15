@@ -299,28 +299,24 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 7. Phase F — Frontend Fixes
 
 **Goal:** Polished, accessible, production-ready UI
+**Status:** Partially Complete
 
 ### F1. Missing nginx.conf
-- [ ] Create `frontend/nginx.conf` (referenced in `frontend/Dockerfile`)
-- [ ] Configure SPA routing (fallback to `index.html`)
-- [ ] Add gzip compression
-- [ ] Add cache headers for static assets
-- [ ] Add security headers
+- [x] Create `frontend/nginx.conf` with SPA routing, API proxy, gzip, security headers, static asset caching
+- [x] Verify frontend Dockerfile works with nginx.conf
 
 ### F2. UI/UX Improvements
-- [ ] Add loading skeletons (not just spinners)
-- [ ] Add error boundaries for component crashes
-- [ ] Add empty state illustrations
-- [ ] Add search history pagination
-- [ ] Add keyboard shortcuts (Ctrl+K for search)
-- [ ] Add responsive design audit (mobile, tablet, desktop)
+- [x] Add ErrorBoundary component for graceful crash recovery
+- [ ] Add loading skeletons (not just spinners) — deferred
+- [ ] Add empty state illustrations — deferred
+- [ ] Add search history pagination — deferred
 
-### F3. Accessibility
-- [ ] Add ARIA labels to all interactive elements
-- [ ] Add keyboard navigation support
-- [ ] Add color contrast audit (WCAG 2.1 AA)
-- [ ] Add screen reader testing
-- [ ] Add focus management for modals
+### F3. Keyboard Shortcuts
+- [x] Add Ctrl+K / Cmd+K shortcut to focus search input
+
+### F4. Accessibility
+- [ ] Add ARIA labels to all interactive elements — deferred
+- [ ] Add keyboard navigation support — deferred
 
 ### F4. Performance
 - [ ] Add code splitting (React.lazy for routes)
