@@ -342,17 +342,173 @@ class PrecedentAnalyzer:
 
 
 class JudgmentScraper:
-    """Scraper for fetching judgments from court websites."""
+    """
+    Scraper for fetching Indian court judgments.
+
+    Sources (in priority order):
+    1. Indian Kanoon API — reliable, structured, covers all courts
+    2. Supreme Court of India (main.sci.gov.in) — official source
+    3. High Court websites — court-specific
+    """
+
+    # Indian Kanoon (indiankanoon.org) provides a public search API
+    INDIAN_KANOON_SEARCH_URL = "https://indiankanoon.org/search/"
+    INDIAN_KANOON_DOC_URL = "https://indiankanoon.org/doc/"
 
     # Court base URLs
     SC_BASE_URL = "https://main.sci.gov.in"
     HIGH_COURT_BASE = "https://"
 
-    def __init__(self):
+    def __init__(self, indian_kanoon_api_token: str | None = None):
         self.courts = COURTS
+        # Indian Kanoon offers a free API with token for higher rate limits
+        # Get token at: https://indiankanoon.org/api/
+        self.indian_kanoon_token = indian_kanoon_api_token
 
-    async def fetch_supreme_courtJudgment(self, case_no: str) -> dict | None:
-        """Fetch a Supreme Court judgment from the main SCI website."""
+    async def search_indian_kanoon(
+        self, query: str, page: int = 0, num_results: int = 10
+    ) -> list[dict]:
+        """
+        Search Indian Kanoon for judgments.
+        Free tier: 100 requests/day, 5 results per request.
+        With API token: 5000 requests/day, up to 50 results.
+        """
+        results = []
+        try:
+            headers = {"User-Agent": USER_AGENT}
+            if self.indian_kanoon_token:
+                headers["Authorization"] = f"Bearer {self.indian_kanoon_token}"
+
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                resp = await client.get(
+                    self.INDIAN_KANOON_SEARCH_URL,
+                    params={
+                        "formInput": query,
+                        "pagenum": page,
+                        "cases": 1,
+                    },
+                    headers=headers,
+                )
+                resp.raise_for_status()
+                html = resp.text
+
+                # Parse search results from HTML
+                doc_pattern = re.compile(
+                    r'<div class="result">\s*<div class="result_title">'
+                    r'<a[^>]+href="/doc/(\d+)/"[^>]*>(.*?)</a>.*?'
+                    r'<div class="result_excerpt">(.*?)</div>',
+                    re.DOTALL | re.IGNORECASE,
+                )
+
+                for match in doc_pattern.finditer(html):
+                    doc_id = match.group(1)
+                    title = re.sub(r"<[^>]+>", "", match.group(2)).strip()
+                    excerpt = re.sub(r"<[^>]+>", "", match.group(3)).strip()
+
+                    results.append({
+                        "id": doc_id,
+                        "title": title,
+                        "excerpt": excerpt,
+                        "url": f"{self.INDIAN_KANOON_DOC_URL}{doc_id}/",
+                        "source": "indian_kanoon",
+                    })
+
+                    if len(results) >= num_results:
+                        break
+
+        except httpx.HTTPError as e:
+            logger.warning("HTTP error searching Indian Kanoon: %s", e)
+        except Exception as e:
+            logger.warning("Error searching Indian Kanoon: %s", e)
+
+        return results
+
+    async def fetch_judgment_from_indian_kanoon(self, doc_id: str) -> dict | None:
+        """Fetch a full judgment from Indian Kanoon by document ID."""
+        try:
+            headers = {"User-Agent": USER_AGENT}
+            if self.indian_kanoon_token:
+                headers["Authorization"] = f"Bearer {self.indian_kanoon_token}"
+
+            async with httpx.AsyncClient(timeout=60.0) as client:
+                resp = await client.get(
+                    f"{self.INDIAN_KANOON_DOC_URL}{doc_id}/",
+                    headers=headers,
+                )
+                resp.raise_for_status()
+                html = resp.text
+
+                # Extract title
+                title_match = re.search(
+                    r'<div class="doc_title">(.*?)</div>', html, re.DOTALL
+                )
+                title = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else ""
+
+                # Extract judgment body
+                body_match = re.search(
+                    r'<div class="doc_body">(.*?)</div>\s*<!--', html, re.DOTALL
+                )
+                body = ""
+                if body_match:
+                    body = re.sub(r"<[^>]+>", " ", body_match.group(1))
+                    body = re.sub(r"\s+", " ", body).strip()
+
+                # Extract metadata
+                bench = ""
+                bench_match = re.search(r"before\s+(.*?)(?:\n|<)", html, re.IGNORECASE)
+                if bench_match:
+                    bench = re.sub(r"<[^>]+>", "", bench_match.group(1)).strip()
+
+                date = ""
+                date_match = re.search(r"Decided on\s+(\d{1,2}\.\d{1,2}\.\d{4})", html)
+                if date_match:
+                    date = date_match.group(1)
+
+                return {
+                    "case_no": doc_id,
+                    "court": self._infer_court_from_kanoon(title, html),
+                    "date": date,
+                    "bench": bench,
+                    "parties": title,
+                    "text": body,
+                    "url": f"{self.INDIAN_KANOON_DOC_URL}{doc_id}/",
+                    "source": "indian_kanoon",
+                    "status": "success",
+                }
+        except Exception as e:
+            logger.warning("Error fetching Indian Kanoon doc %s: %s", doc_id, e)
+            return None
+
+    def _infer_court_from_kanoon(self, title: str, html: str) -> str:
+        """Infer court from judgment title and HTML content."""
+        combined = f"{title} {html[:2000]}".lower()
+        if "supreme court" in combined:
+            return "supreme_court"
+        if "delhi" in combined:
+            return "delhi_high_court"
+        if "bombay" in combined or "mumbai" in combined:
+            return "bombay_high_court"
+        if "madras" in combined or "chennai" in combined:
+            return "madras_high_court"
+        if "calcutta" in combined or "kolkata" in combined:
+            return "calcutta_high_court"
+        return "unknown"
+
+    async def fetch_supreme_court_judgment(self, case_no: str) -> dict | None:
+        """
+        Fetch a Supreme Court judgment.
+        Tries Indian Kanoon first, then falls back to SCI website.
+        """
+        # Try Indian Kanoon first
+        search_results = await self.search_indian_kanoon(
+            f"{case_no} Supreme Court", num_results=1
+        )
+        if search_results:
+            doc = await self.fetch_judgment_from_indian_kanoon(search_results[0]["id"])
+            if doc and doc["status"] == "success":
+                return doc
+
+        # Fallback to SCI website
         try:
             async with httpx.AsyncClient(timeout=30.0) as client:
                 url = f"{self.SC_BASE_URL}/judgments"
@@ -364,17 +520,14 @@ class JudgmentScraper:
                 response.raise_for_status()
                 html = response.text
 
-                # Extract judgment text
                 text_match = re.search(
                     r'<div[^>]*class="[^"]*judgment[^"]*"[^>]*>(.*?)</div>',
                     html,
                     re.DOTALL | re.IGNORECASE,
                 )
                 judgment_text = text_match.group(1).strip() if text_match else ""
-                # Clean HTML tags from text
                 judgment_text = re.sub(r"<[^>]+>", " ", judgment_text).strip()
 
-                # Extract date
                 date_match = re.search(
                     r'<span[^>]*class="[^"]*date[^"]*"[^>]*>(.*?)</span>',
                     html,
@@ -382,7 +535,6 @@ class JudgmentScraper:
                 )
                 date_str = date_match.group(1).strip() if date_match else ""
 
-                # Extract bench
                 bench_match = re.search(
                     r'<div[^>]*class="[^"]*bench[^"]*"[^>]*>(.*?)</div>',
                     html,
@@ -390,14 +542,12 @@ class JudgmentScraper:
                 )
                 bench = bench_match.group(1).strip() if bench_match else ""
 
-                # Extract parties
                 parties_match = re.search(
                     r'<div[^>]*class="[^"]*parties[^"]*"[^>]*>(.*?)</div>',
                     html,
                     re.DOTALL | re.IGNORECASE,
                 )
                 parties = parties_match.group(1).strip() if parties_match else ""
-                # Clean HTML from parties
                 parties = re.sub(r"<[^>]+>", " ", parties).strip()
 
                 return {
@@ -410,40 +560,37 @@ class JudgmentScraper:
                     "base_url": self.SC_BASE_URL,
                     "status": "success",
                 }
-        except httpx.TimeoutException as e:
-            logger.warning("Timeout fetching Supreme Court judgment for %s: %s", case_no, e)
-            return {
-                "case_no": case_no,
-                "court": "supreme_court",
-                "base_url": self.SC_BASE_URL,
-                "status": "error",
-                "error": str(e),
-            }
-        except httpx.HTTPError as e:
-            logger.warning("HTTP error fetching Supreme Court judgment for %s: %s", case_no, e)
-            return {
-                "case_no": case_no,
-                "court": "supreme_court",
-                "base_url": self.SC_BASE_URL,
-                "status": "error",
-                "error": str(e),
-            }
         except Exception as e:
-            logger.warning("Error fetching Supreme Court judgment for %s: %s", case_no, e)
-            return {
-                "case_no": case_no,
-                "court": "supreme_court",
-                "base_url": self.SC_BASE_URL,
-                "status": "error",
-                "error": str(e),
-            }
+            logger.warning("Error fetching SCI judgment %s: %s", case_no, e)
+
+        return {
+            "case_no": case_no,
+            "court": "supreme_court",
+            "base_url": self.SC_BASE_URL,
+            "status": "error",
+            "error": "Could not fetch from any source",
+        }
+
+    # Keep legacy alias for backward compatibility
+    fetch_supreme_courtJudgment = fetch_supreme_court_judgment
 
     async def fetch_high_court_judgment(self, court: str, case_no: str) -> dict | None:
-        """Fetch a High Court judgment from the respective court website."""
+        """Fetch a High Court judgment from Indian Kanoon or court website."""
         court_info = self.courts.get(court)
         if not court_info:
             return None
 
+        # Try Indian Kanoon first
+        court_name = court_info["name"]
+        search_results = await self.search_indian_kanoon(
+            f"{case_no} {court_name}", num_results=1
+        )
+        if search_results:
+            doc = await self.fetch_judgment_from_indian_kanoon(search_results[0]["id"])
+            if doc and doc["status"] == "success":
+                return doc
+
+        # Fallback to court website
         try:
             async with httpx.AsyncClient(timeout=30.0) as client:
                 website = court_info["website"]
@@ -456,17 +603,14 @@ class JudgmentScraper:
                 response.raise_for_status()
                 html = response.text
 
-                # Extract judgment text
                 text_match = re.search(
                     r'<div[^>]*class="[^"]*judgment[^"]*"[^>]*>(.*?)</div>',
                     html,
                     re.DOTALL | re.IGNORECASE,
                 )
                 judgment_text = text_match.group(1).strip() if text_match else ""
-                # Clean HTML tags from text
                 judgment_text = re.sub(r"<[^>]+>", " ", judgment_text).strip()
 
-                # Extract date
                 date_match = re.search(
                     r'<span[^>]*class="[^"]*date[^"]*"[^>]*>(.*?)</span>',
                     html,
@@ -474,7 +618,6 @@ class JudgmentScraper:
                 )
                 date_str = date_match.group(1).strip() if date_match else ""
 
-                # Extract bench
                 bench_match = re.search(
                     r'<div[^>]*class="[^"]*bench[^"]*"[^>]*>(.*?)</div>',
                     html,
@@ -482,14 +625,12 @@ class JudgmentScraper:
                 )
                 bench = bench_match.group(1).strip() if bench_match else ""
 
-                # Extract parties
                 parties_match = re.search(
                     r'<div[^>]*class="[^"]*parties[^"]*"[^>]*>(.*?)</div>',
                     html,
                     re.DOTALL | re.IGNORECASE,
                 )
                 parties = parties_match.group(1).strip() if parties_match else ""
-                # Clean HTML from parties
                 parties = re.sub(r"<[^>]+>", " ", parties).strip()
 
                 return {
@@ -502,33 +643,32 @@ class JudgmentScraper:
                     "base_url": f"https://{website}",
                     "status": "success",
                 }
-        except httpx.TimeoutException as e:
-            logger.warning("Timeout fetching %s judgment for %s: %s", court, case_no, e)
-            return {
-                "case_no": case_no,
-                "court": court,
-                "base_url": f"https://{court_info['website']}",
-                "status": "error",
-                "error": str(e),
-            }
-        except httpx.HTTPError as e:
-            logger.warning("HTTP error fetching %s judgment for %s: %s", court, case_no, e)
-            return {
-                "case_no": case_no,
-                "court": court,
-                "base_url": f"https://{court_info['website']}",
-                "status": "error",
-                "error": str(e),
-            }
         except Exception as e:
-            logger.warning("Error fetching %s judgment for %s: %s", court, case_no, e)
-            return {
-                "case_no": case_no,
-                "court": court,
-                "base_url": f"https://{court_info['website']}",
-                "status": "error",
-                "error": str(e),
-            }
+            logger.warning("Error fetching %s judgment %s: %s", court, case_no, e)
+
+        return {
+            "case_no": case_no,
+            "court": court,
+            "base_url": f"https://{court_info['website']}",
+            "status": "error",
+            "error": "Could not fetch from any source",
+        }
+
+    async def search_landmark_cases(self, topic: str, max_results: int = 10) -> list[dict]:
+        """
+        Search for landmark cases on a legal topic.
+        Useful for building precedent networks around specific legal issues.
+        """
+        results = await self.search_indian_kanoon(topic, num_results=max_results)
+
+        enriched = []
+        for result in results:
+            # Fetch full text for each result
+            doc = await self.fetch_judgment_from_indian_kanoon(result["id"])
+            if doc and doc["status"] == "success":
+                enriched.append(doc)
+
+        return enriched
 
     def parse_citation(self, citation: str) -> dict | None:
         """Parse a citation string into components."""

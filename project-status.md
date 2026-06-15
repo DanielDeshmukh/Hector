@@ -1,6 +1,6 @@
 # HECTOR Project Status Report
 
-**Date:** June 9, 2026 (Updated after Phase 1-13 fixes + full audit)
+**Date:** June 15, 2026 (Updated after Phase 1-14 + Docker + downloader)
 **Project:** H.E.C.T.O.R. — Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval
 **Version:** 2.1.0 (setup.py) / 9.0.0 (FastAPI app)
 
@@ -429,6 +429,30 @@ API is running on `localhost:8000` with 17,832 documents indexed.
 
 ---
 
+## 12. New Additions (June 15, 2026)
+
+### PDF Corpus Downloader (`scripts/download_books.py`)
+- **Automated PDF sourcing** from legislative.gov.in and indiacode.nic.in
+- Supports all 24 books across Tier 1-3 with fallback URL chains
+- `--list` shows download status, `--dry-run` shows URLs, `--tier N` filters by tier
+- Usage: `python scripts/download_books.py` to download all, `--tier 1` for core only
+
+### Docker Containerization (Phase 21)
+- **Multi-stage Dockerfile** with Python 3.11, Tesseract OCR, Poppler
+- **docker-compose.yml** with services: api, frontend, downloader, ingest, status
+- **Frontend Dockerfile** with Vite build + nginx serve
+- Quick start: `docker compose up -d` (API only), `docker compose --profile full up` (full stack)
+- Tools: `docker compose run downloader`, `docker compose run ingest`
+
+### Judgment Scraper Improvements (Phase 14)
+- **Indian Kanoon integration** — reliable search across all Indian courts
+- **Fallback chain**: Indian Kanoon → SCI website → High Court websites
+- `search_indian_kanoon()` for topic-based case discovery
+- `search_landmark_cases()` for building precedent networks
+- `fetch_judgment_from_indian_kanoon()` for full judgment text extraction
+
+---
+
 ## 11. Verdict
 
 ### What HECTOR Does Well (Updated)
@@ -510,8 +534,8 @@ HECTOR has been **significantly improved** across all layers. The frontend now c
 
 **The single remaining gap is the legal corpus** — the system has only 2 of 24 required PDFs. A detailed list of all 24 books with filenames, full titles, and rationale is provided in the "Required Books for Ingestion" section above. All Tier 1-3 PDFs (22 books) are available as free downloads from legislative.gov.in and indiacode.nic.in.
 
-**Project status: ~95% complete. All code tasks done. Corpus gap is the only blocker for real-world use.**
+**Project status: ~96% complete. All code tasks done. PDF download automation added. Corpus gap is the only blocker for real-world use.**
 
 ---
 
-*Report updated after Phase 1-13 implementation. All changes verified against source code.*
+*Report updated after Phase 1-14 implementation + Docker + downloader. All changes verified against source code.*

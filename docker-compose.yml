@@ -1,0 +1,78 @@
+# HECTOR - Docker Compose
+# Usage:
+#   docker compose up -d              # Start API only
+#   docker compose --profile full up  # Start API + Frontend
+#   docker compose run downloader     # Download legal PDFs
+#   docker compose run ingest         # Ingest books into ChromaDB
+
+services:
+  api:
+    build: .
+    container_name: hector-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - hector_db:/app/hector_db
+      - ./data/Books:/app/data/Books
+      - hector_logs:/app/.hector_logs
+    env_file:
+      - .env
+    environment:
+      - HECTOR_BOOKS_DIR=/app/data/Books
+      - HECTOR_DB_PATH=/app/hector_db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8000/status"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hector-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - api
+    profiles:
+      - full
+    restart: unless-stopped
+
+  downloader:
+    build: .
+    container_name: hector-downloader
+    volumes:
+      - ./data/Books:/app/data/Books
+    entrypoint: ["python", "scripts/download_books.py"]
+    profiles:
+      - tools
+
+  ingest:
+    build: .
+    container_name: hector-ingest
+    volumes:
+      - hector_db:/app/hector_db
+      - ./data/Books:/app/data/Books
+    env_file:
+      - .env
+    entrypoint: ["python", "-m", "utils.enhanced_ingestor"]
+    profiles:
+      - tools
+
+  status:
+    build: .
+    container_name: hector-status
+    volumes:
+      - hector_db:/app/hector_db
+      - ./data/Books:/app/data/Books
+    entrypoint: ["python", "main.py", "status"]
+    profiles:
+      - tools
+
+volumes:
+  hector_db:
+  hector_logs:
