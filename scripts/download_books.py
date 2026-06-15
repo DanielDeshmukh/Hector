@@ -52,9 +52,9 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Indian Penal Code, 1860",
         short_name="IPC",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/4219/1/THE-INDIAN-PENAL-CODE-1860.pdf",
-            "https://ncib.in/pdf/indian-penal-code.pdf",
+            "https://thc.nic.in/Central%20Governmental%20Acts/Indian%20Penal%20Code%2C%201860%20.pdf",
             "https://archive.org/download/THEINDIANPENALCODE1860/THE%20INDIAN%20PENAL%20CODE,%201860.pdf",
+            "https://ncib.in/pdf/indian-penal-code.pdf",
         ],
         description="The original penal code of India, now largely superseded by BNS",
     ),
@@ -64,8 +64,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Bharatiya Nyaya Sanhita, 2023",
         short_name="BNS",
         urls=[
-            "https://bprd.nic.in/uploads/pdf/BNS_English_30-04-2024.pdf",
-            "https://www.mha.gov.in/sites/default/files/250883_english_01042024.pdf",
+            "https://bprd.nic.in/uploads/pdf/Final_BNS.pdf",
+            "https://ncrb.gov.in/uploads/SankalanPortal/DownloadPDF/BNS2023.pdf",
             "https://ncert.nic.in/pdf/module/New_Laws_2023/BNS-2023E.pdf",
         ],
         description="The new criminal code replacing IPC, effective July 1 2024",
@@ -87,8 +87,9 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Bharatiya Nagarik Suraksha Sanhita, 2023",
         short_name="BNSS",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/20099/1/eng.pdf",
+            "https://bprd.nic.in/uploads/pdf/Final_BNSS.pdf",
             "https://bprd.nic.in/uploads/pdf/BNSS_Handbook_English.pdf",
+            "https://gojuris.in/assets/bareact/Bharatiya%20Nagarik%20Suraksha%20Sanhita%2C%202023.pdf",
         ],
         description="The new criminal procedure code replacing CrPC",
     ),
@@ -99,6 +100,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         short_name="IEA",
         urls=[
             "https://thc.nic.in/Central%20Governmental%20Acts/Evidence%20Act%2C%201872.pdf",
+            "https://archive.org/download/dli.ernet.416073/iea1872.pdf",
         ],
         description="The original evidence law of India",
     ),
@@ -121,8 +123,9 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Constitution of India",
         short_name="Constitution",
         urls=[
+            "https://archive.org/download/constitution-of-india_202407/constitution%20of%20india.pdf",
+            "https://www.cmlre.gov.in/sites/default/files/uploadfiles/THE%20CONSTITUTION%20OF%20INDIA.pdf",
             "https://legislative.gov.in/sites/default/files/Constitution_of_India.pdf",
-            "https://www.indiacode.nic.in/bitstream/123456789/13180/1/Constitution+of+India.pdf",
         ],
         description="Supreme law of India with fundamental rights and constitutional remedies",
     ),
@@ -133,6 +136,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         short_name="ICA",
         urls=[
             "https://www.indiacode.nic.in/bitstream/123456789/1672/1/A1872-09.pdf",
+            "https://www.advocatekhoj.com/library/bareacts/indiancontract/index.php",
         ],
         description="Governs contracts, breach, and fraud in India",
     ),
@@ -172,7 +176,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Limitation Act, 1963",
         short_name="LA",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2091/1/A1963-36.pdf",
+            "https://vault.drishtijudiciary.com/english_file_uploads/1742305917_Limitation_Act_1963.pdf",
+            "https://corridalegal.com/wp-content/uploads/2025/09/The-Limitation-Act-1963-Bare-Act-PDF.pdf",
         ],
         description="Time bars for filing legal proceedings",
     ),
@@ -184,7 +189,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Prevention of Corruption Act, 1988",
         short_name="PCA",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2394/1/A1988-49.pdf",
+            "https://thc.nic.in/Central%20Governmental%20Acts/Prevention%20of%20Corruption%20Act%2C%201988..pdf",
         ],
         description="Public servant offences and corruption",
     ),
@@ -194,7 +199,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Information Technology Act, 2000",
         short_name="IT Act",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2397/1/A2000-21.pdf",
+            "https://archive.org/download/INFORMATIONTECHNOLOGYACT2000/INFORMATION-TECHNOLOGY-ACT-2000.pdf",
+            "https://www.code.mp.gov.in/WriteReadData/Pdf/Act_2000_0021_Pdf_F208_English(1).pdf",
         ],
         description="Cybercrime, electronic evidence, and digital offences",
     ),
@@ -204,7 +210,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Protection of Women from Domestic Violence Act, 2005",
         short_name="DV Act",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2688/1/A2005-43.pdf",
+            "https://web.archive.org/web/20130301005246/http://wcd.nic.in/wdvact.pdf",
         ],
         description="Domestic violence protections and offences",
     ),
@@ -214,7 +220,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Juvenile Justice (Care and Protection of Children) Act, 2015",
         short_name="JJ Act",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2752/1/A2015-02.pdf",
+            "https://www.megsocialwelfare.gov.in/acts/JJ_care_protection_children_act_2015.pdf",
+            "https://cara.wcd.gov.in/pdf/jj%20act%202015.pdf",
         ],
         description="Juvenile offenders and child protection",
     ),
@@ -224,7 +231,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Arms Act, 1959",
         short_name="Arms Act",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/755/1/A1959-54.pdf",
+            "https://www.mha.gov.in/sites/default/files/2022-10/TheArmsAct1959%5B1%5D.pdf",
         ],
         description="Weapons offences and licensing",
     ),
@@ -234,7 +241,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Narcotic Drugs and Psychotropic Substances Act, 1985",
         short_name="NDPS",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2312/1/A1985-61.pdf",
+            "https://www.cbn.gov.in/pdf/ndpsact1985.pdf",
+            "https://archive.org/download/NARCOTICDRUGSANDPSYCHOTROPICSUBSTANCESACT/NARCOTIC%20DRUGS%20AND%20PSYCHOTROPIC%20SUBSTANCES%20ACT.pdf",
         ],
         description="Drug offences and controlled substances",
     ),
@@ -244,7 +252,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Motor Vehicles Act, 1988",
         short_name="MV Act",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2133/1/A1988-59.pdf",
+            "https://mvd.kerala.gov.in/sites/default/files/Downloads/Motor%20Vehicles%20Act%2C%201988.pdf",
         ],
         description="Road accident offences, hit and run, traffic violations",
     ),
@@ -254,7 +262,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Consumer Protection Act, 2019",
         short_name="CPA",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/3346/1/A2019-35.pdf",
+            "https://ncdrc.nic.in/bare_acts/CPA2019.pdf",
+            "https://thc.nic.in/Central%20Governmental%20Acts/Consumer%20Protection%20Act%2C%202019.pdf",
         ],
         description="Consumer fraud and deficiency in service",
     ),
