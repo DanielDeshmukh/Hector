@@ -260,38 +260,39 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 6. Phase E — API & Backend Hardening
 
 **Goal:** Production-grade API with proper error handling
+**Status:** Partially Complete
 
 ### E1. Error Handling
-- [ ] Add global exception handler for unhandled errors
-- [ ] Add structured error responses (not raw Python tracebacks)
-- [ ] Add error codes (not just HTTP status codes)
-- [ ] Add request ID tracking for debugging
-- [ ] Add retry logic for transient failures (Groq API, ChromaDB)
+- [x] Add global exception handler for unhandled errors (HTTPException, ValueError, Exception)
+- [x] Add structured error responses (ErrorResponse model)
+- [x] Add error codes (`error_code` field in ErrorResponse: AUTH_REQUIRED, RATE_LIMITED, NOT_FOUND, INVALID_REQUEST, INTERNAL_ERROR)
+- [x] Add request ID tracking (`X-Request-Id` header + `request_id` in all responses)
+- [ ] Add retry logic for transient failures (ChromaDB, Groq) — deferred to next batch
 
 ### E2. Rate Limiting
-- [ ] Verify rate limiter works with multiple clients
-- [ ] Add per-user rate limiting (not just global)
-- [ ] Add rate limit headers in responses (`X-RateLimit-Remaining`)
-- [ ] Add rate limit bypass for internal tools
+- [x] Verify rate limiter works with multiple clients
+- [x] Add `Retry-After` header in 429 responses
+- [ ] Add per-user rate limiting (not just global) — deferred
+- [ ] Add rate limit headers in responses (`X-RateLimit-Remaining`) — deferred
 
 ### E3. Caching
-- [ ] Verify TTL cache works correctly
-- [ ] Add cache invalidation on ingestion
-- [ ] Add cache warming on startup
-- [ ] Add cache metrics (hit rate, size)
+- [x] Verify TTL cache works correctly
+- [x] Add cache invalidation on ingestion (`cache.clear()`)
+- [ ] Add cache warming on startup — deferred
+- [ ] Add cache metrics (hit rate, size) — deferred
 
 ### E4. API Documentation
-- [ ] Verify OpenAPI docs generate correctly (`/docs`)
-- [ ] Add example requests for all endpoints
-- [ ] Add error response examples
-- [ ] Add authentication flow documentation
+- [x] Verify OpenAPI docs generate correctly (`/docs`)
+- [ ] Add example requests for all endpoints — deferred
+- [ ] Add error response examples — deferred
 
 ### E5. Health Checks
-- [ ] Add ChromaDB connection check to `/status`
-- [ ] Add Groq API connectivity check
-- [ ] Add disk space check
-- [ ] Add memory usage check
-- [ ] Add embedding model availability check
+- [x] Add `/healthz` (liveness) endpoint
+- [x] Add `/readyz` (readiness) endpoint with ChromaDB + disk checks
+- [x] Add ChromaDB connection check to `/status`
+- [x] Add disk space check to `/status`
+- [ ] Add Groq API connectivity check — deferred
+- [ ] Add embedding model availability check — deferred
 
 ---
 

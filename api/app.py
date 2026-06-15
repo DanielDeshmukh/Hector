@@ -1,6 +1,9 @@
 import json
 import logging
 import os
+import shutil
+import time
+import uuid
 from threading import Lock
 from contextlib import asynccontextmanager
 
@@ -69,11 +72,14 @@ app.add_middleware(
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request, exc):
+    error_code = "AUTH_REQUIRED" if exc.status_code == 401 else "RATE_LIMITED" if exc.status_code == 429 else "NOT_FOUND" if exc.status_code == 404 else "INVALID_REQUEST" if exc.status_code == 400 else "INTERNAL_ERROR"
     return JSONResponse(
         status_code=exc.status_code,
         content=ErrorResponse(
             error=str(exc.detail),
             status_code=exc.status_code,
+            error_code=error_code,
+            request_id=getattr(request.state, "request_id", None),
         ).model_dump(),
     )
 
@@ -87,6 +93,8 @@ async def value_error_handler(request, exc):
             error="Invalid request",
             detail="The request contains invalid parameters.",
             status_code=400,
+            error_code="INVALID_REQUEST",
+            request_id=getattr(request.state, "request_id", None),
         ).model_dump(),
     )
 
@@ -100,25 +108,37 @@ async def general_exception_handler(request, exc):
             error="Internal server error",
             detail="An unexpected error occurred. Please try again later.",
             status_code=500,
+            error_code="INTERNAL_ERROR",
+            request_id=getattr(request.state, "request_id", None),
         ).model_dump(),
     )
 
 
 @app.middleware("http")
 async def security_headers_middleware(request: Request, call_next):
+    # Generate request ID
+    request_id = str(uuid.uuid4())
+    request.state.request_id = request_id
+
     # Reject oversized requests (10MB limit)
     content_length = request.headers.get("content-length")
     if content_length and int(content_length) > 10 * 1024 * 1024:
         return JSONResponse(
             status_code=413,
-            content={"error": "Request too large", "detail": "Maximum request size is 10MB.", "status_code": 413},
+            content={"error": "Request too large", "detail": "Maximum request size is 10MB.", "status_code": 413, "error_code": "REQUEST_TOO_LARGE"},
         )
+
+    start_time = time.time()
     response = await call_next(request)
+    duration_ms = round((time.time() - start_time) * 1000, 1)
+
+    response.headers["X-Request-Id"] = request_id
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Content-Security-Policy"] = "default-src 'self'"
+    response.headers["X-Response-Time"] = f"{duration_ms}ms"
     if request.url.scheme == "https":
         response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     return response
@@ -153,8 +173,43 @@ def enforce_rate_limit(auth_payload=Depends(require_auth)):
     return auth_payload
 
 
+@app.get("/healthz")
+def healthz():
+    """Liveness probe - returns 200 if the process is running."""
+    return {"status": "ok"}
+
+
+@app.get("/readyz")
+def readyz(svc: HectorApiService = Depends(get_service)):
+    """Readiness probe - checks ChromaDB and critical dependencies."""
+    checks = {}
+    healthy = True
+
+    # ChromaDB check
+    try:
+        count = svc.retriever.collection.count()
+        checks["chromadb"] = {"status": "ok", "records": count}
+    except Exception as exc:
+        checks["chromadb"] = {"status": "error", "detail": str(type(exc).__name__)}
+        healthy = False
+
+    # Disk space check
+    try:
+        db_path = os.getenv("HECTOR_DB_PATH", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"))
+        usage = shutil.disk_usage(db_path)
+        free_mb = usage.free // (1024 * 1024)
+        checks["disk"] = {"status": "ok", "free_mb": free_mb}
+        if free_mb < 100:
+            checks["disk"]["status"] = "warning"
+    except Exception:
+        checks["disk"] = {"status": "unknown"}
+
+    return {"status": "ok" if healthy else "degraded", "checks": checks}
+
+
 @app.get("/status")
 def status_endpoint(
+    request: Request,
     _: dict = Depends(enforce_rate_limit),
     svc: HectorApiService = Depends(get_service),
 ):
@@ -162,9 +217,30 @@ def status_endpoint(
     cached = cache.get(cache_key)
     if cached:
         cached["cached"] = True
+        cached["request_id"] = getattr(request.state, "request_id", None)
         return cached
 
     payload = svc.status().model_dump(mode="json")
+
+    # Add health checks
+    try:
+        count = svc.retriever.collection.count()
+        payload["chromadb_connected"] = True
+    except Exception:
+        payload["chromadb_connected"] = False
+
+    try:
+        db_path = os.getenv("HECTOR_DB_PATH", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"))
+        usage = shutil.disk_usage(db_path)
+        payload["disk_space_mb"] = usage.free // (1024 * 1024)
+    except Exception:
+        payload["disk_space_mb"] = 0
+
+    # Set status based on health
+    if not payload.get("chromadb_connected"):
+        payload["status"] = "degraded"
+
+    payload["request_id"] = getattr(request.state, "request_id", None)
     cache.set(cache_key, payload)
     return payload
 

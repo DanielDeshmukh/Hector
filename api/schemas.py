@@ -96,6 +96,7 @@ class SearchResponse(BaseModel):
     response_format: str = "summary"
     retrieved_at: datetime
     cached: bool = False
+    request_id: str | None = None
 
 
 class CompareResponse(BaseModel):
@@ -108,6 +109,7 @@ class CompareResponse(BaseModel):
     counterpart_results: list[SearchHit] = Field(default_factory=list)
     compared_at: datetime
     cached: bool = False
+    request_id: str | None = None
 
 
 class RouteResponse(BaseModel):
@@ -117,6 +119,7 @@ class RouteResponse(BaseModel):
     normalized_query: str | None = None
     mappings: list[str] = Field(default_factory=list)
     cached: bool = False
+    request_id: str | None = None
 
 
 class IngestResponse(BaseModel):
@@ -126,6 +129,7 @@ class IngestResponse(BaseModel):
     reindex_mode: bool
     collection_count: int
     ingested_at: datetime
+    request_id: str | None = None
 
 
 class StatusResponse(BaseModel):
@@ -137,9 +141,14 @@ class StatusResponse(BaseModel):
     router_model: str
     uptime_seconds: int
     cached: bool = False
+    request_id: str | None = None
+    chromadb_connected: bool = True
+    disk_space_mb: int = 0
 
 
 class ErrorResponse(BaseModel):
     error: str
     detail: str | None = None
     status_code: int
+    error_code: str = "UNKNOWN_ERROR"
+    request_id: str | None = None
