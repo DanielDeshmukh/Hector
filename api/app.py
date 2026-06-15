@@ -12,6 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from .cache import TTLCache
+from .logging_config import log_request, log_search, request_id_var, setup_logging
 from .rate_limit import InMemoryRateLimiter, RateLimitExceeded
 from .schemas import (
     CompareRequest,
@@ -24,6 +25,7 @@ from .schemas import (
 from .security import auth_manager, require_auth
 from .services import HectorApiService, build_cache_key
 
+setup_logging()
 logger = logging.getLogger(__name__)
 
 
@@ -116,9 +118,10 @@ async def general_exception_handler(request, exc):
 
 @app.middleware("http")
 async def security_headers_middleware(request: Request, call_next):
-    # Generate request ID
+    # Generate request ID and set in context var for logging
     request_id = str(uuid.uuid4())
     request.state.request_id = request_id
+    token = request_id_var.set(request_id)
 
     # Reject oversized requests (10MB limit)
     content_length = request.headers.get("content-length")
@@ -129,8 +132,15 @@ async def security_headers_middleware(request: Request, call_next):
         )
 
     start_time = time.time()
-    response = await call_next(request)
+    try:
+        response = await call_next(request)
+    finally:
+        request_id_var.reset(token)
+
     duration_ms = round((time.time() - start_time) * 1000, 1)
+
+    # Log access
+    log_request(request.method, request.url.path, response.status_code, duration_ms, request_id)
 
     response.headers["X-Request-Id"] = request_id
     response.headers["X-Content-Type-Options"] = "nosniff"
@@ -287,7 +297,17 @@ def search_endpoint(
         cached["cached"] = True
         return cached
 
+    start = time.time()
     payload = svc.search(request).model_dump(mode="json")
+    duration_ms = round((time.time() - start) * 1000, 1)
+
+    log_search(
+        query=request.query,
+        route=payload.get("route", "unknown"),
+        results_count=len(payload.get("sources", [])),
+        duration_ms=duration_ms,
+    )
+
     cache.set(cache_key, payload)
     return payload
 

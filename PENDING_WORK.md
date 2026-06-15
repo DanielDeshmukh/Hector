@@ -457,20 +457,24 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 11. Phase J — Monitoring & Observability
 
 **Goal:** Know when things break before users do
+**Status:** Partially Complete
 
 ### J1. Logging
-- [ ] Replace `print()` with `logging` module throughout
-- [ ] Add structured logging (JSON format)
-- [ ] Add log levels (DEBUG/INFO/WARNING/ERROR)
-- [ ] Add request ID propagation through all layers
-- [ ] Add sensitive data redaction in logs
+- [x] Replace `print()` with `logging` module throughout
+- [x] Add structured logging (JSON format) via `api/logging_config.py`
+- [x] Add log levels (DEBUG/INFO/WARNING/ERROR via `HECTOR_LOG_LEVEL`)
+- [x] Add request ID propagation through all layers (ContextVar + `request_id_var`)
+- [x] Add human-readable fallback mode (`HECTOR_LOG_FORMAT=text`)
+- [x] Add access logging (method, path, status, duration)
+- [x] Add search logging (query, route, results count, duration)
+- [ ] Add sensitive data redaction in logs — deferred
 
 ### J2. Metrics
-- [ ] Add Prometheus metrics endpoint (`/metrics`)
-- [ ] Track request count, latency, error rate
-- [ ] Track search query performance
-- [ ] Track ingestion progress
-- [ ] Track ChromaDB collection size
+- [ ] Add Prometheus metrics endpoint (`/metrics`) — deferred
+- [ ] Track request count, latency, error rate — deferred
+- [ ] Track search query performance — deferred
+- [ ] Track ingestion progress — deferred
+- [ ] Track ChromaDB collection size — deferred
 
 ### J3. Alerting
 - [ ] Add health check alerts (service down)
