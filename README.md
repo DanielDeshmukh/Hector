@@ -1,150 +1,269 @@
-⭐ If HECTOR helped you navigate IPC → BNS 2023 mapping without hallucinations — a star helps other legal-AI builders find it. Takes 2 seconds.
-
 # H.E.C.T.O.R.
+
 ### **Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval**
 
-**HECTOR** is a high-precision, "Hard-RAG" legal intelligence system designed to navigate the complexities of Indian Law. Unlike standard LLMs that provide general summaries, HECTOR is engineered for **zero-hallucination** retrieval. It specializes in mapping the transition from the Indian Penal Code (IPC) to the **Bharatiya Nyaya Sanhita (BNS)**, providing authoritative citations directly from a curated library of legal Bare Acts and commentaries.
+**HECTOR** is a high-precision "Hard-RAG" legal intelligence system for Indian Law. It specializes in mapping the transition from the Indian Penal Code (IPC) to the **Bharatiya Nyaya Sanhita (BNS)**, providing authoritative citations from a curated library of Bare Acts and commentaries with zero hallucination.
 
 ---
 
-## **API Quick Start**
+## Quick Start
 
-HECTOR exposes a FastAPI backend for search, routing, comparison, ingestion, health checks, and streaming search events.
+### Docker (Recommended)
 
 ```bash
-uvicorn api.app:app --reload
+git clone <repo-url> && cd Hector
+cp .env.example .env          # Add your API keys
+docker compose --profile full up -d
+# Frontend: http://localhost:3000
+# API:      http://localhost:8000
+# Docs:     http://localhost:8000/docs
 ```
 
-Authenticate with either:
-- `X-API-Key: hector-dev-key`
-- `POST /auth/token?api_key=hector-dev-key` for a JWT bearer token
-
-Core endpoints:
-- `POST /search` — Hybrid search across legal corpus
-- `POST /compare` — IPC ↔ BNS section comparison
-- `POST /route` — Intent classification
-- `GET /status` — System health check
-- `POST /ingest` — PDF ingestion
-- `WS /ws/search` — Streaming search events
-
----
-
-## **Frontend Quick Start**
-
-The Vite + React 18 frontend provides a professional dark-theme interface for legal research.
+### Local Development
 
 ```bash
-# Start API server (in one terminal)
-uvicorn api.app:app --reload
+# Backend
+python -m venv venv && venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+cp .env.example .env            # Add your API keys
+uvicorn api.app:app --reload --port 8000
 
-# Start frontend (in another terminal)
+# Frontend (separate terminal)
 cd frontend
-npm run dev
+npm install && npm run dev
 ```
 
-Access the UI at: http://localhost:3000
+### CLI
 
-### Features
-- **Dual-Pane Viewer** — AI-generated summary alongside source document detail
-- **Search History** — localStorage-backed query history with re-submit
-- **Bookmarks** — Save and manage favorite sources from search results
-- **IPC ↔ BNS Comparison Tool** — Dedicated comparison UI with act selector
-- **Multi-Language Support** — Hindi/English UI toggle
-- **Voice Query** — Browser-based speech input (Web Speech API)
-- **High-contrast dark theme** — Professional dark UI with gold accents and Google Fonts
-- **Structured Citations** — Source, page, and paragraph references on every response
-
----
-
-## **CLI Commands**
-
-HECTOR provides a command-line interface for easy access to all features.
-
-### Quick Start
-
-```powershell
-# One-time setup from the project root
-venv\Scripts\python.exe -m pip install -e .
-
-# Then use the CLI directly
-hector init
-hector status
-hector ingest
-hector --help
-```
-
-### Commands
-
-| Command | Description | Options |
-|---------|-------------|---------|
-| `hector init` | Start HECTOR (API + Frontend) | `--port, -p` (default: 8000), `--frontend-port, -fp` (default: 3000), `--no-frontend`, `--auto-port`, `--kill-existing` |
-| `hector ingest` | Ingest books from data/Books | `--force, -f` (re-ingest all), `--verbose, -v` (detailed) |
-| `hector status` | Display system status | - |
-| `hector --help` | Show help message | - |
-
-**Examples:**
-```powershell
-# Install the CLI into the project virtualenv
-venv\Scripts\python.exe -m pip install -e .
-
-# Then use from the terminal as a normal command
-hector init                    # Start both API and frontend
-hector init --port 9000        # Custom API port
-hector init --no-frontend      # API only
-hector ingest                  # Ingest new books
-hector status                  # Check system status
-hector --help                  # Show help
+```bash
+pip install -e .
+hector status                   # Verify system
+hector ingest                   # Index books
+hector search "Section 302 IPC"
 ```
 
 ---
 
-## **How HECTOR Works**
+## Architecture
 
-HECTOR operates on a **Chain-of-Verification (CoVe)** architecture. When a user inputs a legal query, the system follows a four-stage internal logic:
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        USER LAYER                               │
+│  ┌──────────┐  ┌──────────────┐  ┌─────────┐  ┌────────────┐  │
+│  │ React UI │  │  REST API    │  │   CLI   │  │  Voice I/O │  │
+│  │ (Vite)   │  │  (FastAPI)   │  │ (Typer) │  │  (Web API) │  │
+│  └────┬─────┘  └──────┬───────┘  └────┬────┘  └─────┬──────┘  │
+│       └────────────────┴───────────────┴─────────────┘         │
+└───────────────────────────────┬─────────────────────────────────┘
+                                │
+┌───────────────────────────────▼─────────────────────────────────┐
+│                      CORE ENGINE                                │
+│                                                                 │
+│  ┌─────────┐    ┌──────────────┐    ┌────────────┐             │
+│  │ Router  │───▶│  Retriever   │───▶│  Verifier  │             │
+│  │(Groq)   │    │(Hybrid RAG)  │    │(Chain-of-  │             │
+│  │         │    │              │    │Verification)│             │
+│  └─────────┘    └──────┬───────┘    └─────┬──────┘             │
+│                        │                  │                     │
+│  ┌─────────────────────▼──────────────────▼─────────────┐      │
+│  │              RESPONSE GENERATOR                       │      │
+│  │  (Citation grounding, IPC↔BNS comparison tables)     │      │
+│  └──────────────────────────────────────────────────────┘      │
+└───────────────────────────────┬─────────────────────────────────┘
+                                │
+┌───────────────────────────────▼─────────────────────────────────┐
+│                     DATA LAYER                                  │
+│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐    │
+│  │   ChromaDB   │  │  BM25 Index  │  │  PDF Corpus        │    │
+│  │  (Semantic)  │  │  (Keyword)   │  │  (24 Bare Acts +   │    │
+│  │              │  │              │  │   13 Commentaries)  │    │
+│  └──────────────┘  └──────────────┘  └────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-1.  **Intent Routing (The Gatekeeper):** The query is first analyzed by a "Taxonomy Agent" that classifies the legal domain (Criminal, Civil, or Procedural). This prevents "data bleeding," ensuring that a criminal query doesn't pull irrelevant civil precedents.
-2.  **Hybrid Retrieval (The Researcher):** HECTOR utilizes a dual-search mechanism. It performs **Semantic Search** to understand the intent (e.g., "harming reputation") and **Keyword/Sparse Search** (BM25) to pinpoint specific legal sections (e.g., "Section 356 BNS"). Results are merged via **Reciprocal Rank Fusion** and reranked with a **cross-encoder**.
-3.  **Hierarchical Contextualization:** Legal text is not flat. HECTOR's retrieval engine ensures that if a sub-clause is retrieved, it automatically pulls the parent Section, Chapter, and Act titles to provide a complete legal context.
-4.  **Strict Citation Grounding:** Before the final output is generated, a "Validator Agent" checks the response against the retrieved source. If the information is not explicitly present in the loaded books, HECTOR flags unverified claims rather than guessing. Every response is appended with a verifiable **Source, Page, and Paragraph** reference.
+### Query Pipeline
+
+1. **Intent Routing** -- Taxonomy agent classifies domain (Criminal/Civil/Procedural) to prevent data bleeding
+2. **Hybrid Retrieval** -- Semantic search (sentence-transformers) + BM25 keyword search, fused via Reciprocal Rank Fusion, reranked by cross-encoder
+3. **Hierarchical Contextualization** -- Sub-clauses automatically pull parent Section, Chapter, and Act titles
+4. **Citation Grounding** -- Validator checks response against source; unverified claims flagged, never guessed
+5. **IPC to BNS Mapping** -- 495 cross-reference mappings with temporal validation (IPC repealed July 1, 2024)
 
 ---
 
-## **Environment Configuration**
+## Environment Variables
 
 Copy `.env.example` to `.env` and configure:
 
-```bash
-# Authentication
-HECTOR_API_KEY=your-api-key
-HECTOR_JWT_SECRET=your-jwt-secret
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `HECTOR_API_KEY` | **Yes** | -- | API authentication key |
+| `HECTOR_JWT_SECRET` | **Yes** | -- | JWT signing secret (min 32 chars) |
+| `HECTOR_JWT_EXPIRY_SECONDS` | No | `3600` | Token lifetime |
+| `GROQ_API_KEY` | **Yes** | -- | Groq API key for LLM routing |
+| `GEMINI_API_KEY` | No | -- | Google Gemini API key |
+| `NVIDIA_API_KEY` | No | -- | NVIDIA NIM API key |
+| `NIM_API_KEY` | No | -- | NVIDIA NIM API key (alt) |
+| `NIM_BASE_URL` | No | `https://integrate.api.nvidia.com/v1` | NIM endpoint |
+| `HECTOR_ROUTER_MODEL` | No | `llama-3.3-70b-versatile` | Groq model for routing |
+| `HECTOR_BOOKS_DIR` | No | `./data/Books` | PDF corpus directory |
+| `HECTOR_DB_PATH` | No | `./hector_db` | ChromaDB storage path |
+| `HECTOR_TESSERACT_CMD` | No | `tesseract` | Tesseract OCR binary path |
+| `HECTOR_POPPLER_PATH` | No | -- | Poppler `bin/` directory (for `pdf2image`) |
+| `HECTOR_CORS_ORIGINS` | No | `http://localhost:3000` | Comma-separated CORS origins |
+| `HECTOR_LOG_LEVEL` | No | `INFO` | Logging level |
+| `HECTOR_DEBUG` | No | `false` | Debug mode |
 
-# LLM Routing (Groq)
-GROQ_API_KEY=your-groq-key
+**Frontend** (`frontend/.env`):
 
-# Paths (optional — auto-detected)
-HECTOR_BOOKS_DIR=./data/Books
-HECTOR_DB_PATH=./hector_db
-HECTOR_POPPLER_PATH=/path/to/poppler/bin
-HECTOR_TESSERACT_CMD=tesseract
-```
-
-Frontend env (copy `.env.example` in `frontend/`):
-```bash
-VITE_API_URL=http://localhost:8000
-VITE_API_KEY=your-api-key
-```
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `VITE_API_URL` | No | `http://localhost:8000` | Backend API URL |
+| `VITE_API_KEY` | No | -- | Pre-configured API key for UI |
 
 ---
 
-## **Tech Stack**
+## API Endpoints
+
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| `POST` | `/search` | API Key / JWT | Hybrid legal search |
+| `POST` | `/compare` | API Key / JWT | IPC to BNS section comparison |
+| `POST` | `/route` | API Key / JWT | Intent classification |
+| `POST` | `/ingest` | API Key / JWT | PDF ingestion trigger |
+| `GET` | `/status` | API Key / JWT | System health + ChromaDB status |
+| `GET` | `/healthz` | None | Liveness probe (for orchestrators) |
+| `GET` | `/readyz` | None | Readiness probe (ChromaDB + disk) |
+| `POST` | `/auth/token` | API Key | Get JWT bearer token |
+| `WS` | `/ws/search` | Query param | Streaming search events |
+
+Authenticate with:
+- `X-API-Key: <your-key>` header, or
+- `Authorization: Bearer <jwt-token>` header
+
+---
+
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Backend | FastAPI, Python 3.11+ |
 | Vector DB | ChromaDB |
-| Embeddings | sentence-transformers (all-MiniLM-L6-v2) |
-| Reranker | cross-encoder (ms-marco-MiniLM-L-6-v2) |
-| LLM Router | Groq (llama-3.3-70b-versatile) |
+| Embeddings | sentence-transformers (`all-MiniLM-L6-v2`) |
+| Reranker | cross-encoder (`ms-marco-MiniLM-L-6-v2`) |
+| LLM Router | Groq (`llama-3.3-70b-versatile`) |
 | Frontend | Vite 5, React 18, Tailwind CSS 4 |
-| OCR | Tesseract, pdf2image |
-| CLI | argparse (main.py) |
+| OCR | Tesseract 5, Poppler, pdf2image |
+| CLI | Typer |
+| Containerization | Docker Compose |
+
+---
+
+## Project Structure
+
+```
+Hector/
+├── api/                    # FastAPI application
+│   ├── app.py              # Main app, middleware, routes
+│   ├── security.py         # AuthManager, JWT, bcrypt
+│   ├── rate_limit.py       # Token bucket rate limiting
+│   ├── schemas.py          # Pydantic request/response models
+│   └── services.py         # Business logic layer
+├── core/                   # Core engine
+│   ├── router.py           # Intent classification (Groq LLM)
+│   ├── orchestrator.py     # Query pipeline coordinator
+│   ├── hybrid_retriever.py # Semantic + BM25 + cross-encoder
+│   ├── verifier.py         # Chain-of-Verification
+│   ├── response_generator.py # Citation-grounded responses
+│   ├── voice.py            # Voice I/O (Web Speech API)
+│   ├── precedent.py        # Precedent analysis
+│   ├── enterprise/         # Enterprise user management
+│   └── mapping.json        # 495 IPC-BNS cross-references
+├── data/Books/             # PDF corpus (24 bare acts + commentaries)
+├── frontend/               # Vite + React frontend
+│   ├── src/                # React components
+│   ├── nginx.conf          # Production nginx config
+│   └── Dockerfile          # Multi-stage build
+├── tests/                  # Test suite
+├── utils/                  # Ingestion pipeline
+│   ├── enhanced_ingestor.py # PDF to ChromaDB pipeline
+│   └── legal_structure_parser.py # Legal document parsing
+├── docker-compose.yml      # Container orchestration
+├── requirements.txt        # Python dependencies
+└── main.py                 # CLI entry point
+```
+
+---
+
+## Prerequisites
+
+- **Python 3.11+**
+- **Node.js 18+** (for frontend)
+- **Tesseract OCR** (for scanned PDFs): `winget install UB-Mannheim.TesseractOCR`
+- **Poppler** (for `pdf2image`): Download from [github.com/oschwartz10612/poppler-windows](https://github.com/oschwartz10612/poppler-windows/releases)
+- **Docker** (optional, for containerized deploy)
+
+---
+
+## Troubleshooting
+
+### Server refuses to start -- missing environment variables
+
+```
+RuntimeError: HECTOR_API_KEY and HECTOR_JWT_SECRET must be set
+```
+
+**Fix:** Copy `.env.example` to `.env` and add your API keys. The server will not start without them.
+
+### Tesseract not found
+
+```
+TesseractNotFoundError: ...
+```
+
+**Fix:** Set `HECTOR_TESSERACT_CMD` in `.env` to the full path:
+```
+HECTOR_TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
+```
+
+### Poppler not found (PDF to image conversion fails)
+
+**Fix:** Set `HECTOR_POPPLER_PATH` in `.env` to the Poppler `bin/` directory:
+```
+HECTOR_POPPLER_PATH=C:\path\to\poppler-xx\Library\bin
+```
+
+### CORS errors in browser
+
+**Fix:** Ensure `HECTOR_CORS_ORIGINS` in `.env` includes your frontend URL:
+```
+HECTOR_CORS_ORIGINS=http://localhost:3000,http://localhost:5173
+```
+
+### ChromaDB collection not found
+
+**Fix:** Run ingestion first:
+```bash
+hector ingest           # via CLI
+# or
+python main.py ingest   # via main.py
+```
+
+### Rate limited (429 responses)
+
+The API enforces rate limiting. Wait for the `Retry-After` period in the response header.
+
+### Docker build fails
+
+**Fix:** Ensure `.env` exists in the project root. Docker Compose reads it automatically:
+```bash
+cp .env.example .env
+# Edit .env with your keys
+docker compose --profile full up -d
+```
+
+---
+
+## License
+
+See [LICENSE](LICENSE) for details.

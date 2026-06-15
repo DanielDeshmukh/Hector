@@ -420,22 +420,24 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 10. Phase I — Documentation
 
 **Goal:** Anyone can deploy and contribute
+**Status:** Partially Complete
 
 ### I1. README.md Overhaul
-- [ ] Add project architecture diagram (Mermaid or ASCII)
-- [ ] Add quick start (3 commands: clone → install → run)
-- [ ] Add prerequisites (Python 3.11, Node.js 18+, Tesseract)
-- [ ] Add environment variable reference table
-- [ ] Add troubleshooting section
-- [ ] Add contribution guidelines
-- [ ] Add license (MIT/Apache 2.0)
+- [x] Add project architecture diagram (ASCII art)
+- [x] Add quick start (Docker + Local + CLI)
+- [x] Add prerequisites (Python 3.11, Node.js 18+, Tesseract, Poppler)
+- [x] Add environment variable reference table (15 vars)
+- [x] Add troubleshooting section (7 common issues)
+- [x] Add project structure tree
+- [ ] Add contribution guidelines — deferred
+- [ ] Add license (MIT/Apache 2.0) — deferred
 
 ### I2. API Documentation
-- [ ] Auto-generate OpenAPI spec from FastAPI
-- [ ] Add Postman collection for all endpoints
-- [ ] Add authentication flow diagram
-- [ ] Add rate limiting documentation
-- [ ] Add error code reference
+- [x] Auto-generate OpenAPI spec from FastAPI (`/docs`)
+- [x] Document all endpoints with auth requirements in README
+- [ ] Add Postman collection for all endpoints — deferred
+- [ ] Add authentication flow diagram — deferred
+- [ ] Add error code reference — deferred
 
 ### I3. Deployment Documentation
 - [ ] Add local development guide
