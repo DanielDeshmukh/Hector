@@ -41,6 +41,7 @@ CHUNK_OVERLAP_TOKENS = 150
 SESSION_AIR_BREAK_PAGES = 400
 SESSION_AIR_BREAK_MINUTES = 5
 PDF_RENDER_DPI = 300
+MIN_CHUNK_CHARS = 50
 
 if HAS_OCR:
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
@@ -76,14 +77,45 @@ class EnhancedHectorIngestor:
         self.stats = {
             "pages_processed": 0,
             "chunks_created": 0,
+            "chunks_rejected": 0,
             "acts_found": set(),
             "sections_found": 0,
             "structure_types": {}
         }
+        # Resume state: track which books are fully processed
+        self._resume_file = os.path.join(DB_PATH, ".ingest_resume.json")
+        self._completed_books = self._load_resume_state()
 
     def get_page_hash(self, filename: str, pg_num: int) -> str:
         """Generate a stable fingerprint for a source page."""
         return hashlib.md5(f"{filename}_{pg_num}".encode()).hexdigest()
+
+    def get_content_hash(self, text: str) -> str:
+        """Generate a content hash for deduplication."""
+        return hashlib.sha256(text.strip().encode()).hexdigest()[:16]
+
+    def _load_resume_state(self) -> set[str]:
+        """Load list of already-completed books from disk."""
+        import json
+        if os.path.exists(self._resume_file):
+            try:
+                with open(self._resume_file) as f:
+                    return set(json.load(f).get("completed", []))
+            except Exception:
+                pass
+        return set()
+
+    def _save_resume_state(self):
+        """Persist completed book list to disk."""
+        import json
+        os.makedirs(os.path.dirname(self._resume_file), exist_ok=True)
+        with open(self._resume_file, "w") as f:
+            json.dump({"completed": list(self._completed_books)}, f)
+
+    def _mark_book_complete(self, filename: str):
+        """Mark a book as fully ingested for resume support."""
+        self._completed_books.add(filename)
+        self._save_resume_state()
 
     def cooldown_timer(self, minutes: int = 5, reason: str = "API Rate Limit"):
         """Display a countdown during enforced cooldown."""
@@ -163,14 +195,31 @@ class EnhancedHectorIngestor:
         ids = []
 
         for chunk_index, chunk in enumerate(chunk_texts):
+            # Quality gate: reject chunks that are too short
+            if len(chunk.strip()) < MIN_CHUNK_CHARS:
+                self.stats["chunks_rejected"] += 1
+                continue
+
             documents.append(chunk)
+
+            # Content hash for deduplication
+            content_hash = self.get_content_hash(chunk)
+
+            # Check for duplicate content across collection
+            if not self.reindex_mode:
+                existing = self.collection.get(where={"content_hash": content_hash})
+                if existing["ids"]:
+                    self.stats["chunks_rejected"] += 1
+                    continue
 
             # Build base metadata
             base_metadata = {
                 "source": filename,
                 "page": page_number,
                 "page_hash": page_hash,
+                "content_hash": content_hash,
                 "chunk_index": chunk_index,
+                "chunk_chars": len(chunk),
                 "ingested_at": ingested_at,
                 "mapping_accuracy": "enhanced_v1" if not self.reindex_mode else "reindex_v1",
             }
@@ -261,6 +310,11 @@ class EnhancedHectorIngestor:
 
     def process_book(self, filename: str, file_path: str) -> dict[str, Any]:
         """Process all pages in a single book."""
+        # Resume: skip books already fully ingested
+        if not self.reindex_mode and filename in self._completed_books:
+            console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
+            return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
+
         console.print(f"\n[bold cyan]Processing:[/bold cyan] {filename}")
 
         # Get total page count from pypdf
@@ -292,11 +346,18 @@ class EnhancedHectorIngestor:
             if pg_num % 50 == 0:
                 self.maybe_take_session_air_break()
 
-        return {
+        result = {
             "filename": filename,
             "pages": pages_in_book,
-            "chunks": chunks_in_book
+            "chunks": chunks_in_book,
+            "status": "completed"
         }
+
+        # Mark book complete for resume support
+        if not self.reindex_mode:
+            self._mark_book_complete(filename)
+
+        return result
 
     def display_stats(self):
         """Display ingestion statistics."""
@@ -306,6 +367,7 @@ class EnhancedHectorIngestor:
 
         table.add_row("Pages Processed", str(self.stats["pages_processed"]))
         table.add_row("Chunks Created", str(self.stats["chunks_created"]))
+        table.add_row("Chunks Rejected", str(self.stats["chunks_rejected"]))
         table.add_row("Sections Found", str(self.stats["sections_found"]))
         table.add_row("Acts Identified", ", ".join(sorted(self.stats["acts_found"])))
 

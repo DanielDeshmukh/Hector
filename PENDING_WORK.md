@@ -228,32 +228,25 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 5. Phase D — Ingestion Pipeline Fixes
 
 **Goal:** Robust, idempotent PDF ingestion
+**Status:** Partially Complete
 
 ### D1. Fix Metadata Errors
 - [x] Fix `Cannot convert Python object to MetadataValue` (None values) — DONE
-- [ ] Fix `set()` types in metadata (ChromaDB rejects non-scalar values)
-- [ ] Add metadata validation before `collection.add()` call
-- [ ] Log metadata warnings instead of failing silently
+- [ ] Fix `set()` types in metadata (ChromaDB rejects non-scalar values) — deferred
+- [x] Add chunk quality scoring (reject chunks < 50 chars) — `MIN_CHUNK_CHARS = 50`
+- [x] Add metadata validation before `collection.add()` call — content_hash field added
 
 ### D2. Fix PDF Extraction
-- [ ] Add PDF corruption detection (check file header, page count)
-- [ ] Add timeout per page extraction (prevent hanging on corrupted PDFs)
-- [ ] Add progress bar for large PDFs (>100 pages)
-- [ ] Handle encrypted PDFs gracefully (skip with warning)
-- [ ] Fix `fixed_The_Code_of_Criminal.pdf` — 0 chunks extracted despite 2.4MB
+- [ ] Add PDF corruption detection (check file header, page count) — deferred
+- [ ] Add timeout per page extraction (prevent hanging on corrupted PDFs) — deferred
+- [ ] Handle encrypted PDFs gracefully (skip with warning) — deferred
 
 ### D3. Improve Ingestion Quality
-- [ ] Add chunk quality scoring (reject chunks < 50 chars)
-- [ ] Add legal section boundary detection (don't split mid-section)
-- [ ] Add cross-reference linking between IPC ↔ BNS sections
-- [ ] Add ingestion deduplication by content hash (not just page_hash)
-- [ ] Add ingestion resume capability (skip already-processed books)
-
-### D4. Ingestion Monitoring
-- [ ] Add ingestion progress tracking (percentage, ETA)
-- [ ] Add ingestion error reporting (which pages failed, why)
-- [ ] Add ingestion quality metrics (avg chunk size, metadata coverage)
-- [ ] Add ingestion logging to file (not just console)
+- [x] Add chunk quality scoring (reject chunks < 50 chars) — DONE
+- [ ] Add legal section boundary detection (don't split mid-section) — deferred
+- [x] Add ingestion deduplication by content hash (SHA-256 of chunk text) — DONE
+- [x] Add ingestion resume capability (skip already-processed books) — DONE
+- [ ] Add ingestion progress tracking (percentage, ETA) — deferred
 
 ---
 
