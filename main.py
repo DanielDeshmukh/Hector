@@ -630,7 +630,7 @@ def cmd_search(args):
     """Search the legal corpus."""
     import httpx
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
-    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    api_key = os.getenv("HECTOR_API_KEY", "")
     try:
         with httpx.Client(timeout=30) as client:
             resp = client.post(
@@ -654,7 +654,7 @@ def cmd_compare(args):
     """Compare IPC ↔ BNS sections."""
     import httpx
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
-    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    api_key = os.getenv("HECTOR_API_KEY", "")
     try:
         with httpx.Client(timeout=30) as client:
             resp = client.post(
@@ -677,7 +677,7 @@ def cmd_deep_cite(args):
     """Deep citation verification."""
     import httpx
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
-    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    api_key = os.getenv("HECTOR_API_KEY", "")
     try:
         with httpx.Client(timeout=60) as client:
             resp = client.post(

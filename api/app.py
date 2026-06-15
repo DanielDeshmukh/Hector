@@ -1,9 +1,10 @@
 import json
+import logging
 import os
 from threading import Lock
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -19,6 +20,8 @@ from .schemas import (
 )
 from .security import auth_manager, require_auth
 from .services import HectorApiService, build_cache_key
+
+logger = logging.getLogger(__name__)
 
 
 cache = TTLCache(ttl_seconds=60, max_items=256)
@@ -57,9 +60,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    expose_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Authorization", "X-API-Key", "Content-Type"],
+    expose_headers=["X-RateLimit-Remaining", "X-RateLimit-Reset"],
     max_age=3600,
 )
 
@@ -77,11 +80,12 @@ async def http_exception_handler(request, exc):
 
 @app.exception_handler(ValueError)
 async def value_error_handler(request, exc):
+    logger.warning("ValueError: %s", exc)
     return JSONResponse(
         status_code=400,
         content=ErrorResponse(
             error="Invalid request",
-            detail=str(exc),
+            detail="The request contains invalid parameters.",
             status_code=400,
         ).model_dump(),
     )
@@ -89,14 +93,35 @@ async def value_error_handler(request, exc):
 
 @app.exception_handler(Exception)
 async def general_exception_handler(request, exc):
+    logger.error("Unhandled exception: %s", exc, exc_info=True)
     return JSONResponse(
         status_code=500,
         content=ErrorResponse(
             error="Internal server error",
-            detail=str(exc),
+            detail="An unexpected error occurred. Please try again later.",
             status_code=500,
         ).model_dump(),
     )
+
+
+@app.middleware("http")
+async def security_headers_middleware(request: Request, call_next):
+    # Reject oversized requests (10MB limit)
+    content_length = request.headers.get("content-length")
+    if content_length and int(content_length) > 10 * 1024 * 1024:
+        return JSONResponse(
+            status_code=413,
+            content={"error": "Request too large", "detail": "Maximum request size is 10MB.", "status_code": 413},
+        )
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Content-Security-Policy"] = "default-src 'self'"
+    if request.url.scheme == "https":
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    return response
 
 
 def get_service() -> HectorApiService:

@@ -19,10 +19,23 @@ def _b64url_decode(raw: str) -> bytes:
 
 
 class AuthManager:
+    _WEAK_SECRETS = {"hector-dev-secret", "change-me-in-production", "secret", "jwt-secret"}
+
     def __init__(self):
-        self.api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
-        self.jwt_secret = os.getenv("HECTOR_JWT_SECRET", "hector-dev-secret")
+        self.api_key = os.getenv("HECTOR_API_KEY", "")
+        self.jwt_secret = os.getenv("HECTOR_JWT_SECRET", "")
         self.jwt_expiry_seconds = int(os.getenv("HECTOR_JWT_EXPIRY_SECONDS", "3600"))
+
+        if not self.jwt_secret or self.jwt_secret in self._WEAK_SECRETS:
+            raise RuntimeError(
+                "HECTOR_JWT_SECRET must be set to a strong random value. "
+                "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+            )
+        if not self.api_key:
+            raise RuntimeError(
+                "HECTOR_API_KEY must be set. "
+                "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+            )
 
     def issue_token(self, subject: str = "hector-client") -> str:
         issued_at = int(time.time())

@@ -191,7 +191,7 @@ def init(
 
         # Wait for API to be ready
         import requests
-        api_key = "hector-dev-key"
+        api_key = os.getenv("HECTOR_API_KEY", "")
         max_retries = 30
         for i in range(max_retries):
             try:
@@ -502,7 +502,7 @@ def search(
     import httpx
 
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
-    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    api_key = os.getenv("HECTOR_API_KEY", "")
 
     try:
         with httpx.Client(timeout=30) as client:
@@ -545,7 +545,7 @@ def compare(
     import httpx
 
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
-    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    api_key = os.getenv("HECTOR_API_KEY", "")
 
     try:
         with httpx.Client(timeout=30) as client:
@@ -585,10 +585,10 @@ def deep_cite(
     import httpx
 
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
-    api_key = os.getenv("HECTOR_API_KEY", "hector-dev-key")
+    api_key = os.getenv("HECTOR_API_KEY", "")
 
     try:
-        with httpx.Client(timeout=60) as client:
+        with httpx.Client(timeout=30) as client:
             resp = client.post(
                 f"{api_url}/search",
                 headers={"X-API-Key": api_key, "Content-Type": "application/json"},

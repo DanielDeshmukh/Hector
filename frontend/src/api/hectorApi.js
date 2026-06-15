@@ -1,5 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
-const API_KEY = import.meta.env.VITE_API_KEY || "hector-dev-key";
+const API_KEY = import.meta.env.VITE_API_KEY || "";
 
 function getCitationValue(citation, key, fallback = "") {
   return citation?.[key] ?? citation?.[key.toLowerCase()] ?? fallback;
