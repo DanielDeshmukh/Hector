@@ -5,13 +5,12 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-os.environ.setdefault("HF_HUB_OFFLINE", "1")
-os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+os.environ.setdefault("HF_HUB_OFFLINE", "0")
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "0")
 
 import chromadb
-import pytesseract
 from dotenv import load_dotenv
-from pdf2image import convert_from_path
+from pypdf import PdfReader
 from rich.console import Console
 from rich.live import Live
 from rich.panel import Panel
@@ -20,6 +19,14 @@ from rich.table import Table
 
 # Import the legal structure parser
 from utils.legal_structure_parser import LegalStructureParser, MetadataEnricher
+
+# Optional OCR dependencies
+try:
+    import pytesseract
+    from pdf2image import convert_from_path
+    HAS_OCR = True
+except ImportError:
+    HAS_OCR = False
 
 load_dotenv()
 
@@ -35,7 +42,8 @@ SESSION_AIR_BREAK_PAGES = 400
 SESSION_AIR_BREAK_MINUTES = 5
 PDF_RENDER_DPI = 300
 
-pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
+if HAS_OCR:
+    pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
 POPPLER_PATH = POPPLER_PATH or None
 
 console = Console()
@@ -113,6 +121,8 @@ class EnhancedHectorIngestor:
 
     def extract_text_from_image(self, image) -> str:
         """Run Tesseract OCR on rendered PDF page."""
+        if not HAS_OCR:
+            return ""
         return pytesseract.image_to_string(image, lang="eng").strip()
 
     def build_chunk_payloads(
@@ -201,19 +211,31 @@ class EnhancedHectorIngestor:
                 return {"status": "skipped", "reason": "duplicate", "chunks": 0}
 
         try:
-            page_images = convert_from_path(
-                file_path,
-                dpi=PDF_RENDER_DPI,
-                first_page=pg_num,
-                last_page=pg_num,
-                poppler_path=POPPLER_PATH
-            )
+            # Try pypdf text extraction first
+            text = ""
+            try:
+                reader = PdfReader(file_path)
+                if pg_num <= len(reader.pages):
+                    page = reader.pages[pg_num - 1]
+                    text = page.extract_text() or ""
+                    text = text.strip()
+            except Exception:
+                pass
 
-            if not page_images:
-                return {"status": "finished", "reason": "no_more_pages"}
-
-            page_image = page_images[0]
-            text = self.extract_text_from_image(page_image)
+            # Fall back to OCR for scanned PDFs
+            if (not text or len(text.strip()) < 20) and HAS_OCR:
+                try:
+                    page_images = convert_from_path(
+                        file_path,
+                        dpi=PDF_RENDER_DPI,
+                        first_page=pg_num,
+                        last_page=pg_num,
+                        poppler_path=POPPLER_PATH
+                    )
+                    if page_images:
+                        text = self.extract_text_from_image(page_images[0])
+                except Exception:
+                    pass
 
             if not text or len(text.strip()) < 20:
                 return {"status": "skipped", "reason": "empty_page", "chunks": 0}
@@ -241,11 +263,18 @@ class EnhancedHectorIngestor:
         """Process all pages in a single book."""
         console.print(f"\n[bold cyan]Processing:[/bold cyan] {filename}")
 
+        # Get total page count from pypdf
+        try:
+            reader = PdfReader(file_path)
+            total_pages = len(reader.pages)
+        except Exception:
+            total_pages = 9999
+
         pg_num = 1
         pages_in_book = 0
         chunks_in_book = 0
 
-        while True:
+        while pg_num <= total_pages:
             result = self.process_single_page(file_path, filename, pg_num)
 
             if result["status"] == "finished":

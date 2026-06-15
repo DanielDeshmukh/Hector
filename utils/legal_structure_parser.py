@@ -340,11 +340,13 @@ class MetadataEnricher:
         # Section info
         if structure.get("section"):
             section = structure["section"]
-            enriched["section_number"] = section.get("number")
-            enriched["section_title"] = section.get("title")
+            if section.get("number") is not None:
+                enriched["section_number"] = section.get("number")
+            if section.get("title") is not None:
+                enriched["section_title"] = section.get("title")
 
         # Legal indicators
-        act = structure.get("act", "")
+        act = structure.get("act", "") or ""
         if act:
             enriched["is_bns"] = "BNS" in act.upper()
             enriched["is_ipc"] = "IPC" in act.upper()
@@ -370,6 +372,9 @@ class MetadataEnricher:
         enriched["has_exception"] = structure.get("has_exception", False)
         enriched["has_provided_that"] = structure.get("has_provided_that", False)
         enriched["has_schedule"] = structure.get("has_schedule", False)
+
+        # Remove None values (ChromaDB rejects them)
+        enriched = {k: v for k, v in enriched.items() if v is not None}
 
         return enriched
 

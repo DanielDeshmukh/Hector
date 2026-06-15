@@ -1,6 +1,6 @@
 """
 HECTOR Legal Corpus Downloader
-Downloads Tier 1-3 legal PDFs from official Indian government sources.
+Downloads Tier 1-3 legal PDFs from verified Indian government sources.
 
 Usage:
     python scripts/download_books.py              # Download all tiers
@@ -14,13 +14,23 @@ import hashlib
 import os
 import sys
 import time
-import urllib.request
-import urllib.error
 from pathlib import Path
 from dataclasses import dataclass
 
+import requests
+import urllib3
+
+# Suppress SSL warnings for government sites with cert issues
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BOOKS_DIR = PROJECT_ROOT / "data" / "Books"
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Accept": "application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 
 
 @dataclass
@@ -30,7 +40,6 @@ class LegalBook:
     title: str
     short_name: str
     urls: list[str]  # Multiple source URLs (fallback chain)
-    sha256: str | None = None  # Optional checksum for verification
     description: str = ""
 
 
@@ -43,8 +52,9 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Indian Penal Code, 1860",
         short_name="IPC",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2088/1/A1860-45.pdf",
-            "https://legislative.gov.in/sites/default/files/A1860-45.pdf",
+            "https://www.indiacode.nic.in/bitstream/123456789/4219/1/THE-INDIAN-PENAL-CODE-1860.pdf",
+            "https://ncib.in/pdf/indian-penal-code.pdf",
+            "https://archive.org/download/THEINDIANPENALCODE1860/THE%20INDIAN%20PENAL%20CODE,%201860.pdf",
         ],
         description="The original penal code of India, now largely superseded by BNS",
     ),
@@ -54,8 +64,9 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Bharatiya Nyaya Sanhita, 2023",
         short_name="BNS",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/3688/1/Bharatiya_Nyaya_Sanhita_2023.pdf",
-            "https://legislative.gov.in/sites/default/files/2023-21.pdf",
+            "https://bprd.nic.in/uploads/pdf/BNS_English_30-04-2024.pdf",
+            "https://www.mha.gov.in/sites/default/files/250883_english_01042024.pdf",
+            "https://ncert.nic.in/pdf/module/New_Laws_2023/BNS-2023E.pdf",
         ],
         description="The new criminal code replacing IPC, effective July 1 2024",
     ),
@@ -65,8 +76,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Code of Criminal Procedure, 1973",
         short_name="CrPC",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/1526/1/A1973-02.pdf",
-            "https://legislative.gov.in/sites/default/files/A1973-02.pdf",
+            "https://commons.wikimedia.org/wiki/File%3AThe_Code_Of_Criminal_Procedure%2C_1973.pdf",
+            "http://chdsdmcentral.gov.in/Acts/CrPC.pdf",
         ],
         description="Procedural law for criminal trials in India",
     ),
@@ -76,7 +87,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Bharatiya Nagarik Suraksha Sanhita, 2023",
         short_name="BNSS",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/3701/1/Bharatiya_Nagarik_Suraksha_Sanhita_2023.pdf",
+            "https://www.indiacode.nic.in/bitstream/123456789/20099/1/eng.pdf",
+            "https://bprd.nic.in/uploads/pdf/BNSS_Handbook_English.pdf",
         ],
         description="The new criminal procedure code replacing CrPC",
     ),
@@ -86,8 +98,7 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Indian Evidence Act, 1872",
         short_name="IEA",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/1589/1/A1872-01.pdf",
-            "https://legislative.gov.in/sites/default/files/A1872-01.pdf",
+            "https://thc.nic.in/Central%20Governmental%20Acts/Evidence%20Act%2C%201872.pdf",
         ],
         description="The original evidence law of India",
     ),
@@ -97,7 +108,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Bharatiya Sakshya Adhiniyam, 2023",
         short_name="BSA",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/3702/1/Bharatiya_Sakshya_Adhiniyam_2023.pdf",
+            "https://thc.nic.in/Central%20Governmental%20Acts/Bharatiya%20Sakshya%20Adhiniyam%2C%202023.pdf",
+            "https://www.mha.gov.in/sites/default/files/2024-04/250882_english_01042024_0.pdf",
         ],
         description="The new evidence act replacing Indian Evidence Act",
     ),
@@ -109,8 +121,8 @@ LEGAL_BOOKS: list[LegalBook] = [
         title="Constitution of India",
         short_name="Constitution",
         urls=[
-            "https://www.indiacode.nic.in/bitstream/123456789/2163/1/Constitution_of_India.pdf",
             "https://legislative.gov.in/sites/default/files/Constitution_of_India.pdf",
+            "https://www.indiacode.nic.in/bitstream/123456789/13180/1/Constitution+of+India.pdf",
         ],
         description="Supreme law of India with fundamental rights and constitutional remedies",
     ),
@@ -250,16 +262,7 @@ LEGAL_BOOKS: list[LegalBook] = [
 # fmt: on
 
 
-def sha256_file(path: Path) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(65536), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
 def get_existing_books() -> dict[str, Path]:
-    """Return map of filename -> path for PDFs already in Books dir."""
     existing = {}
     if BOOKS_DIR.exists():
         for f in BOOKS_DIR.glob("*.pdf"):
@@ -268,21 +271,45 @@ def get_existing_books() -> dict[str, Path]:
 
 
 def download_file(url: str, dest: Path, timeout: int = 120) -> bool:
-    """Download a file with progress reporting. Returns True on success."""
+    """Download a file with requests library. Handles SSL issues and redirects."""
     try:
-        req = urllib.request.Request(url, headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HECTOR-LegalBot/1.0"
-        })
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            total = int(resp.headers.get("Content-Length", 0))
-            downloaded = 0
-            dest.parent.mkdir(parents=True, exist_ok=True)
+        session = requests.Session()
+        session.headers.update(HEADERS)
+        session.verify = False  # Government sites sometimes have cert issues
+        session.max_redirects = 10
 
-            with open(dest, "wb") as f:
-                while True:
-                    chunk = resp.read(65536)
-                    if not chunk:
-                        break
+        resp = session.get(url, timeout=timeout, allow_redirects=True, stream=True)
+        resp.raise_for_status()
+
+        content_type = resp.headers.get("Content-Type", "")
+
+        # Check if we got HTML instead of PDF (error page)
+        if "text/html" in content_type:
+            # Try to find a PDF link in the HTML
+            import re
+            pdf_links = re.findall(r'href=["\']([^"\']*\.pdf[^"\']*)["\']', resp.text, re.IGNORECASE)
+            if pdf_links:
+                # Try the first PDF link found
+                for link in pdf_links:
+                    if not link.startswith("http"):
+                        from urllib.parse import urljoin
+                        link = urljoin(url, link)
+                    print(f"    Found embedded PDF link: {link[:80]}...")
+                    return download_file(link, dest, timeout)
+            print(f"    Received HTML instead of PDF from this URL")
+            return False
+
+        # Check content length
+        total = int(resp.headers.get("Content-Length", 0))
+        if total > 0 and total < 1024:
+            print(f"    File too small ({total} bytes) — likely error page")
+            return False
+
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        downloaded = 0
+        with open(dest, "wb") as f:
+            for chunk in resp.iter_content(chunk_size=65536):
+                if chunk:
                     f.write(chunk)
                     downloaded += len(chunk)
                     if total:
@@ -290,40 +317,54 @@ def download_file(url: str, dest: Path, timeout: int = 120) -> bool:
                         print(f"\r    [{pct:3d}%] {downloaded / 1048576:.1f} / {total / 1048576:.1f} MB", end="", flush=True)
                     else:
                         print(f"\r    [{downloaded / 1048576:.1f} MB downloaded]", end="", flush=True)
-            print()  # newline after progress
+        print()
+
+        # Verify it's actually a PDF
+        with open(dest, "rb") as f:
+            header = f.read(5)
+        if header != b"%PDF-":
+            print(f"    Downloaded file is not a PDF (header: {header[:20]})")
+            dest.unlink()
+            return False
+
         return True
+
+    except requests.exceptions.SSLError as e:
+        print(f"\n    SSL Error: {e}")
+        if dest.exists():
+            dest.unlink()
+        return False
+    except requests.exceptions.HTTPError as e:
+        print(f"\n    HTTP Error: {e}")
+        if dest.exists():
+            dest.unlink()
+        return False
     except Exception as e:
-        print(f"\n    [ERROR] {e}")
+        print(f"\n    Error: {e}")
         if dest.exists():
             dest.unlink()
         return False
 
 
 def cmd_list():
-    """List all books and their download status."""
     existing = get_existing_books()
-
-    print(f"\n{'Tier':<6} {'Status':<10} {'Filename':<50} {'Title'}")
-    print("-" * 120)
-
+    print(f"\n{'Tier':<6} {'Status':<10} {'Size':<12} {'Filename':<50} {'Title'}")
+    print("-" * 130)
     for book in LEGAL_BOOKS:
         found = book.filename in existing
         status = "[OK]" if found else "[  ]"
         size = ""
         if found:
             size_mb = existing[book.filename].stat().st_size / 1048576
-            size = f" ({size_mb:.1f} MB)"
-        print(f"  {book.tier:<4} {status:<10} {book.filename:<50} {book.title}{size}")
-
+            size = f"{size_mb:.1f} MB"
+        print(f"  {book.tier:<4} {status:<10} {size:<12} {book.filename:<50} {book.title}")
     downloaded = sum(1 for b in LEGAL_BOOKS if b.filename in existing)
     print(f"\nTotal: {downloaded}/{len(LEGAL_BOOKS)} books present in {BOOKS_DIR}")
 
 
 def cmd_download(tier: int | None = None, dry_run: bool = False):
-    """Download books for specified tier(s)."""
     existing = get_existing_books()
     to_download = [b for b in LEGAL_BOOKS if b.filename not in existing]
-
     if tier is not None:
         to_download = [b for b in to_download if b.tier == tier]
 
@@ -344,9 +385,9 @@ def cmd_download(tier: int | None = None, dry_run: bool = False):
         return
 
     BOOKS_DIR.mkdir(parents=True, exist_ok=True)
-
     succeeded = 0
     failed = 0
+
     for book in to_download:
         print(f"\n{'=' * 60}")
         print(f"  [{book.tier}] {book.title}")
@@ -358,15 +399,11 @@ def cmd_download(tier: int | None = None, dry_run: bool = False):
             dest = BOOKS_DIR / book.filename
             if download_file(url, dest):
                 size_mb = dest.stat().st_size / 1048576
-                if size_mb < 0.01:
-                    print(f"  [WARN] File too small ({size_mb * 1024:.0f} KB) — likely an error page, trying next URL")
-                    dest.unlink()
-                    continue
                 print(f"  [OK] Downloaded: {size_mb:.1f} MB")
                 succeeded += 1
                 downloaded = True
                 break
-            time.sleep(1)  # polite delay between attempts
+            time.sleep(1)
 
         if not downloaded:
             print(f"  [FAIL] Could not download from any source")
@@ -375,19 +412,17 @@ def cmd_download(tier: int | None = None, dry_run: bool = False):
     print(f"\n{'=' * 60}")
     print(f"  Results: {succeeded} succeeded, {failed} failed")
     print(f"  Books directory: {BOOKS_DIR}")
-
     if succeeded > 0:
         print(f"\n  Next step: Run 'python main.py ingest' to index the new books")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="HECTOR Legal Corpus Downloader — fetch bare acts from legislative.gov.in",
+        description="HECTOR Legal Corpus Downloader — fetch bare acts from government sources",
     )
-    parser.add_argument("--tier", type=int, choices=[1, 2, 3], help="Download only a specific tier (1=core, 2=supporting, 3=special)")
+    parser.add_argument("--tier", type=int, choices=[1, 2, 3], help="Download only a specific tier")
     parser.add_argument("--list", action="store_true", help="List all books and download status")
     parser.add_argument("--dry-run", action="store_true", help="Show URLs without downloading")
-
     args = parser.parse_args()
 
     if args.list:
