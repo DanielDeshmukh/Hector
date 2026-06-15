@@ -21,11 +21,17 @@ services:
       - HECTOR_BOOKS_DIR=/app/data/Books
       - HECTOR_DB_PATH=/app/hector_db
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: "2"
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost:8000/status"]
+      test: ["CMD", "curl", "-sf", "http://localhost:8000/healthz"]
       interval: 30s
       timeout: 5s
       retries: 3
+      start_period: 30s
 
   frontend:
     build:
@@ -41,6 +47,11 @@ services:
     profiles:
       - full
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
 
   downloader:
     build: .

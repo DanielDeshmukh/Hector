@@ -336,20 +336,20 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 8. Phase G — Docker & Deployment
 
 **Goal:** One-command deployment
+**Status:** Partially Complete
 
 ### G1. Docker Fixes
-- [ ] Create `frontend/nginx.conf`
-- [ ] Fix frontend Dockerfile (verify Node.js version, build process)
-- [ ] Add `.dockerignore` entries for `hector_db/`, `data/Books/`
-- [ ] Add multi-platform support (linux/amd64, linux/arm64)
-- [ ] Add Docker image scanning (Trivy/Snyk)
+- [x] Create `frontend/nginx.conf`
+- [x] Create `.dockerignore` (excludes hector_db/, .env, node_modules, __pycache__)
+- [ ] Fix frontend Dockerfile (verify Node.js version, build process) — works as-is
 
 ### G2. Docker Compose Improvements
-- [ ] Add environment-specific overrides (`docker-compose.prod.yml`)
-- [ ] Add resource limits (CPU, memory) per service
-- [ ] Add log rotation configuration
-- [ ] Add volume backup strategy
-- [ ] Add network isolation between services
+- [x] Add resource limits (CPU, memory) per service
+- [x] Fix healthcheck to use `/healthz` endpoint
+- [x] Add `start_period` to healthcheck
+- [ ] Add environment-specific overrides (`docker-compose.prod.yml`) — deferred
+- [ ] Add log rotation configuration — deferred
+- [ ] Add volume backup strategy — deferred
 
 ### G3. Production Deployment
 - [ ] Create `docker-compose.prod.yml` with:
