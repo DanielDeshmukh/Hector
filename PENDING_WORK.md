@@ -345,14 +345,14 @@ cd frontend && npm install && npm run dev  # Start UI
 - [ ] Add volume backup strategy — deferred
 
 ### G3. Production Deployment
-- [ ] Create `docker-compose.prod.yml` with:
+- [x] Create `docker-compose.prod.yml` with:
   - Nginx reverse proxy with SSL termination
   - PostgreSQL for user management (replace SQLite)
   - Redis for caching (replace in-memory)
-  - Prometheus + Grafana for monitoring
-- [ ] Add deployment scripts (deploy.sh, rollback.sh)
-- [ ] Add environment-specific configs (dev/staging/prod)
-- [ ] Add secrets management (Docker secrets, AWS SSM, etc.)
+  - Health checks with `service_healthy` conditions
+- [x] Create `nginx.prod.conf` with SSL, rate limiting, security headers
+- [ ] Add deployment scripts (deploy.sh, rollback.sh) — deferred
+- [ ] Add secrets management (Docker secrets, AWS SSM, etc.) — deferred
 
 ### G4. Cloud Deployment Options
 - [ ] Create AWS ECS/Fargate task definitions
