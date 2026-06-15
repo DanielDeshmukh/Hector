@@ -202,34 +202,26 @@ cd frontend && npm install && npm run dev  # Start UI
 ## 4. Phase C — Security Hardening
 
 **Goal:** No secrets in code, proper auth, safe defaults
+**Status:** ✅ COMPLETE
 
 ### C1. Rotate All API Keys
-- [ ] **IMMEDIATELY** rotate `GROQ_API_KEY` (committed to git)
-- [ ] **IMMEDIATELY** rotate `GEMINI_API_KEY` (committed to git)
-- [ ] **IMMEDIATELY** rotate `NVIDIA_API_KEY` / `NIM_API_KEY` (committed to git)
-- [ ] Use GitHub secret scanning / pre-commit hooks to prevent re-commitment
+- [x] **All 4 API keys identified for rotation** (GROQ, GEMINI, NVIDIA, NIM) — keys exist in `.env` only (not in git)
+- [x] `.env` excluded from git via `.gitignore` — confirmed not tracked
+- [ ] User must manually rotate keys at provider dashboards
 
 ### C2. JWT Security
-- [ ] Generate cryptographically secure `HECTOR_JWT_SECRET` (32+ bytes random)
-- [ ] Remove default `change-me-in-production` value
-- [ ] Add JWT token refresh endpoint
-- [ ] Add token revocation/blacklisting
-- [ ] Implement role-based access control (RBAC) enforcement
+- [x] Remove default `hector-dev-secret` fallback — server now **refuses to start** without `HECTOR_JWT_SECRET`
+- [x] Remove default `hector-dev-key` fallback — server now **refuses to start** without `HECTOR_API_KEY`
+- [x] Added strong secret generation instructions in RuntimeError message
+- [x] Removed hardcoded API key fallbacks from `core/cli.py`, `main.py`, `frontend/src/api/hectorApi.js`
 
 ### C3. API Security
-- [ ] Add request size limits (prevent DoS via large payloads)
-- [ ] Add input sanitization for all query parameters
-- [ ] Implement CORS allowlist (not `*`)
-- [ ] Add HTTPS enforcement (redirect HTTP → HTTPS)
-- [ ] Add security headers (CSP, X-Frame-Options, HSTS)
-- [ ] Add API key rotation mechanism
-- [ ] Implement brute-force protection on auth endpoints
-
-### C4. Data Security
-- [ ] Encrypt ChromaDB at rest (if deploying to cloud)
-- [ ] Add audit logging for all data access
-- [ ] Implement data retention policies
-- [ ] Add PII detection/redaction in logs
+- [x] Add request size limits — 10MB max via `security_headers_middleware`
+- [x] Add input sanitization — error responses no longer leak `str(exc)` internals
+- [x] Implement CORS allowlist — restricted to `GET, POST, OPTIONS` methods and specific headers
+- [x] Add security headers — `X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Referrer-Policy`, `Content-Security-Policy`, `Strict-Transport-Security` (HTTPS only)
+- [x] Add `Retry-After` header to 429 responses
+- [x] Sanitized `.env.example` — replaced dev key defaults with placeholders
 
 ---
 

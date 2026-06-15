@@ -6,6 +6,10 @@ from collections import defaultdict, deque
 class RateLimitExceeded(Exception):
     """Raised when a client crosses the configured request budget."""
 
+    def __init__(self, message: str, retry_after: int = 60):
+        super().__init__(message)
+        self.retry_after = retry_after
+
 
 class InMemoryRateLimiter:
     def __init__(self, limit: int = 60, window_seconds: int = 60):
@@ -23,8 +27,11 @@ class InMemoryRateLimiter:
                 bucket.popleft()
 
             if len(bucket) >= self.limit:
+                oldest = bucket[0] if bucket else now
+                retry_after = int(self.window_seconds - (now - oldest)) + 1
                 raise RateLimitExceeded(
-                    f"Rate limit exceeded: max {self.limit} requests per {self.window_seconds} seconds."
+                    f"Rate limit exceeded: max {self.limit} requests per {self.window_seconds} seconds.",
+                    retry_after=retry_after,
                 )
 
             bucket.append(now)

@@ -145,7 +145,11 @@ def enforce_rate_limit(auth_payload=Depends(require_auth)):
     try:
         rate_limiter.check(key)
     except RateLimitExceeded as exc:
-        raise HTTPException(status_code=429, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=429,
+            detail=str(exc),
+            headers={"Retry-After": str(exc.retry_after)},
+        ) from exc
     return auth_payload
 
 
