@@ -1,4 +1,3 @@
-import json
 import logging
 import re
 from typing import Any
@@ -226,7 +225,6 @@ class ChainOfVerification:
         corrections = []
 
         # Build list of unverified claim values
-        unverified_values = [c.get("value", "") for c in unverified]
 
         # Create corrected response with caveats
         corrected = original
@@ -293,7 +291,7 @@ class HallucinationDetector:
                     fabricated.append({
                         "type": "duplicate_citation",
                         "value": citation,
-                        "reason": f"Citation appears more than once in response",
+                        "reason": "Citation appears more than once in response",
                     })
                     continue
                 seen_citations.add(citation_key)

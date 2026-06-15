@@ -10,9 +10,7 @@ import shutil
 import socket
 import subprocess
 import sys
-import atexit
 import logging
-from pathlib import Path
 
 # Suppress HuggingFace symlink warnings on Windows
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"

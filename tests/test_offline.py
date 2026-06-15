@@ -89,6 +89,7 @@ class TestOfflineVectorStore:
 
     def test_store_load_bundle_nonexistent(self):
         """Test loading nonexistent bundle."""
+        store = OfflineVectorStore()
         result = store.load_bundle("/nonexistent/path")
         assert result is False
 

@@ -13,11 +13,8 @@ from core.enterprise.users import (
     UserRole,
     Permission,
     User,
-    APIKey,
     UserManager,
     PermissionChecker,
-    get_user_manager,
-    check_permission,
     ROLE_PERMISSIONS,
 )
 

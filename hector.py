@@ -8,5 +8,5 @@ os.chdir(PROJECT_DIR)
 sys.path.insert(0, PROJECT_DIR)
 
 sys.argv[0] = 'hector'
-import main
+import main  # noqa: E402
 main.main()

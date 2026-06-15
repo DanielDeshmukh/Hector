@@ -10,9 +10,6 @@ Usage:
 """
 
 import argparse
-import hashlib
-import os
-import sys
 import time
 from pathlib import Path
 from dataclasses import dataclass
@@ -305,7 +302,7 @@ def download_file(url: str, dest: Path, timeout: int = 120) -> bool:
                         link = urljoin(url, link)
                     print(f"    Found embedded PDF link: {link[:80]}...")
                     return download_file(link, dest, timeout)
-            print(f"    Received HTML instead of PDF from this URL")
+            print("    Received HTML instead of PDF from this URL")
             return False
 
         # Check content length
@@ -415,14 +412,14 @@ def cmd_download(tier: int | None = None, dry_run: bool = False):
             time.sleep(1)
 
         if not downloaded:
-            print(f"  [FAIL] Could not download from any source")
+            print("  [FAIL] Could not download from any source")
             failed += 1
 
     print(f"\n{'=' * 60}")
     print(f"  Results: {succeeded} succeeded, {failed} failed")
     print(f"  Books directory: {BOOKS_DIR}")
     if succeeded > 0:
-        print(f"\n  Next step: Run 'python main.py ingest' to index the new books")
+        print("\n  Next step: Run 'python main.py ingest' to index the new books")
 
 
 def main():

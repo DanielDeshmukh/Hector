@@ -203,14 +203,14 @@ class HectorIngestor:
                         self.session_processed_pages += 1
                         self.maybe_take_session_air_break()
 
-                    except Exception as page_err:
+                    except Exception:
                         # This usually triggers when pg_num exceeds total pages
                         break 
 
         except Exception as e:
             console.print(f"[bold red]Critical Error:[/bold red] {e}")
         finally:
-            console.print(f"\n[bold green]INGESTION SUMMARY[/bold green]")
+            console.print("\n[bold green]INGESTION SUMMARY[/bold green]")
             console.print(f"Total Unique Records in DB: [cyan]{self.collection.count()}[/cyan]")
 
 if __name__ == "__main__":

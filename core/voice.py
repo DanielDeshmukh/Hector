@@ -5,7 +5,7 @@ Enables voice-based legal research with speech recognition.
 
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING
 import re
 
 if TYPE_CHECKING:

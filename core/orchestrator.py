@@ -3,7 +3,7 @@ from data.hybrid_retriever import HectorHybridRetriever
 
 # Optional: Only import verifier if available (graceful degradation)
 try:
-    from core.verifier import ChainOfVerification, HallucinationDetector, get_refusal_response
+    from core.verifier import ChainOfVerification
     VERIFIER_AVAILABLE = True
 except ImportError:
     VERIFIER_AVAILABLE = False

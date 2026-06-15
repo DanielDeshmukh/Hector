@@ -9,8 +9,8 @@ import json
 import pickle
 import hashlib
 from pathlib import Path
-from dataclasses import dataclass, field
-from typing import Optional, list, Callable
+from dataclasses import dataclass
+from typing import list
 import logging
 import numpy as np
 
@@ -342,7 +342,7 @@ class OfflineMode:
             return False
 
         self.is_online = False
-        print(f"[+] Offline mode enabled")
+        print("[+] Offline mode enabled")
         print(f"    Documents: {self.vector_store.get_count()}")
         return True
 
@@ -367,9 +367,11 @@ class OfflineMode:
         query_embedding = self.embedding_model.encode([query])[0]
 
         # Search
-        filter_fn = None
-        if filter_act:
-            filter_fn = lambda doc: doc.get("source", "").startswith(filter_act)
+        def filter_fn(doc):
+            return doc.get("source", "").startswith(filter_act)
+
+        if not filter_act:
+            filter_fn = None
 
         return self.vector_store.search(query_embedding, top_k, filter_fn)
 
@@ -416,7 +418,7 @@ def get_offline_mode() -> OfflineMode:
 
 def is_offline() -> bool:
     """Check if running in offline mode."""
-    return get_offline_mode().is_online == False
+    return not get_offline_mode().is_online
 
 
 def search_offline(query: str, top_k: int = 10) -> list[dict]:

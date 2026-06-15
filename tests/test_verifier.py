@@ -109,8 +109,8 @@ class ChainOfVerificationTests(unittest.TestCase):
         result = self.verifier.verify_response(response, self.sample_sources)
 
         # The section 999 doesn't exist in sources
-        unverified = result.get("unverified_claims", [])
         # Either flagged as unverified or correction applied
+        assert result["total_claims"] > 0
 
     def test_handles_empty_response(self):
         response = "I don't know."

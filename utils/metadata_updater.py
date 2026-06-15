@@ -137,7 +137,7 @@ def update_metadata():
 
         print(f"  Updated {min(i + batch_size, total)}/{total} records...")
 
-    print(f"\n[*] Metadata update complete!")
+    print("\n[*] Metadata update complete!")
     print(f"  Total records: {collection.count()}")
 
     # Show sample

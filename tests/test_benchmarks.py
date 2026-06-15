@@ -32,7 +32,7 @@ class TestRetrievalLatency:
     def test_search_latency_under_500ms(self, mock_retriever):
         """Test search completes under 500ms."""
         start = time.time()
-        results = mock_retriever.search("test query", top_k=10)
+        mock_retriever.search("test query", top_k=10)
         latency = (time.time() - start) * 1000  # Convert to ms
         assert latency < 500, f"Latency {latency}ms exceeds 500ms target"
 
@@ -99,8 +99,6 @@ class TestCitationAccuracy:
     def test_citation_accuracy_threshold(self):
         """Test citation accuracy >95%."""
         # Simulated test: 100 citations, 4 errors = 96% accuracy
-        test_citations = []
-        errors = 0
 
         # Add test cases
         test_cases = [
@@ -185,7 +183,7 @@ class TestLoadTesting:
                 # Simulate search
                 time.sleep(0.01)
                 results_queue.put({"query_id": query_id, "status": "success"})
-            except Exception as e:
+            except Exception:
                 nonlocal error_count
                 error_count += 1
                 results_queue.put({"query_id": query_id, "status": "error"})
