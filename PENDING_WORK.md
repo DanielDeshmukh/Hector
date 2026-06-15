@@ -468,8 +468,16 @@ cd frontend && npm install && npm run dev  # Start UI
 - [x] Track search queries (`search_queries_total`), route distribution, result count
 - [x] Track ChromaDB collection size (`chromadb_records`), disk space (`disk_free_mb`)
 - [x] Track healthcheck results (`healthcheck_total`)
-- [ ] Add Grafana dashboard template — deferred
-- [ ] Add alerting rules — deferred
+- [x] Add Grafana dashboard template — `monitoring/grafana-dashboard.json`
+- [x] Add alerting rules — `monitoring/prometheus-alerts.yml`
+
+### J3. CI/CD Pipeline
+- [x] GitHub Actions workflow (`.github/workflows/ci.yml`)
+  - Lint (ruff), type check (mypy)
+  - Backend tests (pytest)
+  - Frontend build + lint
+  - Docker build with layer caching
+  - Security scan (safety)
 
 ### J3. Alerting
 - [ ] Add health check alerts (service down)

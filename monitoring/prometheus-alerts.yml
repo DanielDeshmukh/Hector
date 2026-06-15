@@ -1,0 +1,55 @@
+# HECTOR Prometheus Alerting Rules
+# Add to your prometheus.yml under rule_files
+
+groups:
+  - name: hector_alerts
+    rules:
+      # API is down
+      - alert: HectorApiDown
+        expr: up{job="hector-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "HECTOR API is down"
+          description: "HECTOR API has been unreachable for more than 1 minute."
+
+      # High error rate
+      - alert: HectorHighErrorRate
+        expr: rate(hector_http_errors_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate on HECTOR API"
+          description: "Error rate is {{ $value }} req/s (threshold: 0.1)."
+
+      # High latency
+      - alert: HectorHighLatency
+        expr: hector_http_request_duration_seconds{quantile="0.95"} > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency on HECTOR API"
+          description: "p95 latency is {{ $value }}s (threshold: 5s)."
+
+      # Low disk space
+      - alert: HectorLowDiskSpace
+        expr: hector_disk_free_mb < 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space on HECTOR"
+          description: "Only {{ $value }}MB free on disk."
+
+      # ChromaDB empty
+      - alert: HectorChromaDBEmpty
+        expr: hector_chromadb_records == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "ChromaDB has no records"
+          description: "The legal corpus appears to be empty."
