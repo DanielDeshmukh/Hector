@@ -1,34 +1,37 @@
 # --- Core Backend ---
-fastapi
-uvicorn
-pydantic
-python-dotenv
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
 
-# --- AI & Inference (NVIDIA NIM & Groq Compatible) ---
-openai >= 1.0.0  # Used as the standard client for NVIDIA NIM & Groq
-google-generativeai # For Gemini 1.5 Pro integration (Ella stack)
-langchain
-langchain-openai
+# --- AI & Inference ---
+openai>=1.0.0
+langchain>=0.1.0
+langchain-openai>=0.0.5
 
-# --- Specialized RAG & Retrieval ---
-pinecone-client[grpc]
-chromadb
-sentence-transformers
-numpy
-pandas
+# --- RAG & Retrieval ---
+chromadb>=0.4.22
+sentence-transformers>=2.2.0
+numpy>=1.24.0
+rank-bm25>=0.2.2
 
-# --- High-Fidelity Legal Parsing (NVIDIA NIM Nemotron OCR compatible) ---
-# Use these to handle the output from the Nemotron-OCR-v1 microservice
-marker-pdf
-unstructured[pdf]
-httpx  # For high-speed async calls to NIM endpoints
-pdf2image
-pytesseract
+# --- PDF Processing ---
+pypdf>=3.17.0
+Pillow>=10.0.0
+pdf2image>=1.16.0
+pytesseract>=0.3.10
 
 # --- CLI Framework ---
-typer[all]
-rich
+typer[all]>=0.9.0
+rich>=13.0.0
 
-# --- Verification & Security ---
-pydantic-settings
-tqdm
+# --- Utilities ---
+tqdm>=4.65.0
+httpx>=0.25.0
+requests>=2.31.0
+regex>=2023.0.0
+
+# --- Testing ---
+pytest>=7.4.0
+pytest-asyncio>=0.21.0

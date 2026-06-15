@@ -1,4 +1,5 @@
 import json
+import os
 from threading import Lock
 from contextlib import asynccontextmanager
 
@@ -33,20 +34,28 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(
     title="HECTOR API",
-    version="9.0.0",
+    version="2.1.0",
     summary="REST and streaming API for grounded Indian legal research.",
     lifespan=lifespan,
+)
+
+# CORS origins from environment or defaults
+_cors_origins_str = os.getenv("HECTOR_CORS_ORIGINS", "")
+_cors_origins = (
+    [o.strip() for o in _cors_origins_str.split(",") if o.strip()]
+    if _cors_origins_str
+    else [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+    ]
 )
 
 # CORS middleware must be added FIRST to handle preflight requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

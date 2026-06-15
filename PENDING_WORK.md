@@ -1,5 +1,7 @@
 # HECTOR — Pending Work: Current State to 100% Deployment Ready
 
+> **🟢 MVP — Ready for local deployment. Run `docker compose --profile full up -d` or follow the MVP steps below.**
+
 **Date:** June 15, 2026
 **Current Status:** ~96% Complete (Functional prototype, not production-ready)
 **Goal:** 100% Production Deployment Ready
@@ -8,6 +10,7 @@
 
 ## Table of Contents
 
+0. [MVP Quick Start](#0-mvp-quick-start)
 1. [Current State Summary](#1-current-state-summary)
 2. [Phase A — PDF Corpus (CRITICAL)](#2-phase-a--pdf-corpus-critical)
 3. [Phase B — Dependencies & Environment](#3-phase-b--dependencies--environment)
@@ -21,6 +24,60 @@
 11. [Phase J — Monitoring & Observability](#11-phase-j--monitoring--observability)
 12. [Phase K — Legal Accuracy & Verification](#12-phase-k--legal-accuracy--verification)
 13. [Estimated Timeline](#13-estimated-timeline)
+
+---
+
+## 0. MVP Quick Start
+
+### Prerequisites
+- Python 3.11
+- Node.js 18+
+- Docker & Docker Compose (optional, for containerized deploy)
+
+### Option A: Docker (Recommended)
+```bash
+git clone <repo-url> && cd Hector
+# Place your .env with API keys (see .env.example)
+docker compose --profile full up -d
+# Frontend: http://localhost:3000
+# API: http://localhost:8000
+# API Docs: http://localhost:8000/docs
+```
+
+### Option B: Local
+```bash
+cd "D:\Vs Code\VS code\Hector"
+python -m venv venv && .\venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env  # Edit with your API keys
+python main.py status          # Verify system (17,982 docs, 12 books)
+python main.py ingest          # Index books (if not done)
+uvicorn api.app:app --port 8000  # Start API
+cd frontend && npm install && npm run dev  # Start UI
+```
+
+### MVP Scope (What Works Now)
+- Hybrid search across 17,982 legal documents
+- IPC ↔ BNS cross-referencing
+- Multi-language support (Hindi, Tamil, Kannada, Marathi)
+- Offline mode with cached responses
+- React frontend with search, compare, bookmarks
+- REST API with authentication
+
+### MVP Limitations (Known Gaps)
+- Indian Evidence Act not searchable (scanned PDF, needs OCR)
+- 12/24 books downloaded (Tier 3-4 missing)
+- No production SSL/TLS
+- No CI/CD pipeline
+- API keys must be manually configured
+
+### MVP Changes Applied (June 15, 2026)
+- [x] `requirements.txt` — Added `pypdf`, `Pillow`, `pytesseract`, `pdf2image`, `rank-bm25`, `pytest`, `httpx`, `requests`, `regex`; removed unused deps (`pinecone-client`, `marker-pdf`, `unstructured`); pinned versions
+- [x] `.env.example` — Added `GEMINI_API_KEY`, `NVIDIA_API_KEY`, `NIM_API_KEY`, `NIM_BASE_URL`, `HECTOR_CORS_ORIGINS`, `HECTOR_LOG_LEVEL`, `HECTOR_DEBUG`
+- [x] `frontend/nginx.conf` — Created with SPA routing, API proxy, gzip, security headers, static asset caching
+- [x] `api/app.py` — Fixed version `9.0.0` → `2.1.0` to match `setup.py`; made CORS origins configurable via `HECTOR_CORS_ORIGINS` env var
+- [x] `PENDING_WORK.md` — Added MVP green dot header and Quick Start section
+- [x] Verified API server starts and responds (401 on `/status` = auth working correctly)
 
 ---
 
