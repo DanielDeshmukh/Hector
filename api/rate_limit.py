@@ -1,6 +1,7 @@
 import threading
 import time
 from collections import defaultdict, deque
+from dataclasses import dataclass
 
 
 class RateLimitExceeded(Exception):
@@ -11,6 +12,15 @@ class RateLimitExceeded(Exception):
         self.retry_after = retry_after
 
 
+@dataclass
+class RateLimitInfo:
+    """Rate limit state for a single key."""
+
+    limit: int
+    remaining: int
+    reset_seconds: int
+
+
 class InMemoryRateLimiter:
     def __init__(self, limit: int = 60, window_seconds: int = 60):
         self.limit = limit
@@ -18,7 +28,7 @@ class InMemoryRateLimiter:
         self._events: dict[str, deque[float]] = defaultdict(deque)
         self._lock = threading.Lock()
 
-    def check(self, key: str):
+    def check(self, key: str) -> RateLimitInfo:
         with self._lock:
             now = time.time()
             bucket = self._events[key]
@@ -26,7 +36,10 @@ class InMemoryRateLimiter:
             while bucket and bucket[0] <= now - self.window_seconds:
                 bucket.popleft()
 
-            if len(bucket) >= self.limit:
+            current = len(bucket)
+            remaining = max(0, self.limit - current)
+
+            if current >= self.limit:
                 oldest = bucket[0] if bucket else now
                 retry_after = int(self.window_seconds - (now - oldest)) + 1
                 raise RateLimitExceeded(
@@ -35,3 +48,8 @@ class InMemoryRateLimiter:
                 )
 
             bucket.append(now)
+            return RateLimitInfo(
+                limit=self.limit,
+                remaining=remaining,
+                reset_seconds=self.window_seconds,
+            )

@@ -78,7 +78,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Authorization", "X-API-Key", "Content-Type"],
-    expose_headers=["X-RateLimit-Remaining", "X-RateLimit-Reset"],
+    expose_headers=["X-RateLimit-Limit", "X-RateLimit-Remaining", "X-RateLimit-Reset"],
     max_age=3600,
 )
 
@@ -191,6 +191,14 @@ async def security_headers_middleware(request: Request, call_next):
         response.headers["Strict-Transport-Security"] = (
             "max-age=31536000; includeSubDomains"
         )
+
+    # Add rate limit headers if available
+    rate_limit_info = getattr(request.state, "rate_limit", None)
+    if rate_limit_info:
+        response.headers["X-RateLimit-Limit"] = str(rate_limit_info.limit)
+        response.headers["X-RateLimit-Remaining"] = str(rate_limit_info.remaining)
+        response.headers["X-RateLimit-Reset"] = str(rate_limit_info.reset_seconds)
+
     return response
 
 
@@ -210,10 +218,14 @@ def resolve_service() -> HectorApiService:
     return get_service()
 
 
-def enforce_rate_limit(auth_payload=Depends(require_auth)):
+def enforce_rate_limit(
+    request: Request,
+    auth_payload=Depends(require_auth),
+):
     key = f"{auth_payload['auth_type']}:{auth_payload['subject']}"
     try:
-        rate_limiter.check(key)
+        info = rate_limiter.check(key)
+        request.state.rate_limit = info
     except RateLimitExceeded as exc:
         raise HTTPException(
             status_code=429,
