@@ -92,9 +92,11 @@ class EnhancedHectorIngestor:
         self._book_start_time = 0.0
         self._total_pages_estimated = 0
         self._pages_processed_session = 0
-        # Resume state: track which books are fully processed
+        # Resume state: track completed books + per-page progress
         self._resume_file = os.path.join(DB_PATH, ".ingest_resume.json")
-        self._completed_books = self._load_resume_state()
+        resume_data = self._load_resume_state()
+        self._completed_books = resume_data.get("completed", set())
+        self._book_pages_done = resume_data.get("book_pages", {})
 
     def get_page_hash(self, filename: str, pg_num: int) -> str:
         """Generate a stable fingerprint for a source page."""
@@ -104,30 +106,56 @@ class EnhancedHectorIngestor:
         """Generate a content hash for deduplication."""
         return hashlib.sha256(text.strip().encode()).hexdigest()[:16]
 
-    def _load_resume_state(self) -> set[str]:
-        """Load list of already-completed books from disk."""
+    def _load_resume_state(self) -> dict:
+        """Load resume state: completed books + per-page progress."""
         import json
 
         if os.path.exists(self._resume_file):
             try:
                 with open(self._resume_file) as f:
-                    return set(json.load(f).get("completed", []))
+                    data = json.load(f)
+                return {
+                    "completed": set(data.get("completed", [])),
+                    "book_pages": data.get("book_pages", {}),
+                }
             except Exception:
                 pass
-        return set()
+        return {"completed": set(), "book_pages": {}}
 
     def _save_resume_state(self):
-        """Persist completed book list to disk."""
+        """Persist completed book list and per-page progress to disk."""
         import json
 
         os.makedirs(os.path.dirname(self._resume_file), exist_ok=True)
         with open(self._resume_file, "w") as f:
-            json.dump({"completed": list(self._completed_books)}, f)
+            json.dump(
+                {
+                    "completed": list(self._completed_books),
+                    "book_pages": self._book_pages_done,
+                },
+                f,
+            )
 
     def _mark_book_complete(self, filename: str):
         """Mark a book as fully ingested for resume support."""
         self._completed_books.add(filename)
+        # Clean up per-page state for completed book
+        self._book_pages_done.pop(filename, None)
         self._save_resume_state()
+
+    def _mark_page_done(self, filename: str, pg_num: int):
+        """Record that a specific page has been processed."""
+        if filename not in self._book_pages_done:
+            self._book_pages_done[filename] = []
+        if pg_num not in self._book_pages_done[filename]:
+            self._book_pages_done[filename].append(pg_num)
+        # Save every 10 pages to avoid excessive I/O
+        if len(self._book_pages_done[filename]) % 10 == 0:
+            self._save_resume_state()
+
+    def _get_book_pages_done(self, filename: str) -> set[int]:
+        """Get set of page numbers already processed for a book."""
+        return set(self._book_pages_done.get(filename, []))
 
     def cooldown_timer(self, minutes: int = 5, reason: str = "API Rate Limit"):
         """Display a countdown during enforced cooldown."""
@@ -386,8 +414,28 @@ class EnhancedHectorIngestor:
         pages_in_book = 0
         chunks_in_book = 0
         errors = 0
+        pages_done_set = self._get_book_pages_done(filename)
+        skipped_resume = 0
+
+        # If resuming, report where we left off
+        if pages_done_set and not self.reindex_mode:
+            min_done = min(pages_done_set) if pages_done_set else 0
+            max_done = max(pages_done_set) if pages_done_set else 0
+            console.print(
+                f"  [yellow]Resuming: {len(pages_done_set)} pages already indexed "
+                f"(pages {min_done}-{max_done})[/yellow]"
+            )
+            logger.info(
+                f"Resuming {filename}: {len(pages_done_set)} pages already indexed"
+            )
 
         while pg_num <= total_pages:
+            # Skip pages already processed (unless reindex mode)
+            if not self.reindex_mode and pg_num in pages_done_set:
+                skipped_resume += 1
+                pg_num += 1
+                continue
+
             result = self.process_single_page(file_path, filename, pg_num)
 
             if result["status"] == "finished":
@@ -402,6 +450,10 @@ class EnhancedHectorIngestor:
             elif result["status"] == "success":
                 pages_in_book += 1
                 chunks_in_book += result["chunks"]
+                self._mark_page_done(filename, pg_num)
+            elif result["status"] == "skipped":
+                # Even skipped pages (duplicates/empty) are marked done
+                self._mark_page_done(filename, pg_num)
 
             pg_num += 1
             self.session_processed_pages += 1
@@ -424,15 +476,22 @@ class EnhancedHectorIngestor:
             if pg_num % 50 == 0:
                 self.maybe_take_session_air_break()
 
+        # Save any remaining page progress
+        self._save_resume_state()
+
         book_elapsed = time.time() - book_start
         console.print(
             f"  [green]Done:[/green] {pages_in_book} pages, "
             f"{chunks_in_book} chunks in {self._format_eta(book_elapsed)}"
         )
+        if skipped_resume:
+            console.print(
+                f"  [dim]Skipped {skipped_resume} pages (already indexed)[/dim]"
+            )
         logger.info(
-            f"Book complete: {filename} — {pages_in_book} pages, "
-            f"{chunks_in_book} chunks, {self._format_eta(book_elapsed)}, "
-            f"errors={errors}"
+            f"Book complete: {filename} — {pages_in_book} new pages, "
+            f"{chunks_in_book} new chunks, {skipped_resume} skipped, "
+            f"{self._format_eta(book_elapsed)}, errors={errors}"
         )
 
         result = {
