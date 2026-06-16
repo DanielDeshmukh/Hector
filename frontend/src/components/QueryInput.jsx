@@ -99,6 +99,7 @@ export default function QueryInput({
                 setQuery(suggestion);
                 textareaRef.current?.focus();
               }}
+              aria-label={`Use suggestion: ${suggestion}`}
               className="rounded-lg border border-slate-custom/50 bg-charcoal/50 px-3.5 py-2 text-[12.5px] text-silver transition-all hover:border-gold/30 hover:text-gold-light hover:bg-gold/5"
             >
               {suggestion}
@@ -116,18 +117,25 @@ export default function QueryInput({
           placeholder='Enter your legal query - e.g., "What is the BNS equivalent of IPC Section 302?"'
           rows={1}
           disabled={isLoading}
+          aria-label="Legal search query"
+          role="searchbox"
           className="w-full resize-none bg-transparent px-4 pt-4 pb-12 text-[14.5px] text-gold-light placeholder-silver/40 outline-none disabled:opacity-50"
         />
 
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-3 py-2.5">
           <div className="flex items-center gap-1">
-            <button className="flex h-8 w-8 items-center justify-center rounded-lg text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver">
+            <button
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver"
+              aria-label="Attach file"
+            >
               <Paperclip size={15} />
             </button>
             {speechSupported && (
               <button
                 onClick={toggleVoice}
                 disabled={isLoading}
+                aria-label={isListening ? "Stop voice input" : "Start voice input"}
+                aria-pressed={isListening}
                 className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
                   isListening
                     ? "bg-error/15 text-error animate-pulse"
@@ -148,6 +156,7 @@ export default function QueryInput({
             <button
               onClick={handleSubmit}
               disabled={!query.trim() || isLoading}
+              aria-label="Send search query"
               className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold/90 text-charcoal transition-all hover:bg-gold disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <Send size={14} />

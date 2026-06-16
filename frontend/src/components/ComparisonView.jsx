@@ -31,11 +31,12 @@ export default function ComparisonView({
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="w-full max-w-md animate-fade-in-delay-1">
+      <form onSubmit={handleSubmit} className="w-full max-w-md animate-fade-in-delay-1" role="search" aria-label="Section comparison">
         <div className="flex gap-2 mb-4">
           <select
             value={act}
             onChange={(e) => setAct(e.target.value)}
+            aria-label="Select act to compare"
             className="rounded-lg border border-slate-custom/60 bg-charcoal/80 px-3 py-2.5 text-[13px] text-gold-light outline-none focus:border-gold/40"
           >
             <option value="IPC">IPC</option>
@@ -46,11 +47,13 @@ export default function ComparisonView({
             value={section}
             onChange={(e) => setSection(e.target.value)}
             placeholder="e.g., 302"
+            aria-label="Section number to compare"
             className="flex-1 rounded-lg border border-slate-custom/60 bg-charcoal/80 px-4 py-2.5 text-[14px] text-gold-light placeholder-silver/40 outline-none focus:border-gold/40"
           />
           <button
             type="submit"
             disabled={!section.trim() || compareLoading}
+            aria-label="Compare sections"
             className="flex h-10 w-10 items-center justify-center rounded-lg bg-gold/90 text-charcoal transition-all hover:bg-gold disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <Search size={16} />

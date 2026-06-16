@@ -20,11 +20,23 @@ services:
       - api
       - frontend
     restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
     deploy:
       resources:
         limits:
           memory: 256M
           cpus: "0.5"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # ---------- Backend API ----------
   api:
@@ -49,6 +61,11 @@ services:
       postgres:
         condition: service_healthy
     restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
     deploy:
       resources:
         limits:
@@ -60,6 +77,11 @@ services:
       timeout: 10s
       retries: 3
       start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "5"
 
   # ---------- Frontend ----------
   frontend:
@@ -72,20 +94,35 @@ services:
     depends_on:
       - api
     restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
     deploy:
       resources:
         limits:
           memory: 256M
           cpus: "0.5"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # ---------- Redis (caching + rate limiting) ----------
   redis:
     image: redis:7-alpine
     container_name: hector-redis
-    command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru
+    command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru --appendonly yes
     volumes:
       - redis_data:/data
     restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
     deploy:
       resources:
         limits:
@@ -96,6 +133,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # ---------- PostgreSQL (user management) ----------
   postgres:
@@ -108,6 +150,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     deploy:
       resources:
         limits:
@@ -118,6 +162,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   hector_db:

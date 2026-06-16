@@ -53,3 +53,43 @@ groups:
         annotations:
           summary: "ChromaDB has no records"
           description: "The legal corpus appears to be empty."
+
+      # Health check degraded
+      - alert: HectorHealthDegraded
+        expr: hector_healthcheck_total{status="degraded"} > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "HECTOR health check degraded"
+          description: "Health endpoint returning degraded status."
+
+      # High memory usage
+      - alert: HectorHighMemory
+        expr: process_resident_memory_bytes / 1024 / 1024 > 2048
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "HECTOR high memory usage"
+          description: "Memory usage is {{ $value | printf \"%.0f\" }}MB (threshold: 2048MB)."
+
+      # Search latency p99
+      - alert: HectorSearchLatencyP99
+        expr: hector_http_request_duration_seconds{quantile="0.99"} > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "HECTOR search latency p99 too high"
+          description: "p99 latency is {{ $value }}s (threshold: 10s)."
+
+      # Zero search results rate
+      - alert: HectorHighEmptySearchRate
+        expr: rate(hector_search_queries_total{results="0"}[10m]) / rate(hector_search_queries_total[10m]) > 0.5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Too many empty search results"
+          description: "Over 50% of searches return no results."

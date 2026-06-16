@@ -44,6 +44,8 @@ export default function Sidebar({
       className={`relative flex flex-col border-r border-slate-custom/60 bg-cream transition-all duration-300 ${
         collapsed ? "w-[56px]" : "w-[280px]"
       }`}
+      role="navigation"
+      aria-label="Search history and bookmarks"
     >
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-slate-custom/40 px-3 py-4">
@@ -73,6 +75,7 @@ export default function Sidebar({
       <div className="px-2.5 pt-3 pb-1">
         <button
           onClick={onNewQuery}
+          aria-label="Start new query"
           className={`flex w-full items-center gap-2.5 rounded-lg border border-slate-custom/60 px-3 py-2.5 text-sm text-silver transition-all hover:border-gold/40 hover:text-gold-light hover:bg-gold/5 ${
             collapsed ? "justify-center" : ""
           }`}
@@ -88,6 +91,9 @@ export default function Sidebar({
           <div className="mb-2 flex items-center gap-1 px-2">
             <button
               onClick={() => setActiveTab("history")}
+              aria-label="View search history"
+              aria-selected={activeTab === "history"}
+              role="tab"
               className={`flex items-center gap-1 rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] transition-colors ${
                 activeTab === "history"
                   ? "text-gold bg-gold/10"
@@ -99,6 +105,9 @@ export default function Sidebar({
             </button>
             <button
               onClick={() => setActiveTab("bookmarks")}
+              aria-label={`View saved bookmarks (${bookmarks.length} saved)`}
+              aria-selected={activeTab === "bookmarks"}
+              role="tab"
               className={`flex items-center gap-1 rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] transition-colors ${
                 activeTab === "bookmarks"
                   ? "text-gold bg-gold/10"
@@ -187,8 +196,8 @@ export default function Sidebar({
                     {onRemoveBookmark && (
                       <button
                         onClick={() => onRemoveBookmark(item.id)}
+                        aria-label={`Remove bookmark for ${item.act} Section ${item.section}`}
                         className="shrink-0 rounded p-1 text-silver/20 opacity-0 transition-all group-hover:opacity-100 hover:text-error"
-                        title="Remove bookmark"
                       >
                         <BookmarkX size={12} />
                       </button>
@@ -217,6 +226,7 @@ export default function Sidebar({
       {/* Collapse Toggle */}
       <button
         onClick={onToggle}
+        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         className="absolute -right-3 top-5 z-10 flex h-6 w-6 items-center justify-center rounded-full border border-slate-custom/60 bg-cream text-silver transition-colors hover:border-gold/40 hover:text-gold"
       >
         {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
