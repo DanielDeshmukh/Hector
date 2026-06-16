@@ -271,6 +271,9 @@ def status_endpoint(
     if not payload.get("chromadb_connected"):
         payload["status"] = "degraded"
 
+    # Add cache metrics
+    payload["cache"] = cache.get_metrics()
+
     payload["request_id"] = getattr(request.state, "request_id", None)
     cache.set(cache_key, payload)
     return payload

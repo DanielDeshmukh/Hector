@@ -373,10 +373,24 @@ class MetadataEnricher:
         enriched["has_provided_that"] = structure.get("has_provided_that", False)
         enriched["has_schedule"] = structure.get("has_schedule", False)
 
-        # Remove None values (ChromaDB rejects them)
-        enriched = {k: v for k, v in enriched.items() if v is not None}
+        # Remove None values and convert non-scalar types (ChromaDB rejects them)
+        clean = {}
+        for k, v in enriched.items():
+            if v is None:
+                continue
+            # ChromaDB only accepts str, int, float, bool scalars
+            if isinstance(v, (str, int, float, bool)):
+                clean[k] = v
+            elif isinstance(v, (list, tuple)):
+                clean[k] = ", ".join(str(item) for item in v)
+            elif isinstance(v, set):
+                clean[k] = ", ".join(sorted(str(item) for item in v))
+            elif isinstance(v, dict):
+                clean[k] = str(v)
+            else:
+                clean[k] = str(v)
 
-        return enriched
+        return clean
 
 
 def test_parser():

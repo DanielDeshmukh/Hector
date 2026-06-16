@@ -79,6 +79,12 @@ class EnhancedHectorIngestor:
             "sections_found": 0,
             "structure_types": {}
         }
+        # Track progress for ETA calculation
+        self._total_books = 0
+        self._current_book_index = 0
+        self._book_start_time = 0.0
+        self._total_pages_estimated = 0
+        self._pages_processed_session = 0
         # Resume state: track which books are fully processed
         self._resume_file = os.path.join(DB_PATH, ".ingest_resume.json")
         self._completed_books = self._load_resume_state()
@@ -305,6 +311,20 @@ class EnhancedHectorIngestor:
         except Exception as e:
             return {"status": "error", "reason": str(e), "chunks": 0}
 
+    def _format_eta(self, seconds: float) -> str:
+        """Format seconds into human-readable ETA string."""
+        if seconds < 0 or seconds > 86400:
+            return "unknown"
+        hours = int(seconds // 3600)
+        minutes = int((seconds % 3600) // 60)
+        secs = int(seconds % 60)
+        if hours > 0:
+            return f"{hours}h {minutes}m"
+        elif minutes > 0:
+            return f"{minutes}m {secs}s"
+        else:
+            return f"{secs}s"
+
     def process_book(self, filename: str, file_path: str) -> dict[str, Any]:
         """Process all pages in a single book."""
         # Resume: skip books already fully ingested
@@ -312,7 +332,8 @@ class EnhancedHectorIngestor:
             console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
             return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
 
-        console.print(f"\n[bold cyan]Processing:[/bold cyan] {filename}")
+        book_start = time.time()
+        self._current_book_index += 1
 
         # Get total page count from pypdf
         try:
@@ -321,9 +342,15 @@ class EnhancedHectorIngestor:
         except Exception:
             total_pages = 9999
 
+        console.print(
+            f"\n[bold cyan]Processing:[/bold cyan] {filename} "
+            f"[dim]({total_pages} pages, book {self._current_book_index}/{self._total_books})[/dim]"
+        )
+
         pg_num = 1
         pages_in_book = 0
         chunks_in_book = 0
+        errors = 0
 
         while pg_num <= total_pages:
             result = self.process_single_page(file_path, filename, pg_num)
@@ -331,7 +358,9 @@ class EnhancedHectorIngestor:
             if result["status"] == "finished":
                 break
             elif result["status"] == "error":
-                console.print(f"  [red]Error page {pg_num}:[/red] {result['reason']}")
+                errors += 1
+                if errors <= 3:
+                    console.print(f"  [red]Error page {pg_num}:[/red] {result['reason']}")
                 break
             elif result["status"] == "success":
                 pages_in_book += 1
@@ -339,14 +368,36 @@ class EnhancedHectorIngestor:
 
             pg_num += 1
             self.session_processed_pages += 1
+            self._pages_processed_session += 1
+
+            # Show per-page progress every 25 pages
+            if pg_num % 25 == 0:
+                book_elapsed = time.time() - book_start
+                pages_done = pg_num - 1
+                pages_remaining = total_pages - pages_done
+                if pages_done > 0:
+                    rate = pages_done / book_elapsed
+                    eta_secs = pages_remaining / rate if rate > 0 else 0
+                    book_pct = min(100, int(pages_done / total_pages * 100))
+                    console.print(
+                        f"  [dim]  Page {pages_done}/{total_pages} ({book_pct}%) | "
+                        f"{rate:.1f} pages/s | ETA: {self._format_eta(eta_secs)}[/dim]"
+                    )
 
             if pg_num % 50 == 0:
                 self.maybe_take_session_air_break()
+
+        book_elapsed = time.time() - book_start
+        console.print(
+            f"  [green]Done:[/green] {pages_in_book} pages, "
+            f"{chunks_in_book} chunks in {self._format_eta(book_elapsed)}"
+        )
 
         result = {
             "filename": filename,
             "pages": pages_in_book,
             "chunks": chunks_in_book,
+            "elapsed_seconds": round(book_elapsed, 1),
             "status": "completed"
         }
 
@@ -389,6 +440,10 @@ class EnhancedHectorIngestor:
             return
 
         mode_text = "[yellow]RE-INDEX[/yellow]" if self.reindex_mode else "[green]NEW[/green]"
+        self._total_books = len(files)
+        self._current_book_index = 0
+        session_start = time.time()
+
         console.print(f"\n[bold]Enhanced Ingestor[/bold] | Mode: {mode_text} | Books: {len(files)}")
 
         book_results = []
@@ -396,13 +451,25 @@ class EnhancedHectorIngestor:
             file_path = os.path.join(BOOKS_DIR, filename)
             result = self.process_book(filename, file_path)
             book_results.append(result)
-            console.print(
-                f"  [green]✓[/green] {filename}: {result['pages']} pages, "
-                f"{result['chunks']} chunks"
-            )
+
+            # Show overall progress after each book
+            books_done = index + 1
+            books_remaining = len(files) - books_done
+            elapsed = time.time() - session_start
+            if books_done > 0:
+                rate = books_done / elapsed
+                eta_secs = books_remaining / rate if rate > 0 else 0
+                overall_pct = int(books_done / len(files) * 100)
+                console.print(
+                    f"\n[bold]Overall: {books_done}/{len(files)} books ({overall_pct}%) | "
+                    f"Elapsed: {self._format_eta(elapsed)} | "
+                    f"ETA: {self._format_eta(eta_secs)}[/bold]"
+                )
 
         # Final stats
-        console.print("\n[bold green]FINAL SUMMARY[/bold green]")
+        total_elapsed = time.time() - session_start
+        console.print(f"\n[bold green]INGESTION COMPLETE[/bold green]")
+        console.print(f"[dim]Total time: {self._format_eta(total_elapsed)}[/dim]")
         self.display_stats()
 
         console.print(f"\n[bold]Total records in DB:[/bold] {self.collection.count()}")
