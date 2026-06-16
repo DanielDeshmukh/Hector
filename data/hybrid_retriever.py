@@ -4,6 +4,8 @@ import re
 from collections import Counter, defaultdict
 from datetime import datetime
 
+from utils.retry import retry
+
 try:
     import chromadb
     from chromadb.utils import embedding_functions
@@ -192,7 +194,11 @@ class HectorHybridRetriever:
         if self.collection is None:
             return
 
-        results = self.collection.get(include=["documents", "metadatas"])
+        results = retry(
+            self.collection.get,
+            include=["documents", "metadatas"],
+            operation_name="chromadb_get",
+        )
         documents = results.get("documents") or []
         metadatas = results.get("metadatas") or []
         ids = results.get("ids") or []
@@ -255,10 +261,12 @@ class HectorHybridRetriever:
             return []
 
         query_embedding = embed_fn([query])[0]
-        results = self.collection.query(
+        results = retry(
+            self.collection.query,
             query_embeddings=[query_embedding],
             n_results=top_k,
             include=["documents", "metadatas", "distances"],
+            operation_name="chromadb_query",
         )
 
         ranked = []

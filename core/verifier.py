@@ -3,6 +3,8 @@ import os
 import re
 from typing import Any
 
+from utils.retry import retry
+
 from groq import Groq
 from dotenv import load_dotenv
 
@@ -544,7 +546,8 @@ class StrictCitationGenerator:
         prompt = STRICT_CITATION_PROMPT.format(context=context, question=query)
 
         try:
-            chat = self.client.chat.completions.create(
+            chat = retry(
+                self.client.chat.completions.create,
                 model=self.model,
                 messages=[
                     {"role": "system", "content": prompt},
@@ -552,6 +555,8 @@ class StrictCitationGenerator:
                 ],
                 temperature=0,
                 max_tokens=max_tokens,
+                max_attempts=2,
+                operation_name="groq_generation",
             )
             response = chat.choices[0].message.content
 

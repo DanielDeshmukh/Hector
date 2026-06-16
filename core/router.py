@@ -4,6 +4,8 @@ import re
 
 from dotenv import load_dotenv
 
+from utils.retry import retry
+
 try:
     from groq import Groq
 except ImportError:
@@ -281,7 +283,8 @@ class HectorRouter:
         try:
             if self.client is None:
                 return rule_based_intent
-            chat = self.client.chat.completions.create(
+            chat = retry(
+                self.client.chat.completions.create,
                 model=self.model,
                 messages=[
                     {"role": "system", "content": self.system_prompt},
@@ -290,6 +293,8 @@ class HectorRouter:
                 response_format={"type": "json_object"},
                 temperature=0,
                 max_tokens=120,
+                max_attempts=2,
+                operation_name="groq_routing",
             )
             parsed = json.loads(chat.choices[0].message.content)
             validated = self._validate_payload(parsed)

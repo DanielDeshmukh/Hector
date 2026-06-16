@@ -7,6 +7,8 @@ import uuid
 from threading import Lock
 from contextlib import asynccontextmanager
 
+from utils.retry import retry
+
 from fastapi import (
     Depends,
     FastAPI,
@@ -235,7 +237,11 @@ def readyz(svc: HectorApiService = Depends(get_service)):
 
     # ChromaDB check
     try:
-        count = svc.retriever.collection.count()
+        count = retry(
+            svc.retriever.collection.count,
+            max_attempts=2,
+            operation_name="chromadb_count_readyz",
+        )
         checks["chromadb"] = {"status": "ok", "records": count}
         metrics.set("chromadb_records", count)
     except Exception as exc:
@@ -290,7 +296,11 @@ def status_endpoint(
 
     # Add health checks
     try:
-        svc.retriever.collection.count()
+        retry(
+            svc.retriever.collection.count,
+            max_attempts=2,
+            operation_name="chromadb_count_status",
+        )
         payload["chromadb_connected"] = True
     except Exception:
         payload["chromadb_connected"] = False
