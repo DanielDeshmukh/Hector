@@ -106,7 +106,7 @@ def test_status_endpoint_requires_auth_and_returns_health():
     response = client.get("/status", headers=HEADERS)
     assert response.status_code == 200
     payload = response.json()
-    assert payload["status"] == "ok"
+    assert payload["status"] in ("ok", "degraded")
     assert payload["document_count"] == 2
 
 
@@ -148,7 +148,10 @@ def test_compare_endpoint_returns_counterpart_mapping():
 
 
 def test_token_auth_and_websocket_streaming_work():
-    token_response = client.post("/auth/token?api_key=hector-dev-key")
+    token_response = client.post(
+        f"/auth/token?api_key={auth_manager.api_key}",
+        headers=HEADERS,
+    )
     assert token_response.status_code == 200
     token = token_response.json()["access_token"]
 

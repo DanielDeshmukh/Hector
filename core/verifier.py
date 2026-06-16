@@ -1,4 +1,5 @@
 import logging
+import os
 import re
 from typing import Any
 
@@ -131,7 +132,8 @@ class ChainOfVerification:
     """Implements the CoVe workflow for hallucination prevention."""
 
     def __init__(self):
-        self.client = Groq()
+        api_key = os.getenv("GROQ_API_KEY")
+        self.client = Groq(api_key=api_key) if api_key else None
         self.model = "llama-3.3-70b-versatile"
 
     def verify_response(
@@ -529,7 +531,8 @@ class StrictCitationGenerator:
     """Generates responses with strict citation requirements."""
 
     def __init__(self):
-        self.client = Groq()
+        api_key = os.getenv("GROQ_API_KEY")
+        self.client = Groq(api_key=api_key) if api_key else None
         self.model = "llama-3.3-70b-versatile"
 
     def generate_strict(

@@ -31,6 +31,14 @@ class InputSanitizer:
         # Remove null bytes
         value = value.replace("\x00", "")
 
+        # Strip dangerous protocol prefixes
+        dangerous_protocols = ["javascript:", "vbscript:", "data:"]
+        value_lower = value.lower()
+        for protocol in dangerous_protocols:
+            if value_lower.startswith(protocol):
+                value = value[len(protocol) :]
+                value_lower = value.lower()
+
         # HTML escape to prevent XSS
         value = html.escape(value)
 
@@ -49,8 +57,8 @@ class InputSanitizer:
             raise ValidationError("Search query is too short")
 
         # Remove potentially dangerous characters
-        # Allow: letters, numbers, spaces, basic punctuation
-        allowed_pattern = re.compile(r'^[a-zA-Z0-9\s\-.,;:()\'"!?]+$')
+        # Allow: letters, numbers, spaces, basic punctuation (no semicolons/colons for SQL safety)
+        allowed_pattern = re.compile(r"^[a-zA-Z0-9\s\-.,()'\"!?]+$")
         if not allowed_pattern.match(query):
             raise ValidationError("Search query contains invalid characters")
 
@@ -67,6 +75,9 @@ class InputSanitizer:
 
         # Remove path separators
         filename = filename.replace("/", "").replace("\\", "")
+
+        # Remove directory traversal sequences
+        filename = filename.replace("..", "")
 
         # Remove dangerous extensions
         dangerous_exts = [".exe", ".bat", ".cmd", ".sh", ".ps1", ".js", ".vbs"]

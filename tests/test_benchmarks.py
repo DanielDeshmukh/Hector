@@ -151,11 +151,12 @@ class TestHallucinationDetection:
         # CRPC sections range: 1-484
 
         def is_valid_section(section_num, act):
-            if act == "BNS":
+            act_upper = act.upper()
+            if act_upper == "BNS":
                 return 1 <= section_num <= 358
-            elif act == "IPC":
+            elif act_upper == "IPC":
                 return 1 <= section_num <= 511
-            elif act == "CRPC":
+            elif act_upper in ("CRPC", "CrPC"):
                 return 1 <= section_num <= 484
             return False
 
@@ -303,12 +304,12 @@ class TestSecurityAudit:
 
         assert blocked > 0
 
-    def test_authentication_audit(self):
+    def test_authentication_audit(self, tmp_path):
         """Test authentication audit."""
         from core.enterprise.users import UserManager
 
         # Test invalid credentials are rejected
-        manager = UserManager()
+        manager = UserManager(storage_path=str(tmp_path))
 
         # Create a user
         manager.create_user("testuser", "test@test.com", "Password123")

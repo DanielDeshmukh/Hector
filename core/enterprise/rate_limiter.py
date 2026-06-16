@@ -112,6 +112,9 @@ class RateLimitManager:
         self.limiters: dict[str, SlidingWindowRateLimiter] = {}
         self.blocked_clients: dict[str, float] = {}
         self._lock = threading.Lock()
+        # Add default limiters
+        self.add_limiter("search", 60, 60)
+        self.add_limiter("api", 100, 60)
 
     def add_limiter(self, name: str, max_requests: int, window_seconds: int) -> None:
         """Add a named rate limiter."""

@@ -87,11 +87,13 @@ class TestSlidingWindowRateLimiter:
         """Test different clients have separate limits."""
         limiter = SlidingWindowRateLimiter(max_requests=2, window_seconds=60)
         allowed1, _ = limiter.is_allowed("clientA")
-        allowed2, _ = limiter.is_allowed("clientB")
-        allowed3, _ = limiter.is_allowed("clientA")  # Should be blocked
+        allowed2, _ = limiter.is_allowed("clientA")
+        allowed3, _ = limiter.is_allowed("clientB")
+        allowed4, _ = limiter.is_allowed("clientA")  # Should be blocked (3rd request)
         assert allowed1 is True
         assert allowed2 is True
-        assert allowed3 is False
+        assert allowed3 is True
+        assert allowed4 is False
 
 
 class TestIPRateLimiter:

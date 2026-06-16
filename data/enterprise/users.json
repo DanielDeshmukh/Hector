@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "user_id": "1470ca9c611d946c",
+      "username": "testuser",
+      "email": "test@test.com",
+      "role": "viewer",
+      "created_at": 1781585649.567136,
+      "last_login": null,
+      "is_active": true,
+      "workspace_id": null,
+      "metadata": {
+        "password_hash": "$2b$12$37TCdDzwoWKCfrRbXdA5GufoAC.mUi9EvyCAFL882ciR0no9Lo32G"
+      }
+    }
+  ]
+}
