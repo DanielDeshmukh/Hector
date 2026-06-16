@@ -16,57 +16,51 @@ class LegalStructureParser:
         r"|Code\s+of\s+Criminal\s+Procedure|Indian\s+Evidence\s+Act"
         r"|Code\s+of\s+Civil\s+Procedure|Constitution\s+of\s+India)"
         r"(?:\s*,?\s*\d{4})?",
-        re.IGNORECASE
+        re.IGNORECASE,
     )
 
     # Chapter patterns (e.g., "CHAPTER V", "Chapter 5", "PART III")
     CHAPTER_PATTERN = re.compile(
         r"(?:^|\n)(?:CHAPTER|Chapter|PART|Part|Schedule|Appendix)\s+"
         r"(?:IV|III|II|I|V|VI|VII|VIII|IX|X|\d+|[A-Z]+)",
-        re.IGNORECASE | re.MULTILINE
+        re.IGNORECASE | re.MULTILINE,
     )
 
     # Section patterns (e.g., "Section 302", "302.", "s. 302")
     SECTION_PATTERN = re.compile(
         r"(?:^|\n)(?:Section|sec\.?|s\.)\s*(\d{1,4}[A-Z]?)"
         r"|(?:^|\n)(\d{1,4}[A-Z]?)\.\s",
-        re.IGNORECASE | re.MULTILINE
+        re.IGNORECASE | re.MULTILINE,
     )
 
     # Sub-section patterns (e.g., "(1)", "(a)", "(i)")
-    SUBSECTION_PATTERN = re.compile(
-        r"\(([a-zA-Z0-9]+)\)\s*([^\n(]+)",
-        re.MULTILINE
-    )
+    SUBSECTION_PATTERN = re.compile(r"\(([a-zA-Z0-9]+)\)\s*([^\n(]+)", re.MULTILINE)
 
     # Clause pattern (e.g., "Provided that", "Provided also")
     PROVIDED_THAT_PATTERN = re.compile(
         r"(?:^|\n)\s*Provided\s+(?:that|also|further|nevertheless)",
-        re.IGNORECASE | re.MULTILINE
+        re.IGNORECASE | re.MULTILINE,
     )
 
     # Illustration pattern (e.g., "Illustration:", "Illustration (a)")
     ILLUSTRATION_PATTERN = re.compile(
         r"(?:^|\n)\s*Illustration(?:\s*\(?[a-zA-Z0-9]+\)?)?\s*:",
-        re.IGNORECASE | re.MULTILINE
+        re.IGNORECASE | re.MULTILINE,
     )
 
     # Exception pattern (e.g., "Exception 1:", "Exceptions:")
     EXCEPTION_PATTERN = re.compile(
-        r"(?:^|\n)\s*Exception\s*:?\s*",
-        re.IGNORECASE | re.MULTILINE
+        r"(?:^|\n)\s*Exception\s*:?\s*", re.IGNORECASE | re.MULTILINE
     )
 
     # Schedule/Appendix patterns
     SCHEDULE_PATTERN = re.compile(
-        r"(?:^|\n)(?:THE\s+)?SCHEDULE\s*(?:TO|UNDER)?",
-        re.IGNORECASE | re.MULTILINE
+        r"(?:^|\n)(?:THE\s+)?SCHEDULE\s*(?:TO|UNDER)?", re.IGNORECASE | re.MULTILINE
     )
 
     # Preamble/Title patterns
     PREAMBLE_PATTERN = re.compile(
-        r"(?:^|\n)(?:PREAMBLE|Short\s+title|Extends\s+to)",
-        re.IGNORECASE | re.MULTILINE
+        r"(?:^|\n)(?:PREAMBLE|Short\s+title|Extends\s+to)", re.IGNORECASE | re.MULTILINE
     )
 
     # Common Indian law act names and their abbreviations
@@ -126,7 +120,7 @@ class LegalStructureParser:
                 "provided_clauses": self._extract_provided_clauses(text),
                 "illustrations": self._extract_illustrations(text),
                 "exceptions": self._extract_exceptions(text),
-            }
+            },
         }
 
         return result
@@ -157,7 +151,7 @@ class LegalStructureParser:
             r"(?:^|\n)(?:CHAPTER|Chapter)\s+(?:IV|III|II|I|V|VI|VII|VIII|IX|X|\d+|[A-Z]+)"
             r"(?:\s*[-–—:]\s*([^\n]+))?",
             text[:1000],
-            re.IGNORECASE | re.MULTILINE
+            re.IGNORECASE | re.MULTILINE,
         )
         if match:
             chapter = match.group(0).strip()
@@ -172,7 +166,7 @@ class LegalStructureParser:
             r"(?:^|\n)(?:PART|Part)\s+(?:IV|III|II|I|V|VI|VII|VIII|IX|X|\d+|[A-Z]+)"
             r"(?:\s*[-–—:]\s*([^\n]+))?",
             text[:1000],
-            re.IGNORECASE | re.MULTILINE
+            re.IGNORECASE | re.MULTILINE,
         )
         if match:
             return match.group(0).strip()
@@ -183,18 +177,14 @@ class LegalStructureParser:
         # Pattern: "302.Whoever commits murder..."
         match = re.search(r"(\d{1,4}[A-Z]?)\.\s*([A-Z][^\n]{5,50})", text[:200])
         if match:
-            return {
-                "number": match.group(1),
-                "title": match.group(2).strip()[:100]
-            }
+            return {"number": match.group(1), "title": match.group(2).strip()[:100]}
 
         # Pattern: "Section 302"
-        match = re.search(r"(?:Section|sec\.?|s\.)\s*(\d{1,4}[A-Z]?)", text[:200], re.IGNORECASE)
+        match = re.search(
+            r"(?:Section|sec\.?|s\.)\s*(\d{1,4}[A-Z]?)", text[:200], re.IGNORECASE
+        )
         if match:
-            return {
-                "number": match.group(1),
-                "title": None
-            }
+            return {"number": match.group(1), "title": None}
 
         return None
 
@@ -202,10 +192,9 @@ class LegalStructureParser:
         """Extract sub-sections within the text."""
         subsections = []
         for match in self.SUBSECTION_PATTERN.finditer(text[:500]):
-            subsections.append({
-                "label": match.group(1),
-                "content": match.group(2).strip()[:100]
-            })
+            subsections.append(
+                {"label": match.group(1), "content": match.group(2).strip()[:100]}
+            )
         return subsections
 
     def _extract_all_sections(self, text: str) -> list[dict[str, Any]]:
@@ -214,10 +203,7 @@ class LegalStructureParser:
         for match in self.SECTION_PATTERN.finditer(text):
             section_num = match.group(1) or match.group(2)
             if section_num:
-                sections.append({
-                    "number": section_num,
-                    "position": match.start()
-                })
+                sections.append({"number": section_num, "position": match.start()})
         return sections
 
     def _extract_all_chapters(self, text: str) -> list[dict[str, Any]]:
@@ -226,13 +212,15 @@ class LegalStructureParser:
         for match in re.finditer(
             r"(?:^|\n)(?:CHAPTER|Chapter)\s+([IVXLCDM\d]+)\s*[-–—:]*\s*([^\n]*)",
             text,
-            re.IGNORECASE | re.MULTILINE
+            re.IGNORECASE | re.MULTILINE,
         ):
-            chapters.append({
-                "number": match.group(1),
-                "title": match.group(2).strip()[:50] if match.group(2) else None,
-                "position": match.start()
-            })
+            chapters.append(
+                {
+                    "number": match.group(1),
+                    "title": match.group(2).strip()[:50] if match.group(2) else None,
+                    "position": match.start(),
+                }
+            )
         return chapters
 
     def _extract_provided_clauses(self, text: str) -> list[str]:
@@ -241,7 +229,7 @@ class LegalStructureParser:
         for match in self.PROVIDED_THAT_PATTERN.finditer(text):
             # Get context after the match
             start = match.end()
-            clause_text = text[start:start + 200].strip()
+            clause_text = text[start : start + 200].strip()
             if clause_text:
                 clauses.append(clause_text[:100])
         return clauses
@@ -251,7 +239,7 @@ class LegalStructureParser:
         illustrations = []
         for match in self.ILLUSTRATION_PATTERN.finditer(text):
             start = match.end()
-            illust_text = text[start:start + 300].strip()
+            illust_text = text[start : start + 300].strip()
             if illust_text:
                 illustrations.append(illust_text[:150])
         return illustrations
@@ -261,7 +249,7 @@ class LegalStructureParser:
         exceptions = []
         for match in self.EXCEPTION_PATTERN.finditer(text):
             start = match.end()
-            except_text = text[start:start + 200].strip()
+            except_text = text[start : start + 200].strip()
             if except_text:
                 exceptions.append(except_text[:100])
         return exceptions
@@ -312,9 +300,7 @@ class MetadataEnricher:
 
     @staticmethod
     def enrich_metadata(
-        base_metadata: dict,
-        structure: dict,
-        source_filename: str
+        base_metadata: dict, structure: dict, source_filename: str
     ) -> dict:
         """
         Combine base metadata with extracted legal structure.
@@ -420,14 +406,14 @@ def test_parser():
 
         Whoever commits murder shall be punished with death or imprisonment for life,
         and shall also be liable to fine.
-        """
+        """,
     ]
 
     for i, text in enumerate(test_texts):
-        print(f"\n{'='*50}")
-        print(f"Test {i+1}:")
-        print("="*50)
-        result = parser.parse_document(text, f"test_{i+1}.pdf")
+        print(f"\n{'=' * 50}")
+        print(f"Test {i + 1}:")
+        print("=" * 50)
+        result = parser.parse_document(text, f"test_{i + 1}.pdf")
         print(f"Act: {result['act']}")
         print(f"Chapter: {result['chapter']}")
         print(f"Section: {result['section']}")

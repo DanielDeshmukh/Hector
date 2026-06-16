@@ -7,7 +7,15 @@ import uuid
 from threading import Lock
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
+from fastapi import (
+    Depends,
+    FastAPI,
+    HTTPException,
+    Query,
+    Request,
+    WebSocket,
+    WebSocketDisconnect,
+)
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -75,7 +83,17 @@ app.add_middleware(
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request, exc):
-    error_code = "AUTH_REQUIRED" if exc.status_code == 401 else "RATE_LIMITED" if exc.status_code == 429 else "NOT_FOUND" if exc.status_code == 404 else "INVALID_REQUEST" if exc.status_code == 400 else "INTERNAL_ERROR"
+    error_code = (
+        "AUTH_REQUIRED"
+        if exc.status_code == 401
+        else "RATE_LIMITED"
+        if exc.status_code == 429
+        else "NOT_FOUND"
+        if exc.status_code == 404
+        else "INVALID_REQUEST"
+        if exc.status_code == 400
+        else "INTERNAL_ERROR"
+    )
     return JSONResponse(
         status_code=exc.status_code,
         content=ErrorResponse(
@@ -129,7 +147,12 @@ async def security_headers_middleware(request: Request, call_next):
     if content_length and int(content_length) > 10 * 1024 * 1024:
         return JSONResponse(
             status_code=413,
-            content={"error": "Request too large", "detail": "Maximum request size is 10MB.", "status_code": 413, "error_code": "REQUEST_TOO_LARGE"},
+            content={
+                "error": "Request too large",
+                "detail": "Maximum request size is 10MB.",
+                "status_code": 413,
+                "error_code": "REQUEST_TOO_LARGE",
+            },
         )
 
     start_time = time.time()
@@ -141,7 +164,9 @@ async def security_headers_middleware(request: Request, call_next):
     duration_ms = round((time.time() - start_time) * 1000, 1)
 
     # Log access
-    log_request(request.method, request.url.path, response.status_code, duration_ms, request_id)
+    log_request(
+        request.method, request.url.path, response.status_code, duration_ms, request_id
+    )
 
     # Record metrics
     metrics.inc("http_requests_total")
@@ -161,7 +186,9 @@ async def security_headers_middleware(request: Request, call_next):
     response.headers["Content-Security-Policy"] = "default-src 'self'"
     response.headers["X-Response-Time"] = f"{duration_ms}ms"
     if request.url.scheme == "https":
-        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+        response.headers["Strict-Transport-Security"] = (
+            "max-age=31536000; includeSubDomains"
+        )
     return response
 
 
@@ -217,7 +244,12 @@ def readyz(svc: HectorApiService = Depends(get_service)):
 
     # Disk space check
     try:
-        db_path = os.getenv("HECTOR_DB_PATH", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"))
+        db_path = os.getenv(
+            "HECTOR_DB_PATH",
+            os.path.join(
+                os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"
+            ),
+        )
         usage = shutil.disk_usage(db_path)
         free_mb = usage.free // (1024 * 1024)
         checks["disk"] = {"status": "ok", "free_mb": free_mb}
@@ -235,7 +267,10 @@ def readyz(svc: HectorApiService = Depends(get_service)):
 def metrics_endpoint():
     """Prometheus-compatible metrics endpoint."""
     from fastapi.responses import PlainTextResponse
-    return PlainTextResponse(metrics.render(), media_type="text/plain; version=0.0.4; charset=utf-8")
+
+    return PlainTextResponse(
+        metrics.render(), media_type="text/plain; version=0.0.4; charset=utf-8"
+    )
 
 
 @app.get("/status")
@@ -261,7 +296,12 @@ def status_endpoint(
         payload["chromadb_connected"] = False
 
     try:
-        db_path = os.getenv("HECTOR_DB_PATH", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"))
+        db_path = os.getenv(
+            "HECTOR_DB_PATH",
+            os.path.join(
+                os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"
+            ),
+        )
         usage = shutil.disk_usage(db_path)
         payload["disk_space_mb"] = usage.free // (1024 * 1024)
     except Exception:
@@ -377,11 +417,15 @@ def ingest_endpoint(
 
 @app.websocket("/ws/search")
 async def search_websocket(websocket: WebSocket):
-    api_key = websocket.headers.get("x-api-key") or websocket.query_params.get("api_key")
+    api_key = websocket.headers.get("x-api-key") or websocket.query_params.get(
+        "api_key"
+    )
     bearer = websocket.headers.get("authorization")
 
     try:
-        auth_payload = auth_manager.authenticate_headers(authorization=bearer, x_api_key=api_key)
+        auth_payload = auth_manager.authenticate_headers(
+            authorization=bearer, x_api_key=api_key
+        )
         rate_limiter.check(f"ws:{auth_payload['auth_type']}:{auth_payload['subject']}")
     except HTTPException:
         await websocket.close(code=4401)

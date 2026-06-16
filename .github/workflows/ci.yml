@@ -63,6 +63,9 @@ jobs:
       - name: Rebuild native modules
         working-directory: frontend
         run: npm rebuild
+      - name: Install platform-specific Tailwind bindings
+        working-directory: frontend
+        run: npm install @tailwindcss/oxide-linux-x64-gnu --no-save
       - name: Build
         working-directory: frontend
         run: npm run build

@@ -21,6 +21,7 @@ from utils.legal_structure_parser import LegalStructureParser, MetadataEnricher
 try:
     import pytesseract
     from pdf2image import convert_from_path
+
     HAS_OCR = True
 except ImportError:
     HAS_OCR = False
@@ -60,8 +61,10 @@ class EnhancedHectorIngestor:
 
     def __init__(self, reindex_mode=False):
         self.client = chromadb.PersistentClient(path=DB_PATH)
-        self.embedding_fn = chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name="all-MiniLM-L6-v2"
+        self.embedding_fn = (
+            chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
+                model_name="all-MiniLM-L6-v2"
+            )
         )
         self.collection = self.client.get_or_create_collection(
             name="indian_law_bns",
@@ -77,7 +80,7 @@ class EnhancedHectorIngestor:
             "chunks_rejected": 0,
             "acts_found": set(),
             "sections_found": 0,
-            "structure_types": {}
+            "structure_types": {},
         }
         # Track progress for ETA calculation
         self._total_books = 0
@@ -100,6 +103,7 @@ class EnhancedHectorIngestor:
     def _load_resume_state(self) -> set[str]:
         """Load list of already-completed books from disk."""
         import json
+
         if os.path.exists(self._resume_file):
             try:
                 with open(self._resume_file) as f:
@@ -111,6 +115,7 @@ class EnhancedHectorIngestor:
     def _save_resume_state(self):
         """Persist completed book list to disk."""
         import json
+
         os.makedirs(os.path.dirname(self._resume_file), exist_ok=True)
         with open(self._resume_file, "w") as f:
             json.dump({"completed": list(self._completed_books)}, f)
@@ -133,7 +138,7 @@ class EnhancedHectorIngestor:
         self,
         text: str,
         chunk_size: int = CHUNK_SIZE_TOKENS,
-        overlap: int = CHUNK_OVERLAP_TOKENS
+        overlap: int = CHUNK_OVERLAP_TOKENS,
     ) -> list[str]:
         """Build overlapping token windows preserving legal context."""
         words = self.tokenize_text(text)
@@ -145,7 +150,7 @@ class EnhancedHectorIngestor:
         step = max(chunk_size - overlap, 1)
 
         while index < len(words):
-            chunk = " ".join(words[index:index + chunk_size])
+            chunk = " ".join(words[index : index + chunk_size])
             if chunk:
                 chunks.append(chunk)
             index += step
@@ -161,11 +166,7 @@ class EnhancedHectorIngestor:
         return pytesseract.image_to_string(image, lang="eng").strip()
 
     def build_chunk_payloads(
-        self,
-        text: str,
-        filename: str,
-        page_number: int,
-        page_hash: str
+        self, text: str, filename: str, page_number: int, page_hash: str
     ) -> tuple[list[str], list[dict], list[str]]:
         """
         Build chunk documents with enhanced legal metadata.
@@ -189,8 +190,9 @@ class EnhancedHectorIngestor:
         if structure.get("section"):
             self.stats["sections_found"] += 1
         struct_type = structure.get("structure_type", "unknown")
-        self.stats["structure_types"][struct_type] = \
+        self.stats["structure_types"][struct_type] = (
             self.stats["structure_types"].get(struct_type, 0) + 1
+        )
 
         ingested_at = str(datetime.now())
         documents = []
@@ -224,7 +226,9 @@ class EnhancedHectorIngestor:
                 "chunk_index": chunk_index,
                 "chunk_chars": len(chunk),
                 "ingested_at": ingested_at,
-                "mapping_accuracy": "enhanced_v1" if not self.reindex_mode else "reindex_v1",
+                "mapping_accuracy": "enhanced_v1"
+                if not self.reindex_mode
+                else "reindex_v1",
             }
 
             # Enrich with legal structure metadata
@@ -244,14 +248,15 @@ class EnhancedHectorIngestor:
         if self.session_processed_pages % SESSION_AIR_BREAK_PAGES != 0:
             return
 
-        console.print(f"\n[yellow]Session break after {self.session_processed_pages} pages...[/yellow]")
-        self.cooldown_timer(minutes=SESSION_AIR_BREAK_MINUTES, reason="Session air break")
+        console.print(
+            f"\n[yellow]Session break after {self.session_processed_pages} pages...[/yellow]"
+        )
+        self.cooldown_timer(
+            minutes=SESSION_AIR_BREAK_MINUTES, reason="Session air break"
+        )
 
     def process_single_page(
-        self,
-        file_path: str,
-        filename: str,
-        pg_num: int
+        self, file_path: str, filename: str, pg_num: int
     ) -> dict[str, Any]:
         """Process a single page and return results."""
         page_hash = self.get_page_hash(filename, pg_num)
@@ -282,7 +287,7 @@ class EnhancedHectorIngestor:
                         dpi=PDF_RENDER_DPI,
                         first_page=pg_num,
                         last_page=pg_num,
-                        poppler_path=POPPLER_PATH
+                        poppler_path=POPPLER_PATH,
                     )
                     if page_images:
                         text = self.extract_text_from_image(page_images[0])
@@ -304,7 +309,11 @@ class EnhancedHectorIngestor:
                 self.stats["pages_processed"] += 1
                 self.stats["chunks_created"] += len(documents)
 
-                return {"status": "success", "chunks": len(documents), "text_preview": text[:100]}
+                return {
+                    "status": "success",
+                    "chunks": len(documents),
+                    "text_preview": text[:100],
+                }
 
             return {"status": "skipped", "reason": "no_chunks", "chunks": 0}
 
@@ -360,7 +369,9 @@ class EnhancedHectorIngestor:
             elif result["status"] == "error":
                 errors += 1
                 if errors <= 3:
-                    console.print(f"  [red]Error page {pg_num}:[/red] {result['reason']}")
+                    console.print(
+                        f"  [red]Error page {pg_num}:[/red] {result['reason']}"
+                    )
                 break
             elif result["status"] == "success":
                 pages_in_book += 1
@@ -398,7 +409,7 @@ class EnhancedHectorIngestor:
             "pages": pages_in_book,
             "chunks": chunks_in_book,
             "elapsed_seconds": round(book_elapsed, 1),
-            "status": "completed"
+            "status": "completed",
         }
 
         # Mark book complete for resume support
@@ -439,12 +450,16 @@ class EnhancedHectorIngestor:
             console.print(f"[yellow]No PDF files found in:[/yellow] {BOOKS_DIR}")
             return
 
-        mode_text = "[yellow]RE-INDEX[/yellow]" if self.reindex_mode else "[green]NEW[/green]"
+        mode_text = (
+            "[yellow]RE-INDEX[/yellow]" if self.reindex_mode else "[green]NEW[/green]"
+        )
         self._total_books = len(files)
         self._current_book_index = 0
         session_start = time.time()
 
-        console.print(f"\n[bold]Enhanced Ingestor[/bold] | Mode: {mode_text} | Books: {len(files)}")
+        console.print(
+            f"\n[bold]Enhanced Ingestor[/bold] | Mode: {mode_text} | Books: {len(files)}"
+        )
 
         book_results = []
         for index, filename in enumerate(files):
@@ -468,7 +483,7 @@ class EnhancedHectorIngestor:
 
         # Final stats
         total_elapsed = time.time() - session_start
-        console.print(f"\n[bold green]INGESTION COMPLETE[/bold green]")
+        console.print("\n[bold green]INGESTION COMPLETE[/bold green]")
         console.print(f"[dim]Total time: {self._format_eta(total_elapsed)}[/dim]")
         self.display_stats()
 
@@ -479,11 +494,13 @@ def create_reindex_tool():
     """Create a utility to re-index existing documents with new metadata."""
     console = Console()
 
-    console.print("\n[bold yellow]Re-Index Mode:[/bold yellow] This will add enhanced metadata")
+    console.print(
+        "\n[bold yellow]Re-Index Mode:[/bold yellow] This will add enhanced metadata"
+    )
     console.print("to existing documents without duplicating content.\n")
 
     confirm = console.input("Continue? (y/n): ")
-    if confirm.lower() == 'y':
+    if confirm.lower() == "y":
         ingestor = EnhancedHectorIngestor(reindex_mode=True)
         ingestor.run()
     else:
@@ -492,6 +509,7 @@ def create_reindex_tool():
 
 if __name__ == "__main__":
     import sys
+
     if len(sys.argv) > 1 and sys.argv[1] == "--reindex":
         create_reindex_tool()
     else:
