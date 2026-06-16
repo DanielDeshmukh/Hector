@@ -1,11 +1,14 @@
 """Verify all PDFs in data/Books/ contain real, extractable text."""
+
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pypdf import PdfReader
 
-books_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "Books")
+books_dir = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "Books"
+)
 results = []
 
 for f in sorted(os.listdir(books_dir)):
@@ -40,7 +43,9 @@ print("-" * len(hdr))
 for name, pages, chars, words, quality, has_sec, has_act in results:
     sec_mark = "Y" if has_sec else "N"
     act_mark = "Y" if has_act else "N"
-    print(f"{name:<55} {pages:>4} {chars:>6} {words:>5} {quality:>8} {sec_mark:>3} {act_mark:>3}")
+    print(
+        f"{name:<55} {pages:>4} {chars:>6} {words:>5} {quality:>8} {sec_mark:>3} {act_mark:>3}"
+    )
 
 bad = [r for r in results if r[4] not in ("GOOD",)]
 print(f"\nTotal: {len(results)} files, {len(bad)} problematic")

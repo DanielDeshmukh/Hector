@@ -1,4 +1,5 @@
 """Download Indian bare acts using known India Code handle IDs."""
+
 import urllib.request
 import ssl
 import os
@@ -20,7 +21,11 @@ BOOKS_DIR = r"D:\Vs Code\VS code\Hector\data\Books"
 INDIA_CODE_BOOKS = [
     ("2088", "Hindu_Marriage_Act_1955.pdf", "Hindu Marriage Act"),
     ("2093", "Hindu_Succession_Act_1956.pdf", "Hindu Succession Act"),
-    ("2094", "Hindu_Minority_And_Guardianship_Act_1956.pdf", "Hindu Minority & Guardianship"),
+    (
+        "2094",
+        "Hindu_Minority_And_Guardianship_Act_1956.pdf",
+        "Hindu Minority & Guardianship",
+    ),
     ("2074", "Special_Marriage_Act_1954.pdf", "Special Marriage Act"),
     ("1963", "Dowry_Prohibition_Act_1961.pdf", "Dowry Prohibition Act"),
     ("2001", "Industrial_Disputes_Act_1947.pdf", "Industrial Disputes Act"),
@@ -56,26 +61,30 @@ for handle, filename, desc in INDIA_CODE_BOOKS:
     pdf_url = None
 
     try:
-        req = urllib.request.Request(page_url, headers={
-            "User-Agent": headers["User-Agent"],
-            "Accept": "text/html,*/*",
-        })
+        req = urllib.request.Request(
+            page_url,
+            headers={
+                "User-Agent": headers["User-Agent"],
+                "Accept": "text/html,*/*",
+            },
+        )
         resp = urllib.request.urlopen(req, timeout=15, context=ctx)
         html = resp.read().decode("utf-8", errors="replace")
 
         import re
+
         # Find bitstream PDF links
         bit_links = re.findall(
             r'href="(/bitstream/123456789/' + handle + r'/[^"]*\.pdf[^"]*)"',
-            html, re.IGNORECASE
+            html,
+            re.IGNORECASE,
         )
         if bit_links:
             pdf_url = "https://www.indiacode.nic.in" + bit_links[0]
         else:
             # Try generic bitstream
             bit_links = re.findall(
-                r'href="(/bitstream/[^"]*\.pdf[^"]*)"',
-                html, re.IGNORECASE
+                r'href="(/bitstream/[^"]*\.pdf[^"]*)"', html, re.IGNORECASE
             )
             if bit_links:
                 pdf_url = "https://www.indiacode.nic.in" + bit_links[0]

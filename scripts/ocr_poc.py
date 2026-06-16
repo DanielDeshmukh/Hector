@@ -1,4 +1,5 @@
 """OCR single PDF: Prevention_of_Corruption_Act_1988.pdf."""
+
 import subprocess
 import os
 import tempfile
@@ -12,7 +13,8 @@ with tempfile.TemporaryDirectory() as tmpdir:
     prefix = os.path.join(tmpdir, "poc")
     r = subprocess.run(
         ["pdftoppm", "-png", "-r", "200", str(pdf), prefix],
-        capture_output=True, timeout=300,
+        capture_output=True,
+        timeout=300,
     )
     if r.returncode != 0:
         print("pdftoppm failed")
@@ -25,7 +27,9 @@ with tempfile.TemporaryDirectory() as tmpdir:
     for i, img in enumerate(images, 1):
         r = subprocess.run(
             [tess, str(img), "stdout", "-l", "eng", "--psm", "6"],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=120,
         )
         t = r.stdout.decode("utf-8", errors="replace").strip()
         if t:

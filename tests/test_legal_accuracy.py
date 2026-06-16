@@ -15,9 +15,7 @@ from core.router import HectorRouter
 
 @pytest.fixture(scope="module")
 def mapping_data():
-    path = os.path.join(
-        os.path.dirname(__file__), os.pardir, "core", "mapping.json"
-    )
+    path = os.path.join(os.path.dirname(__file__), os.pardir, "core", "mapping.json")
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -1105,8 +1103,7 @@ class TestBidirectionalConsistency:
         for bns_sec, data in bns_to_ipc.items():
             ipc_sec = data["old"]
             assert ipc_sec in ipc_to_bns, (
-                f"BNS {bns_sec} -> IPC {ipc_sec} "
-                f"but IPC {ipc_sec} not in forward map"
+                f"BNS {bns_sec} -> IPC {ipc_sec} but IPC {ipc_sec} not in forward map"
             )
             assert ipc_to_bns[ipc_sec]["new"] == bns_sec, (
                 f"BNS {bns_sec} -> IPC {ipc_sec} but "
@@ -1140,17 +1137,13 @@ class TestNoCircularReferences:
     def test_no_circular_in_forward(self, ipc_to_bns):
         visited = set()
         for ipc_sec in ipc_to_bns:
-            assert ipc_sec not in visited, (
-                f"Circular reference at IPC {ipc_sec}"
-            )
+            assert ipc_sec not in visited, f"Circular reference at IPC {ipc_sec}"
             visited.add(ipc_sec)
 
     def test_no_circular_in_reverse(self, bns_to_ipc):
         visited = set()
         for bns_sec in bns_to_ipc:
-            assert bns_sec not in visited, (
-                f"Circular reference at BNS {bns_sec}"
-            )
+            assert bns_sec not in visited, f"Circular reference at BNS {bns_sec}"
             visited.add(bns_sec)
 
 
@@ -1167,10 +1160,7 @@ class TestBnsSectionNumberValidation:
             if not self.VALID_BNS_PATTERN.match(str(new_val)):
                 invalid.append(f"IPC {ipc_sec}: {new_val}")
         if invalid:
-            pytest.fail(
-                "Invalid BNS section numbers:\n"
-                + "\n".join(invalid[:20])
-            )
+            pytest.fail("Invalid BNS section numbers:\n" + "\n".join(invalid[:20]))
 
     def test_all_old_values_are_valid_ipc(self, ipc_to_bns):
         invalid = []
@@ -1178,10 +1168,7 @@ class TestBnsSectionNumberValidation:
             if not self.VALID_BNS_PATTERN.match(str(ipc_sec)):
                 invalid.append(f"Invalid IPC key: {ipc_sec}")
         if invalid:
-            pytest.fail(
-                "Invalid IPC section keys:\n"
-                + "\n".join(invalid[:20])
-            )
+            pytest.fail("Invalid IPC section keys:\n" + "\n".join(invalid[:20]))
 
     def test_reverse_old_values_are_valid_ipc(self, bns_to_ipc):
         invalid = []
@@ -1190,16 +1177,11 @@ class TestBnsSectionNumberValidation:
             if not self.VALID_BNS_PATTERN.match(str(old_val)):
                 invalid.append(f"BNS {bns_sec}: {old_val}")
         if invalid:
-            pytest.fail(
-                "Invalid IPC values in reverse:\n"
-                + "\n".join(invalid[:20])
-            )
+            pytest.fail("Invalid IPC values in reverse:\n" + "\n".join(invalid[:20]))
 
     def test_reverse_bns_keys_are_numeric(self, bns_to_ipc):
         for bns_sec in bns_to_ipc:
-            assert bns_sec.isdigit(), (
-                f"Non-numeric BNS key: {bns_sec}"
-            )
+            assert bns_sec.isdigit(), f"Non-numeric BNS key: {bns_sec}"
 
 
 # ── Edge Cases ──────────────────────────────────────────────────
@@ -1248,18 +1230,12 @@ class TestEdgeCases:
 
     def test_empty_mapping_entry_skipped(self, ipc_to_bns):
         for sec, data in ipc_to_bns.items():
-            assert data["new"] != "", (
-                f"IPC {sec} has empty 'new' value"
-            )
+            assert data["new"] != "", f"IPC {sec} has empty 'new' value"
 
     def test_no_none_values_in_mapping(self, ipc_to_bns):
         for sec, data in ipc_to_bns.items():
-            assert data["new"] is not None, (
-                f"IPC {sec} has None 'new' value"
-            )
-            assert data["name"] is not None, (
-                f"IPC {sec} has None 'name' value"
-            )
+            assert data["new"] is not None, f"IPC {sec} has None 'new' value"
+            assert data["name"] is not None, f"IPC {sec} has None 'name' value"
 
     def test_many_to_one_sections_share_bns(self, ipc_to_bns):
         bns_groups = {}
@@ -1313,22 +1289,16 @@ class TestRouterIntegration:
             assert "name" in data
             assert data["name"]
 
-    def test_router_legal_map_is_same_content(
-        self, router, ipc_to_bns
-    ):
+    def test_router_legal_map_is_same_content(self, router, ipc_to_bns):
         assert router.legal_map == ipc_to_bns
 
     def test_router_normalize_adds_bns_section(self, router):
-        query, mappings = router.normalize_query(
-            "What is IPC Section 302"
-        )
+        query, mappings = router.normalize_query("What is IPC Section 302")
         assert "BNS" in query.upper()
         assert len(mappings) > 0
 
     def test_router_normalize_multiple_sections(self, router):
-        query, mappings = router.normalize_query(
-            "Explain IPC 302 and IPC 379"
-        )
+        query, mappings = router.normalize_query("Explain IPC 302 and IPC 379")
         assert len(mappings) >= 2
 
 
@@ -1338,109 +1308,264 @@ class TestRouterIntegration:
 class TestMappingCompleteness:
     def test_major_ipc_sections_present(self, ipc_to_bns):
         required = [
-            "302", "303", "304", "304A", "304B",
-            "305", "306", "307", "308", "309",
-            "376", "378", "379", "380", "381",
-            "382", "383", "384", "385", "386",
-            "387", "388", "389", "390", "391",
-            "392", "393", "394", "395", "396",
-            "397", "398", "399", "400", "401",
-            "402", "403", "404", "405", "406",
-            "407", "408", "409", "410", "411",
-            "412", "413", "414", "415", "416",
-            "417", "418", "419", "420", "421",
-            "422", "423", "424", "425", "426",
-            "427", "428", "429", "430", "431",
-            "432", "433", "434", "435", "436",
-            "437", "438", "439", "440", "441",
-            "442", "443", "444", "445", "446",
-            "447", "448", "449", "450", "451",
-            "452", "453", "454", "455", "456",
-            "457", "458", "459", "460", "461",
-            "462", "463", "464", "465", "466",
-            "467", "468", "469", "470", "471",
-            "472", "473", "474", "475", "476",
-            "477", "478", "479", "480", "481",
-            "482", "483", "484", "485", "486",
-            "487", "488", "489", "490", "491",
-            "492", "493", "494", "495", "496",
-            "497", "498", "499", "500", "501",
-            "502", "503", "504", "505", "506",
-            "507", "508", "509", "510", "511",
+            "302",
+            "303",
+            "304",
+            "304A",
+            "304B",
+            "305",
+            "306",
+            "307",
+            "308",
+            "309",
+            "376",
+            "378",
+            "379",
+            "380",
+            "381",
+            "382",
+            "383",
+            "384",
+            "385",
+            "386",
+            "387",
+            "388",
+            "389",
+            "390",
+            "391",
+            "392",
+            "393",
+            "394",
+            "395",
+            "396",
+            "397",
+            "398",
+            "399",
+            "400",
+            "401",
+            "402",
+            "403",
+            "404",
+            "405",
+            "406",
+            "407",
+            "408",
+            "409",
+            "410",
+            "411",
+            "412",
+            "413",
+            "414",
+            "415",
+            "416",
+            "417",
+            "418",
+            "419",
+            "420",
+            "421",
+            "422",
+            "423",
+            "424",
+            "425",
+            "426",
+            "427",
+            "428",
+            "429",
+            "430",
+            "431",
+            "432",
+            "433",
+            "434",
+            "435",
+            "436",
+            "437",
+            "438",
+            "439",
+            "440",
+            "441",
+            "442",
+            "443",
+            "444",
+            "445",
+            "446",
+            "447",
+            "448",
+            "449",
+            "450",
+            "451",
+            "452",
+            "453",
+            "454",
+            "455",
+            "456",
+            "457",
+            "458",
+            "459",
+            "460",
+            "461",
+            "462",
+            "463",
+            "464",
+            "465",
+            "466",
+            "467",
+            "468",
+            "469",
+            "470",
+            "471",
+            "472",
+            "473",
+            "474",
+            "475",
+            "476",
+            "477",
+            "478",
+            "479",
+            "480",
+            "481",
+            "482",
+            "483",
+            "484",
+            "485",
+            "486",
+            "487",
+            "488",
+            "489",
+            "490",
+            "491",
+            "492",
+            "493",
+            "494",
+            "495",
+            "496",
+            "497",
+            "498",
+            "499",
+            "500",
+            "501",
+            "502",
+            "503",
+            "504",
+            "505",
+            "506",
+            "507",
+            "508",
+            "509",
+            "510",
+            "511",
         ]
-        missing = [
-            s for s in required if s not in ipc_to_bns
-        ]
-        assert not missing, (
-            f"Missing required sections: {missing}"
-        )
+        missing = [s for s in required if s not in ipc_to_bns]
+        assert not missing, f"Missing required sections: {missing}"
 
     def test_definition_sections_present(self, ipc_to_bns):
         defs = [
-            "14", "17", "21", "23", "25", "26",
-            "27", "28", "29", "30", "34", "35",
-            "36", "37", "38", "39", "40", "43",
-            "44", "45", "46", "47", "49", "50",
-            "51", "52",
+            "14",
+            "17",
+            "21",
+            "23",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "49",
+            "50",
+            "51",
+            "52",
         ]
-        missing = [
-            s for s in defs if s not in ipc_to_bns
-        ]
-        assert not missing, (
-            f"Missing definition sections: {missing}"
-        )
+        missing = [s for s in defs if s not in ipc_to_bns]
+        assert not missing, f"Missing definition sections: {missing}"
 
     def test_punishment_sections_present(self, ipc_to_bns):
         punish = [
-            "53", "53A", "54", "55", "55A",
-            "56", "57", "58", "59", "60",
+            "53",
+            "53A",
+            "54",
+            "55",
+            "55A",
+            "56",
+            "57",
+            "58",
+            "59",
+            "60",
         ]
-        missing = [
-            s for s in punish if s not in ipc_to_bns
-        ]
-        assert not missing, (
-            f"Missing punishment sections: {missing}"
-        )
+        missing = [s for s in punish if s not in ipc_to_bns]
+        assert not missing, f"Missing punishment sections: {missing}"
 
     def testabetment_sections_present(self, ipc_to_bns):
         abet = [
-            "107", "108", "108A", "109", "110",
-            "111", "112", "113", "114", "115",
-            "116", "117", "118", "119", "120",
-            "120A", "120B",
+            "107",
+            "108",
+            "108A",
+            "109",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "117",
+            "118",
+            "119",
+            "120",
+            "120A",
+            "120B",
         ]
-        missing = [
-            s for s in abet if s not in ipc_to_bns
-        ]
-        assert not missing, (
-            f"Missing abetment sections: {missing}"
-        )
+        missing = [s for s in abet if s not in ipc_to_bns]
+        assert not missing, f"Missing abetment sections: {missing}"
 
     def test_kidnapping_sections_present(self, ipc_to_bns):
         kidnap = [
-            "254", "255", "256", "257", "258",
-            "259", "260", "261", "262", "263",
-            "264", "265",
+            "254",
+            "255",
+            "256",
+            "257",
+            "258",
+            "259",
+            "260",
+            "261",
+            "262",
+            "263",
+            "264",
+            "265",
         ]
-        missing = [
-            s for s in kidnap if s not in ipc_to_bns
-        ]
-        assert not missing, (
-            f"Missing kidnapping sections: {missing}"
-        )
+        missing = [s for s in kidnap if s not in ipc_to_bns]
+        assert not missing, f"Missing kidnapping sections: {missing}"
 
     def test_property_sections_present(self, ipc_to_bns):
         prop = [
-            "266", "267", "268", "269", "270",
-            "271", "272", "273", "274", "275",
-            "276", "277", "278", "279", "280",
+            "266",
+            "267",
+            "268",
+            "269",
+            "270",
+            "271",
+            "272",
+            "273",
+            "274",
+            "275",
+            "276",
+            "277",
+            "278",
+            "279",
+            "280",
         ]
-        missing = [
-            s for s in prop if s not in ipc_to_bns
-        ]
-        assert not missing, (
-            f"Missing property sections: {missing}"
-        )
+        missing = [s for s in prop if s not in ipc_to_bns]
+        assert not missing, f"Missing property sections: {missing}"
 
 
 # ── Additional Assertion Coverage ───────────────────────────────
@@ -2054,47 +2179,34 @@ class TestAdditionalCoverage:
 class TestMappingDataQuality:
     def test_no_whitespace_in_section_keys(self, ipc_to_bns):
         for sec in ipc_to_bns:
-            assert sec == sec.strip(), (
-                f"Whitespace in key: '{sec}'"
-            )
+            assert sec == sec.strip(), f"Whitespace in key: '{sec}'"
 
     def test_no_whitespace_in_bns_keys(self, bns_to_ipc):
         for sec in bns_to_ipc:
-            assert sec == sec.strip(), (
-                f"Whitespace in BNS key: '{sec}'"
-            )
+            assert sec == sec.strip(), f"Whitespace in BNS key: '{sec}'"
 
     def test_no_empty_notes_field(self, ipc_to_bns):
         for sec, data in ipc_to_bns.items():
             if "note" in data:
-                assert data["note"], (
-                    f"IPC {sec} has empty 'note'"
-                )
+                assert data["note"], f"IPC {sec} has empty 'note'"
 
     def test_all_new_values_are_strings(self, ipc_to_bns):
         for sec, data in ipc_to_bns.items():
             assert isinstance(data["new"], str), (
-                f"IPC {sec} 'new' is not string: "
-                f"{type(data['new'])}"
+                f"IPC {sec} 'new' is not string: {type(data['new'])}"
             )
 
     def test_all_names_are_strings(self, ipc_to_bns):
         for sec, data in ipc_to_bns.items():
-            assert isinstance(data["name"], str), (
-                f"IPC {sec} 'name' is not string"
-            )
+            assert isinstance(data["name"], str), f"IPC {sec} 'name' is not string"
 
     def test_all_reverse_old_values_are_strings(self, bns_to_ipc):
         for sec, data in bns_to_ipc.items():
-            assert isinstance(data["old"], str), (
-                f"BNS {sec} 'old' is not string"
-            )
+            assert isinstance(data["old"], str), f"BNS {sec} 'old' is not string"
 
     def test_all_reverse_names_are_strings(self, bns_to_ipc):
         for sec, data in bns_to_ipc.items():
-            assert isinstance(data["name"], str), (
-                f"BNS {sec} 'name' is not string"
-            )
+            assert isinstance(data["name"], str), f"BNS {sec} 'name' is not string"
 
     def test_no_trailing_spaces_in_names(self, ipc_to_bns):
         for sec, data in ipc_to_bns.items():
@@ -2111,9 +2223,7 @@ class TestMappingDataQuality:
     def test_reverse_names_no_trailing_space(self, bns_to_ipc):
         for sec, data in bns_to_ipc.items():
             name = data["name"]
-            assert name == name.strip(), (
-                f"BNS {sec} name has trailing space"
-            )
+            assert name == name.strip(), f"BNS {sec} name has trailing space"
 
     def test_effective_date_format(self, mapping_data):
         date = mapping_data["SYSTEM_NOTES"]["effective_date"]
