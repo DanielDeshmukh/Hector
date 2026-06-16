@@ -1,4 +1,5 @@
 import hashlib
+import logging
 import os
 import time
 import uuid
@@ -16,6 +17,8 @@ from rich.table import Table
 
 # Import the legal structure parser
 from utils.legal_structure_parser import LegalStructureParser, MetadataEnricher
+
+logger = logging.getLogger("hector.ingest")
 
 # Optional OCR dependencies
 try:
@@ -74,6 +77,7 @@ class EnhancedHectorIngestor:
         self.enricher = MetadataEnricher()
         self.session_processed_pages = 0
         self.reindex_mode = reindex_mode
+        self.verbose = os.getenv("HECTOR_INGEST_VERBOSE") == "1"
         self.stats = {
             "pages_processed": 0,
             "chunks_created": 0,
@@ -239,6 +243,14 @@ class EnhancedHectorIngestor:
             metadatas.append(enriched_metadata)
             ids.append(str(uuid.uuid4()))
 
+            if self.verbose:
+                logger.info(
+                    f"    chunk {chunk_index}: {len(chunk)} chars, "
+                    f"act={enriched_metadata.get('act_name', '?')}, "
+                    f"section={enriched_metadata.get('section_number', '?')}, "
+                    f"type={enriched_metadata.get('structure_type', '?')}"
+                )
+
         return documents, metadatas, ids
 
     def maybe_take_session_air_break(self):
@@ -265,6 +277,8 @@ class EnhancedHectorIngestor:
         if not self.reindex_mode:
             existing = self.collection.get(where={"page_hash": page_hash})
             if existing["ids"]:
+                if self.verbose:
+                    logger.info(f"  Page {pg_num}: skipped (duplicate)")
                 return {"status": "skipped", "reason": "duplicate", "chunks": 0}
 
         try:
@@ -295,6 +309,8 @@ class EnhancedHectorIngestor:
                     pass
 
             if not text or len(text.strip()) < 20:
+                if self.verbose:
+                    logger.info(f"  Page {pg_num}: skipped (empty/short text)")
                 return {"status": "skipped", "reason": "empty_page", "chunks": 0}
 
             documents, metadatas, ids = self.build_chunk_payloads(
@@ -308,6 +324,11 @@ class EnhancedHectorIngestor:
                 self.collection.add(documents=documents, metadatas=metadatas, ids=ids)
                 self.stats["pages_processed"] += 1
                 self.stats["chunks_created"] += len(documents)
+                if self.verbose:
+                    logger.info(
+                        f"  Page {pg_num}: {len(documents)} chunks indexed, "
+                        f"{len(text)} chars extracted"
+                    )
 
                 return {
                     "status": "success",
@@ -339,6 +360,7 @@ class EnhancedHectorIngestor:
         # Resume: skip books already fully ingested
         if not self.reindex_mode and filename in self._completed_books:
             console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
+            logger.info(f"Skipping {filename} (already ingested)")
             return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
 
         book_start = time.time()
@@ -354,6 +376,10 @@ class EnhancedHectorIngestor:
         console.print(
             f"\n[bold cyan]Processing:[/bold cyan] {filename} "
             f"[dim]({total_pages} pages, book {self._current_book_index}/{self._total_books})[/dim]"
+        )
+        logger.info(
+            f"Book {self._current_book_index}/{self._total_books}: "
+            f"{filename} ({total_pages} pages)"
         )
 
         pg_num = 1
@@ -402,6 +428,11 @@ class EnhancedHectorIngestor:
         console.print(
             f"  [green]Done:[/green] {pages_in_book} pages, "
             f"{chunks_in_book} chunks in {self._format_eta(book_elapsed)}"
+        )
+        logger.info(
+            f"Book complete: {filename} — {pages_in_book} pages, "
+            f"{chunks_in_book} chunks, {self._format_eta(book_elapsed)}, "
+            f"errors={errors}"
         )
 
         result = {
@@ -488,6 +519,12 @@ class EnhancedHectorIngestor:
         self.display_stats()
 
         console.print(f"\n[bold]Total records in DB:[/bold] {self.collection.count()}")
+        logger.info(
+            f"Session complete — total records in DB: {self.collection.count()}, "
+            f"pages processed: {self.stats['pages_processed']}, "
+            f"chunks created: {self.stats['chunks_created']}, "
+            f"chunks rejected: {self.stats['chunks_rejected']}"
+        )
 
 
 def create_reindex_tool():

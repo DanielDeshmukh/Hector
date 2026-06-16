@@ -514,9 +514,27 @@ def cmd_init(args):
 
 def cmd_ingest(args):
     """Ingest books from data/Books directory."""
+    verbose = getattr(args, "verbose", False)
+    log_file = os.path.join(os.path.dirname(__file__), "ingest.log")
+
+    import logging
+
+    logger = logging.getLogger("hector.ingest")
+    logger.setLevel(logging.DEBUG)
+    fh = logging.FileHandler(log_file, mode="w", encoding="utf-8")
+    fh.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO if not verbose else logging.DEBUG)
+    fmt = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
+    fh.setFormatter(fmt)
+    ch.setFormatter(fmt)
+    logger.addHandler(fh)
+    logger.addHandler(ch)
+
     print("\n" + "=" * 60)
     print("H.E.C.T.O.R. INGESTION")
     print("=" * 60)
+    logger.info("Ingestion started")
 
     books_dir = os.path.join(os.path.dirname(__file__), "data", "Books")
 
@@ -531,28 +549,49 @@ def cmd_ingest(args):
         return
 
     print(f"\nFound {len(available_books)} book(s):")
+    logger.info(f"Found {len(available_books)} books")
     for book in available_books:
-        print(f"  - {book['name']} ({book['size']:.2f} MB)")
+        line = f"  - {book['name']} ({book['size']:.2f} MB)"
+        print(line)
+        logger.info(f"Book: {book['name']} ({book['size']:.2f} MB)")
+
+    # Check for .txt OCR companion files
+    import glob
+
+    txt_files = glob.glob(os.path.join(books_dir, "*.txt"))
+    if txt_files:
+        print(f"\nFound {len(txt_files)} OCR text file(s):")
+        logger.info(f"Found {len(txt_files)} OCR text files")
+        for tf in txt_files:
+            name = os.path.basename(tf)
+            size_kb = os.path.getsize(tf) / 1024
+            print(f"  - {name} ({size_kb:.0f} KB)")
+            logger.info(f"OCR file: {name} ({size_kb:.0f} KB)")
 
     try:
         child_env = os.environ.copy()
         child_env.setdefault("PYTHONIOENCODING", "utf-8")
+        if verbose:
+            child_env["HECTOR_INGEST_VERBOSE"] = "1"
         project_dir = os.path.dirname(__file__)
         ingestor_path = os.path.join(project_dir, "utils", "enhanced_ingestor.py")
         if os.path.exists(ingestor_path):
             print("\nRunning enhanced ingestor...")
+            logger.info("Launching enhanced ingestor")
             import subprocess
 
-            subprocess.run(
+            result = subprocess.run(
                 [sys.executable, "-m", "utils.enhanced_ingestor"],
                 cwd=project_dir,
                 check=True,
                 env=child_env,
             )
+            logger.info(f"Ingestor finished with exit code {result.returncode}")
         else:
             basic_ingestor = os.path.join(project_dir, "utils", "ingestor.py")
             if os.path.exists(basic_ingestor):
                 print("\nRunning basic ingestor...")
+                logger.info("Launching basic ingestor")
                 import subprocess
 
                 subprocess.run(
@@ -565,6 +604,10 @@ def cmd_ingest(args):
                 print_error("No ingestor found")
     except Exception as e:
         print_error("Ingestion failed", str(e))
+        logger.error(f"Ingestion failed: {e}")
+
+    logger.info("Ingestion session complete")
+    print(f"\nLog saved to: {log_file}")
 
 
 def cmd_status(args):
