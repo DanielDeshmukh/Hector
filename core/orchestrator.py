@@ -4,6 +4,7 @@ from data.hybrid_retriever import HectorHybridRetriever
 # Optional: Only import verifier if available (graceful degradation)
 try:
     from core.verifier import ChainOfVerification
+
     VERIFIER_AVAILABLE = True
 except ImportError:
     VERIFIER_AVAILABLE = False
@@ -54,7 +55,9 @@ class HectorOrchestrator:
             # Optionally include verification metrics in response
             coverage = verification.get("citation_coverage", 0)
             if coverage < 0.8:
-                verification_note = f"\n\n[Verification: {coverage:.0%} claims verified]"
+                verification_note = (
+                    f"\n\n[Verification: {coverage:.0%} claims verified]"
+                )
                 response += verification_note
 
         return response
@@ -68,7 +71,10 @@ class HectorOrchestrator:
         if route == "GENERAL":
             if len(hector_msg) > 5:
                 return hector_msg, sources
-            return "Tactical pivot required. Provide more specific architecture logs.", sources
+            return (
+                "Tactical pivot required. Provide more specific architecture logs.",
+                sources,
+            )
 
         if route == "LEGAL_RESEARCH":
             results = self.retriever.search(query, top_k=5)
@@ -83,11 +89,20 @@ class HectorOrchestrator:
         if route == "STRATEGIC_ADVICE":
             if len(hector_msg) > 5:
                 return hector_msg, sources
-            return "Strategic route selected. State the target outcome, constraints, and leverage points.", sources
+            return (
+                "Strategic route selected. State the target outcome, constraints, and leverage points.",
+                sources,
+            )
 
         if route == "DOCUMENT_ANALYSIS":
             if len(hector_msg) > 5:
                 return hector_msg, sources
-            return "Document analysis route selected. Provide the file or OCR payload to continue.", sources
+            return (
+                "Document analysis route selected. Provide the file or OCR payload to continue.",
+                sources,
+            )
 
-        return "Fallback route engaged. Clarify the objective and I will reclassify.", sources
+        return (
+            "Fallback route engaged. Clarify the objective and I will reclassify.",
+            sources,
+        )

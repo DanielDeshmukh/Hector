@@ -293,12 +293,16 @@ def download_file(url: str, dest: Path, timeout: int = 120) -> bool:
         if "text/html" in content_type:
             # Try to find a PDF link in the HTML
             import re
-            pdf_links = re.findall(r'href=["\']([^"\']*\.pdf[^"\']*)["\']', resp.text, re.IGNORECASE)
+
+            pdf_links = re.findall(
+                r'href=["\']([^"\']*\.pdf[^"\']*)["\']', resp.text, re.IGNORECASE
+            )
             if pdf_links:
                 # Try the first PDF link found
                 for link in pdf_links:
                     if not link.startswith("http"):
                         from urllib.parse import urljoin
+
                         link = urljoin(url, link)
                     print(f"    Found embedded PDF link: {link[:80]}...")
                     return download_file(link, dest, timeout)
@@ -320,9 +324,17 @@ def download_file(url: str, dest: Path, timeout: int = 120) -> bool:
                     downloaded += len(chunk)
                     if total:
                         pct = downloaded * 100 // total
-                        print(f"\r    [{pct:3d}%] {downloaded / 1048576:.1f} / {total / 1048576:.1f} MB", end="", flush=True)
+                        print(
+                            f"\r    [{pct:3d}%] {downloaded / 1048576:.1f} / {total / 1048576:.1f} MB",
+                            end="",
+                            flush=True,
+                        )
                     else:
-                        print(f"\r    [{downloaded / 1048576:.1f} MB downloaded]", end="", flush=True)
+                        print(
+                            f"\r    [{downloaded / 1048576:.1f} MB downloaded]",
+                            end="",
+                            flush=True,
+                        )
         print()
 
         # Verify it's actually a PDF
@@ -363,7 +375,9 @@ def cmd_list():
         if found:
             size_mb = existing[book.filename].stat().st_size / 1048576
             size = f"{size_mb:.1f} MB"
-        print(f"  {book.tier:<4} {status:<10} {size:<12} {book.filename:<50} {book.title}")
+        print(
+            f"  {book.tier:<4} {status:<10} {size:<12} {book.filename:<50} {book.title}"
+        )
     downloaded = sum(1 for b in LEGAL_BOOKS if b.filename in existing)
     print(f"\nTotal: {downloaded}/{len(LEGAL_BOOKS)} books present in {BOOKS_DIR}")
 
@@ -426,9 +440,15 @@ def main():
     parser = argparse.ArgumentParser(
         description="HECTOR Legal Corpus Downloader — fetch bare acts from government sources",
     )
-    parser.add_argument("--tier", type=int, choices=[1, 2, 3], help="Download only a specific tier")
-    parser.add_argument("--list", action="store_true", help="List all books and download status")
-    parser.add_argument("--dry-run", action="store_true", help="Show URLs without downloading")
+    parser.add_argument(
+        "--tier", type=int, choices=[1, 2, 3], help="Download only a specific tier"
+    )
+    parser.add_argument(
+        "--list", action="store_true", help="List all books and download status"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Show URLs without downloading"
+    )
     args = parser.parse_args()
 
     if args.list:

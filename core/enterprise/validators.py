@@ -12,6 +12,7 @@ import secrets
 
 class ValidationError(Exception):
     """Raised when input validation fails."""
+
     pass
 
 
@@ -28,7 +29,7 @@ class InputSanitizer:
         value = value[:max_length]
 
         # Remove null bytes
-        value = value.replace('\x00', '')
+        value = value.replace("\x00", "")
 
         # HTML escape to prevent XSS
         value = html.escape(value)
@@ -54,7 +55,7 @@ class InputSanitizer:
             raise ValidationError("Search query contains invalid characters")
 
         # Normalize whitespace
-        query = re.sub(r'\s+', ' ', query)
+        query = re.sub(r"\s+", " ", query)
 
         return query
 
@@ -65,16 +66,16 @@ class InputSanitizer:
             raise ValidationError("Filename is required")
 
         # Remove path separators
-        filename = filename.replace('/', '').replace('\\', '')
+        filename = filename.replace("/", "").replace("\\", "")
 
         # Remove dangerous extensions
-        dangerous_exts = ['.exe', '.bat', '.cmd', '.sh', '.ps1', '.js', '.vbs']
+        dangerous_exts = [".exe", ".bat", ".cmd", ".sh", ".ps1", ".js", ".vbs"]
         for ext in dangerous_exts:
             if filename.lower().endswith(ext):
                 raise ValidationError(f"Extension {ext} is not allowed")
 
         # Allow only safe characters
-        safe_pattern = re.compile(r'^[a-zA-Z0-9._\-]+$')
+        safe_pattern = re.compile(r"^[a-zA-Z0-9._\-]+$")
         if not safe_pattern.match(filename):
             raise ValidationError("Filename contains invalid characters")
 
@@ -89,7 +90,7 @@ class InputSanitizer:
         email = email.strip().lower()[:254]
 
         # Basic email pattern
-        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         if not re.match(pattern, email):
             raise ValidationError("Invalid email format")
 
@@ -104,9 +105,11 @@ class InputSanitizer:
         username = username.strip()[:50]
 
         # Alphanumeric and underscore only
-        pattern = re.compile(r'^[a-zA-Z0-9_]+$')
+        pattern = re.compile(r"^[a-zA-Z0-9_]+$")
         if not pattern.match(username):
-            raise ValidationError("Username can only contain letters, numbers, and underscores")
+            raise ValidationError(
+                "Username can only contain letters, numbers, and underscores"
+            )
 
         return username
 
@@ -121,7 +124,7 @@ class InputSanitizer:
             raise ValidationError("API key must be 32-256 characters")
 
         # Allow hex or base64 characters
-        pattern = re.compile(r'^[a-zA-Z0-9+/=_-]+$')
+        pattern = re.compile(r"^[a-zA-Z0-9+/=_-]+$")
         if not pattern.match(api_key):
             raise ValidationError("API key contains invalid characters")
 
@@ -155,17 +158,10 @@ class InputValidator:
         if errors:
             raise ValidationError("; ".join(errors))
 
-        return {
-            "query": sanitized_query,
-            "top_k": sanitized_top_k
-        }
+        return {"query": sanitized_query, "top_k": sanitized_top_k}
 
     @staticmethod
-    def validate_user_registration(
-        username: str,
-        email: str,
-        password: str
-    ) -> dict:
+    def validate_user_registration(username: str, email: str, password: str) -> dict:
         """Validate user registration data."""
         errors = []
 
@@ -200,15 +196,11 @@ class InputValidator:
         return {
             "username": sanitized_username,
             "email": sanitized_email,
-            "password_hash": hashlib.sha256(password.encode()).hexdigest()
+            "password_hash": hashlib.sha256(password.encode()).hexdigest(),
         }
 
     @staticmethod
-    def validate_file_upload(
-        filename: str,
-        content_type: str,
-        file_size: int
-    ) -> dict:
+    def validate_file_upload(filename: str, content_type: str, file_size: int) -> dict:
         """Validate file upload data."""
         errors = []
 
@@ -220,10 +212,10 @@ class InputValidator:
 
         # Validate content type
         allowed_types = [
-            'application/pdf',
-            'text/plain',
-            'application/msword',
-            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            "application/pdf",
+            "text/plain",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         ]
         if content_type not in allowed_types:
             errors.append(f"File type {content_type} is not allowed")
@@ -231,7 +223,7 @@ class InputValidator:
         # Validate file size (max 50MB)
         max_size = 50 * 1024 * 1024  # 50MB
         if file_size > max_size:
-            errors.append(f"File size exceeds maximum of {max_size // (1024*1024)}MB")
+            errors.append(f"File size exceeds maximum of {max_size // (1024 * 1024)}MB")
         if file_size < 1:
             errors.append("File is empty")
 
@@ -241,7 +233,7 @@ class InputValidator:
         return {
             "filename": safe_filename,
             "content_type": content_type,
-            "size": file_size
+            "size": file_size,
         }
 
 
@@ -250,8 +242,7 @@ class RateLimitValidator:
 
     @staticmethod
     def validate_rate_limit_config(
-        requests_per_minute: int,
-        burst_size: int | None = None
+        requests_per_minute: int, burst_size: int | None = None
     ) -> dict:
         """Validate rate limit configuration."""
         errors = []
@@ -276,7 +267,7 @@ class RateLimitValidator:
 
         return {
             "requests_per_minute": requests_per_minute,
-            "burst_size": burst_size or requests_per_minute
+            "burst_size": burst_size or requests_per_minute,
         }
 
 
@@ -298,10 +289,7 @@ def generate_secure_token(length: int = 32) -> str:
 def hash_sensitive_data(data: str, salt: str = "") -> str:
     """Hash sensitive data with salt."""
     return hashlib.pbkdf2_hmac(
-        'sha256',
-        data.encode('utf-8'),
-        salt.encode('utf-8'),
-        100000
+        "sha256", data.encode("utf-8"), salt.encode("utf-8"), 100000
     ).hex()
 
 
@@ -315,17 +303,17 @@ class DataSanitizer:
         safe = user_data.copy()
 
         # Remove sensitive fields
-        sensitive_fields = ['password_hash', 'api_key', 'secret', 'token']
+        sensitive_fields = ["password_hash", "api_key", "secret", "token"]
         for field in sensitive_fields:
             if field in safe:
                 safe[field] = "***REDACTED***"
 
         # Mask email
-        if 'email' in safe:
-            email = safe['email']
-            if '@' in email:
-                parts = email.split('@')
-                safe['email'] = parts[0][:2] + "***@" + parts[1]
+        if "email" in safe:
+            email = safe["email"]
+            if "@" in email:
+                parts = email.split("@")
+                safe["email"] = parts[0][:2] + "***@" + parts[1]
 
         return safe
 
@@ -335,11 +323,11 @@ class DataSanitizer:
         msg = str(error)
 
         # Don't expose internal paths
-        msg = re.sub(r'[A-Za-z]:\\[^\s]+', '[PATH]', msg)
-        msg = re.sub(r'/[^\s]+/hector/', '/hector/', msg)
+        msg = re.sub(r"[A-Za-z]:\\[^\s]+", "[PATH]", msg)
+        msg = re.sub(r"/[^\s]+/hector/", "/hector/", msg)
 
         # Generic messages for internal errors
-        internal_patterns = ['Traceback', 'File "', 'line ', 'ModuleNotFound']
+        internal_patterns = ["Traceback", 'File "', "line ", "ModuleNotFound"]
         for pattern in internal_patterns:
             if pattern in msg:
                 return "An internal error occurred. Please contact support."

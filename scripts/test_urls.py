@@ -1,6 +1,7 @@
 import requests
 import re
 import urllib3
+
 urllib3.disable_warnings()
 
 headers = {
@@ -19,7 +20,7 @@ session.verify = False
 # Known working handles from our tests
 known_handles = {
     "IPC_old": "123456789/2088",  # This gives A2007-23.pdf which is an amendment, NOT the IPC
-    "CrPC_old": "123456789/1526", # This gives A1963__19.pdf
+    "CrPC_old": "123456789/1526",  # This gives A1963__19.pdf
 }
 
 # Let's search for the actual acts
@@ -37,19 +38,26 @@ acts_to_search = [
 
 for search_term, short_name in acts_to_search:
     try:
-        r = session.get(search_url, params={"search_field": "All", "search_text": search_term}, timeout=15, allow_redirects=True)
+        r = session.get(
+            search_url,
+            params={"search_field": "All", "search_text": search_term},
+            timeout=15,
+            allow_redirects=True,
+        )
         # Find handle links
-        handles = re.findall(r'/handle/(\d+/\d+)', r.text)
+        handles = re.findall(r"/handle/(\d+/\d+)", r.text)
         unique_handles = list(set(handles))
         print(f"\n{short_name}: {r.status_code}, handles found: {unique_handles[:3]}")
-        
+
         if unique_handles:
             # Try the first handle
             handle = unique_handles[0]
             handle_url = f"https://www.indiacode.nic.in/handle/{handle}"
             r2 = session.get(handle_url, timeout=15)
             bitstreams = re.findall(r'/bitstream/[^"\'>\s]+\.pdf', r2.text)
-            print(f"  Handle {handle}: {r2.status_code}, bitstreams: {list(set(bitstreams))[:3]}")
+            print(
+                f"  Handle {handle}: {r2.status_code}, bitstreams: {list(set(bitstreams))[:3]}"
+            )
     except Exception as e:
         print(f"{short_name}: Error - {e}")
 
@@ -68,7 +76,9 @@ for url in listing_urls:
             pdfs = re.findall(r'["\']([^"\']*\.pdf)["\']', r.text, re.IGNORECASE)
             print(f"  PDFs: {pdfs[:5]}")
             # Look for download links
-            downloads = re.findall(r'href=["\']([^"\']*download[^"\']*)["\']', r.text, re.IGNORECASE)
+            downloads = re.findall(
+                r'href=["\']([^"\']*download[^"\']*)["\']', r.text, re.IGNORECASE
+            )
             print(f"  Downloads: {downloads[:5]}")
     except Exception as e:
         print(f"Error: {e}")
@@ -91,7 +101,9 @@ for url in show_data_urls:
         print(f"  Bitstreams: {bitstreams[:3]}")
         print(f"  Downloads: {downloads[:3]}")
         # Look for iframe or embed
-        embeds = re.findall(r'<(?:iframe|embed)[^>]*src=["\']([^"\']+)["\']', r.text, re.IGNORECASE)
+        embeds = re.findall(
+            r'<(?:iframe|embed)[^>]*src=["\']([^"\']+)["\']', r.text, re.IGNORECASE
+        )
         print(f"  Embeds: {embeds[:3]}")
     except Exception as e:
         print(f"Error: {e}")

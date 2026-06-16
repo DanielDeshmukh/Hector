@@ -19,7 +19,12 @@ def _b64url_decode(raw: str) -> bytes:
 
 
 class AuthManager:
-    _WEAK_SECRETS = {"hector-dev-secret", "change-me-in-production", "secret", "jwt-secret"}
+    _WEAK_SECRETS = {
+        "hector-dev-secret",
+        "change-me-in-production",
+        "secret",
+        "jwt-secret",
+    }
 
     def __init__(self):
         self.api_key = os.getenv("HECTOR_API_KEY", "")
@@ -29,12 +34,12 @@ class AuthManager:
         if not self.jwt_secret or self.jwt_secret in self._WEAK_SECRETS:
             raise RuntimeError(
                 "HECTOR_JWT_SECRET must be set to a strong random value. "
-                "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+                'Generate one with: python -c "import secrets; print(secrets.token_hex(32))"'
             )
         if not self.api_key:
             raise RuntimeError(
                 "HECTOR_API_KEY must be set. "
-                "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+                'Generate one with: python -c "import secrets; print(secrets.token_hex(32))"'
             )
 
     def issue_token(self, subject: str = "hector-client") -> str:
@@ -46,8 +51,12 @@ class AuthManager:
         }
         header = {"alg": "HS256", "typ": "JWT"}
 
-        encoded_header = _b64url_encode(json.dumps(header, separators=(",", ":")).encode("utf-8"))
-        encoded_payload = _b64url_encode(json.dumps(payload, separators=(",", ":")).encode("utf-8"))
+        encoded_header = _b64url_encode(
+            json.dumps(header, separators=(",", ":")).encode("utf-8")
+        )
+        encoded_payload = _b64url_encode(
+            json.dumps(payload, separators=(",", ":")).encode("utf-8")
+        )
         signing_input = f"{encoded_header}.{encoded_payload}".encode("ascii")
         signature = hmac.new(
             self.jwt_secret.encode("utf-8"),
@@ -121,4 +130,6 @@ def require_auth(
     authorization: str | None = Header(default=None),
     x_api_key: str | None = Header(default=None),
 ):
-    return auth_manager.authenticate_headers(authorization=authorization, x_api_key=x_api_key)
+    return auth_manager.authenticate_headers(
+        authorization=authorization, x_api_key=x_api_key
+    )

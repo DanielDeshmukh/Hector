@@ -18,14 +18,16 @@ from enum import Enum
 
 class UserRole(Enum):
     """User roles in the system."""
-    ADMIN = "admin"           # Full system access
-    RESEARCHER = "researcher" # Search, ingest, analyze
-    VIEWER = "viewer"         # Read-only access
-    API_CLIENT = "api_client" # Programmatic access
+
+    ADMIN = "admin"  # Full system access
+    RESEARCHER = "researcher"  # Search, ingest, analyze
+    VIEWER = "viewer"  # Read-only access
+    API_CLIENT = "api_client"  # Programmatic access
 
 
 class Permission(Enum):
     """System permissions."""
+
     # Search
     SEARCH = "search"
     ADVANCED_SEARCH = "advanced_search"
@@ -87,6 +89,7 @@ ROLE_PERMISSIONS = {
 @dataclass
 class User:
     """Represents a user in the system."""
+
     user_id: str
     username: str
     email: str
@@ -114,13 +117,14 @@ class User:
             "last_login": self.last_login,
             "is_active": self.is_active,
             "workspace_id": self.workspace_id,
-            "metadata": self.metadata
+            "metadata": self.metadata,
         }
 
 
 @dataclass
 class APIKey:
     """Represents an API key."""
+
     key_id: str
     client_id: str
     key_hash: str
@@ -145,13 +149,13 @@ class UserManager:
     def _get_default_storage_path(self) -> str:
         """Get default storage path."""
         import os
-        return os.path.join(
-            os.path.dirname(__file__), "..", "..", "data", "enterprise"
-        )
+
+        return os.path.join(os.path.dirname(__file__), "..", "..", "data", "enterprise")
 
     def _load_users(self) -> None:
         """Load users from storage."""
         import os
+
         os.makedirs(self.storage_path, exist_ok=True)
 
         user_file = os.path.join(self.storage_path, "users.json")
@@ -169,7 +173,7 @@ class UserManager:
                             last_login=user_data.get("last_login"),
                             is_active=user_data.get("is_active", True),
                             workspace_id=user_data.get("workspace_id"),
-                            metadata=user_data.get("metadata", {})
+                            metadata=user_data.get("metadata", {}),
                         )
                         self._users[user.user_id] = user
             except Exception:
@@ -178,6 +182,7 @@ class UserManager:
     def _save_users(self) -> None:
         """Save users to storage."""
         import os
+
         os.makedirs(self.storage_path, exist_ok=True)
 
         user_file = os.path.join(self.storage_path, "users.json")
@@ -193,7 +198,7 @@ class UserManager:
                         "last_login": u.last_login,
                         "is_active": u.is_active,
                         "workspace_id": u.workspace_id,
-                        "metadata": u.metadata
+                        "metadata": u.metadata,
                     }
                     for u in self._users.values()
                 ]
@@ -212,7 +217,7 @@ class UserManager:
         email: str,
         password: str,
         role: UserRole = UserRole.VIEWER,
-        workspace_id: str | None = None
+        workspace_id: str | None = None,
     ) -> User:
         """Create a new user."""
         with self._lock:
@@ -235,7 +240,11 @@ class UserManager:
                 role=role,
                 created_at=time.time(),
                 workspace_id=workspace_id,
-                metadata={"password_hash": bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()}
+                metadata={
+                    "password_hash": bcrypt.hashpw(
+                        password.encode(), bcrypt.gensalt()
+                    ).decode()
+                },
             )
             self._users[user.user_id] = user
             self._save_users()
@@ -247,7 +256,9 @@ class UserManager:
         for user in self._users.values():
             if user.username == username and user.is_active:
                 stored_hash = user.metadata.get("password_hash", "")
-                if stored_hash and bcrypt.checkpw(password.encode(), stored_hash.encode()):
+                if stored_hash and bcrypt.checkpw(
+                    password.encode(), stored_hash.encode()
+                ):
                     user.last_login = time.time()
                     self._save_users()
                     return user
@@ -303,12 +314,7 @@ class UserManager:
             users = [u for u in users if u.role == role]
         return users
 
-    def create_api_key(
-        self,
-        client_id: str,
-        name: str,
-        rate_limit: int = 60
-    ) -> APIKey:
+    def create_api_key(self, client_id: str, name: str, rate_limit: int = 60) -> APIKey:
         """Create a new API key."""
         with self._lock:
             key = secrets.token_urlsafe(32)
@@ -320,7 +326,7 @@ class UserManager:
                 key_hash=key_hash,
                 name=name,
                 created_at=time.time(),
-                rate_limit=rate_limit
+                rate_limit=rate_limit,
             )
 
             self._api_keys[api_key.key_id] = api_key
@@ -356,10 +362,7 @@ class PermissionChecker:
         self.user_manager = user_manager
 
     def check_permission(
-        self,
-        user_id: str | None,
-        permission: Permission,
-        api_key: str | None = None
+        self, user_id: str | None, permission: Permission, api_key: str | None = None
     ) -> tuple[bool, str | None]:
         """Check if user has permission."""
         # If API key provided, check via API key
@@ -407,9 +410,7 @@ def get_permission_checker() -> PermissionChecker:
 
 
 def check_permission(
-    user_id: str | None,
-    permission: Permission,
-    api_key: str | None = None
+    user_id: str | None, permission: Permission, api_key: str | None = None
 ) -> tuple[bool, str | None]:
     """Convenience function to check permissions."""
     return get_permission_checker().check_permission(user_id, permission, api_key)

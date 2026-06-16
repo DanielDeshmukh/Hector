@@ -14,6 +14,7 @@ if TYPE_CHECKING:
 
 class ResponseFormat:
     """Output format options for generated responses."""
+
     SUMMARY = "summary"
     DETAILED = "detailed"
     CITATIONS = "citations"
@@ -22,6 +23,7 @@ class ResponseFormat:
 @dataclass
 class LegalCitation:
     """Structured citation for legal references."""
+
     source: str
     page: str | None
     section: str
@@ -104,7 +106,10 @@ When answering legal queries:
                 "answer_confidence": 0.0,
             }
 
-        sources = [self._source_payload(item, index, len(results)) for index, item in enumerate(results, start=1)]
+        sources = [
+            self._source_payload(item, index, len(results))
+            for index, item in enumerate(results, start=1)
+        ]
         ipc_sources = [source for source in sources if source["act"] == "IPC"]
         bns_sources = [source for source in sources if source["act"] == "BNS"]
 
@@ -176,7 +181,9 @@ When answering legal queries:
             "answer_confidence": float(self._answer_confidence(sources)),
         }
 
-    def _format_legal_rag(self, query: str, results: list[dict], related: list[str]) -> str:
+    def _format_legal_rag(
+        self, query: str, results: list[dict], related: list[str]
+    ) -> str:
         """Format a response using the HECTOR Research Report format."""
         if not results:
             return (
@@ -187,11 +194,17 @@ When answering legal queries:
                 "Note: This information is provided for research purposes and does not constitute formal legal advice."
             )
 
-        sources = [self._source_payload(item, index, len(results)) for index, item in enumerate(results, start=1)]
+        sources = [
+            self._source_payload(item, index, len(results))
+            for index, item in enumerate(results, start=1)
+        ]
         ipc_sources = [source for source in sources if source["act"] == "IPC"]
         bns_sources = [source for source in sources if source["act"] == "BNS"]
 
-        lines = [f"[HECTOR Intelligence Report] · [{len(sources)} sources retrieved] · Query: {query}", ""]
+        lines = [
+            f"[HECTOR Intelligence Report] · [{len(sources)} sources retrieved] · Query: {query}",
+            "",
+        ]
 
         if ipc_sources:
             source = self._best_source(ipc_sources)
@@ -220,37 +233,62 @@ When answering legal queries:
                 f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [§{ipc['number']}] [§{bns['number']}]"
             )
 
-        lines.extend(["", "| Comparison point | Indian Penal Code, 1860 [IPC] | Bharatiya Nyaya Sanhita, 2023 [BNS] |"])
+        lines.extend(
+            [
+                "",
+                "| Comparison point | Indian Penal Code, 1860 [IPC] | Bharatiya Nyaya Sanhita, 2023 [BNS] |",
+            ]
+        )
         lines.append("| --- | --- | --- |")
-        lines.append(f"| Section reference (definition) | {self._table_section(ipc_sources, 'IPC')} | {self._table_section(bns_sources, 'BNS')} |")
-        lines.append(f"| Simple/basic offence punishment | {self._table_punishment(ipc_sources)} | {self._table_punishment(bns_sources)} |")
-        lines.append(f"| Repeat/aggravated offence punishment | {self._table_aggravated(ipc_sources)} | {self._table_aggravated(bns_sources)} |")
-        lines.append(f"| Cognisable status | {self._table_status(ipc_sources)} | {self._table_status(bns_sources)} |")
+        lines.append(
+            f"| Section reference (definition) | {self._table_section(ipc_sources, 'IPC')} | {self._table_section(bns_sources, 'BNS')} |"
+        )
+        lines.append(
+            f"| Simple/basic offence punishment | {self._table_punishment(ipc_sources)} | {self._table_punishment(bns_sources)} |"
+        )
+        lines.append(
+            f"| Repeat/aggravated offence punishment | {self._table_aggravated(ipc_sources)} | {self._table_aggravated(bns_sources)} |"
+        )
+        lines.append(
+            f"| Cognisable status | {self._table_status(ipc_sources)} | {self._table_status(bns_sources)} |"
+        )
 
         lines.extend(["", "STATUTORY SOURCES", ""])
         for source in sources:
-            lines.append(f"[§{source['number']}]  {source['title']} Section {source['section']} {source['act']}")
+            lines.append(
+                f"[§{source['number']}]  {source['title']} Section {source['section']} {source['act']}"
+            )
             lines.append(f"        Document type: {source['document_type']}")
-            lines.append(f"        Chunk: {source['chunk']} of {source['total_chunks']}")
+            lines.append(
+                f"        Chunk: {source['chunk']} of {source['total_chunks']}"
+            )
             lines.append(f"        Similarity: {source['similarity']:.2f} score")
-            lines.append(f"        Excerpt: \"{source['excerpt']}\"")
+            lines.append(f'        Excerpt: "{source["excerpt"]}"')
             lines.append("")
 
         confidence = self._answer_confidence(sources)
         confidence_line = f"Answer confidence: {confidence}%"
         if sources[0]["similarity"] < 0.70:
-            confidence_line += " Low confidence — retrieved sources may not fully cover this query."
+            confidence_line += (
+                " Low confidence — retrieved sources may not fully cover this query."
+            )
         lines.append(confidence_line)
         lines.append("")
-        lines.append("Note: This information is provided for research purposes and does not constitute formal legal advice.")
+        lines.append(
+            "Note: This information is provided for research purposes and does not constitute formal legal advice."
+        )
         return "\n".join(lines)
 
     def _source_payload(self, item: dict, number: int, total_chunks: int) -> dict:
         metadata = item.get("metadata", {}) or {}
         citation = item.get("citation", {}) or {}
         document = " ".join((item.get("document") or "").split())
-        act = (item.get("act") or metadata.get("act_name") or metadata.get("act") or "").upper() or "LEGAL"
-        section = citation.get("section") or metadata.get("section_number") or "unidentified"
+        act = (
+            item.get("act") or metadata.get("act_name") or metadata.get("act") or ""
+        ).upper() or "LEGAL"
+        section = (
+            citation.get("section") or metadata.get("section_number") or "unidentified"
+        )
         title = metadata.get("source") or "Retrieved legal source"
         score = self._normalize_score(
             float(item.get("similarity_score", item.get("score", 0.0)) or 0.0)
@@ -288,13 +326,26 @@ When answering legal queries:
             return "Case law"
         if "regulation" in structure_type:
             return "Regulation"
-        if "commentary" in structure_type or "textbook" in source or "ratanlal" in source:
+        if (
+            "commentary" in structure_type
+            or "textbook" in source
+            or "ratanlal" in source
+        ):
             return "Legal commentary"
         return "Statute"
 
     def _best_excerpt(self, document: str) -> str:
         sentences = re.split(r"(?<=[.!?])\s+", document)
-        keywords = ("punish", "imprison", "fine", "theft", "section", "cognizable", "cognisable", "community service")
+        keywords = (
+            "punish",
+            "imprison",
+            "fine",
+            "theft",
+            "section",
+            "cognizable",
+            "cognisable",
+            "community service",
+        )
         for sentence in sentences:
             if "punishment for theft" in sentence.lower():
                 excerpt = sentence.strip()
@@ -305,7 +356,9 @@ When answering legal queries:
 
         ranked = sorted(
             (sentence.strip() for sentence in sentences if sentence.strip()),
-            key=lambda sentence: sum(keyword in sentence.lower() for keyword in keywords),
+            key=lambda sentence: sum(
+                keyword in sentence.lower() for keyword in keywords
+            ),
             reverse=True,
         )
         excerpt = ranked[0] if ranked else document[:220]
@@ -316,7 +369,7 @@ When answering legal queries:
 
     def _framework_sentence(self, source: dict) -> str:
         excerpt = source["excerpt"].rstrip(".")
-        return f"Section {source['section']} {source['act']} is the retrieved provision; the source states: \"{excerpt}.\""
+        return f'Section {source["section"]} {source["act"]} is the retrieved provision; the source states: "{excerpt}."'
 
     def _table_section(self, sources: list[dict], act: str) -> str:
         if not sources:
@@ -325,24 +378,32 @@ When answering legal queries:
         return f"Section {source['section']} {act} [§{source['number']}]"
 
     def _table_punishment(self, sources: list[dict]) -> str:
-        source = self._first_matching_source(sources, ("punish", "imprison", "fine", "community service"))
+        source = self._first_matching_source(
+            sources, ("punish", "imprison", "fine", "community service")
+        )
         if not source:
             return "Not directly stated"
         return f"{source['excerpt']} [§{source['number']}]"
 
     def _table_aggravated(self, sources: list[dict]) -> str:
-        source = self._first_matching_source(sources, ("subsequent", "repeat", "aggravated", "second", "again"))
+        source = self._first_matching_source(
+            sources, ("subsequent", "repeat", "aggravated", "second", "again")
+        )
         if not source:
             return "Not directly stated"
         return f"{source['excerpt']} [§{source['number']}]"
 
     def _table_status(self, sources: list[dict]) -> str:
-        source = self._first_matching_source(sources, ("cognizable", "cognisable", "bailable", "non-cognizable"))
+        source = self._first_matching_source(
+            sources, ("cognizable", "cognisable", "bailable", "non-cognizable")
+        )
         if not source:
             return "Not directly stated"
         return f"{source['excerpt']} [§{source['number']}]"
 
-    def _first_matching_source(self, sources: list[dict], keywords: tuple[str, ...]) -> dict | None:
+    def _first_matching_source(
+        self, sources: list[dict], keywords: tuple[str, ...]
+    ) -> dict | None:
         for source in sources:
             haystack = source["document"].lower()
             if any(keyword in haystack for keyword in keywords):
@@ -446,7 +507,10 @@ When answering legal queries:
             if chapter:
                 lines.append(f"**Chapter:** {chapter}")
             if section:
-                lines.append(f"**Section:** {section}" + (f" - {section_title}" if section_title else ""))
+                lines.append(
+                    f"**Section:** {section}"
+                    + (f" - {section_title}" if section_title else "")
+                )
             lines.append("")
 
         # Full content from results

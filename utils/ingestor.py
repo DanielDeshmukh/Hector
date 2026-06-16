@@ -40,8 +40,10 @@ console = Console()
 class HectorIngestor:
     def __init__(self):
         self.client = chromadb.PersistentClient(path=DB_PATH)
-        self.embedding_fn = chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name="all-MiniLM-L6-v2"
+        self.embedding_fn = (
+            chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
+                model_name="all-MiniLM-L6-v2"
+            )
         )
         self.collection = self.client.get_or_create_collection(
             name="indian_law_bns",
@@ -59,7 +61,9 @@ class HectorIngestor:
         with Live(auto_refresh=True, console=console) as live:
             while seconds > 0:
                 mins, secs = divmod(seconds, 60)
-                timer_text = Text(f"{mins:02d}:{secs:02d}", style="bold yellow", justify="center")
+                timer_text = Text(
+                    f"{mins:02d}:{secs:02d}", style="bold yellow", justify="center"
+                )
                 live.update(
                     Panel(
                         timer_text,
@@ -69,13 +73,17 @@ class HectorIngestor:
                 )
                 time.sleep(1)
                 seconds -= 1
-        console.print("[bold green]Cooldown Complete. Resuming Ingestion...[/bold green]")
+        console.print(
+            "[bold green]Cooldown Complete. Resuming Ingestion...[/bold green]"
+        )
 
     def tokenize_text(self, text):
         """Tokenize OCR output with a simple whitespace strategy."""
         return text.split()
 
-    def chunk_text(self, text, chunk_size=CHUNK_SIZE_TOKENS, overlap=CHUNK_OVERLAP_TOKENS):
+    def chunk_text(
+        self, text, chunk_size=CHUNK_SIZE_TOKENS, overlap=CHUNK_OVERLAP_TOKENS
+    ):
         """Build overlapping token windows so legal context survives chunk boundaries."""
         words = self.tokenize_text(text)
         if not words:
@@ -86,7 +94,7 @@ class HectorIngestor:
         step = max(chunk_size - overlap, 1)
 
         while index < len(words):
-            chunk = " ".join(words[index:index + chunk_size])
+            chunk = " ".join(words[index : index + chunk_size])
             if chunk:
                 chunks.append(chunk)
             index += step
@@ -145,19 +153,25 @@ class HectorIngestor:
     def process_with_heartbeat(self):
         # 1. Verify Directory
         if not os.path.exists(BOOKS_DIR):
-            console.print(f"[bold red]Error:[/bold red] Directory not found: {BOOKS_DIR}")
+            console.print(
+                f"[bold red]Error:[/bold red] Directory not found: {BOOKS_DIR}"
+            )
             return
 
         files = [f for f in os.listdir(BOOKS_DIR) if f.endswith(".pdf")]
-        
+
         if not files:
-            console.print(f"[bold yellow]No PDF files found in:[/bold yellow] {BOOKS_DIR}")
+            console.print(
+                f"[bold yellow]No PDF files found in:[/bold yellow] {BOOKS_DIR}"
+            )
             return
 
         try:
             for index, filename in enumerate(files):
                 file_path = os.path.join(BOOKS_DIR, filename)
-                console.print(f"\n[bold magenta]BOOK {index + 1}/{len(files)}[/bold magenta] | [cyan]{filename}[/cyan]")
+                console.print(
+                    f"\n[bold magenta]BOOK {index + 1}/{len(files)}[/bold magenta] | [cyan]{filename}[/cyan]"
+                )
 
                 # Loop through pages one by one
                 pg_num = 1
@@ -178,12 +192,12 @@ class HectorIngestor:
                             dpi=PDF_RENDER_DPI,
                             first_page=pg_num,
                             last_page=pg_num,
-                            poppler_path=POPPLER_PATH
+                            poppler_path=POPPLER_PATH,
                         )
-                        
+
                         if not page_images:
-                            break # Reached end of PDF
-                            
+                            break  # Reached end of PDF
+
                         page_image = page_images[0]
                         text = self.extract_text_from_image(page_image)
 
@@ -196,22 +210,29 @@ class HectorIngestor:
                             )
 
                             if documents:
-                                self.collection.add(documents=documents, metadatas=metadatas, ids=ids)
-                                console.print(f"  [green]+[/green] Ingested Page {pg_num} ({len(documents)} chunks)")
-                        
+                                self.collection.add(
+                                    documents=documents, metadatas=metadatas, ids=ids
+                                )
+                                console.print(
+                                    f"  [green]+[/green] Ingested Page {pg_num} ({len(documents)} chunks)"
+                                )
+
                         pg_num += 1
                         self.session_processed_pages += 1
                         self.maybe_take_session_air_break()
 
                     except Exception:
                         # This usually triggers when pg_num exceeds total pages
-                        break 
+                        break
 
         except Exception as e:
             console.print(f"[bold red]Critical Error:[/bold red] {e}")
         finally:
             console.print("\n[bold green]INGESTION SUMMARY[/bold green]")
-            console.print(f"Total Unique Records in DB: [cyan]{self.collection.count()}[/cyan]")
+            console.print(
+                f"Total Unique Records in DB: [cyan]{self.collection.count()}[/cyan]"
+            )
+
 
 if __name__ == "__main__":
     HectorIngestor().process_with_heartbeat()

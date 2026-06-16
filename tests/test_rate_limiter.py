@@ -81,7 +81,7 @@ class TestSlidingWindowRateLimiter:
         # 4th request should be blocked
         allowed, info = limiter.is_allowed("client2")
         assert allowed is False
-        assert info['current'] == 3
+        assert info["current"] == 3
 
     def test_sliding_window_different_clients(self):
         """Test different clients have separate limits."""
@@ -110,11 +110,11 @@ class TestIPRateLimiter:
 
     def test_ip_limiter_tracks_multiple_time_windows(self):
         """Test multiple time windows are tracked."""
-        limiter = IPRateLimiter(RateLimitConfig(
-            requests_per_minute=60,
-            requests_per_hour=1000,
-            requests_per_day=10000
-        ))
+        limiter = IPRateLimiter(
+            RateLimitConfig(
+                requests_per_minute=60, requests_per_hour=1000, requests_per_day=10000
+            )
+        )
         # Should have all three limiters
         assert limiter.limiter_minute is not None
         assert limiter.limiter_hour is not None
@@ -133,8 +133,8 @@ class TestAPIClientRateLimiter:
         """Test client registration."""
         limiter = APIClientRateLimiter()
         result = limiter.register_client("client1", 100, 10000)
-        assert result['client_id'] == "client1"
-        assert result['limits']['per_minute'] == 100
+        assert result["client_id"] == "client1"
+        assert result["limits"]["per_minute"] == 100
 
     def test_check_registered_client(self):
         """Test checking registered client."""
@@ -148,7 +148,7 @@ class TestAPIClientRateLimiter:
         limiter = APIClientRateLimiter()
         allowed, info = limiter.check("unknown_client")
         assert allowed is True
-        assert info['tier'] == "default"
+        assert info["tier"] == "default"
 
     def test_client_usage_tracking(self):
         """Test client usage is tracked."""
@@ -157,7 +157,7 @@ class TestAPIClientRateLimiter:
         limiter.check("client1")
         limiter.check("client1")
         usage = limiter.get_client_usage("client1")
-        assert usage['total_requests'] == 2
+        assert usage["total_requests"] == 2
 
 
 class TestRateLimitManager:
@@ -166,8 +166,8 @@ class TestRateLimitManager:
     def test_manager_initialization(self):
         """Test manager initializes with default limiters."""
         manager = RateLimitManager()
-        assert 'search' in manager.limiters
-        assert 'api' in manager.limiters
+        assert "search" in manager.limiters
+        assert "api" in manager.limiters
 
     def test_add_limiter(self):
         """Test adding custom limiter."""
@@ -179,7 +179,7 @@ class TestRateLimitManager:
         """Test rate limit checking."""
         manager = RateLimitManager()
         allowed, info = manager.check_rate_limit("client1", "search")
-        assert 'allowed' in info
+        assert "allowed" in info
 
     def test_record_violation(self):
         """Test recording violations."""

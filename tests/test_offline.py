@@ -36,9 +36,7 @@ class TestOfflineConfig:
     def test_config_custom_values(self):
         """Test custom configuration."""
         config = OfflineConfig(
-            bundle_path="/path/to/bundle",
-            use_gpu=True,
-            cache_size_mb=1024
+            bundle_path="/path/to/bundle", use_gpu=True, cache_size_mb=1024
         )
         assert config.bundle_path == "/path/to/bundle"
         assert config.use_gpu is True
@@ -56,7 +54,7 @@ class TestOfflineBundle:
             acts_included=["BNS", "IPC"],
             total_documents=1000,
             index_size_mb=50.0,
-            checksum="abc123"
+            checksum="abc123",
         )
         assert bundle.version == "1.0.0"
         assert bundle.total_documents == 1000
@@ -74,7 +72,7 @@ class TestOfflineEmbeddingModel:
     def test_model_has_encode_method(self):
         """Test model has encode method."""
         model = OfflineEmbeddingModel(OfflineConfig())
-        assert hasattr(model, 'encode')
+        assert hasattr(model, "encode")
 
 
 class TestOfflineVectorStore:
@@ -97,6 +95,7 @@ class TestOfflineVectorStore:
         """Test search on empty store."""
         store = OfflineVectorStore()
         import numpy as np
+
         result = store.search(np.array([0.1] * 384))
         assert result == []
 
@@ -136,8 +135,8 @@ class TestOfflineMode:
         """Test offline mode initializes."""
         mode = OfflineMode()
         assert mode is not None
-        assert hasattr(mode, 'config')
-        assert hasattr(mode, 'embedding_model')
+        assert hasattr(mode, "config")
+        assert hasattr(mode, "embedding_model")
 
     def test_offline_mode_default_online(self):
         """Test default mode is online."""
@@ -168,7 +167,7 @@ class TestOfflineMode:
         """Test bundle info when no bundle loaded."""
         mode = OfflineMode()
         info = mode.get_bundle_info()
-        assert info['status'] == "no_bundle"
+        assert info["status"] == "no_bundle"
 
 
 class TestModuleFunctions:

@@ -24,7 +24,8 @@ BOOKS_DIR = os.getenv("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Bo
 
 class ReindexMode:
     """Re-indexing modes."""
-    FULL = "full"      # Full corpus re-index
+
+    FULL = "full"  # Full corpus re-index
     PARTIAL = "partial"  # Amendments only
     INCREMENTAL = "incremental"  # Recent changes only
 
@@ -53,7 +54,9 @@ class ReindexJob:
             "mode": self.mode,
             "created_at": self.created_at.isoformat(),
             "started_at": self.started_at.isoformat() if self.started_at else None,
-            "completed_at": self.completed_at.isoformat() if self.completed_at else None,
+            "completed_at": self.completed_at.isoformat()
+            if self.completed_at
+            else None,
             "status": self.status,
             "stats": self.stats,
         }
@@ -63,8 +66,12 @@ class ReindexJob:
         return cls(
             mode=data["mode"],
             created_at=datetime.fromisoformat(data["created_at"]),
-            started_at=datetime.fromisoformat(data["started_at"]) if data.get("started_at") else None,
-            completed_at=datetime.fromisoformat(data["completed_at"]) if data.get("completed_at") else None,
+            started_at=datetime.fromisoformat(data["started_at"])
+            if data.get("started_at")
+            else None,
+            completed_at=datetime.fromisoformat(data["completed_at"])
+            if data.get("completed_at")
+            else None,
             status=data["status"],
             stats=data.get("stats", {}),
         )
@@ -76,7 +83,9 @@ class PartialReindexer:
     Supports Layer 1 (full index) and Layer 2 (amendments only).
     """
 
-    def __init__(self, retriever: "HectorHybridRetriever", jobs_dir: Path | None = None):
+    def __init__(
+        self, retriever: "HectorHybridRetriever", jobs_dir: Path | None = None
+    ):
         self.retriever = retriever
         self.jobs_dir = jobs_dir or Path("data/amendments/jobs")
         self.jobs_dir.mkdir(parents=True, exist_ok=True)
@@ -132,7 +141,9 @@ class PartialReindexer:
 
     def _save_job(self, job: ReindexJob) -> None:
         """Save job to file."""
-        file_path = self.jobs_dir / f"job_{job.created_at.strftime('%Y%m%d_%H%M%S')}.json"
+        file_path = (
+            self.jobs_dir / f"job_{job.created_at.strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(file_path, "w") as f:
             json.dump(job.to_dict(), f, indent=2)
 
@@ -173,16 +184,19 @@ class PartialReindexer:
             return stats
 
         from utils.enhanced_ingestor import EnhancedHectorIngestor
+
         ingestor = EnhancedHectorIngestor(reindex_mode=True)
 
         for amendment in amendments:
             try:
                 text = amendment.get("text", "")
                 if not text:
-                    stats["errors"].append({
-                        "amendment_id": amendment.get("id"),
-                        "error": "No text provided",
-                    })
+                    stats["errors"].append(
+                        {
+                            "amendment_id": amendment.get("id"),
+                            "error": "No text provided",
+                        }
+                    )
                     continue
 
                 source = amendment.get("source", "amendment")
@@ -196,10 +210,12 @@ class PartialReindexer:
                     chunk_texts = ingestor.chunk_text(text)
 
                 if not chunk_texts:
-                    stats["errors"].append({
-                        "amendment_id": amendment_id,
-                        "error": "No chunks produced from text",
-                    })
+                    stats["errors"].append(
+                        {
+                            "amendment_id": amendment_id,
+                            "error": "No chunks produced from text",
+                        }
+                    )
                     continue
 
                 documents = []
@@ -237,10 +253,12 @@ class PartialReindexer:
 
             except Exception as e:
                 logger.error("Error indexing amendment %s: %s", amendment.get("id"), e)
-                stats["errors"].append({
-                    "amendment_id": amendment.get("id"),
-                    "error": str(e),
-                })
+                stats["errors"].append(
+                    {
+                        "amendment_id": amendment.get("id"),
+                        "error": str(e),
+                    }
+                )
 
         stats["completed_at"] = datetime.now().isoformat()
         self.last_partial_reindex = datetime.now()
@@ -273,9 +291,14 @@ class PartialReindexer:
             existing = collection.get()
             if existing["ids"]:
                 collection.delete(ids=existing["ids"])
-                logger.info("Cleared %d existing records from collection.", len(existing["ids"]))
+                logger.info(
+                    "Cleared %d existing records from collection.", len(existing["ids"])
+                )
 
-            from utils.enhanced_ingestor import EnhancedHectorIngestor, BOOKS_DIR as INGESTOR_BOOKS_DIR
+            from utils.enhanced_ingestor import (
+                EnhancedHectorIngestor,
+                BOOKS_DIR as INGESTOR_BOOKS_DIR,
+            )
 
             books_dir = Path(INGESTOR_BOOKS_DIR)
             if not books_dir.exists():
@@ -297,7 +320,11 @@ class PartialReindexer:
                     result = ingestor.process_book(pdf_path.name, str(pdf_path))
                     total_chunks += result.get("chunks", 0)
                     stats["reindexed_count"] += 1
-                    logger.info("Re-indexed %s: %d chunks", pdf_path.name, result.get("chunks", 0))
+                    logger.info(
+                        "Re-indexed %s: %d chunks",
+                        pdf_path.name,
+                        result.get("chunks", 0),
+                    )
                 except Exception as e:
                     logger.error("Error re-indexing %s: %s", pdf_path.name, e)
                     stats["errors"].append({"file": pdf_path.name, "error": str(e)})
@@ -308,7 +335,11 @@ class PartialReindexer:
             self.last_full_reindex = datetime.now()
             self._save_last_reindex("full", datetime.now())
             self.retriever.refresh_index()
-            logger.info("Full re-index completed. %d files, %d chunks total.", stats["reindexed_count"], total_chunks)
+            logger.info(
+                "Full re-index completed. %d files, %d chunks total.",
+                stats["reindexed_count"],
+                total_chunks,
+            )
 
         except Exception as e:
             logger.error("Full re-index failed: %s", e)
@@ -324,7 +355,9 @@ class PartialReindexer:
         Perform an incremental re-index for recent changes.
         Finds PDFs modified in the last N days and re-indexes them.
         """
-        logger.info("Starting incremental re-index for files modified in last %d days.", days)
+        logger.info(
+            "Starting incremental re-index for files modified in last %d days.", days
+        )
         stats = {
             "status": "running",
             "started_at": datetime.now().isoformat(),
@@ -350,7 +383,8 @@ class PartialReindexer:
 
             cutoff = datetime.now() - timedelta(days=days)
             pdf_files = [
-                f for f in books_dir.glob("*.pdf")
+                f
+                for f in books_dir.glob("*.pdf")
                 if datetime.fromtimestamp(f.stat().st_mtime) >= cutoff
             ]
 
@@ -360,6 +394,7 @@ class PartialReindexer:
                 return stats
 
             from utils.enhanced_ingestor import EnhancedHectorIngestor
+
             ingestor = EnhancedHectorIngestor(reindex_mode=True)
             total_chunks = 0
 
@@ -374,7 +409,9 @@ class PartialReindexer:
                     result = ingestor.process_book(filename, str(pdf_path))
                     total_chunks += result.get("chunks", 0)
                     stats["reindexed_count"] += 1
-                    logger.info("Re-indexed %s: %d chunks", filename, result.get("chunks", 0))
+                    logger.info(
+                        "Re-indexed %s: %d chunks", filename, result.get("chunks", 0)
+                    )
                 except Exception as e:
                     logger.error("Error re-indexing %s: %s", pdf_path.name, e)
                     stats["errors"].append({"file": pdf_path.name, "error": str(e)})
@@ -385,7 +422,11 @@ class PartialReindexer:
             self.last_incremental = datetime.now()
             self._save_last_reindex("incremental", datetime.now())
             self.retriever.refresh_index()
-            logger.info("Incremental re-index completed. %d files, %d chunks.", stats["reindexed_count"], total_chunks)
+            logger.info(
+                "Incremental re-index completed. %d files, %d chunks.",
+                stats["reindexed_count"],
+                total_chunks,
+            )
 
         except Exception as e:
             logger.error("Incremental re-index failed: %s", e)
@@ -400,9 +441,15 @@ class PartialReindexer:
         """Get current index statistics."""
         return {
             "total_records": len(getattr(self.retriever, "records", [])),
-            "last_full_reindex": self.last_full_reindex.isoformat() if self.last_full_reindex else None,
-            "last_partial_reindex": self.last_partial_reindex.isoformat() if self.last_partial_reindex else None,
-            "last_incremental": self.last_incremental.isoformat() if self.last_incremental else None,
+            "last_full_reindex": self.last_full_reindex.isoformat()
+            if self.last_full_reindex
+            else None,
+            "last_partial_reindex": self.last_partial_reindex.isoformat()
+            if self.last_partial_reindex
+            else None,
+            "last_incremental": self.last_incremental.isoformat()
+            if self.last_incremental
+            else None,
             "should_full_reindex": self.should_full_reindex(),
             "should_partial_reindex": self.should_partial_reindex(),
             "should_incremental_reindex": self.should_incremental_reindex(),
@@ -453,11 +500,15 @@ class VersionManager:
         """Save a snapshot of the current index version."""
         version_file = self.versions_dir / f"{version_name}.json"
         with open(version_file, "w") as f:
-            json.dump({
-                "version_name": version_name,
-                "created_at": datetime.now().isoformat(),
-                "metadata": metadata,
-            }, f, indent=2)
+            json.dump(
+                {
+                    "version_name": version_name,
+                    "created_at": datetime.now().isoformat(),
+                    "metadata": metadata,
+                },
+                f,
+                indent=2,
+            )
 
     def list_versions(self) -> list[dict]:
         """List all saved versions."""
@@ -498,7 +549,9 @@ class VersionManager:
             if source_index and os.path.exists(source_index):
                 import shutil
 
-                project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                project_root = os.path.dirname(
+                    os.path.dirname(os.path.abspath(__file__))
+                )
                 db_path = os.path.join(project_root, "hector_db")
                 target_collection_dir = os.path.join(db_path, collection_name)
 

@@ -223,6 +223,7 @@ CPC_KEYWORDS = (
 @dataclass
 class CivilLawAct:
     """Represents a civil law act with metadata."""
+
     name: str
     short_name: str
     year: int
@@ -377,7 +378,8 @@ class CivilLawRetriever:
             if "order" in order_match:
                 # Extract order number and search specifically
                 import re
-                match = re.search(r'order\s+(\d+)', order_match)
+
+                match = re.search(r"order\s+(\d+)", order_match)
                 if match:
                     order_num = match.group(1)
                     order_results = self.retriever.search(
@@ -451,7 +453,9 @@ def get_civil_law_act_info(act_key: str) -> CivilLawAct | None:
     return CIVIL_LAW_ACTS.get(act_key)
 
 
-def format_cpc_citation(section: str, order: str | None = None, rule: str | None = None) -> str:
+def format_cpc_citation(
+    section: str, order: str | None = None, rule: str | None = None
+) -> str:
     """Format a CPC citation properly."""
     parts = []
     if order:

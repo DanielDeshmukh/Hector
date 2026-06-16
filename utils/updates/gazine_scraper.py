@@ -183,18 +183,12 @@ class GazetteScraper:
         """Parse gazette HTML and extract amendment entries."""
         entries: list[Amendment] = []
 
-        row_pattern = re.compile(
-            r'<tr[^>]*>(.*?)</tr>', re.DOTALL | re.IGNORECASE
-        )
-        cell_pattern = re.compile(
-            r'<td[^>]*>(.*?)</td>', re.DOTALL | re.IGNORECASE
-        )
+        row_pattern = re.compile(r"<tr[^>]*>(.*?)</tr>", re.DOTALL | re.IGNORECASE)
+        cell_pattern = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL | re.IGNORECASE)
         link_pattern = re.compile(
             r'<a[^>]+href="([^"]*)"[^>]*>(.*?)</a>', re.DOTALL | re.IGNORECASE
         )
-        date_pattern = re.compile(
-            r'(\d{1,2}[/-]\d{1,2}[/-]\d{2,4})'
-        )
+        date_pattern = re.compile(r"(\d{1,2}[/-]\d{1,2}[/-]\d{2,4})")
 
         for row_match in row_pattern.finditer(html):
             row_html = row_match.group(1)
@@ -202,12 +196,12 @@ class GazetteScraper:
             if len(cells) < 3:
                 continue
 
-            raw_title = re.sub(r'<[^>]+>', '', cells[0]).strip()
-            raw_date = re.sub(r'<[^>]+>', '', cells[1]).strip()
-            raw_desc = re.sub(r'<[^>]+>', '', cells[2]).strip()
+            raw_title = re.sub(r"<[^>]+>", "", cells[0]).strip()
+            raw_date = re.sub(r"<[^>]+>", "", cells[1]).strip()
+            raw_desc = re.sub(r"<[^>]+>", "", cells[2]).strip()
 
-            title = re.sub(r'\s+', ' ', raw_title)
-            description = re.sub(r'\s+', ' ', raw_desc)
+            title = re.sub(r"\s+", " ", raw_title)
+            description = re.sub(r"\s+", " ", raw_desc)
 
             date_match = date_pattern.search(raw_date)
             if not date_match:
@@ -252,10 +246,7 @@ class GazetteScraper:
     def get_recent_amendments(self, days: int = 30) -> list[Amendment]:
         """Get amendments from the last N days."""
         cutoff = datetime.now() - timedelta(days=days)
-        return [
-            a for a in self.amendments
-            if a.notification_date >= cutoff
-        ]
+        return [a for a in self.amendments if a.notification_date >= cutoff]
 
     def needs_reindex(self, act_name: str) -> bool:
         """Check if an act needs re-indexing based on recent amendments."""
@@ -286,12 +277,14 @@ class AmendmentTracker:
 
     def record_amendment(self, act: str, section: str, amendment: Amendment) -> None:
         """Record a new amendment in history."""
-        self.history.append({
-            "act": act,
-            "section": section,
-            "amendment": amendment.to_dict(),
-            "recorded_at": datetime.now().isoformat(),
-        })
+        self.history.append(
+            {
+                "act": act,
+                "section": section,
+                "amendment": amendment.to_dict(),
+                "recorded_at": datetime.now().isoformat(),
+            }
+        )
         self._save_history()
 
     def get_amendment_history(
@@ -319,12 +312,14 @@ class AmendmentAlert:
 
     def add_rule(self, act_name: str, alert_type: str, recipients: list[str]) -> None:
         """Add an alert rule for an act."""
-        self.alert_rules.append({
-            "act_name": act_name,
-            "alert_type": alert_type,
-            "recipients": recipients,
-            "created_at": datetime.now().isoformat(),
-        })
+        self.alert_rules.append(
+            {
+                "act_name": act_name,
+                "alert_type": alert_type,
+                "recipients": recipients,
+                "created_at": datetime.now().isoformat(),
+            }
+        )
 
     def check_and_alert(self) -> list[dict]:
         """Check for new amendments and trigger alerts."""

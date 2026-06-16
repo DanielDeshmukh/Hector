@@ -80,7 +80,7 @@ class TestUser:
             username="testuser",
             email="test@example.com",
             role=UserRole.VIEWER,
-            created_at=1234567890.0
+            created_at=1234567890.0,
         )
         assert user.user_id == "user123"
         assert user.username == "testuser"
@@ -94,7 +94,7 @@ class TestUser:
             username="testuser",
             email="test@example.com",
             role=UserRole.ADMIN,
-            created_at=1234567890.0
+            created_at=1234567890.0,
         )
         assert user.has_permission(Permission.SEARCH) is True
 
@@ -105,7 +105,7 @@ class TestUser:
             username="testuser",
             email="test@example.com",
             role=UserRole.VIEWER,
-            created_at=1234567890.0
+            created_at=1234567890.0,
         )
         assert user.has_permission(Permission.CREATE_USER) is False
 
@@ -117,7 +117,7 @@ class TestUser:
             email="test@example.com",
             role=UserRole.ADMIN,
             created_at=1234567890.0,
-            is_active=False
+            is_active=False,
         )
         assert user.has_permission(Permission.SEARCH) is False
 
@@ -141,7 +141,7 @@ class TestUserManager:
             username="testuser",
             email="test@example.com",
             password="Password123",
-            role=UserRole.VIEWER
+            role=UserRole.VIEWER,
         )
         assert user.username == "testuser"
         assert user.email == "test@example.com"
@@ -262,13 +262,17 @@ class TestPermissionChecker:
 
     def test_check_permission_granted(self, checker):
         """Test permission granted."""
-        checker.user_manager.create_user("admin", "admin@test.com", "Password123", UserRole.ADMIN)
+        checker.user_manager.create_user(
+            "admin", "admin@test.com", "Password123", UserRole.ADMIN
+        )
         allowed, _ = checker.check_permission("admin", Permission.SEARCH)
         assert allowed is True
 
     def test_check_permission_denied(self, checker):
         """Test permission denied."""
-        checker.user_manager.create_user("viewer", "viewer@test.com", "Password123", UserRole.VIEWER)
+        checker.user_manager.create_user(
+            "viewer", "viewer@test.com", "Password123", UserRole.VIEWER
+        )
         allowed, _ = checker.check_permission("viewer", Permission.CREATE_USER)
         assert allowed is False
 

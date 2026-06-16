@@ -1,4 +1,3 @@
-
 """
 Utility to update existing database records with enhanced legal metadata.
 
@@ -49,42 +48,54 @@ def infer_act_from_source(source: str) -> dict:
         if key in source_normalized:
             result = {
                 "act_name": act,
-                "structure_type": "bare_act" if act in ["BNS", "BNSS", "BSA", "IPC", "CRPC", "IEA", "CPC"] else "commentary"
+                "structure_type": "bare_act"
+                if act in ["BNS", "BNSS", "BSA", "IPC", "CRPC", "IEA", "CPC"]
+                else "commentary",
             }
 
             # Set legal flags
             if act == "BNS":
-                result.update({
-                    "is_bns": True,
-                    "is_repealed": False,
-                    "effective_date": "2024-07-01"
-                })
+                result.update(
+                    {
+                        "is_bns": True,
+                        "is_repealed": False,
+                        "effective_date": "2024-07-01",
+                    }
+                )
             elif act == "BNSS":
-                result.update({
-                    "is_bnss": True,
-                    "is_repealed": False,
-                    "effective_date": "2024-07-01"
-                })
+                result.update(
+                    {
+                        "is_bnss": True,
+                        "is_repealed": False,
+                        "effective_date": "2024-07-01",
+                    }
+                )
             elif act == "BSA":
-                result.update({
-                    "is_bsa": True,
-                    "is_repealed": False,
-                    "effective_date": "2024-07-01"
-                })
+                result.update(
+                    {
+                        "is_bsa": True,
+                        "is_repealed": False,
+                        "effective_date": "2024-07-01",
+                    }
+                )
             elif act == "IPC":
-                result.update({
-                    "is_ipc": True,
-                    "is_repealed": True,
-                    "effective_date": "1860-01-01",
-                    "replaced_by": "BNS (w.e.f. 2024-07-01)"
-                })
+                result.update(
+                    {
+                        "is_ipc": True,
+                        "is_repealed": True,
+                        "effective_date": "1860-01-01",
+                        "replaced_by": "BNS (w.e.f. 2024-07-01)",
+                    }
+                )
             elif act == "CRPC":
-                result.update({
-                    "is_crpc": True,
-                    "is_repealed": True,
-                    "effective_date": "1973-01-01",
-                    "replaced_by": "BNSS (w.e.f. 2024-07-01)"
-                })
+                result.update(
+                    {
+                        "is_crpc": True,
+                        "is_repealed": True,
+                        "effective_date": "1973-01-01",
+                        "replaced_by": "BNSS (w.e.f. 2024-07-01)",
+                    }
+                )
             else:
                 result["is_repealed"] = False
 

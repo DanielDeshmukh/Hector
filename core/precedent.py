@@ -64,6 +64,7 @@ COURTS = {
 @dataclass
 class Judge:
     """Represents a judge in a bench."""
+
     name: str
     role: str  # Chief Justice, Senior Judge, Judge
     tenure_start: int | None = None
@@ -73,6 +74,7 @@ class Judge:
 @dataclass
 class CaseCitation:
     """Represents a case citation within a judgment."""
+
     case_name: str
     citation: str
     year: int | None
@@ -86,6 +88,7 @@ class CaseCitation:
 @dataclass
 class Precedent:
     """Represents a legal precedent with analysis."""
+
     case_id: str
     case_name: str
     citation: str
@@ -279,7 +282,10 @@ class PrecedentAnalyzer:
                 results.append(precedent)
             elif any(keyword_lower in k.lower() for k in precedent.keywords):
                 results.append(precedent)
-            elif precedent.ratio_decidendi and keyword_lower in precedent.ratio_decidendi.lower():
+            elif (
+                precedent.ratio_decidendi
+                and keyword_lower in precedent.ratio_decidendi.lower()
+            ):
                 results.append(precedent)
 
         # Sort by strength
@@ -319,18 +325,18 @@ class PrecedentAnalyzer:
         else:
             case_ids = self.precedent_index[case_id].cited_by
 
-        return [
-            self.precedent_index[c]
-            for c in case_ids
-            if c in self.precedent_index
-        ]
+        return [self.precedent_index[c] for c in case_ids if c in self.precedent_index]
 
     def get_statistics(self) -> dict:
         """Get statistics about the precedent index."""
         total = len(self.precedent_index)
-        overruled = sum(1 for p in self.precedent_index.values() if p.status == "overruled")
+        overruled = sum(
+            1 for p in self.precedent_index.values() if p.status == "overruled"
+        )
         followed = sum(1 for p in self.precedent_index.values() if p.followed_in)
-        avg_strength = sum(p.precedent_strength for p in self.precedent_index.values()) / max(total, 1)
+        avg_strength = sum(
+            p.precedent_strength for p in self.precedent_index.values()
+        ) / max(total, 1)
 
         return {
             "total_cases": total,
@@ -405,13 +411,15 @@ class JudgmentScraper:
                     title = re.sub(r"<[^>]+>", "", match.group(2)).strip()
                     excerpt = re.sub(r"<[^>]+>", "", match.group(3)).strip()
 
-                    results.append({
-                        "id": doc_id,
-                        "title": title,
-                        "excerpt": excerpt,
-                        "url": f"{self.INDIAN_KANOON_DOC_URL}{doc_id}/",
-                        "source": "indian_kanoon",
-                    })
+                    results.append(
+                        {
+                            "id": doc_id,
+                            "title": title,
+                            "excerpt": excerpt,
+                            "url": f"{self.INDIAN_KANOON_DOC_URL}{doc_id}/",
+                            "source": "indian_kanoon",
+                        }
+                    )
 
                     if len(results) >= num_results:
                         break
@@ -442,7 +450,11 @@ class JudgmentScraper:
                 title_match = re.search(
                     r'<div class="doc_title">(.*?)</div>', html, re.DOTALL
                 )
-                title = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else ""
+                title = (
+                    re.sub(r"<[^>]+>", "", title_match.group(1)).strip()
+                    if title_match
+                    else ""
+                )
 
                 # Extract judgment body
                 body_match = re.search(
@@ -654,7 +666,9 @@ class JudgmentScraper:
             "error": "Could not fetch from any source",
         }
 
-    async def search_landmark_cases(self, topic: str, max_results: int = 10) -> list[dict]:
+    async def search_landmark_cases(
+        self, topic: str, max_results: int = 10
+    ) -> list[dict]:
         """
         Search for landmark cases on a legal topic.
         Useful for building precedent networks around specific legal issues.

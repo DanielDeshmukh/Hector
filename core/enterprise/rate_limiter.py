@@ -14,6 +14,7 @@ import hashlib
 @dataclass
 class RateLimitConfig:
     """Configuration for rate limiting."""
+
     requests_per_minute: int = 60
     requests_per_hour: int = 1000
     requests_per_day: int = 10000
@@ -70,10 +71,7 @@ class SlidingWindowRateLimiter:
 
         with self._lock:
             # Remove old requests outside the window
-            self.requests[key] = [
-                t for t in self.requests[key]
-                if t > window_start
-            ]
+            self.requests[key] = [t for t in self.requests[key] if t > window_start]
 
             # Check if under limit
             current_count = len(self.requests[key])
@@ -85,7 +83,9 @@ class SlidingWindowRateLimiter:
                     "current": current_count,
                     "max": self.max_requests,
                     "window_seconds": self.window_seconds,
-                    "retry_after": int(self.requests[key][0] - window_start + 1) if self.requests[key] else 0
+                    "retry_after": int(self.requests[key][0] - window_start + 1)
+                    if self.requests[key]
+                    else 0,
                 }
 
             # Allow request
@@ -94,7 +94,7 @@ class SlidingWindowRateLimiter:
                 "allowed": True,
                 "current": current_count + 1,
                 "max": self.max_requests,
-                "remaining": remaining - 1
+                "remaining": remaining - 1,
             }
 
     def reset(self, identifier: str) -> None:
@@ -113,22 +113,13 @@ class RateLimitManager:
         self.blocked_clients: dict[str, float] = {}
         self._lock = threading.Lock()
 
-    def add_limiter(
-        self,
-        name: str,
-        max_requests: int,
-        window_seconds: int
-    ) -> None:
+    def add_limiter(self, name: str, max_requests: int, window_seconds: int) -> None:
         """Add a named rate limiter."""
         with self._lock:
-            self.limiters[name] = SlidingWindowRateLimiter(
-                max_requests, window_seconds
-            )
+            self.limiters[name] = SlidingWindowRateLimiter(max_requests, window_seconds)
 
     def check_rate_limit(
-        self,
-        client_id: str,
-        limiter_name: str = "default"
+        self, client_id: str, limiter_name: str = "default"
     ) -> tuple[bool, dict]:
         """Check rate limit for a client."""
         with self._lock:
@@ -139,7 +130,7 @@ class RateLimitManager:
                     return False, {
                         "error": "blocked",
                         "blocked_until": int(block_until - time.time()),
-                        "reason": "Too many violations"
+                        "reason": "Too many violations",
                     }
                 else:
                     del self.blocked_clients[client_id]
@@ -166,7 +157,9 @@ class RateLimitManager:
                 if key in limiter.requests:
                     stats[name] = {
                         "requests": len(limiter.requests[key]),
-                        "oldest": min(limiter.requests[key]) if limiter.requests[key] else 0
+                        "oldest": min(limiter.requests[key])
+                        if limiter.requests[key]
+                        else 0,
                     }
         return stats
 
@@ -182,9 +175,7 @@ class IPRateLimiter:
         self.limiter_hour = SlidingWindowRateLimiter(
             self.config.requests_per_hour, 3600
         )
-        self.limiter_day = SlidingWindowRateLimiter(
-            self.config.requests_per_day, 86400
-        )
+        self.limiter_day = SlidingWindowRateLimiter(self.config.requests_per_day, 86400)
 
     def check(self, ip_address: str) -> tuple[bool, dict]:
         """Check rate limit for an IP address."""
@@ -222,7 +213,7 @@ class APIClientRateLimiter:
         self,
         client_id: str,
         requests_per_minute: int = 60,
-        requests_per_day: int = 10000
+        requests_per_day: int = 10000,
     ) -> dict:
         """Register a new API client with rate limits."""
         with self._lock:
@@ -232,14 +223,14 @@ class APIClientRateLimiter:
                 "limiter_minute": SlidingWindowRateLimiter(requests_per_minute, 60),
                 "limiter_day": SlidingWindowRateLimiter(requests_per_day, 86400),
                 "total_requests": 0,
-                "created_at": time.time()
+                "created_at": time.time(),
             }
             return {
                 "client_id": client_id,
                 "limits": {
                     "per_minute": requests_per_minute,
-                    "per_day": requests_per_day
-                }
+                    "per_day": requests_per_day,
+                },
             }
 
     def check(self, client_id: str) -> tuple[bool, dict]:
@@ -266,7 +257,7 @@ class APIClientRateLimiter:
             return True, {
                 "allowed": True,
                 "tier": "premium",
-                "total_requests": client["total_requests"]
+                "total_requests": client["total_requests"],
             }
 
     def get_client_usage(self, client_id: str) -> dict:
@@ -280,9 +271,9 @@ class APIClientRateLimiter:
                 "total_requests": client["total_requests"],
                 "limits": {
                     "per_minute": client["requests_per_minute"],
-                    "per_day": client["requests_per_day"]
+                    "per_day": client["requests_per_day"],
                 },
-                "created_at": client["created_at"]
+                "created_at": client["created_at"],
             }
 
 
@@ -297,14 +288,13 @@ def get_rate_limit_manager() -> RateLimitManager:
         _rate_limit_manager = RateLimitManager()
         # Add default limiters
         _rate_limit_manager.add_limiter("search", 60, 60)  # 60 searches per minute
-        _rate_limit_manager.add_limiter("api", 100, 60)    # 100 API calls per minute
-        _rate_limit_manager.add_limiter("ingest", 10, 3600) # 10 uploads per hour
+        _rate_limit_manager.add_limiter("api", 100, 60)  # 100 API calls per minute
+        _rate_limit_manager.add_limiter("ingest", 10, 3600)  # 10 uploads per hour
     return _rate_limit_manager
 
 
 def check_rate_limit(
-    client_id: str,
-    limiter_name: str = "default"
+    client_id: str, limiter_name: str = "default"
 ) -> tuple[bool, dict]:
     """Convenience function to check rate limit."""
     return get_rate_limit_manager().check_rate_limit(client_id, limiter_name)

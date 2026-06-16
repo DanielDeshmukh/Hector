@@ -27,8 +27,8 @@ class TestMultiLanguageProcessor:
     def test_processor_initialization(self, processor):
         """Test processor initializes correctly."""
         assert processor is not None
-        assert hasattr(processor, 'legal_terms')
-        assert hasattr(processor, 'hindi_numbers')
+        assert hasattr(processor, "legal_terms")
+        assert hasattr(processor, "hindi_numbers")
 
     def test_detect_language_english(self, processor):
         """Test English language detection."""
@@ -109,7 +109,7 @@ class TestHindiLegalOCR:
     def test_ocr_initialization(self, ocr):
         """Test OCR initializes correctly."""
         assert ocr is not None
-        assert hasattr(ocr, 'DOCUMENT_PATTERNS')
+        assert hasattr(ocr, "DOCUMENT_PATTERNS")
 
     def test_detect_document_type_fir(self, ocr):
         """Test FIR document detection."""
@@ -131,7 +131,7 @@ class TestHindiLegalOCR:
         text = "धारा 302 के अनुसार"
         result = ocr.extract_sections(text)
         assert len(result) > 0
-        assert result[0]['number'] == "302"
+        assert result[0]["number"] == "302"
 
     def test_extract_sections_english(self, ocr):
         """Test section extraction from English."""

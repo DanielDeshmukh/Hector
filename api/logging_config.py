@@ -1,4 +1,5 @@
 """Structured logging configuration for HECTOR."""
+
 import json
 import logging
 import os
@@ -60,7 +61,13 @@ def setup_logging():
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def log_request(method: str, path: str, status_code: int, duration_ms: float, request_id: str | None = None):
+def log_request(
+    method: str,
+    path: str,
+    status_code: int,
+    duration_ms: float,
+    request_id: str | None = None,
+):
     """Log an HTTP request with timing."""
     logger = logging.getLogger("api.access")
     logger.info(
@@ -72,7 +79,13 @@ def log_request(method: str, path: str, status_code: int, duration_ms: float, re
     )
 
 
-def log_search(query: str, route: str, results_count: int, duration_ms: float, request_id: str | None = None):
+def log_search(
+    query: str,
+    route: str,
+    results_count: int,
+    duration_ms: float,
+    request_id: str | None = None,
+):
     """Log a search query with results."""
     logger = logging.getLogger("api.search")
     logger.info(

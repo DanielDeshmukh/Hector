@@ -63,7 +63,9 @@ class HallucinationDetectorTests(unittest.TestCase):
             "claims_verified": 1,
         }
 
-        report = HallucinationDetector.generate_hallucination_report(verification_result)
+        report = HallucinationDetector.generate_hallucination_report(
+            verification_result
+        )
 
         self.assertEqual(report["status"], "LOW_RISK")
         self.assertEqual(report["claim_coverage_score"], 0.95)
@@ -77,7 +79,9 @@ class HallucinationDetectorTests(unittest.TestCase):
             "claims_verified": 0,
         }
 
-        report = HallucinationDetector.generate_hallucination_report(verification_result)
+        report = HallucinationDetector.generate_hallucination_report(
+            verification_result
+        )
 
         self.assertEqual(report["status"], "HIGH_RISK")
         self.assertTrue(report["needs_review"])

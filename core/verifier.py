@@ -50,7 +50,9 @@ class ClaimExtractor:
         re.compile(r"Section\s+(\d+)\s+(?:IPC|BNS|CRPC|BNSS|BSA)", re.IGNORECASE),
         re.compile(r"under\s+(?:section|article)\s+(\d+)", re.IGNORECASE),
         re.compile(r"punishment\s+(?:is|shall be|may be)\s+([^.]+)", re.IGNORECASE),
-        re.compile(r"imprisonment\s+for\s+(?:up to |upto |of )?(\d+)\s+years?", re.IGNORECASE),
+        re.compile(
+            r"imprisonment\s+for\s+(?:up to |upto |of )?(\d+)\s+years?", re.IGNORECASE
+        ),
         re.compile(r"fine\s+(?:of |up to )?([^.]+)", re.IGNORECASE),
         re.compile(r"Whoever\s+([^.]+)\s+shall\s+be\s+punished", re.IGNORECASE),
         re.compile(r"is\s+(?:punishable|offence|offense)\s+with", re.IGNORECASE),
@@ -63,44 +65,64 @@ class ClaimExtractor:
         text_lower = text.lower()
 
         # Extract section references
-        for match in re.finditer(r"section\s+(\d+[a-z]?)\s+(ipc|bns|crpc|bnss|bsa)", text_lower):
-            claims.append({
-                "type": "section_reference",
-                "value": f"Section {match.group(1)} {match.group(2).upper()}",
-                "span": match.span(),
-            })
+        for match in re.finditer(
+            r"section\s+(\d+[a-z]?)\s+(ipc|bns|crpc|bnss|bsa)", text_lower
+        ):
+            claims.append(
+                {
+                    "type": "section_reference",
+                    "value": f"Section {match.group(1)} {match.group(2).upper()}",
+                    "span": match.span(),
+                }
+            )
 
         # Extract punishment claims
-        for match in re.finditer(r"punishment\s+(?:is|shall be|may be)\s+([^.]+)", text_lower):
-            claims.append({
-                "type": "punishment",
-                "value": match.group(0),
-                "span": match.span(),
-            })
+        for match in re.finditer(
+            r"punishment\s+(?:is|shall be|may be)\s+([^.]+)", text_lower
+        ):
+            claims.append(
+                {
+                    "type": "punishment",
+                    "value": match.group(0),
+                    "span": match.span(),
+                }
+            )
 
         # Extract imprisonment durations
-        for match in re.finditer(r"imprisonment\s+(?:for\s+)?(?:up to\s+)?(\d+)\s+years?", text_lower):
-            claims.append({
-                "type": "imprisonment_duration",
-                "value": f"{match.group(1)} years",
-                "span": match.span(),
-            })
+        for match in re.finditer(
+            r"imprisonment\s+(?:for\s+)?(?:up to\s+)?(\d+)\s+years?", text_lower
+        ):
+            claims.append(
+                {
+                    "type": "imprisonment_duration",
+                    "value": f"{match.group(1)} years",
+                    "span": match.span(),
+                }
+            )
 
         # Extract fine amounts
-        for match in re.finditer(r"fine\s+(?:of\s+|up to\s+)?([\d,]+(?:\s+rupees)?)", text_lower):
-            claims.append({
-                "type": "fine_amount",
-                "value": match.group(1),
-                "span": match.span(),
-            })
+        for match in re.finditer(
+            r"fine\s+(?:of\s+|up to\s+)?([\d,]+(?:\s+rupees)?)", text_lower
+        ):
+            claims.append(
+                {
+                    "type": "fine_amount",
+                    "value": match.group(1),
+                    "span": match.span(),
+                }
+            )
 
         # Extract "whoever...shall be punished" patterns
-        for match in re.finditer(r"whoever\s+([^.]+?)\s+shall\s+be\s+punished", text_lower):
-            claims.append({
-                "type": "offence_definition",
-                "value": match.group(0),
-                "span": match.span(),
-            })
+        for match in re.finditer(
+            r"whoever\s+([^.]+?)\s+shall\s+be\s+punished", text_lower
+        ):
+            claims.append(
+                {
+                    "type": "offence_definition",
+                    "value": match.group(0),
+                    "span": match.span(),
+                }
+            )
 
         return claims
 
@@ -112,7 +134,9 @@ class ChainOfVerification:
         self.client = Groq()
         self.model = "llama-3.3-70b-versatile"
 
-    def verify_response(self, response: str, source_documents: list[dict]) -> dict[str, Any]:
+    def verify_response(
+        self, response: str, source_documents: list[dict]
+    ) -> dict[str, Any]:
         """
         Run full Chain-of-Verification pipeline.
 
@@ -145,13 +169,19 @@ class ChainOfVerification:
                 claim, verification_context, source_documents
             )
             if is_verified:
-                verified_claims.append({**claim, "verified": True, "note": verification_note})
+                verified_claims.append(
+                    {**claim, "verified": True, "note": verification_note}
+                )
             else:
-                unverified_claims.append({**claim, "verified": False, "note": verification_note})
+                unverified_claims.append(
+                    {**claim, "verified": False, "note": verification_note}
+                )
 
         # Step 4: Calculate metrics
         total_claims = len(claims)
-        citation_coverage = len(verified_claims) / total_claims if total_claims > 0 else 1.0
+        citation_coverage = (
+            len(verified_claims) / total_claims if total_claims > 0 else 1.0
+        )
 
         # Step 5: Determine if correction needed
         needs_correction = citation_coverage < 0.5 or len(unverified_claims) > 0
@@ -185,7 +215,9 @@ class ChainOfVerification:
             context_parts.append(f"[Source: {source}, Page {page}]\n{content}\n")
         return "\n---\n".join(context_parts)
 
-    def _verify_claim(self, claim: dict, context: str, sources: list[dict]) -> tuple[bool, str]:
+    def _verify_claim(
+        self, claim: dict, context: str, sources: list[dict]
+    ) -> tuple[bool, str]:
         """Verify a single claim against source documents."""
         claim_type = claim.get("type", "")
         claim_value = claim.get("value", "")
@@ -259,23 +291,55 @@ class HallucinationDetector:
         seen_citations: set[str] = set()
 
         # --- Suspicious section numbers ---
-        suspicious_sections = re.findall(r"Section\s+(\d{3,4})", response, re.IGNORECASE)
+        suspicious_sections = re.findall(
+            r"Section\s+(\d{3,4})", response, re.IGNORECASE
+        )
         for section in suspicious_sections:
             section_num = int(section)
             if section_num > 600:
-                fabricated.append({
-                    "type": "invalid_section_number",
-                    "value": section,
-                    "reason": f"Section {section} exceeds maximum IPC/BNS section number",
-                })
+                fabricated.append(
+                    {
+                        "type": "invalid_section_number",
+                        "value": section,
+                        "reason": f"Section {section} exceeds maximum IPC/BNS section number",
+                    }
+                )
 
         # --- Court codes considered valid in Indian case law ---
         valid_court_codes: set[str] = {
-            "SC", "Pat", "Del", "Bom", "Cal", "Mad", "KER", "All", "Guj",
-            "Raj", "HP", "J&K", "P&H", "Orissa", "Sikkim", "Manipur",
-            "Meghalaya", "Tripura", "Gauhati", "Imphal", "Shimla", "MP",
-            "AP", "Karn", "Chhatisgarh", "Jharkhand", "Uttarakhand",
-            "NB", "Indore", "Lucknow", "Nagpur", "Panaji", "Gwalior",
+            "SC",
+            "Pat",
+            "Del",
+            "Bom",
+            "Cal",
+            "Mad",
+            "KER",
+            "All",
+            "Guj",
+            "Raj",
+            "HP",
+            "J&K",
+            "P&H",
+            "Orissa",
+            "Sikkim",
+            "Manipur",
+            "Meghalaya",
+            "Tripura",
+            "Gauhati",
+            "Imphal",
+            "Shimla",
+            "MP",
+            "AP",
+            "Karn",
+            "Chhatisgarh",
+            "Jharkhand",
+            "Uttarakhand",
+            "NB",
+            "Indore",
+            "Lucknow",
+            "Nagpur",
+            "Panaji",
+            "Gwalior",
         }
 
         current_year = 2026  # reference year for future-year checks
@@ -288,11 +352,13 @@ class HallucinationDetector:
 
                 # Duplicate citation check
                 if citation_key in seen_citations:
-                    fabricated.append({
-                        "type": "duplicate_citation",
-                        "value": citation,
-                        "reason": "Citation appears more than once in response",
-                    })
+                    fabricated.append(
+                        {
+                            "type": "duplicate_citation",
+                            "value": citation,
+                            "reason": "Citation appears more than once in response",
+                        }
+                    )
                     continue
                 seen_citations.add(citation_key)
 
@@ -306,27 +372,33 @@ class HallucinationDetector:
                     case_num = int(air_m.group(3))
 
                     if year > current_year:
-                        fabricated.append({
-                            "type": "future_year",
-                            "value": citation,
-                            "reason": f"Year {year} is in the future",
-                        })
+                        fabricated.append(
+                            {
+                                "type": "future_year",
+                                "value": citation,
+                                "reason": f"Year {year} is in the future",
+                            }
+                        )
                         continue
 
                     if court not in valid_court_codes:
-                        fabricated.append({
-                            "type": "invalid_court",
-                            "value": citation,
-                            "reason": f"Unknown court code '{court}' in AIR citation",
-                        })
+                        fabricated.append(
+                            {
+                                "type": "invalid_court",
+                                "value": citation,
+                                "reason": f"Unknown court code '{court}' in AIR citation",
+                            }
+                        )
                         continue
 
                     if case_num > 0 and case_num % 100 == 0:
-                        fabricated.append({
-                            "type": "suspicious_round_number",
-                            "value": citation,
-                            "reason": f"Case number {case_num} is a suspiciously round number",
-                        })
+                        fabricated.append(
+                            {
+                                "type": "suspicious_round_number",
+                                "value": citation,
+                                "reason": f"Case number {case_num} is a suspiciously round number",
+                            }
+                        )
 
                 # ---- SCC citation validation ----
                 scc_m = re.match(
@@ -337,27 +409,33 @@ class HallucinationDetector:
                     court = scc_m.group(2)
 
                     if year > current_year:
-                        fabricated.append({
-                            "type": "future_year",
-                            "value": citation,
-                            "reason": f"Year {year} is in the future",
-                        })
+                        fabricated.append(
+                            {
+                                "type": "future_year",
+                                "value": citation,
+                                "reason": f"Year {year} is in the future",
+                            }
+                        )
                         continue
 
                     if court not in valid_court_codes:
-                        fabricated.append({
-                            "type": "invalid_court",
-                            "value": citation,
-                            "reason": f"Unknown court code '{court}' in SCC citation",
-                        })
+                        fabricated.append(
+                            {
+                                "type": "invalid_court",
+                                "value": citation,
+                                "reason": f"Unknown court code '{court}' in SCC citation",
+                            }
+                        )
 
                 # ---- Citation missing court name (e.g. "AIR 2023 123") ----
                 if re.match(r"(?:AIR|SCC)\s+\d{4}\s+\d+\s*$", citation, re.IGNORECASE):
-                    fabricated.append({
-                        "type": "missing_court",
-                        "value": citation,
-                        "reason": "Citation is missing a court name after the year",
-                    })
+                    fabricated.append(
+                        {
+                            "type": "missing_court",
+                            "value": citation,
+                            "reason": "Citation is missing a court name after the year",
+                        }
+                    )
 
         # ---- Log detected fabrications ----
         if fabricated:
@@ -391,11 +469,13 @@ class HallucinationDetector:
             ]
             for pattern in ipc_current_patterns:
                 if re.search(pattern, response_lower):
-                    inconsistencies.append({
-                        "type": "ipc_treated_as_current",
-                        "detail": "Response references IPC as current law, but BNS is effective from July 1, 2024",
-                        "pattern": pattern,
-                    })
+                    inconsistencies.append(
+                        {
+                            "type": "ipc_treated_as_current",
+                            "detail": "Response references IPC as current law, but BNS is effective from July 1, 2024",
+                            "pattern": pattern,
+                        }
+                    )
                     break
 
         # Check for references to specific repealed sections
@@ -404,10 +484,12 @@ class HallucinationDetector:
             section_num = int(section)
             # IPC sections 1-511, but many were restructured into BNS
             if section_num > 511:
-                inconsistencies.append({
-                    "type": "invalid_ipc_section",
-                    "detail": f"Section {section} IPC does not exist (IPC has 511 sections)",
-                })
+                inconsistencies.append(
+                    {
+                        "type": "invalid_ipc_section",
+                        "detail": f"Section {section} IPC does not exist (IPC has 511 sections)",
+                    }
+                )
 
         return inconsistencies
 

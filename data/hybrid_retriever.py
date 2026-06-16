@@ -52,7 +52,9 @@ class SimpleBM25:
             return []
 
         scores = []
-        for frequencies, doc_length in zip(self.term_frequencies, self.document_lengths):
+        for frequencies, doc_length in zip(
+            self.term_frequencies, self.document_lengths
+        ):
             score = 0.0
             for term in query_tokens:
                 tf = frequencies.get(term, 0)
@@ -70,7 +72,9 @@ class SimpleBM25:
 
 
 class HectorHybridRetriever:
-    SECTION_PATTERN = re.compile(r"\b(?:section|sec\.?|s\.)\s*(\d{1,4}[a-z]?)\b", re.IGNORECASE)
+    SECTION_PATTERN = re.compile(
+        r"\b(?:section|sec\.?|s\.)\s*(\d{1,4}[a-z]?)\b", re.IGNORECASE
+    )
     ACT_PATTERN = re.compile(
         r"\b(ipc|bns|crpc|bnss|bsa|cpc|bharatiya nyaya sanhita|bharatiya nagarik suraksha sanhita|bharatiya sakshya adhiniyam|indian penal code|code of criminal procedure|evidence act|indian evidence act)\b",
         re.IGNORECASE,
@@ -119,7 +123,9 @@ class HectorHybridRetriever:
         "what",
     }
 
-    def __init__(self, collection_name=DEFAULT_COLLECTION, db_path=DB_PATH, collection=None):
+    def __init__(
+        self, collection_name=DEFAULT_COLLECTION, db_path=DB_PATH, collection=None
+    ):
         self.collection_name = collection_name
         self.db_path = db_path
         self.embed_fn = None
@@ -226,7 +232,9 @@ class HectorHybridRetriever:
             match.lower().rstrip(".")
             for match in self.SECTION_PATTERN.findall(query or "")
         ]
-        raw_acts = [match.group(0).lower() for match in self.ACT_PATTERN.finditer(query or "")]
+        raw_acts = [
+            match.group(0).lower() for match in self.ACT_PATTERN.finditer(query or "")
+        ]
         acts = [self.ACT_ALIASES.get(act, act.upper()) for act in raw_acts]
 
         return {
@@ -262,7 +270,9 @@ class HectorHybridRetriever:
         for index, document in enumerate(documents):
             ranked.append(
                 {
-                    "id": ids[index] if index < len(ids) else self._lookup_id(document, metadatas[index]),
+                    "id": ids[index]
+                    if index < len(ids)
+                    else self._lookup_id(document, metadatas[index]),
                     "document": document,
                     "metadata": metadatas[index] if index < len(metadatas) else {},
                     "distance": distances[index] if index < len(distances) else None,
@@ -289,7 +299,9 @@ class HectorHybridRetriever:
 
         scored_rows.sort(key=lambda item: item[1], reverse=True)
         ranked = []
-        for rank, (index, score, normalized_score) in enumerate(scored_rows[:top_k], start=1):
+        for rank, (index, score, normalized_score) in enumerate(
+            scored_rows[:top_k], start=1
+        ):
             record = self.records[index]
             ranked.append(
                 {
@@ -336,7 +348,9 @@ class HectorHybridRetriever:
         )
         ranked = []
         for doc_id, candidate in fused.items():
-            record = self._get_record(doc_id, candidate["document"], candidate["metadata"])
+            record = self._get_record(
+                doc_id, candidate["document"], candidate["metadata"]
+            )
 
             semantic_item = semantic_lookup.get(doc_id)
             semantic_score = self._normalize_semantic_score(
@@ -348,12 +362,20 @@ class HectorHybridRetriever:
             bm25_score = bm25_item["normalized_score"] if bm25_item else 0.0
 
             legal_boost, boost_reasons = self._legal_boost(record, legal_query)
-            concept_boost, concept_reason = self._concept_term_boost(record, legal_query)
-            current_law_boost, current_law_reason = self._current_law_boost(record, legal_query)
-            jurisdiction_boost, jurisdiction_reason = self._jurisdiction_recency_boost(record)
+            concept_boost, concept_reason = self._concept_term_boost(
+                record, legal_query
+            )
+            current_law_boost, current_law_reason = self._current_law_boost(
+                record, legal_query
+            )
+            jurisdiction_boost, jurisdiction_reason = self._jurisdiction_recency_boost(
+                record
+            )
 
             retrieval_score = candidate["rrf_score"]
-            boost_score = legal_boost + concept_boost + current_law_boost + jurisdiction_boost
+            boost_score = (
+                legal_boost + concept_boost + current_law_boost + jurisdiction_boost
+            )
             hybrid_score = retrieval_score + boost_score
 
             reasons = [
@@ -381,14 +403,18 @@ class HectorHybridRetriever:
                     "rrf_score": round(candidate["rrf_score"], 6),
                     "semantic_score": round(semantic_score, 6),
                     "bm25_score": round(bm25_score, 6),
-                    "bm25_raw_score": round(bm25_item["score"], 6) if bm25_item else 0.0,
+                    "bm25_raw_score": round(bm25_item["score"], 6)
+                    if bm25_item
+                    else 0.0,
                     "act": record["act"],
                     "citation": record["citation"],
                     "reasons": reasons,
                 }
             )
 
-        ranked.sort(key=lambda item: item["retrieval_score"] + item["boost_score"], reverse=True)
+        ranked.sort(
+            key=lambda item: item["retrieval_score"] + item["boost_score"], reverse=True
+        )
         return ranked
 
     def _normalize_bm25_score(self, raw_score, min_score, max_score):
@@ -417,7 +443,10 @@ class HectorHybridRetriever:
                 item["reranker_score"] = round(fallback_score, 6)
                 item["score"] = item["reranker_score"]
                 item["similarity_score"] = item["reranker_score"]
-                item["reasons"] = [*item.get("reasons", []), "cross-encoder-unavailable"]
+                item["reasons"] = [
+                    *item.get("reasons", []),
+                    "cross-encoder-unavailable",
+                ]
 
         candidates.sort(key=lambda item: item["reranker_score"], reverse=True)
         return candidates
@@ -433,7 +462,9 @@ class HectorHybridRetriever:
 
         try:
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
-            model_name = os.getenv("HECTOR_CROSS_ENCODER_MODEL", DEFAULT_CROSS_ENCODER_MODEL)
+            model_name = os.getenv(
+                "HECTOR_CROSS_ENCODER_MODEL", DEFAULT_CROSS_ENCODER_MODEL
+            )
             self.cross_encoder = CrossEncoder(model_name)
             return self.cross_encoder
         except Exception:
@@ -475,11 +506,19 @@ class HectorHybridRetriever:
             boost += 0.22
             reasons.append(f"section-match:{citation['section']}")
 
-        if query_acts and query_sections and act in query_acts and citation and citation["section"] in query_sections:
+        if (
+            query_acts
+            and query_sections
+            and act in query_acts
+            and citation
+            and citation["section"] in query_sections
+        ):
             boost += 0.18
             reasons.append(f"citation-match:{act}-{citation['section']}")
 
-        if query_sections and self._contains_section_reference(document, query_sections):
+        if query_sections and self._contains_section_reference(
+            document, query_sections
+        ):
             boost += 0.08
             reasons.append("section-text-hit")
 
@@ -508,11 +547,18 @@ class HectorHybridRetriever:
                 record.get("metadata", {}).get("section_title", ""),
             ]
         ).lower()
-        matched = [term for term in concept_terms if re.search(rf"\b{re.escape(term)}\b", haystack)]
+        matched = [
+            term
+            for term in concept_terms
+            if re.search(rf"\b{re.escape(term)}\b", haystack)
+        ]
 
         if "punishment" in raw_query:
             for term in matched:
-                if f"punishment for {term}" in haystack or f"{term} shall be punished" in haystack:
+                if (
+                    f"punishment for {term}" in haystack
+                    or f"{term} shall be punished" in haystack
+                ):
                     return 0.34, f"concept-punishment-match:{term}"
 
         if len(matched) == len(concept_terms):
@@ -574,7 +620,11 @@ class HectorHybridRetriever:
             metadata = item["metadata"]
             page_hash = metadata.get("page_hash")
             normalized_document = " ".join(item["document"].split()).lower()[:300]
-            dedupe_key = page_hash or (metadata.get("source"), metadata.get("page"), normalized_document)
+            dedupe_key = page_hash or (
+                metadata.get("source"),
+                metadata.get("page"),
+                normalized_document,
+            )
             if dedupe_key in seen_keys:
                 continue
             seen_keys.add(dedupe_key)
@@ -628,7 +678,9 @@ class HectorHybridRetriever:
 
     def _extract_document_citation(self, document, metadata):
         section = None
-        bracket_match = re.search(r"\[s\s*(\d{1,4}[a-z]?)(?:\.\d+)?\]", document or "", re.IGNORECASE)
+        bracket_match = re.search(
+            r"\[s\s*(\d{1,4}[a-z]?)(?:\.\d+)?\]", document or "", re.IGNORECASE
+        )
         match = self.SECTION_IN_TEXT_PATTERN.search(document or "")
         if bracket_match:
             section = bracket_match.group(1).lower()
@@ -641,7 +693,9 @@ class HectorHybridRetriever:
         }
 
     def _infer_act(self, document, metadata):
-        explicit_act = str(metadata.get("act_name") or metadata.get("act") or "").strip()
+        explicit_act = str(
+            metadata.get("act_name") or metadata.get("act") or ""
+        ).strip()
         if explicit_act:
             canonical = self.ACT_ALIASES.get(explicit_act.lower(), explicit_act.upper())
             return canonical
@@ -661,7 +715,9 @@ class HectorHybridRetriever:
     def _contains_section_reference(self, document, query_sections):
         lowered = (document or "").lower()
         for section in query_sections:
-            if re.search(rf"\b(?:section|sec\.?|s\.)\s*{re.escape(section)}\b", lowered):
+            if re.search(
+                rf"\b(?:section|sec\.?|s\.)\s*{re.escape(section)}\b", lowered
+            ):
                 return True
             if re.search(rf"^\s*{re.escape(section)}\.\s", lowered, re.MULTILINE):
                 return True

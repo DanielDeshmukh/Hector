@@ -26,15 +26,24 @@ OFFLINE_EMBEDDING_CONFIG = {
 BUNDLE_VERSION = "1.0.0"
 BUNDLE_METADATA_FILE = "metadata.json"
 LEGAL_ACTS_INCLUDED = [
-    "BNS", "BNSS", "BSA", "IPC", "CRPC", "IEA",
-    "CPC", "Contract Act", "Transfer of Property Act",
-    "Hindu Marriage Act", "Hindu Succession Act"
+    "BNS",
+    "BNSS",
+    "BSA",
+    "IPC",
+    "CRPC",
+    "IEA",
+    "CPC",
+    "Contract Act",
+    "Transfer of Property Act",
+    "Hindu Marriage Act",
+    "Hindu Succession Act",
 ]
 
 
 @dataclass
 class OfflineBundle:
     """Represents an offline legal database bundle."""
+
     version: str
     created_at: str
     acts_included: list[str]
@@ -46,6 +55,7 @@ class OfflineBundle:
 @dataclass
 class OfflineConfig:
     """Configuration for offline mode."""
+
     bundle_path: str | None = None
     embedding_model_path: str | None = None
     use_gpu: bool = False
@@ -71,7 +81,7 @@ class OfflineEmbeddingModel:
                 # Use local model (cached or bundled)
                 self.model = SentenceTransformer(
                     OFFLINE_EMBEDDING_CONFIG["model_name"],
-                    cache_folder=self._get_cache_folder()
+                    cache_folder=self._get_cache_folder(),
                 )
             return True
         except Exception as e:
@@ -89,10 +99,7 @@ class OfflineEmbeddingModel:
                 raise RuntimeError("Offline embedding model not available")
 
         return self.model.encode(
-            texts,
-            batch_size=batch_size,
-            show_progress_bar=False,
-            convert_to_numpy=True
+            texts, batch_size=batch_size, show_progress_bar=False, convert_to_numpy=True
         )
 
 
@@ -137,7 +144,7 @@ class OfflineVectorStore:
         self,
         query_embedding: np.ndarray,
         top_k: int = 10,
-        filter_fn: Callable[[dict], bool] | None = None
+        filter_fn: Callable[[dict], bool] | None = None,
     ) -> list[dict]:
         """Search the offline vector store."""
         if not self.embeddings:
@@ -196,25 +203,28 @@ class OfflineLegalBundle:
                     try:
                         with open(meta_file, "r", encoding="utf-8") as f:
                             meta = json.load(f)
-                            bundles.append(OfflineBundle(
-                                version=meta.get("version", "1.0.0"),
-                                created_at=meta.get("created_at", "unknown"),
-                                acts_included=meta.get("acts_included", []),
-                                total_documents=meta.get("total_documents", 0),
-                                index_size_mb=meta.get("index_size_mb", 0.0),
-                                checksum=meta.get("checksum", "")
-                            ))
+                            bundles.append(
+                                OfflineBundle(
+                                    version=meta.get("version", "1.0.0"),
+                                    created_at=meta.get("created_at", "unknown"),
+                                    acts_included=meta.get("acts_included", []),
+                                    total_documents=meta.get("total_documents", 0),
+                                    index_size_mb=meta.get("index_size_mb", 0.0),
+                                    checksum=meta.get("checksum", ""),
+                                )
+                            )
                     except Exception:
-                        logging.debug("Failed to load bundle metadata from %s", meta_file, exc_info=True)
+                        logging.debug(
+                            "Failed to load bundle metadata from %s",
+                            meta_file,
+                            exc_info=True,
+                        )
 
         self.available_bundles = bundles
         return bundles
 
     def create_bundle(
-        self,
-        source_dir: str,
-        output_path: str,
-        include_acts: list[str] | None = None
+        self, source_dir: str, output_path: str, include_acts: list[str] | None = None
     ) -> bool:
         """Create a new offline bundle from source documents."""
         try:
@@ -241,7 +251,7 @@ class OfflineLegalBundle:
                                 "id": f"{doc_file.stem}_{i}",
                                 "source": str(doc_file),
                                 "content": chunk,
-                                "chunk_index": i
+                                "chunk_index": i,
                             }
                             documents.append(doc)
 
@@ -265,15 +275,13 @@ class OfflineLegalBundle:
             index_data = {
                 "embeddings": embeddings,
                 "documents": documents,
-                "index": index
+                "index": index,
             }
             with open(os.path.join(output_path, "index.pkl"), "wb") as f:
                 pickle.dump(index_data, f)
 
             # Calculate checksum
-            checksum = hashlib.sha256(
-                pickle.dumps(index_data)
-            ).hexdigest()[:16]
+            checksum = hashlib.sha256(pickle.dumps(index_data)).hexdigest()[:16]
 
             # Save metadata
             metadata = {
@@ -282,7 +290,7 @@ class OfflineLegalBundle:
                 "acts_included": include_acts or LEGAL_ACTS_INCLUDED,
                 "total_documents": len(documents),
                 "index_size_mb": sum(e.nbytes for e in embeddings) / (1024 * 1024),
-                "checksum": checksum
+                "checksum": checksum,
             }
             with open(os.path.join(output_path, BUNDLE_METADATA_FILE), "w") as f:
                 json.dump(metadata, f, indent=2)
@@ -353,10 +361,7 @@ class OfflineMode:
         print("[+] Online mode enabled")
 
     def search_offline(
-        self,
-        query: str,
-        top_k: int = 10,
-        filter_act: str | None = None
+        self, query: str, top_k: int = 10, filter_act: str | None = None
     ) -> list[dict]:
         """Search in offline mode."""
         if self.is_online:
@@ -384,14 +389,12 @@ class OfflineMode:
             "status": "loaded",
             "version": self.vector_store.metadata.get("version"),
             "documents": self.vector_store.metadata.get("total_documents"),
-            "acts": self.vector_store.metadata.get("acts_included", [])
+            "acts": self.vector_store.metadata.get("acts_included", []),
         }
 
 
 def create_offline_bundle(
-    source_dir: str,
-    output_dir: str,
-    include_acts: list[str] | None = None
+    source_dir: str, output_dir: str, include_acts: list[str] | None = None
 ) -> bool:
     """Helper function to create an offline bundle."""
     manager = OfflineLegalBundle()

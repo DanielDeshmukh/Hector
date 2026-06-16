@@ -112,13 +112,13 @@ class TestInputValidator:
     def test_validate_search_request_valid(self):
         """Test valid search request."""
         result = InputValidator.validate_search_request("test query", top_k=10)
-        assert result['query'] == "test query"
-        assert result['top_k'] == 10
+        assert result["query"] == "test query"
+        assert result["top_k"] == 10
 
     def test_validate_search_request_default_top_k(self):
         """Test default top_k value."""
         result = InputValidator.validate_search_request("test")
-        assert result['top_k'] == 10
+        assert result["top_k"] == 10
 
     def test_validate_search_request_invalid_top_k(self):
         """Test invalid top_k rejection."""
@@ -135,9 +135,9 @@ class TestInputValidator:
         result = InputValidator.validate_user_registration(
             "testuser", "test@example.com", "Password123"
         )
-        assert result['username'] == "testuser"
-        assert result['email'] == "test@example.com"
-        assert 'password_hash' in result
+        assert result["username"] == "testuser"
+        assert result["email"] == "test@example.com"
+        assert "password_hash" in result
 
     def test_validate_user_registration_password_too_short(self):
         """Test password too short rejection."""
@@ -158,15 +158,13 @@ class TestInputValidator:
         result = InputValidator.validate_file_upload(
             "document.pdf", "application/pdf", 1024
         )
-        assert result['filename'] == "document.pdf"
-        assert result['size'] == 1024
+        assert result["filename"] == "document.pdf"
+        assert result["size"] == 1024
 
     def test_validate_file_upload_invalid_type(self):
         """Test invalid file type rejection."""
         with pytest.raises(ValidationError):
-            InputValidator.validate_file_upload(
-                "malware.exe", "application/exe", 1024
-            )
+            InputValidator.validate_file_upload("malware.exe", "application/exe", 1024)
 
     def test_validate_file_upload_too_large(self):
         """Test file too large rejection."""
@@ -185,11 +183,11 @@ class TestDataSanitizer:
             "username": "testuser",
             "email": "test@example.com",
             "password_hash": "secret",
-            "api_key": "key123"
+            "api_key": "key123",
         }
         result = DataSanitizer.sanitize_user_output(user_data)
-        assert result['password_hash'] == "***REDACTED***"
-        assert result['api_key'] == "***REDACTED***"
+        assert result["password_hash"] == "***REDACTED***"
+        assert result["api_key"] == "***REDACTED***"
 
     def test_sanitize_error_message_internal(self):
         """Test internal error message sanitization."""

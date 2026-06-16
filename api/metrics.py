@@ -1,4 +1,5 @@
 """Prometheus-compatible metrics for HECTOR."""
+
 import time
 from collections import defaultdict
 from threading import Lock
@@ -68,9 +69,9 @@ class MetricsCollector:
             lines.append(f"# TYPE hector_{name}_seconds histogram")
             lines.append(f"hector_{name}_seconds_count {count}")
             lines.append(f"hector_{name}_seconds_sum {total:.3f}")
-            lines.append(f"hector_{name}_seconds{{quantile=\"0.5\"}} {p50:.3f}")
-            lines.append(f"hector_{name}_seconds{{quantile=\"0.95\"}} {p95:.3f}")
-            lines.append(f"hector_{name}_seconds{{quantile=\"0.99\"}} {p99:.3f}")
+            lines.append(f'hector_{name}_seconds{{quantile="0.5"}} {p50:.3f}')
+            lines.append(f'hector_{name}_seconds{{quantile="0.95"}} {p95:.3f}')
+            lines.append(f'hector_{name}_seconds{{quantile="0.99"}} {p99:.3f}')
 
         return "\n".join(lines) + "\n"
 

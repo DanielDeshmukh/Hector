@@ -23,42 +23,47 @@ class TestHectorRouter:
     def test_router_initialization(self, router):
         """Test router initializes correctly."""
         assert router is not None
-        assert hasattr(router, 'client')
-        assert hasattr(router, 'legal_map')
+        assert hasattr(router, "client")
+        assert hasattr(router, "legal_map")
 
     def test_route_legal_research_ipc(self, router):
         """Test routing for IPC queries."""
         result = router.get_route("What is section 302 IPC?")
-        assert result['route'] in ['LEGAL_RESEARCH', 'STRATEGIC_ADVICE', 'DOCUMENT_ANALYSIS', 'GENERAL']
-        assert 'confidence' in result
-        assert result['confidence'] > 0
+        assert result["route"] in [
+            "LEGAL_RESEARCH",
+            "STRATEGIC_ADVICE",
+            "DOCUMENT_ANALYSIS",
+            "GENERAL",
+        ]
+        assert "confidence" in result
+        assert result["confidence"] > 0
 
     def test_route_legal_research_bns(self, router):
         """Test routing for BNS queries."""
         result = router.get_route("BNS section 302 murder")
-        assert result['route'] == 'LEGAL_RESEARCH'
-        assert result['confidence'] > 0.8
+        assert result["route"] == "LEGAL_RESEARCH"
+        assert result["confidence"] > 0.8
 
     def test_route_civil_law(self, router):
         """Test routing for CPC/Civil queries."""
         result = router.get_route("Order 1 Rule 1 CPC")
-        assert result['route'] == 'LEGAL_RESEARCH'
-        assert result['confidence'] > 0.8
+        assert result["route"] == "LEGAL_RESEARCH"
+        assert result["confidence"] > 0.8
 
     def test_route_document_analysis(self, router):
         """Test routing for document-related queries."""
         result = router.get_route("Analyze this PDF document")
-        assert result['route'] == 'DOCUMENT_ANALYSIS'
+        assert result["route"] == "DOCUMENT_ANALYSIS"
 
     def test_route_strategy(self, router):
         """Test routing for strategic advice."""
         result = router.get_route("What's the best move for my case?")
-        assert result['route'] == 'STRATEGIC_ADVICE'
+        assert result["route"] == "STRATEGIC_ADVICE"
 
     def test_route_general(self, router):
         """Test routing for general queries."""
         result = router.get_route("Hello how are you")
-        assert result['route'] in ['GENERAL', 'LEGAL_RESEARCH']
+        assert result["route"] in ["GENERAL", "LEGAL_RESEARCH"]
 
     def test_normalize_query_ipc_to_bns(self, router):
         """Test query normalization for IPC to BNS."""
@@ -71,18 +76,18 @@ class TestHectorRouter:
         payload = {
             "route": "LEGAL_RESEARCH",
             "hector_response": "Research result",
-            "confidence": 0.95
+            "confidence": 0.95,
         }
         result = router._validate_payload(payload)
-        assert result['route'] == "LEGAL_RESEARCH"
-        assert result['confidence'] == 0.95
+        assert result["route"] == "LEGAL_RESEARCH"
+        assert result["confidence"] == 0.95
 
     def test_validate_payload_invalid_route(self, router):
         """Test payload validation with invalid route."""
         payload = {
             "route": "INVALID_ROUTE",
             "hector_response": "Test",
-            "confidence": 0.5
+            "confidence": 0.5,
         }
         with pytest.raises(ValueError):
             router._validate_payload(payload)
@@ -106,22 +111,22 @@ class TestLegalKeywordDetection:
     def test_ipc_keyword_detection(self, router):
         """Test IPC keyword detection."""
         result = router.get_route("ipc section 420")
-        assert result['route'] == 'LEGAL_RESEARCH'
+        assert result["route"] == "LEGAL_RESEARCH"
 
     def test_bns_keyword_detection(self, router):
         """Test BNS keyword detection."""
         result = router.get_route("bns section 302")
-        assert result['route'] == 'LEGAL_RESEARCH'
+        assert result["route"] == "LEGAL_RESEARCH"
 
     def test_civil_keyword_detection(self, router):
         """Test civil law keyword detection."""
         result = router.get_route("civil suit partition")
-        assert result['route'] == 'LEGAL_RESEARCH'
+        assert result["route"] == "LEGAL_RESEARCH"
 
     def test_cpc_keyword_detection(self, router):
         """Test CPC keyword detection."""
         result = router.get_route("Order 39 Rule 1 CPC")
-        assert result['route'] == 'LEGAL_RESEARCH'
+        assert result["route"] == "LEGAL_RESEARCH"
 
 
 if __name__ == "__main__":

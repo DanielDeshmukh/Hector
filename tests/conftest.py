@@ -1,4 +1,5 @@
 """Shared test fixtures for HECTOR test suite."""
+
 import os
 import sys
 
@@ -20,12 +21,19 @@ def project_root():
 def test_env():
     """Set test environment variables before any imports."""
     os.environ.setdefault("HECTOR_API_KEY", "test-api-key-for-testing-only")
-    os.environ.setdefault("HECTOR_JWT_SECRET", "test-jwt-secret-32-bytes-minimum-value!")
-    os.environ.setdefault("HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "test_hector_db"))
-    os.environ.setdefault("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books"))
+    os.environ.setdefault(
+        "HECTOR_JWT_SECRET", "test-jwt-secret-32-bytes-minimum-value!"
+    )
+    os.environ.setdefault(
+        "HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "test_hector_db")
+    )
+    os.environ.setdefault(
+        "HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books")
+    )
     yield
     # Cleanup test DB
     import shutil
+
     test_db = os.path.join(PROJECT_ROOT, "test_hector_db")
     if os.path.exists(test_db):
         shutil.rmtree(test_db, ignore_errors=True)
@@ -35,6 +43,7 @@ def test_env():
 def api_client(test_env):
     """Create a TestClient for the FastAPI app."""
     from api.app import app
+
     client = TestClient(app)
     yield client
 

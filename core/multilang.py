@@ -102,27 +102,86 @@ HINDI_LEGAL_TERMS = {
 
 # Hindi number mappings
 HINDI_NUMBERS = {
-    "ek": "1", "do": "2", "teen": "3", "char": "4", "paanch": "5",
-    "chah": "6", "saat": "7", "aath": "8", "nau": "9", "das": "10",
-    "gyarah": "11", "barah": "12", "terah": "13", "choudah": "14",
-    "pandrah": "15", "solah": "16", "satrah": "17", "atharah": "18",
-    "unnis": "19", "bees": "20",
+    "ek": "1",
+    "do": "2",
+    "teen": "3",
+    "char": "4",
+    "paanch": "5",
+    "chah": "6",
+    "saat": "7",
+    "aath": "8",
+    "nau": "9",
+    "das": "10",
+    "gyarah": "11",
+    "barah": "12",
+    "terah": "13",
+    "choudah": "14",
+    "pandrah": "15",
+    "solah": "16",
+    "satrah": "17",
+    "atharah": "18",
+    "unnis": "19",
+    "bees": "20",
 }
 
 # Devanagari to ITRANS mapping
 DEVANAGARI_TO_ITRANS = {
-    'अ': 'a', 'आ': 'aa', 'इ': 'i', 'ई': 'ee', 'उ': 'u', 'ऊ': 'oo',
-    'ऋ': 'ri', 'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au',
-    'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'ङ': 'ng',
-    'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh', 'ञ': 'n',
-    'ट': 'T', 'ठ': 'Th', 'ड': 'D', 'ढ': 'Dh', 'ण': 'N',
-    'त': 't', 'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n',
-    'प': 'p', 'फ': 'ph', 'ब': 'b', 'भ': 'bh', 'म': 'm',
-    'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'Sh',
-    'स': 's', 'ह': 'h',
-    'ा': 'aa', 'ि': 'i', 'ी': 'ee', 'ु': 'u', 'ू': 'oo',
-    'ृ': 'ri', 'े': 'e', 'ै': 'ai', 'ो': 'o', 'ौ': 'au',
-    'ं': 'n', 'ः': 'h',
+    "अ": "a",
+    "आ": "aa",
+    "इ": "i",
+    "ई": "ee",
+    "उ": "u",
+    "ऊ": "oo",
+    "ऋ": "ri",
+    "ए": "e",
+    "ऐ": "ai",
+    "ओ": "o",
+    "औ": "au",
+    "क": "k",
+    "ख": "kh",
+    "ग": "g",
+    "घ": "gh",
+    "ङ": "ng",
+    "च": "ch",
+    "छ": "chh",
+    "ज": "j",
+    "झ": "jh",
+    "ञ": "n",
+    "ट": "T",
+    "ठ": "Th",
+    "ड": "D",
+    "ढ": "Dh",
+    "ण": "N",
+    "त": "t",
+    "थ": "th",
+    "द": "d",
+    "ध": "dh",
+    "न": "n",
+    "प": "p",
+    "फ": "ph",
+    "ब": "b",
+    "भ": "bh",
+    "म": "m",
+    "य": "y",
+    "र": "r",
+    "ल": "l",
+    "व": "v",
+    "श": "sh",
+    "ष": "Sh",
+    "स": "s",
+    "ह": "h",
+    "ा": "aa",
+    "ि": "i",
+    "ी": "ee",
+    "ु": "u",
+    "ू": "oo",
+    "ृ": "ri",
+    "े": "e",
+    "ै": "ai",
+    "ो": "o",
+    "ौ": "au",
+    "ं": "n",
+    "ः": "h",
 }
 
 # Common legal Hindi phrases
@@ -147,6 +206,7 @@ HINDI_PHRASES = {
 @dataclass
 class BilingualQuery:
     """Represents a query with English and Hindi variants."""
+
     english: str
     hindi: str | None = None
     transliteration: str | None = None
@@ -167,7 +227,7 @@ class MultiLanguageProcessor:
 
         # Check for Devanagari script
         for char in text:
-            if 'ऀ' <= char <= 'ॿ':  # Devanagari range
+            if "ऀ" <= char <= "ॿ":  # Devanagari range
                 hindi_chars += 1
             elif char.isalpha():
                 english_chars += 1
@@ -239,23 +299,36 @@ class MultiLanguageProcessor:
         # Create reverse mapping
         itrans_to_dev = {v: k for k, v in DEVANAGARI_TO_ITRANS.items()}
         # Add common combinations
-        itrans_to_dev.update({
-            'aa': 'ा', 'ee': 'ी', 'oo': 'ू', 'ai': 'ै', 'au': 'ौ',
-            'kh': 'ख', 'gh': 'घ', 'chh': 'छ', 'jh': 'झ',
-            'th': 'थ', 'dh': 'ध', 'ph': 'फ', 'bh': 'भ',
-            'sh': 'श', 'Sh': 'ष',
-        })
+        itrans_to_dev.update(
+            {
+                "aa": "ा",
+                "ee": "ी",
+                "oo": "ू",
+                "ai": "ै",
+                "au": "ौ",
+                "kh": "ख",
+                "gh": "घ",
+                "chh": "छ",
+                "jh": "झ",
+                "th": "थ",
+                "dh": "ध",
+                "ph": "फ",
+                "bh": "भ",
+                "sh": "श",
+                "Sh": "ष",
+            }
+        )
 
         result = []
         i = 0
         while i < len(itrans):
             # Try 3-char match
-            if i + 3 <= len(itrans) and itrans[i:i+3] in itrans_to_dev:
-                result.append(itrans_to_dev[itrans[i:i+3]])
+            if i + 3 <= len(itrans) and itrans[i : i + 3] in itrans_to_dev:
+                result.append(itrans_to_dev[itrans[i : i + 3]])
                 i += 3
             # Try 2-char match
-            elif i + 2 <= len(itrans) and itrans[i:i+2] in itrans_to_dev:
-                result.append(itrans_to_dev[itrans[i:i+2]])
+            elif i + 2 <= len(itrans) and itrans[i : i + 2] in itrans_to_dev:
+                result.append(itrans_to_dev[itrans[i : i + 2]])
                 i += 2
             else:
                 result.append(itrans[i])
@@ -274,7 +347,11 @@ class MultiLanguageProcessor:
         elif lang == "hindi":
             hindi = query
             english = self.translate_to_english(query)
-            transliteration = self.transliterate_to_itrans(query) if self.detect_language(query) == "hindi" else None
+            transliteration = (
+                self.transliterate_to_itrans(query)
+                if self.detect_language(query) == "hindi"
+                else None
+            )
         else:  # mixed
             english = query
             hindi = None
@@ -377,10 +454,12 @@ class HindiLegalOCR:
         for pattern in patterns:
             matches = re.finditer(pattern, text, re.IGNORECASE)
             for match in matches:
-                sections.append({
-                    "number": match.group(1),
-                    "context": text[max(0, match.start()-20):match.end()+20],
-                })
+                sections.append(
+                    {
+                        "number": match.group(1),
+                        "context": text[max(0, match.start() - 20) : match.end() + 20],
+                    }
+                )
 
         return sections
 

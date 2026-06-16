@@ -1,7 +1,8 @@
-#rename_books.py
+# rename_books.py
 
 import os
 import re
+
 
 def rename_legal_books(directory):
     if not os.path.exists(directory):
@@ -17,9 +18,9 @@ def rename_legal_books(directory):
 
         name_part, extension = os.path.splitext(filename)
 
-        clean_name = re.sub(r'\(.*?\)', '', name_part)
-        clean_name = re.sub(r'[^a-zA-Z0-9\s]', ' ', clean_name)
-        
+        clean_name = re.sub(r"\(.*?\)", "", name_part)
+        clean_name = re.sub(r"[^a-zA-Z0-9\s]", " ", clean_name)
+
         words = clean_name.split()
         short_name = "_".join(words[:4])
 
@@ -32,7 +33,7 @@ def rename_legal_books(directory):
         counter = 1
         base_short_name = short_name
         while os.path.exists(new_path):
-            if old_path == new_path: 
+            if old_path == new_path:
                 break
             new_filename = f"{base_short_name}_{counter}{extension}"
             new_path = os.path.join(directory, new_filename)
@@ -47,6 +48,7 @@ def rename_legal_books(directory):
         except Exception as e:
             print(f"Failed to rename {filename}: {e}")
 
+
 if __name__ == "__main__":
-    target_dir = r" " # <-- Set this to the path of your legal books directory
+    target_dir = r" "  # <-- Set this to the path of your legal books directory
     rename_legal_books(target_dir)

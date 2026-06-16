@@ -43,6 +43,7 @@ class HectorApiService:
 
         # Initialize response generator
         from core.response_generator import ContextualResponseGenerator
+
         self.response_generator = ContextualResponseGenerator(self.retriever)
 
     def search(self, request: SearchRequest) -> SearchResponse:
@@ -68,7 +69,9 @@ class HectorApiService:
             normalized_query=normalized_query,
             limit=request.page_size,
         )
-        paginated = selected_results[start:end] if request.page == 1 else results[start:end]
+        paginated = (
+            selected_results[start:end] if request.page == 1 else results[start:end]
+        )
 
         items = [self._to_hit(item) for item in paginated]
 
@@ -93,7 +96,9 @@ class HectorApiService:
         else:
             generated_response = intent.get("hector_response", "")
 
-        total_pages = max(1, (total_results + request.page_size - 1) // request.page_size)
+        total_pages = max(
+            1, (total_results + request.page_size - 1) // request.page_size
+        )
 
         # Compute confidence level and warning
         raw_confidence = float(response_data.get("answer_confidence", 0.0) or 0.0)
@@ -105,19 +110,25 @@ class HectorApiService:
         hallucination_check = None
         if generated_response and intent.get("route") == "LEGAL_RESEARCH":
             from core.verifier import HallucinationDetector
+
             verification_result = {
                 "verified_response": generated_response,
                 "citation_coverage": raw_confidence / 100.0,
                 "total_claims": len(paginated),
                 "claims_verified": int(len(paginated) * raw_confidence / 100.0),
             }
-            hallucination_check = HallucinationDetector.generate_hallucination_report(verification_result)
+            hallucination_check = HallucinationDetector.generate_hallucination_report(
+                verification_result
+            )
 
         return SearchResponse(
             route=intent.get("route", "GENERAL"),
             query=request.query,
             normalized_query=normalized_query,
-            verification_enabled=bool(request.verify and getattr(self.orchestrator, "enable_verification", False)),
+            verification_enabled=bool(
+                request.verify
+                and getattr(self.orchestrator, "enable_verification", False)
+            ),
             total_results=total_results,
             page=request.page,
             page_size=request.page_size,
@@ -136,7 +147,9 @@ class HectorApiService:
             retrieved_at=datetime.now(UTC),
         )
 
-    def _assess_confidence(self, raw_score: float, route: str, num_results: int) -> tuple[str, str | None]:
+    def _assess_confidence(
+        self, raw_score: float, route: str, num_results: int
+    ) -> tuple[str, str | None]:
         """Map raw confidence score to level and generate warning if needed."""
         if route != "LEGAL_RESEARCH":
             return "unknown", None
@@ -147,11 +160,19 @@ class HectorApiService:
         if raw_score >= 75:
             return "high", None
         elif raw_score >= 50:
-            return "medium", "Confidence is moderate. Verify critical details against source documents."
+            return (
+                "medium",
+                "Confidence is moderate. Verify critical details against source documents.",
+            )
         else:
-            return "low", "Low confidence — response may be incomplete or unreliable. Always cross-reference with official legal texts."
+            return (
+                "low",
+                "Low confidence — response may be incomplete or unreliable. Always cross-reference with official legal texts.",
+            )
 
-    def _select_response_results(self, results: list[dict], normalized_query: str, limit: int) -> list[dict]:
+    def _select_response_results(
+        self, results: list[dict], normalized_query: str, limit: int
+    ) -> list[dict]:
         if not results or limit <= 0:
             return []
 
@@ -202,12 +223,16 @@ class HectorApiService:
                     break
 
         requested_query = f"Section {request.section} {request.act}"
-        requested_results = self.retriever.search(requested_query, top_k=request.page_size)
+        requested_results = self.retriever.search(
+            requested_query, top_k=request.page_size
+        )
 
         counterpart_results = []
         if counterpart_act and counterpart_section:
             counterpart_query = f"Section {counterpart_section} {counterpart_act}"
-            counterpart_results = self.retriever.search(counterpart_query, top_k=request.page_size)
+            counterpart_results = self.retriever.search(
+                counterpart_query, top_k=request.page_size
+            )
 
         return CompareResponse(
             requested_act=request.act,
@@ -244,7 +269,9 @@ class HectorApiService:
             collection_name=getattr(self.retriever, "collection_name", "unknown"),
             document_count=document_count,
             verifier_enabled=bool(self.orchestrator.enable_verification),
-            semantic_search_enabled=not bool(getattr(self.retriever, "semantic_disabled", False)),
+            semantic_search_enabled=not bool(
+                getattr(self.retriever, "semantic_disabled", False)
+            ),
             router_model=getattr(self.router, "model", "unknown"),
             uptime_seconds=int(time.time() - self.started_at),
         )
@@ -286,8 +313,12 @@ class HectorApiService:
                 "page": result.page,
                 "page_size": result.page_size,
                 "generated_response": result.generated_response,
-                "answer_sections": [section.model_dump() for section in result.answer_sections],
-                "source_sections": [section.model_dump() for section in result.source_sections],
+                "answer_sections": [
+                    section.model_dump() for section in result.answer_sections
+                ],
+                "source_sections": [
+                    section.model_dump() for section in result.source_sections
+                ],
                 "answer_confidence": result.answer_confidence,
                 "citations": result.citations,
                 "related_provisions": result.related_provisions,
@@ -318,8 +349,12 @@ class HectorApiService:
         return SearchHit(
             id=str(item.get("id", "")),
             score=float(item.get("score", 0.0)),
-            similarity_score=float(item.get("similarity_score", item.get("score", 0.0)) or 0.0),
-            reranker_score=float(item.get("reranker_score", item.get("similarity_score", 0.0)) or 0.0),
+            similarity_score=float(
+                item.get("similarity_score", item.get("score", 0.0)) or 0.0
+            ),
+            reranker_score=float(
+                item.get("reranker_score", item.get("similarity_score", 0.0)) or 0.0
+            ),
             hybrid_score=float(item.get("hybrid_score", 0.0) or 0.0),
             retrieval_score=float(item.get("retrieval_score", 0.0) or 0.0),
             boost_score=float(item.get("boost_score", 0.0) or 0.0),

@@ -19,14 +19,20 @@ class TestRetrievalLatency:
     @pytest.fixture
     def mock_retriever(self):
         """Create mock retriever for testing."""
+
         class MockRetriever:
             def search(self, query, top_k=10):
                 # Simulate retrieval time (should be <500ms)
                 time.sleep(0.01)  # 10ms simulated
                 return [
-                    {"id": i, "content": f"Result {i} for {query}", "score": 0.9 - i*0.1}
+                    {
+                        "id": i,
+                        "content": f"Result {i} for {query}",
+                        "score": 0.9 - i * 0.1,
+                    }
                     for i in range(min(top_k, 5))
                 ]
+
         return MockRetriever()
 
     def test_search_latency_under_500ms(self, mock_retriever):
@@ -49,6 +55,7 @@ class TestRetrievalLatency:
 
     def test_search_concurrent_latency(self, mock_retriever):
         """Test concurrent search latency."""
+
         def search_task():
             start = time.time()
             mock_retriever.search("concurrent query")
@@ -74,7 +81,7 @@ class TestCitationAccuracy:
             "AIR 2023 SC 123",
             "SCC 2023 Bom 456",
             "(2023) 1 SCR 789",
-            "ILR 2023 Del 101"
+            "ILR 2023 Del 101",
         ]
 
         for citation in valid_citations:
@@ -87,7 +94,7 @@ class TestCitationAccuracy:
         # Simulated source database
         sources = {
             "302": {"act": "BNS", "title": "Murder", "chapter": "1"},
-            "420": {"act": "BNS", "title": "Cheating", "chapter": "2"}
+            "420": {"act": "BNS", "title": "Cheating", "chapter": "2"},
         }
 
         # Test verification
@@ -105,7 +112,7 @@ class TestCitationAccuracy:
             "Section 302 BNS",
             "Section 420 IPC",
             "Section 376 CrPC",
-            "Order 1 Rule 1 CPC"
+            "Order 1 Rule 1 CPC",
         ]
 
         # Simulate some errors
@@ -271,7 +278,7 @@ class TestSecurityAudit:
         malicious_inputs = [
             "<script>alert('xss')</script>",
             "javascript:alert('xss')",
-            "<img src=x onerror=alert('xss')>"
+            "<img src=x onerror=alert('xss')>",
         ]
 
         for input_val in malicious_inputs:
@@ -283,10 +290,9 @@ class TestSecurityAudit:
         """Test rate limiting audit."""
         from core.enterprise.rate_limiter import IPRateLimiter, RateLimitConfig
 
-        limiter = IPRateLimiter(RateLimitConfig(
-            requests_per_minute=10,
-            requests_per_hour=100
-        ))
+        limiter = IPRateLimiter(
+            RateLimitConfig(requests_per_minute=10, requests_per_hour=100)
+        )
 
         # Rapid fire requests should trigger limit
         blocked = 0

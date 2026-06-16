@@ -159,8 +159,12 @@ def test_token_auth_and_websocket_streaming_work():
     )
     assert search_response.status_code == 200
 
-    with client.websocket_connect("/ws/search", headers={"X-API-Key": auth_manager.api_key}) as websocket:
-        websocket.send_json({"query": "Section 302 IPC", "page": 1, "page_size": 1, "verify": False})
+    with client.websocket_connect(
+        "/ws/search", headers={"X-API-Key": auth_manager.api_key}
+    ) as websocket:
+        websocket.send_json(
+            {"query": "Section 302 IPC", "page": 1, "page_size": 1, "verify": False}
+        )
         route_event = websocket.receive_json()
         summary_event = websocket.receive_json()
         result_event = websocket.receive_json()

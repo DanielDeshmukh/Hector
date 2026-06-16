@@ -17,6 +17,7 @@ import os
 
 class AuditEventType(Enum):
     """Types of audit events."""
+
     # Authentication
     LOGIN = "login"
     LOGOUT = "logout"
@@ -58,6 +59,7 @@ class AuditEventType(Enum):
 
 class AuditSeverity(Enum):
     """Severity levels for audit events."""
+
     DEBUG = "debug"
     INFO = "info"
     WARNING = "warning"
@@ -68,6 +70,7 @@ class AuditSeverity(Enum):
 @dataclass
 class AuditEvent:
     """Represents an audit event."""
+
     event_id: str
     timestamp: float
     event_type: str
@@ -95,9 +98,7 @@ class AuditLogger:
 
     def _get_default_log_dir(self) -> str:
         """Get default log directory."""
-        return os.path.join(
-            os.path.dirname(__file__), "..", "..", "logs", "audit"
-        )
+        return os.path.join(os.path.dirname(__file__), "..", "..", "logs", "audit")
 
     def _ensure_log_dir(self) -> None:
         """Ensure log directory exists."""
@@ -127,7 +128,7 @@ class AuditLogger:
         resource: str | None = None,
         details: dict | None = None,
         session_id: str | None = None,
-        workspace_id: str | None = None
+        workspace_id: str | None = None,
     ) -> str:
         """Log an audit event."""
         event = AuditEvent(
@@ -144,7 +145,7 @@ class AuditLogger:
             result=result,
             details=details or {},
             session_id=session_id,
-            workspace_id=workspace_id
+            workspace_id=workspace_id,
         )
 
         return self._write_event(event)
@@ -169,7 +170,7 @@ class AuditLogger:
         username: str,
         ip_address: str,
         success: bool,
-        session_id: str | None = None
+        session_id: str | None = None,
     ) -> str:
         """Log a login attempt."""
         return self.log(
@@ -180,7 +181,7 @@ class AuditLogger:
             user_id=user_id,
             username=username,
             ip_address=ip_address,
-            session_id=session_id
+            session_id=session_id,
         )
 
     def log_search(
@@ -189,7 +190,7 @@ class AuditLogger:
         username: str,
         query: str,
         results_count: int,
-        ip_address: str | None = None
+        ip_address: str | None = None,
     ) -> str:
         """Log a search operation."""
         return self.log(
@@ -202,16 +203,12 @@ class AuditLogger:
             ip_address=ip_address,
             details={
                 "query": query[:500],  # Truncate long queries
-                "results_count": results_count
-            }
+                "results_count": results_count,
+            },
         )
 
     def log_document_access(
-        self,
-        user_id: str,
-        document_id: str,
-        action: str,
-        ip_address: str | None = None
+        self, user_id: str, document_id: str, action: str, ip_address: str | None = None
     ) -> str:
         """Log document access."""
         return self.log(
@@ -221,7 +218,7 @@ class AuditLogger:
             result="success",
             user_id=user_id,
             resource=document_id,
-            ip_address=ip_address
+            ip_address=ip_address,
         )
 
     def log_rate_limit_exceeded(
@@ -229,7 +226,7 @@ class AuditLogger:
         client_id: str,
         ip_address: str,
         limit_type: str,
-        details: dict | None = None
+        details: dict | None = None,
     ) -> str:
         """Log rate limit exceeded."""
         return self.log(
@@ -239,7 +236,7 @@ class AuditLogger:
             result="blocked",
             user_id=client_id,
             ip_address=ip_address,
-            details=details or {"limit_type": limit_type}
+            details=details or {"limit_type": limit_type},
         )
 
     def log_permission_denied(
@@ -247,7 +244,7 @@ class AuditLogger:
         user_id: str,
         resource: str,
         required_permission: str,
-        ip_address: str | None = None
+        ip_address: str | None = None,
     ) -> str:
         """Log permission denied."""
         return self.log(
@@ -258,15 +255,11 @@ class AuditLogger:
             user_id=user_id,
             resource=resource,
             ip_address=ip_address,
-            details={"required_permission": required_permission}
+            details={"required_permission": required_permission},
         )
 
     def log_config_change(
-        self,
-        user_id: str,
-        config_key: str,
-        old_value: Any,
-        new_value: Any
+        self, user_id: str, config_key: str, old_value: Any, new_value: Any
     ) -> str:
         """Log configuration change."""
         return self.log(
@@ -279,8 +272,8 @@ class AuditLogger:
             details={
                 "key": config_key,
                 "old_value": str(old_value)[:500],
-                "new_value": str(new_value)[:500]
-            }
+                "new_value": str(new_value)[:500],
+            },
         )
 
     def get_event_count(self) -> int:
@@ -294,7 +287,7 @@ class AuditLogger:
         user_id: str | None = None,
         event_type: AuditEventType | None = None,
         severity: AuditSeverity | None = None,
-        limit: int = 100
+        limit: int = 100,
     ) -> list[dict]:
         """Query audit events."""
         events = []
@@ -316,7 +309,10 @@ class AuditLogger:
                                 continue
                             if user_id and event.get("user_id") != user_id:
                                 continue
-                            if event_type and event.get("event_type") != event_type.value:
+                            if (
+                                event_type
+                                and event.get("event_type") != event_type.value
+                            ):
                                 continue
                             if severity and event.get("severity") != severity.value:
                                 continue
@@ -346,9 +342,7 @@ class AuditReporter:
         start_time = end_time - (days * 86400)
 
         events = self.logger.query_events(
-            start_time=start_time,
-            end_time=end_time,
-            limit=10000
+            start_time=start_time, end_time=end_time, limit=10000
         )
 
         # Count by type
@@ -378,7 +372,7 @@ class AuditReporter:
             "event_breakdown": event_counts,
             "failed_logins": failed_logins,
             "rate_limit_exceeded": rate_limits,
-            "permission_denied": permission_denied
+            "permission_denied": permission_denied,
         }
 
     def generate_user_activity_report(self, user_id: str, days: int = 30) -> dict:
@@ -387,10 +381,7 @@ class AuditReporter:
         start_time = end_time - (days * 86400)
 
         events = self.logger.query_events(
-            start_time=start_time,
-            end_time=end_time,
-            user_id=user_id,
-            limit=1000
+            start_time=start_time, end_time=end_time, user_id=user_id, limit=1000
         )
 
         action_counts = {}
@@ -402,7 +393,7 @@ class AuditReporter:
             "user_id": user_id,
             "period_days": days,
             "total_actions": len(events),
-            "action_breakdown": action_counts
+            "action_breakdown": action_counts,
         }
 
 
@@ -418,10 +409,6 @@ def get_audit_logger() -> AuditLogger:
     return _audit_logger
 
 
-def audit_log(
-    event_type: AuditEventType,
-    action: str,
-    **kwargs
-) -> str:
+def audit_log(event_type: AuditEventType, action: str, **kwargs) -> str:
     """Convenience function for logging audit events."""
     return get_audit_logger().log(event_type, AuditSeverity.INFO, action, **kwargs)

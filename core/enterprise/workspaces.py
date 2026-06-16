@@ -15,6 +15,7 @@ import logging
 @dataclass
 class Workspace:
     """Represents a team workspace."""
+
     workspace_id: str
     name: str
     description: str | None
@@ -29,6 +30,7 @@ class Workspace:
 @dataclass
 class WorkspaceMember:
     """Represents a workspace member."""
+
     user_id: str
     username: str
     workspace_id: str
@@ -40,6 +42,7 @@ class WorkspaceMember:
 @dataclass
 class WorkspaceAnalytics:
     """Workspace usage analytics."""
+
     workspace_id: str
     total_searches: int = 0
     total_documents: int = 0
@@ -63,13 +66,13 @@ class WorkspaceManager:
     def _get_default_storage_path(self) -> str:
         """Get default storage path."""
         import os
-        return os.path.join(
-            os.path.dirname(__file__), "..", "..", "data", "enterprise"
-        )
+
+        return os.path.join(os.path.dirname(__file__), "..", "..", "data", "enterprise")
 
     def _load_data(self) -> None:
         """Load workspaces from storage."""
         import os
+
         os.makedirs(self.storage_path, exist_ok=True)
 
         workspace_file = os.path.join(self.storage_path, "workspaces.json")
@@ -86,7 +89,7 @@ class WorkspaceManager:
                             created_at=ws_data["created_at"],
                             created_by=ws_data["created_by"],
                             is_active=ws_data.get("is_active", True),
-                            settings=ws_data.get("settings", {})
+                            settings=ws_data.get("settings", {}),
                         )
                         self._workspaces[workspace.workspace_id] = workspace
 
@@ -99,7 +102,7 @@ class WorkspaceManager:
                                 workspace_id=m["workspace_id"],
                                 role=m["role"],
                                 joined_at=m["joined_at"],
-                                permissions=m.get("permissions", [])
+                                permissions=m.get("permissions", []),
                             )
                             for m in members_data
                         ]
@@ -113,14 +116,17 @@ class WorkspaceManager:
                             total_exports=an_data.get("total_exports", 0),
                             storage_used_mb=an_data.get("storage_used_mb", 0.0),
                             active_members=an_data.get("active_members", 0),
-                            last_activity=an_data.get("last_activity")
+                            last_activity=an_data.get("last_activity"),
                         )
             except Exception:
-                logging.debug("Failed to load workspaces from %s", workspace_file, exc_info=True)
+                logging.debug(
+                    "Failed to load workspaces from %s", workspace_file, exc_info=True
+                )
 
     def _save_data(self) -> None:
         """Save workspaces to storage."""
         import os
+
         os.makedirs(self.storage_path, exist_ok=True)
 
         workspace_file = os.path.join(self.storage_path, "workspaces.json")
@@ -135,7 +141,7 @@ class WorkspaceManager:
                     "workspace_id": m.workspace_id,
                     "role": m.role,
                     "joined_at": m.joined_at,
-                    "permissions": m.permissions
+                    "permissions": m.permissions,
                 }
                 for m in members
             ]
@@ -149,7 +155,7 @@ class WorkspaceManager:
                 "total_exports": a.total_exports,
                 "storage_used_mb": a.storage_used_mb,
                 "active_members": a.active_members,
-                "last_activity": a.last_activity
+                "last_activity": a.last_activity,
             }
             for a in self._analytics.values()
         ]
@@ -163,12 +169,12 @@ class WorkspaceManager:
                     "created_at": w.created_at,
                     "created_by": w.created_by,
                     "is_active": w.is_active,
-                    "settings": w.settings
+                    "settings": w.settings,
                 }
                 for w in self._workspaces.values()
             ],
             "members": members_dict,
-            "analytics": analytics_list
+            "analytics": analytics_list,
         }
 
         with open(workspace_file, "w", encoding="utf-8") as f:
@@ -183,7 +189,7 @@ class WorkspaceManager:
         name: str,
         created_by: str,
         description: str | None = None,
-        settings: dict | None = None
+        settings: dict | None = None,
     ) -> Workspace:
         """Create a new workspace."""
         with self._lock:
@@ -193,7 +199,7 @@ class WorkspaceManager:
                 description=description,
                 created_at=time.time(),
                 created_by=created_by,
-                settings=settings or {}
+                settings=settings or {},
             )
             self._workspaces[workspace.workspace_id] = workspace
             self._members[workspace.workspace_id] = []
@@ -208,11 +214,7 @@ class WorkspaceManager:
         """Get workspace by ID."""
         return self._workspaces.get(workspace_id)
 
-    def update_workspace(
-        self,
-        workspace_id: str,
-        **kwargs
-    ) -> Workspace | None:
+    def update_workspace(self, workspace_id: str, **kwargs) -> Workspace | None:
         """Update workspace details."""
         with self._lock:
             workspace = self._workspaces.get(workspace_id)
@@ -240,11 +242,7 @@ class WorkspaceManager:
             return False
 
     def add_member(
-        self,
-        workspace_id: str,
-        user_id: str,
-        username: str,
-        role: str = "member"
+        self, workspace_id: str, user_id: str, username: str, role: str = "member"
     ) -> WorkspaceMember | None:
         """Add a member to workspace."""
         with self._lock:
@@ -257,7 +255,7 @@ class WorkspaceManager:
                 username=username,
                 workspace_id=workspace_id,
                 role=role,
-                joined_at=time.time()
+                joined_at=time.time(),
             )
 
             if workspace_id not in self._members:
@@ -273,11 +271,7 @@ class WorkspaceManager:
             self._save_data()
             return member
 
-    def remove_member(
-        self,
-        workspace_id: str,
-        user_id: str
-    ) -> bool:
+    def remove_member(self, workspace_id: str, user_id: str) -> bool:
         """Remove a member from workspace."""
         with self._lock:
             if workspace_id not in self._members:
@@ -316,7 +310,7 @@ class WorkspaceManager:
         workspace_id: str,
         search: bool = False,
         document: bool = False,
-        export: bool = False
+        export: bool = False,
     ) -> None:
         """Update workspace analytics."""
         with self._lock:

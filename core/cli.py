@@ -28,7 +28,9 @@ console = Console() if Console else None
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 
 # App instance
-app = typer.Typer(help="HECTOR - Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval")
+app = typer.Typer(
+    help="HECTOR - Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval"
+)
 
 
 def get_books_directory() -> Path:
@@ -111,12 +113,14 @@ def get_available_books() -> list[dict]:
         return books
 
     for file in books_dir.iterdir():
-        if file.is_file() and file.suffix.lower() in ['.pdf', '.txt']:
-            books.append({
-                "name": file.name,
-                "path": str(file),
-                "size": file.stat().st_size / (1024 * 1024)  # MB
-            })
+        if file.is_file() and file.suffix.lower() in [".pdf", ".txt"]:
+            books.append(
+                {
+                    "name": file.name,
+                    "path": str(file),
+                    "size": file.stat().st_size / (1024 * 1024),  # MB
+                }
+            )
 
     return books
 
@@ -138,10 +142,10 @@ def get_indexed_books() -> list[str]:
             try:
                 # Get sample to extract source info
                 results = coll.get(limit=min(100, coll.count()))
-                if results and results.get('metadatas'):
-                    for meta in results['metadatas']:
-                        if meta and meta.get('source'):
-                            indexed.add(meta['source'])
+                if results and results.get("metadatas"):
+                    for meta in results["metadatas"]:
+                        if meta and meta.get("source"):
+                            indexed.add(meta["source"])
             except Exception:
                 logging.debug("Failed to get source metadata from collection %s", coll)
 
@@ -153,8 +157,12 @@ def get_indexed_books() -> list[str]:
 @app.command()
 def init(
     port: int = typer.Option(8000, "--port", "-p", help="API server port"),
-    frontend_port: int = typer.Option(3000, "--frontend-port", "-fp", help="Frontend dev server port"),
-    no_frontend: bool = typer.Option(False, "--no-frontend", help="Start only the backend API"),
+    frontend_port: int = typer.Option(
+        3000, "--frontend-port", "-fp", help="Frontend dev server port"
+    ),
+    no_frontend: bool = typer.Option(
+        False, "--no-frontend", help="Start only the backend API"
+    ),
 ):
     """
     Initialize and start HECTOR (Backend API + Frontend).
@@ -163,12 +171,14 @@ def init(
         print_error("Typer not installed. Run: pip install typer rich")
         raise typer.Exit(1)
 
-    console.print(Panel.fit(
-        "[bold gold1]H.E.C.T.O.R. INITIALIZATION[/bold gold1]\n"
-        "[dim]Starting Backend and Frontend services...[/dim]",
-        border_style="gold1",
-        padding=(1, 2)
-    ))
+    console.print(
+        Panel.fit(
+            "[bold gold1]H.E.C.T.O.R. INITIALIZATION[/bold gold1]\n"
+            "[dim]Starting Backend and Frontend services...[/dim]",
+            border_style="gold1",
+            padding=(1, 2),
+        )
+    )
 
     # Start API server in background
     api_process = None
@@ -178,15 +188,26 @@ def init(
         # Start FastAPI backend
         console.print("\n[bold cyan]Starting API Server...[/bold cyan]")
         api_process = subprocess.Popen(
-            ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", str(port), "--reload"],
+            [
+                "uvicorn",
+                "api.app:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                str(port),
+                "--reload",
+            ],
             cwd=Path(__file__).parent.parent,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+            if sys.platform == "win32"
+            else 0,
         )
 
         # Wait for API to be ready
         import requests
+
         api_key = os.getenv("HECTOR_API_KEY", "")
         max_retries = 30
         for i in range(max_retries):
@@ -194,13 +215,15 @@ def init(
                 response = requests.get(
                     f"http://localhost:{port}/status",
                     timeout=1,
-                    headers={"X-API-Key": api_key}
+                    headers={"X-API-Key": api_key},
                 )
                 if response.status_code == 200:
                     print_success(f"API Server running on http://localhost:{port}")
                     break
             except Exception:
-                logging.debug("API server not ready yet (attempt %d/%d)", i + 1, max_retries)
+                logging.debug(
+                    "API server not ready yet (attempt %d/%d)", i + 1, max_retries
+                )
             time.sleep(1)
             if i == max_retries - 1:
                 print_warning("API server might not be ready yet")
@@ -225,33 +248,43 @@ def init(
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     env=env,
-                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
-                    shell=True
+                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+                    if sys.platform == "win32"
+                    else 0,
+                    shell=True,
                 )
 
                 # Wait for frontend to be ready
                 for i in range(30):
                     try:
-                        response = requests.get(f"http://localhost:{frontend_port}", timeout=1)
+                        response = requests.get(
+                            f"http://localhost:{frontend_port}", timeout=1
+                        )
                         if response.status_code in [200, 304]:
-                            print_success(f"Frontend running on http://localhost:{frontend_port}")
+                            print_success(
+                                f"Frontend running on http://localhost:{frontend_port}"
+                            )
                             break
                     except Exception:
-                        logging.debug("Frontend server not ready yet (attempt %d/30)", i + 1)
+                        logging.debug(
+                            "Frontend server not ready yet (attempt %d/30)", i + 1
+                        )
                     time.sleep(1)
                     if i == 29:
                         print_warning("Frontend server might not be ready yet")
 
         # Print final status
         console.print("\n")
-        console.print(Panel.fit(
-            f"[bold green]HECTOR is now running![/bold green]\n\n"
-            f"• API: [cyan]http://localhost:{port}[/cyan]\n"
-            f"{'' if no_frontend else f'• Frontend: [cyan]http://localhost:{frontend_port}[/cyan]\n'}"
-            f"\n[dim]Press Ctrl+C to stop all services[/dim]",
-            border_style="green",
-            padding=(1, 2)
-        ))
+        console.print(
+            Panel.fit(
+                f"[bold green]HECTOR is now running![/bold green]\n\n"
+                f"• API: [cyan]http://localhost:{port}[/cyan]\n"
+                f"{'' if no_frontend else f'• Frontend: [cyan]http://localhost:{frontend_port}[/cyan]\n'}"
+                f"\n[dim]Press Ctrl+C to stop all services[/dim]",
+                border_style="green",
+                padding=(1, 2),
+            )
+        )
 
         # Keep running
         console.print("\n[dim]Services are running. Press Ctrl+C to stop...[/dim]")
@@ -262,7 +295,11 @@ def init(
                 if api_process and api_process.poll() is not None:
                     print_error("API server stopped unexpectedly")
                     break
-                if frontend_process and frontend_process.poll() is not None and not no_frontend:
+                if (
+                    frontend_process
+                    and frontend_process.poll() is not None
+                    and not no_frontend
+                ):
                     print_warning("Frontend server stopped unexpectedly")
         except KeyboardInterrupt:
             console.print("\n[yellow]Stopping services...[/yellow]")
@@ -292,8 +329,12 @@ def init(
 
 @app.command()
 def ingest(
-    force: bool = typer.Option(False, "--force", "-f", help="Re-ingest all books even if already indexed"),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed progress"),
+    force: bool = typer.Option(
+        False, "--force", "-f", help="Re-ingest all books even if already indexed"
+    ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Show detailed progress"
+    ),
 ):
     """
     Ingest books from data/Books directory into HECTOR database.
@@ -302,12 +343,14 @@ def ingest(
         print_error("Typer not installed. Run: pip install typer rich")
         raise typer.Exit(1)
 
-    console.print(Panel.fit(
-        "[bold gold1]HECTOR INGESTION[/bold gold1]\n"
-        "[dim]Processing legal documents...[/dim]",
-        border_style="gold1",
-        padding=(1, 2)
-    ))
+    console.print(
+        Panel.fit(
+            "[bold gold1]HECTOR INGESTION[/bold gold1]\n"
+            "[dim]Processing legal documents...[/dim]",
+            border_style="gold1",
+            padding=(1, 2),
+        )
+    )
 
     books_dir = get_books_directory()
 
@@ -329,14 +372,16 @@ def ingest(
     # Filter books to ingest
     books_to_ingest = []
     for book in available_books:
-        if book['name'] not in indexed_books:
+        if book["name"] not in indexed_books:
             books_to_ingest.append(book)
 
     if not books_to_ingest:
         print_success(f"All {len(available_books)} books are already indexed")
         return
 
-    console.print(f"\n[bold]Found {len(books_to_ingest)} new book(s) to ingest:[/bold]\n")
+    console.print(
+        f"\n[bold]Found {len(books_to_ingest)} new book(s) to ingest:[/bold]\n"
+    )
 
     for book in books_to_ingest:
         console.print(f"  • {book['name']} ({book['size']:.2f} MB)")
@@ -351,6 +396,7 @@ def ingest(
             # Use enhanced ingestor
             sys.path.insert(0, str(Path(__file__).parent.parent))
             from utils.enhanced_ingestor import Ingestor
+
             ingestor = Ingestor()
         else:
             # Fallback to basic ingestor
@@ -358,6 +404,7 @@ def ingest(
             if basic_ingestor_path.exists():
                 sys.path.insert(0, str(Path(__file__).parent.parent))
                 from utils.ingestor import Ingestor
+
                 ingestor = Ingestor()
             else:
                 print_error("Ingestor module not found")
@@ -373,8 +420,10 @@ def ingest(
     for book in books_to_ingest:
         try:
             console.print(f"\n[cyan]Ingesting:[/cyan] {book['name']}")
-            with console.status(f"[bold green]Processing {book['name']}...", spinner="dots"):
-                result = ingestor.ingest(book['path'])
+            with console.status(
+                f"[bold green]Processing {book['name']}...", spinner="dots"
+            ):
+                result = ingestor.ingest(book["path"])
                 if result:
                     print_success(f"Ingested: {book['name']}")
                     success_count += 1
@@ -405,11 +454,13 @@ def status():
         print_error("Typer not installed. Run: pip install typer rich")
         raise typer.Exit(1)
 
-    console.print(Panel.fit(
-        "[bold gold1]HECTOR SYSTEM STATUS[/bold gold1]",
-        border_style="gold1",
-        padding=(1, 2)
-    ))
+    console.print(
+        Panel.fit(
+            "[bold gold1]HECTOR SYSTEM STATUS[/bold gold1]",
+            border_style="gold1",
+            padding=(1, 2),
+        )
+    )
 
     # Database status
     db_path = get_hector_db_path()
@@ -423,7 +474,9 @@ def status():
     table.add_column("Property", style="bold cyan", width=25)
     table.add_column("Value", style="white")
 
-    table.add_row("Database", "[green]Connected[/green]" if db_exists else "[red]Not Found[/red]")
+    table.add_row(
+        "Database", "[green]Connected[/green]" if db_exists else "[red]Not Found[/red]"
+    )
     table.add_row("Total Documents", str(total_docs))
 
     # Books directory
@@ -438,7 +491,9 @@ def status():
     else:
         indexed_books = get_indexed_books()
 
-    not_indexed = len(available_books) - len([b for b in available_books if b['name'] in indexed_books])
+    not_indexed = len(available_books) - len(
+        [b for b in available_books if b["name"] in indexed_books]
+    )
     table.add_row("Indexed Books", str(len(indexed_books)))
     table.add_row("Pending Ingestion", str(not_indexed))
 
@@ -453,8 +508,12 @@ def status():
         books_table.add_column("Status", style="dim")
 
         for book in available_books:
-            status_str = "[green]Indexed[/green]" if book['name'] in indexed_books else "[yellow]Pending[/yellow]"
-            books_table.add_row(book['name'], f"{book['size']:.2f}", status_str)
+            status_str = (
+                "[green]Indexed[/green]"
+                if book["name"] in indexed_books
+                else "[yellow]Pending[/yellow]"
+            )
+            books_table.add_row(book["name"], f"{book['size']:.2f}", status_str)
 
         console.print(books_table)
 
@@ -467,18 +526,21 @@ def status():
     # Check Python packages
     try:
         import chromadb  # noqa: F401
+
         env_table.add_row("ChromaDB", "[green]✓ Installed[/green]")
     except ImportError:
         env_table.add_row("ChromaDB", "[red]✗ Not installed[/red]")
 
     try:
         import fastapi  # noqa: F401
+
         env_table.add_row("FastAPI", "[green]✓ Installed[/green]")
     except ImportError:
         env_table.add_row("FastAPI", "[red]✗ Not installed[/red]")
 
     try:
         import sentence_transformers  # noqa: F401
+
         env_table.add_row("Embeddings", "[green]✓ Installed[/green]")
     except ImportError:
         env_table.add_row("Embeddings", "[red]✗ Not installed[/red]")
@@ -491,7 +553,9 @@ def search(
     query: str = typer.Argument(..., help="Legal query to search"),
     page: int = typer.Option(1, "--page", "-p", help="Page number"),
     page_size: int = typer.Option(5, "--size", "-s", help="Results per page"),
-    format: str = typer.Option("summary", "--format", "-f", help="Output format: summary, detailed, citations"),
+    format: str = typer.Option(
+        "summary", "--format", "-f", help="Output format: summary, detailed, citations"
+    ),
     verify: bool = typer.Option(True, "--verify/--no-verify", help="Run verification"),
 ):
     """Search the legal corpus for a query."""
@@ -505,27 +569,48 @@ def search(
             resp = client.post(
                 f"{api_url}/search",
                 headers={"X-API-Key": api_key, "Content-Type": "application/json"},
-                json={"query": query, "page": page, "page_size": page_size, "verify": verify, "format": format, "include_related": True},
+                json={
+                    "query": query,
+                    "page": page,
+                    "page_size": page_size,
+                    "verify": verify,
+                    "format": format,
+                    "include_related": True,
+                },
             )
             resp.raise_for_status()
             data = resp.json()
 
         if console:
-            console.print(Panel.fit(f"[bold cyan]Search Results[/bold cyan]\nQuery: {query}\nRoute: {data.get('route', 'N/A')}\nConfidence: {data.get('answer_confidence', 0)}%", border_style="cyan"))
+            console.print(
+                Panel.fit(
+                    f"[bold cyan]Search Results[/bold cyan]\nQuery: {query}\nRoute: {data.get('route', 'N/A')}\nConfidence: {data.get('answer_confidence', 0)}%",
+                    border_style="cyan",
+                )
+            )
             table = Table(title="Results")
             table.add_column("#", style="dim")
             table.add_column("Act", style="bold")
             table.add_column("Snippet")
             table.add_column("Score", style="green")
             for i, item in enumerate(data.get("items", []), 1):
-                table.add_row(str(i), item.get("act", "?"), (item.get("snippet", "")[:80] + "...") if len(item.get("snippet", "")) > 80 else item.get("snippet", ""), f"{item.get('similarity_score', 0):.2f}")
+                table.add_row(
+                    str(i),
+                    item.get("act", "?"),
+                    (item.get("snippet", "")[:80] + "...")
+                    if len(item.get("snippet", "")) > 80
+                    else item.get("snippet", ""),
+                    f"{item.get('similarity_score', 0):.2f}",
+                )
             console.print(table)
         else:
             print(f"Query: {query}")
             print(f"Route: {data.get('route', 'N/A')}")
             print(f"Confidence: {data.get('answer_confidence', 0)}%")
             for i, item in enumerate(data.get("items", []), 1):
-                print(f"  {i}. [{item.get('act', '?')}] {item.get('snippet', '')[:100]}... (score: {item.get('similarity_score', 0):.2f})")
+                print(
+                    f"  {i}. [{item.get('act', '?')}] {item.get('snippet', '')[:100]}... (score: {item.get('similarity_score', 0):.2f})"
+                )
     except httpx.HTTPError as e:
         print_error("API request failed", str(e))
         raise typer.Exit(1)
@@ -555,18 +640,36 @@ def compare(
 
         counterpart_act = "BNS" if act.upper() == "IPC" else "IPC"
         if console:
-            console.print(Panel.fit(f"[bold cyan]IPC ↔ BNS Comparison[/bold cyan]\nRequested: {act} Section {data.get('requested_section', section)}\nCounterpart: {counterpart_act} Section {data.get('counterpart_section', '?')}\nNote: {data.get('note', 'N/A')}", border_style="cyan"))
-            for label, items in [("Requested", data.get("requested_results", [])), ("Counterpart", data.get("counterpart_results", []))]:
-                table = Table(title=f"{label} ({act if label == 'Requested' else counterpart_act})")
+            console.print(
+                Panel.fit(
+                    f"[bold cyan]IPC ↔ BNS Comparison[/bold cyan]\nRequested: {act} Section {data.get('requested_section', section)}\nCounterpart: {counterpart_act} Section {data.get('counterpart_section', '?')}\nNote: {data.get('note', 'N/A')}",
+                    border_style="cyan",
+                )
+            )
+            for label, items in [
+                ("Requested", data.get("requested_results", [])),
+                ("Counterpart", data.get("counterpart_results", [])),
+            ]:
+                table = Table(
+                    title=f"{label} ({act if label == 'Requested' else counterpart_act})"
+                )
                 table.add_column("#", style="dim")
                 table.add_column("Score", style="green")
                 table.add_column("Snippet")
                 for i, item in enumerate(items, 1):
-                    table.add_row(str(i), f"{item.get('similarity_score', 0):.2f}", (item.get("snippet", "")[:80] + "...") if len(item.get("snippet", "")) > 80 else item.get("snippet", ""))
+                    table.add_row(
+                        str(i),
+                        f"{item.get('similarity_score', 0):.2f}",
+                        (item.get("snippet", "")[:80] + "...")
+                        if len(item.get("snippet", "")) > 80
+                        else item.get("snippet", ""),
+                    )
                 console.print(table)
         else:
             print(f"Requested: {act} Section {data.get('requested_section', section)}")
-            print(f"Counterpart: {counterpart_act} Section {data.get('counterpart_section', '?')}")
+            print(
+                f"Counterpart: {counterpart_act} Section {data.get('counterpart_section', '?')}"
+            )
             print(f"Note: {data.get('note', 'N/A')}")
     except httpx.HTTPError as e:
         print_error("API request failed", str(e))
@@ -588,13 +691,25 @@ def deep_cite(
             resp = client.post(
                 f"{api_url}/search",
                 headers={"X-API-Key": api_key, "Content-Type": "application/json"},
-                json={"query": query, "page": 1, "page_size": 10, "verify": True, "format": "citations", "include_related": True},
+                json={
+                    "query": query,
+                    "page": 1,
+                    "page_size": 10,
+                    "verify": True,
+                    "format": "citations",
+                    "include_related": True,
+                },
             )
             resp.raise_for_status()
             data = resp.json()
 
         if console:
-            console.print(Panel.fit(f"[bold cyan]Deep Citation Analysis[/bold cyan]\nQuery: {query}\nRoute: {data.get('route', 'N/A')}\nConfidence: {data.get('answer_confidence', 0)}%", border_style="cyan"))
+            console.print(
+                Panel.fit(
+                    f"[bold cyan]Deep Citation Analysis[/bold cyan]\nQuery: {query}\nRoute: {data.get('route', 'N/A')}\nConfidence: {data.get('answer_confidence', 0)}%",
+                    border_style="cyan",
+                )
+            )
             sources = data.get("source_sections", [])
             if sources:
                 table = Table(title="Cited Sources")
@@ -603,7 +718,14 @@ def deep_cite(
                 table.add_column("Relevance", style="green")
                 table.add_column("Text")
                 for i, src in enumerate(sources, 1):
-                    table.add_row(str(i), f"{src.get('section', '?')} {src.get('act', '')}", f"{src.get('similarity', 0):.1%}", (src.get("text", "")[:60] + "...") if len(src.get("text", "")) > 60 else src.get("text", ""))
+                    table.add_row(
+                        str(i),
+                        f"{src.get('section', '?')} {src.get('act', '')}",
+                        f"{src.get('similarity', 0):.1%}",
+                        (src.get("text", "")[:60] + "...")
+                        if len(src.get("text", "")) > 60
+                        else src.get("text", ""),
+                    )
                 console.print(table)
             else:
                 console.print("[yellow]No sources found[/yellow]")
@@ -611,7 +733,9 @@ def deep_cite(
             print(f"Query: {query}")
             print(f"Confidence: {data.get('answer_confidence', 0)}%")
             for i, src in enumerate(data.get("source_sections", []), 1):
-                print(f"  {i}. {src.get('section', '?')} {src.get('act', '')} ({src.get('similarity', 0):.1%})")
+                print(
+                    f"  {i}. {src.get('section', '?')} {src.get('act', '')} ({src.get('similarity', 0):.1%})"
+                )
     except httpx.HTTPError as e:
         print_error("API request failed", str(e))
         raise typer.Exit(1)
@@ -630,8 +754,9 @@ def help():
         print("  hector --help   - Show this help")
         return
 
-    console.print(Panel.fit(
-        """
+    console.print(
+        Panel.fit(
+            """
 [bold gold1]HECTOR - LEGAL INTELLIGENCE SYSTEM[/bold gold1]
 
 [bold cyan]Commands:[/bold cyan]
@@ -681,9 +806,10 @@ def help():
 
 [dim]HECTOR v2.1.0 | Hard-RAG Legal Intelligence[/dim]
         """,
-        border_style="gold1",
-        padding=(1, 2)
-    ))
+            border_style="gold1",
+            padding=(1, 2),
+        )
+    )
 
 
 # Entry point for hector command
@@ -695,7 +821,7 @@ def main():
         sys.exit(1)
 
     # Handle --help as first argument
-    if len(sys.argv) > 1 and sys.argv[1] in ['--help', 'help']:
+    if len(sys.argv) > 1 and sys.argv[1] in ["--help", "help"]:
         help()
         return
 

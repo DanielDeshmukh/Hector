@@ -24,18 +24,18 @@ def save_process_info(port: int, frontend_port: int = None, pid: int = None):
     try:
         data = {}
         if os.path.exists(PROCESS_FILE):
-            with open(PROCESS_FILE, 'r') as f:
+            with open(PROCESS_FILE, "r") as f:
                 data = json.load(f)
-        
-        data['last_api_port'] = port
+
+        data["last_api_port"] = port
         if frontend_port:
-            data['last_frontend_port'] = frontend_port
+            data["last_frontend_port"] = frontend_port
         if pid:
-            data['pids'] = data.get('pids', [])
-            if pid not in data['pids']:
-                data['pids'].append(pid)
-        
-        with open(PROCESS_FILE, 'w') as f:
+            data["pids"] = data.get("pids", [])
+            if pid not in data["pids"]:
+                data["pids"].append(pid)
+
+        with open(PROCESS_FILE, "w") as f:
             json.dump(data, f)
     except Exception as e:
         logging.debug("Failed to save process info: %s", e)
@@ -45,7 +45,7 @@ def load_process_info():
     """Load process information from file."""
     try:
         if os.path.exists(PROCESS_FILE):
-            with open(PROCESS_FILE, 'r') as f:
+            with open(PROCESS_FILE, "r") as f:
                 return json.load(f)
     except Exception as e:
         logging.debug("Failed to load process info: %s", e)
@@ -66,7 +66,9 @@ def get_processes_on_ports(ports: list) -> list:
     pids = []
     try:
         if sys.platform == "win32":
-            result = subprocess.run(["netstat", "-ano"], capture_output=True, text=True, check=True)
+            result = subprocess.run(
+                ["netstat", "-ano"], capture_output=True, text=True, check=True
+            )
             for line in result.stdout.split("\n"):
                 for port in ports:
                     if f":{port} " in line and "LISTENING" in line:
@@ -76,7 +78,9 @@ def get_processes_on_ports(ports: list) -> list:
                             pids.append(pid)
         else:
             for port in ports:
-                result = subprocess.run(["lsof", "-i", f":{port}"], capture_output=True, text=True)
+                result = subprocess.run(
+                    ["lsof", "-i", f":{port}"], capture_output=True, text=True
+                )
                 for line in result.stdout.split("\n")[1:]:
                     if line.strip():
                         parts = line.split()
@@ -97,7 +101,11 @@ def cleanup_stuck_ports(ports: list):
     for pid in pids:
         try:
             if sys.platform == "win32":
-                subprocess.run(["taskkill", "/PID", str(pid), "/F"], check=True, capture_output=True)
+                subprocess.run(
+                    ["taskkill", "/PID", str(pid), "/F"],
+                    check=True,
+                    capture_output=True,
+                )
             else:
                 subprocess.run(["kill", "-9", str(pid)], check=True)
             print_success(f"Cleaned up stuck process (PID: {pid})")
@@ -131,7 +139,7 @@ def is_port_available(port: int) -> bool:
     """Check if a port is available."""
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.bind(('', port))
+            s.bind(("", port))
             s.close()
         return True
     except OSError:
@@ -152,21 +160,24 @@ def kill_process_on_port(port: int) -> bool:
         if sys.platform == "win32":
             # Windows: use netstat and taskkill
             result = subprocess.run(
-                ["netstat", "-ano"],
-                capture_output=True,
-                text=True,
-                check=True
+                ["netstat", "-ano"], capture_output=True, text=True, check=True
             )
             for line in result.stdout.split("\n"):
                 if f":{port} " in line and "LISTENING" in line:
                     parts = line.split()
                     pid = parts[-1]
                     try:
-                        subprocess.run(["taskkill", "/PID", pid, "/F"], check=True, capture_output=True)
+                        subprocess.run(
+                            ["taskkill", "/PID", pid, "/F"],
+                            check=True,
+                            capture_output=True,
+                        )
                         print_success(f"Killed process on port {port} (PID: {pid})")
                         return True
                     except subprocess.CalledProcessError as e:
-                        logging.debug("Failed to kill process %s on port %d: %s", pid, port, e)
+                        logging.debug(
+                            "Failed to kill process %s on port %d: %s", pid, port, e
+                        )
         else:
             # Unix: use lsof and kill
             result = subprocess.run(
@@ -183,11 +194,13 @@ def kill_process_on_port(port: int) -> bool:
                         print_success(f"Killed process on port {port} (PID: {pid})")
                         return True
                     except subprocess.CalledProcessError as e:
-                        logging.debug("Failed to kill process %s on port %d: %s", pid, port, e)
+                        logging.debug(
+                            "Failed to kill process %s on port %d: %s", pid, port, e
+                        )
     except Exception as e:
         print_warning(f"Could not kill process on port {port}: {e}")
         return False
-    
+
     return False
 
 
@@ -233,11 +246,13 @@ def get_available_books():
         if file.lower().endswith(".pdf"):
             file_path = os.path.join(books_dir, file)
             size_mb = os.path.getsize(file_path) / (1024 * 1024)
-            books.append({
-                "name": file,
-                "path": file_path,
-                "size": size_mb,
-            })
+            books.append(
+                {
+                    "name": file,
+                    "path": file_path,
+                    "size": size_mb,
+                }
+            )
 
     return books
 
@@ -278,9 +293,12 @@ def cmd_init(args):
             print_info(f"Attempting to kill process on port {port}...")
             if kill_process_on_port(port):
                 import time
+
                 time.sleep(1)  # Give time for port to be released
             else:
-                print_error(f"Could not free port {port}. Try using --auto-port or --port with a different value")
+                print_error(
+                    f"Could not free port {port}. Try using --auto-port or --port with a different value"
+                )
                 return
         elif auto_port:
             new_port = find_available_port(port)
@@ -293,7 +311,7 @@ def cmd_init(args):
         else:
             print_error(
                 f"Port {port} is already in use",
-                "Use --auto-port to use next available port, or --kill-existing to terminate the existing process"
+                "Use --auto-port to use next available port, or --kill-existing to terminate the existing process",
             )
             return
 
@@ -303,31 +321,43 @@ def cmd_init(args):
             print_info(f"Attempting to kill process on port {frontend_port}...")
             if kill_process_on_port(frontend_port):
                 import time
+
                 time.sleep(1)  # Give time for port to be released
             else:
-                print_error(f"Could not free port {frontend_port}. Try using --auto-port or --frontend-port with a different value")
+                print_error(
+                    f"Could not free port {frontend_port}. Try using --auto-port or --frontend-port with a different value"
+                )
                 return
         elif auto_port:
             new_port = find_available_port(frontend_port)
             if new_port:
-                print_warning(f"Using alternative port {new_port} for frontend instead of {frontend_port}")
+                print_warning(
+                    f"Using alternative port {new_port} for frontend instead of {frontend_port}"
+                )
                 frontend_port = new_port
             else:
-                print_error(f"Could not find available port starting from {frontend_port}")
+                print_error(
+                    f"Could not find available port starting from {frontend_port}"
+                )
                 return
         else:
             print_error(
                 f"Frontend port {frontend_port} is already in use",
-                "Use --auto-port to use next available port, or --kill-existing to terminate the existing process"
+                "Use --auto-port to use next available port, or --kill-existing to terminate the existing process",
             )
             return
 
-    def wait_for_http(url: str, label: str, process, headers=None, accepted_statuses=(200,)) -> bool:
+    def wait_for_http(
+        url: str, label: str, process, headers=None, accepted_statuses=(200,)
+    ) -> bool:
         max_retries = 30
 
         for attempt in range(max_retries):
             if process is not None and process.poll() is not None:
-                print_error(f"{label} stopped before it became ready", f"Exit code: {process.returncode}")
+                print_error(
+                    f"{label} stopped before it became ready",
+                    f"Exit code: {process.returncode}",
+                )
                 return False
 
             try:
@@ -352,11 +382,23 @@ def cmd_init(args):
     try:
         print("\nStarting API Server...")
         api_process = subprocess.Popen(
-            [sys.executable, "-m", "uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", str(port), "--reload"],
+            [
+                sys.executable,
+                "-m",
+                "uvicorn",
+                "api.app:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                str(port),
+                "--reload",
+            ],
             cwd=project_dir,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+            if sys.platform == "win32"
+            else 0,
         )
-        
+
         # Save process information
         save_process_info(port, frontend_port, api_process.pid)
 
@@ -379,12 +421,21 @@ def cmd_init(args):
                 frontend_env.setdefault("NODE_OPTIONS", "--max-old-space-size=4096")
 
                 frontend_process = subprocess.Popen(
-                    [resolve_command("npm"), "run", "dev", "--", "--port", str(frontend_port)],
+                    [
+                        resolve_command("npm"),
+                        "run",
+                        "dev",
+                        "--",
+                        "--port",
+                        str(frontend_port),
+                    ],
                     cwd=frontend_dir,
                     env=frontend_env,
-                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
+                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+                    if sys.platform == "win32"
+                    else 0,
                 )
-                
+
                 # Save frontend process info
                 save_process_info(port, frontend_port, frontend_process.pid)
 
@@ -406,12 +457,23 @@ def cmd_init(args):
 
         while True:
             import time
+
             time.sleep(1)
             if api_process.poll() is not None:
-                print_error("API server stopped unexpectedly", f"Exit code: {api_process.returncode}")
+                print_error(
+                    "API server stopped unexpectedly",
+                    f"Exit code: {api_process.returncode}",
+                )
                 break
-            if frontend_process and frontend_process.poll() is not None and not no_frontend:
-                print_error("Frontend server stopped unexpectedly", f"Exit code: {frontend_process.returncode}")
+            if (
+                frontend_process
+                and frontend_process.poll() is not None
+                and not no_frontend
+            ):
+                print_error(
+                    "Frontend server stopped unexpectedly",
+                    f"Exit code: {frontend_process.returncode}",
+                )
                 break
     except KeyboardInterrupt:
         print("\n\nStopping services...")
@@ -422,7 +484,7 @@ def cmd_init(args):
         print_error("Failed to start services", str(e))
     finally:
         print("\nShutting down services...")
-        
+
         # Terminate gracefully first
         if api_process:
             api_process.terminate()
@@ -430,22 +492,23 @@ def cmd_init(args):
                 api_process.wait(timeout=3)
             except subprocess.TimeoutExpired:
                 api_process.kill()
-        
+
         if frontend_process:
             frontend_process.terminate()
             try:
                 frontend_process.wait(timeout=3)
             except subprocess.TimeoutExpired:
                 frontend_process.kill()
-        
+
         # Clean up any stuck processes on the ports
         import time
+
         time.sleep(0.5)
         cleanup_stuck_ports([port, frontend_port] if not no_frontend else [port])
-        
+
         # Clear process info
         clear_process_info()
-        
+
         print_success("All services stopped")
 
 
@@ -479,6 +542,7 @@ def cmd_ingest(args):
         if os.path.exists(ingestor_path):
             print("\nRunning enhanced ingestor...")
             import subprocess
+
             subprocess.run(
                 [sys.executable, "-m", "utils.enhanced_ingestor"],
                 cwd=project_dir,
@@ -490,6 +554,7 @@ def cmd_ingest(args):
             if os.path.exists(basic_ingestor):
                 print("\nRunning basic ingestor...")
                 import subprocess
+
                 subprocess.run(
                     [sys.executable, "-m", "utils.ingestor"],
                     cwd=project_dir,
@@ -531,18 +596,21 @@ def cmd_status(args):
     print("\n[Environment]")
     try:
         import chromadb  # noqa: F401
+
         print("  ChromaDB: [+] Installed")
     except ImportError:
         print("  ChromaDB: [X] Not installed")
 
     try:
         import fastapi  # noqa: F401
+
         print("  FastAPI: [+] Installed")
     except ImportError:
         print("  FastAPI: [X] Not installed")
 
     try:
         import sentence_transformers  # noqa: F401
+
         print("  Embeddings: [+] Installed")
     except ImportError:
         print("  Embeddings: [X] Not installed")
@@ -583,23 +651,23 @@ Examples:
 def cmd_ps(args):
     """List ongoing HECTOR processes."""
     proc_info = load_process_info()
-    
-    if not proc_info or 'pids' not in proc_info or not proc_info['pids']:
+
+    if not proc_info or "pids" not in proc_info or not proc_info["pids"]:
         print_warning("No active HECTOR processes found")
         return
-    
+
     print("\n" + "=" * 60)
     print("ACTIVE HECTOR PROCESSES")
     print("=" * 60)
-    
-    if 'last_api_port' in proc_info:
+
+    if "last_api_port" in proc_info:
         print(f"\nAPI Port: {proc_info['last_api_port']}")
         print(f"  URL: http://localhost:{proc_info['last_api_port']}")
-    
-    if 'last_frontend_port' in proc_info:
+
+    if "last_frontend_port" in proc_info:
         print(f"\nFrontend Port: {proc_info['last_frontend_port']}")
         print(f"  URL: http://localhost:{proc_info['last_frontend_port']}")
-    
+
     print(f"\nProcess IDs: {', '.join(map(str, proc_info.get('pids', [])))}")
     print("\n" + "=" * 60)
 
@@ -607,17 +675,17 @@ def cmd_ps(args):
 def cmd_kill(args):
     """Kill stuck HECTOR processes."""
     proc_info = load_process_info()
-    
+
     ports = []
-    if 'last_api_port' in proc_info:
-        ports.append(proc_info['last_api_port'])
-    if 'last_frontend_port' in proc_info:
-        ports.append(proc_info['last_frontend_port'])
-    
+    if "last_api_port" in proc_info:
+        ports.append(proc_info["last_api_port"])
+    if "last_frontend_port" in proc_info:
+        ports.append(proc_info["last_frontend_port"])
+
     if not ports:
         print_warning("No ports recorded for HECTOR")
         return
-    
+
     print(f"\nKilling processes on ports: {', '.join(map(str, ports))}")
     cleanup_stuck_ports(ports)
     clear_process_info()
@@ -627,6 +695,7 @@ def cmd_kill(args):
 def cmd_search(args):
     """Search the legal corpus."""
     import httpx
+
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
     api_key = os.getenv("HECTOR_API_KEY", "")
     try:
@@ -634,7 +703,14 @@ def cmd_search(args):
             resp = client.post(
                 f"{api_url}/search",
                 headers={"X-API-Key": api_key, "Content-Type": "application/json"},
-                json={"query": args.query, "page": args.page, "page_size": args.size, "verify": not args.no_verify, "format": args.format, "include_related": True},
+                json={
+                    "query": args.query,
+                    "page": args.page,
+                    "page_size": args.size,
+                    "verify": not args.no_verify,
+                    "format": args.format,
+                    "include_related": True,
+                },
             )
             resp.raise_for_status()
             data = resp.json()
@@ -642,7 +718,9 @@ def cmd_search(args):
         print(f"Route: {data.get('route', 'N/A')}")
         print(f"Confidence: {data.get('answer_confidence', 0)}%")
         for i, item in enumerate(data.get("items", []), 1):
-            print(f"  {i}. [{item.get('act', '?')}] {item.get('snippet', '')[:100]}... (score: {item.get('similarity_score', 0):.2f})")
+            print(
+                f"  {i}. [{item.get('act', '?')}] {item.get('snippet', '')[:100]}... (score: {item.get('similarity_score', 0):.2f})"
+            )
     except httpx.HTTPError as e:
         print_error("API request failed", str(e))
         sys.exit(1)
@@ -651,6 +729,7 @@ def cmd_search(args):
 def cmd_compare(args):
     """Compare IPC ↔ BNS sections."""
     import httpx
+
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
     api_key = os.getenv("HECTOR_API_KEY", "")
     try:
@@ -663,8 +742,12 @@ def cmd_compare(args):
             resp.raise_for_status()
             data = resp.json()
         counterpart = "BNS" if args.act.upper() == "IPC" else "IPC"
-        print(f"\nRequested: {args.act} Section {data.get('requested_section', args.section)}")
-        print(f"Counterpart: {counterpart} Section {data.get('counterpart_section', '?')}")
+        print(
+            f"\nRequested: {args.act} Section {data.get('requested_section', args.section)}"
+        )
+        print(
+            f"Counterpart: {counterpart} Section {data.get('counterpart_section', '?')}"
+        )
         print(f"Note: {data.get('note', 'N/A')}")
     except httpx.HTTPError as e:
         print_error("API request failed", str(e))
@@ -674,6 +757,7 @@ def cmd_compare(args):
 def cmd_deep_cite(args):
     """Deep citation verification."""
     import httpx
+
     api_url = os.getenv("HECTOR_API_URL", "http://localhost:8000")
     api_key = os.getenv("HECTOR_API_KEY", "")
     try:
@@ -681,14 +765,23 @@ def cmd_deep_cite(args):
             resp = client.post(
                 f"{api_url}/search",
                 headers={"X-API-Key": api_key, "Content-Type": "application/json"},
-                json={"query": args.query, "page": 1, "page_size": 10, "verify": True, "format": "citations", "include_related": True},
+                json={
+                    "query": args.query,
+                    "page": 1,
+                    "page_size": 10,
+                    "verify": True,
+                    "format": "citations",
+                    "include_related": True,
+                },
             )
             resp.raise_for_status()
             data = resp.json()
         print(f"\nQuery: {args.query}")
         print(f"Confidence: {data.get('answer_confidence', 0)}%")
         for i, src in enumerate(data.get("source_sections", []), 1):
-            print(f"  {i}. {src.get('section', '?')} {src.get('act', '')} ({src.get('similarity', 0):.1%})")
+            print(
+                f"  {i}. {src.get('section', '?')} {src.get('act', '')} ({src.get('similarity', 0):.1%})"
+            )
     except httpx.HTTPError as e:
         print_error("API request failed", str(e))
         sys.exit(1)
@@ -708,15 +801,33 @@ def main():
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
     init_parser = subparsers.add_parser("init", help="Start HECTOR (API + Frontend)")
-    init_parser.add_argument("--port", "-p", type=int, default=8000, help="API server port")
-    init_parser.add_argument("--frontend-port", "-fp", type=int, default=3000, help="Frontend port")
-    init_parser.add_argument("--no-frontend", action="store_true", help="Start only backend API")
-    init_parser.add_argument("--auto-port", action="store_true", help="Automatically use next available port if default is in use")
-    init_parser.add_argument("--kill-existing", action="store_true", help="Kill existing process on the port if it's in use")
+    init_parser.add_argument(
+        "--port", "-p", type=int, default=8000, help="API server port"
+    )
+    init_parser.add_argument(
+        "--frontend-port", "-fp", type=int, default=3000, help="Frontend port"
+    )
+    init_parser.add_argument(
+        "--no-frontend", action="store_true", help="Start only backend API"
+    )
+    init_parser.add_argument(
+        "--auto-port",
+        action="store_true",
+        help="Automatically use next available port if default is in use",
+    )
+    init_parser.add_argument(
+        "--kill-existing",
+        action="store_true",
+        help="Kill existing process on the port if it's in use",
+    )
 
     ingest_parser = subparsers.add_parser("ingest", help="Ingest books from data/Books")
-    ingest_parser.add_argument("--force", "-f", action="store_true", help="Re-ingest all books")
-    ingest_parser.add_argument("--verbose", "-v", action="store_true", help="Show detailed progress")
+    ingest_parser.add_argument(
+        "--force", "-f", action="store_true", help="Re-ingest all books"
+    )
+    ingest_parser.add_argument(
+        "--verbose", "-v", action="store_true", help="Show detailed progress"
+    )
 
     subparsers.add_parser("status", help="Display system status")
     subparsers.add_parser("help", help="Show this help message")
@@ -724,16 +835,32 @@ def main():
     search_parser = subparsers.add_parser("search", help="Search the legal corpus")
     search_parser.add_argument("query", help="Legal query to search")
     search_parser.add_argument("--page", "-p", type=int, default=1, help="Page number")
-    search_parser.add_argument("--size", "-s", type=int, default=5, help="Results per page")
-    search_parser.add_argument("--format", "-f", default="summary", choices=["summary", "detailed", "citations"], help="Output format")
-    search_parser.add_argument("--no-verify", action="store_true", help="Skip verification")
+    search_parser.add_argument(
+        "--size", "-s", type=int, default=5, help="Results per page"
+    )
+    search_parser.add_argument(
+        "--format",
+        "-f",
+        default="summary",
+        choices=["summary", "detailed", "citations"],
+        help="Output format",
+    )
+    search_parser.add_argument(
+        "--no-verify", action="store_true", help="Skip verification"
+    )
 
     compare_parser = subparsers.add_parser("compare", help="Compare IPC ↔ BNS sections")
     compare_parser.add_argument("section", help="Section number to compare")
-    compare_parser.add_argument("--act", "-a", default="IPC", choices=["IPC", "BNS"], help="Act")
-    compare_parser.add_argument("--size", "-s", type=int, default=3, help="Results per side")
+    compare_parser.add_argument(
+        "--act", "-a", default="IPC", choices=["IPC", "BNS"], help="Act"
+    )
+    compare_parser.add_argument(
+        "--size", "-s", type=int, default=3, help="Results per side"
+    )
 
-    deepcite_parser = subparsers.add_parser("deep-cite", help="Deep citation verification")
+    deepcite_parser = subparsers.add_parser(
+        "deep-cite", help="Deep citation verification"
+    )
     deepcite_parser.add_argument("query", help="Legal query for deep citation analysis")
 
     subparsers.add_parser("ps", help="List ongoing HECTOR processes")

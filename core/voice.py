@@ -27,6 +27,7 @@ VOICE_COMMANDS = {
 @dataclass
 class VoiceQuery:
     """Represents a processed voice query."""
+
     raw_text: str
     normalized_text: str
     command: str | None
@@ -70,7 +71,9 @@ class LegalTermNormalizer:
 
         # Apply corrections
         for wrong, correct in self.CORRECTIONS.items():
-            normalized = re.sub(rf'\b{wrong}\b', correct, normalized, flags=re.IGNORECASE)
+            normalized = re.sub(
+                rf"\b{wrong}\b", correct, normalized, flags=re.IGNORECASE
+            )
 
         # Apply expansions
         for term, expansion in self.EXPANSIONS.items():
@@ -85,12 +88,14 @@ class LegalTermNormalizer:
         text_lower = text.lower()
 
         # Extract section numbers
-        section_matches = re.findall(r'section\s*(\d+)', text_lower)
+        section_matches = re.findall(r"section\s*(\d+)", text_lower)
         for match in section_matches:
             terms.append(f"Section {match}")
 
         # Extract IPC/BNS sections
-        act_matches = re.findall(r'(ipc|bns|crpc|bnss|bsa)\s*section?\s*(\d+)', text_lower)
+        act_matches = re.findall(
+            r"(ipc|bns|crpc|bnss|bsa)\s*section?\s*(\d+)", text_lower
+        )
         for act, num in act_matches:
             terms.append(f"{act.upper()} Section {num}")
 
@@ -101,9 +106,21 @@ class LegalTermNormalizer:
 
         # Extract legal keywords
         legal_keywords = [
-            "bail", "arrest", " FIR", "cognizable", "non-cognizable",
-            "compoundable", "warrant", "summons", "charge", "evidence",
-            "witness", "judgment", "appeal", "offence", "punishment",
+            "bail",
+            "arrest",
+            " FIR",
+            "cognizable",
+            "non-cognizable",
+            "compoundable",
+            "warrant",
+            "summons",
+            "charge",
+            "evidence",
+            "witness",
+            "judgment",
+            "appeal",
+            "offence",
+            "punishment",
         ]
         for kw in legal_keywords:
             if kw in text_lower:
@@ -157,7 +174,9 @@ class VoiceQueryHandler:
         self.command_processor = VoiceCommandProcessor()
         self.query_history: list[VoiceQuery] = []
 
-    def process_voice_query(self, audio_data: bytes | None = None, text: str | None = None) -> VoiceQuery:
+    def process_voice_query(
+        self, audio_data: bytes | None = None, text: str | None = None
+    ) -> VoiceQuery:
         """
         Process voice input (either audio or direct text).
 
@@ -291,4 +310,6 @@ class VoiceQueryCLI:
 
         print("\n📜 Voice Query History:")
         for i, q in enumerate(history, 1):
-            print(f"  {i}. {q.normalized_text} (command: {q.command}, confidence: {q.confidence:.2f})")
+            print(
+                f"  {i}. {q.normalized_text} (command: {q.command}, confidence: {q.confidence:.2f})"
+            )
