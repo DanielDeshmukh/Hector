@@ -113,8 +113,11 @@ export default function Sidebar({
           {activeTab === "history" && (
             <div className="space-y-0.5">
               {history.length === 0 && (
-                <div className="rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-3 text-[12px] leading-relaxed text-silver/35">
-                  Your live HECTOR searches will appear here.
+                <div className="flex flex-col items-center rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-5 text-center">
+                  <Clock size={16} className="mb-2 text-silver/25" />
+                  <p className="text-[11px] leading-relaxed text-silver/35">
+                    Your live HECTOR searches will appear here.
+                  </p>
                 </div>
               )}
               {history.map((item) => (
@@ -157,8 +160,11 @@ export default function Sidebar({
           {activeTab === "bookmarks" && (
             <div className="space-y-0.5">
               {bookmarks.length === 0 && (
-                <div className="rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-3 text-[12px] leading-relaxed text-silver/35">
-                  Bookmark sources from search results to save them here.
+                <div className="flex flex-col items-center rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-5 text-center">
+                  <Bookmark size={16} className="mb-2 text-silver/25" />
+                  <p className="text-[11px] leading-relaxed text-silver/35">
+                    Bookmark sources from search results to save them here.
+                  </p>
                 </div>
               )}
               {bookmarks.map((item) => (

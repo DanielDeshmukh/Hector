@@ -1,5 +1,6 @@
-import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck } from "lucide-react";
+import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck, SearchX } from "lucide-react";
 import PipelineStatus from "./PipelineStatus";
+import EmptyState from "./EmptyState";
 
 function sanitizeHtml(html) {
   return String(html || "")
@@ -207,6 +208,13 @@ export default function ResponseDisplay({
         <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/50">
           Source Documents ({response.sources.length})
         </p>
+        {response.sources.length === 0 ? (
+          <EmptyState
+            icon={SearchX}
+            title="No sources found"
+            description="Try rephrasing your query or using different legal terms."
+          />
+        ) : (
         <div className="grid gap-2">
           {response.sources.map((source, index) => (
             <button
@@ -321,6 +329,7 @@ export default function ResponseDisplay({
             </button>
           ))}
         </div>
+        )}
       </div>
     </div>
   );
