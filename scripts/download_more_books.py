@@ -9,16 +9,13 @@ Usage:
 """
 
 import argparse
-import os
-import sys
 import time
 import urllib.request
 import urllib.error
 import ssl
 import json
 from pathlib import Path
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BOOKS_DIR = PROJECT_ROOT / "data" / "Books"
@@ -489,7 +486,7 @@ def download_book(book: Book, progress: dict, dry_run: bool = False) -> bool:
             save_progress(progress)
             return True
 
-        except Exception as e:
+        except Exception:
             continue
 
     progress[book.filename] = {"ok": False, "error": "all URLs failed"}
@@ -527,7 +524,11 @@ def main():
             skip += 1
             continue
 
-        print(f"[{i}/{len(ADDITIONAL_BOOKS)}] GET   {book.filename}...", end=" ", flush=True)
+        print(
+            f"[{i}/{len(ADDITIONAL_BOOKS)}] GET   {book.filename}...",
+            end=" ",
+            flush=True,
+        )
         success = download_book(book, progress, dry_run=args.dry_run)
 
         if success:

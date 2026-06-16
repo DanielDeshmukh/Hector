@@ -1,6 +1,5 @@
 """OCR scanned PDFs using Tesseract + Poppler (pdf2image)."""
-import os
-import sys
+
 import subprocess
 import tempfile
 from pathlib import Path
@@ -29,7 +28,8 @@ def ocr_pdf(pdf_path: Path, output_dir: Path, lang: str = "eng") -> str:
         [
             "pdftoppm",
             "-png",
-            "-r", "300",  # 300 DPI for good OCR
+            "-r",
+            "300",  # 300 DPI for good OCR
             str(pdf_path),
             str(img_prefix),
         ],
@@ -37,7 +37,9 @@ def ocr_pdf(pdf_path: Path, output_dir: Path, lang: str = "eng") -> str:
         timeout=300,
     )
     if result.returncode != 0:
-        raise RuntimeError(f"pdftoppm failed: {result.stderr.decode('utf-8', errors='replace')}")
+        raise RuntimeError(
+            f"pdftoppm failed: {result.stderr.decode('utf-8', errors='replace')}"
+        )
 
     # Step 2: OCR each image with Tesseract
     all_text = []
@@ -49,9 +51,12 @@ def ocr_pdf(pdf_path: Path, output_dir: Path, lang: str = "eng") -> str:
                 TESSERACT_CMD,
                 str(img_path),
                 "stdout",
-                "-l", lang,
-                "--psm", "6",  # Assume uniform block of text
-                "--oem", "3",  # Default OCR engine
+                "-l",
+                lang,
+                "--psm",
+                "6",  # Assume uniform block of text
+                "--oem",
+                "3",  # Default OCR engine
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

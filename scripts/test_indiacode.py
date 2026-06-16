@@ -1,7 +1,7 @@
 """Test India Code API for downloadable PDF links."""
+
 import urllib.request
 import ssl
-import json
 import re
 
 ctx = ssl.create_default_context()
@@ -47,7 +47,9 @@ for name, path in act_handles:
         resp = urllib.request.urlopen(req, timeout=15, context=ctx)
         html = resp.read().decode("utf-8", errors="replace")
         # Find bitstream/PDF links
-        pdf_links = re.findall(r'href="(/bitstream/[^"]*\.pdf[^"]*)"', html, re.IGNORECASE)
+        pdf_links = re.findall(
+            r'href="(/bitstream/[^"]*\.pdf[^"]*)"', html, re.IGNORECASE
+        )
         if pdf_links:
             print(f"OK   {name}: {len(pdf_links)} PDF links")
             for link in pdf_links[:3]:
@@ -56,7 +58,9 @@ for name, path in act_handles:
             # Try finding any bitstream links
             bit_links = re.findall(r'href="(/bitstream/[^"]*)"', html)
             if bit_links:
-                print(f"OK   {name}: {len(bit_links)} bitstream links (checking for PDFs...)")
+                print(
+                    f"OK   {name}: {len(bit_links)} bitstream links (checking for PDFs...)"
+                )
                 for link in bit_links[:3]:
                     full = base + link
                     print(f"       {full}")

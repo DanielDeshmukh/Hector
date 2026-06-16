@@ -1,8 +1,8 @@
 """Scrape India Code website for actual bare act PDF links."""
+
 import urllib.request
 import urllib.parse
 import ssl
-import json
 import re
 import time
 
@@ -57,6 +57,7 @@ failed = 0
 for act_name, filename in acts:
     dest = f"{books_dir}\\{filename}"
     import os
+
     if os.path.exists(dest) and os.path.getsize(dest) > 1000:
         print(f"SKIP {filename} (exists)")
         continue
@@ -65,7 +66,8 @@ for act_name, filename in acts:
     try:
         search_url = (
             "https://www.indiacode.nic.in/handle/123456789/2289/simple-search"
-            "?searchText=" + urllib.parse.quote(act_name)
+            "?searchText="
+            + urllib.parse.quote(act_name)
             + "&rpp=10&sort_by=score&order=desc&rtype=simple"
         )
         req = urllib.request.Request(search_url, headers=headers)
@@ -88,8 +90,7 @@ for act_name, filename in acts:
 
         # Find bitstream PDF links
         bit_links = re.findall(
-            r'href="(/bitstream/123456789/\d+/[^"]*\.pdf[^"]*)"',
-            html2, re.IGNORECASE
+            r'href="(/bitstream/123456789/\d+/[^"]*\.pdf[^"]*)"', html2, re.IGNORECASE
         )
 
         if not bit_links:
@@ -99,10 +100,13 @@ for act_name, filename in acts:
 
         # Download first PDF
         pdf_url = "https://www.indiacode.nic.in" + bit_links[0]
-        req3 = urllib.request.Request(pdf_url, headers={
-            "User-Agent": headers["User-Agent"],
-            "Accept": "application/pdf,*/*",
-        })
+        req3 = urllib.request.Request(
+            pdf_url,
+            headers={
+                "User-Agent": headers["User-Agent"],
+                "Accept": "application/pdf,*/*",
+            },
+        )
         resp3 = urllib.request.urlopen(req3, timeout=60, context=ctx)
         data = resp3.read()
 
