@@ -1,0 +1,184 @@
+[
+  {
+    "query": "What is the punishment for murder under Section 302 of the IPC?",
+    "ground_truth": "Section 302 of the Indian Penal Code prescribes punishment for murder as death, or imprisonment for life, and shall also be liable to fine.",
+    "expected_sections": ["302"],
+    "expected_acts": ["IPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "Which BNS section replaces IPC Section 302 (Murder)?",
+    "ground_truth": "IPC Section 302 (Murder) is replaced by BNS Section 101.",
+    "expected_sections": ["101"],
+    "expected_acts": ["BNS"],
+    "category": "cross_reference"
+  },
+  {
+    "query": "What is the difference between culpable homicide and murder?",
+    "ground_truth": "Culpable homicide is defined in Section 299 IPC and murder in Section 300 IPC. All murder is culpable homicide but not all culpable homicide is murder. Murder requires the act being done with intention of causing death, or with the intention of causing such bodily injury as the offender knows to be likely to cause death, or with the intention of causing bodily injury sufficient in the ordinary course of nature to cause death.",
+    "expected_sections": ["299", "300"],
+    "expected_acts": ["IPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What is Section 376 of IPC and its equivalent in BNS?",
+    "ground_truth": "Section 376 IPC deals with punishment for rape. The equivalent provision in BNS is Section 63.",
+    "expected_sections": ["376", "63"],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "cross_reference"
+  },
+  {
+    "query": "Explain the concept of defamation under Indian law.",
+    "ground_truth": "Defamation is criminalized under Section 499 IPC and Section 356 BNS. It involves making any imputation concerning any person intending to harm, or knowing or having reason to believe that such imputation will harm, the reputation of such person. The punishment is simple imprisonment for up to two years, or fine, or both.",
+    "expected_sections": ["499", "356"],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What are the essentials of a valid contract under Indian Contract Act?",
+    "ground_truth": "A valid contract requires: (1) Free consent of parties competent to contract (Section 10), (2) Lawful consideration, (3) Lawful object, (4) Agreement not expressly declared void. Sections 2-25 define key elements including offer, acceptance, consideration, and capacity.",
+    "expected_sections": ["10", "2", "23", "25"],
+    "expected_acts": ["Indian Contract Act"],
+    "category": "legal_research"
+  },
+  {
+    "query": "IPC Section 420 corresponds to which BNS section?",
+    "ground_truth": "IPC Section 420 (Cheating and dishonestly inducing delivery of property) corresponds to BNS Section 318.",
+    "expected_sections": ["420", "318"],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "cross_reference"
+  },
+  {
+    "query": "What is the doctrine of basic structure in constitutional law?",
+    "ground_truth": "The doctrine of basic structure, established in Kesavananda Bharati v. State of Kerala (1973), holds that Parliament cannot amend the basic structure of the Constitution. Features forming the basic structure include supremacy of the Constitution, rule of law, judicial review, separation of powers, federalism, and secularism.",
+    "expected_sections": [],
+    "expected_acts": [],
+    "category": "constitutional_law"
+  },
+  {
+    "query": "What are the rights of an arrested person under Indian law?",
+    "ground_truth": "Rights of arrested persons include: (1) Right to know the grounds of arrest (Section 50 CrPC / Section 47 BNS), (2) Right to legal counsel (Article 22(1) Constitution), (3) Right to be produced before magistrate within 24 hours (Article 22(2)), (4) Right to free legal aid (Article 39A), (5) Right to silent (Article 20(3)).",
+    "expected_sections": ["50", "47"],
+    "expected_acts": ["CrPC", "BNS"],
+    "category": "legal_research"
+  },
+  {
+    "query": "Explain the concept of bail in criminal cases under Indian law.",
+    "ground_truth": "Bail is the release of an accused person from custody subject to conditions. Under CrPC (now BNSS), bail provisions are in Sections 437-439. Bail can be: (1) Regular bail (Section 437-439 CrPC), (2) Anticipatory bail (Section 438 CrPC), (3) Bail in bailable offences (Section 436 CrPC). Considerations include nature of offence, flight risk, and tampering evidence.",
+    "expected_sections": ["436", "437", "438", "439"],
+    "expected_acts": ["CrPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What is the punishment for cheating under IPC Section 420?",
+    "ground_truth": "Under IPC Section 420, whoever cheats and dishonestly induces the deceived person to deliver any property, or to consent that any person shall retain any property, or intentionally induces the deceived person to do or omit to do anything which he would not do or omit if he were not so deceived, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+    "expected_sections": ["420"],
+    "expected_acts": ["IPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What are the grounds for divorce under Hindu Marriage Act?",
+    "ground_truth": "Under Section 13 of the Hindu Marriage Act, 1955, grounds for divorce include: (1) Adultery, (2) Cruelty, (3) Desertion for two years, (4) Conversion, (5) Unsoundness of mind, (6) Leprosy, (7) Venereal disease, (8) Renunciation, (9) Not heard alive for seven years. Section 13B provides for divorce by mutual consent.",
+    "expected_sections": ["13", "13B"],
+    "expected_acts": ["Hindu Marriage Act"],
+    "category": "family_law"
+  },
+  {
+    "query": "What is the difference between IPC and BNS?",
+    "ground_truth": "The Indian Penal Code (IPC) was enacted in 1860 and governed criminal law in India. The Bharatiya Nyaya Sanhita (BNS) 2023 replaced the IPC effective July 1, 2024. BNS retains most IPC provisions with updates including new offences for terrorism, organized crime, and mob lynching, while removing colonial-era provisions.",
+    "expected_sections": [],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "cross_reference"
+  },
+  {
+    "query": "What is Section 144 CrPC and when can it be imposed?",
+    "ground_truth": "Section 144 CrPC (now Section 163 BNSS) empowers a Magistrate to direct any person to abstain from a certain act or to take certain steps with respect to certain property in his possession or under his management, when such direction is likely to prevent obstruction, annoyance or injury to any person lawfully employed, or danger to human life, health or safety, or a disturbance of the public tranquility, or a riot, or an affray.",
+    "expected_sections": ["144", "163"],
+    "expected_acts": ["CrPC", "BNSS"],
+    "category": "legal_research"
+  },
+  {
+    "query": "Explain the concept of precedent in Indian legal system.",
+    "ground_truth": "Under Article 141 of the Indian Constitution, the law declared by the Supreme Court is binding on all courts within the territory of India. The doctrine of stare decisis means courts follow earlier judicial decisions when the same points arise again. High Court decisions are binding on subordinate courts within their jurisdiction. The Supreme Court can overrule its own decisions.",
+    "expected_sections": ["141"],
+    "expected_acts": ["Constitution"],
+    "category": "constitutional_law"
+  },
+  {
+    "query": "What are the essential elements of crime under Indian Penal Code?",
+    "ground_truth": "The essential elements of crime (actus reus and mens rea) are: (1) There must be an act or omission (Section 33 IPC), (2) It must be wrongful (Section 39 IPC), (3) It must be prohibited by law, (4) There must be a guilty mind (mens rea), (5) The act must cause harm or injury. Sections 33-52 define key terms.",
+    "expected_sections": ["33", "39"],
+    "expected_acts": ["IPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What is the punishment for robbery under IPC?",
+    "ground_truth": "Under IPC Section 392, whoever commits robbery shall be punished with rigorous imprisonment for a term which may extend to ten years, and shall also be liable to fine; and, if such robbery be committed on the highway between sunrise and sunset, the punishment may be extended to fourteen years. Under BNS, robbery is covered in Section 309.",
+    "expected_sections": ["392", "309"],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What are the fundamental rights guaranteed under Part III of the Constitution?",
+    "ground_truth": "Part III of the Indian Constitution guarantees six fundamental rights: (1) Right to Equality (Articles 14-18), (2) Right to Freedom (Articles 19-22), (3) Right against Exploitation (Articles 23-24), (5) Right to Freedom of Religion (Articles 25-28), (6) Cultural and Educational Rights (Articles 29-30), (6) Right to Constitutional Remedies (Article 32).",
+    "expected_sections": ["14", "19", "23", "25", "29", "32"],
+    "expected_acts": ["Constitution"],
+    "category": "constitutional_law"
+  },
+  {
+    "query": "IPC Section 376D corresponds to which BNS section?",
+    "ground_truth": "IPC Section 376D (Gang rape) corresponds to BNS Section 70(2).",
+    "expected_sections": ["376D", "70"],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "cross_reference"
+  },
+  {
+    "query": "What is the concept of estoppel under Indian Evidence Act?",
+    "ground_truth": "Section 115 of the Indian Evidence Act (now Section 127 BSA) defines estoppel: When one person has, by his declaration, act or omission, intentionally caused or permitted another person to believe a thing to be true and to act upon such belief, neither he nor his representative shall be allowed, in any suit or proceeding between himself and such person or his representative, to deny the truth of that thing.",
+    "expected_sections": ["115", "127"],
+    "expected_acts": ["Indian Evidence Act", "BSA"],
+    "category": "evidence_law"
+  },
+  {
+    "query": "What are the ingredients of Section 304B IPC (Dowry death)?",
+    "ground_truth": "Section 304B IPC (now Section 80 BNS) deals with dowry death. The ingredients are: (1) The death of a woman must have been caused by burns or bodily injury, (2) Death must have occurred within seven years of marriage, (3) She was subjected to cruelty or harassment by her husband or his relatives, (4) Such cruelty or harassment was in connection with demand for dowry. It is punishable with imprisonment not less than seven years but which may extend to life.",
+    "expected_sections": ["304B", "80"],
+    "expected_acts": ["IPC", "BNS"],
+    "category": "legal_research"
+  },
+  {
+    "query": "Explain the right to privacy under Indian Constitution.",
+    "ground_truth": "The Supreme Court in Justice K.S. Puttaswamy v. Union of India (2017) recognized the right to privacy as a fundamental right under Article 21 of the Constitution. It protects: (1) Informational privacy, (2) Bodily privacy, (3) Territorial privacy, (4) Decisional privacy. The state can impose reasonable restrictions based on legitimate state interests.",
+    "expected_sections": ["21"],
+    "expected_acts": ["Constitution"],
+    "category": "constitutional_law"
+  },
+  {
+    "query": "What is the punishment for criminal conspiracy under IPC?",
+    "ground_truth": "Under Section 120A IPC, criminal conspiracy is an agreement between two or more persons to do an illegal act. Under Section 120B, the punishment is imprisonment up to six months (if no other punishment is prescribed) or the punishment provided for the criminal object. For conspiracies to commit serious offences like murder or waging war, the punishment is imprisonment up to ten years.",
+    "expected_sections": ["120A", "120B"],
+    "expected_acts": ["IPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What is the difference between Section 300 IPC (Murder) and Section 304 IPC (Culpable Homicide not amounting to murder)?",
+    "ground_truth": "Section 300 IPC defines murder with four conditions. Section 304 IPC covers culpable homicide not amounting to murder - when the act is done with the intention of causing death, or with the intention of causing such bodily injury as is likely to cause death, but does not fall under any of the four clauses of Section 300. Punishment under Section 304 is life imprisonment or imprisonment up to ten years plus fine, while Section 302 prescribes death or life imprisonment.",
+    "expected_sections": ["300", "302", "304"],
+    "expected_acts": ["IPC"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What are the provisions related to anticipatory bail under CrPC?",
+    "ground_truth": "Section 438 CrPC (now Section 482 BNSS) provides for anticipatory bail. When any person has reason to believe that he may be arrested on accusation of having committed a non-bailable offence, he may apply to the High Court or the Court of Session for a direction that in the event of his arrest, he shall be released on bail. The court may include conditions like surrendering passport, not leaving jurisdiction, and reporting to police.",
+    "expected_sections": ["438", "482"],
+    "expected_acts": ["CrPC", "BNSS"],
+    "category": "legal_research"
+  },
+  {
+    "query": "What is the role of the Attorney General of India under the Constitution?",
+    "ground_truth": "Under Article 76 of the Indian Constitution, the Attorney General of India is appointed by the President and is the highest law officer of the country. He has the right of audience in all courts in India, and performs duties assigned by the President. He advises the government on legal matters and discharges functions conferred on him by the Constitution or any other law.",
+    "expected_sections": ["76"],
+    "expected_acts": ["Constitution"],
+    "category": "constitutional_law"
+  }
+]
