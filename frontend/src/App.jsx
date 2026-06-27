@@ -1,4 +1,4 @@
-﻿import { useState, useCallback, useRef, useEffect } from "react";
+﻿import { useState, useCallback, useRef, useEffect, lazy, Suspense } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import QueryInput from "./components/QueryInput";
@@ -6,10 +6,11 @@ import ResponseDisplay from "./components/ResponseDisplay";
 import DocumentPanel from "./components/DocumentPanel";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ProcessingIndicator from "./components/ProcessingIndicator";
-import ComparisonView from "./components/ComparisonView";
-import { ResponseSkeleton, SearchSkeleton } from "./components/Skeleton";
+import { ResponseSkeleton, SearchSkeleton, CompareSkeleton } from "./components/Skeleton";
 import { searchHector, compareHector, getStatusHector } from "./api/hectorApi";
 import { useLanguage } from "./i18n/LanguageContext";
+
+const ComparisonView = lazy(() => import("./components/ComparisonView"));
 
 const HISTORY_STORAGE_KEY = "hector.searchHistory";
 const BOOKMARKS_STORAGE_KEY = "hector.bookmarks";
@@ -330,12 +331,14 @@ export default function App() {
 
               {/* Compare Mode */}
               {appState === "idle" && compareMode && (
-                <ComparisonView
-                  onCompare={handleCompare}
-                  compareData={compareData}
-                  compareLoading={compareLoading}
-                  compareError={compareError}
-                />
+                <Suspense fallback={<CompareSkeleton />}>
+                  <ComparisonView
+                    onCompare={handleCompare}
+                    compareData={compareData}
+                    compareLoading={compareLoading}
+                    compareError={compareError}
+                  />
+                </Suspense>
               )}
 
               {/* Processing State */}
