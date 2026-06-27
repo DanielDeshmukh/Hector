@@ -1,17 +1,21 @@
-﻿import { useState, useCallback, useRef, useEffect } from "react";
+﻿import { useState, useCallback, useRef, useEffect, lazy, Suspense } from "react";
+import { AlertTriangle, RefreshCw } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import QueryInput from "./components/QueryInput";
 import ResponseDisplay from "./components/ResponseDisplay";
 import DocumentPanel from "./components/DocumentPanel";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ProcessingIndicator from "./components/ProcessingIndicator";
-import ComparisonView from "./components/ComparisonView";
-import { ResponseSkeleton } from "./components/Skeleton";
+import { ResponseSkeleton, SearchSkeleton, CompareSkeleton } from "./components/Skeleton";
 import { searchHector, compareHector, getStatusHector } from "./api/hectorApi";
 import { useLanguage } from "./i18n/LanguageContext";
 
+const ComparisonView = lazy(() => import("./components/ComparisonView"));
+
 const HISTORY_STORAGE_KEY = "hector.searchHistory";
 const BOOKMARKS_STORAGE_KEY = "hector.bookmarks";
+const SIDEBAR_STATE_KEY = "hector.sidebarCollapsed";
+const COMPARE_MODE_KEY = "hector.compareMode";
 const MAX_HISTORY_ITEMS = 8;
 const MAX_BOOKMARK_ITEMS = 20;
 const TOP_SEARCH_QUERIES = [
@@ -37,6 +41,22 @@ function loadBookmarks() {
   }
 }
 
+function loadSidebarState() {
+  try {
+    return window.localStorage.getItem(SIDEBAR_STATE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function loadCompareMode() {
+  try {
+    return window.localStorage.getItem(COMPARE_MODE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
 function normalizeHistoryDomain(domain) {
   if (domain === "LEGAL_RESEARCH") return "Legal Research";
   return domain || "Search";
@@ -58,7 +78,7 @@ function buildQuerySuggestions(history, response) {
 
 export default function App() {
   const { lang, toggleLang, t } = useLanguage();
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(loadSidebarState);
   const [appState, setAppState] = useState("idle");
   const [currentResponse, setCurrentResponse] = useState(null);
   const [activeSourceId, setActiveSourceId] = useState(null);
@@ -69,7 +89,7 @@ export default function App() {
   const [searchHistory, setSearchHistory] = useState(loadSearchHistory);
   const [bookmarks, setBookmarks] = useState(loadBookmarks);
   const [systemStatus, setSystemStatus] = useState(null);
-  const [compareMode, setCompareMode] = useState(false);
+  const [compareMode, setCompareMode] = useState(loadCompareMode);
   const [compareData, setCompareData] = useState(null);
   const [compareLoading, setCompareLoading] = useState(false);
   const [compareError, setCompareError] = useState("");
@@ -142,6 +162,14 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify(bookmarks));
   }, [bookmarks]);
+
+  useEffect(() => {
+    window.localStorage.setItem(SIDEBAR_STATE_KEY, String(sidebarCollapsed));
+  }, [sidebarCollapsed]);
+
+  useEffect(() => {
+    window.localStorage.setItem(COMPARE_MODE_KEY, String(compareMode));
+  }, [compareMode]);
 
   const handleToggleBookmark = useCallback(
     (source) => {
@@ -305,8 +333,22 @@ export default function App() {
               {appState === "idle" && !compareMode && (
                 <>
                   {error && (
-                    <div className="mb-4 rounded-lg border border-error/25 bg-error/10 px-4 py-3 text-[13px] leading-relaxed text-red-200">
-                      {error}
+                    <div className="mb-4 rounded-lg border border-error/25 bg-error/10 px-4 py-3 animate-fade-in">
+                      <div className="flex items-start gap-3">
+                        <AlertTriangle size={16} className="mt-0.5 shrink-0 text-error" />
+                        <div className="flex-1">
+                          <p className="text-[13px] leading-relaxed text-red-200">
+                            {error}
+                          </p>
+                          <button
+                            onClick={() => submittedQuery && handleSubmit(submittedQuery)}
+                            className="mt-2 flex items-center gap-1.5 text-[12px] font-medium text-gold transition-colors hover:text-gold-light"
+                          >
+                            <RefreshCw size={12} />
+                            Retry query
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   )}
                   <WelcomeScreen />
@@ -315,12 +357,14 @@ export default function App() {
 
               {/* Compare Mode */}
               {appState === "idle" && compareMode && (
-                <ComparisonView
-                  onCompare={handleCompare}
-                  compareData={compareData}
-                  compareLoading={compareLoading}
-                  compareError={compareError}
-                />
+                <Suspense fallback={<CompareSkeleton />}>
+                  <ComparisonView
+                    onCompare={handleCompare}
+                    compareData={compareData}
+                    compareLoading={compareLoading}
+                    compareError={compareError}
+                  />
+                </Suspense>
               )}
 
               {/* Processing State */}
@@ -339,7 +383,7 @@ export default function App() {
                   </div>
                   <ProcessingIndicator currentStage={processingStage} />
                   <div className="mt-6 opacity-40">
-                    <ResponseSkeleton />
+                    <SearchSkeleton />
                   </div>
                 </div>
               )}
