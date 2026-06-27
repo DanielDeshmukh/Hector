@@ -555,7 +555,7 @@ class StrictCitationGenerator:
                 ],
                 temperature=0,
                 max_tokens=max_tokens,
-                max_attempts=2,
+                max_attempts=3,
                 operation_name="groq_generation",
             )
             response = chat.choices[0].message.content
