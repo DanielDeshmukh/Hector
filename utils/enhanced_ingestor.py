@@ -302,6 +302,52 @@ class EnhancedHectorIngestor:
             return ""
         return pytesseract.image_to_string(image, lang="eng").strip()
 
+    def _nvidia_ocr_fallback(self, file_path: str, page_number: int) -> str:
+        """Use NVIDIA Nemotron OCR API as a final fallback for scanned pages.
+
+        Renders the page to a PNG image via pdf2image, then sends it to the
+        NVIDIA Nemotron OCR endpoint. Requires NVIDIA_API_KEY env var.
+        Falls back gracefully if the key is missing or the API call fails.
+        """
+        api_key = os.getenv("NVIDIA_API_KEY")
+        if not api_key:
+            return ""
+
+        try:
+            page_images = convert_from_path(
+                file_path,
+                dpi=PDF_RENDER_DPI,
+                first_page=page_number,
+                last_page=page_number,
+                poppler_path=POPPLER_PATH,
+            )
+            if not page_images:
+                return ""
+
+            import io, base64
+            buf = io.BytesIO()
+            page_images[0].save(buf, format="PNG")
+            image_b64 = base64.b64encode(buf.getvalue()).decode()
+
+            import requests
+            resp = requests.post(
+                "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                },
+                json={"image": f"data:image/png;base64,{image_b64}"},
+                timeout=60,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            return data.get("markdown", data.get("text", "")).strip()
+        except Exception as e:
+            if self.verbose:
+                logger.info(f"  NVIDIA OCR fallback failed for page {page_number}: {e}")
+            return ""
+
     def build_chunk_payloads(
         self, text: str, filename: str, page_number: int, page_hash: str
     ) -> tuple[list[str], list[dict], list[str]]:
@@ -447,6 +493,10 @@ class EnhancedHectorIngestor:
                     text = self._run_with_timeout(ocr_page, timeout=60)
                 except (TimeoutError, Exception):
                     pass
+
+            # Fall back to NVIDIA Nemotron OCR API if local OCR failed
+            if not text or len(text.strip()) < 20:
+                text = self._nvidia_ocr_fallback(file_path, pg_num)
 
             if not text or len(text.strip()) < 20:
                 if self.verbose:
