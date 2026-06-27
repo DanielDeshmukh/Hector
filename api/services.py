@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import json
+import logging
 import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING
+
+from utils.retry import retry
 
 from .schemas import (
     CompareRequest,
@@ -22,6 +25,8 @@ if TYPE_CHECKING:
     from core.orchestrator import HectorOrchestrator
     from core.router import HectorRouter
     from data.hybrid_retriever import HectorHybridRetriever
+
+logger = logging.getLogger(__name__)
 
 
 class HectorApiService:
@@ -56,10 +61,14 @@ class HectorApiService:
 
         total_needed = max(request.page * request.page_size, request.page_size)
         retrieval_window = max(25, total_needed)
-        results = self.retriever.search(
+        results = retry(
+            self.retriever.search,
             normalized_query,
             top_k=retrieval_window,
             candidate_pool=max(40, retrieval_window * 2),
+            max_attempts=3,
+            retryable_exceptions=(Exception,),
+            operation_name="chromadb_search",
         )
         total_results = len(results)
         start = (request.page - 1) * request.page_size
@@ -223,15 +232,25 @@ class HectorApiService:
                     break
 
         requested_query = f"Section {request.section} {request.act}"
-        requested_results = self.retriever.search(
-            requested_query, top_k=request.page_size
+        requested_results = retry(
+            self.retriever.search,
+            requested_query,
+            top_k=request.page_size,
+            max_attempts=3,
+            retryable_exceptions=(Exception,),
+            operation_name="chromadb_compare_requested",
         )
 
         counterpart_results = []
         if counterpart_act and counterpart_section:
             counterpart_query = f"Section {counterpart_section} {counterpart_act}"
-            counterpart_results = self.retriever.search(
-                counterpart_query, top_k=request.page_size
+            counterpart_results = retry(
+                self.retriever.search,
+                counterpart_query,
+                top_k=request.page_size,
+                max_attempts=3,
+                retryable_exceptions=(Exception,),
+                operation_name="chromadb_compare_counterpart",
             )
 
         return CompareResponse(
