@@ -310,6 +310,14 @@ def metrics_endpoint():
     """Prometheus-compatible metrics endpoint."""
     from fastapi.responses import PlainTextResponse
 
+    # Expose cache metrics as Prometheus gauges
+    cache_metrics = cache.get_metrics()
+    metrics.set("cache_size", cache_metrics["size"])
+    metrics.set("cache_hits", cache_metrics["hits"])
+    metrics.set("cache_misses", cache_metrics["misses"])
+    metrics.set("cache_evictions", cache_metrics["evictions"])
+    metrics.set("cache_hit_rate_percent", cache_metrics["hit_rate_percent"])
+
     return PlainTextResponse(
         metrics.render(), media_type="text/plain; version=0.0.4; charset=utf-8"
     )
