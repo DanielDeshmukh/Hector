@@ -9,6 +9,7 @@ setup(
     install_requires=[
         "chromadb>=0.4.0",
         "fastapi>=0.100.0",
+        "pypdf>=3.17.0",
         "requests>=2.31.0",
         "sentence-transformers>=2.2.0",
         "typer>=0.12.0",
