@@ -162,6 +162,51 @@ class EnhancedHectorIngestor:
         console.print(f"[yellow]Cooldown: {reason} ({minutes} min)...[/yellow]")
         time.sleep(minutes * 60)
 
+    def validate_pdf(self, file_path: str, filename: str) -> tuple[bool, str]:
+        """
+        Validate PDF file before processing.
+
+        Checks:
+        - File exists and is non-empty
+        - File header starts with %PDF
+        - File is not encrypted
+        - Page count is reasonable (> 0)
+
+        Returns:
+            (is_valid, error_message)
+        """
+        # Check file exists and has content
+        if not os.path.exists(file_path):
+            return False, f"File not found: {file_path}"
+
+        file_size = os.path.getsize(file_path)
+        if file_size == 0:
+            return False, f"File is empty: {filename}"
+
+        if file_size < 100:
+            return False, f"File too small ({file_size} bytes), likely corrupted: {filename}"
+
+        # Check PDF header (first 5 bytes should be %PDF)
+        try:
+            with open(file_path, "rb") as f:
+                header = f.read(5)
+            if header[:4] != b"%PDF":
+                return False, f"Invalid PDF header (got {header!r}): {filename}"
+        except (OSError, IOError) as e:
+            return False, f"Cannot read file header: {e}"
+
+        # Try to open with pypdf and check for encryption / page count
+        try:
+            reader = PdfReader(file_path)
+            if reader.is_encrypted:
+                return False, f"PDF is encrypted (requires password): {filename}"
+            if len(reader.pages) == 0:
+                return False, f"PDF has 0 pages: {filename}"
+        except Exception as e:
+            return False, f"Cannot open PDF with pypdf: {e}"
+
+        return True, ""
+
     def tokenize_text(self, text: str) -> list[str]:
         """Simple whitespace tokenization."""
         return text.split()
@@ -390,6 +435,13 @@ class EnhancedHectorIngestor:
             console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
             logger.info(f"Skipping {filename} (already ingested)")
             return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
+
+        # Validate PDF before processing
+        is_valid, error_msg = self.validate_pdf(file_path, filename)
+        if not is_valid:
+            console.print(f"  [red]Skipping {filename}: {error_msg}[/red]")
+            logger.warning(f"Skipping {filename}: {error_msg}")
+            return {"filename": filename, "pages": 0, "chunks": 0, "status": "invalid_pdf", "error": error_msg}
 
         book_start = time.time()
         self._current_book_index += 1
