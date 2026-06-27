@@ -227,6 +227,14 @@ __marimo__/
 # Project planning documents
 /completion-roadmap.md
 
+# HECTOR logs directory
+/hector_logs/
+/.hector_logs/
+
+# Ingestion logs
+*.log
+ingest.log
+
 # --- OS-specific files ---
 # Windows
 Thumbs.db
