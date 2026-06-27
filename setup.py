@@ -18,6 +18,15 @@ setup(
         "rich>=13.0.0",
         "uvicorn>=0.23.0",
     ],
+    extras_require={
+        "dev": [
+            "pytest>=8.3.0",
+            "pytest-asyncio>=0.25.0",
+            "pytest-timeout>=2.3.0",
+            "httpx>=0.28.0",
+            "ruff>=0.8.0",
+        ],
+    },
     entry_points={
         "console_scripts": [
             "hector=main:main",
