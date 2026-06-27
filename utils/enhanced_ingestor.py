@@ -302,6 +302,52 @@ class EnhancedHectorIngestor:
             return ""
         return pytesseract.image_to_string(image, lang="eng").strip()
 
+    def _nvidia_ocr_fallback(self, file_path: str, page_number: int) -> str:
+        """Use NVIDIA Nemotron OCR API as a final fallback for scanned pages.
+
+        Renders the page to a PNG image via pdf2image, then sends it to the
+        NVIDIA Nemotron OCR endpoint. Requires NVIDIA_API_KEY env var.
+        Falls back gracefully if the key is missing or the API call fails.
+        """
+        api_key = os.getenv("NVIDIA_API_KEY")
+        if not api_key:
+            return ""
+
+        try:
+            page_images = convert_from_path(
+                file_path,
+                dpi=PDF_RENDER_DPI,
+                first_page=page_number,
+                last_page=page_number,
+                poppler_path=POPPLER_PATH,
+            )
+            if not page_images:
+                return ""
+
+            import io, base64
+            buf = io.BytesIO()
+            page_images[0].save(buf, format="PNG")
+            image_b64 = base64.b64encode(buf.getvalue()).decode()
+
+            import requests
+            resp = requests.post(
+                "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                },
+                json={"image": f"data:image/png;base64,{image_b64}"},
+                timeout=60,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            return data.get("markdown", data.get("text", "")).strip()
+        except Exception as e:
+            if self.verbose:
+                logger.info(f"  NVIDIA OCR fallback failed for page {page_number}: {e}")
+            return ""
+
     def build_chunk_payloads(
         self, text: str, filename: str, page_number: int, page_hash: str
     ) -> tuple[list[str], list[dict], list[str]]:
@@ -448,6 +494,10 @@ class EnhancedHectorIngestor:
                 except (TimeoutError, Exception):
                     pass
 
+            # Fall back to NVIDIA Nemotron OCR API if local OCR failed
+            if not text or len(text.strip()) < 20:
+                text = self._nvidia_ocr_fallback(file_path, pg_num)
+
             if not text or len(text.strip()) < 20:
                 if self.verbose:
                     logger.info(f"  Page {pg_num}: skipped (empty/short text)")
@@ -494,6 +544,86 @@ class EnhancedHectorIngestor:
             return f"{minutes}m {secs}s"
         else:
             return f"{secs}s"
+
+    def process_txt_book(self, filename: str, file_path: str) -> dict[str, Any]:
+        """Process a pre-OCR'd text file as a single book.
+
+        Used for scanned PDFs that were OCR'd externally (e.g., via
+        scripts/ocr_scanned_pdfs.py) and saved as .txt alongside the PDF.
+        The .txt file is treated as a single continuous page.
+        """
+        if not self.reindex_mode and filename in self._completed_books:
+            console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
+            logger.info(f"Skipping {filename} (already ingested)")
+            return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
+
+        book_start = time.time()
+        self._current_book_index += 1
+
+        console.print(
+            f"\n[bold cyan]Processing (OCR text):[/bold cyan] {filename} "
+            f"[dim](book {self._current_book_index}/{self._total_books})[/dim]"
+        )
+        logger.info(
+            f"Book {self._current_book_index}/{self._total_books}: "
+            f"{filename} (OCR text file)"
+        )
+
+        try:
+            with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+                text = f.read()
+        except Exception as e:
+            console.print(f"  [red]Error reading {filename}: {e}[/red]")
+            logger.error(f"Error reading {filename}: {e}")
+            return {"filename": filename, "pages": 0, "chunks": 0, "status": "error", "error": str(e)}
+
+        if not text or len(text.strip()) < 20:
+            console.print(f"  [red]Skipping {filename}: empty or too short[/red]")
+            return {"filename": filename, "pages": 0, "chunks": 0, "status": "empty"}
+
+        # Treat entire text as a single page
+        page_hash = self.get_page_hash(filename, 1)
+
+        if not self.reindex_mode:
+            existing = self.collection.get(where={"page_hash": page_hash})
+            if existing["ids"]:
+                console.print(f"  [dim]Skipping {filename} (already indexed)[/dim]")
+                return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
+
+        documents, metadatas, ids = self.build_chunk_payloads(
+            text=text,
+            filename=filename.replace(".txt", ".pdf"),
+            page_number=1,
+            page_hash=page_hash,
+        )
+
+        chunks_created = 0
+        if documents:
+            self.collection.add(documents=documents, metadatas=metadatas, ids=ids)
+            self.stats["pages_processed"] += 1
+            self.stats["chunks_created"] += len(documents)
+            chunks_created = len(documents)
+
+        book_elapsed = time.time() - book_start
+        console.print(
+            f"  [green]Done:[/green] 1 page, "
+            f"{chunks_created} chunks in {self._format_eta(book_elapsed)}"
+        )
+        logger.info(
+            f"Book complete (OCR): {filename} — {chunks_created} chunks, "
+            f"{self._format_eta(book_elapsed)}"
+        )
+
+        if not self.reindex_mode:
+            self._mark_book_complete(filename)
+
+        return {
+            "filename": filename,
+            "pages": 1 if chunks_created > 0 else 0,
+            "chunks": chunks_created,
+            "elapsed_seconds": round(book_elapsed, 1),
+            "status": "completed",
+        }
 
     def process_book(self, filename: str, file_path: str) -> dict[str, Any]:
         """Process all pages in a single book."""
@@ -653,10 +783,15 @@ class EnhancedHectorIngestor:
             console.print(f"[red]Error: Books directory not found:[/red] {BOOKS_DIR}")
             return
 
-        files = [f for f in os.listdir(BOOKS_DIR) if f.endswith(".pdf")]
+        pdf_files = sorted(f for f in os.listdir(BOOKS_DIR) if f.endswith(".pdf"))
+        txt_files = sorted(
+            f for f in os.listdir(BOOKS_DIR)
+            if f.endswith(".txt") and f.replace(".txt", ".pdf") not in pdf_files
+        )
+        files = pdf_files + txt_files
 
         if not files:
-            console.print(f"[yellow]No PDF files found in:[/yellow] {BOOKS_DIR}")
+            console.print(f"[yellow]No PDF or TXT files found in:[/yellow] {BOOKS_DIR}")
             return
 
         mode_text = (
@@ -673,7 +808,10 @@ class EnhancedHectorIngestor:
         book_results = []
         for index, filename in enumerate(files):
             file_path = os.path.join(BOOKS_DIR, filename)
-            result = self.process_book(filename, file_path)
+            if filename.endswith(".txt"):
+                result = self.process_txt_book(filename, file_path)
+            else:
+                result = self.process_book(filename, file_path)
             book_results.append(result)
 
             # Show overall progress after each book

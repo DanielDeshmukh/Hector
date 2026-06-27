@@ -197,3 +197,127 @@ class TestParserIntegration:
     def test_enricher_initialized(self):
         ingestor = _make_ingestor()
         assert ingestor.enricher is not None
+
+
+class TestProcessTxtBook:
+    """Tests for the OCR .txt file ingestion path."""
+
+    def test_process_txt_book_basic(self, tmp_path):
+        """A non-empty .txt file is chunked and added to ChromaDB."""
+        txt = tmp_path / "Test_Act.txt"
+        txt.write_text("Section 1. Definitions.\n" * 50, encoding="utf-8")
+
+        ingestor = _make_ingestor()
+
+        mock_col = MagicMock()
+        mock_col.get.return_value = {"ids": []}
+        mock_col.add.return_value = None
+        ingestor.collection = mock_col
+        ingestor._completed_books = set()
+
+        result = ingestor.process_txt_book("Test_Act.txt", str(txt))
+
+        assert result["status"] == "completed"
+        assert result["pages"] == 1
+        assert result["chunks"] > 0
+        mock_col.add.assert_called_once()
+
+    def test_process_txt_book_skips_empty(self, tmp_path):
+        """An empty .txt file is reported as empty."""
+        txt = tmp_path / "Empty.txt"
+        txt.write_text("", encoding="utf-8")
+
+        ingestor = _make_ingestor()
+        result = ingestor.process_txt_book("Empty.txt", str(txt))
+
+        assert result["status"] == "empty"
+        assert result["chunks"] == 0
+
+    def test_process_txt_book_skips_short(self, tmp_path):
+        """A .txt file with < 20 chars is reported as empty."""
+        txt = tmp_path / "Short.txt"
+        txt.write_text("Hello", encoding="utf-8")
+
+        ingestor = _make_ingestor()
+        result = ingestor.process_txt_book("Short.txt", str(txt))
+
+        assert result["status"] == "empty"
+
+    def test_process_txt_book_uses_pdf_metadata_name(self, tmp_path):
+        """Chunks created from .txt use .pdf extension in metadata."""
+        txt = tmp_path / "Family_Courts_Act.txt"
+        txt.write_text("Section 1. Application.\n" * 50, encoding="utf-8")
+
+        ingestor = _make_ingestor()
+
+        mock_col = MagicMock()
+        mock_col.get.return_value = {"ids": []}
+        ingestor.collection = mock_col
+        ingestor._completed_books = set()
+
+        ingestor.process_txt_book("Family_Courts_Act.txt", str(txt))
+
+        call_kwargs = mock_col.add.call_args
+        metadatas = call_kwargs[1]["metadatas"]
+        for m in metadatas:
+            assert m["source"] == "Family_Courts_Act.pdf"
+
+    def test_process_txt_book_already_ingested(self, tmp_path):
+        """Skips a .txt book that is in the completed set."""
+        txt = tmp_path / "Already_Done.txt"
+        txt.write_text("Section 1.\n" * 50, encoding="utf-8")
+
+        ingestor = _make_ingestor()
+        ingestor.reindex_mode = False
+        ingestor._completed_books = {"Already_Done.txt"}
+
+        result = ingestor.process_txt_book("Already_Done.txt", str(txt))
+        assert result["status"] == "skipped"
+
+    def test_process_txt_book_chroma_already_has_hash(self, tmp_path):
+        """Skips when ChromaDB already has the page hash."""
+        txt = tmp_path / "Duplicate.txt"
+        txt.write_text("Section 1. Application of Act.\n" * 50, encoding="utf-8")
+
+        ingestor = _make_ingestor()
+        ingestor.reindex_mode = False
+        ingestor._completed_books = set()
+
+        mock_col = MagicMock()
+        mock_col.get.return_value = {"ids": ["existing-id"]}
+        ingestor.collection = mock_col
+
+        result = ingestor.process_txt_book("Duplicate.txt", str(txt))
+        assert result["status"] == "skipped"
+        mock_col.add.assert_not_called()
+
+    def test_process_txt_book_handles_read_error(self, tmp_path):
+        """Reports error when file cannot be read."""
+        ingestor = _make_ingestor()
+        result = ingestor.process_txt_book("Missing.txt", str(tmp_path / "Missing.txt"))
+        assert result["status"] == "error"
+
+
+class TestNvidiaOcrFallback:
+    """Tests for the NVIDIA OCR fallback method."""
+
+    def test_no_api_key_returns_empty(self):
+        """Returns empty string when NVIDIA_API_KEY is not set."""
+        ingestor = _make_ingestor()
+        env = {k: v for k, v in os.environ.items() if k != "NVIDIA_API_KEY"}
+        with patch.dict(os.environ, env, clear=True):
+            result = ingestor._nvidia_ocr_fallback("dummy.pdf", 1)
+            assert result == ""
+
+    def test_exception_caught_returns_empty(self):
+        """Returns empty string when internal error occurs (missing pdf2image)."""
+        ingestor = _make_ingestor()
+        with patch.dict(os.environ, {"NVIDIA_API_KEY": "test-key"}):
+            result = ingestor._nvidia_ocr_fallback("dummy.pdf", 1)
+        assert result == ""
+
+    def test_method_exists(self):
+        """Verify _nvidia_ocr_fallback method is present."""
+        ingestor = _make_ingestor()
+        assert hasattr(ingestor, "_nvidia_ocr_fallback")
+        assert callable(ingestor._nvidia_ocr_fallback)
