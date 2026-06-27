@@ -14,6 +14,8 @@ const ComparisonView = lazy(() => import("./components/ComparisonView"));
 
 const HISTORY_STORAGE_KEY = "hector.searchHistory";
 const BOOKMARKS_STORAGE_KEY = "hector.bookmarks";
+const SIDEBAR_STATE_KEY = "hector.sidebarCollapsed";
+const COMPARE_MODE_KEY = "hector.compareMode";
 const MAX_HISTORY_ITEMS = 8;
 const MAX_BOOKMARK_ITEMS = 20;
 const TOP_SEARCH_QUERIES = [
@@ -39,6 +41,22 @@ function loadBookmarks() {
   }
 }
 
+function loadSidebarState() {
+  try {
+    return window.localStorage.getItem(SIDEBAR_STATE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function loadCompareMode() {
+  try {
+    return window.localStorage.getItem(COMPARE_MODE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
 function normalizeHistoryDomain(domain) {
   if (domain === "LEGAL_RESEARCH") return "Legal Research";
   return domain || "Search";
@@ -60,7 +78,7 @@ function buildQuerySuggestions(history, response) {
 
 export default function App() {
   const { lang, toggleLang, t } = useLanguage();
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(loadSidebarState);
   const [appState, setAppState] = useState("idle");
   const [currentResponse, setCurrentResponse] = useState(null);
   const [activeSourceId, setActiveSourceId] = useState(null);
@@ -71,7 +89,7 @@ export default function App() {
   const [searchHistory, setSearchHistory] = useState(loadSearchHistory);
   const [bookmarks, setBookmarks] = useState(loadBookmarks);
   const [systemStatus, setSystemStatus] = useState(null);
-  const [compareMode, setCompareMode] = useState(false);
+  const [compareMode, setCompareMode] = useState(loadCompareMode);
   const [compareData, setCompareData] = useState(null);
   const [compareLoading, setCompareLoading] = useState(false);
   const [compareError, setCompareError] = useState("");
@@ -144,6 +162,14 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify(bookmarks));
   }, [bookmarks]);
+
+  useEffect(() => {
+    window.localStorage.setItem(SIDEBAR_STATE_KEY, String(sidebarCollapsed));
+  }, [sidebarCollapsed]);
+
+  useEffect(() => {
+    window.localStorage.setItem(COMPARE_MODE_KEY, String(compareMode));
+  }, [compareMode]);
 
   const handleToggleBookmark = useCallback(
     (source) => {
