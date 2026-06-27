@@ -95,11 +95,11 @@ function CitationGrounding({ sources, onSourceClick, activeSourceId }) {
   if (!sources?.length) return null;
 
   return (
-    <section>
+    <section aria-label="Citation grounding">
       <h3 className="mb-2 font-serif text-[16px] font-semibold text-gold-light">
         Citation Grounding
       </h3>
-      <div className="grid gap-2">
+      <div className="grid gap-2" role="list" aria-label="Verified sources">
         {sources.map((source) => {
           const isActive = activeSourceId === source.source_id;
           return (
@@ -108,6 +108,9 @@ function CitationGrounding({ sources, onSourceClick, activeSourceId }) {
             type="button"
             disabled={!source.source_id}
             onClick={() => source.source_id && onSourceClick(source.source_id)}
+            aria-label={`Source ${source.number}: ${source.title}, Section ${source.section} ${source.act}, ${Math.round(Number(source.similarity || 0) * 100)}% relevance`}
+            aria-current={isActive ? "true" : undefined}
+            role="listitem"
             className={`rounded-md border px-3 py-2 text-left transition-colors ${
               isActive
                 ? "border-gold/40 bg-gold/5"
@@ -215,11 +218,14 @@ export default function ResponseDisplay({
             description="Try rephrasing your query or using different legal terms."
           />
         ) : (
-        <div className="grid gap-2">
+        <div className="grid gap-2" role="list" aria-label="Source documents">
           {response.sources.map((source, index) => (
             <button
               key={source.id}
               onClick={() => onSourceClick(source.id)}
+              aria-label={`Source ${index + 1}: ${source.bookTitle}, ${source.section}, ${Math.round(source.relevanceScore * 100)}% match`}
+              aria-current={activeSourceId === source.id ? "true" : undefined}
+              role="listitem"
               className={`group flex items-start gap-3 rounded-lg border p-3.5 text-left transition-all ${
                 activeSourceId === source.id
                   ? "border-gold/40 bg-gold/5"
