@@ -217,12 +217,66 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-.env
-#ignore the local vector database, which may contain sensitive data and can be regenerated
-#ignore the local book data, which may contain sensitive data and can be regenerated
-/data/Books
-#ignore vector db files
+# --- Project-specific: HECTOR ---
+# Local vector database (regenerable, may contain sensitive data)
 /hector_db
 
-#completion roadmap (project-specific planning)
+# Legal PDF corpus (large binaries, regenerable)
+/data/Books
+
+# Project planning documents
 /completion-roadmap.md
+
+# HECTOR logs directory
+/hector_logs/
+/.hector_logs/
+
+# Ingestion logs
+*.log
+ingest.log
+
+# --- OS-specific files ---
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# --- IDE / Editor ---
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code (uncomment to ignore entire folder)
+# .vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# --- Logs and temp files ---
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Node.js (frontend) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# --- Docker ---
+.dockerignore
