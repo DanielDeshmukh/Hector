@@ -264,6 +264,22 @@ docker compose --profile full up -d
 
 ---
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, branch workflow, and PR guidelines.
+
+---
+
+## Legal Disclaimer
+
+HECTOR is provided for **informational and educational purposes only**. It is not a substitute for professional legal advice. The IPC-to-BNS mappings, section references, and generated responses are derived from publicly available legal texts and may contain inaccuracies.
+
+**Always consult a qualified legal professional before making legal decisions.**
+
+The authors and contributors of HECTOR assume no liability for any decisions made or actions taken based on the information provided by this software.
+
+---
+
 ## License
 
-See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
