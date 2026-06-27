@@ -1,4 +1,5 @@
 ﻿import { useState, useCallback, useRef, useEffect } from "react";
+import { AlertTriangle, RefreshCw } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import QueryInput from "./components/QueryInput";
 import ResponseDisplay from "./components/ResponseDisplay";
@@ -305,8 +306,22 @@ export default function App() {
               {appState === "idle" && !compareMode && (
                 <>
                   {error && (
-                    <div className="mb-4 rounded-lg border border-error/25 bg-error/10 px-4 py-3 text-[13px] leading-relaxed text-red-200">
-                      {error}
+                    <div className="mb-4 rounded-lg border border-error/25 bg-error/10 px-4 py-3 animate-fade-in">
+                      <div className="flex items-start gap-3">
+                        <AlertTriangle size={16} className="mt-0.5 shrink-0 text-error" />
+                        <div className="flex-1">
+                          <p className="text-[13px] leading-relaxed text-red-200">
+                            {error}
+                          </p>
+                          <button
+                            onClick={() => submittedQuery && handleSubmit(submittedQuery)}
+                            className="mt-2 flex items-center gap-1.5 text-[12px] font-medium text-gold transition-colors hover:text-gold-light"
+                          >
+                            <RefreshCw size={12} />
+                            Retry query
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   )}
                   <WelcomeScreen />
