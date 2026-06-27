@@ -226,3 +226,49 @@ __marimo__/
 
 # Project planning documents
 /completion-roadmap.md
+
+# --- OS-specific files ---
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# --- IDE / Editor ---
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code (uncomment to ignore entire folder)
+# .vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# --- Logs and temp files ---
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Node.js (frontend) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# --- Docker ---
+.dockerignore
