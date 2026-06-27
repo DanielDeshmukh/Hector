@@ -3,6 +3,7 @@ import logging
 import os
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from datetime import datetime
 from typing import Any
 
@@ -43,6 +44,7 @@ SESSION_AIR_BREAK_PAGES = 400
 SESSION_AIR_BREAK_MINUTES = 5
 PDF_RENDER_DPI = 300
 MIN_CHUNK_CHARS = 50
+PAGE_EXTRACTION_TIMEOUT = 30  # seconds per page
 
 if HAS_OCR:
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
@@ -207,6 +209,25 @@ class EnhancedHectorIngestor:
 
         return True, ""
 
+    def _run_with_timeout(self, func, *args, timeout: int = PAGE_EXTRACTION_TIMEOUT, **kwargs):
+        """
+        Run a function with a timeout using ThreadPoolExecutor.
+
+        Args:
+            func: Function to execute
+            timeout: Maximum seconds to wait
+            *args, **kwargs: Arguments to pass to func
+
+        Returns:
+            Result of func, or raises TimeoutError
+        """
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(func, *args, **kwargs)
+            try:
+                return future.result(timeout=timeout)
+            except FuturesTimeoutError:
+                raise TimeoutError(f"Function {func.__name__} timed out after {timeout}s")
+
     def tokenize_text(self, text: str) -> list[str]:
         """Simple whitespace tokenization."""
         return text.split()
@@ -355,30 +376,37 @@ class EnhancedHectorIngestor:
                 return {"status": "skipped", "reason": "duplicate", "chunks": 0}
 
         try:
-            # Try pypdf text extraction first
+            # Try pypdf text extraction first (with timeout)
             text = ""
             try:
-                reader = PdfReader(file_path)
-                if pg_num <= len(reader.pages):
-                    page = reader.pages[pg_num - 1]
-                    text = page.extract_text() or ""
-                    text = text.strip()
-            except Exception:
+                def extract_page_text():
+                    reader = PdfReader(file_path)
+                    if pg_num <= len(reader.pages):
+                        page = reader.pages[pg_num - 1]
+                        return (page.extract_text() or "").strip()
+                    return ""
+
+                text = self._run_with_timeout(extract_page_text)
+            except (TimeoutError, Exception):
                 pass
 
-            # Fall back to OCR for scanned PDFs
+            # Fall back to OCR for scanned PDFs (with timeout)
             if (not text or len(text.strip()) < 20) and HAS_OCR:
                 try:
-                    page_images = convert_from_path(
-                        file_path,
-                        dpi=PDF_RENDER_DPI,
-                        first_page=pg_num,
-                        last_page=pg_num,
-                        poppler_path=POPPLER_PATH,
-                    )
-                    if page_images:
-                        text = self.extract_text_from_image(page_images[0])
-                except Exception:
+                    def ocr_page():
+                        page_images = convert_from_path(
+                            file_path,
+                            dpi=PDF_RENDER_DPI,
+                            first_page=pg_num,
+                            last_page=pg_num,
+                            poppler_path=POPPLER_PATH,
+                        )
+                        if page_images:
+                            return self.extract_text_from_image(page_images[0])
+                        return ""
+
+                    text = self._run_with_timeout(ocr_page, timeout=60)
+                except (TimeoutError, Exception):
                     pass
 
             if not text or len(text.strip()) < 20:
