@@ -1,8 +1,10 @@
 import hashlib
 import logging
 import os
+import re
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from datetime import datetime
 from typing import Any
 
@@ -43,6 +45,7 @@ SESSION_AIR_BREAK_PAGES = 400
 SESSION_AIR_BREAK_MINUTES = 5
 PDF_RENDER_DPI = 300
 MIN_CHUNK_CHARS = 50
+PAGE_EXTRACTION_TIMEOUT = 30  # seconds per page
 
 if HAS_OCR:
     pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
@@ -82,7 +85,7 @@ class EnhancedHectorIngestor:
             "pages_processed": 0,
             "chunks_created": 0,
             "chunks_rejected": 0,
-            "acts_found": set(),
+            "acts_found": [],
             "sections_found": 0,
             "structure_types": {},
         }
@@ -162,9 +165,82 @@ class EnhancedHectorIngestor:
         console.print(f"[yellow]Cooldown: {reason} ({minutes} min)...[/yellow]")
         time.sleep(minutes * 60)
 
+    def validate_pdf(self, file_path: str, filename: str) -> tuple[bool, str]:
+        """
+        Validate PDF file before processing.
+
+        Checks:
+        - File exists and is non-empty
+        - File header starts with %PDF
+        - File is not encrypted
+        - Page count is reasonable (> 0)
+
+        Returns:
+            (is_valid, error_message)
+        """
+        # Check file exists and has content
+        if not os.path.exists(file_path):
+            return False, f"File not found: {file_path}"
+
+        file_size = os.path.getsize(file_path)
+        if file_size == 0:
+            return False, f"File is empty: {filename}"
+
+        if file_size < 100:
+            return False, f"File too small ({file_size} bytes), likely corrupted: {filename}"
+
+        # Check PDF header (first 5 bytes should be %PDF)
+        try:
+            with open(file_path, "rb") as f:
+                header = f.read(5)
+            if header[:4] != b"%PDF":
+                return False, f"Invalid PDF header (got {header!r}): {filename}"
+        except (OSError, IOError) as e:
+            return False, f"Cannot read file header: {e}"
+
+        # Try to open with pypdf and check for encryption / page count
+        try:
+            reader = PdfReader(file_path)
+            if reader.is_encrypted:
+                return False, f"PDF is encrypted (requires password): {filename}"
+            if len(reader.pages) == 0:
+                return False, f"PDF has 0 pages: {filename}"
+        except Exception as e:
+            return False, f"Cannot open PDF with pypdf: {e}"
+
+        return True, ""
+
+    def _run_with_timeout(self, func, *args, timeout: int = PAGE_EXTRACTION_TIMEOUT, **kwargs):
+        """
+        Run a function with a timeout using ThreadPoolExecutor.
+
+        Args:
+            func: Function to execute
+            timeout: Maximum seconds to wait
+            *args, **kwargs: Arguments to pass to func
+
+        Returns:
+            Result of func, or raises TimeoutError
+        """
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(func, *args, **kwargs)
+            try:
+                return future.result(timeout=timeout)
+            except FuturesTimeoutError:
+                raise TimeoutError(f"Function {func.__name__} timed out after {timeout}s")
+
     def tokenize_text(self, text: str) -> list[str]:
         """Simple whitespace tokenization."""
         return text.split()
+
+    # Legal section boundary patterns (used to avoid splitting mid-section)
+    SECTION_BOUNDARY_RE = re.compile(
+        r"(?:^|\n)(?:Section|Sec\.?|s\.)\s*\d{1,4}[A-Z]?\."
+        r"|(?:^|\n)\d{1,4}[A-Z]?\.\s+[A-Z]"
+        r"|(?:^|\n)(?:CHAPTER|Chapter|PART|Part)\s+"
+        r"(?:IV|III|II|I|V|VI|VII|VIII|IX|X|\d+|[A-Z]+)",
+        re.MULTILINE,
+    )
 
     def chunk_text(
         self,
@@ -172,20 +248,49 @@ class EnhancedHectorIngestor:
         chunk_size: int = CHUNK_SIZE_TOKENS,
         overlap: int = CHUNK_OVERLAP_TOKENS,
     ) -> list[str]:
-        """Build overlapping token windows preserving legal context."""
+        """
+        Build overlapping token windows preserving legal context.
+
+        Respects legal section boundaries to avoid splitting mid-section.
+        If a chunk boundary falls inside a section, the split point is
+        moved to the nearest section boundary.
+        """
         words = self.tokenize_text(text)
         if not words:
             return []
+
+        # Find section boundary positions (as word indices)
+        boundary_indices = set()
+        for match in self.SECTION_BOUNDARY_RE.finditer(text):
+            # Convert character position to approximate word index
+            char_pos = match.start()
+            word_idx = len(text[:char_pos].split())
+            if word_idx > 0:
+                boundary_indices.add(word_idx)
 
         chunks = []
         index = 0
         step = max(chunk_size - overlap, 1)
 
         while index < len(words):
-            chunk = " ".join(words[index : index + chunk_size])
+            end_index = min(index + chunk_size, len(words))
+
+            # If we're not at the end, try to find a nearby section boundary
+            if end_index < len(words) and boundary_indices:
+                # Look for the nearest boundary within the last 20% of the chunk
+                search_start = max(index + int(chunk_size * 0.8), index)
+                best_boundary = None
+                for b in sorted(boundary_indices):
+                    if search_start <= b <= end_index:
+                        best_boundary = b
+                        break
+                if best_boundary is not None:
+                    end_index = best_boundary
+
+            chunk = " ".join(words[index:end_index])
             if chunk:
                 chunks.append(chunk)
-            index += step
+            index = end_index
             if index >= len(words):
                 break
 
@@ -217,8 +322,8 @@ class EnhancedHectorIngestor:
         structure = self.parser.parse_document(text, filename)
 
         # Track stats
-        if structure.get("act"):
-            self.stats["acts_found"].add(structure["act"])
+        if structure.get("act") and structure["act"] not in self.stats["acts_found"]:
+            self.stats["acts_found"].append(structure["act"])
         if structure.get("section"):
             self.stats["sections_found"] += 1
         struct_type = structure.get("structure_type", "unknown")
@@ -310,30 +415,37 @@ class EnhancedHectorIngestor:
                 return {"status": "skipped", "reason": "duplicate", "chunks": 0}
 
         try:
-            # Try pypdf text extraction first
+            # Try pypdf text extraction first (with timeout)
             text = ""
             try:
-                reader = PdfReader(file_path)
-                if pg_num <= len(reader.pages):
-                    page = reader.pages[pg_num - 1]
-                    text = page.extract_text() or ""
-                    text = text.strip()
-            except Exception:
+                def extract_page_text():
+                    reader = PdfReader(file_path)
+                    if pg_num <= len(reader.pages):
+                        page = reader.pages[pg_num - 1]
+                        return (page.extract_text() or "").strip()
+                    return ""
+
+                text = self._run_with_timeout(extract_page_text)
+            except (TimeoutError, Exception):
                 pass
 
-            # Fall back to OCR for scanned PDFs
+            # Fall back to OCR for scanned PDFs (with timeout)
             if (not text or len(text.strip()) < 20) and HAS_OCR:
                 try:
-                    page_images = convert_from_path(
-                        file_path,
-                        dpi=PDF_RENDER_DPI,
-                        first_page=pg_num,
-                        last_page=pg_num,
-                        poppler_path=POPPLER_PATH,
-                    )
-                    if page_images:
-                        text = self.extract_text_from_image(page_images[0])
-                except Exception:
+                    def ocr_page():
+                        page_images = convert_from_path(
+                            file_path,
+                            dpi=PDF_RENDER_DPI,
+                            first_page=pg_num,
+                            last_page=pg_num,
+                            poppler_path=POPPLER_PATH,
+                        )
+                        if page_images:
+                            return self.extract_text_from_image(page_images[0])
+                        return ""
+
+                    text = self._run_with_timeout(ocr_page, timeout=60)
+                except (TimeoutError, Exception):
                     pass
 
             if not text or len(text.strip()) < 20:
@@ -390,6 +502,13 @@ class EnhancedHectorIngestor:
             console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
             logger.info(f"Skipping {filename} (already ingested)")
             return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
+
+        # Validate PDF before processing
+        is_valid, error_msg = self.validate_pdf(file_path, filename)
+        if not is_valid:
+            console.print(f"  [red]Skipping {filename}: {error_msg}[/red]")
+            logger.warning(f"Skipping {filename}: {error_msg}")
+            return {"filename": filename, "pages": 0, "chunks": 0, "status": "invalid_pdf", "error": error_msg}
 
         book_start = time.time()
         self._current_book_index += 1
@@ -518,7 +637,7 @@ class EnhancedHectorIngestor:
         table.add_row("Chunks Created", str(self.stats["chunks_created"]))
         table.add_row("Chunks Rejected", str(self.stats["chunks_rejected"]))
         table.add_row("Sections Found", str(self.stats["sections_found"]))
-        table.add_row("Acts Identified", ", ".join(sorted(self.stats["acts_found"])))
+        table.add_row("Acts Identified", ", ".join(sorted(self.stats["acts_found"])) if self.stats["acts_found"] else "None")
 
         if self.stats["structure_types"]:
             struct_row = ", ".join(
@@ -576,6 +695,19 @@ class EnhancedHectorIngestor:
         console.print("\n[bold green]INGESTION COMPLETE[/bold green]")
         console.print(f"[dim]Total time: {self._format_eta(total_elapsed)}[/dim]")
         self.display_stats()
+
+        # Summary of processed books
+        completed = [r for r in book_results if r.get("status") == "completed"]
+        skipped = [r for r in book_results if r.get("status") == "skipped"]
+        invalid = [r for r in book_results if r.get("status") == "invalid_pdf"]
+
+        console.print(f"\n[bold]Book Summary:[/bold]")
+        console.print(f"  [green]Completed:[/green] {len(completed)}")
+        console.print(f"  [dim]Skipped (already indexed):[/dim] {len(skipped)}")
+        if invalid:
+            console.print(f"  [red]Invalid PDFs:[/red] {len(invalid)}")
+            for r in invalid:
+                console.print(f"    - {r['filename']}: {r.get('error', 'unknown')}")
 
         console.print(f"\n[bold]Total records in DB:[/bold] {self.collection.count()}")
         logger.info(
