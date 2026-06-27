@@ -293,7 +293,7 @@ class HectorRouter:
                 response_format={"type": "json_object"},
                 temperature=0,
                 max_tokens=120,
-                max_attempts=2,
+                max_attempts=3,
                 operation_name="groq_routing",
             )
             parsed = json.loads(chat.choices[0].message.content)
