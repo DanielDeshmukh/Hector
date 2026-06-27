@@ -277,6 +277,28 @@ def readyz(svc: HectorApiService = Depends(get_service)):
     except Exception:
         checks["disk"] = {"status": "unknown"}
 
+    # Groq API check
+    try:
+        groq_key = os.getenv("GROQ_API_KEY")
+        if groq_key and hasattr(svc.router, "client") and svc.router.client is not None:
+            svc.router.client.models.list()
+            checks["groq"] = {"status": "ok"}
+        else:
+            checks["groq"] = {"status": "unavailable"}
+    except Exception as exc:
+        checks["groq"] = {"status": "error", "detail": type(exc).__name__}
+
+    # Embedding model check
+    try:
+        if hasattr(svc.retriever, "embedding_fn") and svc.retriever.embedding_fn is not None:
+            checks["embedding_model"] = {"status": "ok"}
+        else:
+            checks["embedding_model"] = {"status": "unavailable"}
+            healthy = False
+    except Exception as exc:
+        checks["embedding_model"] = {"status": "error", "detail": type(exc).__name__}
+        healthy = False
+
     metrics.inc("healthcheck_total")
     return {"status": "ok" if healthy else "degraded", "checks": checks}
 
