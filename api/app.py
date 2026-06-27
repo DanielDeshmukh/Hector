@@ -22,6 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from .cache import TTLCache
+from .log_redaction import install_redaction_filter
 from .logging_config import log_request, log_search, request_id_var, setup_logging
 from .metrics import metrics
 from .rate_limit import InMemoryRateLimiter, RateLimitExceeded
@@ -37,6 +38,7 @@ from .security import auth_manager, require_auth
 from .services import HectorApiService, build_cache_key
 
 setup_logging()
+install_redaction_filter()
 logger = logging.getLogger(__name__)
 
 
@@ -307,6 +309,14 @@ def readyz(svc: HectorApiService = Depends(get_service)):
 def metrics_endpoint():
     """Prometheus-compatible metrics endpoint."""
     from fastapi.responses import PlainTextResponse
+
+    # Expose cache metrics as Prometheus gauges
+    cache_metrics = cache.get_metrics()
+    metrics.set("cache_size", cache_metrics["size"])
+    metrics.set("cache_hits", cache_metrics["hits"])
+    metrics.set("cache_misses", cache_metrics["misses"])
+    metrics.set("cache_evictions", cache_metrics["evictions"])
+    metrics.set("cache_hit_rate_percent", cache_metrics["hit_rate_percent"])
 
     return PlainTextResponse(
         metrics.render(), media_type="text/plain; version=0.0.4; charset=utf-8"
