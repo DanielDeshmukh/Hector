@@ -26,6 +26,12 @@ _PATTERNS = [
     (re.compile(r"(redis://:\w+@)", re.IGNORECASE), r"redis://:[REDACTED]@"),
 ]
 
+# Patterns applied to dict values (standalone secrets without key= prefix)
+_DICT_VALUE_PATTERNS = [
+    (re.compile(r"^(gsk_[\w]{20,})$", re.IGNORECASE), lambda m: m.group(0)[:8] + "[REDACTED]"),
+    (re.compile(r"^([\w\-]{30,})$"), "[REDACTED]"),
+]
+
 
 class RedactionFilter(logging.Filter):
     """Logging filter that redacts sensitive data from log records."""
@@ -43,17 +49,40 @@ class RedactionFilter(logging.Filter):
         if record.args:
             if isinstance(record.args, dict):
                 record.args = {
-                    k: self._redact_value(v) for k, v in record.args.items()
+                    k: self._redact_dict_value(k, v) for k, v in record.args.items()
                 }
             elif isinstance(record.args, tuple):
-                record.args = tuple(
-                    self._redact_value(a) for a in record.args
-                )
+                redacted = []
+                for a in record.args:
+                    if isinstance(a, dict):
+                        redacted.append({k: self._redact_dict_value(k, v) for k, v in a.items()})
+                    else:
+                        redacted.append(self._redact_value(a))
+                record.args = tuple(redacted)
 
         return True
 
     def _redact_value(self, value: Any) -> Any:
         """Redact a single value if it looks like a secret."""
+        if isinstance(value, str):
+            for pattern, replacement in _PATTERNS:
+                value = pattern.sub(replacement, value)
+        elif isinstance(value, dict):
+            value = {k: self._redact_dict_value(k, v) for k, v in value.items()}
+        elif isinstance(value, (list, tuple)):
+            value = type(value)(self._redact_value(v) for v in value)
+        return value
+
+    def _redact_dict_value(self, key: str, value: Any) -> Any:
+        """Redact a dict value. Keys suggesting secrets trigger redaction."""
+        SECRET_KEYS = {"api_key", "apikey", "password", "secret", "jwt_secret",
+                       "secret_key", "access_token", "authorization", "token",
+                       "jwtsecret", "jwt_secret", "x_api_key"}
+        normalized = key.lower().replace("-", "_").replace(" ", "_")
+        if normalized in SECRET_KEYS:
+            if isinstance(value, str) and len(value) > 8:
+                return value[:4] + "[REDACTED]"
+            return "[REDACTED]"
         if isinstance(value, str):
             for pattern, replacement in _PATTERNS:
                 value = pattern.sub(replacement, value)
