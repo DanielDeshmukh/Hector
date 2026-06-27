@@ -82,7 +82,7 @@ class EnhancedHectorIngestor:
             "pages_processed": 0,
             "chunks_created": 0,
             "chunks_rejected": 0,
-            "acts_found": set(),
+            "acts_found": [],
             "sections_found": 0,
             "structure_types": {},
         }
@@ -217,8 +217,8 @@ class EnhancedHectorIngestor:
         structure = self.parser.parse_document(text, filename)
 
         # Track stats
-        if structure.get("act"):
-            self.stats["acts_found"].add(structure["act"])
+        if structure.get("act") and structure["act"] not in self.stats["acts_found"]:
+            self.stats["acts_found"].append(structure["act"])
         if structure.get("section"):
             self.stats["sections_found"] += 1
         struct_type = structure.get("structure_type", "unknown")
@@ -518,7 +518,7 @@ class EnhancedHectorIngestor:
         table.add_row("Chunks Created", str(self.stats["chunks_created"]))
         table.add_row("Chunks Rejected", str(self.stats["chunks_rejected"]))
         table.add_row("Sections Found", str(self.stats["sections_found"]))
-        table.add_row("Acts Identified", ", ".join(sorted(self.stats["acts_found"])))
+        table.add_row("Acts Identified", ", ".join(sorted(self.stats["acts_found"])) if self.stats["acts_found"] else "None")
 
         if self.stats["structure_types"]:
             struct_row = ", ".join(
