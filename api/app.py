@@ -329,6 +329,26 @@ def status_endpoint(
     except Exception:
         payload["disk_space_mb"] = 0
 
+    # Groq API connectivity check
+    try:
+        groq_key = os.getenv("GROQ_API_KEY")
+        if groq_key and hasattr(svc.router, "client") and svc.router.client is not None:
+            svc.router.client.models.list()
+            payload["groq_connected"] = True
+        else:
+            payload["groq_connected"] = False
+    except Exception:
+        payload["groq_connected"] = False
+
+    # Embedding model availability check
+    try:
+        if hasattr(svc.retriever, "embedding_fn") and svc.retriever.embedding_fn is not None:
+            payload["embedding_model_loaded"] = True
+        else:
+            payload["embedding_model_loaded"] = False
+    except Exception:
+        payload["embedding_model_loaded"] = False
+
     # Set status based on health
     if not payload.get("chromadb_connected"):
         payload["status"] = "degraded"
