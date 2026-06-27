@@ -1,0 +1,260 @@
+{
+  "info": {
+    "name": "HECTOR Legal Intelligence API",
+    "description": "REST API collection for HECTOR Legal Intelligence System. Includes authentication, search, compare, and health endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{api_key}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "api_key",
+      "value": "hector-dev-key"
+    },
+    {
+      "key": "jwt_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Status",
+      "item": [
+        {
+          "name": "Liveness Probe",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/healthz",
+            "description": "Returns 200 if the process is running. Use for Kubernetes liveness probes."
+          },
+          "response": []
+        },
+        {
+          "name": "Readiness Probe",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/readyz",
+            "description": "Checks ChromaDB connectivity and disk space. Returns 200 if ready."
+          },
+          "response": []
+        },
+        {
+          "name": "System Status",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/status",
+            "description": "Returns system status including document count, cache metrics, and health checks."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Get JWT Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.access_token) {",
+                  "    pm.collectionVariables.set('jwt_token', jsonData.access_token);",
+                  "    console.log('JWT token saved');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/auth/token?api_key={{api_key}}",
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}",
+                  "description": "Your API key"
+                }
+              ]
+            },
+            "description": "Exchange API key for a JWT token. Token is saved to collection variable 'jwt_token'."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Legal Search",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/search",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Section 302 IPC murder punishment\",\n  \"page\": 1,\n  \"page_size\": 5\n}"
+            },
+            "description": "Search for legal information. Routes to LEGAL_RESEARCH for IPC/BNS queries."
+          },
+          "response": []
+        },
+        {
+          "name": "BNS Search",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/search",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Section 103 BNS punishment for murder\",\n  \"page\": 1,\n  \"page_size\": 5\n}"
+            },
+            "description": "Search specifically for BNS (Bharatiya Nyaya Sanhita) sections."
+          },
+          "response": []
+        },
+        {
+          "name": "General Query",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/search",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"What is the difference between IPC and BNS?\",\n  \"page\": 1,\n  \"page_size\": 5\n}"
+            },
+            "description": "General (non-legal) query. Routes to GENERAL."
+          },
+          "response": []
+        },
+        {
+          "name": "Paginated Search",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/search",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"kidnapping IPC\",\n  \"page\": 2,\n  \"page_size\": 3\n}"
+            },
+            "description": "Search with pagination. Page 2 with 3 results per page."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Compare",
+      "item": [
+        {
+          "name": "IPC to BNS Comparison",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/compare",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"section\": \"302\",\n  \"act\": \"IPC\",\n  \"page_size\": 5\n}"
+            },
+            "description": "Compare IPC Section 302 (Murder) with its BNS equivalent."
+          },
+          "response": []
+        },
+        {
+          "name": "BNS to IPC Comparison",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/compare",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"section\": \"103\",\n  \"act\": \"BNS\",\n  \"page_size\": 5\n}"
+            },
+            "description": "Compare BNS Section 103 with its IPC equivalent."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Route",
+      "item": [
+        {
+          "name": "Route Legal Query",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/route",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Section 376 IPC rape punishment\"\n}"
+            },
+            "description": "Route a query to determine its classification (LEGAL_RESEARCH, GENERAL, etc.)."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
