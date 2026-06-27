@@ -3,13 +3,19 @@
 import os
 import sys
 
-import pytest
-from fastapi.testclient import TestClient
-
 # Ensure project root is on path
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
+
+# Set env vars BEFORE any test module imports (module-level imports depend on these)
+os.environ.setdefault("HECTOR_API_KEY", "test-api-key-for-testing-only")
+os.environ.setdefault("HECTOR_JWT_SECRET", "test-jwt-secret-32-bytes-minimum-value!")
+os.environ.setdefault("HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "test_hector_db"))
+os.environ.setdefault("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books"))
+
+import pytest
+from fastapi.testclient import TestClient
 
 
 @pytest.fixture(scope="session")
@@ -19,17 +25,7 @@ def project_root():
 
 @pytest.fixture(scope="session")
 def test_env():
-    """Set test environment variables before any imports."""
-    os.environ.setdefault("HECTOR_API_KEY", "test-api-key-for-testing-only")
-    os.environ.setdefault(
-        "HECTOR_JWT_SECRET", "test-jwt-secret-32-bytes-minimum-value!"
-    )
-    os.environ.setdefault(
-        "HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "test_hector_db")
-    )
-    os.environ.setdefault(
-        "HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books")
-    )
+    """Ensure test environment variables are set."""
     yield
     # Cleanup test DB
     import shutil
