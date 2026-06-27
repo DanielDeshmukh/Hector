@@ -22,6 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from .cache import TTLCache
+from .log_redaction import install_redaction_filter
 from .logging_config import log_request, log_search, request_id_var, setup_logging
 from .metrics import metrics
 from .rate_limit import InMemoryRateLimiter, RateLimitExceeded
@@ -37,6 +38,7 @@ from .security import auth_manager, require_auth
 from .services import HectorApiService, build_cache_key
 
 setup_logging()
+install_redaction_filter()
 logger = logging.getLogger(__name__)
 
 
