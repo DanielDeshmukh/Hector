@@ -10,6 +10,8 @@ setup(
         "chromadb>=0.4.0",
         "fastapi>=0.100.0",
         "pypdf>=3.17.0",
+        "Pillow>=10.0.0",
+        "pytesseract>=0.3.10",
         "requests>=2.31.0",
         "sentence-transformers>=2.2.0",
         "typer>=0.12.0",
