@@ -1,6 +1,7 @@
 import hashlib
 import logging
 import os
+import re
 import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
@@ -232,26 +233,64 @@ class EnhancedHectorIngestor:
         """Simple whitespace tokenization."""
         return text.split()
 
+    # Legal section boundary patterns (used to avoid splitting mid-section)
+    SECTION_BOUNDARY_RE = re.compile(
+        r"(?:^|\n)(?:Section|Sec\.?|s\.)\s*\d{1,4}[A-Z]?\."
+        r"|(?:^|\n)\d{1,4}[A-Z]?\.\s+[A-Z]"
+        r"|(?:^|\n)(?:CHAPTER|Chapter|PART|Part)\s+"
+        r"(?:IV|III|II|I|V|VI|VII|VIII|IX|X|\d+|[A-Z]+)",
+        re.MULTILINE,
+    )
+
     def chunk_text(
         self,
         text: str,
         chunk_size: int = CHUNK_SIZE_TOKENS,
         overlap: int = CHUNK_OVERLAP_TOKENS,
     ) -> list[str]:
-        """Build overlapping token windows preserving legal context."""
+        """
+        Build overlapping token windows preserving legal context.
+
+        Respects legal section boundaries to avoid splitting mid-section.
+        If a chunk boundary falls inside a section, the split point is
+        moved to the nearest section boundary.
+        """
         words = self.tokenize_text(text)
         if not words:
             return []
+
+        # Find section boundary positions (as word indices)
+        boundary_indices = set()
+        for match in self.SECTION_BOUNDARY_RE.finditer(text):
+            # Convert character position to approximate word index
+            char_pos = match.start()
+            word_idx = len(text[:char_pos].split())
+            if word_idx > 0:
+                boundary_indices.add(word_idx)
 
         chunks = []
         index = 0
         step = max(chunk_size - overlap, 1)
 
         while index < len(words):
-            chunk = " ".join(words[index : index + chunk_size])
+            end_index = min(index + chunk_size, len(words))
+
+            # If we're not at the end, try to find a nearby section boundary
+            if end_index < len(words) and boundary_indices:
+                # Look for the nearest boundary within the last 20% of the chunk
+                search_start = max(index + int(chunk_size * 0.8), index)
+                best_boundary = None
+                for b in sorted(boundary_indices):
+                    if search_start <= b <= end_index:
+                        best_boundary = b
+                        break
+                if best_boundary is not None:
+                    end_index = best_boundary
+
+            chunk = " ".join(words[index:end_index])
             if chunk:
                 chunks.append(chunk)
-            index += step
+            index = end_index
             if index >= len(words):
                 break
 
