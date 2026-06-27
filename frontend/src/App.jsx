@@ -6,7 +6,7 @@ import DocumentPanel from "./components/DocumentPanel";
 import WelcomeScreen from "./components/WelcomeScreen";
 import ProcessingIndicator from "./components/ProcessingIndicator";
 import ComparisonView from "./components/ComparisonView";
-import { ResponseSkeleton } from "./components/Skeleton";
+import { ResponseSkeleton, SearchSkeleton } from "./components/Skeleton";
 import { searchHector, compareHector, getStatusHector } from "./api/hectorApi";
 import { useLanguage } from "./i18n/LanguageContext";
 
@@ -339,7 +339,7 @@ export default function App() {
                   </div>
                   <ProcessingIndicator currentStage={processingStage} />
                   <div className="mt-6 opacity-40">
-                    <ResponseSkeleton />
+                    <SearchSkeleton />
                   </div>
                 </div>
               )}
