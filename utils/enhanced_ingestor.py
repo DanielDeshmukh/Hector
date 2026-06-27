@@ -696,6 +696,19 @@ class EnhancedHectorIngestor:
         console.print(f"[dim]Total time: {self._format_eta(total_elapsed)}[/dim]")
         self.display_stats()
 
+        # Summary of processed books
+        completed = [r for r in book_results if r.get("status") == "completed"]
+        skipped = [r for r in book_results if r.get("status") == "skipped"]
+        invalid = [r for r in book_results if r.get("status") == "invalid_pdf"]
+
+        console.print(f"\n[bold]Book Summary:[/bold]")
+        console.print(f"  [green]Completed:[/green] {len(completed)}")
+        console.print(f"  [dim]Skipped (already indexed):[/dim] {len(skipped)}")
+        if invalid:
+            console.print(f"  [red]Invalid PDFs:[/red] {len(invalid)}")
+            for r in invalid:
+                console.print(f"    - {r['filename']}: {r.get('error', 'unknown')}")
+
         console.print(f"\n[bold]Total records in DB:[/bold] {self.collection.count()}")
         logger.info(
             f"Session complete — total records in DB: {self.collection.count()}, "
