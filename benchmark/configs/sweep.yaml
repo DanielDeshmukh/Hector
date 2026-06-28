@@ -1,0 +1,34 @@
+# HECTOR Sweep Configuration
+# Multi-axis sweep across concurrency × top_k. For bottleneck analysis.
+# Each axis accepts a list — Cartesian product of all combinations.
+
+target:
+  url: "http://localhost:8000"
+  timeout_s: 60
+
+rag:
+  endpoint: "/v1/search"
+  method: "POST"
+  collection_names: ["indian_law_bns"]
+  top_k: [5, 10, 20]
+  response_format: "detailed"
+
+profiling:
+  enabled: true
+  warmup_requests: 3
+  profile_requests: 10
+  capture_stage_timings: true
+
+aiperf:
+  enabled: true
+  concurrency: [1, 5, 10, 20]
+  iterations: 3
+  duration_s: 30
+  sleep_between_points_s: 5
+
+input:
+  file: "benchmark/queries.jsonl"
+
+output:
+  dir: "benchmark/results"
+  experiment_name: "sweep"
