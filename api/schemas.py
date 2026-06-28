@@ -100,6 +100,7 @@ class SearchResponse(BaseModel):
     retrieved_at: datetime
     cached: bool = False
     request_id: str | None = None
+    stage_timings: dict | None = None  # per-stage timing in ms
 
 
 class CompareResponse(BaseModel):

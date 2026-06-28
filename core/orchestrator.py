@@ -1,3 +1,5 @@
+import time
+
 from core.router import HectorRouter
 from data.hybrid_retriever import HectorHybridRetriever
 
@@ -26,28 +28,37 @@ class HectorOrchestrator:
         4. Verify (if enabled)
         """
         # Step 1: Routing & Diagnostic
+        t0 = time.perf_counter()
         intent = self.router.get_route(query)
         if not isinstance(intent, dict):
             intent = self.router._fallback_intent()
         route = intent.get("route", "GENERAL")
+        route_ms = (time.perf_counter() - t0) * 1000
 
         # Step 2: Legal Normalization (only for research)
+        t1 = time.perf_counter()
         normalized_query = query
         mappings = []
         if route == "LEGAL_RESEARCH":
             normalized_query, mappings = self.router.normalize_query(query)
+        normalize_ms = (time.perf_counter() - t1) * 1000
 
         # Step 3: Intelligence Generation
+        t2 = time.perf_counter()
         try:
             response, sources = self._generate_strategic_response(
                 route, normalized_query, intent, mappings
             )
         except Exception as e:
             return f"Strategic failure: {str(e)}"
+        generate_ms = (time.perf_counter() - t2) * 1000
 
         # Step 4: Verification for Legal Research
+        verify_ms = 0
         if route == "LEGAL_RESEARCH" and self.enable_verification and sources:
+            t3 = time.perf_counter()
             verification = self.verifier.verify_response(response, sources)
+            verify_ms = (time.perf_counter() - t3) * 1000
 
             if verification.get("needs_correction"):
                 response = verification.get("verified_response", response)
@@ -60,7 +71,22 @@ class HectorOrchestrator:
                 )
                 response += verification_note
 
+        total_ms = (time.perf_counter() - t0) * 1000
+
+        # Attach timing metadata (used by benchmark and API response)
+        self._last_timing = {
+            "route_ms": round(route_ms, 1),
+            "normalize_ms": round(normalize_ms, 1),
+            "generate_ms": round(generate_ms, 1),
+            "verify_ms": round(verify_ms, 1),
+            "total_ms": round(total_ms, 1),
+        }
+
         return response
+
+    def get_last_timing(self) -> dict:
+        """Return timing from the last execute() call."""
+        return getattr(self, "_last_timing", {})
 
     def _generate_strategic_response(self, route, query, intent, mappings=None):
         """Internal logic to fetch either legal data or general scaling advice."""

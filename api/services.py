@@ -154,6 +154,7 @@ class HectorApiService:
             related_provisions=response_data.get("related_provisions", []),
             response_format=request.format,
             retrieved_at=datetime.now(UTC),
+            stage_timings=getattr(self.orchestrator, "_last_timing", None),
         )
 
     def _assess_confidence(
