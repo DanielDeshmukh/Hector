@@ -26,7 +26,7 @@ class HectorDiagnostic:
         }
 
     def test_groq_reasoning(self):
-        print("\n[1/3] Testing Groq Reasoning (Llama 3.3 70B)...")
+        print("\n[1/4] Testing Groq Reasoning (Llama 3.3 70B)...")
         try:
             chat = self.groq_client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
@@ -45,7 +45,7 @@ class HectorDiagnostic:
             return False
 
     def test_nvidia_ocr(self, image_path="paddleocr1.png"):
-        print(f"\n[2/3] Testing NVIDIA Nemotron OCR (Target: {image_path})...")
+        print(f"\n[2/4] Testing NVIDIA Nemotron OCR (Target: {image_path})...")
         invoke_url = "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1"
 
         if not os.path.exists(image_path):
@@ -84,7 +84,7 @@ class HectorDiagnostic:
             return False
 
     def test_nvidia_reranker(self):
-        print("\n[3/3] Testing NVIDIA Nemotron Reranker...")
+        print("\n[3/4] Testing NVIDIA Nemotron Reranker...")
         invoke_url = "https://ai.api.nvidia.com/v1/retrieval/nvidia/llama-nemotron-rerank-1b-v2/reranking"
 
         payload = {
@@ -119,6 +119,24 @@ class HectorDiagnostic:
             print(f"  > [FAILED] Reranker Exception: {e}")
             return False
 
+    def test_nemo_retriever(self):
+        print("\n[4/4] Testing NeMo Retriever Provider...")
+        try:
+            from core.nemo_retriever import get_nemo_retriever
+            provider = get_nemo_retriever(api_key=self.nv_api_key)
+            if provider is None:
+                print("  > [SKIPPED] NeMo Retriever not enabled (HECTOR_NEMO_RETRIEVER_ENABLED != '1')")
+                return True
+            if provider.is_available:
+                print("  > [SUCCESS] NeMo Retriever is available and reachable")
+                return True
+            else:
+                print("  > [FAILED] NeMo Retriever provider created but API unreachable")
+                return False
+        except Exception as e:
+            print(f"  > [FAILED] NeMo Retriever Exception: {e}")
+            return False
+
 
 def run_diagnostics():
     print("=" * 60)
@@ -132,6 +150,7 @@ def run_diagnostics():
             hector.test_groq_reasoning(),
             hector.test_nvidia_ocr(),
             hector.test_nvidia_reranker(),
+            hector.test_nemo_retriever(),
         ]
 
         print("\n" + "=" * 60)

@@ -88,6 +88,17 @@ class EnhancedHectorIngestor:
         )
         self.parser = LegalStructureParser()
         self.enricher = MetadataEnricher()
+
+        # Initialize NeMo Retriever if enabled
+        self.nemo_retriever = None
+        try:
+            from core.nemo_retriever import get_nemo_retriever
+            self.nemo_retriever = get_nemo_retriever()
+            if self.nemo_retriever:
+                logger.info("NeMo Retriever enabled — using NVIDIA APIs for OCR/embedding")
+        except (ImportError, Exception) as e:
+            logger.debug(f"NeMo Retriever not available: {e}")
+
         self.session_processed_pages = 0
         self.reindex_mode = reindex_mode
         self.verbose = os.getenv("HECTOR_INGEST_VERBOSE") == "1"
@@ -315,10 +326,24 @@ class EnhancedHectorIngestor:
     def _nvidia_ocr_fallback(self, file_path: str, page_number: int) -> str:
         """Use NVIDIA Nemotron OCR API as a final fallback for scanned pages.
 
-        Renders the page to a PNG image via pdf2image, then sends it to the
-        NVIDIA Nemotron OCR endpoint. Requires NVIDIA_API_KEY env var.
+        If NeMo Retriever is enabled, uses its OCR endpoint.
+        Otherwise, falls back to direct API call.
+        Requires NVIDIA_API_KEY env var.
         Falls back gracefully if the key is missing or the API call fails.
         """
+        # Use NeMo Retriever if available
+        if self.nemo_retriever and self.nemo_retriever.is_available:
+            try:
+                result = self.nemo_retriever.ocr_page_from_pdf(
+                    file_path, page_number, DPI=PDF_RENDER_DPI
+                )
+                return result.markdown or result.text
+            except Exception as e:
+                if self.verbose:
+                    logger.info(f"  NeMo Retriever OCR failed for page {page_number}: {e}")
+                # Fall through to legacy implementation
+
+        # Legacy direct API call
         api_key = os.getenv("NVIDIA_API_KEY")
         if not api_key:
             return ""
