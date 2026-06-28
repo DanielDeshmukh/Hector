@@ -83,7 +83,7 @@ class EnhancedHectorIngestor:
             )
 
         self.collection = self.client.get_or_create_collection(
-            name="indian_law_bns",
+            name=f"indian_law_bns_{provider}",
             embedding_function=self.embedding_fn,
         )
         self.parser = LegalStructureParser()
