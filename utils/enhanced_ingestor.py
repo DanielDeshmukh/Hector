@@ -67,13 +67,23 @@ class EnhancedHectorIngestor:
 
     def __init__(self, reindex_mode=False):
         self.client = chromadb.PersistentClient(path=DB_PATH)
-        self.embedding_fn = (
-            chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
-                model_name="all-MiniLM-L6-v2"
+
+        # Use embedding provider abstraction if available
+        try:
+            from core.embedding_provider import get_embedding_provider
+            provider = os.getenv("HECTOR_EMBEDDING_PROVIDER", "local")
+            embedder = get_embedding_provider(provider)
+            self.embedding_fn = embedder.get_chroma_embedding_function()
+        except (ImportError, Exception):
+            # Fall back to default local embedding
+            self.embedding_fn = (
+                chromadb.utils.embedding_functions.SentenceTransformerEmbeddingFunction(
+                    model_name="all-MiniLM-L6-v2"
+                )
             )
-        )
+
         self.collection = self.client.get_or_create_collection(
-            name="indian_law_bns",
+            name=f"indian_law_bns_{provider}",
             embedding_function=self.embedding_fn,
         )
         self.parser = LegalStructureParser()
