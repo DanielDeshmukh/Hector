@@ -1,0 +1,30 @@
+# HECTOR Quick Profile Configuration
+# Profile-only mode — no load testing. ~30s runtime.
+# Use for fast iteration on retrieval/reranker tuning.
+
+target:
+  url: "http://localhost:8000"
+  timeout_s: 30
+
+rag:
+  endpoint: "/v1/search"
+  method: "POST"
+  collection_names: ["indian_law_bns"]
+  top_k: 10
+  response_format: "detailed"
+
+profiling:
+  enabled: true
+  warmup_requests: 3
+  profile_requests: 10
+  capture_stage_timings: true
+
+aiperf:
+  enabled: false
+
+input:
+  file: "benchmark/queries.jsonl"
+
+output:
+  dir: "benchmark/results"
+  experiment_name: "quick_profile"

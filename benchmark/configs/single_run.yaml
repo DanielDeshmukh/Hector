@@ -1,0 +1,34 @@
+# HECTOR Single Run Configuration
+# One concurrency level with profiling + optional load test. ~2 min.
+# Use for regression checks and baseline measurements.
+
+target:
+  url: "http://localhost:8000"
+  timeout_s: 60
+
+rag:
+  endpoint: "/v1/search"
+  method: "POST"
+  collection_names: ["indian_law_bns"]
+  top_k: 10
+  response_format: "detailed"
+
+profiling:
+  enabled: true
+  warmup_requests: 5
+  profile_requests: 20
+  capture_stage_timings: true
+
+aiperf:
+  enabled: true
+  concurrency: 5
+  iterations: 3
+  duration_s: 60
+  sleep_between_points_s: 0
+
+input:
+  file: "benchmark/queries.jsonl"
+
+output:
+  dir: "benchmark/results"
+  experiment_name: "single_run"
