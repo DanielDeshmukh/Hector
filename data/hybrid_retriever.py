@@ -18,6 +18,13 @@ try:
 except ImportError:
     CrossEncoder = None
 
+try:
+    from core.embedding_provider import get_embedding_provider
+    from core.rerank_provider import get_rerank_provider
+except ImportError:
+    get_embedding_provider = None
+    get_rerank_provider = None
+
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DB_PATH = os.path.join(PROJECT_ROOT, "hector_db")
@@ -435,6 +442,16 @@ class HectorHybridRetriever:
         if not candidates:
             return []
 
+        # Try provider abstraction first
+        if get_rerank_provider is not None:
+            try:
+                provider = os.getenv("HECTOR_RERANK_PROVIDER", "local")
+                if provider == "nemotron":
+                    reranker = get_rerank_provider("nemotron")
+                    return reranker.rerank(query, candidates)
+            except Exception:
+                pass  # Fall through to local reranker
+
         reranker = self._get_cross_encoder()
         if reranker is not None:
             pairs = [(query, item["document"]) for item in candidates]
@@ -754,6 +771,15 @@ class HectorHybridRetriever:
             return None
 
         try:
+            # Try provider abstraction first
+            if get_embedding_provider is not None:
+                provider = os.getenv("HECTOR_EMBEDDING_PROVIDER", "local")
+                if provider == "nemotron":
+                    embedder = get_embedding_provider("nemotron")
+                    self.embed_fn = embedder.get_chroma_embedding_function()
+                    return self.embed_fn
+
+            # Fall back to default local embedding
             if embedding_functions is None:
                 self.semantic_disabled = True
                 return None
