@@ -444,7 +444,9 @@ class NemoRetrieverProvider:
             if chunk.strip():
                 chunks.append(chunk.strip())
 
-            start = end - (overlap // 5)
+            # Always advance by at least 1 word to prevent infinite loop
+            advance = max(end - start - (overlap // 5), 1)
+            start += advance
             if start >= len(words):
                 break
 
