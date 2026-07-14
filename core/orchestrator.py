@@ -106,11 +106,23 @@ class HectorOrchestrator:
             results = self.retriever.search(query, top_k=5)
             sources = results  # Track sources for verification
 
-            preface = [hector_msg] if hector_msg else []
+            # Build a clear, structured response
+            parts = []
+
+            # Introduction with query context
+            parts.append(f"Legal research query: \"{query}\"\n")
+
+            # IPC->BNS mappings if any
             if mappings:
-                preface.append("Mapped legacy references: " + "; ".join(mappings))
-            preface.append(self.retriever.format_results(results))
-            return "\n\n".join(preface), sources
+                parts.append("Mapped legacy references: " + "; ".join(mappings))
+
+            # Source results
+            if results:
+                parts.append(self.retriever.format_results(results))
+            else:
+                parts.append("No grounded legal results found in the indexed corpus.")
+
+            return "\n\n".join(parts), sources
 
         if route == "STRATEGIC_ADVICE":
             if len(hector_msg) > 5:
