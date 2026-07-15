@@ -213,8 +213,9 @@ class ChainOfVerification:
         """Combine source documents into verification context."""
         context_parts = []
         for doc in source_documents:
-            source = doc.get("metadata", {}).get("source", "Unknown")
-            page = doc.get("metadata", {}).get("page", "?")
+            meta = doc.get("metadata", {})
+            source = meta.get("real_act_name") or meta.get("act_name") or meta.get("source", "Unknown")
+            page = meta.get("page", "?")
             content = doc.get("document", "")
             context_parts.append(f"[Source: {source}, Page {page}]\n{content}\n")
         return "\n---\n".join(context_parts)
@@ -573,7 +574,7 @@ class StrictCitationGenerator:
         parts = []
         for i, doc in enumerate(sources, 1):
             meta = doc.get("metadata", {})
-            source = meta.get("source", f"Document {i}")
+            source = meta.get("real_act_name") or meta.get("act_name") or meta.get("source", f"Document {i}")
             page = meta.get("page", "?")
             content = doc.get("document", "")
             parts.append(f"[Document {i}]: {source} (Page {page})\n---\n{content}")

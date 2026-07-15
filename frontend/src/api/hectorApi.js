@@ -32,7 +32,7 @@ function toSourceReference(item, index) {
   return {
     id: item.id || `source-${index + 1}`,
     bookTitle:
-      getMetadataValue(metadata, ["source", "book_title", "title", "filename"]) ||
+      getMetadataValue(metadata, ["real_act_name", "act_name", "source", "book_title", "title", "filename"]) ||
       getCitationValue(citation, "book") ||
       getCitationValue(citation, "source") ||
       "Retrieved Legal Source",
@@ -48,7 +48,7 @@ function toSourceReference(item, index) {
     relevanceScore,
     matchedText: snippet,
     fullText: document,
-    act: item.act || getMetadataValue(metadata, ["act_name", "act"]) || getCitationValue(citation, "act") || "Legal corpus",
+    act: item.act || getMetadataValue(metadata, ["real_act_name", "act_name", "act"]) || getCitationValue(citation, "act") || "Legal corpus",
     highlightRanges: document ? [{ start: 0, end: Math.min(document.length, 180) }] : [],
     citation,
     metadata,
