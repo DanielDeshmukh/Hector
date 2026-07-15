@@ -153,9 +153,7 @@ class HectorHybridRetriever:
 
             # Use provider-specific collection if provider is configured
             provider = os.getenv("HECTOR_EMBEDDING_PROVIDER", "local")
-            effective_collection = collection_name
-            if provider != "local":
-                effective_collection = f"{collection_name}_{provider}"
+            effective_collection = f"{collection_name}_{provider}"
 
             self.collection = self.chroma_client.get_or_create_collection(
                 name=effective_collection,
