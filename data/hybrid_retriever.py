@@ -206,22 +206,39 @@ class HectorHybridRetriever:
         if self.collection is None:
             return
 
-        results = retry(
-            self.collection.get,
-            include=["documents", "metadatas"],
-            operation_name="chromadb_get",
-        )
-        documents = results.get("documents") or []
-        metadatas = results.get("metadatas") or []
-        ids = results.get("ids") or []
+        BATCH_SIZE = 5000
+        all_documents = []
+        all_metadatas = []
+        all_ids = []
+        offset = 0
+
+        while True:
+            results = retry(
+                self.collection.get,
+                include=["documents", "metadatas"],
+                limit=BATCH_SIZE,
+                offset=offset,
+                operation_name="chromadb_get",
+            )
+            batch_docs = results.get("documents") or []
+            batch_metas = results.get("metadatas") or []
+            batch_ids = results.get("ids") or []
+
+            all_documents.extend(batch_docs)
+            all_metadatas.extend(batch_metas)
+            all_ids.extend(batch_ids)
+
+            if len(batch_docs) < BATCH_SIZE:
+                break
+            offset += BATCH_SIZE
 
         records = []
-        for index, document in enumerate(documents):
+        for index, document in enumerate(all_documents):
             records.append(
                 {
-                    "id": ids[index] if index < len(ids) else f"record-{index}",
+                    "id": all_ids[index] if index < len(all_ids) else f"record-{index}",
                     "document": document,
-                    "metadata": metadatas[index] if index < len(metadatas) else {},
+                    "metadata": all_metadatas[index] if index < len(all_metadatas) else {},
                 }
             )
 
