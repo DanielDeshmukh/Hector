@@ -435,8 +435,6 @@ class EnhancedHectorIngestor:
                 self.stats["chunks_rejected"] += 1
                 continue
 
-            documents.append(chunk)
-
             # Content hash for deduplication
             content_hash = self.get_content_hash(chunk)
 
@@ -445,6 +443,8 @@ class EnhancedHectorIngestor:
             if existing["ids"]:
                 self.stats["chunks_rejected"] += 1
                 continue
+
+            documents.append(chunk)
 
             # Build base metadata
             base_metadata = {
