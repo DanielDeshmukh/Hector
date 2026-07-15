@@ -441,11 +441,10 @@ class EnhancedHectorIngestor:
             content_hash = self.get_content_hash(chunk)
 
             # Check for duplicate content across collection
-            if not self.reindex_mode:
-                existing = self.collection.get(where={"content_hash": content_hash})
-                if existing["ids"]:
-                    self.stats["chunks_rejected"] += 1
-                    continue
+            existing = self.collection.get(where={"content_hash": content_hash})
+            if existing["ids"]:
+                self.stats["chunks_rejected"] += 1
+                continue
 
             # Build base metadata
             base_metadata = {
@@ -673,8 +672,7 @@ class EnhancedHectorIngestor:
             f"{self._format_eta(book_elapsed)}"
         )
 
-        if not self.reindex_mode:
-            self._mark_book_complete(filename)
+        self._mark_book_complete(filename)
 
         return {
             "filename": filename,
@@ -686,8 +684,8 @@ class EnhancedHectorIngestor:
 
     def process_book(self, filename: str, file_path: str) -> dict[str, Any]:
         """Process all pages in a single book."""
-        # Resume: skip books already fully ingested
-        if not self.reindex_mode and filename in self._completed_books:
+        # Resume: skip books already fully ingested (works in all modes)
+        if filename in self._completed_books:
             console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
             logger.info(f"Skipping {filename} (already ingested)")
             return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
@@ -811,8 +809,7 @@ class EnhancedHectorIngestor:
         }
 
         # Mark book complete for resume support
-        if not self.reindex_mode:
-            self._mark_book_complete(filename)
+        self._mark_book_complete(filename)
 
         return result
 
