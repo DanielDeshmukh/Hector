@@ -1,4 +1,4 @@
-import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck, SearchX } from "lucide-react";
+import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck, SearchX, AlertTriangle, Link2 } from "lucide-react";
 import PipelineStatus from "./PipelineStatus";
 import EmptyState from "./EmptyState";
 
@@ -188,6 +188,23 @@ export default function ResponseDisplay({
           <BarChart3 size={11} />
           Confidence: {response.confidence}%
         </span>
+        {response.confidenceLevel && response.confidenceLevel !== "unknown" && (
+          <span
+            className={`flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[11px] font-medium ${
+              response.confidenceLevel === "high"
+                ? "border-success/20 bg-success/5 text-success"
+                : response.confidenceLevel === "medium"
+                ? "border-gold/20 bg-gold/5 text-gold"
+                : "border-error/20 bg-error/5 text-error"
+            }`}
+          >
+            {response.confidenceLevel === "high"
+              ? "High Confidence"
+              : response.confidenceLevel === "medium"
+              ? "Moderate Confidence"
+              : "Low Confidence"}
+          </span>
+        )}
         <span className="text-[11px] text-silver/30">
           {new Date(response.timestamp).toLocaleString("en-IN", {
             day: "numeric",
@@ -199,6 +216,13 @@ export default function ResponseDisplay({
         </span>
       </div>
 
+      {response.confidenceWarning && (
+        <div className="flex items-start gap-2 rounded-md border border-gold/20 bg-gold/5 px-3 py-2 text-[11.5px] leading-relaxed text-gold/80">
+          <AlertTriangle size={13} className="mt-0.5 shrink-0 text-gold/60" />
+          {response.confidenceWarning}
+        </div>
+      )}
+
       <div className="rounded-lg border border-slate-custom/30 bg-charcoal/40 p-5">
         <StructuredAnswer
           response={response}
@@ -206,6 +230,25 @@ export default function ResponseDisplay({
           activeSourceId={activeSourceId}
         />
       </div>
+
+      {response.relatedProvisions?.length > 0 && (
+        <div>
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/50">
+            Related Provisions
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {response.relatedProvisions.map((provision) => (
+              <span
+                key={provision}
+                className="flex items-center gap-1 rounded-md border border-slate-custom/30 bg-charcoal/30 px-2 py-1 text-[10.5px] text-silver/50"
+              >
+                <Link2 size={9} className="text-gold/40" />
+                {provision}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div>
         <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/50">

@@ -72,6 +72,9 @@ function confidenceFromItems(items) {
 }
 
 function confidenceFromPayload(payload) {
+  if (payload.answer_confidence !== undefined && payload.answer_confidence !== null) {
+    return Math.round(payload.answer_confidence * 10) / 10;
+  }
   const items = payload.items || [];
   if (!items.length) return 0;
   const firstScore = Number(items[0].similarity_score ?? items[0].score ?? 0);
@@ -79,22 +82,25 @@ function confidenceFromPayload(payload) {
 }
 
 function buildPipelineFromPayload(payload) {
+  const t = payload.stage_timings || {};
   const stages = [
     {
       id: "stage-1",
       name: "Intent Routing",
       status: payload.route ? "completed" : "pending",
       detail: payload.route
-        ? `Routed as: ${payload.route.replace(/_/g, " ")}`
+        ? `Routed as: ${payload.route.replace(/_/g, " ")}${t.route_ms ? ` (${Math.round(t.route_ms)}ms)` : ""}`
         : "Awaiting routing...",
+      timing: t.route_ms || null,
     },
     {
       id: "stage-2",
       name: "Hybrid Retrieval",
       status: (payload.items?.length > 0) ? "completed" : "pending",
       detail: payload.items?.length
-        ? `${payload.items.length} results retrieved`
+        ? `${payload.items.length} results retrieved${t.retrieve_ms ? ` (${Math.round(t.retrieve_ms)}ms)` : ""}`
         : "Awaiting retrieval...",
+      timing: t.retrieve_ms || null,
     },
     {
       id: "stage-3",
@@ -103,6 +109,7 @@ function buildPipelineFromPayload(payload) {
       detail: payload.source_sections?.length
         ? `${payload.source_sections.length} source sections resolved`
         : "Awaiting context...",
+      timing: null,
     },
     {
       id: "stage-4",
@@ -111,6 +118,7 @@ function buildPipelineFromPayload(payload) {
       detail: payload.verification_enabled
         ? "Citations verified"
         : "Awaiting verification...",
+      timing: t.generate_ms || null,
     },
   ];
   return stages;
@@ -127,11 +135,17 @@ function toUiResponse(payload) {
       "HECTOR returned source matches, but no generated response was available for this query.",
     domain: payload.route || "Search",
     confidence: confidenceFromPayload(payload),
+    confidenceLevel: payload.confidence_level || "unknown",
+    confidenceWarning: payload.confidence_warning || null,
+    hallucinationCheck: payload.hallucination_check || null,
     answerSections: payload.answer_sections || [],
     sourceSections: payload.source_sections || [],
     citations: payload.citations || [],
+    relatedProvisions: payload.related_provisions || [],
+    normalizedQuery: payload.normalized_query || null,
     sources,
     pipeline: buildPipelineFromPayload(payload),
+    stageTimings: payload.stage_timings || null,
     timestamp: payload.retrieved_at || new Date().toISOString(),
     raw: payload,
   };

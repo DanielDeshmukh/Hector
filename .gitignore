@@ -280,3 +280,7 @@ frontend/.vite/
 
 # --- Docker ---
 .dockerignore
+
+# --- AI Skills / Tools ---
+.claude/
+skills-lock.json

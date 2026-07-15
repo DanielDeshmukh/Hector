@@ -84,8 +84,15 @@ class LegalStructureParser:
         "bharatiya sakshya adhiniyam": "BSA",
         "bharatiya sakshya adhiniyam, 2023": "BSA",
         "indian penal code": "IPC",
+        "indian penal code, 1860": "IPC",
         "code of criminal procedure": "CRPC",
+        "code of criminal procedure, 1973": "CRPC",
         "indian evidence act": "IEA",
+        "indian evidence act, 1872": "IEA",
+        "code of civil procedure": "CPC",
+        "code of civil procedure, 1908": "CPC",
+        "constitution of india": "Constitution",
+        "constitution of india, 1950": "Constitution",
     }
 
     def __init__(self):

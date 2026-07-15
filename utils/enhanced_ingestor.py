@@ -389,22 +389,32 @@ class EnhancedHectorIngestor:
         """
         Build chunk documents with enhanced legal metadata.
 
+        Uses section-aware chunking to split at legal section boundaries.
+        Each section becomes its own chunk with denormalized context prepended.
+        
         Parses document structure and enriches each chunk with:
         - act_name, chapter, section_number
         - is_bns, is_ipc, is_repealed
         - has_illustration, has_exception, has_provided_that
         - structure_type
         """
-        chunk_texts = self.chunk_text(text)
-        if not chunk_texts:
-            return [], [], []
-
         # Parse document structure once per page
         structure = self.parser.parse_document(text, filename)
+        
+        # Extract act and chapter for denormalized context
+        act_name = structure.get("act", "")
+        chapter = structure.get("chapter", "")
+        
+        # Use section-aware chunker instead of fixed-size token windows
+        from core.legal_chunker import chunk_legal_page
+        section_chunks = chunk_legal_page(text, act_name=act_name, chapter=chapter)
+        
+        if not section_chunks:
+            return [], [], []
 
         # Track stats
-        if structure.get("act") and structure["act"] not in self.stats["acts_found"]:
-            self.stats["acts_found"].append(structure["act"])
+        if act_name and act_name not in self.stats["acts_found"]:
+            self.stats["acts_found"].append(act_name)
         if structure.get("section"):
             self.stats["sections_found"] += 1
         struct_type = structure.get("structure_type", "unknown")
@@ -417,23 +427,24 @@ class EnhancedHectorIngestor:
         metadatas = []
         ids = []
 
-        for chunk_index, chunk in enumerate(chunk_texts):
+        for chunk_index, chunk_data in enumerate(section_chunks):
+            chunk = chunk_data["content"]
+            
             # Quality gate: reject chunks that are too short
             if len(chunk.strip()) < MIN_CHUNK_CHARS:
                 self.stats["chunks_rejected"] += 1
                 continue
 
-            documents.append(chunk)
-
             # Content hash for deduplication
             content_hash = self.get_content_hash(chunk)
 
             # Check for duplicate content across collection
-            if not self.reindex_mode:
-                existing = self.collection.get(where={"content_hash": content_hash})
-                if existing["ids"]:
-                    self.stats["chunks_rejected"] += 1
-                    continue
+            existing = self.collection.get(where={"content_hash": content_hash})
+            if existing["ids"]:
+                self.stats["chunks_rejected"] += 1
+                continue
+
+            documents.append(chunk)
 
             # Build base metadata
             base_metadata = {
@@ -444,10 +455,22 @@ class EnhancedHectorIngestor:
                 "chunk_index": chunk_index,
                 "chunk_chars": len(chunk),
                 "ingested_at": ingested_at,
-                "mapping_accuracy": "enhanced_v1"
+                "mapping_accuracy": "section_aware_v1"
                 if not self.reindex_mode
-                else "reindex_v1",
+                else "reindex_v2",
             }
+            
+            # Add section-level metadata from chunker
+            if chunk_data.get("section_number"):
+                base_metadata["section_number_from_chunker"] = chunk_data["section_number"]
+            if chunk_data.get("section_title"):
+                base_metadata["section_title_from_chunker"] = chunk_data["section_title"]
+            if chunk_data.get("has_proviso"):
+                base_metadata["has_provided_that"] = True
+            if chunk_data.get("has_exception"):
+                base_metadata["has_exception"] = True
+            if chunk_data.get("has_illustration"):
+                base_metadata["has_illustration"] = True
 
             # Enrich with legal structure metadata
             enriched_metadata = self.enricher.enrich_metadata(
@@ -649,8 +672,7 @@ class EnhancedHectorIngestor:
             f"{self._format_eta(book_elapsed)}"
         )
 
-        if not self.reindex_mode:
-            self._mark_book_complete(filename)
+        self._mark_book_complete(filename)
 
         return {
             "filename": filename,
@@ -662,8 +684,8 @@ class EnhancedHectorIngestor:
 
     def process_book(self, filename: str, file_path: str) -> dict[str, Any]:
         """Process all pages in a single book."""
-        # Resume: skip books already fully ingested
-        if not self.reindex_mode and filename in self._completed_books:
+        # Resume: skip books already fully ingested (works in all modes)
+        if filename in self._completed_books:
             console.print(f"  [dim]Skipping {filename} (already ingested)[/dim]")
             logger.info(f"Skipping {filename} (already ingested)")
             return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
@@ -787,8 +809,7 @@ class EnhancedHectorIngestor:
         }
 
         # Mark book complete for resume support
-        if not self.reindex_mode:
-            self._mark_book_complete(filename)
+        self._mark_book_complete(filename)
 
         return result
 

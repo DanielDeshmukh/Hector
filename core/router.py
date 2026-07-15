@@ -30,6 +30,7 @@ class HectorRouter:
         "evidence act",
         "bharatiya nyaya sanhita",
         "bharatiya nagarik suraksha sanhita",
+        "bharatiya sakshya",
         "section",
         "fir",
         "bail",
@@ -52,6 +53,23 @@ class HectorRouter:
         "legal",
         "statutory",
         "provision",
+        "constitution",
+        "article",
+        "dowry",
+        "cruelty",
+        "consumer protection",
+        "ndps",
+        "narcotic",
+        "motor vehicles",
+        "industrial disputes",
+        "factories act",
+        "hindu succession",
+        "hindu marriage",
+        "transfer of property",
+        "indian contract",
+        "limitation act",
+        "code of criminal",
+        "code of civil",
     )
 
     # Civil law keywords for routing
@@ -221,13 +239,8 @@ class HectorRouter:
                 confidence=0.1,
             )
 
-        if any(keyword in lowered for keyword in self.DOCUMENT_KEYWORDS):
-            return self._fallback_intent(
-                route="DOCUMENT_ANALYSIS",
-                message="Document analysis workflow activated. Preparing for evidentiary and file review.",
-                confidence=0.94,
-            )
-
+        # --- LEGAL CHECKS FIRST (before document keywords) ---
+        # Direct act/section references get highest priority
         if re.search(r"\b(ipc|bns|crpc|bnss)\b", lowered) or re.search(
             r"\bsection\s+\d+\b", lowered
         ):
@@ -245,12 +258,26 @@ class HectorRouter:
                 confidence=0.93,
             )
 
+        # Broad legal keywords (act names, legal terms)
         if any(keyword in lowered for keyword in self.LEGAL_KEYWORDS):
             return self._fallback_intent(
                 route="LEGAL_RESEARCH",
                 message="Legal research intent identified. Retrieving authoritative statutory context.",
                 confidence=0.88,
             )
+
+        # --- DOCUMENT CHECKS (after legal, to avoid false positives) ---
+        # Only route to document analysis if it's clearly about file handling
+        # and NOT about a specific act/statute
+        if any(keyword in lowered for keyword in self.DOCUMENT_KEYWORDS):
+            # Double-check: if it also mentions an act name, keep it as legal
+            act_names = ("act", "code", "statute", "constitution", "regulation")
+            if not any(act in lowered for act in act_names):
+                return self._fallback_intent(
+                    route="DOCUMENT_ANALYSIS",
+                    message="Document analysis workflow activated. Preparing for evidentiary and file review.",
+                    confidence=0.94,
+                )
 
         if any(keyword in lowered for keyword in self.STRATEGY_KEYWORDS):
             return self._fallback_intent(

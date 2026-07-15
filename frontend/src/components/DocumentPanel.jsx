@@ -109,6 +109,16 @@ export default function DocumentPanel({ source, onClose }) {
         <span className="truncate text-[10px] text-silver/30">
           {source.chapter}
         </span>
+        {source.metadata?.structure_type && (
+          <span className="rounded border border-gold/20 bg-gold/5 px-2 py-0.5 text-[9px] font-medium text-gold/60">
+            {source.metadata.structure_type}
+          </span>
+        )}
+        {source.metadata?.is_repealed && (
+          <span className="rounded border border-error/20 bg-error/5 px-2 py-0.5 text-[9px] font-medium text-error/70">
+            Repealed
+          </span>
+        )}
       </div>
 
       <div className="flex items-center justify-between border-b border-slate-custom/30 px-4 py-2.5">
