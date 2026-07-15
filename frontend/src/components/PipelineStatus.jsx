@@ -35,6 +35,11 @@ export default function PipelineStatus({ stages }) {
                 <Circle size={11} />
               )}
               <span className="hidden md:inline font-medium">{stage.name}</span>
+              {stage.timing != null && (
+                <span className="hidden md:inline text-[9px] font-mono opacity-60">
+                  {Math.round(stage.timing)}ms
+                </span>
+              )}
               <span className="md:hidden">{stageIcons[stage.name]}</span>
               
               {/* Tooltip */}

@@ -52,12 +52,17 @@ class HectorApiService:
         self.response_generator = ContextualResponseGenerator(self.retriever)
 
     def search(self, request: SearchRequest) -> SearchResponse:
+        timings: dict[str, float] = {}
+
+        t0 = time.perf_counter()
         intent = self.router.get_route(request.query)
         normalized_query = request.query
         mappings: list[str] = []
 
         if intent.get("route") == "LEGAL_RESEARCH":
             normalized_query, mappings = self.router.normalize_query(request.query)
+        t_route = time.perf_counter()
+        timings["route_ms"] = round((t_route - t0) * 1000, 1)
 
         total_needed = max(request.page * request.page_size, request.page_size)
         retrieval_window = max(25, total_needed)
@@ -70,6 +75,9 @@ class HectorApiService:
             retryable_exceptions=(Exception,),
             operation_name="chromadb_search",
         )
+        t_retrieve = time.perf_counter()
+        timings["retrieve_ms"] = round((t_retrieve - t_route) * 1000, 1)
+
         total_results = len(results)
         start = (request.page - 1) * request.page_size
         end = start + request.page_size
@@ -104,6 +112,12 @@ class HectorApiService:
             generated_response = response_data["generated_response"]
         else:
             generated_response = intent.get("hector_response", "")
+        t_generate = time.perf_counter()
+        timings["generate_ms"] = round((t_generate - t_retrieve) * 1000, 1)
+        timings["total_ms"] = round((t_generate - t0) * 1000, 1)
+        timings["route_confidence"] = round(
+            float(intent.get("confidence", 0.0)), 3
+        )
 
         total_pages = max(
             1, (total_results + request.page_size - 1) // request.page_size
@@ -154,7 +168,7 @@ class HectorApiService:
             related_provisions=response_data.get("related_provisions", []),
             response_format=request.format,
             retrieved_at=datetime.now(UTC),
-            stage_timings=getattr(self.orchestrator, "_last_timing", None),
+            stage_timings=timings,
         )
 
     def _assess_confidence(
@@ -359,6 +373,15 @@ class HectorApiService:
             },
         }
 
+    @staticmethod
+    def _normalize_score(score: float) -> float:
+        """Normalize a score to 0.0–1.0 range."""
+        if score <= 0:
+            return 0.0
+        if score <= 1:
+            return score
+        return min(score / 100.0, 1.0)
+
     def _to_hit(self, item: dict) -> SearchHit:
         document = item.get("document", "")
         metadata = dict(item.get("metadata") or {})
@@ -366,20 +389,24 @@ class HectorApiService:
         if len(snippet) > 280:
             snippet = snippet[:277].rstrip() + "..."
 
+        raw_similarity = float(
+            item.get("similarity_score", item.get("score", 0.0)) or 0.0
+        )
+        raw_reranker = float(
+            item.get("reranker_score", item.get("similarity_score", 0.0)) or 0.0
+        )
+        raw_boost = float(item.get("boost_score", 0.0) or 0.0)
+
         return SearchHit(
             id=str(item.get("id", "")),
             score=float(item.get("score", 0.0)),
-            similarity_score=float(
-                item.get("similarity_score", item.get("score", 0.0)) or 0.0
-            ),
-            reranker_score=float(
-                item.get("reranker_score", item.get("similarity_score", 0.0)) or 0.0
-            ),
-            hybrid_score=float(item.get("hybrid_score", 0.0) or 0.0),
-            retrieval_score=float(item.get("retrieval_score", 0.0) or 0.0),
-            boost_score=float(item.get("boost_score", 0.0) or 0.0),
-            semantic_score=float(item.get("semantic_score", 0.0) or 0.0),
-            bm25_score=float(item.get("bm25_score", 0.0) or 0.0),
+            similarity_score=self._normalize_score(raw_similarity),
+            reranker_score=self._normalize_score(raw_reranker),
+            hybrid_score=self._normalize_score(float(item.get("hybrid_score", 0.0) or 0.0)),
+            retrieval_score=self._normalize_score(float(item.get("retrieval_score", 0.0) or 0.0)),
+            boost_score=self._normalize_score(raw_boost),
+            semantic_score=self._normalize_score(float(item.get("semantic_score", 0.0) or 0.0)),
+            bm25_score=self._normalize_score(float(item.get("bm25_score", 0.0) or 0.0)),
             bm25_raw_score=float(item.get("bm25_raw_score", 0.0) or 0.0),
             act=item.get("act"),
             citation=dict(item.get("citation") or {}),
