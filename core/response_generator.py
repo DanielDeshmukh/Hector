@@ -66,9 +66,10 @@ When answering legal queries:
     def _get_nim_client(self):
         if self._nim_client is None:
             try:
-                from core.nim_llm import get_nim_llm
+                from core.nim_llm import get_nim_llm, NIM_MODELS
 
                 self._nim_client = get_nim_llm()
+                self._generation_model = NIM_MODELS["generation"]
             except Exception:
                 self._nim_client = False
         return self._nim_client if self._nim_client is not False else None
@@ -109,7 +110,10 @@ When answering legal queries:
         ]
 
         try:
-            return nim.chat(messages, temperature=0.0, max_tokens=1024)
+            return nim.chat(
+                messages, temperature=0.0, max_tokens=1024,
+                model=getattr(self, "_generation_model", None),
+            )
         except Exception as e:
             logger.warning("NIM synthesis failed: %s", e)
             return None

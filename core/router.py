@@ -11,7 +11,7 @@ try:
 except ImportError:
     Groq = None
 
-from core.nim_llm import get_nim_llm
+from core.nim_llm import get_nim_llm, NIM_MODELS
 
 load_dotenv()
 
@@ -411,6 +411,7 @@ class HectorRouter:
                     ],
                     temperature=0,
                     max_tokens=120,
+                    model=NIM_MODELS["router"],
                 )
                 validated = self._validate_payload(parsed)
                 if validated["confidence"] >= 0.55:
