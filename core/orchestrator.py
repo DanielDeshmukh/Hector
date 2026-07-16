@@ -164,7 +164,15 @@ class HectorOrchestrator:
             "expand_ms": round(expand_ms, 1),
             "retrieve_ms": round(retrieve_ms, 1),
             "verify_ms": round(verify_ms, 1),
-            "total_ms": round(parse_ms + route_ms + normalize_ms + expand_ms + retrieve_ms + verify_ms, 1),
+            "total_ms": round(
+                parse_ms
+                + route_ms
+                + normalize_ms
+                + expand_ms
+                + retrieve_ms
+                + verify_ms,
+                1,
+            ),
             "entities": entity_dict,
             "route_confidence": round(confidence, 3),
         }
@@ -175,7 +183,9 @@ class HectorOrchestrator:
         """Return timing from the last execute() call."""
         return getattr(self, "_last_timing", {})
 
-    def _generate_strategic_response(self, route, query, intent, mappings=None, entities=None):
+    def _generate_strategic_response(
+        self, route, query, intent, mappings=None, entities=None
+    ):
         """Internal logic to fetch either legal data or general scaling advice."""
         hector_msg = intent.get("hector_response", "")
         mappings = mappings or []
@@ -205,7 +215,7 @@ class HectorOrchestrator:
             parts = []
 
             # Introduction with query context
-            parts.append(f"Legal research query: \"{query}\"\n")
+            parts.append(f'Legal research query: "{query}"\n')
 
             # IPC->BNS mappings if any
             if mappings:

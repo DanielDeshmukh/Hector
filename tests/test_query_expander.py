@@ -97,23 +97,45 @@ class TestExpandWithEntities(unittest.TestCase):
         self.expander = QueryExpander()
 
     def test_adds_act_name(self):
-        entities = {"acts": ["Indian Penal Code"], "sections": [], "ipc_sections": [], "bns_sections": []}
+        entities = {
+            "acts": ["Indian Penal Code"],
+            "sections": [],
+            "ipc_sections": [],
+            "bns_sections": [],
+        }
         result = self.expander.expand_with_entities("Section 302 murder", entities)
         self.assertIn("Indian Penal Code", result)
 
     def test_adds_section_context(self):
-        entities = {"acts": [], "sections": ["302"], "ipc_sections": [], "bns_sections": []}
+        entities = {
+            "acts": [],
+            "sections": ["302"],
+            "ipc_sections": [],
+            "bns_sections": [],
+        }
         result = self.expander.expand_with_entities("murder punishment", entities)
         self.assertIn("section 302", result)
 
     def test_adds_ipc_section(self):
-        entities = {"acts": [], "sections": [], "ipc_sections": ["302"], "bns_sections": []}
+        entities = {
+            "acts": [],
+            "sections": [],
+            "ipc_sections": ["302"],
+            "bns_sections": [],
+        }
         result = self.expander.expand_with_entities("murder", entities)
         self.assertIn("section 302 ipc", result)
 
     def test_no_duplicate_entities(self):
-        entities = {"acts": ["Indian Penal Code"], "sections": ["302"], "ipc_sections": [], "bns_sections": []}
-        result = self.expander.expand_with_entities("Section 302 IPC Indian Penal Code murder", entities)
+        entities = {
+            "acts": ["Indian Penal Code"],
+            "sections": ["302"],
+            "ipc_sections": [],
+            "bns_sections": [],
+        }
+        result = self.expander.expand_with_entities(
+            "Section 302 IPC Indian Penal Code murder", entities
+        )
         self.assertEqual(result.lower().count("indian penal code"), 1)
 
 
@@ -178,7 +200,9 @@ class TestRuntimeSynonyms(unittest.TestCase):
         self.expander = QueryExpander()
 
     def test_add_synonym_group(self):
-        self.expander.add_synonym_group("custom", ["custom_synonym1", "custom_synonym2"])
+        self.expander.add_synonym_group(
+            "custom", ["custom_synonym1", "custom_synonym2"]
+        )
         result = self.expander.expand("custom")
         self.assertIn("custom_synonym1", result)
         self.assertIn("custom_synonym2", result)

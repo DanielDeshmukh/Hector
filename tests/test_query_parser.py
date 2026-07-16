@@ -5,7 +5,12 @@ Uses unittest (no pytest dependency).
 """
 
 import unittest
-from core.query_parser import LegalQueryParser, LegalEntities, parse_query, expand_legal_query
+from core.query_parser import (
+    LegalQueryParser,
+    LegalEntities,
+    parse_query,
+    expand_legal_query,
+)
 
 
 class TestSectionExtraction(unittest.TestCase):

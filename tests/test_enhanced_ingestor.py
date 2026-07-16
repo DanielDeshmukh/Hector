@@ -14,6 +14,7 @@ def _make_ingestor():
     """Create EnhancedHectorIngestor with mocked chromadb."""
     with patch.dict("sys.modules", {"chromadb": MagicMock()}):
         from utils.enhanced_ingestor import EnhancedHectorIngestor
+
         return EnhancedHectorIngestor(reindex_mode=True)
 
 
@@ -46,7 +47,9 @@ class TestValidatePdf:
         ingestor = _make_ingestor()
         f = tmp_path / "invalid.pdf"
         # Must be >100 bytes to pass size check, but not start with %PDF
-        f.write_bytes(b"NOT_PDF_CONTENT_HERE-padding-padding-pad-padding-padding-padding-padding-padding-padding-padding-padding-padding")
+        f.write_bytes(
+            b"NOT_PDF_CONTENT_HERE-padding-padding-pad-padding-padding-padding-padding-padding-padding-padding-padding-padding"
+        )
         is_valid, error = ingestor.validate_pdf(str(f), "invalid.pdf")
         assert is_valid is False
         assert "invalid pdf header" in error.lower()
@@ -151,6 +154,7 @@ class TestConstants:
     def test_constants_exist(self):
         with patch.dict("sys.modules", {"chromadb": MagicMock()}):
             import importlib
+
             mod = importlib.import_module("utils.enhanced_ingestor")
             assert hasattr(mod, "CHUNK_SIZE_TOKENS")
             assert hasattr(mod, "CHUNK_OVERLAP_TOKENS")
@@ -159,6 +163,7 @@ class TestConstants:
     def test_chunk_size_tokens_value(self):
         with patch.dict("sys.modules", {"chromadb": MagicMock()}):
             import importlib
+
             mod = importlib.import_module("utils.enhanced_ingestor")
             assert mod.CHUNK_SIZE_TOKENS == 800
             assert isinstance(mod.CHUNK_SIZE_TOKENS, int)
@@ -166,6 +171,7 @@ class TestConstants:
     def test_chunk_overlap_tokens_value(self):
         with patch.dict("sys.modules", {"chromadb": MagicMock()}):
             import importlib
+
             mod = importlib.import_module("utils.enhanced_ingestor")
             assert mod.CHUNK_OVERLAP_TOKENS == 150
             assert isinstance(mod.CHUNK_OVERLAP_TOKENS, int)
@@ -173,6 +179,7 @@ class TestConstants:
     def test_min_chunk_chars_value(self):
         with patch.dict("sys.modules", {"chromadb": MagicMock()}):
             import importlib
+
             mod = importlib.import_module("utils.enhanced_ingestor")
             assert mod.MIN_CHUNK_CHARS == 50
             assert isinstance(mod.MIN_CHUNK_CHARS, int)
@@ -180,6 +187,7 @@ class TestConstants:
     def test_overlap_less_than_chunk_size(self):
         with patch.dict("sys.modules", {"chromadb": MagicMock()}):
             import importlib
+
             mod = importlib.import_module("utils.enhanced_ingestor")
             assert mod.CHUNK_OVERLAP_TOKENS < mod.CHUNK_SIZE_TOKENS
 

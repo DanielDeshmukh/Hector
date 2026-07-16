@@ -12,6 +12,7 @@ from typing import List, Optional
 @dataclass
 class LegalEntities:
     """Structured legal entities extracted from a query."""
+
     sections: List[str] = field(default_factory=list)
     acts: List[str] = field(default_factory=list)
     topics: List[str] = field(default_factory=list)
@@ -302,9 +303,15 @@ class LegalQueryParser:
     # Regex patterns for entity extraction
     SECTION_PATTERNS = [
         # "Section 302 IPC" or "Section 302 of IPC"
-        re.compile(r"section[s]?\s+(\d{1,4}[a-z]?)\s+(?:of\s+)?(ipc|bns|crpc|bnss)", re.IGNORECASE),
+        re.compile(
+            r"section[s]?\s+(\d{1,4}[a-z]?)\s+(?:of\s+)?(ipc|bns|crpc|bnss)",
+            re.IGNORECASE,
+        ),
         # "Sections 302 and 376 IPC"
-        re.compile(r"section[s]?\s+(\d{1,4}[a-z]?)\s+(?:and|,)\s+(\d{1,4}[a-z]?)\s+(ipc|bns|crpc|bnss)", re.IGNORECASE),
+        re.compile(
+            r"section[s]?\s+(\d{1,4}[a-z]?)\s+(?:and|,)\s+(\d{1,4}[a-z]?)\s+(ipc|bns|crpc|bnss)",
+            re.IGNORECASE,
+        ),
         # "Section 302" standalone
         re.compile(r"section[s]?\s+(\d{1,4}[a-z]?)", re.IGNORECASE),
         # "S. 302" or "Sec. 302"
@@ -315,33 +322,48 @@ class LegalQueryParser:
 
     ARTICLE_PATTERNS = [
         # "Article 21" or "Article 21 of the Constitution"
-        re.compile(r"article\s+(\d{1,4}[a-z]?)\s+(?:of\s+(?:the\s+)?constitution)?", re.IGNORECASE),
+        re.compile(
+            r"article\s+(\d{1,4}[a-z]?)\s+(?:of\s+(?:the\s+)?constitution)?",
+            re.IGNORECASE,
+        ),
         # "Art. 21"
         re.compile(r"art\.?\s*(\d{1,4}[a-z]?)", re.IGNORECASE),
     ]
 
     ACT_PATTERN = re.compile(
-        r"(?:" + "|".join(re.escape(k) for k in sorted(KNOWN_ACTS.keys(), key=len, reverse=True)) + r")",
+        r"(?:"
+        + "|".join(
+            re.escape(k) for k in sorted(KNOWN_ACTS.keys(), key=len, reverse=True)
+        )
+        + r")",
         re.IGNORECASE,
     )
 
     TOPIC_PATTERN = re.compile(
-        r"(?:" + "|".join(re.escape(k) for k in sorted(LEGAL_TOPICS.keys(), key=len, reverse=True)) + r")",
+        r"(?:"
+        + "|".join(
+            re.escape(k) for k in sorted(LEGAL_TOPICS.keys(), key=len, reverse=True)
+        )
+        + r")",
         re.IGNORECASE,
     )
 
     COURT_PATTERN = re.compile(
-        r"(?:" + "|".join(re.escape(k) for k in sorted(COURT_NAMES.keys(), key=len, reverse=True)) + r")",
+        r"(?:"
+        + "|".join(
+            re.escape(k) for k in sorted(COURT_NAMES.keys(), key=len, reverse=True)
+        )
+        + r")",
         re.IGNORECASE,
     )
 
     def parse(self, query: str) -> LegalEntities:
         """
         Parse a legal query and extract structured entities.
-        
+
         Args:
             query: User's legal query text
-            
+
         Returns:
             LegalEntities with extracted sections, acts, topics, courts
         """
@@ -443,7 +465,13 @@ class LegalQueryParser:
         Returns None if no confident hint.
         """
         # If we found acts, sections, or articles → LEGAL_RESEARCH
-        if entities.acts or entities.sections or entities.ipc_sections or entities.bns_sections or entities.articles:
+        if (
+            entities.acts
+            or entities.sections
+            or entities.ipc_sections
+            or entities.bns_sections
+            or entities.articles
+        ):
             return "LEGAL_RESEARCH"
 
         # If we found legal topics → still LEGAL_RESEARCH (with lower confidence)

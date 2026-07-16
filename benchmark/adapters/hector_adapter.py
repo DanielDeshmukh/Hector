@@ -55,7 +55,9 @@ def profile_query(host: str, port: int, query: str, api_key: str | None = None) 
 def main():
     parser = argparse.ArgumentParser(description="HECTOR Benchmark Adapter")
     parser.add_argument("--host", default=os.getenv("HECTOR_API_HOST", "localhost"))
-    parser.add_argument("--port", type=int, default=int(os.getenv("HECTOR_API_PORT", 8000)))
+    parser.add_argument(
+        "--port", type=int, default=int(os.getenv("HECTOR_API_PORT", 8000))
+    )
     parser.add_argument("--query", required=True, help="Query to profile")
     parser.add_argument("--api-key", default=os.getenv("HECTOR_API_KEY"))
 

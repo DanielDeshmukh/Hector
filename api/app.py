@@ -292,7 +292,10 @@ def readyz(svc: HectorApiService = Depends(get_service)):
 
     # Embedding model check
     try:
-        if hasattr(svc.retriever, "embedding_fn") and svc.retriever.embedding_fn is not None:
+        if (
+            hasattr(svc.retriever, "embedding_fn")
+            and svc.retriever.embedding_fn is not None
+        ):
             checks["embedding_model"] = {"status": "ok"}
         else:
             checks["embedding_model"] = {"status": "unavailable"}
@@ -374,7 +377,10 @@ def status_endpoint(
 
     # Embedding model availability check
     try:
-        if hasattr(svc.retriever, "embedding_fn") and svc.retriever.embedding_fn is not None:
+        if (
+            hasattr(svc.retriever, "embedding_fn")
+            and svc.retriever.embedding_fn is not None
+        ):
             payload["embedding_model_loaded"] = True
         else:
             payload["embedding_model_loaded"] = False

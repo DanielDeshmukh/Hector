@@ -39,12 +39,15 @@ class LocalEmbedder:
             return
         try:
             from chromadb.utils import embedding_functions
+
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
             self._embed_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
                 model_name=self.model_name
             )
             self._dimension = self._embed_fn._model.get_sentence_embedding_dimension()
-            logger.info(f"Loaded local embedder: {self.model_name} ({self._dimension}d)")
+            logger.info(
+                f"Loaded local embedder: {self.model_name} ({self._dimension}d)"
+            )
         except Exception as e:
             logger.error(f"Failed to load local embedder: {e}")
             raise
@@ -96,12 +99,16 @@ class NemotronEmbedder:
 
         try:
             import requests
+
             resp = requests.get(
                 f"{self.base_url}/nvidia/nemotron-embed-4b-v1",
                 headers={"Authorization": f"Bearer {self.api_key}"},
                 timeout=10,
             )
-            self._available = resp.status_code in (200, 405)  # 405 = method not allowed = endpoint exists
+            self._available = resp.status_code in (
+                200,
+                405,
+            )  # 405 = method not allowed = endpoint exists
         except Exception as e:
             logger.warning(f"Nemotron embed health check failed: {e}")
             self._available = False
@@ -173,7 +180,10 @@ class NemotronChromaEmbedFn:
 # Factory
 # ---------------------------------------------------------------------------
 
-def get_embedding_provider(provider: str | None = None) -> LocalEmbedder | NemotronEmbedder:
+
+def get_embedding_provider(
+    provider: str | None = None,
+) -> LocalEmbedder | NemotronEmbedder:
     """
     Get the embedding provider based on configuration.
 

@@ -92,7 +92,9 @@ class TestRetryUtility:
             return "done"
 
         start = time.time()
-        result = retry(fail_three_times, max_attempts=4, base_delay=0.05, backoff_factor=2.0)
+        result = retry(
+            fail_three_times, max_attempts=4, base_delay=0.05, backoff_factor=2.0
+        )
         elapsed = time.time() - start
         assert result == "done"
         assert call_count == 4
@@ -137,14 +139,16 @@ class TestEnhancedHealthEndpoints:
         from core.router import HectorRouter
         from data.hybrid_retriever import HectorHybridRetriever
 
-        retriever = HectorHybridRetriever.from_records([
-            {
-                "id": "test-1",
-                "document": "Test document",
-                "metadata": {"source": "test.pdf", "page": 1},
-                "score": 0.9,
-            }
-        ])
+        retriever = HectorHybridRetriever.from_records(
+            [
+                {
+                    "id": "test-1",
+                    "document": "Test document",
+                    "metadata": {"source": "test.pdf", "page": 1},
+                    "score": 0.9,
+                }
+            ]
+        )
         router = HectorRouter()
         router.client = None
 
@@ -153,7 +157,9 @@ class TestEnhancedHealthEndpoints:
         orch.retriever = retriever
         orch.enable_verification = False
 
-        service = HectorApiService(orchestrator=orch, retriever=retriever, router=router)
+        service = HectorApiService(
+            orchestrator=orch, retriever=retriever, router=router
+        )
         app.dependency_overrides[get_service] = lambda: service
         yield service
         app.dependency_overrides.clear()

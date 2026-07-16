@@ -29,6 +29,7 @@ from benchmark.adapters.hector_adapter import profile_query
 # Config loading
 # ---------------------------------------------------------------------------
 
+
 class TestBenchmarkConfig:
     """Tests for benchmark YAML config loading."""
 
@@ -66,6 +67,7 @@ class TestBenchmarkConfig:
 # Query loading
 # ---------------------------------------------------------------------------
 
+
 class TestQueryLoading:
     """Tests for JSONL query loading."""
 
@@ -88,7 +90,9 @@ class TestQueryLoading:
         """Blank lines are skipped."""
         with tempfile.TemporaryDirectory() as tmpdir:
             p = Path(tmpdir) / "mixed.jsonl"
-            p.write_text('{"query": "test1"}\n\n\n{"query": "test2"}\n', encoding="utf-8")
+            p.write_text(
+                '{"query": "test1"}\n\n\n{"query": "test2"}\n', encoding="utf-8"
+            )
             queries = load_queries(str(p))
             assert queries == ["test1", "test2"]
 
@@ -96,6 +100,7 @@ class TestQueryLoading:
 # ---------------------------------------------------------------------------
 # Metric computation (from evaluation module)
 # ---------------------------------------------------------------------------
+
 
 class TestBenchmarkMetrics:
     """Tests for performance metric computation."""
@@ -130,12 +135,14 @@ class TestBenchmarkMetrics:
 # Adapter tests
 # ---------------------------------------------------------------------------
 
+
 class TestHectorAdapter:
     """Tests for the HECTOR benchmark adapter."""
 
     def test_adapter_is_importable(self):
         """hector_adapter module is importable."""
         from benchmark.adapters import hector_adapter
+
         assert hasattr(hector_adapter, "profile_query")
 
     def test_adapter_handles_connection_error(self):
@@ -150,12 +157,14 @@ class TestHectorAdapter:
 # CLI entry points
 # ---------------------------------------------------------------------------
 
+
 class TestBenchmarkCli:
     """Tests for benchmark CLI modules."""
 
     def test_rag_benchmark_importable(self):
         """rag_benchmark module is importable."""
         import benchmark.rag_benchmark as mod
+
         assert hasattr(mod, "main")
         assert hasattr(mod, "run_profiling")
         assert hasattr(mod, "run_load_test")
@@ -166,6 +175,7 @@ class TestBenchmarkCli:
     def test_sweep_comparison_importable(self):
         """sweep_comparison module is importable."""
         import benchmark.sweep_comparison as mod
+
         assert hasattr(mod, "main")
 
     def test_report_generation(self):
@@ -207,6 +217,7 @@ class TestBenchmarkCli:
 # ---------------------------------------------------------------------------
 # Regression thresholds
 # ---------------------------------------------------------------------------
+
 
 class TestPerformanceThresholds:
     """Verify core operations complete within acceptable time bounds."""

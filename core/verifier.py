@@ -214,7 +214,11 @@ class ChainOfVerification:
         context_parts = []
         for doc in source_documents:
             meta = doc.get("metadata", {})
-            source = meta.get("real_act_name") or meta.get("act_name") or meta.get("source", "Unknown")
+            source = (
+                meta.get("real_act_name")
+                or meta.get("act_name")
+                or meta.get("source", "Unknown")
+            )
             page = meta.get("page", "?")
             content = doc.get("document", "")
             context_parts.append(f"[Source: {source}, Page {page}]\n{content}\n")
@@ -587,7 +591,11 @@ class StrictCitationGenerator:
         parts = []
         for i, doc in enumerate(sources, 1):
             meta = doc.get("metadata", {})
-            source = meta.get("real_act_name") or meta.get("act_name") or meta.get("source", f"Document {i}")
+            source = (
+                meta.get("real_act_name")
+                or meta.get("act_name")
+                or meta.get("source", f"Document {i}")
+            )
             page = meta.get("page", "?")
             content = doc.get("document", "")
             parts.append(f"[Document {i}]: {source} (Page {page})\n---\n{content}")

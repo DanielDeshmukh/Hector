@@ -27,8 +27,13 @@ class TestRedactionFilter:
 
     def test_api_key_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="api_key=sk-test12345678901234567890", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="api_key=sk-test12345678901234567890",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -37,8 +42,13 @@ class TestRedactionFilter:
 
     def test_x_api_key_header_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="X-API-Key: my-secret-api-key-12345678901234", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="X-API-Key: my-secret-api-key-12345678901234",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -47,8 +57,13 @@ class TestRedactionFilter:
 
     def test_bearer_token_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.test.signature", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.test.signature",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -57,8 +72,13 @@ class TestRedactionFilter:
 
     def test_password_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="password=supersecret123", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="password=supersecret123",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -67,8 +87,13 @@ class TestRedactionFilter:
 
     def test_jwt_secret_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="jwt_secret=my-super-secret-jwt-key-32bytes!!", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="jwt_secret=my-super-secret-jwt-key-32bytes!!",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -77,8 +102,13 @@ class TestRedactionFilter:
 
     def test_groq_api_key_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="Using gsk_abc123def456ghi789jkl012mno345pqr678stu901vwx234", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="Using gsk_abc123def456ghi789jkl012mno345pqr678stu901vwx234",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -87,8 +117,13 @@ class TestRedactionFilter:
 
     def test_postgres_password_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="POSTGRES_PASSWORD=mydbpass123", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="POSTGRES_PASSWORD=mydbpass123",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -97,8 +132,13 @@ class TestRedactionFilter:
 
     def test_postgres_connection_string_redacted(self, logger):
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="postgresql://hector:mypassword@postgres:5432/hector", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="postgresql://hector:mypassword@postgres:5432/hector",
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -108,8 +148,13 @@ class TestRedactionFilter:
     def test_clean_message_unchanged(self, logger):
         msg = "search route=LEGAL_RESEARCH results=5 duration=12.3ms"
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg=msg, args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg=msg,
+            args=(),
+            exc_info=None,
         )
         f = RedactionFilter("test")
         f.filter(record)
@@ -118,9 +163,13 @@ class TestRedactionFilter:
     def test_tuple_args_redacted(self):
         f = RedactionFilter("test")
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
             msg="auth event=login subject=%s success=%s",
-            args=("user@test.com", "api_key=secret-key-1234567890"), exc_info=None,
+            args=("user@test.com", "api_key=secret-key-1234567890"),
+            exc_info=None,
         )
         f.filter(record)
         assert "secret-key-1234567890" not in str(record.args)
@@ -129,9 +178,13 @@ class TestRedactionFilter:
     def test_dict_args_redacted(self):
         f = RedactionFilter("test")
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
             msg="request headers=%s",
-            args=({"X-API-Key": "my-secret-api-key-1234567890"},), exc_info=None,
+            args=({"X-API-Key": "my-secret-api-key-1234567890"},),
+            exc_info=None,
         )
         f.filter(record)
         assert "my-secret-api-key-1234567890" not in str(record.args)
@@ -149,7 +202,12 @@ class TestInstallRedactionFilter:
     def test_filter_returns_true(self):
         f = RedactionFilter("test")
         record = logging.LogRecord(
-            name="test", level=logging.INFO, pathname="", lineno=0,
-            msg="test message", args=(), exc_info=None,
+            name="test",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="test message",
+            args=(),
+            exc_info=None,
         )
         assert f.filter(record) is True

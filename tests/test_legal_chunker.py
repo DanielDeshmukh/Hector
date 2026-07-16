@@ -136,7 +136,7 @@ class TestLongSectionSplitting(unittest.TestCase):
             text += f"({i}) Sub-section {i} with some content that makes it longer. "
             text += "Additional text to make this subsection substantial enough to be meaningful. "
             text += "More text here to ensure the section exceeds the maximum length. "
-        
+
         chunks = self.chunker.chunk_page(text)
         # Should be split into multiple chunks
         self.assertGreater(len(chunks), 1)

@@ -81,6 +81,7 @@ class TestAuthEndpoints:
     def client(self):
         from fastapi.testclient import TestClient
         from api.app import app
+
         return TestClient(app)
 
     def test_token_endpoint_requires_api_key(self, client):
@@ -88,16 +89,13 @@ class TestAuthEndpoints:
         assert resp.status_code in (401, 422)
 
     def test_token_endpoint_wrong_key(self, client):
-        resp = client.post(
-            "/auth/token?api_key=wrong",
-            headers={"X-API-Key": "wrong"}
-        )
+        resp = client.post("/auth/token?api_key=wrong", headers={"X-API-Key": "wrong"})
         assert resp.status_code == 401
 
     def test_token_endpoint_valid(self, client):
         resp = client.post(
             f"/auth/token?api_key={auth_manager.api_key}",
-            headers={"X-API-Key": auth_manager.api_key}
+            headers={"X-API-Key": auth_manager.api_key},
         )
         assert resp.status_code == 200
         data = resp.json()
@@ -110,7 +108,7 @@ class TestAuthEndpoints:
         # Get token
         token_resp = client.post(
             f"/auth/token?api_key={auth_manager.api_key}",
-            headers={"X-API-Key": auth_manager.api_key}
+            headers={"X-API-Key": auth_manager.api_key},
         )
         token = token_resp.json()["access_token"]
 
@@ -118,7 +116,7 @@ class TestAuthEndpoints:
         resp = client.post(
             "/search",
             headers={"Authorization": f"Bearer {token}"},
-            json={"query": "test", "page": 1, "page_size": 1}
+            json={"query": "test", "page": 1, "page_size": 1},
         )
         assert resp.status_code == 200
 
@@ -126,7 +124,7 @@ class TestAuthEndpoints:
         resp = client.post(
             "/search",
             headers={"Authorization": "Bearer invalid.jwt.token"},
-            json={"query": "test", "page": 1, "page_size": 1}
+            json={"query": "test", "page": 1, "page_size": 1},
         )
         assert resp.status_code in (400, 401)
 
@@ -138,6 +136,7 @@ class TestSecurityHeaders:
     def client(self):
         from fastapi.testclient import TestClient
         from api.app import app
+
         return TestClient(app)
 
     def test_cors_headers(self, client):
@@ -146,16 +145,13 @@ class TestSecurityHeaders:
             headers={
                 "Origin": "http://localhost:5173",
                 "Access-Control-Request-Method": "POST",
-            }
+            },
         )
         # CORS should allow the frontend origin
         assert resp.status_code in (200, 405)
 
     def test_rate_limit_headers(self, client):
-        resp = client.get(
-            "/status",
-            headers={"X-API-Key": auth_manager.api_key}
-        )
+        resp = client.get("/status", headers={"X-API-Key": auth_manager.api_key})
         assert "X-RateLimit-Limit" in resp.headers
         assert "X-RateLimit-Remaining" in resp.headers
         assert "X-RateLimit-Reset" in resp.headers

@@ -115,9 +115,7 @@ class HectorApiService:
         t_generate = time.perf_counter()
         timings["generate_ms"] = round((t_generate - t_retrieve) * 1000, 1)
         timings["total_ms"] = round((t_generate - t0) * 1000, 1)
-        timings["route_confidence"] = round(
-            float(intent.get("confidence", 0.0)), 3
-        )
+        timings["route_confidence"] = round(float(intent.get("confidence", 0.0)), 3)
 
         total_pages = max(
             1, (total_results + request.page_size - 1) // request.page_size
@@ -402,10 +400,16 @@ class HectorApiService:
             score=float(item.get("score", 0.0)),
             similarity_score=self._normalize_score(raw_similarity),
             reranker_score=self._normalize_score(raw_reranker),
-            hybrid_score=self._normalize_score(float(item.get("hybrid_score", 0.0) or 0.0)),
-            retrieval_score=self._normalize_score(float(item.get("retrieval_score", 0.0) or 0.0)),
+            hybrid_score=self._normalize_score(
+                float(item.get("hybrid_score", 0.0) or 0.0)
+            ),
+            retrieval_score=self._normalize_score(
+                float(item.get("retrieval_score", 0.0) or 0.0)
+            ),
             boost_score=self._normalize_score(raw_boost),
-            semantic_score=self._normalize_score(float(item.get("semantic_score", 0.0) or 0.0)),
+            semantic_score=self._normalize_score(
+                float(item.get("semantic_score", 0.0) or 0.0)
+            ),
             bm25_score=self._normalize_score(float(item.get("bm25_score", 0.0) or 0.0)),
             bm25_raw_score=float(item.get("bm25_raw_score", 0.0) or 0.0),
             act=item.get("act"),

@@ -31,6 +31,7 @@ import yaml
 # Config models
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class TargetConfig:
     url: str = "http://localhost:8000"
@@ -109,6 +110,7 @@ def load_config(path: str) -> BenchConfig:
 # Query loader
 # ---------------------------------------------------------------------------
 
+
 def load_queries(path: str) -> list[str]:
     """Load queries from a JSONL file."""
     queries = []
@@ -126,6 +128,7 @@ def load_queries(path: str) -> list[str]:
 # ---------------------------------------------------------------------------
 # HECTOR API client
 # ---------------------------------------------------------------------------
+
 
 def query_hector(
     url: str,
@@ -175,6 +178,7 @@ def query_hector(
 # Profiling phase
 # ---------------------------------------------------------------------------
 
+
 def run_profiling(
     cfg: BenchConfig,
     queries: list[str],
@@ -195,7 +199,7 @@ def run_profiling(
     for i in range(warmup):
         q = queries[i % len(queries)]
         query_hector(url, q, top_k, cfg.target.timeout_s, api_key)
-        print(f"    warmup {i+1}/{warmup} done")
+        print(f"    warmup {i + 1}/{warmup} done")
 
     # Profile
     results = []
@@ -206,7 +210,9 @@ def run_profiling(
         r["query"] = q[:80]
         results.append(r)
         status_icon = "+" if r["status"] == "success" else "x"
-        print(f"    profile {i+1}/{profile_n} [{status_icon}] {r['latency_ms']:.0f}ms")
+        print(
+            f"    profile {i + 1}/{profile_n} [{status_icon}] {r['latency_ms']:.0f}ms"
+        )
 
     # Compute stats
     latencies = [r["latency_ms"] for r in results if r["status"] == "success"]
@@ -221,11 +227,21 @@ def run_profiling(
             "errors": len(errors),
             "avg_latency_ms": round(statistics.mean(latencies), 1),
             "median_latency_ms": round(statistics.median(latencies), 1),
-            "p95_latency_ms": round(latencies_sorted[int(len(latencies_sorted) * 0.95)], 1) if len(latencies_sorted) >= 2 else round(latencies_sorted[-1], 1),
-            "p99_latency_ms": round(latencies_sorted[int(len(latencies_sorted) * 0.99)], 1) if len(latencies_sorted) >= 2 else round(latencies_sorted[-1], 1),
+            "p95_latency_ms": round(
+                latencies_sorted[int(len(latencies_sorted) * 0.95)], 1
+            )
+            if len(latencies_sorted) >= 2
+            else round(latencies_sorted[-1], 1),
+            "p99_latency_ms": round(
+                latencies_sorted[int(len(latencies_sorted) * 0.99)], 1
+            )
+            if len(latencies_sorted) >= 2
+            else round(latencies_sorted[-1], 1),
             "min_latency_ms": round(min(latencies), 1),
             "max_latency_ms": round(max(latencies), 1),
-            "std_dev_ms": round(statistics.stdev(latencies), 1) if len(latencies) > 1 else 0,
+            "std_dev_ms": round(statistics.stdev(latencies), 1)
+            if len(latencies) > 1
+            else 0,
         }
 
     return {"stats": stats, "results": results, "errors": errors}
@@ -234,6 +250,7 @@ def run_profiling(
 # ---------------------------------------------------------------------------
 # Load testing phase
 # ---------------------------------------------------------------------------
+
 
 def run_load_test(
     cfg: BenchConfig,
@@ -250,7 +267,9 @@ def run_load_test(
     iterations = cfg.aiperf.iterations
     duration_s = cfg.aiperf.duration_s
 
-    print(f"\n  [LOAD TEST] Concurrency: {concurrency} | Iterations: {iterations} | Duration: {duration_s}s")
+    print(
+        f"\n  [LOAD TEST] Concurrency: {concurrency} | Iterations: {iterations} | Duration: {duration_s}s"
+    )
 
     all_results = []
     start_time = time.time()
@@ -284,12 +303,22 @@ def run_load_test(
             "total_requests": len(all_results),
             "successful": len(latencies),
             "errors": len(errors),
-            "error_rate": round(len(errors) / len(all_results) * 100, 1) if all_results else 0,
+            "error_rate": round(len(errors) / len(all_results) * 100, 1)
+            if all_results
+            else 0,
             "throughput_qps": round(throughput, 2),
             "avg_latency_ms": round(statistics.mean(latencies), 1),
             "median_latency_ms": round(statistics.median(latencies), 1),
-            "p95_latency_ms": round(latencies_sorted[int(len(latencies_sorted) * 0.95)], 1) if len(latencies_sorted) >= 2 else round(latencies_sorted[-1], 1),
-            "p99_latency_ms": round(latencies_sorted[int(len(latencies_sorted) * 0.99)], 1) if len(latencies_sorted) >= 2 else round(latencies_sorted[-1], 1),
+            "p95_latency_ms": round(
+                latencies_sorted[int(len(latencies_sorted) * 0.95)], 1
+            )
+            if len(latencies_sorted) >= 2
+            else round(latencies_sorted[-1], 1),
+            "p99_latency_ms": round(
+                latencies_sorted[int(len(latencies_sorted) * 0.99)], 1
+            )
+            if len(latencies_sorted) >= 2
+            else round(latencies_sorted[-1], 1),
             "min_latency_ms": round(min(latencies), 1),
             "max_latency_ms": round(max(latencies), 1),
         }
@@ -301,13 +330,18 @@ def run_load_test(
 # Sweep
 # ---------------------------------------------------------------------------
 
+
 def run_sweep(
     cfg: BenchConfig,
     queries: list[str],
     api_key: str | None = None,
 ) -> list[dict[str, Any]]:
     """Run sweep across all axis combinations."""
-    concurrencies = cfg.aiperf.concurrency if isinstance(cfg.aiperf.concurrency, list) else [cfg.aiperf.concurrency]
+    concurrencies = (
+        cfg.aiperf.concurrency
+        if isinstance(cfg.aiperf.concurrency, list)
+        else [cfg.aiperf.concurrency]
+    )
     top_ks = cfg.rag.top_k if isinstance(cfg.rag.top_k, list) else [cfg.rag.top_k]
 
     sweep_results = []
@@ -317,9 +351,11 @@ def run_sweep(
     for cr in concurrencies:
         for tk in top_ks:
             point_idx += 1
-            print(f"\n{'='*60}")
-            print(f"  SWEEP POINT {point_idx}/{total_points}: concurrency={cr}, top_k={tk}")
-            print(f"{'='*60}")
+            print(f"\n{'=' * 60}")
+            print(
+                f"  SWEEP POINT {point_idx}/{total_points}: concurrency={cr}, top_k={tk}"
+            )
+            print(f"{'=' * 60}")
 
             # Temporarily override config
             orig_top_k = cfg.rag.top_k
@@ -355,6 +391,7 @@ def run_sweep(
 # ---------------------------------------------------------------------------
 # Report generation
 # ---------------------------------------------------------------------------
+
 
 def generate_report(
     cfg: BenchConfig,
@@ -425,7 +462,9 @@ def save_results(
         csv_path = run_dir / "sweep_results.csv"
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             if sweep_results and sweep_results[0].get("stats"):
-                writer = csv.DictWriter(f, fieldnames=list(sweep_results[0]["stats"].keys()))
+                writer = csv.DictWriter(
+                    f, fieldnames=list(sweep_results[0]["stats"].keys())
+                )
                 writer.writeheader()
                 for s in sweep_results:
                     if s.get("stats"):
@@ -452,11 +491,7 @@ def _format_markdown_report(report: dict[str, Any]) -> str:
     # Profiling
     prof = report.get("profiling", {})
     if prof and prof.get("total_requests"):
-        lines.extend([
-            "## Profiling Results",
-            "",
-            "| Metric | Value |",
-        ...])
+        lines.extend(["## Profiling Results", "", "| Metric | Value |", ...])
         for key, val in prof.items():
             lines.append(f"| {key} | {val} |")
         lines.append("")
@@ -464,12 +499,14 @@ def _format_markdown_report(report: dict[str, Any]) -> str:
     # Load test
     load = report.get("load_test", {})
     if load and load.get("total_requests"):
-        lines.extend([
-            "## Load Test Results",
-            "",
-            "| Metric | Value |",
-            "|--------|-------|",
-        ])
+        lines.extend(
+            [
+                "## Load Test Results",
+                "",
+                "| Metric | Value |",
+                "|--------|-------|",
+            ]
+        )
         for key, val in load.items():
             lines.append(f"| {key} | {val} |")
         lines.append("")
@@ -477,12 +514,14 @@ def _format_markdown_report(report: dict[str, Any]) -> str:
     # Sweep
     sweep = report.get("sweep", [])
     if sweep:
-        lines.extend([
-            "## Sweep Results",
-            "",
-            "| Concurrency | Top-K | Throughput (QPS) | Avg Latency (ms) | P95 Latency (ms) | Errors |",
-            "|-------------|-------|-------------------|-------------------|-------------------|--------|",
-        ])
+        lines.extend(
+            [
+                "## Sweep Results",
+                "",
+                "| Concurrency | Top-K | Throughput (QPS) | Avg Latency (ms) | P95 Latency (ms) | Errors |",
+                "|-------------|-------|-------------------|-------------------|-------------------|--------|",
+            ]
+        )
         for s in sweep:
             lines.append(
                 f"| {s.get('concurrency', '-')} | {s.get('top_k', '-')} | "
@@ -498,13 +537,15 @@ def _format_markdown_report(report: dict[str, Any]) -> str:
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="HECTOR Performance Benchmark",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
-        "-c", "--config",
+        "-c",
+        "--config",
         required=True,
         help="Path to YAML config file",
     )
@@ -523,13 +564,13 @@ def main():
 
     # Load config
     cfg = load_config(args.config)
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  HECTOR Performance Benchmark")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  Target:     {cfg.target.url}")
     print(f"  Config:     {args.config}")
     print(f"  Experiment: {cfg.output.experiment_name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     # Load queries
     queries = load_queries(cfg.input.file)
@@ -542,16 +583,22 @@ def main():
         if profiling.get("stats"):
             s = profiling["stats"]
             print("\n  [PROFILING DONE]")
-            print(f"    Avg: {s.get('avg_latency_ms', 0):.0f}ms | "
-                  f"P95: {s.get('p95_latency_ms', 0):.0f}ms | "
-                  f"Throughput: {s.get('successful', 0) / max(profiling.get('results', [{}]).__len__(), 1):.1f} QPS")
+            print(
+                f"    Avg: {s.get('avg_latency_ms', 0):.0f}ms | "
+                f"P95: {s.get('p95_latency_ms', 0):.0f}ms | "
+                f"Throughput: {s.get('successful', 0) / max(profiling.get('results', [{}]).__len__(), 1):.1f} QPS"
+            )
 
     # Phase 2: Load test (single point or sweep)
     load_results = None
     sweep_results = None
 
     if cfg.aiperf.enabled:
-        concurrencies = cfg.aiperf.concurrency if isinstance(cfg.aiperf.concurrency, list) else [cfg.aiperf.concurrency]
+        concurrencies = (
+            cfg.aiperf.concurrency
+            if isinstance(cfg.aiperf.concurrency, list)
+            else [cfg.aiperf.concurrency]
+        )
         top_ks = cfg.rag.top_k if isinstance(cfg.rag.top_k, list) else [cfg.rag.top_k]
 
         if len(concurrencies) > 1 or len(top_ks) > 1:
@@ -561,25 +608,33 @@ def main():
             if load_results.get("stats"):
                 s = load_results["stats"]
                 print("\n  [LOAD TEST DONE]")
-                print(f"    Throughput: {s.get('throughput_qps', 0):.1f} QPS | "
-                      f"Avg: {s.get('avg_latency_ms', 0):.0f}ms | "
-                      f"P95: {s.get('p95_latency_ms', 0):.0f}ms | "
-                      f"Errors: {s.get('error_rate', 0):.1f}%")
+                print(
+                    f"    Throughput: {s.get('throughput_qps', 0):.1f} QPS | "
+                    f"Avg: {s.get('avg_latency_ms', 0):.0f}ms | "
+                    f"P95: {s.get('p95_latency_ms', 0):.0f}ms | "
+                    f"Errors: {s.get('error_rate', 0):.1f}%"
+                )
 
     # Generate report
     report = generate_report(cfg, profiling, load_results, sweep_results)
 
     # Save results
-    run_dir = save_results(report, profiling, load_results, sweep_results,
-                           cfg.output.dir, cfg.output.experiment_name)
+    run_dir = save_results(
+        report,
+        profiling,
+        load_results,
+        sweep_results,
+        cfg.output.dir,
+        cfg.output.experiment_name,
+    )
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  BENCHMARK COMPLETE")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  Results saved to: {run_dir}")
     print(f"  Report: {run_dir / 'report.md'}")
     print(f"  JSON:   {run_dir / 'report.json'}")
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
 
 if __name__ == "__main__":

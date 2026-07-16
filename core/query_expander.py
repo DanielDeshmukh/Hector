@@ -106,7 +106,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 351 bns",
         "intimidation",
     ],
-
     # Bail types
     "bail": [
         "anticipatory bail",
@@ -124,7 +123,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 482 bnss",
         "before arrest",
     ],
-
     # Procedure
     "fir": [
         "first information report",
@@ -152,7 +150,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 413 bnss",
         "higher court",
     ],
-
     # Civil law
     "divorce": [
         "dissolution of marriage",
@@ -183,7 +180,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 73 indian contract act",
         "loss of profit",
     ],
-
     # Property
     "mortgage": [
         "home loan",
@@ -204,7 +200,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 4 hindu succession act",
         "co-ownership",
     ],
-
     # Constitutional
     "fundamental rights": [
         "article 14",
@@ -221,7 +216,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "quo warranto",
         "prohibition",
     ],
-
     # Consumer protection
     "consumer complaint": [
         "deficiency in service",
@@ -229,7 +223,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 34 consumer protection act",
         "consumer forum",
     ],
-
     # Evidence
     "electronic evidence": [
         "section 65b",
@@ -243,7 +236,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "section 22 bharatiya sakshya",
         "dying declaration",
     ],
-
     # Labour
     "unfair labour": [
         "industrial dispute",
@@ -252,7 +244,6 @@ LEGAL_SYNONYMS: Dict[str, List[str]] = {
         "lockout",
         "retrenchment",
     ],
-
     # Limitation
     "limitation": [
         "time bar",
@@ -308,10 +299,10 @@ class QueryExpander:
     def expand(self, query: str) -> str:
         """
         Expand a query with legal synonyms.
-        
+
         Args:
             query: Original user query
-            
+
         Returns:
             Expanded query with synonyms appended
         """

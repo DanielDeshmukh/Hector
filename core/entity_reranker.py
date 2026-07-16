@@ -32,11 +32,11 @@ class EntityReranker:
 
     # Boost weights for different match types
     BOOST_WEIGHTS = {
-        "section": 0.15,      # Section number in document
-        "act": 0.10,          # Act name in document
-        "topic": 0.05,        # Legal topic in document
-        "article": 0.10,      # Constitutional article in document
-        "citation": 0.08,     # Citation metadata match
+        "section": 0.15,  # Section number in document
+        "act": 0.10,  # Act name in document
+        "topic": 0.05,  # Legal topic in document
+        "article": 0.10,  # Constitutional article in document
+        "citation": 0.08,  # Citation metadata match
     }
 
     def __init__(self, boost_weights: Optional[Dict[str, float]] = None):
@@ -50,11 +50,11 @@ class EntityReranker:
     ) -> List[Dict[str, Any]]:
         """
         Re-rank results based on entity matches.
-        
+
         Args:
             results: Search results from hybrid retriever
             entities: Extracted entities from query parser (LegalEntities.to_dict())
-            
+
         Returns:
             Re-ranked results with boosted scores
         """
@@ -84,9 +84,7 @@ class EntityReranker:
         results.sort(key=lambda x: x.get("score", 0.0), reverse=True)
         return results
 
-    def _calculate_boost(
-        self, item: Dict[str, Any], entities: Dict[str, Any]
-    ) -> float:
+    def _calculate_boost(self, item: Dict[str, Any], entities: Dict[str, Any]) -> float:
         """Calculate total boost for a single result."""
         boost = 0.0
 
@@ -94,7 +92,9 @@ class EntityReranker:
         doc_text = (item.get("document") or "").lower()
         metadata = item.get("metadata", {})
         source = (metadata.get("source") or "").lower()
-        real_act = (metadata.get("real_act_name") or metadata.get("act_name") or "").lower()
+        real_act = (
+            metadata.get("real_act_name") or metadata.get("act_name") or ""
+        ).lower()
         citation = item.get("citation", {})
         act_in_result = (item.get("act") or "").lower()
 
@@ -103,7 +103,9 @@ class EntityReranker:
         boost += section_boost
 
         # 2. Act name match (prefer real_act_name over source filename)
-        act_boost = self._check_act_match(doc_text, real_act or source, act_in_result, entities)
+        act_boost = self._check_act_match(
+            doc_text, real_act or source, act_in_result, entities
+        )
         boost += act_boost
 
         # 3. Topic match
@@ -165,7 +167,11 @@ class EntityReranker:
         act_keywords = {
             "Indian Penal Code": ["ipc", "indian penal code", "penal code"],
             "Bharatiya Nyaya Sanhita": ["bns", "bharatiya nyaya"],
-            "Code of Criminal Procedure": ["crpc", "code of criminal", "criminal procedure"],
+            "Code of Criminal Procedure": [
+                "crpc",
+                "code of criminal",
+                "criminal procedure",
+            ],
             "Bharatiya Nagarik Suraksha Sanhita": ["bnss", "bharatiya nagarik"],
             "Indian Evidence Act": ["evidence act", "indian evidence"],
             "Bharatiya Sakshya Adhiniyam": ["bharatiya sakshya", "sakshya adhiniyam"],
@@ -209,7 +215,11 @@ class EntityReranker:
         # Simple keyword matching for topics
         topic_keywords = {
             "bail": ["bail", "anticipatory bail", "default bail"],
-            "anticipatory_bail": ["anticipatory bail", "pre-arrest bail", "section 438"],
+            "anticipatory_bail": [
+                "anticipatory bail",
+                "pre-arrest bail",
+                "section 438",
+            ],
             "murder": ["murder", "culpable homicide", "section 302"],
             "theft": ["theft", "larceny", "section 378"],
             "rape": ["rape", "sexual assault", "section 376"],

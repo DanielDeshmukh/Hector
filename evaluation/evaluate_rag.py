@@ -41,6 +41,7 @@ OPTIONAL_FIELDS = {"expected_sections", "expected_acts", "category"}
 # Dataset loading
 # ---------------------------------------------------------------------------
 
+
 def load_dataset(dataset_path: str) -> list[dict[str, Any]]:
     """Load train.json from the given dataset directory."""
     train_path = Path(dataset_path) / "train.json"
@@ -65,6 +66,7 @@ def load_dataset(dataset_path: str) -> list[dict[str, Any]]:
 # HECTOR API client
 # ---------------------------------------------------------------------------
 
+
 def query_hector(
     query: str,
     host: str,
@@ -85,14 +87,19 @@ def query_hector(
     }
 
     try:
-        resp = requests.post(url, json=payload, headers=headers, timeout=TIMEOUT_SECONDS)
+        resp = requests.post(
+            url, json=payload, headers=headers, timeout=TIMEOUT_SECONDS
+        )
         resp.raise_for_status()
         return resp.json()
     except requests.exceptions.ConnectionError:
         print(f"ERROR: Cannot connect to HECTOR at {host}:{port}", file=sys.stderr)
         sys.exit(1)
     except requests.exceptions.HTTPError:
-        print(f"ERROR: HECTOR returned {resp.status_code}: {resp.text[:200]}", file=sys.stderr)
+        print(
+            f"ERROR: HECTOR returned {resp.status_code}: {resp.text[:200]}",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
 
@@ -110,6 +117,7 @@ def extract_answer(response: dict[str, Any]) -> str:
 # ---------------------------------------------------------------------------
 # RAGAS evaluation (simplified local implementation)
 # ---------------------------------------------------------------------------
+
 
 def compute_ragas_metrics(
     query: str,
@@ -140,7 +148,9 @@ def compute_ragas_metrics(
             ctx_lower = ctx.lower()
             if any(sub.lower() in ctx_lower for sub in gt_substrings if len(sub) > 10):
                 relevant_count += 1
-        metrics["context_precision"] = relevant_count / len(contexts) if contexts else 0.0
+        metrics["context_precision"] = (
+            relevant_count / len(contexts) if contexts else 0.0
+        )
     else:
         metrics["context_precision"] = 0.0
 
@@ -158,7 +168,9 @@ def compute_ragas_metrics(
         gt_keywords = set(_extract_keywords(ground_truth))
         answer_keywords = set(_extract_keywords(answer))
         if gt_keywords:
-            metrics["answer_relevance"] = len(gt_keywords & answer_keywords) / len(gt_keywords)
+            metrics["answer_relevance"] = len(gt_keywords & answer_keywords) / len(
+                gt_keywords
+            )
         else:
             metrics["answer_relevance"] = 0.0
     else:
@@ -182,36 +194,150 @@ def compute_ragas_metrics(
 def _split_into_sentences(text: str) -> list[str]:
     """Split text into sentence-like chunks."""
     import re
-    sentences = re.split(r'(?<=[.!?])\s+', text)
+
+    sentences = re.split(r"(?<=[.!?])\s+", text)
     return [s.strip() for s in sentences if len(s.strip()) > 5]
 
 
 def _extract_keywords(text: str) -> list[str]:
     """Extract meaningful keywords from text."""
     import re
+
     stopwords = {
-        "the", "a", "an", "is", "are", "was", "were", "be", "been", "being",
-        "have", "has", "had", "do", "does", "did", "will", "would", "could",
-        "should", "may", "might", "shall", "can", "need", "dare", "ought",
-        "used", "to", "of", "in", "for", "on", "with", "at", "by", "from",
-        "as", "into", "through", "during", "before", "after", "above", "below",
-        "between", "out", "off", "over", "under", "again", "further", "then",
-        "once", "here", "there", "when", "where", "why", "how", "all", "both",
-        "each", "few", "more", "most", "other", "some", "such", "no", "nor",
-        "not", "only", "own", "same", "so", "than", "too", "very", "just",
-        "and", "but", "or", "if", "while", "what", "which", "who", "whom",
-        "this", "that", "these", "those", "i", "me", "my", "we", "our", "you",
-        "your", "he", "him", "his", "she", "her", "it", "its", "they", "them",
-        "their", "about", "up", "also", "shall", "under", "section", "ipc",
-        "bns", "crpc", "bnss", "bsa", "act", "code", "law", "case",
+        "the",
+        "a",
+        "an",
+        "is",
+        "are",
+        "was",
+        "were",
+        "be",
+        "been",
+        "being",
+        "have",
+        "has",
+        "had",
+        "do",
+        "does",
+        "did",
+        "will",
+        "would",
+        "could",
+        "should",
+        "may",
+        "might",
+        "shall",
+        "can",
+        "need",
+        "dare",
+        "ought",
+        "used",
+        "to",
+        "of",
+        "in",
+        "for",
+        "on",
+        "with",
+        "at",
+        "by",
+        "from",
+        "as",
+        "into",
+        "through",
+        "during",
+        "before",
+        "after",
+        "above",
+        "below",
+        "between",
+        "out",
+        "off",
+        "over",
+        "under",
+        "again",
+        "further",
+        "then",
+        "once",
+        "here",
+        "there",
+        "when",
+        "where",
+        "why",
+        "how",
+        "all",
+        "both",
+        "each",
+        "few",
+        "more",
+        "most",
+        "other",
+        "some",
+        "such",
+        "no",
+        "nor",
+        "not",
+        "only",
+        "own",
+        "same",
+        "so",
+        "than",
+        "too",
+        "very",
+        "just",
+        "and",
+        "but",
+        "or",
+        "if",
+        "while",
+        "what",
+        "which",
+        "who",
+        "whom",
+        "this",
+        "that",
+        "these",
+        "those",
+        "i",
+        "me",
+        "my",
+        "we",
+        "our",
+        "you",
+        "your",
+        "he",
+        "him",
+        "his",
+        "she",
+        "her",
+        "it",
+        "its",
+        "they",
+        "them",
+        "their",
+        "about",
+        "up",
+        "also",
+        "shall",
+        "under",
+        "section",
+        "ipc",
+        "bns",
+        "crpc",
+        "bnss",
+        "bsa",
+        "act",
+        "code",
+        "law",
+        "case",
     }
-    words = re.findall(r'[a-zA-Z]+', text.lower())
+    words = re.findall(r"[a-zA-Z]+", text.lower())
     return [w for w in words if w not in stopwords and len(w) > 2]
 
 
 # ---------------------------------------------------------------------------
 # Citation quality metrics
 # ---------------------------------------------------------------------------
+
 
 def compute_citation_metrics(
     response: dict[str, Any],
@@ -266,6 +392,7 @@ def compute_citation_metrics(
 # Main evaluation loop
 # ---------------------------------------------------------------------------
 
+
 def run_evaluation(
     dataset_path: str,
     host: str,
@@ -276,16 +403,16 @@ def run_evaluation(
 ) -> dict[str, Any]:
     """Run full evaluation and return summary."""
     dataset_name = Path(dataset_path).name
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"  HECTOR RAGAS Evaluation — {dataset_name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  API:      http://{host}:{port}")
     print(f"  Top-K:    {top_k}")
     print(f"  Dataset:  {dataset_path}")
 
     data = load_dataset(dataset_path)
     print(f"  Queries:  {len(data)}")
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
     all_metrics = []
     errors = []
@@ -297,7 +424,7 @@ def run_evaluation(
         expected_acts = item.get("expected_acts", [])
         category = item.get("category", "unknown")
 
-        print(f"[{i+1}/{len(data)}] {query[:80]}...")
+        print(f"[{i + 1}/{len(data)}] {query[:80]}...")
 
         try:
             t0 = time.time()
@@ -308,7 +435,9 @@ def run_evaluation(
             contexts = extract_contexts(response)
 
             ragas = compute_ragas_metrics(query, answer, contexts, ground_truth)
-            citation = compute_citation_metrics(response, expected_sections, expected_acts)
+            citation = compute_citation_metrics(
+                response, expected_sections, expected_acts
+            )
 
             result = {
                 "query": query,
@@ -321,11 +450,13 @@ def run_evaluation(
             }
             all_metrics.append(result)
 
-            print(f"  -> Faithfulness: {ragas['faithfulness']:.2f} | "
-                  f"Relevance: {ragas['answer_relevance']:.2f} | "
-                  f"Context Recall: {ragas['context_recall']:.2f} | "
-                  f"Section Recall: {citation['section_recall']:.2f} | "
-                  f"Latency: {latency_ms:.0f}ms")
+            print(
+                f"  -> Faithfulness: {ragas['faithfulness']:.2f} | "
+                f"Relevance: {ragas['answer_relevance']:.2f} | "
+                f"Context Recall: {ragas['context_recall']:.2f} | "
+                f"Section Recall: {citation['section_recall']:.2f} | "
+                f"Latency: {latency_ms:.0f}ms"
+            )
 
         except Exception as e:
             errors.append({"query": query, "error": str(e)})
@@ -336,9 +467,9 @@ def run_evaluation(
     summary["errors"] = errors
 
     # Print summary
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"  EVALUATION SUMMARY — {dataset_name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  Queries evaluated:  {len(all_metrics)}")
     print(f"  Errors:             {len(errors)}")
     print("")
@@ -356,7 +487,7 @@ def run_evaluation(
     print("  Performance:")
     print(f"    Avg Latency:      {summary['avg_latency_ms']:.0f}ms")
     print(f"    P95 Latency:      {summary['p95_latency_ms']:.0f}ms")
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
     # Save results
     os.makedirs(output_dir, exist_ok=True)
@@ -394,7 +525,9 @@ def _compute_summary(metrics: list[dict], dataset_name: str) -> dict[str, Any]:
         "act_recall": sum(m["act_recall"] for m in metrics) / n,
         "avg_citation_count": sum(m["citation_count"] for m in metrics) / n,
         "avg_latency_ms": sum(latencies) / n,
-        "p95_latency_ms": latencies_sorted[int(n * 0.95)] if n >= 20 else latencies_sorted[-1],
+        "p95_latency_ms": latencies_sorted[int(n * 0.95)]
+        if n >= 20
+        else latencies_sorted[-1],
         "min_latency_ms": min(latencies),
         "max_latency_ms": max(latencies),
     }
@@ -423,6 +556,7 @@ def _compute_summary(metrics: list[dict], dataset_name: str) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -486,7 +620,10 @@ Examples:
 
     # Exit with non-zero if any metric is critically low
     if summary.get("faithfulness", 0) < 0.3:
-        print("WARNING: Faithfulness below 30% — retrieval quality is poor", file=sys.stderr)
+        print(
+            "WARNING: Faithfulness below 30% — retrieval quality is poor",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
 

@@ -71,6 +71,7 @@ class EnhancedHectorIngestor:
         # Use embedding provider abstraction if available
         try:
             from core.embedding_provider import get_embedding_provider
+
             provider = os.getenv("HECTOR_EMBEDDING_PROVIDER", "local")
             embedder = get_embedding_provider(provider)
             self.embedding_fn = embedder.get_chroma_embedding_function()
@@ -93,9 +94,12 @@ class EnhancedHectorIngestor:
         self.nemo_retriever = None
         try:
             from core.nemo_retriever import get_nemo_retriever
+
             self.nemo_retriever = get_nemo_retriever()
             if self.nemo_retriever:
-                logger.info("NeMo Retriever enabled — using NVIDIA APIs for OCR/embedding")
+                logger.info(
+                    "NeMo Retriever enabled — using NVIDIA APIs for OCR/embedding"
+                )
         except (ImportError, Exception) as e:
             logger.debug(f"NeMo Retriever not available: {e}")
 
@@ -209,7 +213,10 @@ class EnhancedHectorIngestor:
             return False, f"File is empty: {filename}"
 
         if file_size < 100:
-            return False, f"File too small ({file_size} bytes), likely corrupted: {filename}"
+            return (
+                False,
+                f"File too small ({file_size} bytes), likely corrupted: {filename}",
+            )
 
         # Check PDF header (first 5 bytes should be %PDF)
         try:
@@ -232,7 +239,9 @@ class EnhancedHectorIngestor:
 
         return True, ""
 
-    def _run_with_timeout(self, func, *args, timeout: int = PAGE_EXTRACTION_TIMEOUT, **kwargs):
+    def _run_with_timeout(
+        self, func, *args, timeout: int = PAGE_EXTRACTION_TIMEOUT, **kwargs
+    ):
         """
         Run a function with a timeout using ThreadPoolExecutor.
 
@@ -249,7 +258,9 @@ class EnhancedHectorIngestor:
             try:
                 return future.result(timeout=timeout)
             except FuturesTimeoutError:
-                raise TimeoutError(f"Function {func.__name__} timed out after {timeout}s")
+                raise TimeoutError(
+                    f"Function {func.__name__} timed out after {timeout}s"
+                )
 
     def tokenize_text(self, text: str) -> list[str]:
         """Simple whitespace tokenization."""
@@ -340,7 +351,9 @@ class EnhancedHectorIngestor:
                 return result.markdown or result.text
             except Exception as e:
                 if self.verbose:
-                    logger.info(f"  NeMo Retriever OCR failed for page {page_number}: {e}")
+                    logger.info(
+                        f"  NeMo Retriever OCR failed for page {page_number}: {e}"
+                    )
                 # Fall through to legacy implementation
 
         # Legacy direct API call
@@ -361,11 +374,13 @@ class EnhancedHectorIngestor:
 
             import io
             import base64
+
             buf = io.BytesIO()
             page_images[0].save(buf, format="PNG")
             image_b64 = base64.b64encode(buf.getvalue()).decode()
 
             import requests
+
             resp = requests.post(
                 "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1",
                 headers={
@@ -392,7 +407,7 @@ class EnhancedHectorIngestor:
 
         Uses section-aware chunking to split at legal section boundaries.
         Each section becomes its own chunk with denormalized context prepended.
-        
+
         Parses document structure and enriches each chunk with:
         - act_name, chapter, section_number
         - is_bns, is_ipc, is_repealed
@@ -401,19 +416,20 @@ class EnhancedHectorIngestor:
         """
         # Parse document structure once per page
         structure = self.parser.parse_document(text, filename)
-        
+
         # Inject real act name extracted at book level (for accurate citations)
         if self._current_book_act_name:
             structure["real_act_name"] = self._current_book_act_name
-        
+
         # Extract act and chapter for denormalized context
         act_name = structure.get("act", "")
         chapter = structure.get("chapter", "")
-        
+
         # Use section-aware chunker instead of fixed-size token windows
         from core.legal_chunker import chunk_legal_page
+
         section_chunks = chunk_legal_page(text, act_name=act_name, chapter=chapter)
-        
+
         if not section_chunks:
             return [], [], []
 
@@ -434,7 +450,7 @@ class EnhancedHectorIngestor:
 
         for chunk_index, chunk_data in enumerate(section_chunks):
             chunk = chunk_data["content"]
-            
+
             # Quality gate: reject chunks that are too short
             if len(chunk.strip()) < MIN_CHUNK_CHARS:
                 self.stats["chunks_rejected"] += 1
@@ -464,12 +480,16 @@ class EnhancedHectorIngestor:
                 if not self.reindex_mode
                 else "reindex_v2",
             }
-            
+
             # Add section-level metadata from chunker
             if chunk_data.get("section_number"):
-                base_metadata["section_number_from_chunker"] = chunk_data["section_number"]
+                base_metadata["section_number_from_chunker"] = chunk_data[
+                    "section_number"
+                ]
             if chunk_data.get("section_title"):
-                base_metadata["section_title_from_chunker"] = chunk_data["section_title"]
+                base_metadata["section_title_from_chunker"] = chunk_data[
+                    "section_title"
+                ]
             if chunk_data.get("has_proviso"):
                 base_metadata["has_provided_that"] = True
             if chunk_data.get("has_exception"):
@@ -527,6 +547,7 @@ class EnhancedHectorIngestor:
             # Try pypdf text extraction first (with timeout)
             text = ""
             try:
+
                 def extract_page_text():
                     reader = PdfReader(file_path)
                     if pg_num <= len(reader.pages):
@@ -541,6 +562,7 @@ class EnhancedHectorIngestor:
             # Fall back to OCR for scanned PDFs (with timeout)
             if (not text or len(text.strip()) < 20) and HAS_OCR:
                 try:
+
                     def ocr_page():
                         page_images = convert_from_path(
                             file_path,
@@ -638,7 +660,13 @@ class EnhancedHectorIngestor:
         except Exception as e:
             console.print(f"  [red]Error reading {filename}: {e}[/red]")
             logger.error(f"Error reading {filename}: {e}")
-            return {"filename": filename, "pages": 0, "chunks": 0, "status": "error", "error": str(e)}
+            return {
+                "filename": filename,
+                "pages": 0,
+                "chunks": 0,
+                "status": "error",
+                "error": str(e),
+            }
 
         if not text or len(text.strip()) < 20:
             console.print(f"  [red]Skipping {filename}: empty or too short[/red]")
@@ -651,7 +679,12 @@ class EnhancedHectorIngestor:
             existing = self.collection.get(where={"page_hash": page_hash})
             if existing["ids"]:
                 console.print(f"  [dim]Skipping {filename} (already indexed)[/dim]")
-                return {"filename": filename, "pages": 0, "chunks": 0, "status": "skipped"}
+                return {
+                    "filename": filename,
+                    "pages": 0,
+                    "chunks": 0,
+                    "status": "skipped",
+                }
 
         documents, metadatas, ids = self.build_chunk_payloads(
             text=text,
@@ -700,19 +733,28 @@ class EnhancedHectorIngestor:
         if not is_valid:
             console.print(f"  [red]Skipping {filename}: {error_msg}[/red]")
             logger.warning(f"Skipping {filename}: {error_msg}")
-            return {"filename": filename, "pages": 0, "chunks": 0, "status": "invalid_pdf", "error": error_msg}
+            return {
+                "filename": filename,
+                "pages": 0,
+                "chunks": 0,
+                "status": "invalid_pdf",
+                "error": error_msg,
+            }
 
         book_start = time.time()
         self._current_book_index += 1
 
         # Extract real act name from PDF content (for accurate citations)
         from utils.legal_structure_parser import extract_real_act_name
+
         try:
             reader_probe = PdfReader(file_path)
             probe_text = ""
             for pg in range(min(5, len(reader_probe.pages))):
                 probe_text += (reader_probe.pages[pg].extract_text() or "") + "\n"
-            self._current_book_act_name = extract_real_act_name(probe_text, filename) or ""
+            self._current_book_act_name = (
+                extract_real_act_name(probe_text, filename) or ""
+            )
         except Exception:
             self._current_book_act_name = ""
         if self._current_book_act_name:
@@ -841,7 +883,12 @@ class EnhancedHectorIngestor:
         table.add_row("Chunks Created", str(self.stats["chunks_created"]))
         table.add_row("Chunks Rejected", str(self.stats["chunks_rejected"]))
         table.add_row("Sections Found", str(self.stats["sections_found"]))
-        table.add_row("Acts Identified", ", ".join(sorted(self.stats["acts_found"])) if self.stats["acts_found"] else "None")
+        table.add_row(
+            "Acts Identified",
+            ", ".join(sorted(self.stats["acts_found"]))
+            if self.stats["acts_found"]
+            else "None",
+        )
 
         if self.stats["structure_types"]:
             struct_row = ", ".join(
@@ -859,7 +906,8 @@ class EnhancedHectorIngestor:
 
         pdf_files = sorted(f for f in os.listdir(BOOKS_DIR) if f.endswith(".pdf"))
         txt_files = sorted(
-            f for f in os.listdir(BOOKS_DIR)
+            f
+            for f in os.listdir(BOOKS_DIR)
             if f.endswith(".txt") and f.replace(".txt", ".pdf") not in pdf_files
         )
         files = pdf_files + txt_files

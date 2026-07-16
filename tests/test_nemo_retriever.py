@@ -29,6 +29,7 @@ from core.nemo_retriever import (
 # Data Classes
 # ---------------------------------------------------------------------------
 
+
 class TestNemoOCRResult:
     """Tests for NemoOCRResult data class."""
 
@@ -99,6 +100,7 @@ class TestNemoRerankResult:
 # Provider Initialization
 # ---------------------------------------------------------------------------
 
+
 class TestNemoRetrieverProviderInit:
     """Tests for NemoRetrieverProvider initialization."""
 
@@ -130,12 +132,15 @@ class TestNemoRetrieverProviderInit:
 
     def test_init_from_env(self):
         """Provider reads configuration from environment variables."""
-        with patch.dict(os.environ, {
-            "NVIDIA_API_KEY": "env-key",
-            "HECTOR_NEMO_OCR_MODEL": "env/ocr",
-            "HECTOR_NEMO_EMBED_MODEL": "env/embed",
-            "HECTOR_NEMO_RERANK_MODEL": "env/rerank",
-        }):
+        with patch.dict(
+            os.environ,
+            {
+                "NVIDIA_API_KEY": "env-key",
+                "HECTOR_NEMO_OCR_MODEL": "env/ocr",
+                "HECTOR_NEMO_EMBED_MODEL": "env/embed",
+                "HECTOR_NEMO_RERANK_MODEL": "env/rerank",
+            },
+        ):
             provider = NemoRetrieverProvider()
             assert provider.api_key == "env-key"
             assert provider.ocr_model == "env/ocr"
@@ -146,6 +151,7 @@ class TestNemoRetrieverProviderInit:
 # ---------------------------------------------------------------------------
 # Health Check
 # ---------------------------------------------------------------------------
+
 
 class TestNemoRetrieverHealthCheck:
     """Tests for NeMo Retriever availability check."""
@@ -197,6 +203,7 @@ class TestNemoRetrieverHealthCheck:
 # OCR
 # ---------------------------------------------------------------------------
 
+
 class TestNemoRetrieverOCR:
     """Tests for OCR processing."""
 
@@ -241,6 +248,7 @@ class TestNemoRetrieverOCR:
 # ---------------------------------------------------------------------------
 # Embedding
 # ---------------------------------------------------------------------------
+
 
 class TestNemoRetrieverEmbedding:
     """Tests for embedding generation."""
@@ -300,6 +308,7 @@ class TestNemoRetrieverEmbedding:
 # Reranking
 # ---------------------------------------------------------------------------
 
+
 class TestNemoRetrieverReranking:
     """Tests for document reranking."""
 
@@ -347,13 +356,18 @@ class TestNemoRetrieverReranking:
 # Document Processing Pipeline
 # ---------------------------------------------------------------------------
 
+
 class TestNemoRetrieverDocumentPipeline:
     """Tests for the full document processing pipeline."""
 
     def test_chunk_text_short(self):
         """Short text returns single chunk."""
         provider = NemoRetrieverProvider(api_key="test-key")
-        chunks = provider._chunk_text("Short text that is definitely long enough to pass the minimum check and be considered valid content.", chunk_size=800, overlap=150)
+        chunks = provider._chunk_text(
+            "Short text that is definitely long enough to pass the minimum check and be considered valid content.",
+            chunk_size=800,
+            overlap=150,
+        )
         assert len(chunks) == 1
 
     def test_chunk_text_empty(self):
@@ -376,6 +390,7 @@ class TestNemoRetrieverDocumentPipeline:
 # Factory Function
 # ---------------------------------------------------------------------------
 
+
 class TestNemoRetrieverFactory:
     """Tests for get_nemo_retriever factory."""
 
@@ -386,10 +401,13 @@ class TestNemoRetrieverFactory:
 
     def test_enabled_with_key(self):
         """Returns provider when enabled and API key is set."""
-        with patch.dict(os.environ, {
-            "HECTOR_NEMO_RETRIEVER_ENABLED": "1",
-            "NVIDIA_API_KEY": "test-key",
-        }):
+        with patch.dict(
+            os.environ,
+            {
+                "HECTOR_NEMO_RETRIEVER_ENABLED": "1",
+                "NVIDIA_API_KEY": "test-key",
+            },
+        ):
             with patch("requests.get") as mock_get:
                 mock_get.return_value = MagicMock(status_code=200)
                 provider = get_nemo_retriever()
@@ -397,18 +415,24 @@ class TestNemoRetrieverFactory:
 
     def test_enabled_without_key(self):
         """Returns None when enabled but no API key."""
-        with patch.dict(os.environ, {
-            "HECTOR_NEMO_RETRIEVER_ENABLED": "1",
-            "NVIDIA_API_KEY": "",
-        }):
+        with patch.dict(
+            os.environ,
+            {
+                "HECTOR_NEMO_RETRIEVER_ENABLED": "1",
+                "NVIDIA_API_KEY": "",
+            },
+        ):
             assert get_nemo_retriever() is None
 
     def test_enabled_but_unreachable(self):
         """Returns None when API is unreachable."""
-        with patch.dict(os.environ, {
-            "HECTOR_NEMO_RETRIEVER_ENABLED": "1",
-            "NVIDIA_API_KEY": "test-key",
-        }):
+        with patch.dict(
+            os.environ,
+            {
+                "HECTOR_NEMO_RETRIEVER_ENABLED": "1",
+                "NVIDIA_API_KEY": "test-key",
+            },
+        ):
             with patch("requests.get", side_effect=Exception("timeout")):
                 assert get_nemo_retriever() is None
 
@@ -417,6 +441,7 @@ class TestNemoRetrieverFactory:
 # Integration
 # ---------------------------------------------------------------------------
 
+
 class TestNemoRetrieverIntegration:
     """Verify NemoRetriever is properly wired into ingestor."""
 
@@ -424,13 +449,17 @@ class TestNemoRetrieverIntegration:
         """get_nemo_retriever is importable."""
         assert callable(get_nemo_retriever)
 
-    @pytest.mark.skip(reason="hangs due to chromadb import in CI — verified via source inspection")
+    @pytest.mark.skip(
+        reason="hangs due to chromadb import in CI — verified via source inspection"
+    )
     def test_enhanced_ingestor_has_nemo_attr(self):
         """EnhancedHectorIngestor source code references nemo_retriever."""
         import os
+
         ingestor_path = os.path.join(
             os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-            "utils", "enhanced_ingestor.py"
+            "utils",
+            "enhanced_ingestor.py",
         )
         with open(ingestor_path, "r") as f:
             source = f.read()

@@ -46,6 +46,7 @@ class LocalReranker:
             return
         try:
             from sentence_transformers import CrossEncoder
+
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
             self._model = CrossEncoder(self.model_name)
             logger.info(f"Loaded local reranker: {self.model_name}")
@@ -110,6 +111,7 @@ class NemotronReranker:
 
         try:
             import requests
+
             resp = requests.get(
                 f"{self.base_url}/nvidia/nemotron-rerank-v1",
                 headers={"Authorization": f"Bearer {self.api_key}"},
@@ -189,7 +191,10 @@ class NemotronReranker:
 # Factory
 # ---------------------------------------------------------------------------
 
-def get_rerank_provider(provider: str | None = None) -> LocalReranker | NemotronReranker:
+
+def get_rerank_provider(
+    provider: str | None = None,
+) -> LocalReranker | NemotronReranker:
     """
     Get the rerank provider based on configuration.
 

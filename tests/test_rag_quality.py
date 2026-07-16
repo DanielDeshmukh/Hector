@@ -28,6 +28,7 @@ from evaluation.evaluate_rag import (
 # Dataset loading
 # ---------------------------------------------------------------------------
 
+
 class TestDatasetLoading:
     """Tests for train.json dataset loading."""
 
@@ -79,6 +80,7 @@ class TestDatasetLoading:
     def test_invalid_json_raises(self):
         """Loading invalid JSON raises an error."""
         import tempfile
+
         with tempfile.TemporaryDirectory() as tmpdir:
             bad_file = Path(tmpdir) / "train.json"
             bad_file.write_text("not valid json {{{", encoding="utf-8")
@@ -90,6 +92,7 @@ class TestDatasetLoading:
 # RAGAS metric computation
 # ---------------------------------------------------------------------------
 
+
 class TestRagasMetrics:
     """Tests for RAGAS metric computation."""
 
@@ -97,7 +100,9 @@ class TestRagasMetrics:
         """Perfect answer and contexts yield reasonable scores."""
         query = "What is Section 302 IPC?"
         answer = "Section 302 IPC prescribes punishment for murder as death or life imprisonment."
-        contexts = ["Section 302. Punishment for murder.—Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine."]
+        contexts = [
+            "Section 302. Punishment for murder.—Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine."
+        ]
         ground_truth = "Section 302 IPC prescribes punishment for murder as death or life imprisonment and shall also be liable to fine."
 
         metrics = compute_ragas_metrics(query, answer, contexts, ground_truth)
@@ -109,9 +114,7 @@ class TestRagasMetrics:
 
     def test_empty_contexts(self):
         """Empty contexts yield zero context metrics."""
-        metrics = compute_ragas_metrics(
-            "test query", "test answer", [], "ground truth"
-        )
+        metrics = compute_ragas_metrics("test query", "test answer", [], "ground truth")
         assert metrics["context_precision"] == 0.0
         assert metrics["faithfulness"] == 0.0
 
@@ -145,6 +148,7 @@ class TestRagasMetrics:
 # ---------------------------------------------------------------------------
 # Citation metrics
 # ---------------------------------------------------------------------------
+
 
 class TestCitationMetrics:
     """Tests for citation quality metric computation."""
@@ -206,6 +210,7 @@ class TestCitationMetrics:
 # Response extraction helpers
 # ---------------------------------------------------------------------------
 
+
 class TestResponseExtraction:
     """Tests for extracting data from HECTOR API responses."""
 
@@ -252,12 +257,14 @@ class TestResponseExtraction:
 # CLI entry point
 # ---------------------------------------------------------------------------
 
+
 class TestCliEntryPoint:
     """Tests for the CLI argument parsing."""
 
     def test_module_is_importable(self):
         """evaluate_rag.py is importable."""
         import evaluation.evaluate_rag as mod
+
         assert hasattr(mod, "main")
         assert hasattr(mod, "run_evaluation")
         assert hasattr(mod, "load_dataset")
@@ -265,6 +272,7 @@ class TestCliEntryPoint:
     def test_has_required_cli_args(self):
         """CLI accepts the expected argument flags."""
         import argparse
+
         parser = argparse.ArgumentParser()
         parser.add_argument("--dataset-paths", required=True)
         parser.add_argument("--host", default="localhost")
@@ -272,12 +280,18 @@ class TestCliEntryPoint:
         parser.add_argument("--top-k", type=int, default=10)
         parser.add_argument("--output-dir", default="results")
 
-        args = parser.parse_args([
-            "--dataset-paths", "evaluation",
-            "--host", "localhost",
-            "--port", "8000",
-            "--top-k", "10",
-        ])
+        args = parser.parse_args(
+            [
+                "--dataset-paths",
+                "evaluation",
+                "--host",
+                "localhost",
+                "--port",
+                "8000",
+                "--top-k",
+                "10",
+            ]
+        )
         assert args.dataset_paths == "evaluation"
         assert args.host == "localhost"
         assert args.port == 8000

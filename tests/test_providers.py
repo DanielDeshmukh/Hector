@@ -35,6 +35,7 @@ from core.rerank_provider import (
 # Embedding Provider
 # ---------------------------------------------------------------------------
 
+
 class TestLocalEmbedder:
     """Tests for the local embedding provider."""
 
@@ -145,6 +146,7 @@ class TestEmbeddingProviderFactory:
 # Rerank Provider
 # ---------------------------------------------------------------------------
 
+
 class TestLocalReranker:
     """Tests for the local rerank provider."""
 
@@ -239,6 +241,7 @@ class TestRerankProviderFactory:
 # Integration verification
 # ---------------------------------------------------------------------------
 
+
 class TestProviderIntegration:
     """Verify providers are properly wired into retriever and ingestor."""
 
@@ -253,10 +256,14 @@ class TestProviderIntegration:
     def test_hybrid_retriever_imports_providers(self):
         """hybrid_retriever.py imports provider modules."""
         from data import hybrid_retriever
-        assert hasattr(hybrid_retriever, "get_embedding_provider") or True  # Optional import
+
+        assert (
+            hasattr(hybrid_retriever, "get_embedding_provider") or True
+        )  # Optional import
 
     def test_enhanced_ingestor_imports_providers(self):
         """enhanced_ingestor.py tries to import embedding_provider."""
         with patch.dict("sys.modules", {"chromadb": MagicMock()}):
             from utils import enhanced_ingestor
+
             assert hasattr(enhanced_ingestor, "EnhancedHectorIngestor")

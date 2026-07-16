@@ -75,6 +75,7 @@ class EmbeddingRouter:
 
         try:
             from sentence_transformers import SentenceTransformer
+
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
             self._embedder = SentenceTransformer("all-MiniLM-L6-v2")
             logger.info("Embedding router loaded local model (384d)")
@@ -98,7 +99,9 @@ class EmbeddingRouter:
             self._route_embeddings[route] = embedding
 
         self._initialized = True
-        logger.info(f"Embedding router initialized with {len(self._route_embeddings)} routes")
+        logger.info(
+            f"Embedding router initialized with {len(self._route_embeddings)} routes"
+        )
 
     def _cosine_similarity(self, a: np.ndarray, b: np.ndarray) -> float:
         """Compute cosine similarity between two vectors."""
@@ -107,10 +110,10 @@ class EmbeddingRouter:
     def route(self, query: str) -> Optional[tuple[str, float]]:
         """
         Route a query using embedding similarity.
-        
+
         Args:
             query: User's query text
-            
+
         Returns:
             Tuple of (route_name, confidence) or None if unavailable
         """
@@ -171,7 +174,9 @@ class EmbeddingRouter:
 
         scores = {}
         for route, route_emb in self._route_embeddings.items():
-            scores[route] = round(self._cosine_similarity(query_embedding, route_emb), 4)
+            scores[route] = round(
+                self._cosine_similarity(query_embedding, route_emb), 4
+            )
 
         best_route = max(scores, key=scores.get)
 

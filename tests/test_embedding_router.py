@@ -9,7 +9,11 @@ Thresholds are set based on observed score distributions.
 """
 
 import unittest
-from core.embedding_router import EmbeddingRouter, get_embedding_router, route_by_embedding
+from core.embedding_router import (
+    EmbeddingRouter,
+    get_embedding_router,
+    route_by_embedding,
+)
 
 
 class TestEmbeddingRouter(unittest.TestCase):
@@ -80,7 +84,9 @@ class TestEmbeddingRouter(unittest.TestCase):
         self.assertEqual(route, "STRATEGIC_ADVICE")
 
     def test_strategy_negotiate(self):
-        route, _ = self.router.route("How should I approach the settlement negotiation?")
+        route, _ = self.router.route(
+            "How should I approach the settlement negotiation?"
+        )
         self.assertEqual(route, "STRATEGIC_ADVICE")
 
     # --- GENERAL ---
@@ -121,7 +127,12 @@ class TestEmbeddingRouter(unittest.TestCase):
     def test_explain_returns_all_routes(self):
         explanation = self.router.explain("Section 302 IPC")
         self.assertIn("scores", explanation)
-        for route in ("LEGAL_RESEARCH", "STRATEGIC_ADVICE", "DOCUMENT_ANALYSIS", "GENERAL"):
+        for route in (
+            "LEGAL_RESEARCH",
+            "STRATEGIC_ADVICE",
+            "DOCUMENT_ANALYSIS",
+            "GENERAL",
+        ):
             self.assertIn(route, explanation["scores"])
 
     def test_explain_best_route(self):
@@ -133,7 +144,10 @@ class TestEmbeddingRouter(unittest.TestCase):
     def test_empty_query(self):
         route, _ = self.router.route("")
         # Empty query gets whatever route has highest similarity
-        self.assertIn(route, ("LEGAL_RESEARCH", "GENERAL", "STRATEGIC_ADVICE", "DOCUMENT_ANALYSIS"))
+        self.assertIn(
+            route,
+            ("LEGAL_RESEARCH", "GENERAL", "STRATEGIC_ADVICE", "DOCUMENT_ANALYSIS"),
+        )
 
     def test_single_word_legal(self):
         route, _ = self.router.route("bail")

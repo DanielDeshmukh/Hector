@@ -11,8 +11,16 @@ _PATTERNS = [
     (re.compile(r"(api[_-]?key[=:]\s*)([\w\-]{20,})", re.IGNORECASE), r"\1[REDACTED]"),
     (re.compile(r"(X-API-Key[:\s]+)([\w\-]{20,})", re.IGNORECASE), r"\1[REDACTED]"),
     # JWT tokens
-    (re.compile(r"(Bearer\s+)([\w\-]+\.[\w\-]+\.[\w\-]+)", re.IGNORECASE), r"\1[REDACTED_JWT]"),
-    (re.compile(r"(access[_-]?token[=:]\s*)([\w\-]+\.[\w\-]+\.[\w\-]+)", re.IGNORECASE), r"\1[REDACTED_JWT]"),
+    (
+        re.compile(r"(Bearer\s+)([\w\-]+\.[\w\-]+\.[\w\-]+)", re.IGNORECASE),
+        r"\1[REDACTED_JWT]",
+    ),
+    (
+        re.compile(
+            r"(access[_-]?token[=:]\s*)([\w\-]+\.[\w\-]+\.[\w\-]+)", re.IGNORECASE
+        ),
+        r"\1[REDACTED_JWT]",
+    ),
     # Passwords
     (re.compile(r"(password[=:]\s*)(\S+)", re.IGNORECASE), r"\1[REDACTED]"),
     (re.compile(r"(POSTGRES_PASSWORD[=:]\s*)(\S+)", re.IGNORECASE), r"\1[REDACTED]"),
@@ -20,15 +28,24 @@ _PATTERNS = [
     (re.compile(r"(jwt[_-]?secret[=:]\s*)(\S+)", re.IGNORECASE), r"\1[REDACTED]"),
     (re.compile(r"(secret[_-]?key[=:]\s*)(\S+)", re.IGNORECASE), r"\1[REDACTED]"),
     # Groq/LLM API keys
-    (re.compile(r"(gsk_[\w]{20,})", re.IGNORECASE), lambda m: m.group(0)[:8] + "[REDACTED]"),
+    (
+        re.compile(r"(gsk_[\w]{20,})", re.IGNORECASE),
+        lambda m: m.group(0)[:8] + "[REDACTED]",
+    ),
     # Database connection strings
-    (re.compile(r"(postgresql://\w+:\w+@)", re.IGNORECASE), r"postgresql://[REDACTED]:[REDACTED]@"),
+    (
+        re.compile(r"(postgresql://\w+:\w+@)", re.IGNORECASE),
+        r"postgresql://[REDACTED]:[REDACTED]@",
+    ),
     (re.compile(r"(redis://:\w+@)", re.IGNORECASE), r"redis://:[REDACTED]@"),
 ]
 
 # Patterns applied to dict values (standalone secrets without key= prefix)
 _DICT_VALUE_PATTERNS = [
-    (re.compile(r"^(gsk_[\w]{20,})$", re.IGNORECASE), lambda m: m.group(0)[:8] + "[REDACTED]"),
+    (
+        re.compile(r"^(gsk_[\w]{20,})$", re.IGNORECASE),
+        lambda m: m.group(0)[:8] + "[REDACTED]",
+    ),
     (re.compile(r"^([\w\-]{30,})$"), "[REDACTED]"),
 ]
 
@@ -55,7 +72,9 @@ class RedactionFilter(logging.Filter):
                 redacted = []
                 for a in record.args:
                     if isinstance(a, dict):
-                        redacted.append({k: self._redact_dict_value(k, v) for k, v in a.items()})
+                        redacted.append(
+                            {k: self._redact_dict_value(k, v) for k, v in a.items()}
+                        )
                     else:
                         redacted.append(self._redact_value(a))
                 record.args = tuple(redacted)
@@ -75,9 +94,20 @@ class RedactionFilter(logging.Filter):
 
     def _redact_dict_value(self, key: str, value: Any) -> Any:
         """Redact a dict value. Keys suggesting secrets trigger redaction."""
-        SECRET_KEYS = {"api_key", "apikey", "password", "secret", "jwt_secret",
-                       "secret_key", "access_token", "authorization", "token",
-                       "jwtsecret", "jwt_secret", "x_api_key"}
+        SECRET_KEYS = {
+            "api_key",
+            "apikey",
+            "password",
+            "secret",
+            "jwt_secret",
+            "secret_key",
+            "access_token",
+            "authorization",
+            "token",
+            "jwtsecret",
+            "jwt_secret",
+            "x_api_key",
+        }
         normalized = key.lower().replace("-", "_").replace(" ", "_")
         if normalized in SECRET_KEYS:
             if isinstance(value, str) and len(value) > 8:

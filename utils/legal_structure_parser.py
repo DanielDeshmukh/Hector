@@ -418,7 +418,10 @@ def extract_real_act_name(text: str, filename: str = "") -> str | None:
     # Pattern 5: Look for known act names in first 1500 chars
     known_acts = [
         ("Copyright", "Copyright Act, 1957"),
-        ("Commissions for Protection of Child Rights", "Commissions for Protection of Child Rights Act, 2005"),
+        (
+            "Commissions for Protection of Child Rights",
+            "Commissions for Protection of Child Rights Act, 2005",
+        ),
         ("Tripura University", "Tripura University Act, 2006"),
         ("Indian Maritime University", "Indian Maritime University Act, 2008"),
         ("National Highways", "National Highways Act, 1956"),
@@ -443,7 +446,10 @@ def extract_real_act_name(text: str, filename: str = "") -> str | None:
         ("Consumer Protection", "Consumer Protection Act, 2019"),
         ("Indian Penal Code", "Indian Penal Code, 1860"),
         ("Bharatiya Nyaya Sanhita", "Bharatiya Nyaya Sanhita, 2023"),
-        ("Bharatiya Nagarik Suraksha Sanhita", "Bharatiya Nagarik Suraksha Sanhita, 2023"),
+        (
+            "Bharatiya Nagarik Suraksha Sanhita",
+            "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        ),
         ("Bharatiya Sakshya Adhiniyam", "Bharatiya Sakshya Adhiniyam, 2023"),
         ("Code of Criminal Procedure", "Code of Criminal Procedure, 1973"),
         ("Code of Civil Procedure", "Code of Civil Procedure, 1908"),

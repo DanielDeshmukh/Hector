@@ -238,7 +238,9 @@ class HectorHybridRetriever:
                 {
                     "id": all_ids[index] if index < len(all_ids) else f"record-{index}",
                     "document": document,
-                    "metadata": all_metadatas[index] if index < len(all_metadatas) else {},
+                    "metadata": all_metadatas[index]
+                    if index < len(all_metadatas)
+                    else {},
                 }
             )
 

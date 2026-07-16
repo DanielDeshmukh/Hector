@@ -37,6 +37,7 @@ NVIDIA_API_BASE = "https://ai.api.nvidia.com/v1"
 @dataclass
 class NemoOCRResult:
     """Result from OCR processing."""
+
     text: str
     markdown: str
     confidence: float
@@ -48,6 +49,7 @@ class NemoOCRResult:
 @dataclass
 class NemoChunk:
     """A processed document chunk with metadata."""
+
     text: str
     metadata: dict[str, Any]
     embedding: list[float] | None = None
@@ -56,6 +58,7 @@ class NemoChunk:
 @dataclass
 class NemoRerankResult:
     """Result from reranking."""
+
     index: int
     score: float
     text: str
@@ -78,9 +81,15 @@ class NemoRetrieverProvider:
         rerank_model: str | None = None,
     ):
         self.api_key = api_key or os.getenv("NVIDIA_API_KEY", "")
-        self.ocr_model = ocr_model or os.getenv("HECTOR_NEMO_OCR_MODEL", DEFAULT_OCR_MODEL)
-        self.embed_model = embed_model or os.getenv("HECTOR_NEMO_EMBED_MODEL", DEFAULT_EMBED_MODEL)
-        self.rerank_model = rerank_model or os.getenv("HECTOR_NEMO_RERANK_MODEL", DEFAULT_RERANK_MODEL)
+        self.ocr_model = ocr_model or os.getenv(
+            "HECTOR_NEMO_OCR_MODEL", DEFAULT_OCR_MODEL
+        )
+        self.embed_model = embed_model or os.getenv(
+            "HECTOR_NEMO_EMBED_MODEL", DEFAULT_EMBED_MODEL
+        )
+        self.rerank_model = rerank_model or os.getenv(
+            "HECTOR_NEMO_RERANK_MODEL", DEFAULT_RERANK_MODEL
+        )
         self._available = None  # Lazy health check
 
     def _check_available(self) -> bool:
@@ -95,6 +104,7 @@ class NemoRetrieverProvider:
 
         try:
             import requests
+
             resp = requests.get(
                 f"{NVIDIA_API_BASE}/chat/models",
                 headers={"Authorization": f"Bearer {self.api_key}"},
@@ -181,7 +191,9 @@ class NemoRetrieverProvider:
         try:
             from pdf2image import convert_from_path
         except ImportError:
-            raise ImportError("pdf2image is required for PDF OCR: pip install pdf2image")
+            raise ImportError(
+                "pdf2image is required for PDF OCR: pip install pdf2image"
+            )
 
         poppler_path = os.getenv("HECTOR_POPPLER_PATH") or None
         page_images = convert_from_path(
@@ -193,8 +205,11 @@ class NemoRetrieverProvider:
         )
         if not page_images:
             return NemoOCRResult(
-                text="", markdown="", confidence=0.0,
-                page_number=page_number, processing_time_ms=0.0,
+                text="",
+                markdown="",
+                confidence=0.0,
+                page_number=page_number,
+                processing_time_ms=0.0,
                 model=self.ocr_model,
             )
 
@@ -326,12 +341,14 @@ class NemoRetrieverProvider:
         results = []
         for rank in data.get("rankings", []):
             idx = rank["index"]
-            results.append(NemoRerankResult(
-                index=idx,
-                score=rank.get("logit", rank.get("score", 0.0)),
-                text=passages[idx]["text"] if idx < len(passages) else "",
-                reasons=[f"nemotron-reranked (score={rank.get('logit', 0.0):.3f})"],
-            ))
+            results.append(
+                NemoRerankResult(
+                    index=idx,
+                    score=rank.get("logit", rank.get("score", 0.0)),
+                    text=passages[idx]["text"] if idx < len(passages) else "",
+                    reasons=[f"nemotron-reranked (score={rank.get('logit', 0.0):.3f})"],
+                )
+            )
 
         return results
 
@@ -387,16 +404,18 @@ class NemoRetrieverProvider:
             # Chunk the text
             chunks = self._chunk_text(page_text, chunk_size, chunk_overlap)
             for i, chunk_text in enumerate(chunks):
-                all_chunks.append(NemoChunk(
-                    text=chunk_text,
-                    metadata={
-                        "source": os.path.basename(file_path),
-                        "page": page_num,
-                        "chunk_index": i,
-                        "total_pages": total_pages,
-                        "processing_method": "nemo_retriever",
-                    },
-                ))
+                all_chunks.append(
+                    NemoChunk(
+                        text=chunk_text,
+                        metadata={
+                            "source": os.path.basename(file_path),
+                            "page": page_num,
+                            "chunk_index": i,
+                            "total_pages": total_pages,
+                            "processing_method": "nemo_retriever",
+                        },
+                    )
+                )
 
         # Batch embed all chunks
         if all_chunks:
@@ -437,7 +456,7 @@ class NemoRetrieverProvider:
                 for sep in [". ", ".\n", "? ", "! ", "\n\n"]:
                     last_sep = chunk.rfind(sep)
                     if last_sep > len(chunk) * 0.5:
-                        chunk = chunk[:last_sep + len(sep)].strip()
+                        chunk = chunk[: last_sep + len(sep)].strip()
                         end = start + len(chunk.split())
                         break
 
@@ -473,7 +492,9 @@ def get_nemo_retriever(
 
     provider = NemoRetrieverProvider(api_key=api_key, **kwargs)
     if not provider.is_available:
-        logger.warning("NeMo Retriever API unreachable — falling back to local processing")
+        logger.warning(
+            "NeMo Retriever API unreachable — falling back to local processing"
+        )
         return None
 
     return provider

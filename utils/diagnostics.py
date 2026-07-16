@@ -123,15 +123,20 @@ class HectorDiagnostic:
         print("\n[4/4] Testing NeMo Retriever Provider...")
         try:
             from core.nemo_retriever import get_nemo_retriever
+
             provider = get_nemo_retriever(api_key=self.nv_api_key)
             if provider is None:
-                print("  > [SKIPPED] NeMo Retriever not enabled (HECTOR_NEMO_RETRIEVER_ENABLED != '1')")
+                print(
+                    "  > [SKIPPED] NeMo Retriever not enabled (HECTOR_NEMO_RETRIEVER_ENABLED != '1')"
+                )
                 return True
             if provider.is_available:
                 print("  > [SUCCESS] NeMo Retriever is available and reachable")
                 return True
             else:
-                print("  > [FAILED] NeMo Retriever provider created but API unreachable")
+                print(
+                    "  > [FAILED] NeMo Retriever provider created but API unreachable"
+                )
                 return False
         except Exception as e:
             print(f"  > [FAILED] NeMo Retriever Exception: {e}")
