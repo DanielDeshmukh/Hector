@@ -15,305 +15,310 @@ Example:
     "murder" → "murder culpable homicide section 302 culpable homicide not amounting to murder"
 """
 
+import json
 import logging
+import os
 import re
 from typing import Dict, List
 
 logger = logging.getLogger("hector.query_expander")
 
+# Try loading auto-generated synonyms from corpus; fall back to built-in
+_AUTO_SYNONYM_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), "auto_synonyms.json"
+)
 
-# Legal synonym dictionary
-# Key: canonical term (lowercase)
-# Value: list of synonyms and related terms
-LEGAL_SYNONYMS: Dict[str, List[str]] = {
-    # Criminal law
-    "murder": [
-        "culpable homicide",
-        "section 302",
-        "section 101 bns",
-        "homicide",
-        "killing",
-        " culpable homicide not amounting to murder",
-        "section 304",
-    ],
-    "theft": [
-        "larceny",
-        "section 378",
-        "section 303 bns",
-        "stealing",
-        "misappropriation",
-        "dishonest taking",
-    ],
-    "robbery": [
-        "dacoity",
-        "section 392",
-        "section 309 bns",
-        "armed robbery",
-        "theft with force",
-    ],
-    "fraud": [
-        "cheating",
-        "section 420",
-        "section 318 bns",
-        "deception",
-        "forgery",
-        "dishonesty",
-    ],
-    "assault": [
-        "section 351",
-        "section 115 bns",
-        "battery",
-        "hurt",
-        "grievous hurt",
-        "section 323",
-        "section 124 bns",
-    ],
-    "rape": [
-        "section 376",
-        "sexual assault",
-        "section 63 bns",
-        "sexual intercourse without consent",
-    ],
-    "dowry": [
-        "section 498a",
-        "dowry death",
-        "cruelty by husband",
-        "dowry prohibition",
-        "section 80 bns",
-    ],
-    "defamation": [
-        "section 499",
-        "section 356 bns",
-        "libel",
-        "slander",
-        "good faith",
-    ],
-    "extortion": [
-        "section 384",
-        "section 308 bns",
-        "blackmail",
-        "coercion",
-    ],
-    "kidnapping": [
-        "section 359",
-        "section 137 bns",
-        "abduction",
-        "section 362",
-    ],
-    "criminal intimidation": [
-        "section 506",
-        "threat",
-        "section 351 bns",
-        "intimidation",
-    ],
-    # Bail types
-    "bail": [
-        "anticipatory bail",
-        "default bail",
-        "regular bail",
-        "interim bail",
-        "section 437",
-        "section 438",
-        "section 480 bnss",
-        "release on bail",
-    ],
-    "anticipatory bail": [
-        "pre-arrest bail",
-        "section 438 crpc",
-        "section 482 bnss",
-        "before arrest",
-    ],
-    # Procedure
-    "fir": [
-        "first information report",
-        "section 154 crpc",
-        "section 173 bnss",
-        "police complaint",
-        "register fir",
-    ],
-    "charge sheet": [
-        "chargesheet",
-        "police report",
-        "section 173 crpc",
-        "final report",
-        "section 193 bnss",
-    ],
-    "trial": [
-        "hearing",
-        "court proceedings",
-        "examination",
-        "cross-examination",
-    ],
-    "appeal": [
-        "appellate",
-        "section 374 crpc",
-        "section 413 bnss",
-        "higher court",
-    ],
-    # Civil law
-    "divorce": [
-        "dissolution of marriage",
-        "section 13 hindu marriage act",
-        "irretrievable breakdown",
-        "mutual consent divorce",
-    ],
-    "maintenance": [
-        "alimony",
-        "spousal support",
-        "section 125 crpc",
-        "section 144 bnss",
-    ],
-    "injunction": [
-        "stay order",
-        "temporary injunction",
-        "order 39 cpc",
-        "restraining order",
-    ],
-    "specific performance": [
-        "section 10 specific relief act",
-        "enforcement of contract",
-        "compel performance",
-    ],
-    "damages": [
-        "compensation",
-        "monetary relief",
-        "section 73 indian contract act",
-        "loss of profit",
-    ],
-    # Property
-    "mortgage": [
-        "home loan",
-        "security interest",
-        "section 58 transfer of property act",
-        "pledge",
-    ],
-    "lease": [
-        "rental agreement",
-        "tenant",
-        "landlord",
-        "eviction",
-        "section 105 transfer of property act",
-    ],
-    "partition": [
-        "division of property",
-        "coparcenary",
-        "section 4 hindu succession act",
-        "co-ownership",
-    ],
-    # Constitutional
-    "fundamental rights": [
-        "article 14",
-        "article 19",
-        "article 21",
-        "part iii constitution",
-        "right to equality",
-        "right to life",
-    ],
-    "writ": [
-        "habeas corpus",
-        "mandamus",
-        "certiorari",
-        "quo warranto",
-        "prohibition",
-    ],
-    # Consumer protection
-    "consumer complaint": [
-        "deficiency in service",
-        "defective goods",
-        "section 34 consumer protection act",
-        "consumer forum",
-    ],
-    # Evidence
-    "electronic evidence": [
-        "section 65b",
-        "digital evidence",
-        "section 63 bharatiya sakshya",
-        "computer output",
-    ],
-    "confession": [
-        "admission",
-        "section 25 evidence act",
-        "section 22 bharatiya sakshya",
-        "dying declaration",
-    ],
-    # Labour
-    "unfair labour": [
-        "industrial dispute",
-        "section 2a industrial disputes act",
-        "strike",
-        "lockout",
-        "retrenchment",
-    ],
-    # Limitation
-    "limitation": [
-        "time bar",
-        "limitation act",
-        "section 3 limitation act",
-        "prescription",
-        "filing deadline",
-    ],
-    # Capacity and contracts
-    "minor": [
-        "infant",
-        "section 11 indian contract act",
-        "capacity to contract",
-        "guardian",
-        "void agreement",
-        "agreement by minor",
-    ],
-    "contract": [
-        "agreement",
-        "section 10 indian contract act",
-        "void contract",
-        "voidable contract",
-        "breach of contract",
-        "valid contract",
-        "enforceable agreement",
-    ],
-    "inheritance": [
-        "succession",
-        "intestate",
-        "hindu succession act",
-        "heir",
-        "coparcenary",
-        "partition",
-        "will",
-        "testament",
-        "probate",
-    ],
-    "wages": [
-        "salary",
-        "compensation",
-        "minimum wages",
-        "industrial disputes act",
-        "payment of wages",
-        "unpaid wages",
-        "labour court",
-    ],
-    "drunk driving": [
-        "dui",
-        "driving under influence",
-        "section 185 motor vehicles act",
-        "intoxicated driving",
-        "alcohol limit",
-    ],
-    "admissibility": [
-        "evidence",
-        "section 65b",
-        "section 5 indian evidence act",
-        "relevant facts",
-        "proof",
-    ],
-    "interrogation": [
-        "questioning",
-        "police custody",
-        "section 41 bnss",
-        "section 41 crpc",
-        "rights of accused",
-        "legal counsel",
-        "right to lawyer",
-    ],
-}
+
+def _load_synonyms() -> Dict[str, List[str]]:
+    """Load synonym dictionary, preferring corpus-generated file."""
+    if os.path.exists(_AUTO_SYNONYM_PATH):
+        try:
+            with open(_AUTO_SYNONYM_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            logger.info(f"Loaded {len(data)} auto-synonym groups from {_AUTO_SYNONYM_PATH}")
+            return data
+        except Exception as e:
+            logger.warning(f"Failed to load auto-synonyms: {e}, using built-in")
+
+    # Fallback: built-in synonyms
+    return {
+        "murder": [
+            "culpable homicide",
+            "section 302",
+            "section 101 bns",
+            "homicide",
+            "killing",
+            "culpable homicide not amounting to murder",
+            "section 304",
+        ],
+        "theft": [
+            "larceny",
+            "section 378",
+            "section 303 bns",
+            "stealing",
+            "misappropriation",
+            "dishonest taking",
+        ],
+        "robbery": [
+            "dacoity",
+            "section 392",
+            "section 309 bns",
+            "armed robbery",
+            "theft with force",
+        ],
+        "fraud": [
+            "cheating",
+            "section 420",
+            "section 318 bns",
+            "deception",
+            "forgery",
+            "dishonesty",
+        ],
+        "assault": [
+            "section 351",
+            "section 115 bns",
+            "battery",
+            "hurt",
+            "grievous hurt",
+            "section 323",
+            "section 124 bns",
+        ],
+        "rape": [
+            "section 376",
+            "sexual assault",
+            "section 63 bns",
+            "sexual intercourse without consent",
+        ],
+        "dowry": [
+            "section 498a",
+            "dowry death",
+            "cruelty by husband",
+            "dowry prohibition",
+            "section 80 bns",
+        ],
+        "defamation": [
+            "section 499",
+            "section 356 bns",
+            "libel",
+            "slander",
+            "good faith",
+        ],
+        "extortion": [
+            "section 384",
+            "section 308 bns",
+            "blackmail",
+            "coercion",
+        ],
+        "kidnapping": [
+            "section 359",
+            "section 137 bns",
+            "abduction",
+            "section 362",
+        ],
+        "criminal intimidation": [
+            "section 506",
+            "threat",
+            "section 351 bns",
+            "intimidation",
+        ],
+        "bail": [
+            "anticipatory bail",
+            "default bail",
+            "regular bail",
+            "interim bail",
+            "section 437",
+            "section 438",
+            "section 480 bnss",
+            "release on bail",
+        ],
+        "anticipatory bail": [
+            "pre-arrest bail",
+            "section 438 crpc",
+            "section 482 bnss",
+            "before arrest",
+        ],
+        "fir": [
+            "first information report",
+            "section 154 crpc",
+            "section 173 bnss",
+            "police complaint",
+            "register fir",
+        ],
+        "charge sheet": [
+            "chargesheet",
+            "police report",
+            "section 173 crpc",
+            "final report",
+            "section 193 bnss",
+        ],
+        "trial": [
+            "hearing",
+            "court proceedings",
+            "examination",
+            "cross-examination",
+        ],
+        "appeal": [
+            "appellate",
+            "section 374 crpc",
+            "section 413 bnss",
+            "higher court",
+        ],
+        "divorce": [
+            "dissolution of marriage",
+            "section 13 hindu marriage act",
+            "irretrievable breakdown",
+            "mutual consent divorce",
+        ],
+        "maintenance": [
+            "alimony",
+            "spousal support",
+            "section 125 crpc",
+            "section 144 bnss",
+        ],
+        "injunction": [
+            "stay order",
+            "temporary injunction",
+            "order 39 cpc",
+            "restraining order",
+        ],
+        "specific performance": [
+            "section 10 specific relief act",
+            "enforcement of contract",
+            "compel performance",
+        ],
+        "damages": [
+            "compensation",
+            "monetary relief",
+            "section 73 indian contract act",
+            "loss of profit",
+        ],
+        "mortgage": [
+            "home loan",
+            "security interest",
+            "section 58 transfer of property act",
+            "pledge",
+        ],
+        "lease": [
+            "rental agreement",
+            "tenant",
+            "landlord",
+            "eviction",
+            "section 105 transfer of property act",
+        ],
+        "partition": [
+            "division of property",
+            "coparcenary",
+            "section 4 hindu succession act",
+            "co-ownership",
+        ],
+        "fundamental rights": [
+            "article 14",
+            "article 19",
+            "article 21",
+            "part iii constitution",
+            "right to equality",
+            "right to life",
+        ],
+        "writ": [
+            "habeas corpus",
+            "mandamus",
+            "certiorari",
+            "quo warranto",
+            "prohibition",
+        ],
+        "consumer complaint": [
+            "deficiency in service",
+            "defective goods",
+            "section 34 consumer protection act",
+            "consumer forum",
+        ],
+        "electronic evidence": [
+            "section 65b",
+            "digital evidence",
+            "section 63 bharatiya sakshya",
+            "computer output",
+        ],
+        "confession": [
+            "admission",
+            "section 25 evidence act",
+            "section 22 bharatiya sakshya",
+            "dying declaration",
+        ],
+        "unfair labour": [
+            "industrial dispute",
+            "section 2a industrial disputes act",
+            "strike",
+            "lockout",
+            "retrenchment",
+        ],
+        "limitation": [
+            "time bar",
+            "limitation act",
+            "section 3 limitation act",
+            "prescription",
+            "filing deadline",
+        ],
+        "minor": [
+            "infant",
+            "section 11 indian contract act",
+            "capacity to contract",
+            "guardian",
+            "void agreement",
+            "agreement by minor",
+        ],
+        "contract": [
+            "agreement",
+            "section 10 indian contract act",
+            "void contract",
+            "voidable contract",
+            "breach of contract",
+            "valid contract",
+            "enforceable agreement",
+        ],
+        "inheritance": [
+            "succession",
+            "intestate",
+            "hindu succession act",
+            "heir",
+            "coparcenary",
+            "partition",
+            "will",
+            "testament",
+            "probate",
+        ],
+        "wages": [
+            "salary",
+            "compensation",
+            "minimum wages",
+            "industrial disputes act",
+            "payment of wages",
+            "unpaid wages",
+            "labour court",
+        ],
+        "drunk driving": [
+            "dui",
+            "driving under influence",
+            "section 185 motor vehicles act",
+            "intoxicated driving",
+            "alcohol limit",
+        ],
+        "admissibility": [
+            "evidence",
+            "section 65b",
+            "section 5 indian evidence act",
+            "relevant facts",
+            "proof",
+        ],
+        "interrogation": [
+            "questioning",
+            "police custody",
+            "section 41 bnss",
+            "section 41 crpc",
+            "rights of accused",
+            "legal counsel",
+            "right to lawyer",
+        ],
+    }
 
 
 class QueryExpander:
@@ -323,7 +328,7 @@ class QueryExpander:
     """
 
     def __init__(self):
-        self._synonyms = LEGAL_SYNONYMS
+        self._synonyms = _load_synonyms()
         self._max_expansion_tokens = 50  # Max tokens to add
 
     def _find_matching_terms(self, query: str) -> List[str]:
