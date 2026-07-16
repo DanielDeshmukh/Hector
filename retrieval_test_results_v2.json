@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-07-16 16:17:28",
-  "overall_pct": 61.5,
-  "exact_pct": 55.5,
-  "similar_pct": 39.0,
-  "irrelevant_pct": 90.0,
+  "timestamp": "2026-07-16 16:34:12",
+  "overall_pct": 60.9,
+  "exact_pct": 59.0,
+  "similar_pct": 44.8,
+  "irrelevant_pct": 79.0,
   "results": [
     {
       "id": 1,
       "query": "What is the punishment for murder under Section 302 IPC",
       "category": "exact",
-      "score": 95,
+      "score": 100,
       "method": "llm",
-      "retrieve_ms": 7239.2,
-      "elapsed_s": 7.3
+      "retrieve_ms": 11591.3,
+      "elapsed_s": 11.7
     },
     {
       "id": 2,
@@ -20,8 +20,8 @@
       "category": "exact",
       "score": 100,
       "method": "llm",
-      "retrieve_ms": 9304.9,
-      "elapsed_s": 9.4
+      "retrieve_ms": 9434.5,
+      "elapsed_s": 9.6
     },
     {
       "id": 3,
@@ -29,71 +29,71 @@
       "category": "exact",
       "score": 30,
       "method": "llm",
-      "retrieve_ms": 27155.5,
-      "elapsed_s": 31.2
+      "retrieve_ms": 14208.8,
+      "elapsed_s": 19.3
     },
     {
       "id": 4,
       "query": "Indian Evidence Act Section 65B admissibility of electronic evidence",
       "category": "exact",
-      "score": 95,
+      "score": 100,
       "method": "llm",
-      "retrieve_ms": 25673.3,
-      "elapsed_s": 31.3
+      "retrieve_ms": 10650.9,
+      "elapsed_s": 17.1
     },
     {
       "id": 5,
       "query": "Transfer of Property Act Section 54 sale of immovable property",
       "category": "exact",
-      "score": 30,
+      "score": 0,
       "method": "llm",
-      "retrieve_ms": 21447.2,
-      "elapsed_s": 21.5
+      "retrieve_ms": 22130.0,
+      "elapsed_s": 22.2
     },
     {
       "id": 6,
       "query": "Section 144 CrPC now Section 163 BNSS power to issue orders",
       "category": "exact",
-      "score": 0,
+      "score": 70,
       "method": "llm",
-      "retrieve_ms": 31017.8,
-      "elapsed_s": 31.1
+      "retrieve_ms": 29176.9,
+      "elapsed_s": 29.3
     },
     {
       "id": 7,
       "query": "Section 498A IPC punishment for dowry harassment",
       "category": "exact",
-      "score": 30,
+      "score": 0,
       "method": "llm",
-      "retrieve_ms": 30246.1,
-      "elapsed_s": 30.3
+      "retrieve_ms": 29480.3,
+      "elapsed_s": 29.6
     },
     {
       "id": 8,
       "query": "NDPS Act Section 20 punishment for drug trafficking",
       "category": "exact",
-      "score": 80,
+      "score": 60,
       "method": "llm",
-      "retrieve_ms": 26727.8,
-      "elapsed_s": 26.8
+      "retrieve_ms": 17835.3,
+      "elapsed_s": 17.9
     },
     {
       "id": 9,
       "query": "Article 21 Constitution of India right to life and personal liberty",
       "category": "exact",
-      "score": 95,
+      "score": 100,
       "method": "llm",
-      "retrieve_ms": 30904.0,
-      "elapsed_s": 34.0
+      "retrieve_ms": 23924.8,
+      "elapsed_s": 27.3
     },
     {
       "id": 10,
       "query": "Consumer Protection Act Section 38 unfair trade practice",
       "category": "exact",
-      "score": 0,
+      "score": 30,
       "method": "llm",
-      "retrieve_ms": 27075.0,
-      "elapsed_s": 27.1
+      "retrieve_ms": 25097.1,
+      "elapsed_s": 25.2
     },
     {
       "id": 11,
@@ -102,7 +102,7 @@
       "score": 0,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 7.3
+      "elapsed_s": 4.9
     },
     {
       "id": 12,
@@ -110,8 +110,8 @@
       "category": "similar",
       "score": 30,
       "method": "llm",
-      "retrieve_ms": 31009.1,
-      "elapsed_s": 36.0
+      "retrieve_ms": 19022.2,
+      "elapsed_s": 24.1
     },
     {
       "id": 13,
@@ -126,10 +126,10 @@
       "id": 14,
       "query": "Is a confession made to police admissible in court?",
       "category": "similar",
-      "score": 70,
+      "score": 98,
       "method": "llm",
-      "retrieve_ms": 14778.1,
-      "elapsed_s": 17.8
+      "retrieve_ms": 26871.0,
+      "elapsed_s": 32.4
     },
     {
       "id": 15,
@@ -137,17 +137,17 @@
       "category": "similar",
       "score": 30,
       "method": "llm",
-      "retrieve_ms": 21406.3,
+      "retrieve_ms": 21342.2,
       "elapsed_s": 21.5
     },
     {
       "id": 16,
       "query": "My employer is not paying wages. What legal remedy do I have?",
       "category": "similar",
-      "score": 0,
+      "score": 30,
       "method": "llm",
-      "retrieve_ms": 26408.8,
-      "elapsed_s": 30.8
+      "retrieve_ms": 19773.8,
+      "elapsed_s": 23.5
     },
     {
       "id": 17,
@@ -155,8 +155,8 @@
       "category": "similar",
       "score": 90,
       "method": "llm",
-      "retrieve_ms": 47598.0,
-      "elapsed_s": 51.5
+      "retrieve_ms": 19620.4,
+      "elapsed_s": 25.5
     },
     {
       "id": 18,
@@ -164,8 +164,8 @@
       "category": "similar",
       "score": 70,
       "method": "llm",
-      "retrieve_ms": 17515.7,
-      "elapsed_s": 20.5
+      "retrieve_ms": 20781.1,
+      "elapsed_s": 29.5
     },
     {
       "id": 19,
@@ -173,8 +173,8 @@
       "category": "similar",
       "score": 30,
       "method": "llm",
-      "retrieve_ms": 20729.1,
-      "elapsed_s": 20.8
+      "retrieve_ms": 19234.9,
+      "elapsed_s": 19.4
     },
     {
       "id": 20,
@@ -182,17 +182,17 @@
       "category": "similar",
       "score": 70,
       "method": "llm",
-      "retrieve_ms": 10990.6,
-      "elapsed_s": 13.7
+      "retrieve_ms": 31037.4,
+      "elapsed_s": 36.1
     },
     {
       "id": 21,
       "query": "What is the capital of France?",
       "category": "irrelevant",
-      "score": 100,
+      "score": 0,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 1.7
+      "elapsed_s": 1.9
     },
     {
       "id": 22,
@@ -201,7 +201,7 @@
       "score": 100,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 2.4
+      "elapsed_s": 3.4
     },
     {
       "id": 23,
@@ -210,7 +210,7 @@
       "score": 100,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 5.3
+      "elapsed_s": 5.1
     },
     {
       "id": 24,
@@ -219,16 +219,16 @@
       "score": 100,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 4.2
+      "elapsed_s": 3.7
     },
     {
       "id": 25,
       "query": "Who won the last FIFA World Cup?",
       "category": "irrelevant",
-      "score": 0,
+      "score": 100,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 2.9
+      "elapsed_s": 3.5
     },
     {
       "id": 26,
@@ -237,7 +237,7 @@
       "score": 100,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 2.7
+      "elapsed_s": 3.7
     },
     {
       "id": 27,
@@ -246,25 +246,25 @@
       "score": 100,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 2.1
+      "elapsed_s": 7.7
     },
     {
       "id": 28,
       "query": "Recommend a good restaurant in Mumbai",
       "category": "irrelevant",
-      "score": 100,
+      "score": 90,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 3.4
+      "elapsed_s": 3.2
     },
     {
       "id": 29,
       "query": "What is the weather today?",
       "category": "irrelevant",
-      "score": 100,
+      "score": 0,
       "method": "llm",
       "retrieve_ms": 0.0,
-      "elapsed_s": 3.5
+      "elapsed_s": 2.1
     },
     {
       "id": 30,
