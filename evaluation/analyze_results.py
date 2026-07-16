@@ -11,7 +11,6 @@ Usage:
 
 import argparse
 import json
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -30,8 +29,8 @@ def print_summary(summary: dict[str, Any], label: str = "") -> None:
     print(f"{'='*65}")
     print(f"  Dataset:            {summary.get('dataset', 'unknown')}")
     print(f"  Queries evaluated:  {summary.get('total_queries', 0)}")
-    print(f"")
-    print(f"  RAGAS Quality Metrics:")
+    print("")
+    print("  RAGAS Quality Metrics:")
     print(f"    Faithfulness:     {summary.get('faithfulness', 0):.3f}  "
           f"{'*' if summary.get('faithfulness', 0) < 0.5 else ''}")
     print(f"    Answer Relevance: {summary.get('answer_relevance', 0):.3f}  "
@@ -40,13 +39,13 @@ def print_summary(summary: dict[str, Any], label: str = "") -> None:
           f"{'*' if summary.get('context_precision', 0) < 0.3 else ''}")
     print(f"    Context Recall:   {summary.get('context_recall', 0):.3f}  "
           f"{'*' if summary.get('context_recall', 0) < 0.4 else ''}")
-    print(f"")
-    print(f"  Citation Metrics:")
+    print("")
+    print("  Citation Metrics:")
     print(f"    Section Recall:   {summary.get('section_recall', 0):.3f}")
     print(f"    Act Recall:       {summary.get('act_recall', 0):.3f}")
     print(f"    Avg Citations:    {summary.get('avg_citation_count', 0):.1f}")
-    print(f"")
-    print(f"  Performance:")
+    print("")
+    print("  Performance:")
     print(f"    Avg Latency:      {summary.get('avg_latency_ms', 0):.0f}ms")
     print(f"    P95 Latency:      {summary.get('p95_latency_ms', 0):.0f}ms")
     print(f"    Min Latency:      {summary.get('min_latency_ms', 0):.0f}ms")
@@ -54,7 +53,7 @@ def print_summary(summary: dict[str, Any], label: str = "") -> None:
 
     errors = summary.get("errors", [])
     if errors:
-        print(f"")
+        print("")
         print(f"  Errors: {len(errors)}")
         for e in errors[:5]:
             print(f"    - {e['query'][:60]}...: {e['error'][:80]}")
@@ -62,8 +61,8 @@ def print_summary(summary: dict[str, Any], label: str = "") -> None:
     # Category breakdown
     by_cat = summary.get("by_category", {})
     if by_cat:
-        print(f"")
-        print(f"  By Category:")
+        print("")
+        print("  By Category:")
         for cat, cat_data in by_cat.items():
             print(f"    {cat:25s}  n={cat_data['count']:2d}  "
                   f"faith={cat_data['faithfulness']:.2f}  "
@@ -79,7 +78,7 @@ def compare_summaries(
 ) -> None:
     """Print a side-by-side comparison of two evaluation runs."""
     print(f"\n{'='*75}")
-    print(f"  COMPARISON: Baseline vs Treatment")
+    print("  COMPARISON: Baseline vs Treatment")
     print(f"{'='*75}")
 
     metrics = [

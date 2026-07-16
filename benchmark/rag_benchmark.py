@@ -17,9 +17,8 @@ import csv
 import json
 import os
 import statistics
-import sys
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -456,7 +455,7 @@ def _format_markdown_report(report: dict[str, Any]) -> str:
         lines.extend([
             "## Profiling Results",
             "",
-            f"| Metric | Value |",
+            "| Metric | Value |",
         ...])
         for key, val in prof.items():
             lines.append(f"| {key} | {val} |")
@@ -525,7 +524,7 @@ def main():
     # Load config
     cfg = load_config(args.config)
     print(f"\n{'='*60}")
-    print(f"  HECTOR Performance Benchmark")
+    print("  HECTOR Performance Benchmark")
     print(f"{'='*60}")
     print(f"  Target:     {cfg.target.url}")
     print(f"  Config:     {args.config}")
@@ -542,7 +541,7 @@ def main():
         profiling = run_profiling(cfg, queries, args.api_key)
         if profiling.get("stats"):
             s = profiling["stats"]
-            print(f"\n  [PROFILING DONE]")
+            print("\n  [PROFILING DONE]")
             print(f"    Avg: {s.get('avg_latency_ms', 0):.0f}ms | "
                   f"P95: {s.get('p95_latency_ms', 0):.0f}ms | "
                   f"Throughput: {s.get('successful', 0) / max(profiling.get('results', [{}]).__len__(), 1):.1f} QPS")
@@ -561,7 +560,7 @@ def main():
             load_results = run_load_test(cfg, queries, concurrencies[0], args.api_key)
             if load_results.get("stats"):
                 s = load_results["stats"]
-                print(f"\n  [LOAD TEST DONE]")
+                print("\n  [LOAD TEST DONE]")
                 print(f"    Throughput: {s.get('throughput_qps', 0):.1f} QPS | "
                       f"Avg: {s.get('avg_latency_ms', 0):.0f}ms | "
                       f"P95: {s.get('p95_latency_ms', 0):.0f}ms | "
@@ -575,7 +574,7 @@ def main():
                            cfg.output.dir, cfg.output.experiment_name)
 
     print(f"\n{'='*60}")
-    print(f"  BENCHMARK COMPLETE")
+    print("  BENCHMARK COMPLETE")
     print(f"{'='*60}")
     print(f"  Results saved to: {run_dir}")
     print(f"  Report: {run_dir / 'report.md'}")

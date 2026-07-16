@@ -12,7 +12,6 @@ Usage:
 import argparse
 import json
 import sys
-from pathlib import Path
 
 
 def main():
@@ -38,7 +37,7 @@ def main():
     points.sort(key=lambda p: (p.get("concurrency", 0), p.get("top_k", 0)))
 
     print(f"\n{'='*85}")
-    print(f"  SWEEP RESULTS COMPARISON")
+    print("  SWEEP RESULTS COMPARISON")
     print(f"{'='*85}")
     print(f"  {'Concurrency':>12s}  {'Top-K':>6s}  {'QPS':>8s}  {'Avg(ms)':>8s}  {'P95(ms)':>8s}  {'Err%':>6s}  {'Success':>8s}")
     print(f"  {'-'*12}  {'-'*6}  {'-'*8}  {'-'*8}  {'-'*8}  {'-'*6}  {'-'*8}")

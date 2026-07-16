@@ -12,7 +12,6 @@ Usage:
 import argparse
 import json
 import os
-import sys
 import time
 
 import requests
@@ -68,7 +67,7 @@ def main():
     # Print timing breakdown
     timings = result.get("stage_timings", {})
     if timings:
-        print(f"\nStage Timing Breakdown:")
+        print("\nStage Timing Breakdown:")
         print(f"  Routing:       {timings.get('route_ms', 0):.1f}ms")
         print(f"  Normalization: {timings.get('normalize_ms', 0):.1f}ms")
         print(f"  Generation:    {timings.get('generate_ms', 0):.1f}ms")
