@@ -156,8 +156,6 @@ class HectorOrchestrator:
                 )
                 response += verification_note
 
-        total_ms = (time.perf_counter() - time.perf_counter()) * 1000
-
         # Attach timing metadata
         self._last_timing = {
             "parse_ms": round(parse_ms, 1),
