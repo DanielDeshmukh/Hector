@@ -99,7 +99,7 @@ class EntityReranker:
         act_in_result = (item.get("act") or "").lower()
 
         # 1. Section number match
-        section_boost = self._check_section_match(doc_text, citation, entities)
+        section_boost = self._check_section_match(doc_text, citation, entities, metadata)
         boost += section_boost
 
         # 2. Act name match (prefer real_act_name over source filename)
@@ -119,37 +119,50 @@ class EntityReranker:
         return boost
 
     def _check_section_match(
-        self, doc_text: str, citation: Dict, entities: Dict
+        self, doc_text: str, citation: Dict, entities: Dict, metadata: Dict = None
     ) -> float:
-        """Check if the document contains a matching section number."""
+        """Check if the document matches an expected section number.
+
+        Priority: metadata tag > citation > text substring.
+        A chunk whose section_number metadata matches is much more likely
+        to be ABOUT that section than one that merely mentions it.
+        """
         boost = 0.0
 
-        # Check all section types
         all_sections = (
             entities.get("sections", [])
             + entities.get("ipc_sections", [])
             + entities.get("bns_sections", [])
         )
 
+        metadata_section = ""
+        if metadata:
+            metadata_section = str(metadata.get("section_number", "")).lower()
+
         for section in all_sections:
             section_lower = section.lower()
 
-            # Check in document text (e.g., "section 302", "s. 302")
+            # Strongest signal: metadata tag matches exactly
+            if metadata_section and metadata_section == section_lower:
+                boost = max(boost, 0.25)  # Higher than old 0.15
+                break
+
+            # Medium signal: citation metadata matches
+            citation_section = (citation.get("section") or "").lower()
+            if citation_section == section_lower:
+                boost = max(boost, 0.15)
+                break
+
+            # Weakest signal: section mentioned in text
             patterns = [
                 rf"section\s+{re.escape(section_lower)}",
                 rf"s\.?\s*{re.escape(section_lower)}",
                 rf"\[s\s*{re.escape(section_lower)}\]",
             ]
-
             for pattern in patterns:
                 if re.search(pattern, doc_text):
-                    boost = max(boost, self.BOOST_WEIGHTS["section"])
+                    boost = max(boost, 0.05)  # Reduced from 0.15
                     break
-
-            # Also check citation metadata
-            citation_section = (citation.get("section") or "").lower()
-            if citation_section == section_lower:
-                boost = max(boost, self.BOOST_WEIGHTS["citation"])
 
         return boost
 
