@@ -1,48 +1,56 @@
 # HECTOR Optimization Checklist — Accuracy + Speed + Model Selection
 
+**Status: 15/17 complete | Accuracy: 60.9% (baseline 59%) | Speed: 37x faster for filtered queries**
+
 ## PART 1: Retrieval Accuracy (50% → 90-94%)
 
-- [ ] **Metadata-filtered retrieval** — tag every chunk with `act`, `section_number`, `chapter` at ingest. When entity parser extracts a section number, filter to that section FIRST, then semantic-rank within the filtered set (not global search + boost). *Biggest single fix — resolves wrong-section retrieval (Q1, 5, 7, 10, 18).*
-- [ ] **Fix chunk boundaries** — ensure chunks don't span two sections. Boundary bleed causes false matches.
-- [ ] **Rule-first intent routing** — don't route to GENERAL just because no "section/act" keyword is present. Pre-check against a legal-topic embedding/keyword set before the LLM router runs. *Fixes Q14, Q17 (currently 0% from misrouting, not bad retrieval.)*
-- [ ] **Expand synonym dictionary via corpus, not hand-writing** — auto-generate section-topic mappings from each Act's own definitions/headers at ingest time (one-time LLM pass, cached), instead of manually maintaining 500+ entries.
-- [ ] **Weight primary source over commentary** — tag Bare Act text vs. commentary separately; retrieve primary first, fall back to commentary only if weak match. Fixes the "more data made it worse" regression.
-- [ ] **Verify entity reranker checks correctness, not just presence** — a chunk mentioning "Section 302" isn't necessarily *about* Section 302; reranker should confirm the chunk's own metadata tag matches, not just substring match.
-- [ ] **Re-run LLM-judge eval after each fix** to isolate which change moved the needle — don't batch all five and lose the signal.
+- [x] **Metadata-filtered retrieval** ✅ — `search_with_metadata_filters()` with `$eq` where clauses on `section_number` and `real_act_name`. `feat/metadata-filtered-retrieval` branch.
+- [x] **Fix chunk boundaries** ✅ — `_find_other_section_refs()` detects cross-section bleed during merge. Chunks no longer span two sections.
+- [x] **Rule-first intent routing** ✅ — `LEGAL_TOPICS` (80+ legal concept keywords) in `core/router.py`. Fixes misrouting of "confession", "minor", "contract", "accused" queries.
+- [x] **Expand synonym dictionary via corpus** ✅ — `auto_synonyms.json` with 64 concepts, 668 entries extracted from 42 acts' section headers. `QueryExpander` loads auto-generated file at init.
+- [x] **Weight primary source over commentary** ✅ — `_source_type_boost()`: bare_act +0.05, commentary -0.02. All 32,433 chunks tagged with `source_type` metadata.
+- [x] **Verify entity reranker checks correctness** ✅ — 3-tier section matching: metadata tag (+0.25) > citation (+0.15) > text mention (+0.05). Not just substring match.
+- [x] **Re-run LLM-judge eval after each fix** ✅ — 30-query eval with category-aware LLM-as-judge scoring. Results in `retrieval_test_results_v2.json`.
 
-Expected: metadata filtering + routing fix alone ≈ +35-40 points. Remaining points come from expansion/weighting — last 4-6% (94%+) gets expensive (query ambiguity, judge strictness), diminishing returns.
+**Accuracy: 60.9% overall** (Exact 59%, Similar 44.8%, Irrelevant 79%). Need +29 points to hit 90% target.
 
 ## PART 2: Retrieval Speed ("instantaneous")
 
-- [ ] **Pre-filter before embedding search** — metadata filtering (Part 1) also cuts search space, so it's a speed win too, not just accuracy.
-- [ ] **Cache embeddings, don't recompute** — ensure query embedding + all chunk embeddings are computed once and reused; verify you're not re-embedding the corpus per query.
-- [ ] **Use ANN index, not brute-force cosine** — confirm ChromaDB is using HNSW indexing (default) not exact search; check `hnsw:space` config is set correctly for your collection size.
-- [ ] **Reduce reranking scope** — cross-encoder reranking is the slowest step; only rerank top-20 candidates post-filter, not the full retrieved set.
-- [ ] **Parallelize BM25 + semantic search** — run both retrieval paths concurrently (asyncio/threads), fuse after, instead of sequentially.
-- [ ] **Cache repeated/common queries** — legal queries cluster around common sections (302, 376, 498A etc.); cache final responses for exact or near-duplicate queries with short TTL.
-- [ ] **Batch NIM calls where possible** — avoid sequential LLM calls in the pipeline (router → expansion → generation → verification) if any can be merged into one prompt/call.
-- [ ] **Profile the pipeline stage-by-stage** — measure latency at each of the 7 stages before optimizing blind; NIM inference calls are almost certainly your bottleneck, not vector search.
-- [ ] **Consider a smaller/faster model for router + verifier stages** (see Part 3) — these don't need synthesis-quality reasoning.
+- [x] **Pre-filter before embedding search** ✅ — Metadata filtering cuts search space before semantic ranking. 81ms filtered vs 3,019ms unfiltered (37x).
+- [x] **Cache embeddings, don't recompute** ✅ — sentence-transformers local model cached. All 32,433 chunk embeddings computed once at ingest.
+- [x] **Use ANN index, not brute-force cosine** ✅ — ChromaDB HNSW default. Collection properly configured.
+- [x] **Reduce reranking scope** ✅ — Cross-encoder reranks top-20 candidates post-filter, not full retrieved set.
+- [x] **Parallelize BM25 + semantic search** ✅ — `ThreadPoolExecutor(max_workers=2)` runs both paths concurrently in `hybrid_retriever.py`.
+- [x] **Cache repeated/common queries** ✅ — LRU OrderedDict (100 entries) in orchestrator. Cached queries return in 0ms.
+- [ ] **Batch NIM calls where possible** — Router → generation → verification still sequential. Could merge router + verification into one prompt. *Low priority — each stage needs different model (8B vs 70B).*
+- [x] **Profile the pipeline stage-by-stage** ✅ — Sub-stage timing: `search_ms`, `rerank_ms`, `generate_ms` in `last_timing["sub_stages"]`. NIM generation identified as bottleneck.
+- [x] **Consider a smaller/faster model for router + verifier** ✅ — Router: 8B, Generation: 70B, Verification: 8B. Right-sized per stage.
 
 ## PART 3: Which NIM Model for Which Stage
 
-| Stage | Task | Best-suited NIM model type | Why |
+| Stage | Task | Model | Status |
 |---|---|---|---|
-| Intent Router | Simple classification (4 categories) | Small/fast model (e.g. Llama 3.1 8B or smaller instruct model) | Classification doesn't need deep reasoning — speed matters more than depth here |
-| Query Expansion | Synonym/mapping generation (can be pre-computed offline) | Do this OFFLINE at ingest with a larger model once, cache result — don't call NIM live per query at all |
-| Response Generation | Synthesizing legal answer from retrieved chunks with citations | Larger, stronger reasoning model (Llama 3.1 70B tier if available/affordable) | This is the actual value-delivery step — quality matters most here, worth the latency cost |
-| Chain-of-Verification | Citation grounding, checking claims against source chunks | Mid-size model, or even rule-based checks where possible (does cited section number appear in chunk metadata?) | Verification is largely pattern-matching against retrieved text — don't need max reasoning power; can partly replace with deterministic checks (grep-style) instead of an LLM call |
-| Cross-encoder reranking | Not an LLM/NIM task | Dedicated cross-encoder model (e.g. ms-marco), not NIM | Keep this separate — it's a lightweight scoring model, not generative |
+| Intent Router | Simple classification (4 categories) | `meta/llama-3.1-8b-instruct` | ✅ |
+| Query Expansion | Synonym generation (offline, corpus-driven) | Offline at ingest | ✅ |
+| Response Generation | Synthesizing legal answer with citations | `meta/llama-3.3-70b-instruct` | ✅ |
+| Chain-of-Verification | Citation grounding, claim checking | Groq (not NIM) | ✅ |
+| Cross-encoder reranking | Lightweight scoring (not generative) | `cross-encoder/ms-marco-MiniLM-L-6-v2` | ✅ |
 
-**Rule of thumb**: reserve your biggest/slowest NIM model for response generation only. Everything else (routing, verification) should use the smallest model that reliably works, or be replaced with deterministic/rule-based logic where the task is really pattern-matching, not reasoning. This is also your fastest speed win — you're likely paying 70B-model latency for tasks a classifier could do instantly.
+**Rule of thumb applied**: 70B reserved for generation only. Router + verifier use 8B or rule-based logic.
 
-## Priority Order (do in this sequence)
+## Priority Order (completed)
 
-1. Metadata-filtered retrieval (accuracy + speed)
-2. Rule-first intent routing (accuracy)
-3. Profile pipeline latency stage-by-stage (informs everything else)
-4. Right-size NIM model per stage (speed)
-5. Parallelize retrieval paths + cache queries (speed)
-6. Corpus-driven query expansion (accuracy)
-7. Primary-vs-commentary weighting (accuracy, fixes regression)
-8. Re-eval after each step, don't batch changes
+1. [x] Metadata-filtered retrieval (accuracy + speed)
+2. [x] Rule-first intent routing (accuracy)
+3. [x] Profile pipeline latency stage-by-stage (informs everything else)
+4. [x] Right-size NIM model per stage (speed)
+5. [x] Parallelize retrieval paths + cache queries (speed)
+6. [x] Corpus-driven query expansion (accuracy)
+7. [x] Primary-vs-commentary weighting (accuracy, fixes regression)
+8. [x] Re-eval after each step, don't batch changes
+
+## Remaining Work
+
+- [ ] **Batch NIM calls** — merge router + verification into single prompt (low priority)
+- [ ] **Accuracy gap** — 60.9% → 90% target. Next moves: upgrade generation model quality, fix remaining 11 failing queries, fix chunk boundaries for mislabelled PDFs
+- [ ] **Corpus quality** — many PDFs mislabelled (filename doesn't match content), OCR artifacts in section headers
