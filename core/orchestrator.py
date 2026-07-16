@@ -246,8 +246,10 @@ class HectorOrchestrator:
             ipc_sections = entities.get("ipc_sections") or []
             if ipc_sections:
                 mapping = self.router.legal_map  # IPC_TO_BNS mapping
+                # Build lowercase→key lookup for case-insensitive matching
+                mapping_lower = {k.lower(): v for k, v in mapping.items()}
                 for ipc_sec in ipc_sections:
-                    bns_entry = mapping.get(ipc_sec)
+                    bns_entry = mapping_lower.get(ipc_sec.lower())
                     if bns_entry:
                         bns_num = bns_entry.get("new", "")
                         if bns_num and bns_num not in (entities.get("bns_sections") or []):
