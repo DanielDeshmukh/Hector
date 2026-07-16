@@ -2,6 +2,7 @@ import math
 import os
 import re
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 from utils.retry import retry
@@ -253,8 +254,17 @@ class HectorHybridRetriever:
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
 
-        semantic_rank = self._semantic_search(query, candidate_pool)
-        bm25_rank = self._bm25_search(legal_query["tokens"], candidate_pool)
+        # Parallelize BM25 and semantic search
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            semantic_future = executor.submit(
+                self._semantic_search, query, candidate_pool
+            )
+            bm25_future = executor.submit(
+                self._bm25_search, legal_query["tokens"], candidate_pool
+            )
+            semantic_rank = semantic_future.result()
+            bm25_rank = bm25_future.result()
+
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
         deduped = self._deduplicate_results(ranked)
@@ -298,12 +308,20 @@ class HectorHybridRetriever:
             return self.search(query, top_k, candidate_pool)
 
         legal_query = self._parse_query(query)
-        semantic_rank = self._semantic_search_with_filter(
-            query, min(candidate_pool, 200), where_filter
-        )
-        bm25_rank = self._bm25_search_filtered(
-            legal_query["tokens"], filtered_results
-        )
+
+        # Parallelize filtered semantic and BM25 search
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            semantic_future = executor.submit(
+                self._semantic_search_with_filter,
+                query,
+                min(candidate_pool, 200),
+                where_filter,
+            )
+            bm25_future = executor.submit(
+                self._bm25_search_filtered, legal_query["tokens"], filtered_results
+            )
+            semantic_rank = semantic_future.result()
+            bm25_rank = bm25_future.result()
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
         deduped = self._deduplicate_results(ranked)
