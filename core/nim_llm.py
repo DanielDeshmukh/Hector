@@ -22,9 +22,7 @@ DEFAULT_CHAT_MODEL = os.getenv("HECTOR_NIM_CHAT_MODEL", "meta/llama-3.1-8b-instr
 
 # Model registry — different models for different pipeline stages
 NIM_MODELS = {
-    "router": os.getenv(
-        "HECTOR_NIM_ROUTER_MODEL", "meta/llama-3.1-8b-instruct"
-    ),
+    "router": os.getenv("HECTOR_NIM_ROUTER_MODEL", "meta/llama-3.1-8b-instruct"),
     "generation": os.getenv(
         "HECTOR_NIM_GENERATION_MODEL", "meta/llama-3.1-8b-instruct"
     ),

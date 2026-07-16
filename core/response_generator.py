@@ -111,7 +111,9 @@ When answering legal queries:
 
         try:
             return nim.chat(
-                messages, temperature=0.0, max_tokens=1024,
+                messages,
+                temperature=0.0,
+                max_tokens=1024,
                 model=getattr(self, "_generation_model", None),
             )
         except Exception as e:

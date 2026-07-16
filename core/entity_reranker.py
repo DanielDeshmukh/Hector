@@ -99,7 +99,9 @@ class EntityReranker:
         act_in_result = (item.get("act") or "").lower()
 
         # 1. Section number match
-        section_boost = self._check_section_match(doc_text, citation, entities, metadata)
+        section_boost = self._check_section_match(
+            doc_text, citation, entities, metadata
+        )
         boost += section_boost
 
         # 2. Act name match (prefer real_act_name over source filename)

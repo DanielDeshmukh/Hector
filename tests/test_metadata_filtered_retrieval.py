@@ -1,5 +1,3 @@
-import pytest
-from unittest.mock import MagicMock, patch
 from data.hybrid_retriever import HectorHybridRetriever, SimpleBM25
 
 
@@ -119,9 +117,7 @@ class TestBuildWhereFilter:
 class TestSearchWithMetadataFilters:
     def test_falls_back_when_no_entities(self):
         retriever = _make_retriever()
-        results = retriever.search_with_metadata_filters(
-            "Section 302 IPC", {}, top_k=5
-        )
+        results = retriever.search_with_metadata_filters("Section 302 IPC", {}, top_k=5)
         assert len(results) > 0
 
     def test_falls_back_when_no_section_or_act(self):

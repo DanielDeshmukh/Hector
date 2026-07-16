@@ -2,7 +2,7 @@ import math
 import os
 import re
 from collections import Counter, defaultdict
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 from utils.retry import retry
@@ -271,9 +271,7 @@ class HectorHybridRetriever:
         reranked = self._rerank_with_cross_encoder(query, deduped)
         return reranked[:top_k]
 
-    def search_with_metadata_filters(
-        self, query, entities, top_k=5, candidate_pool=20
-    ):
+    def search_with_metadata_filters(self, query, entities, top_k=5, candidate_pool=20):
         """Search with pre-filtering by section_number and real_act_name.
 
         When entity parser extracts a section number and/or act name, filter
@@ -353,9 +351,7 @@ class HectorHybridRetriever:
 
         if section_numbers:
             if len(section_numbers) == 1:
-                conditions.append(
-                    {"section_number": {"$eq": section_numbers[0]}}
-                )
+                conditions.append({"section_number": {"$eq": section_numbers[0]}})
             else:
                 conditions.append(
                     {"$or": [{"section_number": {"$eq": s}} for s in section_numbers]}
@@ -365,9 +361,7 @@ class HectorHybridRetriever:
             exact_act_names = self._resolve_act_to_exact_names(acts)
             if exact_act_names:
                 if len(exact_act_names) == 1:
-                    conditions.append(
-                        {"real_act_name": {"$eq": exact_act_names[0]}}
-                    )
+                    conditions.append({"real_act_name": {"$eq": exact_act_names[0]}})
                 else:
                     conditions.append(
                         {
@@ -695,7 +689,11 @@ class HectorHybridRetriever:
 
             retrieval_score = candidate["rrf_score"]
             boost_score = (
-                legal_boost + concept_boost + current_law_boost + jurisdiction_boost + source_type_boost
+                legal_boost
+                + concept_boost
+                + current_law_boost
+                + jurisdiction_boost
+                + source_type_boost
             )
             hybrid_score = retrieval_score + boost_score
 
