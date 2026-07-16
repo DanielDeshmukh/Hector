@@ -6,6 +6,7 @@ import os
 import time
 from typing import Any
 
+import bcrypt
 from fastapi import Header, HTTPException, status
 
 
@@ -67,6 +68,18 @@ class AuthManager:
 
     def verify_api_key(self, candidate: str | None) -> bool:
         return bool(candidate) and hmac.compare_digest(candidate, self.api_key)
+
+    @staticmethod
+    def hash_api_key(api_key: str) -> str:
+        """Hash an API key with bcrypt for secure storage."""
+        return bcrypt.hashpw(api_key.encode(), bcrypt.gensalt()).decode()
+
+    @staticmethod
+    def verify_api_key_hash(candidate: str, hashed: str) -> bool:
+        """Verify a candidate API key against a bcrypt hash."""
+        if not candidate or not hashed:
+            return False
+        return bcrypt.checkpw(candidate.encode(), hashed.encode())
 
     def verify_token(self, token: str | None) -> dict[str, Any]:
         if not token:
