@@ -292,7 +292,6 @@ class EnhancedHectorIngestor:
 
         chunks = []
         index = 0
-        step = max(chunk_size - overlap, 1)
 
         while index < len(words):
             end_index = min(index + chunk_size, len(words))
@@ -360,7 +359,8 @@ class EnhancedHectorIngestor:
             if not page_images:
                 return ""
 
-            import io, base64
+            import io
+            import base64
             buf = io.BytesIO()
             page_images[0].save(buf, format="PNG")
             image_b64 = base64.b64encode(buf.getvalue()).decode()
@@ -913,7 +913,7 @@ class EnhancedHectorIngestor:
         skipped = [r for r in book_results if r.get("status") == "skipped"]
         invalid = [r for r in book_results if r.get("status") == "invalid_pdf"]
 
-        console.print(f"\n[bold]Book Summary:[/bold]")
+        console.print("\n[bold]Book Summary:[/bold]")
         console.print(f"  [green]Completed:[/green] {len(completed)}")
         console.print(f"  [dim]Skipped (already indexed):[/dim] {len(skipped)}")
         if invalid:

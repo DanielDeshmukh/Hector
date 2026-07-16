@@ -217,7 +217,6 @@ class EntityReranker:
             "fraud": ["fraud", "cheating", "forgery"],
             "divorce": ["divorce", "dissolution", "section 13"],
             "fir": ["fir", "first information report", "section 154"],
-            "bail": ["bail", "release", "section 437"],
         }
 
         for topic in topics:

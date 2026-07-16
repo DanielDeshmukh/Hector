@@ -7,7 +7,7 @@ document processing pipeline, and fallback behavior. Uses mocked APIs.
 
 import os
 import sys
-from unittest.mock import MagicMock, patch, mock_open
+from unittest.mock import MagicMock, patch
 
 import pytest
 

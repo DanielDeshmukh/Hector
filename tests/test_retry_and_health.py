@@ -5,7 +5,7 @@ Tests for retry utility, ChromaDB retry logic, and enhanced health endpoints.
 import os
 import sys
 import time
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -133,7 +133,6 @@ class TestEnhancedHealthEndpoints:
     def stub_service(self):
         from api.services import HectorApiService
         from api.app import app, get_service
-        from api.security import auth_manager
         from core.orchestrator import HectorOrchestrator
         from core.router import HectorRouter
         from data.hybrid_retriever import HectorHybridRetriever

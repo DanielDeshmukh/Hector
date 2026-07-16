@@ -24,7 +24,6 @@ from core.embedding_provider import (
 )
 from core.rerank_provider import (
     LOCAL_CROSS_ENCODER,
-    NEMOTRON_RERANK_MODEL,
     LocalReranker,
     NemotronReranker,
     get_rerank_provider,

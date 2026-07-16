@@ -6,13 +6,12 @@ that core operations complete within acceptable time bounds.
 Tests run WITHOUT a live HECTOR server (mocked API).
 """
 
-import json
 import os
 import sys
 import tempfile
 import time
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -20,12 +19,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from benchmark.rag_benchmark import (
     BenchConfig,
-    AiperfConfig,
-    InputConfig,
-    OutputConfig,
-    ProfilingConfig,
-    RagConfig,
-    TargetConfig,
     load_config,
     load_queries,
 )
@@ -244,6 +237,6 @@ class TestPerformanceThresholds:
             "results": [{"latency_ms": 100, "status": "success"}] * 20,
         }
         t0 = time.perf_counter()
-        report = mod.generate_report(cfg, profiling, None, None)
+        mod.generate_report(cfg, profiling, None, None)
         elapsed = (time.perf_counter() - t0) * 1000
         assert elapsed < 200, f"Report generation took {elapsed:.0f}ms (>200ms)"

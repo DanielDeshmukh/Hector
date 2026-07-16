@@ -121,7 +121,6 @@ KNOWN_ACTS = {
     # Property & registration
     "indian registration act": "Indian Registration Act",
     "indian stamps act": "Indian Stamps Act",
-    "transfer of property act": "Transfer of Property Act",
     "easements act": "Easements Act",
     "indian trusts act": "Indian Trusts Act",
     "trusts act": "Indian Trusts Act",
@@ -134,10 +133,6 @@ KNOWN_ACTS = {
     "family courts act": "Family Courts Act",
     # Gram Nyayalayas
     "gram nyayalayas act": "Gram Nyayalayas Act",
-    # Specific Relief
-    "specific relief act": "Specific Relief Act",
-    # Limitation
-    "limitation act": "Limitation Act",
     # Copyright & IP
     "copyright act": "Copyright Act",
     "designs act": "Designs Act",
@@ -169,8 +164,6 @@ KNOWN_ACTS = {
     "securities and exchange board of india act": "SEBI Act",
     # NREGA
     "national rural employment guarantee act": "NREGA",
-    # Juvenile
-    "juvenile justice act": "Juvenile Justice Act",
     # Probation
     "probation of offenders act": "Probation Act",
     # Criminal tribunals
@@ -185,8 +178,6 @@ KNOWN_ACTS = {
     "posco act": "POCSO",
     # Food safety
     "food safety and standards act": "Food Safety Act",
-    # Telecommunications
-    "indian telegraph act": "Indian Telegraph Act",
     # Inter-state
     "inter-state water disputes act": "Inter-State Water Disputes Act",
     # Indian penal code extensions

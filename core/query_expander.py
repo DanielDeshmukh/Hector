@@ -17,7 +17,7 @@ Example:
 
 import logging
 import re
-from typing import Dict, List, Set
+from typing import Dict, List
 
 logger = logging.getLogger("hector.query_expander")
 

@@ -14,8 +14,8 @@ os.environ.setdefault("HECTOR_JWT_SECRET", "test-jwt-secret-32-bytes-minimum-val
 os.environ.setdefault("HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "test_hector_db"))
 os.environ.setdefault("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books"))
 
-import pytest
-from fastapi.testclient import TestClient
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
 
 @pytest.fixture(scope="session")
