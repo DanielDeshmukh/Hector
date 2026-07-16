@@ -298,6 +298,7 @@ COURT_NAMES = {
     "arbital tribunal": "Arbital Tribunal",
     "labour court": "Labour Court",
     "industrial tribunal": "Industrial Tribunal",
+    "debt recovery tribunal": "Debt Recovery Tribunal",
 }
 
 
