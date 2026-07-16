@@ -5,18 +5,18 @@ Logs everything to retrieval_test.log
 """
 
 import json
+import logging
 import os
 import sys
 import time
 from datetime import datetime
 
+from core.orchestrator import HectorOrchestrator
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Suppress noisy logs
-import logging
 logging.disable(logging.WARNING)
-
-from core.orchestrator import HectorOrchestrator
 
 # ============================================================
 # TEST QUERIES
@@ -293,7 +293,6 @@ def score_response(query_data, response, sources, route):
 
         # Check source relevance
         source_names = [s.get("source", "") if isinstance(s, dict) else str(s) for s in sources]
-        source_str = " ".join(source_names).lower()
         matched_sources = [s for s in query_data["expected_source"] if any(s.lower() in sn for sn in source_names)]
         source_score = len(matched_sources) / max(len(query_data["expected_source"]), 1)
         score["source_match"] = round(source_score, 2)
@@ -343,13 +342,13 @@ def run_tests():
     log_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "retrieval_test.log")
 
     with open(log_path, "w", encoding="utf-8") as log:
-        log.write(f"HECTOR RETRIEVAL ACCURACY TEST\n")
+        log.write("HECTOR RETRIEVAL ACCURACY TEST\n")
         log.write(f"Started: {datetime.now().isoformat()}\n")
-        log.write(f"Queries: 30 (10 exact, 10 similar, 10 irrelevant)\n")
+        log.write("Queries: 30 (10 exact, 10 similar, 10 irrelevant)\n")
         log.write(f"{'='*80}\n\n")
         log.flush()
 
-        print(f"HECTOR RETRIEVAL ACCURACY TEST")
+        print("HECTOR RETRIEVAL ACCURACY TEST")
         print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"{'='*80}")
 

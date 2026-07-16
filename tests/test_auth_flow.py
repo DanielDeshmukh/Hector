@@ -4,13 +4,12 @@ Tests for authentication flow: JWT generation, validation, expiration, and secur
 
 import os
 import sys
-import time
 
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from api.security import AuthManager, auth_manager
+from api.security import auth_manager
 
 
 class TestAuthManager:

@@ -3,20 +3,8 @@ import logging
 import os
 import time
 import uuid
-from datetime import datetime
-
-logging.getLogger("hector").warning(
-    "utils.ingestor is DEPRECATED. Use utils.enhanced_ingestor instead."
-)
 import warnings
-warnings.warn(
-    "utils.ingestor is deprecated. Use utils.enhanced_ingestor.HectorIngestor.",
-    DeprecationWarning,
-    stacklevel=2,
-)
-
-os.environ.setdefault("HF_HUB_OFFLINE", "1")
-os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+from datetime import datetime
 
 import chromadb
 import pytesseract
@@ -26,6 +14,18 @@ from rich.console import Console
 from rich.live import Live
 from rich.panel import Panel
 from rich.text import Text
+
+logging.getLogger("hector").warning(
+    "utils.ingestor is DEPRECATED. Use utils.enhanced_ingestor instead."
+)
+warnings.warn(
+    "utils.ingestor is deprecated. Use utils.enhanced_ingestor.HectorIngestor.",
+    DeprecationWarning,
+    stacklevel=2,
+)
+
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 
 load_dotenv()
 

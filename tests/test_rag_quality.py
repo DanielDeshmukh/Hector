@@ -10,7 +10,6 @@ import json
 import os
 import sys
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -265,7 +264,6 @@ class TestCliEntryPoint:
 
     def test_has_required_cli_args(self):
         """CLI accepts the expected argument flags."""
-        import evaluation.evaluate_rag as mod
         import argparse
         parser = argparse.ArgumentParser()
         parser.add_argument("--dataset-paths", required=True)
