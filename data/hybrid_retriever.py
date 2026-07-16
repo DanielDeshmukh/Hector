@@ -304,7 +304,19 @@ class HectorHybridRetriever:
             where_filter, top_k=min(candidate_pool, 200)
         )
 
+        if not filtered_results and section_numbers:
+            # Fallback 1: try section-only filter (without act filter)
+            section_only_filter = (
+                {"section_number": {"$eq": section_numbers[0]}}
+                if len(section_numbers) == 1
+                else {"$or": [{"section_number": {"$eq": s}} for s in section_numbers]}
+            )
+            filtered_results = self._chroma_filtered_search(
+                section_only_filter, top_k=min(candidate_pool, 200)
+            )
+
         if not filtered_results:
+            # Fallback 2: unfiltered search as last resort
             return self.search(query, top_k, candidate_pool)
 
         legal_query = self._parse_query(query)
