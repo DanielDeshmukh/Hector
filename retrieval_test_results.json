@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-07-16T12:56:37.989384",
-  "total_time_s": 395.4,
-  "avg_accuracy": 0.66,
-  "exact_avg": 0.53,
-  "similar_avg": 0.47,
-  "irrelevant_avg": 0.98,
+  "timestamp": "2026-07-16T13:20:06.200917",
+  "total_time_s": 486.8,
+  "avg_accuracy": 0.59,
+  "exact_avg": 0.45,
+  "similar_avg": 0.37,
+  "irrelevant_avg": 0.94,
   "results": [
     {
       "id": 1,
@@ -14,7 +14,7 @@
       "correct_route": true,
       "llm_judge": 0,
       "accuracy": 0.0,
-      "elapsed_ms": 78101.0
+      "elapsed_ms": 47777.0
     },
     {
       "id": 2,
@@ -22,9 +22,9 @@
       "category": "exact",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 100,
-      "accuracy": 1.0,
-      "elapsed_ms": 18097.0
+      "llm_judge": 80,
+      "accuracy": 0.8,
+      "elapsed_ms": 14990.0
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "correct_route": true,
       "llm_judge": 40,
       "accuracy": 0.4,
-      "elapsed_ms": 22118.0
+      "elapsed_ms": 13156.0
     },
     {
       "id": 4,
@@ -42,9 +42,9 @@
       "category": "exact",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 50,
-      "accuracy": 0.5,
-      "elapsed_ms": 8506.0
+      "llm_judge": 70,
+      "accuracy": 0.7,
+      "elapsed_ms": 17073.0
     },
     {
       "id": 5,
@@ -52,9 +52,9 @@
       "category": "exact",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 70,
-      "accuracy": 0.7,
-      "elapsed_ms": 6762.0
+      "llm_judge": 30,
+      "accuracy": 0.3,
+      "elapsed_ms": 11225.0
     },
     {
       "id": 6,
@@ -64,7 +64,7 @@
       "correct_route": true,
       "llm_judge": 30,
       "accuracy": 0.3,
-      "elapsed_ms": 12519.0
+      "elapsed_ms": 12676.0
     },
     {
       "id": 7,
@@ -72,9 +72,9 @@
       "category": "exact",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 70,
-      "accuracy": 0.7,
-      "elapsed_ms": 11624.0
+      "llm_judge": 30,
+      "accuracy": 0.3,
+      "elapsed_ms": 14640.0
     },
     {
       "id": 8,
@@ -82,9 +82,9 @@
       "category": "exact",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 85,
-      "accuracy": 0.85,
-      "elapsed_ms": 6247.0
+      "llm_judge": 80,
+      "accuracy": 0.8,
+      "elapsed_ms": 11067.0
     },
     {
       "id": 9,
@@ -92,9 +92,9 @@
       "category": "exact",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 80,
-      "accuracy": 0.8,
-      "elapsed_ms": 6923.0
+      "llm_judge": 95,
+      "accuracy": 0.95,
+      "elapsed_ms": 11340.0
     },
     {
       "id": 10,
@@ -104,7 +104,7 @@
       "correct_route": true,
       "llm_judge": 0,
       "accuracy": 0.0,
-      "elapsed_ms": 11881.0
+      "elapsed_ms": 12603.0
     },
     {
       "id": 11,
@@ -112,9 +112,9 @@
       "category": "similar",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 90,
-      "accuracy": 0.9,
-      "elapsed_ms": 9932.0
+      "llm_judge": 85,
+      "accuracy": 0.85,
+      "elapsed_ms": 15847.0
     },
     {
       "id": 12,
@@ -122,9 +122,9 @@
       "category": "similar",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 80,
-      "accuracy": 0.8,
-      "elapsed_ms": 9514.0
+      "llm_judge": 95,
+      "accuracy": 0.95,
+      "elapsed_ms": 11710.0
     },
     {
       "id": 13,
@@ -134,17 +134,17 @@
       "correct_route": false,
       "llm_judge": 30,
       "accuracy": 0.3,
-      "elapsed_ms": 0.0
+      "elapsed_ms": 1.0
     },
     {
       "id": 14,
       "query": "Is a confession made to police admissible in court?",
       "category": "similar",
       "has_sources": true,
-      "correct_route": false,
+      "correct_route": true,
       "llm_judge": 0,
       "accuracy": 0.0,
-      "elapsed_ms": 1497.0
+      "elapsed_ms": 1847.0
     },
     {
       "id": 15,
@@ -152,9 +152,9 @@
       "category": "similar",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 50,
-      "accuracy": 0.5,
-      "elapsed_ms": 6964.0
+      "llm_judge": 30,
+      "accuracy": 0.3,
+      "elapsed_ms": 16610.0
     },
     {
       "id": 16,
@@ -164,17 +164,17 @@
       "correct_route": true,
       "llm_judge": 60,
       "accuracy": 0.6,
-      "elapsed_ms": 18096.0
+      "elapsed_ms": 29829.0
     },
     {
       "id": 17,
       "query": "Can a minor enter into a valid contract?",
       "category": "similar",
       "has_sources": true,
-      "correct_route": true,
-      "llm_judge": 30,
-      "accuracy": 0.3,
-      "elapsed_ms": 1436.0
+      "correct_route": false,
+      "llm_judge": 0,
+      "accuracy": 0.0,
+      "elapsed_ms": 2635.0
     },
     {
       "id": 18,
@@ -182,9 +182,9 @@
       "category": "similar",
       "has_sources": true,
       "correct_route": true,
-      "llm_judge": 70,
-      "accuracy": 0.7,
-      "elapsed_ms": 15282.0
+      "llm_judge": 0,
+      "accuracy": 0.0,
+      "elapsed_ms": 16230.0
     },
     {
       "id": 19,
@@ -194,7 +194,7 @@
       "correct_route": true,
       "llm_judge": 0,
       "accuracy": 0.0,
-      "elapsed_ms": 6559.0
+      "elapsed_ms": 10848.0
     },
     {
       "id": 20,
@@ -202,19 +202,21 @@
       "category": "similar",
       "has_sources": true,
       "correct_route": false,
-      "llm_judge": 60,
-      "accuracy": 0.6,
-      "elapsed_ms": 3071.0
+      "llm_judge": 70,
+      "accuracy": 0.7,
+      "elapsed_ms": 13331.0
     },
     {
       "id": 21,
       "query": "What is the capital of France?",
       "category": "irrelevant",
       "has_sources": false,
-      "false_legal_terms": [],
+      "false_legal_terms": [
+        "act"
+      ],
       "correct_route": true,
-      "accuracy": 1.0,
-      "elapsed_ms": 1312.0
+      "accuracy": 0.8,
+      "elapsed_ms": 714.0
     },
     {
       "id": 22,
@@ -224,7 +226,7 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 1637.0
+      "elapsed_ms": 1088.0
     },
     {
       "id": 23,
@@ -234,7 +236,7 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 1284.0
+      "elapsed_ms": 512.0
     },
     {
       "id": 24,
@@ -244,7 +246,7 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 1842.0
+      "elapsed_ms": 2074.0
     },
     {
       "id": 25,
@@ -254,7 +256,7 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 893.0
+      "elapsed_ms": 739.0
     },
     {
       "id": 26,
@@ -264,7 +266,7 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 2042.0
+      "elapsed_ms": 2006.0
     },
     {
       "id": 27,
@@ -274,17 +276,19 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 1334.0
+      "elapsed_ms": 1059.0
     },
     {
       "id": 28,
       "query": "Tell me a joke about lawyers",
       "category": "irrelevant",
       "has_sources": false,
-      "false_legal_terms": [],
+      "false_legal_terms": [
+        "court"
+      ],
       "correct_route": true,
-      "accuracy": 1.0,
-      "elapsed_ms": 1009.0
+      "accuracy": 0.8,
+      "elapsed_ms": 929.0
     },
     {
       "id": 29,
@@ -294,7 +298,7 @@
       "false_legal_terms": [],
       "correct_route": true,
       "accuracy": 1.0,
-      "elapsed_ms": 3789.0
+      "elapsed_ms": 642.0
     },
     {
       "id": 30,
@@ -306,7 +310,7 @@
       ],
       "correct_route": true,
       "accuracy": 0.8,
-      "elapsed_ms": 1126.0
+      "elapsed_ms": 1021.0
     }
   ]
 }
