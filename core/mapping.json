@@ -481,6 +481,7 @@
         "496": {"new": "419", "name": "Rape by Public Servant", "note": "official raping"},
         "497": {"new": "420", "name": "Rape by Member of Armed Forces", "note": "military rape"},
         "498": {"new": "421", "name": "Rape by Person in Authority", "note": "authority figure rape"},
+        "498A": {"new": "80", "name": "Cruelty by Husband or Relatives", "note": "dowry harassment"},
         "499": {"new": "356", "name": "Defamation", "note": "injuring reputation"},
         "500": {"new": "357", "name": "Punishment for Defamation", "note": "defamation penalty"},
         "501": {"new": "358", "name": "Defamation by Publication", "note": "publishing defamatory content"},
@@ -511,6 +512,7 @@
         "113": {"old": "311", "name": "Belonging to Gang"},
         "303": {"old": "378", "name": "Theft"},
         "318": {"old": "420", "name": "Cheating"},
+        "80": {"old": "498A", "name": "Cruelty by Husband or Relatives"},
         "356": {"old": "499", "name": "Defamation"}
     },
     "SYSTEM_NOTES": {
