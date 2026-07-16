@@ -679,10 +679,11 @@ class HectorHybridRetriever:
             jurisdiction_boost, jurisdiction_reason = self._jurisdiction_recency_boost(
                 record
             )
+            source_type_boost, source_type_reason = self._source_type_boost(record)
 
             retrieval_score = candidate["rrf_score"]
             boost_score = (
-                legal_boost + concept_boost + current_law_boost + jurisdiction_boost
+                legal_boost + concept_boost + current_law_boost + jurisdiction_boost + source_type_boost
             )
             hybrid_score = retrieval_score + boost_score
 
@@ -694,6 +695,7 @@ class HectorHybridRetriever:
                     concept_reason,
                     current_law_reason,
                     jurisdiction_reason,
+                    source_type_reason,
                 ]
                 if reason
             ]
@@ -929,6 +931,16 @@ class HectorHybridRetriever:
             reasons.append(f"recency:{parsed_date.isoformat()}")
 
         return boost, ", ".join(reasons) if reasons else None
+
+    def _source_type_boost(self, record):
+        """Boost Bare Act text over commentary. Primary sources are authoritative."""
+        metadata = record.get("metadata", {})
+        source_type = metadata.get("source_type", "")
+        if source_type == "bare_act":
+            return 0.05, "source:bare-act"
+        if source_type == "commentary":
+            return -0.02, "source:commentary"
+        return 0.0, None
 
     def _deduplicate_results(self, ranked_results):
         deduped = []
