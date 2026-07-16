@@ -496,6 +496,19 @@ class HallucinationDetector:
                     }
                 )
 
+        # Check for references to invalid BNS sections
+        bns_sections = re.findall(r"section\s+(\d+)\s+bns", response_lower)
+        for section in bns_sections:
+            section_num = int(section)
+            # BNS has 358 sections (official count), safe upper bound 395
+            if section_num > 395:
+                inconsistencies.append(
+                    {
+                        "type": "invalid_bns_section",
+                        "detail": f"Section {section} BNS does not exist (BNS has 358 sections)",
+                    }
+                )
+
         return inconsistencies
 
     @staticmethod
