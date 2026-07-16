@@ -1,6 +1,6 @@
 <div align="center">
 
-# HECTOR
+<img src="banner.png" alt="HECTOR Banner" width="100%">
 
 ### Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval
 
