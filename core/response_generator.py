@@ -5,8 +5,11 @@ Generates legally accurate, contextually rich responses with proper citations.
 
 from __future__ import annotations
 from dataclasses import dataclass
+import logging
 import re
 from typing import TYPE_CHECKING
+
+logger = logging.getLogger("hector.response_generator")
 
 if TYPE_CHECKING:
     from data.hybrid_retriever import HectorHybridRetriever
@@ -64,6 +67,7 @@ When answering legal queries:
         if self._nim_client is None:
             try:
                 from core.nim_llm import get_nim_llm
+
                 self._nim_client = get_nim_llm()
             except Exception:
                 self._nim_client = False

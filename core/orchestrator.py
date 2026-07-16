@@ -71,6 +71,7 @@ class HectorOrchestrator:
     def response_generator(self):
         if self._response_generator is None:
             from core.response_generator import ContextualResponseGenerator
+
             self._response_generator = ContextualResponseGenerator(self.retriever)
         return self._response_generator
 
@@ -234,7 +235,9 @@ class HectorOrchestrator:
                 if results:
                     parts.append(self.retriever.format_results(results))
                 else:
-                    parts.append("No grounded legal results found in the indexed corpus.")
+                    parts.append(
+                        "No grounded legal results found in the indexed corpus."
+                    )
                 response = "\n\n".join(parts)
 
             return response, sources

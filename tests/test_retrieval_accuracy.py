@@ -401,8 +401,13 @@ def score_response(query_data, response, sources, route):
         score["has_sources"] = not has_no_sources
 
         legal_terms = [
-            "section", "act", "ipc", "bns", "punishment",
-            "imprisonment", "court",
+            "section",
+            "act",
+            "ipc",
+            "bns",
+            "punishment",
+            "imprisonment",
+            "court",
         ]
         false_legal = [term for term in legal_terms if term in response.lower()]
         score["false_legal_terms"] = false_legal
@@ -424,13 +429,18 @@ def _llm_judge_score(query, response, expected_keywords, expected_source):
     """Use NIM LLM to judge answer quality. Returns 0-100 score."""
     try:
         from core.nim_llm import get_nim_llm
+
         client = get_nim_llm()
 
         expected_hint = ""
         if expected_keywords:
-            expected_hint += f"\nExpected key terms: {', '.join(expected_keywords[:10])}"
+            expected_hint += (
+                f"\nExpected key terms: {', '.join(expected_keywords[:10])}"
+            )
         if expected_source:
-            expected_hint += f"\nExpected source documents: {', '.join(expected_source[:5])}"
+            expected_hint += (
+                f"\nExpected source documents: {', '.join(expected_source[:5])}"
+            )
 
         messages = [
             {
@@ -443,7 +453,7 @@ def _llm_judge_score(query, response, expected_keywords, expected_source):
                     "- 50-69: Partially correct, addresses the topic but incomplete\n"
                     "- 30-49: Vague or tangential, some relevant content\n"
                     "- 0-29: Wrong, irrelevant, or no meaningful answer\n\n"
-                    "Return ONLY a JSON object: {\"score\": <int>, \"reason\": \"<one sentence>\"}"
+                    'Return ONLY a JSON object: {"score": <int>, "reason": "<one sentence>"}'
                 ),
             },
             {
