@@ -261,6 +261,272 @@ class HectorHybridRetriever:
         reranked = self._rerank_with_cross_encoder(query, deduped)
         return reranked[:top_k]
 
+    def search_with_metadata_filters(
+        self, query, entities, top_k=5, candidate_pool=20
+    ):
+        """Search with pre-filtering by section_number and real_act_name.
+
+        When entity parser extracts a section number and/or act name, filter
+        ChromaDB to ONLY chunks matching those metadata fields BEFORE ranking.
+        This prevents "Section 302 query returns Section 304" false matches.
+        Falls back to unfiltered search when no metadata filters available.
+        """
+        if not self.records or not entities:
+            return self.search(query, top_k, candidate_pool)
+
+        section_numbers = list(
+            dict.fromkeys(
+                (entities.get("sections") or [])
+                + (entities.get("ipc_sections") or [])
+                + (entities.get("bns_sections") or [])
+            )
+        )
+        acts = list(dict.fromkeys(entities.get("acts") or []))
+
+        if not section_numbers and not acts:
+            return self.search(query, top_k, candidate_pool)
+
+        where_filter = self._build_where_filter(section_numbers, acts)
+        if where_filter is None:
+            return self.search(query, top_k, candidate_pool)
+
+        filtered_results = self._chroma_filtered_search(
+            where_filter, top_k=min(candidate_pool, 200)
+        )
+
+        if not filtered_results:
+            return self.search(query, top_k, candidate_pool)
+
+        legal_query = self._parse_query(query)
+        semantic_rank = self._semantic_search_with_filter(
+            query, min(candidate_pool, 200), where_filter
+        )
+        bm25_rank = self._bm25_search_filtered(
+            legal_query["tokens"], filtered_results
+        )
+        fused = self._fuse_rankings(semantic_rank, bm25_rank)
+        ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
+        deduped = self._deduplicate_results(ranked)
+        reranked = self._rerank_with_cross_encoder(query, deduped)
+        return reranked[:top_k]
+
+    def _build_where_filter(self, section_numbers, acts):
+        """Build a ChromaDB $and where clause for metadata filtering."""
+        if not section_numbers and not acts:
+            return None
+
+        conditions = []
+
+        if section_numbers:
+            if len(section_numbers) == 1:
+                conditions.append(
+                    {"section_number": {"$eq": section_numbers[0]}}
+                )
+            else:
+                conditions.append(
+                    {"$or": [{"section_number": {"$eq": s}} for s in section_numbers]}
+                )
+
+        if acts:
+            act_conditions = []
+            for act in acts:
+                act_lower = act.lower()
+                if act_lower in ("ipc", "indian penal code"):
+                    act_conditions.append(
+                        {
+                            "$or": [
+                                {"real_act_name": {"$contains": "Indian Penal Code"}},
+                                {"act_name": {"$contains": "Indian Penal Code"}},
+                            ]
+                        }
+                    )
+                elif act_lower in ("bns", "bharatiya nyaya sanhita"):
+                    act_conditions.append(
+                        {
+                            "$or": [
+                                {"real_act_name": {"$contains": "Bharatiya Nyaya"}},
+                                {"act_name": {"$contains": "Bharatiya Nyaya"}},
+                            ]
+                        }
+                    )
+                elif act_lower in ("crpc", "code of criminal procedure"):
+                    act_conditions.append(
+                        {
+                            "$or": [
+                                {
+                                    "real_act_name": {
+                                        "$contains": "Code of Criminal Procedure"
+                                    }
+                                },
+                                {
+                                    "act_name": {
+                                        "$contains": "Code of Criminal Procedure"
+                                    }
+                                },
+                            ]
+                        }
+                    )
+                elif act_lower in ("bnss", "bharatiya nagarik suraksha sanhita"):
+                    act_conditions.append(
+                        {
+                            "$or": [
+                                {
+                                    "real_act_name": {
+                                        "$contains": "Bharatiya Nagarik Suraksha"
+                                    }
+                                },
+                                {
+                                    "act_name": {
+                                        "$contains": "Bharatiya Nagarik Suraksha"
+                                    }
+                                },
+                            ]
+                        }
+                    )
+                elif act_lower in ("bsa", "bharatiya sakshya adhiniyam", "evidence act"):
+                    act_conditions.append(
+                        {
+                            "$or": [
+                                {
+                                    "real_act_name": {
+                                        "$contains": "Bharatiya Sakshya"
+                                    }
+                                },
+                                {"act_name": {"$contains": "Bharatiya Sakshya"}},
+                                {"real_act_name": {"$contains": "Evidence Act"}},
+                                {"act_name": {"$contains": "Evidence Act"}},
+                            ]
+                        }
+                    )
+                elif act_lower in ("cpc", "code of civil procedure"):
+                    act_conditions.append(
+                        {
+                            "$or": [
+                                {
+                                    "real_act_name": {
+                                        "$contains": "Code of Civil Procedure"
+                                    }
+                                },
+                                {
+                                    "act_name": {
+                                        "$contains": "Code of Civil Procedure"
+                                    }
+                                },
+                            ]
+                        }
+                    )
+                else:
+                    act_conditions.append(
+                        {"real_act_name": {"$contains": act}}
+                    )
+
+            if len(act_conditions) == 1:
+                conditions.append(act_conditions[0])
+            elif act_conditions:
+                conditions.append({"$or": act_conditions})
+
+        if not conditions:
+            return None
+        if len(conditions) == 1:
+            return conditions[0]
+        return {"$and": conditions}
+
+    def _chroma_filtered_search(self, where_filter, top_k=200):
+        """Get metadata-filtered results from ChromaDB without embeddings."""
+        if self.collection is None:
+            return []
+        try:
+            results = retry(
+                self.collection.get,
+                where=where_filter,
+                limit=top_k,
+                include=["documents", "metadatas"],
+                operation_name="chroma_filtered_get",
+            )
+            documents = results.get("documents") or []
+            metadatas = results.get("metadatas") or []
+            ids = results.get("ids") or []
+            return [
+                {
+                    "id": ids[i] if i < len(ids) else f"filtered-{i}",
+                    "document": documents[i],
+                    "metadata": metadatas[i] if i < len(metadatas) else {},
+                }
+                for i in range(len(documents))
+            ]
+        except Exception:
+            return []
+
+    def _semantic_search_with_filter(self, query, top_k, where_filter):
+        """Semantic search with ChromaDB where clause pre-filter."""
+        if self.collection is None or self.semantic_disabled:
+            return []
+        embed_fn = self._get_embedding_function()
+        if embed_fn is None:
+            return []
+        query_embedding = embed_fn([query])[0]
+        try:
+            results = retry(
+                self.collection.query,
+                query_embeddings=[query_embedding],
+                n_results=top_k,
+                where=where_filter,
+                include=["documents", "metadatas", "distances"],
+                operation_name="chroma_filtered_query",
+            )
+        except Exception:
+            return self._semantic_search(query, top_k)
+
+        ranked = []
+        documents = results.get("documents", [[]])[0]
+        metadatas = results.get("metadatas", [[]])[0]
+        distances = results.get("distances", [[]])[0]
+        ids = results.get("ids", [[]])[0] if results.get("ids") else []
+        for index, document in enumerate(documents):
+            ranked.append(
+                {
+                    "id": ids[index]
+                    if index < len(ids)
+                    else self._lookup_id(document, metadatas[index]),
+                    "document": document,
+                    "metadata": metadatas[index] if index < len(metadatas) else {},
+                    "distance": distances[index] if index < len(distances) else None,
+                    "rank": index + 1,
+                }
+            )
+        return ranked
+
+    def _bm25_search_filtered(self, query_tokens, filtered_results):
+        """BM25 search over metadata-filtered subset only."""
+        if not query_tokens or not filtered_results:
+            return []
+        filtered_tokens = [self._tokenize(r["document"]) for r in filtered_results]
+        filtered_bm25 = SimpleBM25(filtered_tokens)
+        scores = filtered_bm25.get_scores(query_tokens)
+        scored_rows = []
+        for index, score in enumerate(scores):
+            if score <= 0:
+                continue
+            scored_rows.append((index, score))
+        scored_rows.sort(key=lambda item: item[1], reverse=True)
+        max_score = max((s for _, s in scored_rows), default=1.0)
+        min_score = min((s for _, s in scored_rows), default=0.0)
+        ranked = []
+        for rank, (index, score) in enumerate(scored_rows[:200], start=1):
+            result = filtered_results[index]
+            normalized = self._normalize_bm25_score(score, min_score, max_score)
+            ranked.append(
+                {
+                    "id": result["id"],
+                    "document": result["document"],
+                    "metadata": result["metadata"],
+                    "score": score,
+                    "normalized_score": normalized,
+                    "rank": rank,
+                }
+            )
+        return ranked
+
     def _tokenize(self, text):
         return self.TOKEN_PATTERN.findall((text or "").lower())
 
