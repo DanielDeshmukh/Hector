@@ -240,10 +240,22 @@ class HectorOrchestrator:
                 or (entities.get("ipc_sections") or [])
                 or (entities.get("bns_sections") or [])
             )
+            has_act = bool(entities.get("acts") or [])
+
+            # Resolve IPC section numbers to BNS equivalents for filtering
+            ipc_sections = entities.get("ipc_sections") or []
+            if ipc_sections:
+                mapping = self.router.legal_map  # IPC_TO_BNS mapping
+                for ipc_sec in ipc_sections:
+                    bns_entry = mapping.get(ipc_sec)
+                    if bns_entry:
+                        bns_num = bns_entry.get("new", "")
+                        if bns_num and bns_num not in (entities.get("bns_sections") or []):
+                            entities.setdefault("bns_sections", []).append(bns_num)
 
             # Sub-stage: Search
             t_search = _time.perf_counter()
-            if has_section:
+            if has_section or has_act:
                 results = self.retriever.search_with_metadata_filters(
                     query, entities, top_k=10
                 )
