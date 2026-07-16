@@ -210,7 +210,17 @@ class HectorOrchestrator:
             )
 
         if route == "LEGAL_RESEARCH":
-            results = self.retriever.search(query, top_k=10)
+            has_section = bool(
+                (entities.get("sections") or [])
+                or (entities.get("ipc_sections") or [])
+                or (entities.get("bns_sections") or [])
+            )
+            if has_section:
+                results = self.retriever.search_with_metadata_filters(
+                    query, entities, top_k=10
+                )
+            else:
+                results = self.retriever.search(query, top_k=10)
 
             # Phase D: Re-rank by entity matches
             if results and entities:

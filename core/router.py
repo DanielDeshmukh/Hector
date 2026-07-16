@@ -11,7 +11,7 @@ try:
 except ImportError:
     Groq = None
 
-from core.nim_llm import get_nim_llm
+from core.nim_llm import get_nim_llm, NIM_MODELS
 
 load_dotenv()
 
@@ -72,6 +72,83 @@ class HectorRouter:
         "limitation act",
         "code of criminal",
         "code of civil",
+    )
+
+    # Legal topic keywords — conceptual terms that indicate legal queries
+    # even without explicit "section" or "act" references
+    LEGAL_TOPICS = (
+        "confession",
+        "admissible",
+        "admissibility",
+        "evidence",
+        "witness",
+        "accused",
+        "interrogation",
+        "arrest",
+        "detention",
+        "custody",
+        "bail",
+        "minor",
+        "contract",
+        "void",
+        "voidable",
+        "capacity",
+        "inheritance",
+        "succession",
+        "will",
+        "probate",
+        "divorce",
+        "maintenance",
+        "alimony",
+        "cruelty",
+        "dowry",
+        "rape",
+        "murder",
+        "culpable homicide",
+        "theft",
+        "robbery",
+        "cheating",
+        "fraud",
+        "forgery",
+        "defamation",
+        "trespass",
+        "negligence",
+        "malpractice",
+        "wages",
+        "employer",
+        "employee",
+        "termination",
+        "retrenchment",
+        "drunk driving",
+        "dui",
+        "driving under influence",
+        "insurance",
+        "claim",
+        "compensation",
+        "damages",
+        "injunction",
+        "specific performance",
+        "mortgage",
+        "lease",
+        "rent",
+        "eviction",
+        "partition",
+        "guardian",
+        "custody of child",
+        "adoption",
+        "maintenance of parents",
+        "charity",
+        "trust",
+        "tax",
+        "gst",
+        "income tax",
+        "penalty",
+        "fine",
+        "imprisonment",
+        "rigorous imprisonment",
+        "simple imprisonment",
+        "death penalty",
+        "life imprisonment",
     )
 
     # Civil law keywords for routing
@@ -269,6 +346,15 @@ class HectorRouter:
                 confidence=0.88,
             )
 
+        # Legal topic concepts — queries about legal concepts even without
+        # explicit section/act references (e.g. "Is a confession admissible?")
+        if any(topic in lowered for topic in self.LEGAL_TOPICS):
+            return self._fallback_intent(
+                route="LEGAL_RESEARCH",
+                message="Legal research intent identified via topic analysis. Retrieving statutory context.",
+                confidence=0.85,
+            )
+
         # --- DOCUMENT CHECKS (after legal, to avoid false positives) ---
         # Only route to document analysis if it's clearly about file handling
         # and NOT about a specific act/statute
@@ -325,6 +411,7 @@ class HectorRouter:
                     ],
                     temperature=0,
                     max_tokens=120,
+                    model=NIM_MODELS["router"],
                 )
                 validated = self._validate_payload(parsed)
                 if validated["confidence"] >= 0.55:

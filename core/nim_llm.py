@@ -20,6 +20,19 @@ NIM_BASE_URL = os.getenv("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
 NIM_API_KEY = os.getenv("NIM_API_KEY") or os.getenv("NVIDIA_API_KEY")
 DEFAULT_CHAT_MODEL = os.getenv("HECTOR_NIM_CHAT_MODEL", "meta/llama-3.1-8b-instruct")
 
+# Model registry — different models for different pipeline stages
+NIM_MODELS = {
+    "router": os.getenv(
+        "HECTOR_NIM_ROUTER_MODEL", "meta/llama-3.1-8b-instruct"
+    ),
+    "generation": os.getenv(
+        "HECTOR_NIM_GENERATION_MODEL", "meta/llama-3.1-8b-instruct"
+    ),
+    "verification": os.getenv(
+        "HECTOR_NIM_VERIFICATION_MODEL", "meta/llama-3.1-8b-instruct"
+    ),
+}
+
 
 class NimLLMClient:
     """Thin wrapper around NIM's OpenAI-compatible chat completions endpoint."""
@@ -56,6 +69,7 @@ class NimLLMClient:
         temperature: float = 0.0,
         max_tokens: int = 1024,
         response_format: dict | None = None,
+        model: str | None = None,
     ) -> str:
         """
         Send a chat completion request to NIM.
@@ -65,13 +79,14 @@ class NimLLMClient:
             temperature: Sampling temperature (0 = deterministic).
             max_tokens: Maximum tokens in response.
             response_format: Optional JSON mode dict, e.g. {"type": "json_object"}.
+            model: Override model for this call.
 
         Returns:
             The assistant message content string.
         """
         client = self._get_client()
         kwargs = {
-            "model": self.model,
+            "model": model or self.model,
             "messages": messages,
             "temperature": temperature,
             "max_tokens": max_tokens,
@@ -92,6 +107,7 @@ class NimLLMClient:
         messages: list[dict],
         temperature: float = 0.0,
         max_tokens: int = 1024,
+        model: str | None = None,
     ) -> dict:
         """Chat and parse the response as JSON."""
         raw = self.chat(
@@ -99,6 +115,7 @@ class NimLLMClient:
             temperature=temperature,
             max_tokens=max_tokens,
             response_format={"type": "json_object"},
+            model=model,
         )
         return json.loads(raw)
 

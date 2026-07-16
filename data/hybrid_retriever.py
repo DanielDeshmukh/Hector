@@ -2,6 +2,7 @@ import math
 import os
 import re
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 from utils.retry import retry
@@ -253,13 +254,281 @@ class HectorHybridRetriever:
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
 
-        semantic_rank = self._semantic_search(query, candidate_pool)
-        bm25_rank = self._bm25_search(legal_query["tokens"], candidate_pool)
+        # Parallelize BM25 and semantic search
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            semantic_future = executor.submit(
+                self._semantic_search, query, candidate_pool
+            )
+            bm25_future = executor.submit(
+                self._bm25_search, legal_query["tokens"], candidate_pool
+            )
+            semantic_rank = semantic_future.result()
+            bm25_rank = bm25_future.result()
+
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
         deduped = self._deduplicate_results(ranked)
         reranked = self._rerank_with_cross_encoder(query, deduped)
         return reranked[:top_k]
+
+    def search_with_metadata_filters(
+        self, query, entities, top_k=5, candidate_pool=20
+    ):
+        """Search with pre-filtering by section_number and real_act_name.
+
+        When entity parser extracts a section number and/or act name, filter
+        ChromaDB to ONLY chunks matching those metadata fields BEFORE ranking.
+        This prevents "Section 302 query returns Section 304" false matches.
+        Falls back to unfiltered search when no metadata filters available.
+        """
+        if not self.records or not entities:
+            return self.search(query, top_k, candidate_pool)
+
+        section_numbers = list(
+            dict.fromkeys(
+                (entities.get("sections") or [])
+                + (entities.get("ipc_sections") or [])
+                + (entities.get("bns_sections") or [])
+            )
+        )
+        acts = list(dict.fromkeys(entities.get("acts") or []))
+
+        if not section_numbers and not acts:
+            return self.search(query, top_k, candidate_pool)
+
+        where_filter = self._build_where_filter(section_numbers, acts)
+        if where_filter is None:
+            return self.search(query, top_k, candidate_pool)
+
+        filtered_results = self._chroma_filtered_search(
+            where_filter, top_k=min(candidate_pool, 200)
+        )
+
+        if not filtered_results:
+            return self.search(query, top_k, candidate_pool)
+
+        legal_query = self._parse_query(query)
+
+        # Parallelize filtered semantic and BM25 search
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            semantic_future = executor.submit(
+                self._semantic_search_with_filter,
+                query,
+                min(candidate_pool, 200),
+                where_filter,
+            )
+            bm25_future = executor.submit(
+                self._bm25_search_filtered, legal_query["tokens"], filtered_results
+            )
+            semantic_rank = semantic_future.result()
+            bm25_rank = bm25_future.result()
+        fused = self._fuse_rankings(semantic_rank, bm25_rank)
+        ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
+        deduped = self._deduplicate_results(ranked)
+        reranked = self._rerank_with_cross_encoder(query, deduped)
+        return reranked[:top_k]
+
+    def _build_where_filter(self, section_numbers, acts):
+        """Build a ChromaDB where clause for metadata filtering.
+
+        Uses only $eq operators since $contains doesn't work with query().
+        For act matching, maps abbreviations to exact real_act_name values.
+        """
+        if not section_numbers and not acts:
+            return None
+
+        conditions = []
+
+        if section_numbers:
+            if len(section_numbers) == 1:
+                conditions.append(
+                    {"section_number": {"$eq": section_numbers[0]}}
+                )
+            else:
+                conditions.append(
+                    {"$or": [{"section_number": {"$eq": s}} for s in section_numbers]}
+                )
+
+        if acts:
+            exact_act_names = self._resolve_act_to_exact_names(acts)
+            if exact_act_names:
+                if len(exact_act_names) == 1:
+                    conditions.append(
+                        {"real_act_name": {"$eq": exact_act_names[0]}}
+                    )
+                else:
+                    conditions.append(
+                        {
+                            "$or": [
+                                {"real_act_name": {"$eq": name}}
+                                for name in exact_act_names
+                            ]
+                        }
+                    )
+
+        if not conditions:
+            return None
+        if len(conditions) == 1:
+            return conditions[0]
+        return {"$and": conditions}
+
+    def _resolve_act_to_exact_names(self, acts):
+        """Map act abbreviations to exact real_act_name values from the DB."""
+        ACT_TO_EXACT = {
+            "ipc": ["Indian Penal Code, 1860"],
+            "indian penal code": ["Indian Penal Code, 1860"],
+            "bns": ["Bharatiya Nyaya Sanhita, 2023"],
+            "bharatiya nyaya sanhita": ["Bharatiya Nyaya Sanhita, 2023"],
+            "crpc": ["Code of Criminal Procedure, 1973"],
+            "code of criminal procedure": ["Code of Criminal Procedure, 1973"],
+            "bnss": ["Bharatiya Nagarik Suraksha Sanhita, 2023"],
+            "bharatiya nagarik suraksha sanhita": [
+                "Bharatiya Nagarik Suraksha Sanhita, 2023"
+            ],
+            "bsa": [
+                "Bharatiya Sakshya Adhiniyam, 2023",
+                "erstwhile Indian Evidence Act, 1872",
+                "Indian Evidence Act, 1872",
+            ],
+            "bharatiya sakshya adhiniyam": ["Bharatiya Sakshya Adhiniyam, 2023"],
+            "evidence act": [
+                "Bharatiya Sakshya Adhiniyam, 2023",
+                "erstwhile Indian Evidence Act, 1872",
+                "Indian Evidence Act, 1872",
+            ],
+            "indian evidence act": [
+                "erstwhile Indian Evidence Act, 1872",
+                "Indian Evidence Act, 1872",
+            ],
+            "cpc": ["Code of Civil Procedure, 1908"],
+            "code of civil procedure": ["Code of Civil Procedure, 1908"],
+            "transfer of property": ["Transfer of Property Act, 1882"],
+            "transfer of property act": ["Transfer of Property Act, 1882"],
+            "indian contract act": ["Indian Contract Act, 1872"],
+            "consumer protection": ["Consumer Protection Act, 2019"],
+            "consumer protection act": ["Consumer Protection Act, 2019"],
+            "ndps": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
+            "ndps act": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
+            "motor vehicles": ["Motor Vehicles Act, 1988"],
+            "motor vehicles act": ["Motor Vehicles Act, 1988"],
+            "hindu succession": ["Hindu Succession Act, 1956"],
+            "hindu succession act": ["Hindu Succession Act, 1956"],
+            "hindu marriage": ["Hindu Marriage Act, 1955"],
+            "hindu marriage act": ["Hindu Marriage Act, 1955"],
+            "constitution": ["Constitution of India"],
+            "constitution of india": ["Constitution of India"],
+            "limitation": ["Limitation Act, 1963"],
+            "limitation act": ["Limitation Act, 1963"],
+            "arbitration": ["Arbitration and Conciliation Act, 1996"],
+            "arbitration act": ["Arbitration and Conciliation Act, 1996"],
+            "negotiable instruments": ["Negotiable Instruments Act, 1881"],
+            "ni act": ["Negotiable Instruments Act, 1881"],
+        }
+        result = []
+        for act in acts:
+            key = act.lower().strip()
+            exact_names = ACT_TO_EXACT.get(key)
+            if exact_names:
+                result.extend(exact_names)
+            else:
+                result.append(act)
+        return list(dict.fromkeys(result))
+
+    def _chroma_filtered_search(self, where_filter, top_k=200):
+        """Get metadata-filtered results from ChromaDB without embeddings."""
+        if self.collection is None:
+            return []
+        try:
+            results = retry(
+                self.collection.get,
+                where=where_filter,
+                limit=top_k,
+                include=["documents", "metadatas"],
+                operation_name="chroma_filtered_get",
+            )
+            documents = results.get("documents") or []
+            metadatas = results.get("metadatas") or []
+            ids = results.get("ids") or []
+            return [
+                {
+                    "id": ids[i] if i < len(ids) else f"filtered-{i}",
+                    "document": documents[i],
+                    "metadata": metadatas[i] if i < len(metadatas) else {},
+                }
+                for i in range(len(documents))
+            ]
+        except Exception:
+            return []
+
+    def _semantic_search_with_filter(self, query, top_k, where_filter):
+        """Semantic search with ChromaDB where clause pre-filter."""
+        if self.collection is None or self.semantic_disabled:
+            return []
+        embed_fn = self._get_embedding_function()
+        if embed_fn is None:
+            return []
+        query_embedding = embed_fn([query])[0]
+        try:
+            results = retry(
+                self.collection.query,
+                query_embeddings=[query_embedding],
+                n_results=top_k,
+                where=where_filter,
+                include=["documents", "metadatas", "distances"],
+                operation_name="chroma_filtered_query",
+            )
+        except Exception:
+            return self._semantic_search(query, top_k)
+
+        ranked = []
+        documents = results.get("documents", [[]])[0]
+        metadatas = results.get("metadatas", [[]])[0]
+        distances = results.get("distances", [[]])[0]
+        ids = results.get("ids", [[]])[0] if results.get("ids") else []
+        for index, document in enumerate(documents):
+            ranked.append(
+                {
+                    "id": ids[index]
+                    if index < len(ids)
+                    else self._lookup_id(document, metadatas[index]),
+                    "document": document,
+                    "metadata": metadatas[index] if index < len(metadatas) else {},
+                    "distance": distances[index] if index < len(distances) else None,
+                    "rank": index + 1,
+                }
+            )
+        return ranked
+
+    def _bm25_search_filtered(self, query_tokens, filtered_results):
+        """BM25 search over metadata-filtered subset only."""
+        if not query_tokens or not filtered_results:
+            return []
+        filtered_tokens = [self._tokenize(r["document"]) for r in filtered_results]
+        filtered_bm25 = SimpleBM25(filtered_tokens)
+        scores = filtered_bm25.get_scores(query_tokens)
+        scored_rows = []
+        for index, score in enumerate(scores):
+            if score <= 0:
+                continue
+            scored_rows.append((index, score))
+        scored_rows.sort(key=lambda item: item[1], reverse=True)
+        max_score = max((s for _, s in scored_rows), default=1.0)
+        min_score = min((s for _, s in scored_rows), default=0.0)
+        ranked = []
+        for rank, (index, score) in enumerate(scored_rows[:200], start=1):
+            result = filtered_results[index]
+            normalized = self._normalize_bm25_score(score, min_score, max_score)
+            ranked.append(
+                {
+                    "id": result["id"],
+                    "document": result["document"],
+                    "metadata": result["metadata"],
+                    "score": score,
+                    "normalized_score": normalized,
+                    "rank": rank,
+                }
+            )
+        return ranked
 
     def _tokenize(self, text):
         return self.TOKEN_PATTERN.findall((text or "").lower())
@@ -410,10 +679,11 @@ class HectorHybridRetriever:
             jurisdiction_boost, jurisdiction_reason = self._jurisdiction_recency_boost(
                 record
             )
+            source_type_boost, source_type_reason = self._source_type_boost(record)
 
             retrieval_score = candidate["rrf_score"]
             boost_score = (
-                legal_boost + concept_boost + current_law_boost + jurisdiction_boost
+                legal_boost + concept_boost + current_law_boost + jurisdiction_boost + source_type_boost
             )
             hybrid_score = retrieval_score + boost_score
 
@@ -425,6 +695,7 @@ class HectorHybridRetriever:
                     concept_reason,
                     current_law_reason,
                     jurisdiction_reason,
+                    source_type_reason,
                 ]
                 if reason
             ]
@@ -660,6 +931,16 @@ class HectorHybridRetriever:
             reasons.append(f"recency:{parsed_date.isoformat()}")
 
         return boost, ", ".join(reasons) if reasons else None
+
+    def _source_type_boost(self, record):
+        """Boost Bare Act text over commentary. Primary sources are authoritative."""
+        metadata = record.get("metadata", {})
+        source_type = metadata.get("source_type", "")
+        if source_type == "bare_act":
+            return 0.05, "source:bare-act"
+        if source_type == "commentary":
+            return -0.02, "source:commentary"
+        return 0.0, None
 
     def _deduplicate_results(self, ranked_results):
         deduped = []
