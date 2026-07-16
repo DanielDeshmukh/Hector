@@ -1,145 +1,137 @@
-# H.E.C.T.O.R.
+<div align="center">
 
-### **Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval**
+# HECTOR
 
-**HECTOR** is a high-precision "Hard-RAG" legal intelligence system for Indian Law. It specializes in mapping the transition from the Indian Penal Code (IPC) to the **Bharatiya Nyaya Sanhita (BNS)**, providing authoritative citations from a curated library of Bare Acts and commentaries with zero hallucination.
+### Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval
+
+[![CI/CD](https://github.com/DanielDeshmukh/Hector/actions/workflows/ci.yml/badge.svg)](https://github.com/DanielDeshmukh/Hector/actions)
+[![Tests](https://img.shields.io/badge/tests-1081%20passed-brightgreen)](#test-suite)
+[![Stars](https://img.shields.io/github/stars/DanielDeshmukh/Hector?style=flat&color=yellow)](https://github.com/DanielDeshmukh/Hector/stargazers)
+[![Python](https://img.shields.io/badge/python-3.11+-blue)](https://www.python.org)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+**A production-grade, zero-hallucination RAG system for Indian legal intelligence.**
+
+</div>
 
 ---
 
-## Quick Start
+## System Overview
 
-### Docker (Recommended)
+HECTOR is a hard-RAG legal reasoning engine purpose-built for Indian Law. It maps the transition from the Indian Penal Code (IPC) to the Bharatiya Nyaya Sanhita (BNS), grounding every response in verified Bare Act citations with a strict chain-of-verification pipeline that flags unverifiable claims instead of guessing.
 
-```bash
-git clone <repo-url> && cd Hector
-cp .env.example .env          # Add your API keys
-docker compose --profile full up -d
-# Frontend: http://localhost:3000
-# API:      http://localhost:8000
-# Docs:     http://localhost:8000/docs
-```
+### Core Design Principles
 
-### Local Development
-
-```bash
-# Backend
-python -m venv venv && venv\Scripts\activate   # Windows
-pip install -r requirements.txt
-cp .env.example .env            # Add your API keys
-uvicorn api.app:app --reload --port 8000
-
-# Frontend (separate terminal)
-cd frontend
-npm install && npm run dev
-```
-
-### CLI
-
-```bash
-pip install -e .
-hector status                   # Verify system
-hector ingest                   # Index books
-hector search "Section 302 IPC"
-```
+- **Zero hallucination** — Every citation is verified against the source corpus before delivery
+- **Section-aware chunking** — Documents split at legal section boundaries, never mid-sentence
+- **Temporal integrity** — IPC-to-BNS mappings validated against the 2024 repeal timeline
+- **Deterministic retrieval** — Hybrid BM25 + semantic search with cross-encoder reranking
+- **Defense in depth** — 4 verification layers: citation grounding, temporal validation, BNS section bounds, and chain-of-verification
 
 ---
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        USER LAYER                               │
-│  ┌──────────┐  ┌──────────────┐  ┌─────────┐  ┌────────────┐  │
-│  │ React UI │  │  REST API    │  │   CLI   │  │  Voice I/O │  │
-│  │ (Vite)   │  │  (FastAPI)   │  │ (Typer) │  │  (Web API) │  │
-│  └────┬─────┘  └──────┬───────┘  └────┬────┘  └─────┬──────┘  │
-│       └────────────────┴───────────────┴─────────────┘         │
-└───────────────────────────────┬─────────────────────────────────┘
-                                │
-┌───────────────────────────────▼─────────────────────────────────┐
-│                      CORE ENGINE                                │
-│                                                                 │
-│  ┌─────────┐    ┌──────────────┐    ┌────────────┐             │
-│  │ Router  │───▶│  Retriever   │───▶│  Verifier  │             │
-│  │(Groq)   │    │(Hybrid RAG)  │    │(Chain-of-  │             │
-│  │         │    │              │    │Verification)│             │
-│  └─────────┘    └──────┬───────┘    └─────┬──────┘             │
-│                        │                  │                     │
-│  ┌─────────────────────▼──────────────────▼─────────────┐      │
-│  │              RESPONSE GENERATOR                       │      │
-│  │  (Citation grounding, IPC↔BNS comparison tables)     │      │
-│  └──────────────────────────────────────────────────────┘      │
-└───────────────────────────────┬─────────────────────────────────┘
-                                │
-┌───────────────────────────────▼─────────────────────────────────┐
-│                     DATA LAYER                                  │
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐    │
-│  │   ChromaDB   │  │  BM25 Index  │  │  PDF Corpus        │    │
-│  │  (Semantic)  │  │  (Keyword)   │  │  (24 Bare Acts +   │    │
-│  │              │  │              │  │   13 Commentaries)  │    │
-│  └──────────────┘  └──────────────┘  └────────────────────┘    │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                         INTERFACE LAYER                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌───────────┐                 │
+│  │  React SPA   │  │  REST API    │  │   CLI     │                 │
+│  │  (Vite/TW)   │  │  (FastAPI)   │  │  (Typer)  │                 │
+│  └──────┬───────┘  └──────┬───────┘  └─────┬─────┘                 │
+│         └─────────────────┴────────────────┘                        │
+└─────────────────────────────────┬───────────────────────────────────┘
+                                  │
+┌─────────────────────────────────▼───────────────────────────────────┐
+│                        QUERY PIPELINE                                │
+│                                                                     │
+│  ┌──────────┐  ┌───────────┐  ┌──────────┐  ┌──────────────────┐  │
+│  │  Entity   │  │  Intent   │  │  Hybrid  │  │  Chain-of-       │  │
+│  │  Parser   │→ │  Router   │→ │ Retriever│→ │  Verification    │  │
+│  │  (regex)  │  │(embedding)│  │ (BM25+   │  │  (citation +     │  │
+│  │           │  │           │  │  vector) │  │   temporal check) │  │
+│  └──────────┘  └───────────┘  └──────────┘  └──────────────────┘  │
+│                                                                     │
+│  ┌───────────────┐  ┌────────────────┐  ┌───────────────────────┐  │
+│  │   Query       │  │    Entity      │  │    Response           │  │
+│  │   Expander    │  │    Reranker    │  │    Generator          │  │
+│  │  (synonyms)   │  │  (score boost) │  │  (citation grounded)  │  │
+│  └───────────────┘  └────────────────┘  └───────────────────────┘  │
+└─────────────────────────────────┬───────────────────────────────────┘
+                                  │
+┌─────────────────────────────────▼───────────────────────────────────┐
+│                         DATA LAYER                                   │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐  │
+│  │   ChromaDB   │  │  BM25 Index  │  │  45 Bare Acts &          │  │
+│  │  (semantic)  │  │  (keyword)   │  │  Commentaries (~17,800   │  │
+│  │              │  │              │  │  section-aware chunks)    │  │
+│  └──────────────┘  └──────────────┘  └──────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Query Pipeline
+---
 
-1. **Intent Routing** -- Taxonomy agent classifies domain (Criminal/Civil/Procedural) to prevent data bleeding
-2. **Hybrid Retrieval** -- Semantic search (sentence-transformers) + BM25 keyword search, fused via Reciprocal Rank Fusion, reranked by cross-encoder
-3. **Hierarchical Contextualization** -- Sub-clauses automatically pull parent Section, Chapter, and Act titles
-4. **Citation Grounding** -- Validator checks response against source; unverified claims flagged, never guessed
-5. **IPC to BNS Mapping** -- 495 cross-reference mappings with temporal validation (IPC repealed July 1, 2024)
+## Pipeline Stages
+
+| Stage | Module | Purpose |
+|-------|--------|---------|
+| **Entity Extraction** | `core/query_parser.py` | Regex-based extraction of act names (107 known acts), sections, topics, courts (17 jurisdictions), and articles from natural language queries |
+| **Intent Routing** | `core/embedding_router.py` | Sentence-transformers cosine similarity classifies query intent into LEGAL_RESEARCH, DOCUMENT_ANALYSIS, PRECEDENT, or GENERAL |
+| **Query Expansion** | `core/query_expander.py` | Legal synonym dictionary expands queries with related terms (e.g., "murder" → "culpable homicide", "section 302") |
+| **Hybrid Retrieval** | `data/hybrid_retriever.py` | BM25 keyword + semantic vector search fused via Reciprocal Rank Fusion, reranked by cross-encoder (`ms-marco-MiniLM-L-6-v2`) |
+| **Entity Reranking** | `core/entity_reranker.py` | Score boosting for matches on section numbers, act names, topic keywords, and constitutional articles |
+| **Chain-of-Verification** | `core/verifier.py` | 4-layer verification: citation grounding, temporal validation, BNS section bounds (≤395), hallucination detection |
+| **Response Generation** | `core/response_generator.py` | Generates citation-grounded answers with IPC↔BNS comparison tables, source attributions, and confidence scores |
 
 ---
 
-## Environment Variables
+## Verification Layers
 
-Copy `.env.example` to `.env` and configure:
+HECTOR employs four independent verification mechanisms to prevent legal misinformation:
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `HECTOR_API_KEY` | **Yes** | -- | API authentication key |
-| `HECTOR_JWT_SECRET` | **Yes** | -- | JWT signing secret (min 32 chars) |
-| `HECTOR_JWT_EXPIRY_SECONDS` | No | `3600` | Token lifetime |
-| `GROQ_API_KEY` | **Yes** | -- | Groq API key for LLM routing |
-| `GEMINI_API_KEY` | No | -- | Google Gemini API key |
-| `NVIDIA_API_KEY` | No | -- | NVIDIA NIM API key |
-| `NIM_API_KEY` | No | -- | NVIDIA NIM API key (alt) |
-| `NIM_BASE_URL` | No | `https://integrate.api.nvidia.com/v1` | NIM endpoint |
-| `HECTOR_ROUTER_MODEL` | No | `llama-3.3-70b-versatile` | Groq model for routing |
-| `HECTOR_BOOKS_DIR` | No | `./data/Books` | PDF corpus directory |
-| `HECTOR_DB_PATH` | No | `./hector_db` | ChromaDB storage path |
-| `HECTOR_TESSERACT_CMD` | No | `tesseract` | Tesseract OCR binary path |
-| `HECTOR_POPPLER_PATH` | No | -- | Poppler `bin/` directory (for `pdf2image`) |
-| `HECTOR_CORS_ORIGINS` | No | `http://localhost:3000` | Comma-separated CORS origins |
-| `HECTOR_LOG_LEVEL` | No | `INFO` | Logging level |
-| `HECTOR_DEBUG` | No | `false` | Debug mode |
+```
+Query → Retrieved Chunks → Citation Grounding → Temporal Validation
+                                                    ↓
+Answer ← Confidence Score ← BNS Bounds Check ← Hallucination Scan
+```
 
-**Frontend** (`frontend/.env`):
-
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `VITE_API_URL` | No | `http://localhost:8000` | Backend API URL |
-| `VITE_API_KEY` | No | -- | Pre-configured API key for UI |
+| Layer | What It Checks | Failure Mode |
+|-------|---------------|-------------|
+| **Citation Grounding** | Every cited section exists in retrieved source text | Unverifiable claims flagged, not guessed |
+| **Temporal Validation** | IPC sections cited as "current law" are checked against the July 2024 repeal | Repealed law flagged as historical context only |
+| **BNS Section Bounds** | BNS section numbers must be ≤ 395 (the actual maximum) | Invalid section numbers rejected |
+| **Chain-of-Verification** | Response claims cross-checked against source for factual consistency | Contradictions surfaced to user |
 
 ---
 
-## API Endpoints
+## Security
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| `POST` | `/search` | API Key / JWT | Hybrid legal search |
-| `POST` | `/compare` | API Key / JWT | IPC to BNS section comparison |
-| `POST` | `/route` | API Key / JWT | Intent classification |
-| `POST` | `/ingest` | API Key / JWT | PDF ingestion trigger |
-| `GET` | `/status` | API Key / JWT | System health + ChromaDB status |
-| `GET` | `/healthz` | None | Liveness probe (for orchestrators) |
-| `GET` | `/readyz` | None | Readiness probe (ChromaDB + disk) |
-| `POST` | `/auth/token` | API Key | Get JWT bearer token |
-| `WS` | `/ws/search` | Query param | Streaming search events |
+| Mechanism | Implementation |
+|-----------|---------------|
+| **Authentication** | HMAC-SHA256 JWT tokens with configurable expiry |
+| **API Key Storage** | bcrypt hashing for at-rest key storage |
+| **Rate Limiting** | Per-key token bucket algorithm with configurable refill rate |
+| **CORS** | Configurable origin allowlist |
+| **Health Probes** | `/healthz` (liveness) and `/readyz` (readiness) for orchestrators |
+| **Input Validation** | Pydantic models enforce strict request schemas |
 
-Authenticate with:
-- `X-API-Key: <your-key>` header, or
-- `Authorization: Bearer <jwt-token>` header
+---
+
+## Corpus
+
+| Metric | Value |
+|--------|-------|
+| Total documents | 45 PDFs |
+| Legal domains covered | 80+ topics |
+| IPC→BNS mappings | 495 cross-references |
+| Court jurisdictions | 17 (Supreme Court, 25 High Courts, tribunals) |
+| Known act names | 107 (with real-name extraction from PDF content) |
+| Chunk strategy | Section-aware (never splits mid-section) |
+| Deduplication | Content-hash based, survives reindex crashes |
+
+### Covered Domains
+
+Criminal Law · Family Law · Constitutional Law · Commercial Law · Intellectual Property · Tax Law · Environmental Law · Telecom Law · Labor Law · Education Law · Cyber Law · RTI · Evidence Law · Property Law · Insurance · Banking · Juvenile Justice · Prevention of Corruption · Narcotics · National Security
 
 ---
 
@@ -148,14 +140,58 @@ Authenticate with:
 | Layer | Technology |
 |-------|-----------|
 | Backend | FastAPI, Python 3.11+ |
-| Vector DB | ChromaDB |
+| Vector Database | ChromaDB |
 | Embeddings | sentence-transformers (`all-MiniLM-L6-v2`) |
-| Reranker | cross-encoder (`ms-marco-MiniLM-L-6-v2`) |
-| LLM Router | Groq (`llama-3.3-70b-versatile`) |
+| Reranker | Cross-encoder (`ms-marco-MiniLM-L-6-v2`) |
+| Intent Router | Local sentence-transformers (cosine similarity) |
+| LLM (optional) | Groq (`llama-3.3-70b-versatile`) |
 | Frontend | Vite 5, React 18, Tailwind CSS 4 |
 | OCR | Tesseract 5, Poppler, pdf2image |
+| Auth | HMAC-SHA256 JWT, bcrypt |
+| Rate Limiting | Token bucket (per-key, sliding refill) |
 | CLI | Typer |
-| Containerization | Docker Compose |
+| Testing | pytest (1,081 tests) |
+| Linting | ruff (format + check) |
+
+---
+
+## Test Suite
+
+```
+1,081 tests · 0 failures · 1 skipped
+```
+
+| Category | Coverage |
+|----------|----------|
+| Query Parser | Entity extraction, act name resolution, section parsing |
+| Embedding Router | Intent classification, confidence scoring |
+| Query Expander | Legal synonym expansion |
+| Entity Reranker | Score boosting, topic matching |
+| Legal Chunker | Section boundary detection, metadata enrichment |
+| Nemo Retriever | Provider abstraction, fallback logic |
+| Retrieval Accuracy | End-to-end legal QA against 25 curated test pairs |
+| Rate Limiting | Token bucket behavior, window expiration, key isolation |
+| Auth Flow | JWT lifecycle, API key verification, bcrypt hashing |
+| Enhanced Ingestor | PDF processing, content-hash dedup, chunk generation |
+| Verifier | Citation grounding, temporal validation, BNS bounds |
+| API Endpoints | Search, compare, route, health, auth |
+| Frontend Components | Response rendering, pipeline display, document panel |
+
+---
+
+## API Reference
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `POST` | `/search` | API Key / JWT | Hybrid legal search with full pipeline |
+| `POST` | `/compare` | API Key / JWT | IPC ↔ BNS section comparison |
+| `POST` | `/route` | API Key / JWT | Intent classification |
+| `POST` | `/ingest` | API Key / JWT | PDF ingestion trigger |
+| `GET` | `/status` | API Key / JWT | System health + ChromaDB stats |
+| `GET` | `/healthz` | None | Kubernetes liveness probe |
+| `GET` | `/readyz` | None | Kubernetes readiness probe |
+| `POST` | `/auth/token` | API Key | JWT bearer token issuance |
+| `WS` | `/ws/search` | Query param | Streaming search events |
 
 ---
 
@@ -163,123 +199,81 @@ Authenticate with:
 
 ```
 Hector/
-├── api/                    # FastAPI application
-│   ├── app.py              # Main app, middleware, routes
-│   ├── security.py         # AuthManager, JWT, bcrypt
-│   ├── rate_limit.py       # Token bucket rate limiting
-│   ├── schemas.py          # Pydantic request/response models
-│   └── services.py         # Business logic layer
-├── core/                   # Core engine
-│   ├── router.py           # Intent classification (Groq LLM)
-│   ├── orchestrator.py     # Query pipeline coordinator
-│   ├── hybrid_retriever.py # Semantic + BM25 + cross-encoder
-│   ├── verifier.py         # Chain-of-Verification
-│   ├── response_generator.py # Citation-grounded responses
-│   ├── voice.py            # Voice I/O (Web Speech API)
-│   ├── precedent.py        # Precedent analysis
-│   ├── enterprise/         # Enterprise user management
-│   └── mapping.json        # 495 IPC-BNS cross-references
-├── data/Books/             # PDF corpus (24 bare acts + commentaries)
-├── frontend/               # Vite + React frontend
-│   ├── src/                # React components
-│   ├── nginx.conf          # Production nginx config
-│   └── Dockerfile          # Multi-stage build
-├── tests/                  # Test suite
-├── utils/                  # Ingestion pipeline
-│   ├── enhanced_ingestor.py # PDF to ChromaDB pipeline
-│   └── legal_structure_parser.py # Legal document parsing
-├── docker-compose.yml      # Container orchestration
-├── requirements.txt        # Python dependencies
-└── main.py                 # CLI entry point
+├── api/                        # FastAPI application layer
+│   ├── app.py                  # Routes, middleware, CORS
+│   ├── security.py             # AuthManager, JWT, bcrypt hashing
+│   ├── rate_limit.py           # Token bucket rate limiter
+│   ├── services.py             # Business logic, score normalization
+│   └── schemas.py              # Pydantic request/response models
+├── core/                       # Reasoning engine
+│   ├── orchestrator.py         # Pipeline coordinator
+│   ├── query_parser.py         # Entity extraction (107 acts, 17 courts)
+│   ├── embedding_router.py     # Cosine similarity intent classifier
+│   ├── query_expander.py       # Legal synonym expansion
+│   ├── entity_reranker.py      # Score boosting with real act names
+│   ├── legal_chunker.py        # Section-aware document splitter
+│   ├── hybrid_retriever.py     # BM25 + semantic + cross-encoder
+│   ├── verifier.py             # Chain-of-Verification (4 layers)
+│   ├── response_generator.py   # Citation-grounded response builder
+│   ├── embedding_provider.py   # Local + Nemotron embedding factory
+│   ├── rerank_provider.py      # Local + Nemotron rerank factory
+│   ├── nemo_retriever.py       # Unified NVIDIA NeMo retriever
+│   └── mapping.json            # 495 IPC→BNS cross-references
+├── utils/                      # Ingestion pipeline
+│   ├── enhanced_ingestor.py    # PDF → ChromaDB with content-hash dedup
+│   ├── legal_structure_parser.py # Legal document structure extraction
+│   ├── ingestor.py             # Base ingestion utilities
+│   └── diagnostics.py          # System health diagnostics
+├── data/Books/                 # PDF corpus (45 Bare Acts)
+├── frontend/                   # React SPA
+│   └── src/
+│       ├── api/hectorApi.js    # API client with real_act_name support
+│       └── components/
+│           ├── ResponseDisplay.jsx   # Confidence badges, warnings, provisions
+│           ├── PipelineStatus.jsx    # Per-stage timing display
+│           └── DocumentPanel.jsx     # Document metadata display
+├── tests/                      # 1,081 test cases
+├── benchmark/                  # Performance regression framework
+├── evaluation/                 # RAG quality evaluation (RAGAS)
+├── docker-compose.yml          # Container orchestration
+└── requirements.txt            # Python dependencies
 ```
 
 ---
 
-## Prerequisites
+## Environment Configuration
 
-- **Python 3.11+**
-- **Node.js 18+** (for frontend)
-- **Tesseract OCR** (for scanned PDFs): `winget install UB-Mannheim.TesseractOCR`
-- **Poppler** (for `pdf2image`): Download from [github.com/oschwartz10612/poppler-windows](https://github.com/oschwartz10612/poppler-windows/releases)
-- **Docker** (optional, for containerized deploy)
-
----
-
-## Troubleshooting
-
-### Server refuses to start -- missing environment variables
-
-```
-RuntimeError: HECTOR_API_KEY and HECTOR_JWT_SECRET must be set
-```
-
-**Fix:** Copy `.env.example` to `.env` and add your API keys. The server will not start without them.
-
-### Tesseract not found
-
-```
-TesseractNotFoundError: ...
-```
-
-**Fix:** Set `HECTOR_TESSERACT_CMD` in `.env` to the full path:
-```
-HECTOR_TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
-```
-
-### Poppler not found (PDF to image conversion fails)
-
-**Fix:** Set `HECTOR_POPPLER_PATH` in `.env` to the Poppler `bin/` directory:
-```
-HECTOR_POPPLER_PATH=C:\path\to\poppler-xx\Library\bin
-```
-
-### CORS errors in browser
-
-**Fix:** Ensure `HECTOR_CORS_ORIGINS` in `.env` includes your frontend URL:
-```
-HECTOR_CORS_ORIGINS=http://localhost:3000,http://localhost:5173
-```
-
-### ChromaDB collection not found
-
-**Fix:** Run ingestion first:
-```bash
-hector ingest           # via CLI
-# or
-python main.py ingest   # via main.py
-```
-
-### Rate limited (429 responses)
-
-The API enforces rate limiting. Wait for the `Retry-After` period in the response header.
-
-### Docker build fails
-
-**Fix:** Ensure `.env` exists in the project root. Docker Compose reads it automatically:
-```bash
-cp .env.example .env
-# Edit .env with your keys
-docker compose --profile full up -d
-```
-
----
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, branch workflow, and PR guidelines.
-
----
-
-## Legal Disclaimer
-
-HECTOR is provided for **informational and educational purposes only**. It is not a substitute for professional legal advice. The IPC-to-BNS mappings, section references, and generated responses are derived from publicly available legal texts and may contain inaccuracies.
-
-**Always consult a qualified legal professional before making legal decisions.**
-
-The authors and contributors of HECTOR assume no liability for any decisions made or actions taken based on the information provided by this software.
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `HECTOR_API_KEY` | **Yes** | — | API authentication key |
+| `HECTOR_JWT_SECRET` | **Yes** | — | JWT signing secret (min 32 chars) |
+| `HECTOR_JWT_EXPIRY_SECONDS` | No | `3600` | Token lifetime |
+| `HECTOR_ROUTER_MODEL` | No | `llama-3.3-70b-versatile` | Groq model for routing |
+| `HECTOR_BOOKS_DIR` | No | `./data/Books` | PDF corpus directory |
+| `HECTOR_DB_PATH` | No | `./hector_db` | ChromaDB storage path |
+| `HECTOR_EMBEDDING_PROVIDER` | No | `local` | `local` or `nemotron` |
+| `HECTOR_RERANK_PROVIDER` | No | `local` | `local` or `nemotron` |
+| `HECTOR_NEMO_RETRIEVER_ENABLED` | No | `false` | Unified NeMo retriever |
+| `HECTOR_TESSERACT_CMD` | No | `tesseract` | Tesseract OCR path |
+| `HECTOR_POPPLER_PATH` | No | — | Poppler bin directory |
+| `HECTOR_CORS_ORIGINS` | No | `http://localhost:3000` | Comma-separated origins |
+| `HECTOR_LOG_LEVEL` | No | `INFO` | Logging level |
+| `HECTOR_DEBUG` | No | `false` | Debug mode |
+| `GROQ_API_KEY` | No | — | Groq API key for LLM routing |
+| `NVIDIA_API_KEY` | No | — | NVIDIA NIM API key |
 
 ---
 
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+
+**Built for the Indian legal ecosystem.**
+
+*Not a substitute for professional legal advice. Always consult a qualified legal professional.*
+
+</div>
