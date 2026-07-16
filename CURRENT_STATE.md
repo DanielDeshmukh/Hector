@@ -8,6 +8,25 @@ HECTOR is a RAG (Retrieval-Augmented Generation) system for Indian Law. It inges
 
 ---
 
+## Optimization Progress (7/7 Tasks Complete)
+
+| # | Task | Status | Commit | Impact |
+|---|------|--------|--------|--------|
+| 1 | Metadata-filtered retrieval | DONE | `784d033` | Section queries now filter by section_number BEFORE ranking |
+| 2 | Rule-first intent routing | DONE | `953a064` | 7 previously-misrouted queries now route to LEGAL_RESEARCH |
+| 3 | Profile pipeline latency | DONE | `1106b53` | Response gen = 86% of latency (18.6s), retrieval = 14% (3s) |
+| 4 | Right-size NIM model | DONE | `e0e4b2c` | Per-stage model config via NIM_MODELS registry + env vars |
+| 5 | Parallelize retrieval | DONE | `6f05d1e` | BM25 + semantic run concurrently (~30% faster retrieval) |
+| 6 | Query expansion | DONE | `5836064` | 8 new synonym groups (50 → 58) for failing queries |
+| 7 | Primary-vs-commentary | DONE | `88f2edb` | 32,433 chunks tagged: 10,140 bare_act (+0.05) vs 22,293 commentary (-0.02) |
+
+### Additional Changes
+- `e4e553b`: Backfilled section_number for 5,234 chunks missing it
+- `cae6ed1`: Fixed ChromaDB `$contains` → `$eq` for query() support
+- `de63a60`: 13 tests for metadata-filtered search
+
+---
+
 ## Current Pipeline
 
 ```
