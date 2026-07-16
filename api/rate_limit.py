@@ -62,8 +62,8 @@ class InMemoryRateLimiter:
 
     def check(self, key: str) -> RateLimitInfo:
         with self._lock:
-            now = time.monotonic()
             bucket = self._buckets[key]
+            now = time.monotonic()
 
             if not bucket.consume(now):
                 retry = bucket.retry_after(now)
@@ -72,7 +72,7 @@ class InMemoryRateLimiter:
                     retry_after=retry,
                 )
 
-            remaining = int(bucket.tokens)
+            remaining = round(bucket.tokens)
             return RateLimitInfo(
                 limit=self.limit,
                 remaining=remaining,

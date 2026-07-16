@@ -83,18 +83,17 @@ class TestTTLCache:
 
 
 class TestInMemoryRateLimiter:
-    """Tests for the in-memory rate limiter.
+    """Tests for the in-memory rate limiter (token bucket).
 
-    Note: check() appends the request to the bucket BEFORE returning,
-    so remaining = limit - current (where current includes the new request).
-    First call: remaining = limit - 1.
+    Token bucket consumes a token on each check(), so remaining = limit - consumed.
+    First call: 1 token consumed, remaining = limit - 1.
     """
 
     def test_first_request_allowed(self):
         limiter = InMemoryRateLimiter(limit=10, window_seconds=60)
         info = limiter.check("user1")
-        # check() calculates remaining BEFORE appending, so first call: remaining = limit
-        assert info.remaining == 10
+        # Token bucket: 1 token consumed, remaining = limit - 1
+        assert info.remaining == 9
         assert info.limit == 10
 
     def test_rate_limit_enforced(self):
@@ -106,21 +105,21 @@ class TestInMemoryRateLimiter:
 
     def test_different_keys_independent(self):
         limiter = InMemoryRateLimiter(limit=2, window_seconds=60)
-        limiter.check("user1")  # remaining=2, bucket=[user1]
-        limiter.check("user1")  # remaining=1, bucket=[user1,user1]
+        limiter.check("user1")  # remaining=1
+        limiter.check("user1")  # remaining=0, bucket exhausted
         # user1 is now at limit, but user2 is fresh
         info = limiter.check("user2")
-        assert info.remaining == 2  # limit=2, fresh key -> remaining=2
+        assert info.remaining == 1  # limit=2, 1 consumed -> remaining=1
 
     def test_window_expiration(self):
         limiter = InMemoryRateLimiter(limit=2, window_seconds=0.1)
-        limiter.check("user1")  # remaining=2
         limiter.check("user1")  # remaining=1
+        limiter.check("user1")  # remaining=0
         with pytest.raises(RateLimitExceeded):
-            limiter.check("user1")  # current=2 >= limit=2 -> raise
+            limiter.check("user1")  # exhausted -> raise
         time.sleep(0.2)
         info = limiter.check("user1")
-        assert info.remaining == 2  # window expired, fresh start
+        assert info.remaining == 1  # window expired, tokens refilled, 1 consumed
 
     def test_info_returns_correct_structure(self):
         limiter = InMemoryRateLimiter(limit=10, window_seconds=60)
@@ -132,10 +131,10 @@ class TestInMemoryRateLimiter:
 
     def test_remaining_decreases(self):
         limiter = InMemoryRateLimiter(limit=5, window_seconds=60)
-        info1 = limiter.check("user1")  # remaining = 5 (before append)
-        info2 = limiter.check("user1")  # remaining = 4 (1 already in bucket)
-        assert info1.remaining == 5
-        assert info2.remaining == 4
+        info1 = limiter.check("user1")  # remaining = 4 (1 consumed)
+        info2 = limiter.check("user1")  # remaining = 3 (2 consumed)
+        assert info1.remaining == 4
+        assert info2.remaining == 3
 
     def test_rate_limit_exceeded_has_retry_after(self):
         limiter = InMemoryRateLimiter(limit=1, window_seconds=60)

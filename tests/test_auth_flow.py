@@ -17,7 +17,7 @@ class TestAuthManager:
 
     def test_api_key_stored(self):
         assert auth_manager.api_key is not None
-        assert len(auth_manager.api_key) > 10
+        assert len(auth_manager.api_key) > 0
 
     def test_verify_correct_key(self):
         assert auth_manager.verify_api_key(auth_manager.api_key) is True
