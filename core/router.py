@@ -11,6 +11,8 @@ try:
 except ImportError:
     Groq = None
 
+from core.nim_llm import get_nim_llm
+
 load_dotenv()
 
 
@@ -172,6 +174,7 @@ class HectorRouter:
             Groq(api_key=groq_api_key) if Groq is not None and groq_api_key else None
         )
         self.model = os.getenv("HECTOR_ROUTER_MODEL", "llama-3.3-70b-versatile")
+        self._nim = None
         self.system_prompt = (
             "Classify the user query into exactly one route: "
             "LEGAL_RESEARCH, STRATEGIC_ADVICE, DOCUMENT_ANALYSIS, or GENERAL. "
@@ -306,6 +309,28 @@ class HectorRouter:
         # Fast-path obvious requests and preserve latency for routing.
         if rule_based_intent["confidence"] >= 0.9:
             return rule_based_intent
+
+        # Try NIM first, fall back to Groq, fall back to rule-based
+        try:
+            if self._nim is None:
+                try:
+                    self._nim = get_nim_llm()
+                except Exception:
+                    self._nim = False
+            if self._nim and self._nim is not False:
+                parsed = self._nim.chat_json(
+                    messages=[
+                        {"role": "system", "content": self.system_prompt},
+                        {"role": "user", "content": user_query},
+                    ],
+                    temperature=0,
+                    max_tokens=120,
+                )
+                validated = self._validate_payload(parsed)
+                if validated["confidence"] >= 0.55:
+                    return validated
+        except Exception:
+            pass
 
         try:
             if self.client is None:

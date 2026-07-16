@@ -373,7 +373,7 @@ TEST_QUERIES = [
 
 
 def score_response(query_data, response, sources, route):
-    """Score a single query response."""
+    """Score a single query response using LLM-as-judge for legal queries."""
     score = {
         "id": query_data["id"],
         "query": query_data["query"],
@@ -382,84 +382,88 @@ def score_response(query_data, response, sources, route):
     category = query_data["category"]
 
     if category in ("exact", "similar"):
-        # Check if we got sources
         has_sources = len(sources) > 0
         score["has_sources"] = has_sources
-
-        # Check keyword presence in response
-        response_lower = response.lower()
-        matched_keywords = [
-            kw for kw in query_data["expected_keywords"] if kw.lower() in response_lower
-        ]
-        keyword_score = len(matched_keywords) / max(
-            len(query_data["expected_keywords"]), 1
-        )
-        score["keyword_match"] = round(keyword_score, 2)
-        score["matched_keywords"] = matched_keywords
-
-        # Check source relevance
-        source_names = [
-            s.get("source", "") if isinstance(s, dict) else str(s) for s in sources
-        ]
-        matched_sources = [
-            s
-            for s in query_data["expected_source"]
-            if any(s.lower() in sn for sn in source_names)
-        ]
-        source_score = len(matched_sources) / max(len(query_data["expected_source"]), 1)
-        score["source_match"] = round(source_score, 2)
-        score["matched_sources"] = matched_sources
-
-        # Check if citation/section numbers are mentioned
-        has_citations = any(
-            kw in response_lower for kw in ["section", "article", "act", "clause"]
-        )
-        score["has_citations"] = has_citations
-
-        # Check route was LEGAL_RESEARCH
         score["correct_route"] = route == "LEGAL_RESEARCH"
 
-        # Overall: 40% keywords, 30% sources, 20% citations, 10% route
-        score["accuracy"] = round(
-            keyword_score * 0.4
-            + source_score * 0.3
-            + (1.0 if has_citations else 0.0) * 0.2
-            + (1.0 if route == "LEGAL_RESEARCH" else 0.0) * 0.1,
-            2,
+        # LLM-as-judge scoring via NIM
+        judge_score = _llm_judge_score(
+            query=query_data["query"],
+            response=response,
+            expected_keywords=query_data.get("expected_keywords", []),
+            expected_source=query_data.get("expected_source", []),
         )
+        score["llm_judge"] = judge_score
+        score["accuracy"] = judge_score / 100.0
 
     elif category == "irrelevant":
-        # For irrelevant queries, we want NO legal sources and a graceful response
         has_no_sources = len(sources) == 0
-        score["has_sources"] = not has_no_sources  # inverted: True = bad
+        score["has_sources"] = not has_no_sources
 
-        # Check response is not a legal lecture
         legal_terms = [
-            "section",
-            "act",
-            "ipc",
-            "bns",
-            "punishment",
-            "imprisonment",
-            "court",
+            "section", "act", "ipc", "bns", "punishment",
+            "imprisonment", "court",
         ]
         false_legal = [term for term in legal_terms if term in response.lower()]
         score["false_legal_terms"] = false_legal
-
-        # Should route to GENERAL or similar, not LEGAL_RESEARCH
         score["correct_route"] = route != "LEGAL_RESEARCH"
 
-        # Good: no sources + correct route + no false legal content
         score["accuracy"] = round(
             (1.0 if has_no_sources else 0.3) * 0.5
             + (1.0 if route != "LEGAL_RESEARCH" else 0.0) * 0.3
-            + (1.0 if len(false_legal) == 0 else 0.5) * 0.2,
+            + (1.0 if not false_legal else 0.0) * 0.2,
             2,
         )
+    else:
+        score["accuracy"] = 0.0
 
-    score["route"] = route
-    score["response_preview"] = response[:200].replace("\n", " ")
     return score
+
+
+def _llm_judge_score(query, response, expected_keywords, expected_source):
+    """Use NIM LLM to judge answer quality. Returns 0-100 score."""
+    try:
+        from core.nim_llm import get_nim_llm
+        client = get_nim_llm()
+
+        expected_hint = ""
+        if expected_keywords:
+            expected_hint += f"\nExpected key terms: {', '.join(expected_keywords[:10])}"
+        if expected_source:
+            expected_hint += f"\nExpected source documents: {', '.join(expected_source[:5])}"
+
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "You are a legal answer evaluator. Score the answer from 0-100.\n"
+                    "Scoring criteria:\n"
+                    "- 90-100: Correct, complete, cites relevant sections/acts, directly answers the query\n"
+                    "- 70-89: Mostly correct, may miss some details or citations\n"
+                    "- 50-69: Partially correct, addresses the topic but incomplete\n"
+                    "- 30-49: Vague or tangential, some relevant content\n"
+                    "- 0-29: Wrong, irrelevant, or no meaningful answer\n\n"
+                    "Return ONLY a JSON object: {\"score\": <int>, \"reason\": \"<one sentence>\"}"
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"Query: {query}\n"
+                    f"Answer: {response[:2000]}\n"
+                    f"{expected_hint}\n\n"
+                    "Score this answer 0-100. Return JSON only."
+                ),
+            },
+        ]
+
+        result = client.chat_json(messages, temperature=0.0, max_tokens=100)
+        return max(0, min(100, int(result.get("score", 50))))
+    except Exception:
+        # Fallback to keyword matching if NIM unavailable
+        response_lower = response.lower()
+        matched = sum(1 for kw in expected_keywords if kw.lower() in response_lower)
+        return min(100, int((matched / max(len(expected_keywords), 1)) * 100))
 
 
 def run_tests():

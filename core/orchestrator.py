@@ -41,6 +41,7 @@ class HectorOrchestrator:
         self._embedding_router = None
         self._query_expander = None
         self._entity_reranker = None
+        self._response_generator = None
 
     @property
     def query_parser(self) -> LegalQueryParser:
@@ -65,6 +66,13 @@ class HectorOrchestrator:
         if self._entity_reranker is None:
             self._entity_reranker = get_entity_reranker()
         return self._entity_reranker
+
+    @property
+    def response_generator(self):
+        if self._response_generator is None:
+            from core.response_generator import ContextualResponseGenerator
+            self._response_generator = ContextualResponseGenerator(self.retriever)
+        return self._response_generator
 
     def execute(self, query):
         """
@@ -211,23 +219,25 @@ class HectorOrchestrator:
             results = results[:5]
             sources = results
 
-            # Build a clear, structured response
-            parts = []
+            # Use response generator with LLM synthesis
+            try:
+                gen_output = self.response_generator.generate(query, results)
+                response = gen_output.get("generated_response", "")
+                if not response:
+                    raise ValueError("empty response")
+            except Exception:
+                # Fallback to template
+                parts = []
+                parts.append(f'Legal research query: "{query}"\n')
+                if mappings:
+                    parts.append("Mapped legacy references: " + "; ".join(mappings))
+                if results:
+                    parts.append(self.retriever.format_results(results))
+                else:
+                    parts.append("No grounded legal results found in the indexed corpus.")
+                response = "\n\n".join(parts)
 
-            # Introduction with query context
-            parts.append(f'Legal research query: "{query}"\n')
-
-            # IPC->BNS mappings if any
-            if mappings:
-                parts.append("Mapped legacy references: " + "; ".join(mappings))
-
-            # Source results
-            if results:
-                parts.append(self.retriever.format_results(results))
-            else:
-                parts.append("No grounded legal results found in the indexed corpus.")
-
-            return "\n\n".join(parts), sources
+            return response, sources
 
         if route == "STRATEGIC_ADVICE":
             if len(hector_msg) > 5:

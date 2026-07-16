@@ -58,6 +58,57 @@ When answering legal queries:
 
     def __init__(self, retriever: "HectorHybridRetriever"):
         self.retriever = retriever
+        self._nim_client = None
+
+    def _get_nim_client(self):
+        if self._nim_client is None:
+            try:
+                from core.nim_llm import get_nim_llm
+                self._nim_client = get_nim_llm()
+            except Exception:
+                self._nim_client = False
+        return self._nim_client if self._nim_client is not False else None
+
+    def _synthesize_with_llm(self, query: str, results: list[dict]) -> str | None:
+        """Call NVIDIA NIM to synthesize a legal answer from retrieved chunks."""
+        nim = self._get_nim_client()
+        if nim is None:
+            return None
+
+        # Build context from retrieved chunks
+        context_parts = []
+        for i, r in enumerate(results[:5], 1):
+            doc = r.get("document", "")
+            meta = r.get("metadata", {})
+            act = meta.get("act", meta.get("source_file", "Unknown"))
+            section = meta.get("section", "")
+            page = meta.get("page", "")
+            citation = f"[Source {i}: {act}"
+            if section:
+                citation += f", Section {section}"
+            if page:
+                citation += f", Page {page}"
+            citation += "]"
+            context_parts.append(f"{citation}\n{doc[:1500]}")
+
+        context = "\n\n---\n\n".join(context_parts)
+
+        messages = [
+            {"role": "system", "content": self.LEGAL_SYSTEM_PROMPT},
+            {
+                "role": "user",
+                "content": f"Query: {query}\n\nRetrieved Sources:\n{context}\n\n"
+                "Answer the query using ONLY the retrieved sources. "
+                "Cite sources with [Source N] format. "
+                "If the sources don't contain enough information, say so explicitly.",
+            },
+        ]
+
+        try:
+            return nim.chat(messages, temperature=0.0, max_tokens=1024)
+        except Exception as e:
+            logger.warning("NIM synthesis failed: %s", e)
+            return None
 
     def generate(
         self,
@@ -81,7 +132,13 @@ When answering legal queries:
         citations = self._extract_citations(results)
         related = self._find_related_provisions(results) if include_related else []
         structured = self._build_legal_rag_payload(results)
-        response = self._format_legal_rag(query, results, related)
+
+        # Try LLM synthesis first, fall back to template
+        llm_response = self._synthesize_with_llm(query, results) if results else None
+        if llm_response:
+            response = llm_response
+        else:
+            response = self._format_legal_rag(query, results, related)
 
         return {
             "generated_response": response,
