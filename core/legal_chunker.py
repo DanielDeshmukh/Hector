@@ -72,6 +72,7 @@ class SectionAwareChunker:
     - Sub-section boundaries for very long sections
     - Provisos/exceptions kept with parent section
     - Denormalized context (Act|Chapter|Section) prepended to chunk
+    - Cross-section bleed detection: rejects chunks that reference wrong sections
     """
 
     # Maximum section length before splitting at sub-sections
@@ -80,6 +81,13 @@ class SectionAwareChunker:
     # Minimum section length (merge with next if shorter)
     # Set low to avoid merging real sections — only merge truly empty stubs
     MIN_SECTION_CHARS = 30
+
+    # Regex to detect section references within chunk text
+    # Matches "Section 123" or "Sec 123" or "s. 123" in body text
+    _SECTION_REF_PATTERN = re.compile(
+        r"(?:^|\n)\s*(?:Section|sec\.?|s\.)\s*(\d{1,4}[A-Z]?)\.?\s+",
+        re.IGNORECASE | re.MULTILINE,
+    )
 
     def __init__(self):
         self.current_act = ""
@@ -265,7 +273,7 @@ class SectionAwareChunker:
         return chunks if chunks else [text]
 
     def _merge_short_sections(self, sections: List[dict]) -> List[dict]:
-        """Merge very short sections with the next section."""
+        """Merge very short sections with the next section, avoiding cross-section bleed."""
         if not sections:
             return []
 
@@ -279,28 +287,47 @@ class SectionAwareChunker:
             if len(current["content"]) < self.MIN_SECTION_CHARS and i + 1 < len(
                 sections
             ):
-                # Merge with next
                 next_section = sections[i + 1]
-                merged_text = current["content"] + "\n\n" + next_section["content"]
-                sections[i + 1] = {
-                    "content": merged_text,
-                    "section_number": next_section["section_number"]
-                    or current["section_number"],
-                    "section_title": next_section["section_title"]
-                    or current["section_title"],
-                    "has_proviso": current["has_proviso"]
-                    or next_section["has_proviso"],
-                    "has_exception": current["has_exception"]
-                    or next_section["has_exception"],
-                    "has_illustration": current["has_illustration"]
-                    or next_section["has_illustration"],
-                }
-                i += 1  # Skip current, next iteration will check the merged section
+                # Only merge if the short section doesn't introduce cross-section refs
+                other_refs = self._find_other_section_refs(
+                    current["content"], current["section_number"]
+                )
+                if not other_refs:
+                    # Merge with next
+                    merged_text = current["content"] + "\n\n" + next_section["content"]
+                    sections[i + 1] = {
+                        "content": merged_text,
+                        "section_number": next_section["section_number"]
+                        or current["section_number"],
+                        "section_title": next_section["section_title"]
+                        or current["section_title"],
+                        "has_proviso": current["has_proviso"]
+                        or next_section["has_proviso"],
+                        "has_exception": current["has_exception"]
+                        or next_section["has_exception"],
+                        "has_illustration": current["has_illustration"]
+                        or next_section["has_illustration"],
+                    }
+                else:
+                    merged.append(current)
+                i += 1
             else:
                 merged.append(current)
                 i += 1
 
         return merged
+
+    def _find_other_section_refs(self, text: str, own_section: str) -> List[str]:
+        """
+        Find section references in text that don't match the chunk's own section.
+        Returns list of foreign section numbers found (empty = safe to merge).
+        """
+        refs = set()
+        for m in self._SECTION_REF_PATTERN.finditer(text):
+            ref = m.group(1)
+            if ref != own_section:
+                refs.add(ref)
+        return sorted(refs)
 
     def _add_context_prefix(
         self, content: str, section_number: str, section_title: str
