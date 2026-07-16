@@ -311,7 +311,11 @@ class HectorHybridRetriever:
         return reranked[:top_k]
 
     def _build_where_filter(self, section_numbers, acts):
-        """Build a ChromaDB $and where clause for metadata filtering."""
+        """Build a ChromaDB where clause for metadata filtering.
+
+        Uses only $eq operators since $contains doesn't work with query().
+        For act matching, maps abbreviations to exact real_act_name values.
+        """
         if not section_numbers and not acts:
             return None
 
@@ -328,108 +332,89 @@ class HectorHybridRetriever:
                 )
 
         if acts:
-            act_conditions = []
-            for act in acts:
-                act_lower = act.lower()
-                if act_lower in ("ipc", "indian penal code"):
-                    act_conditions.append(
-                        {
-                            "$or": [
-                                {"real_act_name": {"$contains": "Indian Penal Code"}},
-                                {"act_name": {"$contains": "Indian Penal Code"}},
-                            ]
-                        }
-                    )
-                elif act_lower in ("bns", "bharatiya nyaya sanhita"):
-                    act_conditions.append(
-                        {
-                            "$or": [
-                                {"real_act_name": {"$contains": "Bharatiya Nyaya"}},
-                                {"act_name": {"$contains": "Bharatiya Nyaya"}},
-                            ]
-                        }
-                    )
-                elif act_lower in ("crpc", "code of criminal procedure"):
-                    act_conditions.append(
-                        {
-                            "$or": [
-                                {
-                                    "real_act_name": {
-                                        "$contains": "Code of Criminal Procedure"
-                                    }
-                                },
-                                {
-                                    "act_name": {
-                                        "$contains": "Code of Criminal Procedure"
-                                    }
-                                },
-                            ]
-                        }
-                    )
-                elif act_lower in ("bnss", "bharatiya nagarik suraksha sanhita"):
-                    act_conditions.append(
-                        {
-                            "$or": [
-                                {
-                                    "real_act_name": {
-                                        "$contains": "Bharatiya Nagarik Suraksha"
-                                    }
-                                },
-                                {
-                                    "act_name": {
-                                        "$contains": "Bharatiya Nagarik Suraksha"
-                                    }
-                                },
-                            ]
-                        }
-                    )
-                elif act_lower in ("bsa", "bharatiya sakshya adhiniyam", "evidence act"):
-                    act_conditions.append(
-                        {
-                            "$or": [
-                                {
-                                    "real_act_name": {
-                                        "$contains": "Bharatiya Sakshya"
-                                    }
-                                },
-                                {"act_name": {"$contains": "Bharatiya Sakshya"}},
-                                {"real_act_name": {"$contains": "Evidence Act"}},
-                                {"act_name": {"$contains": "Evidence Act"}},
-                            ]
-                        }
-                    )
-                elif act_lower in ("cpc", "code of civil procedure"):
-                    act_conditions.append(
-                        {
-                            "$or": [
-                                {
-                                    "real_act_name": {
-                                        "$contains": "Code of Civil Procedure"
-                                    }
-                                },
-                                {
-                                    "act_name": {
-                                        "$contains": "Code of Civil Procedure"
-                                    }
-                                },
-                            ]
-                        }
+            exact_act_names = self._resolve_act_to_exact_names(acts)
+            if exact_act_names:
+                if len(exact_act_names) == 1:
+                    conditions.append(
+                        {"real_act_name": {"$eq": exact_act_names[0]}}
                     )
                 else:
-                    act_conditions.append(
-                        {"real_act_name": {"$contains": act}}
+                    conditions.append(
+                        {
+                            "$or": [
+                                {"real_act_name": {"$eq": name}}
+                                for name in exact_act_names
+                            ]
+                        }
                     )
-
-            if len(act_conditions) == 1:
-                conditions.append(act_conditions[0])
-            elif act_conditions:
-                conditions.append({"$or": act_conditions})
 
         if not conditions:
             return None
         if len(conditions) == 1:
             return conditions[0]
         return {"$and": conditions}
+
+    def _resolve_act_to_exact_names(self, acts):
+        """Map act abbreviations to exact real_act_name values from the DB."""
+        ACT_TO_EXACT = {
+            "ipc": ["Indian Penal Code, 1860"],
+            "indian penal code": ["Indian Penal Code, 1860"],
+            "bns": ["Bharatiya Nyaya Sanhita, 2023"],
+            "bharatiya nyaya sanhita": ["Bharatiya Nyaya Sanhita, 2023"],
+            "crpc": ["Code of Criminal Procedure, 1973"],
+            "code of criminal procedure": ["Code of Criminal Procedure, 1973"],
+            "bnss": ["Bharatiya Nagarik Suraksha Sanhita, 2023"],
+            "bharatiya nagarik suraksha sanhita": [
+                "Bharatiya Nagarik Suraksha Sanhita, 2023"
+            ],
+            "bsa": [
+                "Bharatiya Sakshya Adhiniyam, 2023",
+                "erstwhile Indian Evidence Act, 1872",
+                "Indian Evidence Act, 1872",
+            ],
+            "bharatiya sakshya adhiniyam": ["Bharatiya Sakshya Adhiniyam, 2023"],
+            "evidence act": [
+                "Bharatiya Sakshya Adhiniyam, 2023",
+                "erstwhile Indian Evidence Act, 1872",
+                "Indian Evidence Act, 1872",
+            ],
+            "indian evidence act": [
+                "erstwhile Indian Evidence Act, 1872",
+                "Indian Evidence Act, 1872",
+            ],
+            "cpc": ["Code of Civil Procedure, 1908"],
+            "code of civil procedure": ["Code of Civil Procedure, 1908"],
+            "transfer of property": ["Transfer of Property Act, 1882"],
+            "transfer of property act": ["Transfer of Property Act, 1882"],
+            "indian contract act": ["Indian Contract Act, 1872"],
+            "consumer protection": ["Consumer Protection Act, 2019"],
+            "consumer protection act": ["Consumer Protection Act, 2019"],
+            "ndps": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
+            "ndps act": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
+            "motor vehicles": ["Motor Vehicles Act, 1988"],
+            "motor vehicles act": ["Motor Vehicles Act, 1988"],
+            "hindu succession": ["Hindu Succession Act, 1956"],
+            "hindu succession act": ["Hindu Succession Act, 1956"],
+            "hindu marriage": ["Hindu Marriage Act, 1955"],
+            "hindu marriage act": ["Hindu Marriage Act, 1955"],
+            "constitution": ["Constitution of India"],
+            "constitution of india": ["Constitution of India"],
+            "limitation": ["Limitation Act, 1963"],
+            "limitation act": ["Limitation Act, 1963"],
+            "arbitration": ["Arbitration and Conciliation Act, 1996"],
+            "arbitration act": ["Arbitration and Conciliation Act, 1996"],
+            "negotiable instruments": ["Negotiable Instruments Act, 1881"],
+            "ni act": ["Negotiable Instruments Act, 1881"],
+        }
+        result = []
+        for act in acts:
+            key = act.lower().strip()
+            exact_names = ACT_TO_EXACT.get(key)
+            if exact_names:
+                result.extend(exact_names)
+            else:
+                result.append(act)
+        return list(dict.fromkeys(result))
 
     def _chroma_filtered_search(self, where_filter, top_k=200):
         """Get metadata-filtered results from ChromaDB without embeddings."""

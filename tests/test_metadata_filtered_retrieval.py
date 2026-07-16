@@ -102,12 +102,7 @@ class TestBuildWhereFilter:
         assert where == {
             "$and": [
                 {"section_number": {"$eq": "302"}},
-                {
-                    "$or": [
-                        {"real_act_name": {"$contains": "Indian Penal Code"}},
-                        {"act_name": {"$contains": "Indian Penal Code"}},
-                    ]
-                },
+                {"real_act_name": {"$eq": "Indian Penal Code, 1860"}},
             ]
         }
 
@@ -118,12 +113,7 @@ class TestBuildWhereFilter:
     def test_bns_act_filter(self):
         retriever = _make_retriever()
         where = retriever._build_where_filter([], ["BNS"])
-        assert where == {
-            "$or": [
-                {"real_act_name": {"$contains": "Bharatiya Nyaya"}},
-                {"act_name": {"$contains": "Bharatiya Nyaya"}},
-            ]
-        }
+        assert where == {"real_act_name": {"$eq": "Bharatiya Nyaya Sanhita, 2023"}}
 
 
 class TestSearchWithMetadataFilters:
