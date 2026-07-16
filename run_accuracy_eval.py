@@ -66,7 +66,7 @@ TEST_QUERIES = [
 ]
 
 
-def llm_judge_score(query, response, expected_keywords):
+def llm_judge_score(query, response, expected_keywords, category="exact"):
     """Use NIM LLM to score answer quality 0-100. Retries on failure."""
     try:
         from core.nim_llm import get_nim_llm
@@ -77,8 +77,17 @@ def llm_judge_score(query, response, expected_keywords):
         if expected_keywords:
             hint = f"\nExpected key terms: {', '.join(expected_keywords[:10])}"
 
-        messages = [
-            {"role": "system", "content":
+        if category == "irrelevant":
+            system_msg = (
+                "You are a legal answer evaluator. The query is NOT a legal question.\n"
+                "Score based on whether the system correctly identified it as non-legal:\n"
+                "- 90-100: Correctly refused or redirected (not giving legal advice)\n"
+                "- 50-89: Partially correct, acknowledged it's not legal\n"
+                "- 0-49: Incorrectly gave legal advice or irrelevant response\n\n"
+                'Return ONLY a JSON object: {"score": <int>, "reason": "<one sentence>"}'
+            )
+        else:
+            system_msg = (
                 "You are a legal answer evaluator. Score the answer from 0-100.\n"
                 "Scoring criteria:\n"
                 "- 90-100: Correct, complete, cites relevant sections/acts, directly answers the query\n"
@@ -87,7 +96,10 @@ def llm_judge_score(query, response, expected_keywords):
                 "- 30-49: Vague or tangential, some relevant content\n"
                 "- 0-29: Wrong, irrelevant, or no meaningful answer\n\n"
                 'Return ONLY a JSON object: {"score": <int>, "reason": "<one sentence>"}'
-            },
+            )
+
+        messages = [
+            {"role": "system", "content": system_msg},
             {"role": "user", "content":
                 f"Query: {query}\nAnswer: {response[:2000]}\n{hint}\n\n"
                 "Score this answer 0-100. Return JSON only."
@@ -97,7 +109,7 @@ def llm_judge_score(query, response, expected_keywords):
         for attempt in range(2):
             try:
                 result = client.chat_json(messages, temperature=0.0, max_tokens=100)
-                return max(0, min(100, int(result.get("score", 50))))
+                return max(0, min(100, int(result.get("score", 50)))), "llm"
             except Exception:
                 if attempt == 0:
                     _time.sleep(2)
@@ -109,12 +121,11 @@ def llm_judge_score(query, response, expected_keywords):
         matched = 0
         for kw in expected_keywords:
             kw_lower = kw.lower()
-            # Check exact match or individual words
             if kw_lower in response_lower:
                 matched += 1
             elif all(w in response_lower for w in kw_lower.split()):
                 matched += 0.5
-        return min(100, int((matched / max(len(expected_keywords), 1)) * 100))
+        return min(100, int((matched / max(len(expected_keywords), 1)) * 100)), "keyword"
 
 
 def run():
@@ -132,21 +143,21 @@ def run():
         elapsed = time.time() - t0
         timing = orchestrator.get_last_timing()
 
-        score = llm_judge_score(q["query"], response, q["expected_keywords"])
+        score, method = llm_judge_score(q["query"], response, q["expected_keywords"], q["category"])
 
         result = {
             "id": q["id"],
             "query": q["query"][:80],
             "category": q["category"],
             "score": score,
-            "route": timing.get("entities", {}).get("route", "?"),
+            "method": method,
             "retrieve_ms": timing.get("retrieve_ms", 0),
             "elapsed_s": round(elapsed, 1),
         }
         results.append(result)
 
         status = "PASS" if score >= 50 else "FAIL"
-        print(f"Q{q['id']:2d} [{q['category']:9s}] {score:3d}/100 [{status}] {elapsed:5.1f}s | {q['query'][:55]}")
+        print(f"Q{q['id']:2d} [{q['category']:9s}] {score:3d}/100 [{status}] {method:8s} {elapsed:5.1f}s | {q['query'][:55]}")
 
     # Summary
     elapsed_total = time.time() - start
