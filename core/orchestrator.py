@@ -255,9 +255,7 @@ class HectorOrchestrator:
             t_rerank = _time.perf_counter()
             if results and entities:
                 results = self.entity_reranker.rerank(results, entities)
-            sub_timing["rerank_ms"] = round(
-                (_time.perf_counter() - t_rerank) * 1000, 1
-            )
+            sub_timing["rerank_ms"] = round((_time.perf_counter() - t_rerank) * 1000, 1)
 
             # Take top 5 after re-ranking
             results = results[:5]
@@ -283,9 +281,7 @@ class HectorOrchestrator:
                         "No grounded legal results found in the indexed corpus."
                     )
                 response = "\n\n".join(parts)
-            sub_timing["generate_ms"] = round(
-                (_time.perf_counter() - t_gen) * 1000, 1
-            )
+            sub_timing["generate_ms"] = round((_time.perf_counter() - t_gen) * 1000, 1)
 
             return response, sources, sub_timing
 

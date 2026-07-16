@@ -35,7 +35,9 @@ def _load_synonyms() -> Dict[str, List[str]]:
         try:
             with open(_AUTO_SYNONYM_PATH, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            logger.info(f"Loaded {len(data)} auto-synonym groups from {_AUTO_SYNONYM_PATH}")
+            logger.info(
+                f"Loaded {len(data)} auto-synonym groups from {_AUTO_SYNONYM_PATH}"
+            )
             return data
         except Exception as e:
             logger.warning(f"Failed to load auto-synonyms: {e}, using built-in")
