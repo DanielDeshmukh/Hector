@@ -152,10 +152,10 @@ class HectorOrchestrator:
             expanded_query = normalized_query
         expand_ms = (time.perf_counter() - t_expand) * 1000
 
-        # Step 5-6: Retrieve and re-rank
+        # Step 5-6: Retrieve, re-rank, generate (with sub-stage timing)
         t_retrieve = time.perf_counter()
         try:
-            response, sources = self._generate_strategic_response(
+            response, sources, sub_timing = self._generate_strategic_response(
                 route, expanded_query, intent, mappings, entity_dict
             )
         except Exception as e:
@@ -196,6 +196,7 @@ class HectorOrchestrator:
                 + verify_ms,
                 1,
             ),
+            "sub_stages": sub_timing,
             "entities": entity_dict,
             "route_confidence": round(confidence, 3),
         }
@@ -214,18 +215,23 @@ class HectorOrchestrator:
     def _generate_strategic_response(
         self, route, query, intent, mappings=None, entities=None
     ):
-        """Internal logic to fetch either legal data or general scaling advice."""
+        """Internal logic to fetch either legal data or general scaling advice.
+        Returns (response, sources, sub_timing_dict)."""
+        import time as _time
+
         hector_msg = intent.get("hector_response", "")
         mappings = mappings or []
         entities = entities or {}
         sources = []
+        sub_timing = {}
 
         if route == "GENERAL":
             if len(hector_msg) > 5:
-                return hector_msg, sources
+                return hector_msg, sources, sub_timing
             return (
                 "Tactical pivot required. Provide more specific architecture logs.",
                 sources,
+                sub_timing,
             )
 
         if route == "LEGAL_RESEARCH":
@@ -234,22 +240,31 @@ class HectorOrchestrator:
                 or (entities.get("ipc_sections") or [])
                 or (entities.get("bns_sections") or [])
             )
+
+            # Sub-stage: Search
+            t_search = _time.perf_counter()
             if has_section:
                 results = self.retriever.search_with_metadata_filters(
                     query, entities, top_k=10
                 )
             else:
                 results = self.retriever.search(query, top_k=10)
+            sub_timing["search_ms"] = round((_time.perf_counter() - t_search) * 1000, 1)
 
-            # Phase D: Re-rank by entity matches
+            # Sub-stage: Re-rank
+            t_rerank = _time.perf_counter()
             if results and entities:
                 results = self.entity_reranker.rerank(results, entities)
+            sub_timing["rerank_ms"] = round(
+                (_time.perf_counter() - t_rerank) * 1000, 1
+            )
 
             # Take top 5 after re-ranking
             results = results[:5]
             sources = results
 
-            # Use response generator with LLM synthesis
+            # Sub-stage: Generate response
+            t_gen = _time.perf_counter()
             try:
                 gen_output = self.response_generator.generate(query, results)
                 response = gen_output.get("generated_response", "")
@@ -268,26 +283,32 @@ class HectorOrchestrator:
                         "No grounded legal results found in the indexed corpus."
                     )
                 response = "\n\n".join(parts)
+            sub_timing["generate_ms"] = round(
+                (_time.perf_counter() - t_gen) * 1000, 1
+            )
 
-            return response, sources
+            return response, sources, sub_timing
 
         if route == "STRATEGIC_ADVICE":
             if len(hector_msg) > 5:
-                return hector_msg, sources
+                return hector_msg, sources, sub_timing
             return (
                 "Strategic route selected. State the target outcome, constraints, and leverage points.",
                 sources,
+                sub_timing,
             )
 
         if route == "DOCUMENT_ANALYSIS":
             if len(hector_msg) > 5:
-                return hector_msg, sources
+                return hector_msg, sources, sub_timing
             return (
                 "Document analysis route selected. Provide the file or OCR payload to continue.",
                 sources,
+                sub_timing,
             )
 
         return (
             "Fallback route engaged. Clarify the objective and I will reclassify.",
             sources,
+            sub_timing,
         )
