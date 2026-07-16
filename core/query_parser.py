@@ -104,6 +104,96 @@ KNOWN_ACTS = {
     "patents act": "Patents Act",
     # Environment
     "environment protection act": "Environment Protection Act",
+    "forest act": "Forest Act",
+    "wildlife protection act": "Wildlife Protection Act",
+    # Arms
+    "arms act": "Arms Act",
+    # Family law additions
+    "guardians and wards act": "Guardians and Wards Act",
+    "indian divorce act": "Indian Divorce Act",
+    "maintenance and welfare of parents and senior citizens act": "Maintenance Act",
+    # Commercial law
+    "competition act": "Competition Act",
+    "companies act": "Companies Act",
+    "limited liability partnership act": "LLP Act",
+    "indian partnership act": "Indian Partnership Act",
+    "sale of goods act": "Sale of Goods Act",
+    # Property & registration
+    "indian registration act": "Indian Registration Act",
+    "indian stamps act": "Indian Stamps Act",
+    "transfer of property act": "Transfer of Property Act",
+    "easements act": "Easements Act",
+    "indian trusts act": "Indian Trusts Act",
+    "trusts act": "Indian Trusts Act",
+    # RTI
+    "right to information act": "Right to Information Act",
+    "rti act": "Right to Information Act",
+    # Legal services
+    "legal services authorities act": "Legal Services Authorities Act",
+    # Family courts
+    "family courts act": "Family Courts Act",
+    # Gram Nyayalayas
+    "gram nyayalayas act": "Gram Nyayalayas Act",
+    # Specific Relief
+    "specific relief act": "Specific Relief Act",
+    # Limitation
+    "limitation act": "Limitation Act",
+    # Copyright & IP
+    "copyright act": "Copyright Act",
+    "designs act": "Designs Act",
+    "geographical indications act": "Geographical Indications Act",
+    "semiconductor act": "Semiconductor Act",
+    "biological diversity act": "Biological Diversity Act",
+    "plant varieties act": "Plant Varieties Act",
+    # Telecom
+    "indian telegraph act": "Indian Telegraph Act",
+    "indian wireless act": "Indian Wireless Act",
+    # Cinematograph
+    "cinematograph act": "Cinematograph Act",
+    # Taxation
+    "central goods and services tax act": "CGST Act",
+    "state goods and services tax act": "SGST Act",
+    "integrated goods and services tax act": "IGST Act",
+    "customs act": "Customs Act",
+    "finance act": "Finance Act",
+    # Benami
+    "benami transactions prohibition act": "Benami Act",
+    # Black money
+    "black money act": "Black Money Act",
+    # IBC
+    "insolvency and bankruptcy code": "IBC",
+    "insolvency and bankruptcy code act": "IBC",
+    # RERA
+    "real estate regulation and development act": "RERA",
+    # SEBI
+    "securities and exchange board of india act": "SEBI Act",
+    # NREGA
+    "national rural employment guarantee act": "NREGA",
+    # Juvenile
+    "juvenile justice act": "Juvenile Justice Act",
+    # Probation
+    "probation of offenders act": "Probation Act",
+    # Criminal tribunals
+    "national security act": "NSA",
+    "unlawful activities prevention act": "UAPA",
+    "maharashtra control of organised crime act": "MCOCA",
+    "prevention of money laundering act": "PMLA",
+    "narcoics control bureau act": "NCB Act",
+    # Child protection
+    "commissions for protection of child rights act": "Child Rights Act",
+    "protection of children from sexual offences act": "POCSO",
+    "posco act": "POCSO",
+    # Food safety
+    "food safety and standards act": "Food Safety Act",
+    # Telecommunications
+    "indian telegraph act": "Indian Telegraph Act",
+    # Inter-state
+    "inter-state water disputes act": "Inter-State Water Disputes Act",
+    # Indian penal code extensions
+    "indian penal code 1860": "Indian Penal Code",
+    "bharatiya nyaya sanhita 2023": "Bharatiya Nyaya Sanhita",
+    # Evidence
+    "indian evidence act 1872": "Indian Evidence Act",
 }
 
 # Common legal topics for query classification
@@ -208,6 +298,7 @@ COURT_NAMES = {
     "arbital tribunal": "Arbital Tribunal",
     "labour court": "Labour Court",
     "industrial tribunal": "Industrial Tribunal",
+    "debt recovery tribunal": "Debt Recovery Tribunal",
 }
 
 

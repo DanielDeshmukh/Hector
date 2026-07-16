@@ -300,6 +300,178 @@ class LegalStructureParser:
         return None
 
 
+def extract_real_act_name(text: str, filename: str = "") -> str | None:
+    """
+    Extract the real act name from Indian legal document text.
+
+    Scans the first 2000 characters for patterns like:
+      - "THE LIMITATION ACT, 1963"
+      - "ACT NO. 36 OF 1963"
+      - "The Indian Contract Act, 1872"
+
+    Returns the cleaned act name (e.g., "Limitation Act, 1963") or None.
+    """
+    # Manual overrides for known mislabelled PDFs (filename -> correct act name)
+    OVERRIDES = {
+        "Bharatiya_Nagarik_Suraksha_Sanhita_2023.pdf": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Bharatiya_Nyaya_Sanhita_2023.pdf": "Bharatiya Nyaya Sanhita, 2023",
+        "Bharatiya_Sakshya_Adhiniyam_2023.pdf": "Bharatiya Sakshya Adhiniyam, 2023",
+        "Code_of_Criminal_Procedure_1973.pdf": "Code of Criminal Procedure, 1973",
+        "fixed_The_Code_of_Criminal.pdf": "Code of Criminal Procedure, 1973",
+        "Code_Of_Civil_Procedure_1908.pdf": "Code of Civil Procedure, 1908",
+        "Code_Of_Civil_Procedure_1908_v2.pdf": "Code of Civil Procedure, 1908",
+        "Indian_Penal_Code_1860.pdf": "Indian Penal Code, 1860",
+        "Information_Technology_Act_2000.pdf": "Information Technology Act, 2000",
+        "Competition_Act_2002.pdf": "Competition Act, 2002",
+        "Environment_Protection_Act_1986.pdf": "Environment Protection Act, 1986",
+        "Factories_Act_1948.pdf": "Factories Act, 1948",
+        "Forest_Act_1927.pdf": "Forest Act, 1927",
+        "Industrial_Disputes_Act_1947.pdf": "Industrial Disputes Act, 1947",
+        "Hindu_Marriage_Act_1955.pdf": "Hindu Marriage Act, 1955",
+        "Hindu_Minority_And_Guardianship_Act_1956.pdf": "Hindu Minority and Guardianship Act, 1956",
+        "Hindu_Succession_Act_1956.pdf": "Hindu Succession Act, 1956",
+        "Copyright_Act_1957.pdf": "Copyright Act, 1957",
+        "Trusts_Act_1882.pdf": "Indian Trusts Act, 1882",
+        "Easements_Act_1882.pdf": "Easements Act, 1882",
+        "Dowry_Prohibition_Act_1961.pdf": "Dowry Prohibition Act, 1961",
+        "Right_To_Information_Act_2005.pdf": "Right to Information Act, 2005",
+        "Arbitration_and_Conciliation_Act_1996.pdf": "Arbitration and Conciliation Act, 1996",
+        "Arms_Act_1959.pdf": "Arms Act, 1959",
+        "Consumer_Protection_Act_2019.pdf": "Consumer Protection Act, 2019",
+        "Legal_Services_Authorities_Act_1987.pdf": "Legal Services Authorities Act, 1987",
+        "Limitation_Act_1963.pdf": "Limitation Act, 1963",
+        "Motor_Vehicles_Act_1988.pdf": "Motor Vehicles Act, 1988",
+        "Negotiable_Instruments_Act_1881.pdf": "Negotiable Instruments Act, 1881",
+        "Prevention_of_Corruption_Act_1988.pdf": "Prevention of Corruption Act, 1988",
+        "Protection_of_Women_from_Domestic_Violence_Act_2005.pdf": "Protection of Women from Domestic Violence Act, 2005",
+        "Specific_Relief_Act_1963.pdf": "Specific Relief Act, 1963",
+        "Transfer_of_Property_Act_1882.pdf": "Transfer of Property Act, 1882",
+        "Indian_Contract_Act_1872.pdf": "Indian Contract Act, 1872",
+        "Indian_Evidence_Act_1872.pdf": "Indian Evidence Act, 1872",
+        "Juvenile_Justice_Act_2015.pdf": "Juvenile Justice Act, 2015",
+        "Gram_Nyayalayas_Act_2008.pdf": "Gram Nyayalayas Act, 2008",
+        "Family_Courts_Act_1984.pdf": "Family Courts Act, 1984",
+        "Narcotic_Drugs_and_Psychotropic_Substances_Act_1985.pdf": "Narcotic Drugs and Psychotropic Substances Act, 1985",
+        "Constitution_of_India.pdf": "Constitution of India",
+    }
+    if filename in OVERRIDES:
+        return OVERRIDES[filename]
+
+    search_text = text[:2000]
+
+    # Pattern 1: "THE <NAME> ACT, <YEAR>" — most common title pattern
+    m = re.search(
+        r"THE\s+([\w\s]+?)\s+ACT[,\s]+(\d{4})",
+        search_text,
+        re.IGNORECASE,
+    )
+    if m:
+        name = m.group(1).strip()
+        year = m.group(2)
+        # Clean up: remove leading numbers, extra whitespace
+        name = re.sub(r"^\d+\s*", "", name).strip()
+        if name:
+            return f"{name} Act, {year}"
+
+    # Pattern 2: "<NAME> Act, <YYYY>" (title case)
+    m = re.search(
+        r"((?:[A-Z][a-z]+\s+)+)Act[,\s]+(\d{4})",
+        search_text,
+    )
+    if m:
+        name = m.group(1).strip()
+        year = m.group(2)
+        return f"{name}Act, {year}"
+
+    # Pattern 3: "ACT NO. <X> OF <YEAR>" — extract year, look for name nearby
+    m = re.search(r"ACT\s+NO\.?\s*\d+\s+OF\s+(\d{4})", search_text, re.IGNORECASE)
+    if m:
+        year = m.group(1)
+        # Try to find the act name in surrounding text
+        name_match = re.search(
+            r"(?:An\s+Act\s+to\s+consolidate\s+and\s+amend\s+the\s+law\s+for\s+)?"
+            r"the\s+([\w\s]+?)\s*(?:,?\s*\d{4}|\.?\s*BE\s+it)",
+            search_text,
+            re.IGNORECASE,
+        )
+        if name_match:
+            name = name_match.group(1).strip()
+            name = re.sub(r"\s+", " ", name)
+            return f"{name} Act, {year}"
+        return f"Act of {year}"
+
+    # Pattern 4: Look for THE <NAME> ACT pattern more broadly
+    # Search only first 800 chars (title page area) to avoid false matches
+    m = re.search(
+        r"THE\s+([\w\s]{3,60}?)\s+ACT[,\s]+(\d{4})",
+        search_text[:800],
+        re.IGNORECASE,
+    )
+    if m:
+        name = m.group(1).strip()
+        year = m.group(2)
+        name = re.sub(r"^\d+\s*", "", name).strip()
+        name = re.sub(r"\s+", " ", name)
+        if name and len(name) > 2:
+            return f"{name} Act, {year}"
+
+    # Pattern 5: Look for known act names in first 1500 chars
+    known_acts = [
+        ("Copyright", "Copyright Act, 1957"),
+        ("Commissions for Protection of Child Rights", "Commissions for Protection of Child Rights Act, 2005"),
+        ("Tripura University", "Tripura University Act, 2006"),
+        ("Indian Maritime University", "Indian Maritime University Act, 2008"),
+        ("National Highways", "National Highways Act, 1956"),
+        ("Advocates", "Advocates Act, 1961"),
+        ("Nagaland University", "Nagaland University Act, 1989"),
+        ("Oaths", "Oaths Act, 1969"),
+        ("Uttar Pradesh Technical University", "UP Technical University Act, 2000"),
+        ("Food Safety and Standards", "Food Safety and Standards Act, 2006"),
+        ("Tamil Nadu Panchayat", "Tamil Nadu Panchayat Act, 1994"),
+        ("Punjab Tenancy", "Punjab Tenancy Act, 1887"),
+        ("National Rural Employment Guarantee", "NREGA, 2005"),
+        ("Bihar Reorganisation", "Bihar Reorganisation Act, 2000"),
+        ("Negotiable Instruments", "Negotiable Instruments Act, 1881"),
+        ("Specific Relief", "Specific Relief Act, 1963"),
+        ("Motor Vehicles", "Motor Vehicles Act, 1988"),
+        ("Narcotic Drugs and Psychotropic Substances", "NDPS Act, 1985"),
+        ("Arbitration and Conciliation", "Arbitration and Conciliation Act, 1996"),
+        ("Indian Contract", "Indian Contract Act, 1872"),
+        ("Transfer of Property", "Transfer of Property Act, 1882"),
+        ("Limitation", "Limitation Act, 1963"),
+        ("Legal Services Authorities", "Legal Services Authorities Act, 1987"),
+        ("Consumer Protection", "Consumer Protection Act, 2019"),
+        ("Indian Penal Code", "Indian Penal Code, 1860"),
+        ("Bharatiya Nyaya Sanhita", "Bharatiya Nyaya Sanhita, 2023"),
+        ("Bharatiya Nagarik Suraksha Sanhita", "Bharatiya Nagarik Suraksha Sanhita, 2023"),
+        ("Bharatiya Sakshya Adhiniyam", "Bharatiya Sakshya Adhiniyam, 2023"),
+        ("Code of Criminal Procedure", "Code of Criminal Procedure, 1973"),
+        ("Code of Civil Procedure", "Code of Civil Procedure, 1908"),
+        ("Indian Evidence", "Indian Evidence Act, 1872"),
+        ("Constitution of India", "Constitution of India"),
+    ]
+    lower_text = search_text[:1500].lower()
+    for keyword, act_name in known_acts:
+        if keyword.lower() in lower_text:
+            return act_name
+
+    # Fall back to filename
+    if filename:
+        # Convert filename to readable name
+        name = filename.replace(".pdf", "").replace(".PDF", "")
+        name = name.replace("_", " ")
+        # Try to extract year
+        year_match = re.search(r"(\d{4})", name)
+        if year_match:
+            year = year_match.group(1)
+            name = re.sub(r"\s*\d{4}\s*$", "", name).strip()
+            name = re.sub(r"\s+", " ", name)
+            return f"{name}, {year}"
+        return name
+
+    return None
+
+
 class MetadataEnricher:
     """
     Enriches document metadata with legal structure information.
@@ -321,7 +493,12 @@ class MetadataEnricher:
         enriched = dict(base_metadata)
 
         # Add legal structure fields
-        if structure.get("act"):
+        # Use real_act_name (extracted from PDF content) as primary act identifier
+        real_act = structure.get("real_act_name")
+        if real_act:
+            enriched["act_name"] = real_act
+            enriched["real_act_name"] = real_act
+        elif structure.get("act"):
             enriched["act_name"] = structure["act"]
 
         if structure.get("chapter"):

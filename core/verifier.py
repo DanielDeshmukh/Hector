@@ -213,8 +213,9 @@ class ChainOfVerification:
         """Combine source documents into verification context."""
         context_parts = []
         for doc in source_documents:
-            source = doc.get("metadata", {}).get("source", "Unknown")
-            page = doc.get("metadata", {}).get("page", "?")
+            meta = doc.get("metadata", {})
+            source = meta.get("real_act_name") or meta.get("act_name") or meta.get("source", "Unknown")
+            page = meta.get("page", "?")
             content = doc.get("document", "")
             context_parts.append(f"[Source: {source}, Page {page}]\n{content}\n")
         return "\n---\n".join(context_parts)
@@ -495,6 +496,19 @@ class HallucinationDetector:
                     }
                 )
 
+        # Check for references to invalid BNS sections
+        bns_sections = re.findall(r"section\s+(\d+)\s+bns", response_lower)
+        for section in bns_sections:
+            section_num = int(section)
+            # BNS has 358 sections (official count), safe upper bound 395
+            if section_num > 395:
+                inconsistencies.append(
+                    {
+                        "type": "invalid_bns_section",
+                        "detail": f"Section {section} BNS does not exist (BNS has 358 sections)",
+                    }
+                )
+
         return inconsistencies
 
     @staticmethod
@@ -573,7 +587,7 @@ class StrictCitationGenerator:
         parts = []
         for i, doc in enumerate(sources, 1):
             meta = doc.get("metadata", {})
-            source = meta.get("source", f"Document {i}")
+            source = meta.get("real_act_name") or meta.get("act_name") or meta.get("source", f"Document {i}")
             page = meta.get("page", "?")
             content = doc.get("document", "")
             parts.append(f"[Document {i}]: {source} (Page {page})\n---\n{content}")

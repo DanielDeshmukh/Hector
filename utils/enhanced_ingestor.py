@@ -114,6 +114,7 @@ class EnhancedHectorIngestor:
         self._total_books = 0
         self._current_book_index = 0
         self._book_start_time = 0.0
+        self._current_book_act_name = ""
         self._total_pages_estimated = 0
         self._pages_processed_session = 0
         # Resume state: track completed books + per-page progress
@@ -400,6 +401,10 @@ class EnhancedHectorIngestor:
         """
         # Parse document structure once per page
         structure = self.parser.parse_document(text, filename)
+        
+        # Inject real act name extracted at book level (for accurate citations)
+        if self._current_book_act_name:
+            structure["real_act_name"] = self._current_book_act_name
         
         # Extract act and chapter for denormalized context
         act_name = structure.get("act", "")
@@ -699,6 +704,19 @@ class EnhancedHectorIngestor:
 
         book_start = time.time()
         self._current_book_index += 1
+
+        # Extract real act name from PDF content (for accurate citations)
+        from utils.legal_structure_parser import extract_real_act_name
+        try:
+            reader_probe = PdfReader(file_path)
+            probe_text = ""
+            for pg in range(min(5, len(reader_probe.pages))):
+                probe_text += (reader_probe.pages[pg].extract_text() or "") + "\n"
+            self._current_book_act_name = extract_real_act_name(probe_text, filename) or ""
+        except Exception:
+            self._current_book_act_name = ""
+        if self._current_book_act_name:
+            console.print(f"  [dim]Detected act:[/dim] {self._current_book_act_name}")
 
         # Get total page count from pypdf
         try:

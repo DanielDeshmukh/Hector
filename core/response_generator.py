@@ -284,12 +284,18 @@ When answering legal queries:
         citation = item.get("citation", {}) or {}
         document = " ".join((item.get("document") or "").split())
         act = (
-            item.get("act") or metadata.get("act_name") or metadata.get("act") or ""
+            item.get("act") or metadata.get("real_act_name") or metadata.get("act_name") or metadata.get("act") or ""
         ).upper() or "LEGAL"
         section = (
             citation.get("section") or metadata.get("section_number") or "unidentified"
         )
-        title = metadata.get("source") or "Retrieved legal source"
+        # Use real_act_name as primary title (accurate document name)
+        title = (
+            metadata.get("real_act_name")
+            or metadata.get("act_name")
+            or metadata.get("source")
+            or "Retrieved legal source"
+        )
         score = self._normalize_score(
             float(item.get("similarity_score", item.get("score", 0.0)) or 0.0)
         )

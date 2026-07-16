@@ -94,6 +94,7 @@ class EntityReranker:
         doc_text = (item.get("document") or "").lower()
         metadata = item.get("metadata", {})
         source = (metadata.get("source") or "").lower()
+        real_act = (metadata.get("real_act_name") or metadata.get("act_name") or "").lower()
         citation = item.get("citation", {})
         act_in_result = (item.get("act") or "").lower()
 
@@ -101,8 +102,8 @@ class EntityReranker:
         section_boost = self._check_section_match(doc_text, citation, entities)
         boost += section_boost
 
-        # 2. Act name match
-        act_boost = self._check_act_match(doc_text, source, act_in_result, entities)
+        # 2. Act name match (prefer real_act_name over source filename)
+        act_boost = self._check_act_match(doc_text, real_act or source, act_in_result, entities)
         boost += act_boost
 
         # 3. Topic match

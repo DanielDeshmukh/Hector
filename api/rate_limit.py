@@ -1,6 +1,6 @@
 import threading
 import time
-from collections import defaultdict, deque
+from collections import defaultdict
 from dataclasses import dataclass
 
 
@@ -21,33 +21,58 @@ class RateLimitInfo:
     reset_seconds: int
 
 
+class _TokenBucket:
+    """Token bucket for a single rate-limit key."""
+
+    __slots__ = ("tokens", "max_tokens", "refill_rate", "last_refill")
+
+    def __init__(self, max_tokens: int, refill_rate: float):
+        self.tokens = float(max_tokens)
+        self.max_tokens = max_tokens
+        self.refill_rate = refill_rate  # tokens per second
+        self.last_refill = time.monotonic()
+
+    def consume(self, now: float) -> bool:
+        """Try to consume one token. Returns True if allowed."""
+        elapsed = now - self.last_refill
+        self.tokens = min(self.max_tokens, self.tokens + elapsed * self.refill_rate)
+        self.last_refill = now
+
+        if self.tokens >= 1.0:
+            self.tokens -= 1.0
+            return True
+        return False
+
+    def retry_after(self, now: float) -> int:
+        """Seconds until the next token is available."""
+        if self.tokens >= 1.0:
+            return 0
+        deficit = 1.0 - self.tokens
+        return int(deficit / self.refill_rate) + 1
+
+
 class InMemoryRateLimiter:
     def __init__(self, limit: int = 60, window_seconds: int = 60):
         self.limit = limit
         self.window_seconds = window_seconds
-        self._events: dict[str, deque[float]] = defaultdict(deque)
+        self._buckets: dict[str, _TokenBucket] = defaultdict(
+            lambda: _TokenBucket(limit, limit / window_seconds)
+        )
         self._lock = threading.Lock()
 
     def check(self, key: str) -> RateLimitInfo:
         with self._lock:
-            now = time.time()
-            bucket = self._events[key]
+            now = time.monotonic()
+            bucket = self._buckets[key]
 
-            while bucket and bucket[0] <= now - self.window_seconds:
-                bucket.popleft()
-
-            current = len(bucket)
-            remaining = max(0, self.limit - current)
-
-            if current >= self.limit:
-                oldest = bucket[0] if bucket else now
-                retry_after = int(self.window_seconds - (now - oldest)) + 1
+            if not bucket.consume(now):
+                retry = bucket.retry_after(now)
                 raise RateLimitExceeded(
                     f"Rate limit exceeded: max {self.limit} requests per {self.window_seconds} seconds.",
-                    retry_after=retry_after,
+                    retry_after=retry,
                 )
 
-            bucket.append(now)
+            remaining = int(bucket.tokens)
             return RateLimitInfo(
                 limit=self.limit,
                 remaining=remaining,
