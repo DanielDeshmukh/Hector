@@ -12,6 +12,8 @@ Pipeline flow:
 """
 
 import time
+import hashlib
+from collections import OrderedDict
 
 from core.router import HectorRouter
 from core.query_parser import LegalQueryParser, get_parser
@@ -42,6 +44,10 @@ class HectorOrchestrator:
         self._query_expander = None
         self._entity_reranker = None
         self._response_generator = None
+
+        # Query cache: exact queries → (response, sources, timing)
+        self._cache = OrderedDict()
+        self._cache_max_size = 100
 
     @property
     def query_parser(self) -> LegalQueryParser:
@@ -87,6 +93,14 @@ class HectorOrchestrator:
         7. Generate response
         8. Verify (if enabled)
         """
+        # Check cache first
+        cache_key = hashlib.md5(query.strip().lower().encode()).hexdigest()
+        if cache_key in self._cache:
+            self._cache.move_to_end(cache_key)
+            cached = self._cache[cache_key]
+            self._last_timing = cached["timing"]
+            return cached["response"]
+
         # Step 1: Parse entities (Phase A)
         t_parse = time.perf_counter()
         entities = self.query_parser.parse(query)
@@ -185,6 +199,11 @@ class HectorOrchestrator:
             "entities": entity_dict,
             "route_confidence": round(confidence, 3),
         }
+
+        # Store in cache
+        self._cache[cache_key] = {"response": response, "timing": self._last_timing}
+        if len(self._cache) > self._cache_max_size:
+            self._cache.popitem(last=False)
 
         return response
 
