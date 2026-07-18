@@ -794,5 +794,89 @@
     "rights of accused",
     "legal counsel",
     "right to lawyer"
+  ],
+  "in-law": [
+    "dowry",
+    "cruelty",
+    "section 498A",
+    "domestic violence",
+    "maintenance",
+    "Protection of Women from Domestic Violence Act"
+  ],
+  "in-laws": [
+    "dowry",
+    "cruelty",
+    "section 498A",
+    "domestic violence",
+    "maintenance",
+    "Protection of Women from Domestic Violence Act"
+  ],
+  "demanding money": [
+    "dowry",
+    "extortion",
+    "cheating",
+    "section 384",
+    "section 420"
+  ],
+  "harassment": [
+    "cruelty",
+    "section 498A",
+    "domestic violence",
+    "section 498A IPC",
+    "section 80 BNS"
+  ],
+  "cruelty": [
+    "section 498A",
+    "Indian Penal Code",
+    "section 80 BNS",
+    "Bharatiya Nyaya Sanhita"
+  ],
+  "domestic violence": [
+    "Protection of Women from Domestic Violence Act 2005",
+    "section 498A",
+    "dowry",
+    "cruelty"
+  ],
+  "family dispute": [
+    "domestic violence",
+    "cruelty",
+    "maintenance",
+    "divorce"
+  ],
+  "wrongful": [
+    "wrongful prosecution",
+    "acquittal",
+    "false charge",
+    "section 211",
+    "section 182"
+  ],
+  "falsely accused": [
+    "wrongful prosecution",
+    "acquittal",
+    "false charge",
+    "innocent"
+  ],
+  "forged": [
+    "forgery",
+    "section 463",
+    "section 465",
+    "section 468",
+    "section 471"
+  ],
+  "signature": [
+    "forgery",
+    "section 463",
+    "section 471",
+    "document"
+  ],
+  "didn't commit": [
+    "wrongful prosecution",
+    "acquittal",
+    "false charge"
+  ],
+  "didn't do it": [
+    "wrongful prosecution",
+    "acquittal",
+    "false charge"
   ]
 }
