@@ -237,31 +237,117 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
     analysis = QueryAnalysis()
     analysis.raw_json = {"source": "rule_based"}
 
+    # STEP 0: Pre-detect "now Section X" / "corresponds to Section X" patterns
+    # This must happen BEFORE source section detection to avoid regex crossover
+    target_section_hint = None
+    m = re.search(r"\bnow\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
+    if m:
+        target_section_hint = m.group(1)
+    else:
+        m = re.search(r"\bcorresponds?\s+to\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
+        if m:
+            target_section_hint = m.group(1)
+        else:
+            m = re.search(r"\bequivalent\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
+            if m:
+                target_section_hint = m.group(1)
+
+    # Concept mapping: natural language -> legal concepts + acts
+    # This helps when users describe situations in plain English
+    CONCEPT_MAP = [
+        (r"in.?laws?.*demand|dowry.*demand|demanding.*money.*marriage|bride.*burn",
+         ["dowry", "cruelty", "498A", "maintenance"],
+         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"]),
+        (r"domestic\s+violence|husband.*beat|wife.*abuse",
+         ["domestic violence", "cruelty", "498A"],
+         ["Indian Penal Code, 1860", "Protection of Women from Domestic Violence Act, 2005"]),
+        (r"employer.*not\s+pay|wages.*unpaid|salary.*pending|unpaid\s+wages",
+         ["wages", "employer", "industrial dispute", "labour court"],
+         ["Industrial Disputes Act, 1947"]),
+        (r"minor.*contract|child.*agreement|under\s+18.*contract",
+         ["minor", "contract", "void", "Section 10"],
+         ["Indian Contract Act, 1872"]),
+        (r"drunk\s+driv|drink.*drive|alcohol.*driv|dwi|dui",
+         ["drunk driving", "Motor Vehicles Act", "Section 185", "penalty"],
+         ["Motor Vehicles Act, 1988"]),
+        (r"inheritance.*will|intestate|die.*without\s+will|succession",
+         ["intestate", "Hindu Succession Act", "heir", "coparcenary"],
+         ["Hindu Succession Act, 1956"]),
+        (r"accused.*right|right.*accused|police.*interrogat|arrested.*right",
+         ["accused", "rights", "police", "legal counsel", "BNSS"],
+         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"]),
+        (r"confession.*police|police.*confession|admissib.*confession",
+         ["confession", "police", "admissible", "Section 25", "evidence"],
+         ["Indian Evidence Act, 1872", "Bharatiya Sakshya Adhiniyam, 2023"]),
+        (r"limitation.*suit|time\s+limit.*sue|filing.*deadline|limitation\s+period",
+         ["limitation", "time limit", "3 years", "Limitation Act"],
+         ["Limitation Act, 1963"]),
+        (r"false.*case|wrongful.*charge|framed.*crime|falsely.*accused",
+         ["false", "wrongful", "acquittal", "innocent", "malicious prosecution"],
+         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"]),
+        (r"forged.*sign|signature.*forg|forgery.*document",
+         ["forgery", "fraud", "signature", "crime"],
+         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"]),
+    ]
+
+    detected_concepts = []
+    detected_acts_from_concepts = []
+    for pattern, concepts, acts in CONCEPT_MAP:
+        if re.search(pattern, lowered):
+            detected_concepts.extend(concepts)
+            detected_acts_from_concepts.extend(acts)
+    detected_acts_from_concepts = list(dict.fromkeys(detected_acts_from_concepts))
+
     # Detect source act
     source_act = None
     source_section = None
 
     # Pattern: "IPC Section 302" or "Section 302 IPC"
-    m = re.search(r"\bipc\b.*?\bsection\s+(\d+[a-z]?)\b", lowered)
+    m = re.search(r"\bipc\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
     if m:
         source_act = "ipc"
         source_section = m.group(1)
     else:
-        m = re.search(r"\bsection\s+(\d+[a-z]?)\b.*?\bipc\b", lowered)
+        m = re.search(r"\bsection\s+(\d+[a-z]?)\b[^.]*?\bipc\b", lowered)
         if m:
             source_act = "ipc"
             source_section = m.group(1)
 
     # Pattern: "BNS Section 101" or "Section 101 BNS"
     if not source_act:
-        m = re.search(r"\bbns\b.*?\bsection\s+(\d+[a-z]?)\b", lowered)
+        m = re.search(r"\bbns\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
         if m:
             source_act = "bns"
             source_section = m.group(1)
         else:
-            m = re.search(r"\bsection\s+(\d+[a-z]?)\b.*?\bbns\b", lowered)
+            m = re.search(r"\bsection\s+(\d+[a-z]?)\b[^.]*?\bbns\b", lowered)
             if m:
                 source_act = "bns"
+                source_section = m.group(1)
+
+    # Pattern: "CrPC Section 144" or "Section 144 CrPC"
+    # Use [^.]*? instead of .*? to avoid crossing "now section" to wrong number
+    if not source_act:
+        m = re.search(r"\bcrpc\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
+        if m:
+            source_act = "crpc"
+            source_section = m.group(1)
+        else:
+            m = re.search(r"\bsection\s+(\d+[a-z]?)\b[^.]*?\bcrpc\b", lowered)
+            if m:
+                source_act = "crpc"
+                source_section = m.group(1)
+
+    # Pattern: "BNSS Section 163" or "Section 163 BNSS"
+    if not source_act:
+        m = re.search(r"\bbnss\b[^.]*?\bsection\s+(\d+[a-z]?)\b", lowered)
+        if m:
+            source_act = "bnss"
+            source_section = m.group(1)
+        else:
+            m = re.search(r"\bsection\s+(\d+[a-z]?)\b[^.]*?\bbnss\b", lowered)
+            if m:
+                source_act = "bnss"
                 source_section = m.group(1)
 
     # Pattern: just "Section 302" without act
@@ -269,6 +355,15 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
         m = re.search(r"\bsection\s+(\d+[a-z]?)\b", lowered)
         if m:
             source_section = m.group(1)
+
+    # Fix: if source_section == target_section_hint, the regex crossed "now section"
+    # Find the actual source section (the OTHER section number in the query)
+    if source_section and target_section_hint and source_section == target_section_hint:
+        all_sections = re.findall(r"\bsection\s+(\d+[a-z]?)\b", lowered)
+        for s in all_sections:
+            if s != target_section_hint:
+                source_section = s
+                break
 
     # Detect ALL act names mentioned in the query (not just source act)
     detected_acts = []
@@ -345,11 +440,32 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
                 analysis.confidence = 0.90
             else:
                 analysis.confidence = 0.5
+        elif source_act == "crpc":
+            # CrPC -> BNSS: use target_section_hint if available
+            if target_section_hint:
+                analysis.target_act = "Bharatiya Nagarik Suraksha Sanhita, 2023"
+                analysis.target_section = target_section_hint
+                analysis.mapping_info = f"CrPC {source_section} to BNSS {target_section_hint}"
+                analysis.confidence = 0.90
+            else:
+                analysis.confidence = 0.6
+        elif source_act == "bnss":
+            if target_section_hint:
+                analysis.target_act = "Code of Criminal Procedure, 1973"
+                analysis.target_section = target_section_hint
+                analysis.mapping_info = f"BNSS {source_section} to CrPC {target_section_hint}"
+                analysis.confidence = 0.90
+            else:
+                analysis.confidence = 0.5
 
         # Build metadata filters for BOTH acts (include both source and target sections)
         sections = [source_section]
         if analysis.target_section:
             sections.append(analysis.target_section)
+        elif target_section_hint:
+            # User explicitly mentioned a target section ("now Section 163")
+            sections.append(target_section_hint)
+            analysis.target_section = target_section_hint
         filters = {"section_number": sections}
         act_names = []
         if analysis.source_act:
@@ -399,17 +515,20 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
         analysis.confidence = 0.7
 
     else:
-        # No section found — check if acts are detected for filtered concept search
-        if detected_acts:
+        # No section found — concept query
+        # DON'T filter by act for concept queries (too broad, returns wrong chunks)
+        # Only use concept mapping to add keywords for better semantic search
+        if detected_concepts:
             analysis.intent = "concept_search"
-            analysis.metadata_filters = {"act_name": detected_acts}
-            analysis.search_strategy = "filtered_single_act"
+            analysis.legal_concepts = detected_concepts
+            analysis.rewritten_queries = [f"{' '.join(detected_concepts)} {query}"]
+            analysis.search_strategy = "unfiltered_broad"
             analysis.confidence = 0.65
         else:
             analysis.intent = "concept_search"
+            analysis.rewritten_queries = [query]
             analysis.search_strategy = "unfiltered_broad"
             analysis.confidence = 0.5
-        analysis.rewritten_queries = [query]
 
     return analysis
 

@@ -122,11 +122,12 @@ def run():
         has_section = bool(entity_dict.get("sections") or entity_dict.get("ipc_sections") or entity_dict.get("bns_sections"))
         has_act = bool(entity_dict.get("acts"))
 
-        # Step 5: Retrieve
+        # Step 5: Retrieve — use QI rewritten query for better semantic match
+        search_query = qi.rewritten_queries[0] if qi.rewritten_queries else query
         if has_section or has_act:
-            search_results = retriever.search_with_metadata_filters(query, entity_dict, top_k=10)
+            search_results = retriever.search_with_metadata_filters(search_query, entity_dict, top_k=10)
         else:
-            search_results = retriever.search(query, top_k=10)
+            search_results = retriever.search(search_query, top_k=10)
 
         elapsed = time.time() - t0
 
