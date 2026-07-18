@@ -334,12 +334,12 @@ class QueryExpander:
         self._max_expansion_tokens = 50  # Max tokens to add
 
     def _find_matching_terms(self, query: str) -> List[str]:
-        """Find all dictionary terms present in the query."""
+        """Find all dictionary terms present in the query, including reverse value->key matches."""
         query_lower = query.lower()
         matched = []
 
+        # Forward matching: check if any key is in the query
         for term in self._synonyms:
-            # Use word boundary matching for short terms, substring for phrases
             if len(term) <= 3:
                 pattern = rf"\b{re.escape(term)}\b"
                 if re.search(pattern, query_lower):
@@ -347,6 +347,16 @@ class QueryExpander:
             else:
                 if term in query_lower:
                     matched.append(term)
+
+        # Reverse matching: if a synonym VALUE appears in the query, also match its KEY
+        # This handles cases like "time limit" -> triggers "limitation" expansion
+        if not matched:
+            for key, values in self._synonyms.items():
+                for val in values:
+                    val_lower = val.lower()
+                    if val_lower in query_lower and key not in matched:
+                        matched.append(key)
+                        break
 
         return matched
 

@@ -86,25 +86,16 @@
     "section 124 bns"
   ],
   "bail": [
-    "section 91",
-    "Bharatiya Nagarik Suraksha Sanhita",
-    "section 92",
-    "section 430",
-    "section 478",
-    "section 480",
-    "section 481",
-    "section 482",
-    "section 483",
-    "section 488",
-    "section 492",
     "anticipatory bail",
     "default bail",
     "regular bail",
+    "section 437 CrPC",
+    "section 438 CrPC",
+    "section 480 BNSS",
+    "section 478 BNSS",
+    "pre-arrest bail",
     "interim bail",
-    "section 437",
-    "section 438",
-    "section 480 bnss",
-    "release on bail"
+    "bail conditions"
   ],
   "bail conditions": [
     "section 91",
@@ -367,17 +358,11 @@
     "dishonesty"
   ],
   "guardianship": [
-    "section 31",
-    "Arbitration and Conciliation Act",
-    "section 33",
-    "section 34",
-    "section 35",
-    "section 39",
-    "section 46",
-    "section 49",
-    "section 53",
-    "section 55",
-    "section 57"
+    "section 8 Hindu Minority and Guardianship Act",
+    "guardian",
+    "custody of minor",
+    "natural guardian",
+    "guardian of the ward"
   ],
   "industrial dispute": [
     "section 68",
@@ -707,10 +692,11 @@
     "Hindu Succession Act"
   ],
   "anticipatory bail": [
+    "section 438 CrPC",
+    "section 480 BNSS",
     "pre-arrest bail",
-    "section 438 crpc",
-    "section 482 bnss",
-    "before arrest"
+    "antipatory bail",
+    "advance bail"
   ],
   "divorce": [
     "dissolution of marriage",
@@ -878,5 +864,32 @@
     "wrongful prosecution",
     "acquittal",
     "false charge"
+  ],
+  "time limit": [
+    "limitation",
+    "Limitation Act 1963",
+    "section 3",
+    "section 4",
+    "prescription"
+  ],
+  "arrest": [
+    "section 41 BNSS",
+    "section 41 CrPC",
+    "arrest without warrant",
+    "arrest by police",
+    "right to be informed"
+  ],
+  "custody": [
+    "police custody",
+    "judicial custody",
+    "section 167 CrPC",
+    "section 187 BNSS",
+    "bail"
+  ],
+  "wrongful termination": [
+    "section 25F Industrial Disputes Act",
+    "retrenchment",
+    " labour court",
+    "compensation"
   ]
 }

@@ -110,6 +110,29 @@ class HectorHybridRetriever:
         "indian evidence act": "BSA",
         "cpc": "CPC",
     }
+    # Legal intent detection — keywords that confirm a query is about law
+    LEGAL_INTENT_KEYWORDS = frozenset((
+        "section", "ipc", "bns", "crpc", "bnss", "bsa", "cpc", "act",
+        "court", "judge", "justice", "law", "legal", "statute", "code",
+        "murder", "theft", "assault", "rape", "fraud", "forgery", "cheating",
+        "bail", "arrest", "custody", "fir", "charge", "accused", "conviction",
+        "acquittal", "sentence", "punishment", "imprisonment", "fine",
+        "plaintiff", "defendant", "petition", "writ", "appeal", "judgment",
+        "dowry", "cruelty", "divorce", "maintenance", "alimony", "custody",
+        "adoption", "guardian", "succession", "inheritance", "will", "probate",
+        "contract", "agreement", "consideration", "void", "voidable",
+        "negligence", "liability", "damages", "compensation", "injunction",
+        "mortgage", "lease", "rent", "eviction", "trespass", "partition",
+        "consumer", "wages", "employer", "employee", "termination",
+        "industrial", "labour", "labor", "drunk", "driving", "narcotic",
+        "ndps", "cyber", "digital", "electronic", "evidence", "witness",
+        "confession", "admissible", "admissibility", "interrogation",
+        "accused", "right to", "fundamental right", "article",
+        "constitutional", "high court", "supreme court", "tribunal",
+        "crime", "offence", "offense", "criminal", "cognizable", "bailable",
+        "remedy", "relief", "claim", "dispute", "case", "suit",
+    ))
+
     CONCEPT_STOPWORDS = {
         "and",
         "are",
@@ -203,6 +226,25 @@ class HectorHybridRetriever:
         self.tokenized_corpus = [record["tokens"] for record in self.records]
         self.bm25 = SimpleBM25(self.tokenized_corpus) if self.records else None
 
+    def _is_legal_query(self, query: str) -> bool:
+        """Fast check if a query is about legal topics. Returns False for non-legal queries."""
+        q = query.lower()
+        # Direct section/act references are always legal
+        if self.SECTION_PATTERN.search(q) or self.ACT_PATTERN.search(q):
+            return True
+        # Check for legal keywords
+        tokens = set(self.TOKEN_PATTERN.findall(q))
+        if tokens & self.LEGAL_INTENT_KEYWORDS:
+            return True
+        # Check for multi-word legal phrases
+        for phrase in ("high court", "supreme court", "consumer protection",
+                       "industrial dispute", "motor vehicle", "right to",
+                       "fundamental right", "legal remedy", "legal option",
+                       "what is the punishment", "is it a crime", "can i file"):
+            if phrase in q:
+                return True
+        return False
+
     def refresh_index(self):
         if self.collection is None:
             return
@@ -247,12 +289,18 @@ class HectorHybridRetriever:
 
         self._load_records(records)
 
-    def search(self, query, top_k=5, candidate_pool=20):
+    def search(self, query, top_k=5, candidate_pool=30):
         if not self.records:
+            return []
+        # Pre-retrieval intent filter: reject non-legal queries immediately
+        if not self._is_legal_query(query):
             return []
 
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
+
+        # BM25 uses expanded query tokens (not just raw parsed tokens)
+        bm25_tokens = self._tokenize(query)
 
         # Parallelize BM25 and semantic search
         with ThreadPoolExecutor(max_workers=2) as executor:
@@ -260,7 +308,7 @@ class HectorHybridRetriever:
                 self._semantic_search, query, candidate_pool
             )
             bm25_future = executor.submit(
-                self._bm25_search, legal_query["tokens"], candidate_pool
+                self._bm25_search, bm25_tokens, candidate_pool
             )
             semantic_rank = semantic_future.result()
             bm25_rank = bm25_future.result()
@@ -764,8 +812,10 @@ class HectorHybridRetriever:
             for item, raw_score in zip(candidates, raw_scores):
                 reranker_score = self._sigmoid(float(raw_score))
                 item["reranker_score"] = round(reranker_score, 6)
-                item["score"] = item["reranker_score"]
-                item["similarity_score"] = item["reranker_score"]
+                # Blend reranker with hybrid boost (preserve legal/domain signals)
+                hybrid_score = item.get("score", 0.5)
+                item["score"] = round(0.85 * reranker_score + 0.15 * hybrid_score, 6)
+                item["similarity_score"] = item["score"]
                 item["reasons"] = [*item.get("reasons", []), "cross-encoder-reranked"]
         else:
             for item in candidates:
