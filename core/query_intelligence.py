@@ -270,6 +270,35 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
         if m:
             source_section = m.group(1)
 
+    # Detect ALL act names mentioned in the query (not just source act)
+    detected_acts = []
+    ACT_PATTERNS = [
+        (r"\bipc\b|\bindian penal code\b", "Indian Penal Code, 1860"),
+        (r"\bbns\b|\bbharatiya nyaya sanhita\b", "Bharatiya Nyaya Sanhita, 2023"),
+        (r"\bcrpc\b|\bcode of criminal procedure\b", "Code of Criminal Procedure, 1973"),
+        (r"\bbnss\b|\bbharatiya nagarik suraksha sanhita\b", "Bharatiya Nagarik Suraksha Sanhita, 2023"),
+        (r"\bbsa\b|\bbharatiya sakshya adhiniyam\b", "Bharatiya Sakshya Adhiniyam, 2023"),
+        (r"\biea\b|\bindian evidence act\b|\bevidence act\b", "Indian Evidence Act, 1872"),
+        (r"\bcpc\b|\bcode of civil procedure\b", "Code of Civil Procedure, 1908"),
+        (r"\bconsumer protection\b", "Consumer Protection Act, 2019"),
+        (r"\bndps\b|\bnarcotic drugs\b", "Narcotic Drugs and Psychotropic Substances Act, 1985"),
+        (r"\btransfer of property\b", "Transfer of Property Act, 1882"),
+        (r"\bconstitution\b", "Constitution of India"),
+        (r"\bindian contract act\b", "Indian Contract Act, 1872"),
+        (r"\bhindu marriage\b", "Hindu Marriage Act, 1955"),
+        (r"\bhindu succession\b", "Hindu Succession Act, 1956"),
+        (r"\bmotor vehicles\b", "Motor Vehicles Act, 1988"),
+        (r"\bindustrial disputes\b", "Industrial Disputes Act, 1947"),
+        (r"\blimitation act\b", "Limitation Act, 1963"),
+        (r"\bnegotiable instruments\b|\bni act\b", "Negotiable Instruments Act, 1881"),
+        (r"\barbitration\b", "Arbitration and Conciliation Act, 1996"),
+        (r"\bcopyright act\b", "Copyright Act, 1957"),
+        (r"\bcompetition act\b", "Competition Act, 2002"),
+    ]
+    for pattern, act_name in ACT_PATTERNS:
+        if re.search(pattern, lowered):
+            detected_acts.append(act_name)
+
     # Detect cross-act intent
     cross_act_keywords = [
         "equivalent", "counterpart", "replaced by", "corresponding",
@@ -283,6 +312,12 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
     mentions_ipc = "ipc" in lowered or "indian penal code" in lowered
     mentions_bns = "bns" in lowered or "bharatiya nyaya sanhita" in lowered
     if mentions_ipc and mentions_bns:
+        is_cross_act = True
+
+    # Also detect CrPC→BNSS cross-act
+    mentions_crpc = "crpc" in lowered or "code of criminal procedure" in lowered
+    mentions_bnss = "bnss" in lowered or "bharatiya nagarik suraksha sanhita" in lowered
+    if mentions_crpc and mentions_bnss:
         is_cross_act = True
 
     if is_cross_act and source_act and source_section:
@@ -350,6 +385,13 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
                 "act_name": [full_name],
             }
             analysis.search_strategy = "filtered_single_act"
+        elif detected_acts:
+            # Section without explicit act — use detected acts from query context
+            analysis.metadata_filters = {
+                "section_number": [source_section],
+                "act_name": detected_acts,
+            }
+            analysis.search_strategy = "filtered_single_act"
         else:
             analysis.metadata_filters = {"section_number": [source_section]}
             analysis.search_strategy = "filtered_single_act"
@@ -357,11 +399,17 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
         analysis.confidence = 0.7
 
     else:
-        # No section found — broad search
-        analysis.intent = "concept_search"
+        # No section found — check if acts are detected for filtered concept search
+        if detected_acts:
+            analysis.intent = "concept_search"
+            analysis.metadata_filters = {"act_name": detected_acts}
+            analysis.search_strategy = "filtered_single_act"
+            analysis.confidence = 0.65
+        else:
+            analysis.intent = "concept_search"
+            analysis.search_strategy = "unfiltered_broad"
+            analysis.confidence = 0.5
         analysis.rewritten_queries = [query]
-        analysis.search_strategy = "unfiltered_broad"
-        analysis.confidence = 0.5
 
     return analysis
 
