@@ -1,6 +1,6 @@
 # HECTOR Optimization Checklist — Accuracy + Speed + Model Selection
 
-**Status: 15/17 complete | Accuracy: 60.9% (baseline 59%) | Speed: 37x faster for filtered queries**
+**Status: 15/17 complete | Accuracy: 64.8% (up from 60.9%) | Exact: 90.7%, Similar: 73.6%**
 
 ## PART 1: Retrieval Accuracy (50% → 90-94%)
 
@@ -12,7 +12,7 @@
 - [x] **Verify entity reranker checks correctness** ✅ — 3-tier section matching: metadata tag (+0.25) > citation (+0.15) > text mention (+0.05). Not just substring match.
 - [x] **Re-run LLM-judge eval after each fix** ✅ — 30-query eval with category-aware LLM-as-judge scoring. Results in `retrieval_test_results_v2.json`.
 
-**Accuracy: 60.9% overall** (Exact 59%, Similar 44.8%, Irrelevant 79%). Need +29 points to hit 90% target.
+**Accuracy: 64.8% overall** (Exact 90.7%, Similar 73.6%, Irrelevant 30%). Fixed chunker + IPC→BNS mapping drove major gains in exact/similar categories.
 
 ## PART 2: Retrieval Speed ("instantaneous")
 
