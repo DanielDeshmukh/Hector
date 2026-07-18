@@ -288,10 +288,10 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
         (r"forged.*sign|signature.*forg|forgery.*document",
          ["forgery", "fraud", "signature", "crime"],
          ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"]),
-        (r"bail.*provision|anticipatory.*bail|bail.*application|grant.*bail|default.*bail",
+        (r"bail.*provisions?|anticipatory.*bail|bail.*application|grant.*bail|default.*bail",
          ["bail", "anticipatory bail", "default bail", "Section 480", "BNSS"],
          ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"]),
-        (r"consumer.*right|defective.*goods|deficiency.*service|unfair.*trade.*practice",
+        (r"consumer.*rights?|defective.*goods|deficiency.*service|unfair.*trade.*practice",
          ["consumer rights", "defective goods", "deficiency services", "unfair trade", "Section 38", "Consumer Protection Act"],
          ["Consumer Protection Act, 2019"]),
     ]
@@ -522,14 +522,28 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
 
     else:
         # No section found — concept query
-        # DON'T filter by act for concept queries (too broad, returns wrong chunks)
-        # Only use concept mapping to add keywords for better semantic search
         if detected_concepts:
             analysis.intent = "concept_search"
             analysis.legal_concepts = detected_concepts
             analysis.rewritten_queries = [f"{' '.join(detected_concepts)} {query}"]
-            analysis.search_strategy = "unfiltered_broad"
             analysis.confidence = 0.65
+            # Only use filtered search when the QUERY TEXT explicitly mentions an act
+            # (not when concept mapping infers acts from natural language)
+            query_has_act = bool(re.search(
+                r"\b(ipc|bns|crpc|bnss|bsa|cpc|act)\b"
+                r"|indian penal code|bharatiya nyaya sanhita"
+                r"|code of criminal procedure|bharatiya nagarik suraksha sanhita"
+                r"|bharatiya sakshya adhiniyam|indian evidence act"
+                r"|transfer of property act|consumer protection act"
+                r"|ndps|narcotic|motor vehicles act|hindu succession"
+                r"|indian contract act|limitation act",
+                lowered
+            ))
+            if query_has_act and detected_acts_from_concepts:
+                analysis.metadata_filters = {"act_name": detected_acts_from_concepts}
+                analysis.search_strategy = "filtered_single_act"
+            else:
+                analysis.search_strategy = "unfiltered_broad"
         else:
             analysis.intent = "concept_search"
             analysis.rewritten_queries = [query]

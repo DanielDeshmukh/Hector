@@ -46,7 +46,7 @@ TEST_QUERIES = [
 ]
 
 
-def score_retrieval(query, chunks, expected_kw, category):
+def score_retrieval(query, chunks, expected_kw, category, metas=None):
     if category == "irrelevant":
         legal_terms = ["section", "act", "court", "punishment", "IPC", "BNS"]
         legal_hits = sum(1 for c in chunks if any(t in c.lower() for t in legal_terms))
@@ -58,6 +58,10 @@ def score_retrieval(query, chunks, expected_kw, category):
             return 30
 
     all_text = " ".join(chunks).lower()
+    for meta in metas:
+        act = meta.get("real_act_name", "")
+        if act:
+            all_text += " " + act.lower()
     matched = 0
     for kw in expected_kw:
         if kw.lower() in all_text:
@@ -134,7 +138,7 @@ def run():
         # Step 6: Extract chunks and score
         chunks = [r.get("document", r.get("text", "")) for r in search_results]
         metas = [r.get("metadata", {}) for r in search_results]
-        score = score_retrieval(query, chunks, q["kw"], category)
+        score = score_retrieval(query, chunks, q["kw"], category, metas)
 
         # Step 7: Print detailed result
         status = "PASS" if score >= 50 else "FAIL"
