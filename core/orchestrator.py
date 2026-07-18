@@ -21,6 +21,7 @@ from core.embedding_router import EmbeddingRouter, get_embedding_router
 from core.query_expander import QueryExpander, get_query_expander
 from core.entity_reranker import EntityReranker, get_entity_reranker
 from data.hybrid_retriever import HectorHybridRetriever
+from core.query_intelligence import analyze_query, QueryAnalysis
 
 # Optional: Only import verifier if available (graceful degradation)
 try:
@@ -101,6 +102,11 @@ class HectorOrchestrator:
             self._last_timing = cached["timing"]
             return cached["response"]
 
+        # Step 0: Query Intelligence — analyze query structure before routing
+        t_qi = time.perf_counter()
+        qi_analysis = analyze_query(query, use_nim=True)
+        qi_ms = (time.perf_counter() - t_qi) * 1000
+
         # Step 1: Parse entities (Phase A)
         t_parse = time.perf_counter()
         entities = self.query_parser.parse(query)
@@ -132,6 +138,11 @@ class HectorOrchestrator:
                 route = parser_hint
                 confidence = max(confidence, entities.confidence)
 
+        # QI override: if QI is confident about intent, use QI-derived route
+        if qi_analysis.confidence >= 0.85 and qi_analysis.intent == "cross_act_mapping":
+            route = "LEGAL_RESEARCH"
+            confidence = max(confidence, qi_analysis.confidence)
+
         route_ms = (time.perf_counter() - t_route) * 1000
 
         # Step 3: Legal normalization (IPC -> BNS)
@@ -156,7 +167,7 @@ class HectorOrchestrator:
         t_retrieve = time.perf_counter()
         try:
             response, sources, sub_timing = self._generate_strategic_response(
-                route, expanded_query, intent, mappings, entity_dict
+                route, expanded_query, intent, mappings, entity_dict, qi_analysis
             )
         except Exception as e:
             return f"Strategic failure: {str(e)}"
@@ -181,6 +192,7 @@ class HectorOrchestrator:
 
         # Attach timing metadata
         self._last_timing = {
+            "qi_ms": round(qi_ms, 1),
             "parse_ms": round(parse_ms, 1),
             "route_ms": round(route_ms, 1),
             "normalize_ms": round(normalize_ms, 1),
@@ -188,7 +200,8 @@ class HectorOrchestrator:
             "retrieve_ms": round(retrieve_ms, 1),
             "verify_ms": round(verify_ms, 1),
             "total_ms": round(
-                parse_ms
+                qi_ms
+                + parse_ms
                 + route_ms
                 + normalize_ms
                 + expand_ms
@@ -199,6 +212,7 @@ class HectorOrchestrator:
             "sub_stages": sub_timing,
             "entities": entity_dict,
             "route_confidence": round(confidence, 3),
+            "qi": qi_analysis.to_dict() if qi_analysis else None,
         }
 
         # Store in cache
@@ -213,7 +227,7 @@ class HectorOrchestrator:
         return getattr(self, "_last_timing", {})
 
     def _generate_strategic_response(
-        self, route, query, intent, mappings=None, entities=None
+        self, route, query, intent, mappings=None, entities=None, qi_analysis=None
     ):
         """Internal logic to fetch either legal data or general scaling advice.
         Returns (response, sources, sub_timing_dict)."""
@@ -255,6 +269,20 @@ class HectorOrchestrator:
                         if bns_num and bns_num not in (entities.get("bns_sections") or []):
                             entities.setdefault("bns_sections", []).append(bns_num)
 
+            # QI metadata filters: merge QI output with parser entities
+            qi_filters = qi_analysis.metadata_filters if qi_analysis else {}
+            if qi_filters:
+                # QI detected act names — add to entities
+                for act_name in qi_filters.get("act_name", []):
+                    if act_name and act_name not in (entities.get("acts") or []):
+                        entities.setdefault("acts", []).append(act_name)
+                # QI detected section numbers — add to entities
+                for sec in qi_filters.get("section_number", []):
+                    if sec and sec not in (entities.get("sections") or []):
+                        entities.setdefault("sections", []).append(sec)
+                has_section = has_section or bool(qi_filters.get("section_number"))
+                has_act = has_act or bool(qi_filters.get("act_name"))
+
             # Sub-stage: Search
             t_search = _time.perf_counter()
             if has_section or has_act:
@@ -286,7 +314,9 @@ class HectorOrchestrator:
                 # Fallback to template
                 parts = []
                 parts.append(f'Legal research query: "{query}"\n')
-                if mappings:
+                if qi_analysis and qi_analysis.mapping_info:
+                    parts.append(f"Cross-reference: {qi_analysis.mapping_info}")
+                elif mappings:
                     parts.append("Mapped legacy references: " + "; ".join(mappings))
                 if results:
                     parts.append(self.retriever.format_results(results))
