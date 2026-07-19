@@ -105,8 +105,9 @@ class TestHighProfileMappings:
         assert ipc_to_bns["378"]["new"] == "303"
         assert ipc_to_bns["378"]["name"] == "Theft"
 
-    def test_ipc_498a_not_in_mapping(self, ipc_to_bns):
-        assert "498A" not in ipc_to_bns
+    def test_ipc_498a_in_mapping(self, ipc_to_bns):
+        assert "498A" in ipc_to_bns
+        assert ipc_to_bns["498A"]["new"] == "80"
 
     def test_ipc_302_is_murder(self, ipc_to_bns):
         entry = ipc_to_bns["302"]

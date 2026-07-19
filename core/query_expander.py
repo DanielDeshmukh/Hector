@@ -360,15 +360,16 @@ class QueryExpander:
 
         return matched
 
-    def _get_synonyms(self, terms: List[str]) -> List[str]:
+    def _get_synonyms(self, terms: List[str], query: str = "") -> List[str]:
         """Get synonyms for matched terms, deduplicated."""
         seen = set(terms)  # Don't repeat original terms
+        query_lower = query.lower() if query else ""
         synonyms = []
 
         for term in terms:
             for syn in self._synonyms.get(term, []):
                 syn_lower = syn.lower()
-                if syn_lower not in seen:
+                if syn_lower not in seen and syn_lower not in query_lower:
                     seen.add(syn_lower)
                     synonyms.append(syn)
 
@@ -389,7 +390,7 @@ class QueryExpander:
         if not matched_terms:
             return query
 
-        synonyms = self._get_synonyms(matched_terms)
+        synonyms = self._get_synonyms(matched_terms, query)
 
         if not synonyms:
             return query
