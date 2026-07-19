@@ -273,10 +273,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# --- Node.js (frontend) ---
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
+# --- Node.js (Next.js frontend) ---
+hector/node_modules/
+hector/.next/
+hector/out/
 
 # --- Docker ---
 .dockerignore

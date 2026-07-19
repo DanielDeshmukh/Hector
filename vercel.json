@@ -1,14 +1,12 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run build",
-  "outputDirectory": "frontend/dist",
-  "installCommand": "npm install --prefix frontend",
-  "framework": "vite",
-  "rewrites": [
-    { "source": "/((?!assets/).*)", "destination": "/index.html" }
-  ],
+  "buildCommand": "cd hector && npm install && npm run build",
+  "outputDirectory": "hector/.next",
+  "installCommand": "npm install --prefix hector",
+  "framework": "nextjs",
+  "rewrites": [],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/hector/.next/static/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
