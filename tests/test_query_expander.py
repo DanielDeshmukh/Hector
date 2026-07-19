@@ -26,7 +26,7 @@ class TestBasicExpansion(unittest.TestCase):
     def test_theft_expansion(self):
         result = self.expander.expand("theft")
         self.assertIn("section 378", result)
-        self.assertIn("larceny", result)
+        self.assertIn("misappropriation", result)
 
     def test_fir_expansion(self):
         result = self.expander.expand("how to file FIR")

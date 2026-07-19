@@ -30,9 +30,9 @@ class LegalSection:
 
 # Patterns for splitting
 SECTION_SPLIT_PATTERN = re.compile(
-    r"(?:^|\n)(?:Section|sec\.?|s\.)\s*(\d{1,4}[A-Z]?)\.?\s+"
+    r"(?:^|\n)(?:[Ss]ection|[Ss]ec\.?|s\.)\s*(\d{1,4}[A-Z]?)\.?\s+"
     r"|(?:^|\n)(\d{1,4}[A-Z]?)\.\s+[^a-z\d]",
-    re.IGNORECASE | re.MULTILINE,
+    re.MULTILINE,
 )
 
 CHAPTER_SPLIT_PATTERN = re.compile(
