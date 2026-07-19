@@ -183,7 +183,7 @@ def main():
             print(f"  Processed {i+1}/{total}...")
 
     # Write back in batches
-    print(f"\nWriting back to ChromaDB...")
+    print("\nWriting back to ChromaDB...")
     BATCH = 5000
     for start in range(0, len(ids), BATCH):
         end = min(start + BATCH, len(ids))
@@ -198,7 +198,7 @@ def main():
     print(f"  Sections backfilled:    {stats['section_backfilled']}")
     print(f"  Chapters backfilled:    {stats['chapter_backfilled']}")
     print(f"  Already OK:             {stats['already_ok']}")
-    print(f"\n  Source type distribution:")
+    print("\n  Source type distribution:")
     for st, count in source_types.most_common():
         print(f"    {st}: {count}")
 
@@ -207,7 +207,7 @@ def main():
     with_sec = sum(1 for m in all_data2["metadatas"] if m.get("section_number"))
     with_chap = sum(1 for m in all_data2["metadatas"] if m.get("chapter"))
     with_st = sum(1 for m in all_data2["metadatas"] if m.get("source_type"))
-    print(f"\n  Coverage after post-processing:")
+    print("\n  Coverage after post-processing:")
     print(f"    section_number: {with_sec}/{total} ({with_sec*100/total:.1f}%)")
     print(f"    chapter:        {with_chap}/{total} ({with_chap*100/total:.1f}%)")
     print(f"    source_type:    {with_st}/{total} ({with_st*100/total:.1f}%)")

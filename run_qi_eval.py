@@ -2,14 +2,16 @@
 HECTOR QI Pipeline Eval — Tests Query Intelligence + Retrieval for all 30 queries.
 Shows: QI intent, metadata filters, retrieved chunks, scores.
 """
-import os, sys, json, time
+import os
+import sys
+import json
+import time
 
 os.environ["HF_HUB_OFFLINE"] = "1"
 sys.path.insert(0, r"D:\Vs Code\VS code\Hector")
 
 from core.query_intelligence import analyze_query
 from core.query_parser import get_parser
-from core.query_expander import QueryExpander
 from data.hybrid_retriever import HectorHybridRetriever
 
 TEST_QUERIES = [
@@ -96,7 +98,6 @@ def run():
 
     retriever = HectorHybridRetriever()
     parser = get_parser()
-    expander = QueryExpander()
 
     results = []
     start = time.time()
@@ -154,7 +155,7 @@ def run():
         print(f"    Search Method: {'filtered' if (has_section or has_act) else 'unfiltered'}")
         print(f"    Results: {len(search_results)} chunks")
         if search_results:
-            print(f"    Top Chunks:")
+            print("    Top Chunks:")
             print(format_chunks(chunks, metas, max_show=3))
         print()
 
