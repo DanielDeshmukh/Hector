@@ -278,6 +278,17 @@ hector/node_modules/
 hector/.next/
 hector/out/
 
+# --- Python backend ---
+hector/backend/__pycache__/
+hector/backend/.pytest_cache/
+hector/backend/.ruff_cache/
+hector/backend/*.egg-info/
+hector/backend/.venv/
+hector/backend/venv/
+hector/backend/hector_db/
+hector/backend/data/Books/
+hector/backend/.hector_logs/
+
 # --- Docker ---
 .dockerignore
 

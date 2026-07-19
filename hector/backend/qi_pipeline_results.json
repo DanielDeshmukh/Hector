@@ -1,0 +1,527 @@
+{
+  "timestamp": "2026-07-19 14:20:03",
+  "overall_pct": 94.2,
+  "exact_pct": 90.2,
+  "similar_pct": 92.4,
+  "irrelevant_pct": 100.0,
+  "qi_stats": {
+    "section_lookup": 7,
+    "concept_search": 22,
+    "cross_act_mapping": 1
+  },
+  "results": [
+    {
+      "id": 1,
+      "query": "What is the punishment for murder under Section 302 IPC",
+      "category": "exact",
+      "score": 90,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "Indian Penal Code, 1860 302",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "302"
+        ],
+        "act_name": [
+          "Indian Penal Code, 1860"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 1504.5,
+      "n_chunks": 1
+    },
+    {
+      "id": 2,
+      "query": "Section 376 IPC punishment for rape",
+      "category": "exact",
+      "score": 100,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "Indian Penal Code, 1860 376",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "376"
+        ],
+        "act_name": [
+          "Indian Penal Code, 1860"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 225.7,
+      "n_chunks": 1
+    },
+    {
+      "id": 3,
+      "query": "Bharatiya Nagarik Suraksha Sanhita bail provisions",
+      "category": "exact",
+      "score": 80,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "act_name": [
+          "Code of Criminal Procedure, 1973",
+          "Bharatiya Nagarik Suraksha Sanhita, 2023"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 6383.0,
+      "n_chunks": 10
+    },
+    {
+      "id": 4,
+      "query": "Indian Evidence Act Section 65B admissibility of electronic evidence",
+      "category": "exact",
+      "score": 87,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "None 65b",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "65b"
+        ],
+        "act_name": [
+          "Indian Evidence Act, 1872"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 5366.0,
+      "n_chunks": 10
+    },
+    {
+      "id": 5,
+      "query": "Transfer of Property Act Section 54 sale of immovable property",
+      "category": "exact",
+      "score": 100,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "None 54",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "54"
+        ],
+        "act_name": [
+          "Transfer of Property Act, 1882"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 333.0,
+      "n_chunks": 1
+    },
+    {
+      "id": 6,
+      "query": "Section 144 CrPC now Section 163 BNSS power to issue orders",
+      "category": "exact",
+      "score": 85,
+      "qi_intent": "cross_act_mapping",
+      "qi_confidence": 0.9,
+      "qi_source": "Code of Criminal Procedure, 1973 144",
+      "qi_target": "Bharatiya Nagarik Suraksha Sanhita, 2023 163",
+      "qi_strategy": "filtered_dual_act",
+      "qi_filters": {
+        "section_number": [
+          "144",
+          "163"
+        ],
+        "act_name": [
+          "Code of Criminal Procedure, 1973",
+          "Bharatiya Nagarik Suraksha Sanhita, 2023"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 1531.2,
+      "n_chunks": 7
+    },
+    {
+      "id": 7,
+      "query": "Section 498A IPC punishment for dowry harassment",
+      "category": "exact",
+      "score": 80,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "Indian Penal Code, 1860 498a",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "498a"
+        ],
+        "act_name": [
+          "Indian Penal Code, 1860"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 4940.8,
+      "n_chunks": 10
+    },
+    {
+      "id": 8,
+      "query": "NDPS Act Section 20 punishment for drug trafficking",
+      "category": "exact",
+      "score": 80,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "None 20",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "20"
+        ],
+        "act_name": [
+          "Narcotic Drugs and Psychotropic Substances Act, 1985"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 3828.9,
+      "n_chunks": 10
+    },
+    {
+      "id": 9,
+      "query": "Article 21 Constitution of India right to life and personal liberty",
+      "category": "exact",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "filtered",
+      "retrieve_ms": 6264.6,
+      "n_chunks": 10
+    },
+    {
+      "id": 10,
+      "query": "Consumer Protection Act Section 38 unfair trade practice",
+      "category": "exact",
+      "score": 100,
+      "qi_intent": "section_lookup",
+      "qi_confidence": 0.7,
+      "qi_source": "None 38",
+      "qi_target": "None None",
+      "qi_strategy": "filtered_single_act",
+      "qi_filters": {
+        "section_number": [
+          "38"
+        ],
+        "act_name": [
+          "Consumer Protection Act, 2019"
+        ]
+      },
+      "search_method": "filtered",
+      "retrieve_ms": 302.3,
+      "n_chunks": 1
+    },
+    {
+      "id": 11,
+      "query": "What happens if someone is charged with a crime they didn't commit?",
+      "category": "similar",
+      "score": 85,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 10447.3,
+      "n_chunks": 10
+    },
+    {
+      "id": 12,
+      "query": "My in-laws are demanding money from me. What legal options do I have?",
+      "category": "similar",
+      "score": 83,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 7789.0,
+      "n_chunks": 10
+    },
+    {
+      "id": 13,
+      "query": "Someone forged my signature on a document. Is that a crime?",
+      "category": "similar",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 7077.2,
+      "n_chunks": 10
+    },
+    {
+      "id": 14,
+      "query": "Is a confession made to police admissible in court?",
+      "category": "similar",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 8059.8,
+      "n_chunks": 10
+    },
+    {
+      "id": 15,
+      "query": "What is the time limit to file a civil suit in India?",
+      "category": "similar",
+      "score": 90,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 9151.8,
+      "n_chunks": 10
+    },
+    {
+      "id": 16,
+      "query": "My employer is not paying wages. What legal remedy do I have?",
+      "category": "similar",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 11139.5,
+      "n_chunks": 10
+    },
+    {
+      "id": 17,
+      "query": "Can a minor enter into a valid contract?",
+      "category": "similar",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 10335.4,
+      "n_chunks": 10
+    },
+    {
+      "id": 18,
+      "query": "What is the punishment for driving under influence of alcohol in India?",
+      "category": "similar",
+      "score": 87,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 11425.9,
+      "n_chunks": 10
+    },
+    {
+      "id": 19,
+      "query": "How does inheritance work if someone dies without a will in Hindu family?",
+      "category": "similar",
+      "score": 87,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 9897.5,
+      "n_chunks": 10
+    },
+    {
+      "id": 20,
+      "query": "What rights does an accused person have during police interrogation?",
+      "category": "similar",
+      "score": 92,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.65,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 10794.1,
+      "n_chunks": 10
+    },
+    {
+      "id": 21,
+      "query": "What is the capital of France?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.4,
+      "n_chunks": 0
+    },
+    {
+      "id": 22,
+      "query": "Tell me a joke about lawyers",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.3,
+      "n_chunks": 0
+    },
+    {
+      "id": 23,
+      "query": "How do I make pasta carbonara?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.4,
+      "n_chunks": 0
+    },
+    {
+      "id": 24,
+      "query": "What is the best programming language?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.3,
+      "n_chunks": 0
+    },
+    {
+      "id": 25,
+      "query": "Who won the last FIFA World Cup?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.3,
+      "n_chunks": 0
+    },
+    {
+      "id": 26,
+      "query": "How do I train my dog?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.2,
+      "n_chunks": 0
+    },
+    {
+      "id": 27,
+      "query": "What is machine learning?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.3,
+      "n_chunks": 0
+    },
+    {
+      "id": 28,
+      "query": "Recommend a good restaurant in Mumbai",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.4,
+      "n_chunks": 0
+    },
+    {
+      "id": 29,
+      "query": "What is the weather today?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.3,
+      "n_chunks": 0
+    },
+    {
+      "id": 30,
+      "query": "How do I invest in cryptocurrency?",
+      "category": "irrelevant",
+      "score": 100,
+      "qi_intent": "concept_search",
+      "qi_confidence": 0.5,
+      "qi_source": "None None",
+      "qi_target": "None None",
+      "qi_strategy": "unfiltered_broad",
+      "qi_filters": {},
+      "search_method": "unfiltered",
+      "retrieve_ms": 0.3,
+      "n_chunks": 0
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import json
 import time
 
 os.environ["HF_HUB_OFFLINE"] = "1"
-sys.path.insert(0, r"D:\Vs Code\VS code\Hector")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from core.query_intelligence import analyze_query
 from core.query_parser import get_parser

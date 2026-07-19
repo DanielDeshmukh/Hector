@@ -1,5 +1,5 @@
 # HECTOR - Docker Compose
-# Usage:
+# Usage (from hector/ directory):
 #   docker compose up -d              # Start API only
 #   docker compose --profile full up  # Start API + Frontend
 #   docker compose run downloader     # Download legal PDFs
@@ -7,13 +7,15 @@
 
 services:
   api:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: hector-api
     ports:
       - "8000:8000"
     volumes:
       - hector_db:/app/hector_db
-      - ./data/Books:/app/data/Books
+      - ./backend/data/Books:/app/data/Books
       - hector_logs:/app/.hector_logs
     env_file:
       - .env
@@ -40,13 +42,13 @@ services:
 
   frontend:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: frontend.Dockerfile
     container_name: hector-frontend
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
     depends_on:
       - api
     profiles:
@@ -64,20 +66,24 @@ services:
         max-file: "3"
 
   downloader:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: hector-downloader
     volumes:
-      - ./data/Books:/app/data/Books
+      - ./backend/data/Books:/app/data/Books
     entrypoint: ["python", "scripts/download_books.py"]
     profiles:
       - tools
 
   ingest:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: hector-ingest
     volumes:
       - hector_db:/app/hector_db
-      - ./data/Books:/app/data/Books
+      - ./backend/data/Books:/app/data/Books
     env_file:
       - .env
     entrypoint: ["python", "-m", "utils.enhanced_ingestor"]
@@ -85,11 +91,13 @@ services:
       - tools
 
   status:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: hector-status
     volumes:
       - hector_db:/app/hector_db
-      - ./data/Books:/app/data/Books
+      - ./backend/data/Books:/app/data/Books
     entrypoint: ["python", "main.py", "status"]
     profiles:
       - tools

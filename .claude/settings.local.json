@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(\"d:/Vs Code/VS code/Hector/venv/Scripts/pip.exe\" list)"
-    ]
-  }
-}

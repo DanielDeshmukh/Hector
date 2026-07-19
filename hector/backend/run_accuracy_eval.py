@@ -6,7 +6,7 @@ import time
 import json
 
 os.environ["HF_HUB_OFFLINE"] = "1"
-sys.path.insert(0, r"D:\Vs Code\VS code\Hector")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from core.orchestrator import HectorOrchestrator
 
