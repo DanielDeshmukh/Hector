@@ -21,7 +21,7 @@ from core.embedding_router import EmbeddingRouter, get_embedding_router
 from core.query_expander import QueryExpander, get_query_expander
 from core.entity_reranker import EntityReranker, get_entity_reranker
 from data.hybrid_retriever import HectorHybridRetriever
-from core.query_intelligence import analyze_query, QueryAnalysis
+from core.query_intelligence import analyze_query
 
 # Optional: Only import verifier if available (graceful degradation)
 try:

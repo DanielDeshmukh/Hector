@@ -50,7 +50,6 @@ _service_lock = Lock()
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    import logging
     logger.info("Pre-warming HECTOR service (loading models, BM25 index)...")
     try:
         get_service()
