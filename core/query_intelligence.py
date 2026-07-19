@@ -252,57 +252,74 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
             if m:
                 target_section_hint = m.group(1)
 
-    # Concept mapping: natural language -> legal concepts + acts
+    # Concept mapping: natural language -> legal concepts + acts + sections
     # This helps when users describe situations in plain English
+    # Format: (pattern, concepts, acts, sections)
     CONCEPT_MAP = [
         (r"in.?laws?.*demand|dowry.*demand|demanding.*money.*marriage|bride.*burn",
          ["dowry", "cruelty", "498A", "maintenance"],
-         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"]),
+         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"],
+         ["498A"]),
         (r"domestic\s+violence|husband.*beat|wife.*abuse",
          ["domestic violence", "cruelty", "498A"],
-         ["Indian Penal Code, 1860", "Protection of Women from Domestic Violence Act, 2005"]),
+         ["Indian Penal Code, 1860", "Protection of Women from Domestic Violence Act, 2005"],
+         ["498A"]),
         (r"employer.*not\s+pay|wages.*unpaid|salary.*pending|unpaid\s+wages",
          ["wages", "employer", "industrial dispute", "labour court"],
-         ["Industrial Disputes Act, 1947"]),
+         ["Industrial Disputes Act, 1947"],
+         []),
         (r"minor.*contract|child.*agreement|under\s+18.*contract",
          ["minor", "contract", "void", "Section 10"],
-         ["Indian Contract Act, 1872"]),
+         ["Indian Contract Act, 1872"],
+         ["10"]),
         (r"drunk\s+driv|drink.*drive|alcohol.*driv|dwi|dui",
          ["drunk driving", "Motor Vehicles Act", "Section 185", "penalty"],
-         ["Motor Vehicles Act, 1988"]),
+         ["Motor Vehicles Act, 1988"],
+         ["185"]),
         (r"inheritance.*will|intestate|die.*without\s+will|succession.*hindu",
          ["intestate", "Hindu Succession Act", "heir", "coparcenary"],
-         ["Hindu Succession Act, 1956"]),
+         ["Hindu Succession Act, 1956"],
+         []),
         (r"accused.*right|right.*accused|police.*interrogat|arrested.*right|right.*interrogat",
          ["accused", "rights", "police", "legal counsel", "advocate", "Section 41D", "BNSS"],
-         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"]),
+         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"],
+         ["41D"]),
         (r"confession.*police|police.*confession|admissib.*confession",
          ["confession", "police", "admissible", "Section 25", "evidence"],
-         ["Indian Evidence Act, 1872", "Bharatiya Sakshya Adhiniyam, 2023"]),
-        (r"limitation.*suit|time\s+limit.*sue|filing.*deadline|limitation\s+period",
+         ["Indian Evidence Act, 1872", "Bharatiya Sakshya Adhiniyam, 2023"],
+         ["25"]),
+        (r"limitation.*suit|time\s+limit.*(sue|suit)|filing.*deadline|limitation\s+period|time\s+limit.*file",
          ["limitation", "time limit", "3 years", "Limitation Act"],
-         ["Limitation Act, 1963"]),
+         ["Limitation Act, 1963"],
+         []),
         (r"false.*case|wrongful.*charge|framed.*crime|falsely.*accused|charged.*crime.*didn|didn.*commit",
          ["false", "wrongful", "acquittal", "innocent", "malicious prosecution", "wrongful prosecution"],
-         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023", "Code of Criminal Procedure, 1973"]),
+         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023", "Code of Criminal Procedure, 1973"],
+         ["211"]),
         (r"forged.*sign|signature.*forg|forgery.*document",
          ["forgery", "fraud", "signature", "crime"],
-         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"]),
+         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"],
+         ["463", "471"]),
         (r"bail.*provisions?|anticipatory.*bail|bail.*application|grant.*bail|default.*bail",
          ["bail", "anticipatory bail", "default bail", "Section 480", "BNSS"],
-         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"]),
+         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"],
+         ["437", "438", "480"]),
         (r"consumer.*rights?|defective.*goods|deficiency.*service|unfair.*trade.*practice",
          ["consumer rights", "defective goods", "deficiency services", "unfair trade", "Section 38", "Consumer Protection Act"],
-         ["Consumer Protection Act, 2019"]),
+         ["Consumer Protection Act, 2019"],
+         ["38"]),
     ]
 
     detected_concepts = []
     detected_acts_from_concepts = []
-    for pattern, concepts, acts in CONCEPT_MAP:
+    detected_sections_from_concepts = []
+    for pattern, concepts, acts, sections in CONCEPT_MAP:
         if re.search(pattern, lowered):
             detected_concepts.extend(concepts)
             detected_acts_from_concepts.extend(acts)
+            detected_sections_from_concepts.extend(sections)
     detected_acts_from_concepts = list(dict.fromkeys(detected_acts_from_concepts))
+    detected_sections_from_concepts = list(dict.fromkeys(detected_sections_from_concepts))
 
     # Detect source act
     source_act = None
@@ -528,7 +545,6 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
             analysis.rewritten_queries = [f"{' '.join(detected_concepts)} {query}"]
             analysis.confidence = 0.65
             # Only use filtered search when the QUERY TEXT explicitly mentions an act
-            # (not when concept mapping infers acts from natural language)
             query_has_act = bool(re.search(
                 r"\b(ipc|bns|crpc|bnss|bsa|cpc|act)\b"
                 r"|indian penal code|bharatiya nyaya sanhita"
