@@ -5,6 +5,7 @@ Run after ingestion completes to fix metadata:
 2. Backfill section_number from chunk text content
 3. Backfill chapter from chunk text content
 """
+
 import re
 import sys
 import io
@@ -20,9 +21,15 @@ COLLECTION = "indian_law_bns_local"
 
 # Section number patterns (ordered by specificity)
 SECTION_PATTERNS = [
-    re.compile(r"\[.*?\|\s*Section\s+(\d{1,4}[A-Z]?)\s*\]", re.IGNORECASE),  # [Act | Section N]
-    re.compile(r"(?:Section|SECTION)\s+(\d{1,4}[A-Z]?)\s*[:\-–]", re.IGNORECASE),  # Section N:
-    re.compile(r"(?:Section|SECTION)\s+(\d{1,4}[A-Z]?)\.?\s", re.IGNORECASE),  # Section N.
+    re.compile(
+        r"\[.*?\|\s*Section\s+(\d{1,4}[A-Z]?)\s*\]", re.IGNORECASE
+    ),  # [Act | Section N]
+    re.compile(
+        r"(?:Section|SECTION)\s+(\d{1,4}[A-Z]?)\s*[:\-–]", re.IGNORECASE
+    ),  # Section N:
+    re.compile(
+        r"(?:Section|SECTION)\s+(\d{1,4}[A-Z]?)\.?\s", re.IGNORECASE
+    ),  # Section N.
     re.compile(r"(?:^|\n)\s*(\d{1,4}[A-Z]?)\.\s+[^a-z\d]", re.MULTILINE),  # N. Title
 ]
 
@@ -92,10 +99,17 @@ def classify_source_type(filename, structure_type, text):
 
     # Check content for bare act markers
     first_200 = text[:200].upper()
-    if any(marker in first_200 for marker in [
-        "AN ACT TO", "BE IT ENACTED", "SHORT TITLE",
-        "CHAPTER I", "PART I", "PRELIMINARY",
-    ]):
+    if any(
+        marker in first_200
+        for marker in [
+            "AN ACT TO",
+            "BE IT ENACTED",
+            "SHORT TITLE",
+            "CHAPTER I",
+            "PART I",
+            "PRELIMINARY",
+        ]
+    ):
         return "bare_act"
 
     # Check for numbered section pattern (bare act style)
@@ -180,7 +194,7 @@ def main():
         metas[i] = meta
 
         if (i + 1) % 5000 == 0:
-            print(f"  Processed {i+1}/{total}...")
+            print(f"  Processed {i + 1}/{total}...")
 
     # Write back in batches
     print("\nWriting back to ChromaDB...")
@@ -188,7 +202,7 @@ def main():
     for start in range(0, len(ids), BATCH):
         end = min(start + BATCH, len(ids))
         coll.update(ids=ids[start:end], metadatas=metas[start:end])
-        print(f"  Batch {start//BATCH + 1}: {end-start} chunks updated")
+        print(f"  Batch {start // BATCH + 1}: {end - start} chunks updated")
 
     # Report
     print(f"\n{'=' * 70}")
@@ -208,9 +222,9 @@ def main():
     with_chap = sum(1 for m in all_data2["metadatas"] if m.get("chapter"))
     with_st = sum(1 for m in all_data2["metadatas"] if m.get("source_type"))
     print("\n  Coverage after post-processing:")
-    print(f"    section_number: {with_sec}/{total} ({with_sec*100/total:.1f}%)")
-    print(f"    chapter:        {with_chap}/{total} ({with_chap*100/total:.1f}%)")
-    print(f"    source_type:    {with_st}/{total} ({with_st*100/total:.1f}%)")
+    print(f"    section_number: {with_sec}/{total} ({with_sec * 100 / total:.1f}%)")
+    print(f"    chapter:        {with_chap}/{total} ({with_chap * 100 / total:.1f}%)")
+    print(f"    source_type:    {with_st}/{total} ({with_st * 100 / total:.1f}%)")
     print("\nDone.")
 
 

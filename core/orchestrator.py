@@ -266,7 +266,9 @@ class HectorOrchestrator:
                     bns_entry = mapping_lower.get(ipc_sec.lower())
                     if bns_entry:
                         bns_num = bns_entry.get("new", "")
-                        if bns_num and bns_num not in (entities.get("bns_sections") or []):
+                        if bns_num and bns_num not in (
+                            entities.get("bns_sections") or []
+                        ):
                             entities.setdefault("bns_sections", []).append(bns_num)
 
             # QI metadata filters: merge QI output with parser entities

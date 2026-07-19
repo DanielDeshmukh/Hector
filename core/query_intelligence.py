@@ -227,6 +227,7 @@ def _short_act(full_name: str | None) -> str | None:
 
 # ── Rule-based fallback (no NIM call) ───────────────────────────────────
 
+
 def _rule_based_analysis(query: str) -> QueryAnalysis:
     """
     Fast rule-based query analysis. Used as fallback when NIM is unavailable,
@@ -255,58 +256,119 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
     # This helps when users describe situations in plain English
     # Format: (pattern, concepts, acts, sections)
     CONCEPT_MAP = [
-        (r"in.?laws?.*demand|dowry.*demand|demanding.*money.*marriage|bride.*burn",
-         ["dowry", "cruelty", "498A", "maintenance"],
-         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"],
-         ["498A"]),
-        (r"domestic\s+violence|husband.*beat|wife.*abuse",
-         ["domestic violence", "cruelty", "498A"],
-         ["Indian Penal Code, 1860", "Protection of Women from Domestic Violence Act, 2005"],
-         ["498A"]),
-        (r"employer.*not\s+pay|wages.*unpaid|salary.*pending|unpaid\s+wages",
-         ["wages", "employer", "industrial dispute", "labour court"],
-         ["Industrial Disputes Act, 1947"],
-         []),
-        (r"minor.*contract|child.*agreement|under\s+18.*contract",
-         ["minor", "contract", "void", "Section 10"],
-         ["Indian Contract Act, 1872"],
-         ["10"]),
-        (r"drunk\s+driv|drink.*drive|alcohol.*driv|dwi|dui",
-         ["drunk driving", "Motor Vehicles Act", "Section 185", "penalty"],
-         ["Motor Vehicles Act, 1988"],
-         ["185"]),
-        (r"inheritance.*will|intestate|die.*without\s+will|succession.*hindu",
-         ["intestate", "Hindu Succession Act", "heir", "coparcenary"],
-         ["Hindu Succession Act, 1956"],
-         []),
-        (r"accused.*right|right.*accused|police.*interrogat|arrested.*right|right.*interrogat",
-         ["accused", "rights", "police", "legal counsel", "advocate", "Section 41D", "BNSS"],
-         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"],
-         ["41D"]),
-        (r"confession.*police|police.*confession|admissib.*confession",
-         ["confession", "police", "admissible", "Section 25", "evidence"],
-         ["Indian Evidence Act, 1872", "Bharatiya Sakshya Adhiniyam, 2023"],
-         ["25"]),
-        (r"limitation.*suit|time\s+limit.*(sue|suit)|filing.*deadline|limitation\s+period|time\s+limit.*file",
-         ["limitation", "time limit", "3 years", "Limitation Act"],
-         ["Limitation Act, 1963"],
-         []),
-        (r"false.*case|wrongful.*charge|framed.*crime|falsely.*accused|charged.*crime.*didn|didn.*commit",
-         ["false", "wrongful", "acquittal", "innocent", "malicious prosecution", "wrongful prosecution"],
-         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023", "Code of Criminal Procedure, 1973"],
-         ["211"]),
-        (r"forged.*sign|signature.*forg|forgery.*document",
-         ["forgery", "fraud", "signature", "crime"],
-         ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"],
-         ["463", "471"]),
-        (r"bail.*provisions?|anticipatory.*bail|bail.*application|grant.*bail|default.*bail",
-         ["bail", "anticipatory bail", "default bail", "Section 480", "BNSS"],
-         ["Code of Criminal Procedure, 1973", "Bharatiya Nagarik Suraksha Sanhita, 2023"],
-         ["437", "438", "480"]),
-        (r"consumer.*rights?|defective.*goods|deficiency.*service|unfair.*trade.*practice",
-         ["consumer rights", "defective goods", "deficiency services", "unfair trade", "Section 38", "Consumer Protection Act"],
-         ["Consumer Protection Act, 2019"],
-         ["38"]),
+        (
+            r"in.?laws?.*demand|dowry.*demand|demanding.*money.*marriage|bride.*burn",
+            ["dowry", "cruelty", "498A", "maintenance"],
+            ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"],
+            ["498A"],
+        ),
+        (
+            r"domestic\s+violence|husband.*beat|wife.*abuse",
+            ["domestic violence", "cruelty", "498A"],
+            [
+                "Indian Penal Code, 1860",
+                "Protection of Women from Domestic Violence Act, 2005",
+            ],
+            ["498A"],
+        ),
+        (
+            r"employer.*not\s+pay|wages.*unpaid|salary.*pending|unpaid\s+wages",
+            ["wages", "employer", "industrial dispute", "labour court"],
+            ["Industrial Disputes Act, 1947"],
+            [],
+        ),
+        (
+            r"minor.*contract|child.*agreement|under\s+18.*contract",
+            ["minor", "contract", "void", "Section 10"],
+            ["Indian Contract Act, 1872"],
+            ["10"],
+        ),
+        (
+            r"drunk\s+driv|drink.*drive|alcohol.*driv|dwi|dui",
+            ["drunk driving", "Motor Vehicles Act", "Section 185", "penalty"],
+            ["Motor Vehicles Act, 1988"],
+            ["185"],
+        ),
+        (
+            r"inheritance.*will|intestate|die.*without\s+will|succession.*hindu",
+            ["intestate", "Hindu Succession Act", "heir", "coparcenary"],
+            ["Hindu Succession Act, 1956"],
+            [],
+        ),
+        (
+            r"accused.*right|right.*accused|police.*interrogat|arrested.*right|right.*interrogat",
+            [
+                "accused",
+                "rights",
+                "police",
+                "legal counsel",
+                "advocate",
+                "Section 41D",
+                "BNSS",
+            ],
+            [
+                "Code of Criminal Procedure, 1973",
+                "Bharatiya Nagarik Suraksha Sanhita, 2023",
+            ],
+            ["41D"],
+        ),
+        (
+            r"confession.*police|police.*confession|admissib.*confession",
+            ["confession", "police", "admissible", "Section 25", "evidence"],
+            ["Indian Evidence Act, 1872", "Bharatiya Sakshya Adhiniyam, 2023"],
+            ["25"],
+        ),
+        (
+            r"limitation.*suit|time\s+limit.*(sue|suit)|filing.*deadline|limitation\s+period|time\s+limit.*file",
+            ["limitation", "time limit", "3 years", "Limitation Act"],
+            ["Limitation Act, 1963"],
+            [],
+        ),
+        (
+            r"false.*case|wrongful.*charge|framed.*crime|falsely.*accused|charged.*crime.*didn|didn.*commit",
+            [
+                "false",
+                "wrongful",
+                "acquittal",
+                "innocent",
+                "malicious prosecution",
+                "wrongful prosecution",
+            ],
+            [
+                "Indian Penal Code, 1860",
+                "Bharatiya Nyaya Sanhita, 2023",
+                "Code of Criminal Procedure, 1973",
+            ],
+            ["211"],
+        ),
+        (
+            r"forged.*sign|signature.*forg|forgery.*document",
+            ["forgery", "fraud", "signature", "crime"],
+            ["Indian Penal Code, 1860", "Bharatiya Nyaya Sanhita, 2023"],
+            ["463", "471"],
+        ),
+        (
+            r"bail.*provisions?|anticipatory.*bail|bail.*application|grant.*bail|default.*bail",
+            ["bail", "anticipatory bail", "default bail", "Section 480", "BNSS"],
+            [
+                "Code of Criminal Procedure, 1973",
+                "Bharatiya Nagarik Suraksha Sanhita, 2023",
+            ],
+            ["437", "438", "480"],
+        ),
+        (
+            r"consumer.*rights?|defective.*goods|deficiency.*service|unfair.*trade.*practice",
+            [
+                "consumer rights",
+                "defective goods",
+                "deficiency services",
+                "unfair trade",
+                "Section 38",
+                "Consumer Protection Act",
+            ],
+            ["Consumer Protection Act, 2019"],
+            ["38"],
+        ),
     ]
 
     detected_concepts = []
@@ -318,7 +380,9 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
             detected_acts_from_concepts.extend(acts)
             detected_sections_from_concepts.extend(sections)
     detected_acts_from_concepts = list(dict.fromkeys(detected_acts_from_concepts))
-    detected_sections_from_concepts = list(dict.fromkeys(detected_sections_from_concepts))
+    detected_sections_from_concepts = list(
+        dict.fromkeys(detected_sections_from_concepts)
+    )
 
     # Detect source act
     source_act = None
@@ -392,13 +456,28 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
     ACT_PATTERNS = [
         (r"\bipc\b|\bindian penal code\b", "Indian Penal Code, 1860"),
         (r"\bbns\b|\bbharatiya nyaya sanhita\b", "Bharatiya Nyaya Sanhita, 2023"),
-        (r"\bcrpc\b|\bcode of criminal procedure\b", "Code of Criminal Procedure, 1973"),
-        (r"\bbnss\b|\bbharatiya nagarik suraksha sanhita\b", "Bharatiya Nagarik Suraksha Sanhita, 2023"),
-        (r"\bbsa\b|\bbharatiya sakshya adhiniyam\b", "Bharatiya Sakshya Adhiniyam, 2023"),
-        (r"\biea\b|\bindian evidence act\b|\bevidence act\b", "Indian Evidence Act, 1872"),
+        (
+            r"\bcrpc\b|\bcode of criminal procedure\b",
+            "Code of Criminal Procedure, 1973",
+        ),
+        (
+            r"\bbnss\b|\bbharatiya nagarik suraksha sanhita\b",
+            "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        ),
+        (
+            r"\bbsa\b|\bbharatiya sakshya adhiniyam\b",
+            "Bharatiya Sakshya Adhiniyam, 2023",
+        ),
+        (
+            r"\biea\b|\bindian evidence act\b|\bevidence act\b",
+            "Indian Evidence Act, 1872",
+        ),
         (r"\bcpc\b|\bcode of civil procedure\b", "Code of Civil Procedure, 1908"),
         (r"\bconsumer protection\b", "Consumer Protection Act, 2019"),
-        (r"\bndps\b|\bnarcotic drugs\b", "Narcotic Drugs and Psychotropic Substances Act, 1985"),
+        (
+            r"\bndps\b|\bnarcotic drugs\b",
+            "Narcotic Drugs and Psychotropic Substances Act, 1985",
+        ),
         (r"\btransfer of property\b", "Transfer of Property Act, 1882"),
         (r"\bconstitution\b", "Constitution of India"),
         (r"\bindian contract act\b", "Indian Contract Act, 1872"),
@@ -418,10 +497,23 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
 
     # Detect cross-act intent
     cross_act_keywords = [
-        "equivalent", "counterpart", "replaced by", "corresponding",
-        "new section", "old section", "was section", "now section",
-        "bns equivalent", "ipc equivalent", "mapped to", "corresponds to",
-        "compare", "comparison", "difference between", "vs", "versus",
+        "equivalent",
+        "counterpart",
+        "replaced by",
+        "corresponding",
+        "new section",
+        "old section",
+        "was section",
+        "now section",
+        "bns equivalent",
+        "ipc equivalent",
+        "mapped to",
+        "corresponds to",
+        "compare",
+        "comparison",
+        "difference between",
+        "vs",
+        "versus",
     ]
     is_cross_act = any(kw in lowered for kw in cross_act_keywords)
 
@@ -467,7 +559,9 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
             if target_section_hint:
                 analysis.target_act = "Bharatiya Nagarik Suraksha Sanhita, 2023"
                 analysis.target_section = target_section_hint
-                analysis.mapping_info = f"CrPC {source_section} to BNSS {target_section_hint}"
+                analysis.mapping_info = (
+                    f"CrPC {source_section} to BNSS {target_section_hint}"
+                )
                 analysis.confidence = 0.90
             else:
                 analysis.confidence = 0.6
@@ -475,7 +569,9 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
             if target_section_hint:
                 analysis.target_act = "Code of Criminal Procedure, 1973"
                 analysis.target_section = target_section_hint
-                analysis.mapping_info = f"BNSS {source_section} to CrPC {target_section_hint}"
+                analysis.mapping_info = (
+                    f"BNSS {source_section} to CrPC {target_section_hint}"
+                )
                 analysis.confidence = 0.90
             else:
                 analysis.confidence = 0.5
@@ -499,13 +595,19 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
         analysis.metadata_filters = filters
 
         # Build rewritten queries for both acts
-        source_full = ACT_ALIASES.get(source_act.lower(), source_act) if source_act else None
+        source_full = (
+            ACT_ALIASES.get(source_act.lower(), source_act) if source_act else None
+        )
         rewritten = []
         if source_full and source_section:
-            rewritten.append(f"Section {source_section} {SHORT_ACT_MAP.get(source_act.lower(), source_act)} {(' '.join(analysis.legal_concepts)) if analysis.legal_concepts else ''}")
+            rewritten.append(
+                f"Section {source_section} {SHORT_ACT_MAP.get(source_act.lower(), source_act)} {(' '.join(analysis.legal_concepts)) if analysis.legal_concepts else ''}"
+            )
         if analysis.target_act and analysis.target_section:
             target_short = _short_act(analysis.target_act)
-            rewritten.append(f"Section {analysis.target_section} {target_short} {(' '.join(analysis.legal_concepts)) if analysis.legal_concepts else ''}")
+            rewritten.append(
+                f"Section {analysis.target_section} {target_short} {(' '.join(analysis.legal_concepts)) if analysis.legal_concepts else ''}"
+            )
         if not rewritten:
             rewritten.append(query)
         analysis.rewritten_queries = rewritten
@@ -544,16 +646,18 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
             analysis.rewritten_queries = [f"{' '.join(detected_concepts)} {query}"]
             analysis.confidence = 0.65
             # Only use filtered search when the QUERY TEXT explicitly mentions an act
-            query_has_act = bool(re.search(
-                r"\b(ipc|bns|crpc|bnss|bsa|cpc|act)\b"
-                r"|indian penal code|bharatiya nyaya sanhita"
-                r"|code of criminal procedure|bharatiya nagarik suraksha sanhita"
-                r"|bharatiya sakshya adhiniyam|indian evidence act"
-                r"|transfer of property act|consumer protection act"
-                r"|ndps|narcotic|motor vehicles act|hindu succession"
-                r"|indian contract act|limitation act",
-                lowered
-            ))
+            query_has_act = bool(
+                re.search(
+                    r"\b(ipc|bns|crpc|bnss|bsa|cpc|act)\b"
+                    r"|indian penal code|bharatiya nyaya sanhita"
+                    r"|code of criminal procedure|bharatiya nagarik suraksha sanhita"
+                    r"|bharatiya sakshya adhiniyam|indian evidence act"
+                    r"|transfer of property act|consumer protection act"
+                    r"|ndps|narcotic|motor vehicles act|hindu succession"
+                    r"|indian contract act|limitation act",
+                    lowered,
+                )
+            )
             if query_has_act and detected_acts_from_concepts:
                 analysis.metadata_filters = {"act_name": detected_acts_from_concepts}
                 analysis.search_strategy = "filtered_single_act"
@@ -569,6 +673,7 @@ def _rule_based_analysis(query: str) -> QueryAnalysis:
 
 
 # ── NIM-based analysis ──────────────────────────────────────────────────
+
 
 def _nim_analysis(query: str) -> QueryAnalysis | None:
     """
@@ -616,14 +721,46 @@ def _build_mapping_context() -> str:
     lines.append("")
     lines.append("IPC→BNS key cross-references (IPC section → BNS section):")
     # Include the most important 50 mappings
-    important = ["302", "304", "304B", "376", "379", "303", "323", "498A",
-                 "506", "420", "406", "354", "299", "300", "307", "308",
-                 "392", "425", "441", "463", "120A", "120B", "34", "147",
-                 "148", "149", "509", "375", "301", "395", "493", "498"]
+    important = [
+        "302",
+        "304",
+        "304B",
+        "376",
+        "379",
+        "303",
+        "323",
+        "498A",
+        "506",
+        "420",
+        "406",
+        "354",
+        "299",
+        "300",
+        "307",
+        "308",
+        "392",
+        "425",
+        "441",
+        "463",
+        "120A",
+        "120B",
+        "34",
+        "147",
+        "148",
+        "149",
+        "509",
+        "375",
+        "301",
+        "395",
+        "493",
+        "498",
+    ]
     for ipc_sec in important:
         data = IPC_TO_BNS.get(ipc_sec, {})
         if data:
-            lines.append(f"  IPC {ipc_sec} to BNS {data['new']} ({data.get('name', '')})")
+            lines.append(
+                f"  IPC {ipc_sec} to BNS {data['new']} ({data.get('name', '')})"
+            )
     return "\n".join(lines)
 
 
@@ -647,13 +784,19 @@ def _parse_nim_output(data: dict, query: str) -> QueryAnalysis:
     if meta:
         filters = {}
         if meta.get("act_name"):
-            filters["act_name"] = [_normalize_act_name(a) or a for a in meta["act_name"]]
+            filters["act_name"] = [
+                _normalize_act_name(a) or a for a in meta["act_name"]
+            ]
         if meta.get("section_number"):
             filters["section_number"] = meta["section_number"]
         analysis.metadata_filters = filters
 
     # If cross-act mapping and NIM didn't provide target, look it up
-    if analysis.intent == "cross_act_mapping" and analysis.source_section and not analysis.target_section:
+    if (
+        analysis.intent == "cross_act_mapping"
+        and analysis.source_section
+        and not analysis.target_section
+    ):
         if analysis.source_act and "ipc" in (analysis.source_act or "").lower():
             mapping = IPC_TO_BNS.get(analysis.source_section, {})
             if mapping:
@@ -669,6 +812,7 @@ def _parse_nim_output(data: dict, query: str) -> QueryAnalysis:
 
 
 # ── Public API ──────────────────────────────────────────────────────────
+
 
 def analyze_query(query: str, use_nim: bool = True) -> QueryAnalysis:
     """
