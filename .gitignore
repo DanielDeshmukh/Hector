@@ -223,6 +223,7 @@ __marimo__/
 
 # Legal PDF corpus (large binaries, regenerable)
 /data/Books
+/api/data/Books
 
 # Project planning documents
 /completion-roadmap.md
