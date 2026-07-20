@@ -24,6 +24,9 @@ pytesseract~=0.3.13
 typer[all]~=0.15.0
 rich~=13.9.0
 
+# --- Security ---
+bcrypt~=4.2.0
+
 # --- Utilities ---
 tqdm~=4.67.0
 httpx~=0.28.0
