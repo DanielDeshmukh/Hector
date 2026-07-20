@@ -13,17 +13,12 @@ try:
 except ImportError:
     Pinecone = None
 
-try:
-    import requests as _requests
-except ImportError:
-    _requests = None
-
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DEFAULT_INDEX_NAME = "hector-legal"
 DEFAULT_COLLECTION = "indian_law_bns"
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
-EMBEDDING_DIM = 384
+EMBEDDING_MODEL = "multilingual-e5-large"
+EMBEDDING_DIM = 1024
 
 
 class SimpleBM25:
@@ -1022,29 +1017,32 @@ class HectorHybridRetriever:
         return None
 
     def _embed_text(self, text):
-        """Embed text using Pinecone Inference API (free 5M tokens/month)."""
-        api_key = os.getenv("PINECONE_API_KEY", "")
-        if not api_key or _requests is None:
-            return None
+        """Embed text using NVIDIA NIM API."""
         try:
-            resp = _requests.post(
-                "https://api.pinecone.io/embed",
+            import httpx
+            nim_key = os.getenv("NIM_API_KEY", "")
+            nim_url = os.getenv("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
+            if not nim_key:
+                return None
+            resp = httpx.post(
+                f"{nim_url}/embeddings",
                 headers={
-                    "api-key": api_key,
+                    "Authorization": f"Bearer {nim_key}",
                     "Content-Type": "application/json",
                 },
                 json={
-                    "model": EMBEDDING_MODEL,
-                    "inputs": [text],
-                    "parameters": {"input_type": "query", "truncate": "END"},
+                    "input": [text],
+                    "model": "nvidia/nv-embedqa-e5-v5",
+                    "encoding_format": "float",
+                    "input_type": "query",
                 },
                 timeout=15,
             )
             resp.raise_for_status()
             data = resp.json()
-            vectors = data.get("data", [])
-            if vectors:
-                return vectors[0].get("values", [])
+            items = data.get("data", [])
+            if items:
+                return items[0].get("embedding", [])
         except Exception:
             pass
         return None
