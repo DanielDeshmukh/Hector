@@ -15,6 +15,8 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+_EVAL_DIR = str(Path(__file__).resolve().parents[1] / "evaluation")
+
 from evaluation.evaluate_rag import (
     compute_citation_metrics,
     compute_ragas_metrics,
@@ -34,13 +36,13 @@ class TestDatasetLoading:
 
     def test_load_valid_dataset(self):
         """Successfully loads a valid train.json."""
-        data = load_dataset("evaluation")
+        data = load_dataset(_EVAL_DIR)
         assert isinstance(data, list)
         assert len(data) >= 20
 
     def test_dataset_has_required_fields(self):
         """Every entry has query and ground_truth."""
-        data = load_dataset("evaluation")
+        data = load_dataset(_EVAL_DIR)
         for item in data:
             assert "query" in item, f"Missing 'query' in: {item}"
             assert "ground_truth" in item, f"Missing 'ground_truth' in: {item}"
@@ -49,7 +51,7 @@ class TestDatasetLoading:
 
     def test_dataset_has_optional_fields(self):
         """Every entry has expected_sections, expected_acts, category."""
-        data = load_dataset("evaluation")
+        data = load_dataset(_EVAL_DIR)
         for item in data:
             assert "expected_sections" in item
             assert "expected_acts" in item
@@ -57,7 +59,7 @@ class TestDatasetLoading:
 
     def test_dataset_categories(self):
         """Dataset covers multiple legal categories."""
-        data = load_dataset("evaluation")
+        data = load_dataset(_EVAL_DIR)
         categories = set(item["category"] for item in data)
         assert "legal_research" in categories
         assert "cross_reference" in categories
@@ -65,7 +67,7 @@ class TestDatasetLoading:
 
     def test_dataset_cross_references(self):
         """Cross-reference entries have expected sections and acts."""
-        data = load_dataset("evaluation")
+        data = load_dataset(_EVAL_DIR)
         xref = [item for item in data if item["category"] == "cross_reference"]
         assert len(xref) >= 5
         for item in xref:
