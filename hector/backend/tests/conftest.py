@@ -3,10 +3,12 @@
 import os
 import sys
 
-# Ensure project root is on path
+# Ensure api/ and project root are on path
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-if PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, PROJECT_ROOT)
+API_ROOT = os.path.join(PROJECT_ROOT, "api")
+for p in (API_ROOT, PROJECT_ROOT):
+    if p not in sys.path:
+        sys.path.insert(0, p)
 
 # Set env vars BEFORE any test module imports (module-level imports depend on these)
 os.environ.setdefault("HECTOR_API_KEY", "test-api-key-for-testing-only")
