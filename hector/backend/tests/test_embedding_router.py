@@ -16,6 +16,15 @@ from core.embedding_router import (
 )
 
 
+def _embedder_available():
+    try:
+        from sentence_transformers import SentenceTransformer  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+@unittest.skipUnless(_embedder_available(), "sentence-transformers not installed")
 class TestEmbeddingRouter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -164,6 +173,7 @@ class TestEmbeddingRouter(unittest.TestCase):
         self.assertEqual(route, "LEGAL_RESEARCH")
 
 
+@unittest.skipUnless(_embedder_available(), "sentence-transformers not installed")
 class TestConvenienceFunctions(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -179,6 +189,7 @@ class TestConvenienceFunctions(unittest.TestCase):
         self.assertIs(r1, r2)
 
 
+@unittest.skipUnless(_embedder_available(), "sentence-transformers not installed")
 class TestScoreOrdering(unittest.TestCase):
     """Test that the router produces correct relative score ordering."""
 
