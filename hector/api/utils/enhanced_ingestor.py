@@ -11,7 +11,11 @@ from typing import Any
 os.environ.setdefault("HF_HUB_OFFLINE", "0")
 os.environ.setdefault("TRANSFORMERS_OFFLINE", "0")
 
-import chromadb
+try:
+    import chromadb
+except ImportError:
+    chromadb = None
+
 from dotenv import load_dotenv
 from pypdf import PdfReader
 from rich.console import Console

@@ -1,6 +1,7 @@
 import math
 import os
 import re
+import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -8,29 +9,21 @@ from datetime import datetime
 from utils.retry import retry
 
 try:
-    import chromadb
-    from chromadb.utils import embedding_functions
+    from pinecone import Pinecone
 except ImportError:
-    chromadb = None
-    embedding_functions = None
+    Pinecone = None
 
 try:
-    from sentence_transformers import CrossEncoder
+    import requests as _requests
 except ImportError:
-    CrossEncoder = None
-
-try:
-    from core.embedding_provider import get_embedding_provider
-    from core.rerank_provider import get_rerank_provider
-except ImportError:
-    get_embedding_provider = None
-    get_rerank_provider = None
+    _requests = None
 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DB_PATH = os.path.join(PROJECT_ROOT, "hector_db")
+DEFAULT_INDEX_NAME = "hector-legal"
 DEFAULT_COLLECTION = "indian_law_bns"
-DEFAULT_CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+EMBEDDING_DIM = 384
 
 
 class SimpleBM25:
@@ -110,187 +103,143 @@ class HectorHybridRetriever:
         "indian evidence act": "BSA",
         "cpc": "CPC",
     }
-    # Legal intent detection — keywords that confirm a query is about law
     LEGAL_INTENT_KEYWORDS = frozenset(
         (
-            "section",
-            "ipc",
-            "bns",
-            "crpc",
-            "bnss",
-            "bsa",
-            "cpc",
-            "act",
-            "court",
-            "judge",
-            "justice",
-            "law",
-            "legal",
-            "statute",
-            "code",
-            "murder",
-            "theft",
-            "assault",
-            "rape",
-            "fraud",
-            "forgery",
-            "cheating",
-            "bail",
-            "arrest",
-            "custody",
-            "fir",
-            "charge",
-            "accused",
-            "conviction",
-            "acquittal",
-            "sentence",
-            "punishment",
-            "imprisonment",
-            "fine",
-            "plaintiff",
-            "defendant",
-            "petition",
-            "writ",
-            "appeal",
-            "judgment",
-            "dowry",
-            "cruelty",
-            "divorce",
-            "maintenance",
-            "alimony",
-            "custody",
-            "adoption",
-            "guardian",
-            "succession",
-            "inheritance",
-            "will",
-            "probate",
-            "contract",
-            "agreement",
-            "consideration",
-            "void",
-            "voidable",
-            "negligence",
-            "liability",
-            "damages",
-            "compensation",
-            "injunction",
-            "mortgage",
-            "lease",
-            "rent",
-            "eviction",
-            "trespass",
-            "partition",
-            "consumer",
-            "wages",
-            "employer",
-            "employee",
-            "termination",
-            "industrial",
-            "labour",
-            "labor",
-            "drunk",
-            "driving",
-            "narcotic",
-            "ndps",
-            "cyber",
-            "digital",
-            "electronic",
-            "evidence",
-            "witness",
-            "confession",
-            "admissible",
-            "admissibility",
-            "interrogation",
-            "accused",
-            "right to",
-            "fundamental right",
-            "article",
-            "constitutional",
-            "high court",
-            "supreme court",
-            "tribunal",
-            "crime",
-            "offence",
-            "offense",
-            "criminal",
-            "cognizable",
-            "bailable",
-            "remedy",
-            "relief",
-            "claim",
-            "dispute",
-            "case",
-            "suit",
+            "section", "ipc", "bns", "crpc", "bnss", "bsa", "cpc", "act",
+            "court", "judge", "justice", "law", "legal", "statute", "code",
+            "murder", "theft", "assault", "rape", "fraud", "forgery", "cheating",
+            "bail", "arrest", "custody", "fir", "charge", "accused", "conviction",
+            "acquittal", "sentence", "punishment", "imprisonment", "fine",
+            "plaintiff", "defendant", "petition", "writ", "appeal", "judgment",
+            "dowry", "cruelty", "divorce", "maintenance", "alimony", "adoption",
+            "guardian", "succession", "inheritance", "will", "probate", "contract",
+            "agreement", "consideration", "void", "voidable", "negligence",
+            "liability", "damages", "compensation", "injunction", "mortgage",
+            "lease", "rent", "eviction", "trespass", "partition", "consumer",
+            "wages", "employer", "employee", "termination", "industrial", "labour",
+            "labor", "drunk", "driving", "narcotic", "ndps", "cyber", "digital",
+            "electronic", "evidence", "witness", "confession", "admissible",
+            "admissibility", "interrogation", "right to", "fundamental right",
+            "article", "constitutional", "high court", "supreme court", "tribunal",
+            "crime", "offence", "offense", "criminal", "cognizable", "bailable",
+            "remedy", "relief", "claim", "dispute", "case", "suit",
         )
     )
 
     CONCEPT_STOPWORDS = {
-        "and",
-        "are",
-        "bns",
-        "bnss",
-        "compare",
-        "comparison",
-        "crpc",
-        "difference",
-        "explain",
-        "for",
-        "ipc",
-        "legal",
-        "of",
-        "punishable",
-        "punished",
-        "punishment",
-        "section",
-        "the",
-        "under",
-        "what",
+        "and", "are", "bns", "bnss", "compare", "comparison", "crpc",
+        "difference", "explain", "for", "ipc", "legal", "of", "punishable",
+        "punished", "punishment", "section", "the", "under", "what",
+    }
+
+    ACT_TO_EXACT = {
+        "ipc": ["Indian Penal Code, 1860"],
+        "indian penal code": ["Indian Penal Code, 1860"],
+        "bns": ["Bharatiya Nyaya Sanhita, 2023"],
+        "bharatiya nyaya sanhita": ["Bharatiya Nyaya Sanhita, 2023"],
+        "crpc": ["Code of Criminal Procedure, 1973"],
+        "code of criminal procedure": ["Code of Criminal Procedure, 1973"],
+        "bnss": ["Bharatiya Nagarik Suraksha Sanhita, 2023"],
+        "bharatiya nagarik suraksha sanhita": ["Bharatiya Nagarik Suraksha Sanhita, 2023"],
+        "bsa": ["Bharatiya Sakshya Adhiniyam, 2023", "erstwhile Indian Evidence Act, 1872", "Indian Evidence Act, 1872"],
+        "bharatiya sakshya adhiniyam": ["Bharatiya Sakshya Adhiniyam, 2023"],
+        "evidence act": ["Bharatiya Sakshya Adhiniyam, 2023", "erstwhile Indian Evidence Act, 1872", "Indian Evidence Act, 1872"],
+        "indian evidence act": ["erstwhile Indian Evidence Act, 1872", "Indian Evidence Act, 1872"],
+        "cpc": ["Code of Civil Procedure, 1908"],
+        "code of civil procedure": ["Code of Civil Procedure, 1908"],
+        "transfer of property": ["Transfer of Property Act, 1882"],
+        "transfer of property act": ["Transfer of Property Act, 1882"],
+        "indian contract act": ["Indian Contract Act, 1872"],
+        "consumer protection": ["Consumer Protection Act, 2019"],
+        "consumer protection act": ["Consumer Protection Act, 2019"],
+        "ndps": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
+        "ndps act": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
+        "motor vehicles": ["Motor Vehicles Act, 1988"],
+        "motor vehicles act": ["Motor Vehicles Act, 1988"],
+        "hindu succession": ["Hindu Succession Act, 1956"],
+        "hindu succession act": ["Hindu Succession Act, 1956"],
+        "hindu marriage": ["Hindu Marriage Act, 1955"],
+        "hindu marriage act": ["Hindu Marriage Act, 1955"],
+        "constitution": ["Constitution of India"],
+        "constitution of india": ["Constitution of India"],
+        "limitation": ["Limitation Act, 1963"],
+        "limitation act": ["Limitation Act, 1963"],
+        "arbitration": ["Arbitration and Conciliation Act, 1996"],
+        "arbitration act": ["Arbitration and Conciliation Act, 1996"],
+        "negotiable instruments": ["Negotiable Instruments Act, 1881"],
+        "ni act": ["Negotiable Instruments Act, 1881"],
     }
 
     def __init__(
-        self, collection_name=DEFAULT_COLLECTION, db_path=DB_PATH, collection=None
+        self, collection_name=DEFAULT_COLLECTION, index_name=DEFAULT_INDEX_NAME, collection=None
     ):
         self.collection_name = collection_name
-        self.db_path = db_path
+        self.index_name = index_name
         self.embed_fn = None
         self.cross_encoder = None
         self.reranker_disabled = False
         self.semantic_disabled = False
+        self._pc = None
+        self._index = None
 
         if collection is not None:
             self.collection = collection
-        elif chromadb is None:
-            self.chroma_client = None
-            self.collection = None
-            self.semantic_disabled = True
+            self.pinecone_index = None
         else:
-            self.chroma_client = chromadb.PersistentClient(path=db_path)
-
-            # Use provider-specific collection if provider is configured
-            provider = os.getenv("HECTOR_EMBEDDING_PROVIDER", "local")
-            effective_collection = f"{collection_name}_{provider}"
-
-            self.collection = self.chroma_client.get_or_create_collection(
-                name=effective_collection,
-            )
+            self.collection = None
+            self._init_pinecone()
 
         self.records = []
         self.corpus = []
         self.tokenized_corpus = []
         self.bm25 = None
-        self.refresh_index()
+        if self.collection is not None:
+            self.refresh_index()
+        elif self.pinecone_index is not None:
+            self.refresh_index()
+
+    def _init_pinecone(self):
+        if Pinecone is None:
+            self.pinecone_index = None
+            self.semantic_disabled = True
+            return
+        api_key = os.getenv("PINECONE_API_KEY", "")
+        if not api_key:
+            self.pinecone_index = None
+            self.semantic_disabled = True
+            return
+        try:
+            self._pc = Pinecone(api_key=api_key)
+            existing = [idx.name for idx in self._pc.list_indexes()]
+            if self.index_name not in existing:
+                self._pc.create_index(
+                    name=self.index_name,
+                    dimension=EMBEDDING_DIM,
+                    metric="cosine",
+                    spec={"serverless": {"cloud": "aws", "region": "us-east-1"}},
+                )
+                time.sleep(5)
+            self.pinecone_index = self._pc.Index(self.index_name)
+        except Exception:
+            self.pinecone_index = None
+            self.semantic_disabled = True
+
+    @property
+    def _pinecone(self):
+        return getattr(self, "pinecone_index", None)
 
     @classmethod
     def from_records(cls, records):
         instance = cls.__new__(cls)
         instance.collection_name = "memory"
-        instance.db_path = None
+        instance.index_name = None
         instance.embed_fn = None
         instance.cross_encoder = None
         instance.reranker_disabled = True
         instance.semantic_disabled = True
         instance.collection = None
+        instance.pinecone_index = None
+        instance._pc = None
         instance.records = []
         instance.corpus = []
         instance.tokenized_corpus = []
@@ -319,92 +268,60 @@ class HectorHybridRetriever:
         self.bm25 = SimpleBM25(self.tokenized_corpus) if self.records else None
 
     def _is_legal_query(self, query: str) -> bool:
-        """Fast check if a query is about legal topics. Returns False for non-legal queries."""
         q = query.lower()
-        # Direct section/act references are always legal
         if self.SECTION_PATTERN.search(q) or self.ACT_PATTERN.search(q):
             return True
-        # Check for legal keywords
         tokens = set(self.TOKEN_PATTERN.findall(q))
         if tokens & self.LEGAL_INTENT_KEYWORDS:
             return True
-        # Check for multi-word legal phrases
         for phrase in (
-            "high court",
-            "supreme court",
-            "consumer protection",
-            "industrial dispute",
-            "motor vehicle",
-            "right to",
-            "fundamental right",
-            "legal remedy",
-            "legal option",
-            "what is the punishment",
-            "is it a crime",
-            "can i file",
+            "high court", "supreme court", "consumer protection",
+            "industrial dispute", "motor vehicle", "right to",
+            "fundamental right", "legal remedy", "legal option",
+            "what is the punishment", "is it a crime", "can i file",
         ):
             if phrase in q:
                 return True
         return False
 
     def refresh_index(self):
-        if self.collection is None:
+        idx = self._pinecone
+        if idx is None:
             return
 
-        BATCH_SIZE = 5000
-        all_documents = []
-        all_metadatas = []
-        all_ids = []
-        offset = 0
+        all_records = []
+        try:
+            for vector_list in idx.list():
+                ids = [v.id for v in vector_list]
+                if not ids:
+                    continue
+                fetched = retry(
+                    idx.fetch,
+                    ids=ids,
+                    max_attempts=3,
+                    operation_name="pinecone_fetch",
+                )
+                for vid, vec in fetched.vectors.items():
+                    all_records.append({
+                        "id": vid,
+                        "document": (vec.metadata or {}).get("document", ""),
+                        "metadata": {k: v for k, v in (vec.metadata or {}).items() if k != "document"},
+                    })
+        except Exception:
+            pass
 
-        while True:
-            results = retry(
-                self.collection.get,
-                include=["documents", "metadatas"],
-                limit=BATCH_SIZE,
-                offset=offset,
-                operation_name="chromadb_get",
-            )
-            batch_docs = results.get("documents") or []
-            batch_metas = results.get("metadatas") or []
-            batch_ids = results.get("ids") or []
-
-            all_documents.extend(batch_docs)
-            all_metadatas.extend(batch_metas)
-            all_ids.extend(batch_ids)
-
-            if len(batch_docs) < BATCH_SIZE:
-                break
-            offset += BATCH_SIZE
-
-        records = []
-        for index, document in enumerate(all_documents):
-            records.append(
-                {
-                    "id": all_ids[index] if index < len(all_ids) else f"record-{index}",
-                    "document": document,
-                    "metadata": all_metadatas[index]
-                    if index < len(all_metadatas)
-                    else {},
-                }
-            )
-
-        self._load_records(records)
+        self._load_records(all_records)
 
     def search(self, query, top_k=5, candidate_pool=30):
         if not self.records:
             return []
-        # Pre-retrieval intent filter: reject non-legal queries immediately
         if not self._is_legal_query(query):
             return []
 
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
-
-        # BM25 uses expanded query tokens (not just raw parsed tokens)
         bm25_tokens = self._tokenize(query)
 
-        # Parallelize BM25 and semantic search
         with ThreadPoolExecutor(max_workers=2) as executor:
             semantic_future = executor.submit(
                 self._semantic_search, query, candidate_pool
@@ -422,13 +339,6 @@ class HectorHybridRetriever:
         return reranked[:top_k]
 
     def search_with_metadata_filters(self, query, entities, top_k=5, candidate_pool=20):
-        """Search with pre-filtering by section_number and real_act_name.
-
-        When entity parser extracts a section number and/or act name, filter
-        ChromaDB to ONLY chunks matching those metadata fields BEFORE ranking.
-        This prevents "Section 302 query returns Section 304" false matches.
-        Falls back to unfiltered search when no metadata filters available.
-        """
         if not self.records or not entities:
             return self.search(query, top_k, candidate_pool)
 
@@ -444,38 +354,35 @@ class HectorHybridRetriever:
         if not section_numbers and not acts:
             return self.search(query, top_k, candidate_pool)
 
-        where_filter = self._build_where_filter(section_numbers, acts)
-        if where_filter is None:
+        pinecone_filter = self._build_pinecone_filter(section_numbers, acts)
+        if pinecone_filter is None:
             return self.search(query, top_k, candidate_pool)
 
-        filtered_results = self._chroma_filtered_search(
-            where_filter, top_k=min(candidate_pool, 200)
+        filtered_results = self._pinecone_filtered_search(
+            pinecone_filter, top_k=min(candidate_pool, 200)
         )
 
         if not filtered_results and section_numbers:
-            # Fallback 1: try section-only filter (without act filter)
             section_only_filter = (
                 {"section_number": {"$eq": section_numbers[0]}}
                 if len(section_numbers) == 1
                 else {"$or": [{"section_number": {"$eq": s}} for s in section_numbers]}
             )
-            filtered_results = self._chroma_filtered_search(
+            filtered_results = self._pinecone_filtered_search(
                 section_only_filter, top_k=min(candidate_pool, 200)
             )
 
         if not filtered_results:
-            # Fallback 2: unfiltered search as last resort
             return self.search(query, top_k, candidate_pool)
 
         legal_query = self._parse_query(query)
 
-        # Parallelize filtered semantic and BM25 search
         with ThreadPoolExecutor(max_workers=2) as executor:
             semantic_future = executor.submit(
                 self._semantic_search_with_filter,
                 query,
                 min(candidate_pool, 200),
-                where_filter,
+                pinecone_filter,
             )
             bm25_future = executor.submit(
                 self._bm25_search_filtered, legal_query["tokens"], filtered_results
@@ -488,12 +395,7 @@ class HectorHybridRetriever:
         reranked = self._rerank_with_cross_encoder(query, deduped)
         return reranked[:top_k]
 
-    def _build_where_filter(self, section_numbers, acts):
-        """Build a ChromaDB where clause for metadata filtering.
-
-        Uses only $eq operators since $contains doesn't work with query().
-        For act matching, maps abbreviations to exact real_act_name values.
-        """
+    def _build_pinecone_filter(self, section_numbers, acts):
         if not section_numbers and not acts:
             return None
 
@@ -529,134 +431,76 @@ class HectorHybridRetriever:
         return {"$and": conditions}
 
     def _resolve_act_to_exact_names(self, acts):
-        """Map act abbreviations to exact real_act_name values from the DB."""
-        ACT_TO_EXACT = {
-            "ipc": ["Indian Penal Code, 1860"],
-            "indian penal code": ["Indian Penal Code, 1860"],
-            "bns": ["Bharatiya Nyaya Sanhita, 2023"],
-            "bharatiya nyaya sanhita": ["Bharatiya Nyaya Sanhita, 2023"],
-            "crpc": ["Code of Criminal Procedure, 1973"],
-            "code of criminal procedure": ["Code of Criminal Procedure, 1973"],
-            "bnss": ["Bharatiya Nagarik Suraksha Sanhita, 2023"],
-            "bharatiya nagarik suraksha sanhita": [
-                "Bharatiya Nagarik Suraksha Sanhita, 2023"
-            ],
-            "bsa": [
-                "Bharatiya Sakshya Adhiniyam, 2023",
-                "erstwhile Indian Evidence Act, 1872",
-                "Indian Evidence Act, 1872",
-            ],
-            "bharatiya sakshya adhiniyam": ["Bharatiya Sakshya Adhiniyam, 2023"],
-            "evidence act": [
-                "Bharatiya Sakshya Adhiniyam, 2023",
-                "erstwhile Indian Evidence Act, 1872",
-                "Indian Evidence Act, 1872",
-            ],
-            "indian evidence act": [
-                "erstwhile Indian Evidence Act, 1872",
-                "Indian Evidence Act, 1872",
-            ],
-            "cpc": ["Code of Civil Procedure, 1908"],
-            "code of civil procedure": ["Code of Civil Procedure, 1908"],
-            "transfer of property": ["Transfer of Property Act, 1882"],
-            "transfer of property act": ["Transfer of Property Act, 1882"],
-            "indian contract act": ["Indian Contract Act, 1872"],
-            "consumer protection": ["Consumer Protection Act, 2019"],
-            "consumer protection act": ["Consumer Protection Act, 2019"],
-            "ndps": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
-            "ndps act": ["Narcotic Drugs and Psychotropic Substances Act, 1985"],
-            "motor vehicles": ["Motor Vehicles Act, 1988"],
-            "motor vehicles act": ["Motor Vehicles Act, 1988"],
-            "hindu succession": ["Hindu Succession Act, 1956"],
-            "hindu succession act": ["Hindu Succession Act, 1956"],
-            "hindu marriage": ["Hindu Marriage Act, 1955"],
-            "hindu marriage act": ["Hindu Marriage Act, 1955"],
-            "constitution": ["Constitution of India"],
-            "constitution of india": ["Constitution of India"],
-            "limitation": ["Limitation Act, 1963"],
-            "limitation act": ["Limitation Act, 1963"],
-            "arbitration": ["Arbitration and Conciliation Act, 1996"],
-            "arbitration act": ["Arbitration and Conciliation Act, 1996"],
-            "negotiable instruments": ["Negotiable Instruments Act, 1881"],
-            "ni act": ["Negotiable Instruments Act, 1881"],
-        }
         result = []
         for act in acts:
             key = act.lower().strip()
-            exact_names = ACT_TO_EXACT.get(key)
+            exact_names = self.ACT_TO_EXACT.get(key)
             if exact_names:
                 result.extend(exact_names)
             else:
                 result.append(act)
         return list(dict.fromkeys(result))
 
-    def _chroma_filtered_search(self, where_filter, top_k=200):
-        """Get metadata-filtered results from ChromaDB without embeddings."""
-        if self.collection is None:
+    def _pinecone_filtered_search(self, pinecone_filter, top_k=200):
+        idx = self._pinecone
+        if idx is None:
             return []
         try:
-            results = retry(
-                self.collection.get,
-                where=where_filter,
-                limit=top_k,
-                include=["documents", "metadatas"],
-                operation_name="chroma_filtered_get",
+            matching_ids = []
+            for vector_list in idx.list(filter=pinecone_filter, limit=top_k):
+                matching_ids.extend([v.id for v in vector_list])
+            if not matching_ids:
+                return []
+            fetched = retry(
+                idx.fetch,
+                ids=matching_ids[:top_k],
+                max_attempts=2,
+                operation_name="pinecone_filtered_fetch",
             )
-            documents = results.get("documents") or []
-            metadatas = results.get("metadatas") or []
-            ids = results.get("ids") or []
-            return [
-                {
-                    "id": ids[i] if i < len(ids) else f"filtered-{i}",
-                    "document": documents[i],
-                    "metadata": metadatas[i] if i < len(metadatas) else {},
-                }
-                for i in range(len(documents))
-            ]
+            results = []
+            for vid, vec in fetched.vectors.items():
+                meta = vec.metadata or {}
+                results.append({
+                    "id": vid,
+                    "document": meta.get("document", ""),
+                    "metadata": {k: v for k, v in meta.items() if k != "document"},
+                })
+            return results
         except Exception:
             return []
 
-    def _semantic_search_with_filter(self, query, top_k, where_filter):
-        """Semantic search with ChromaDB where clause pre-filter."""
-        if self.collection is None or self.semantic_disabled:
+    def _semantic_search_with_filter(self, query, top_k, pinecone_filter):
+        idx = self._pinecone
+        if idx is None or self.semantic_disabled:
             return []
-        embed_fn = self._get_embedding_function()
-        if embed_fn is None:
+        embedding = self._embed_text(query)
+        if embedding is None:
             return []
-        query_embedding = embed_fn([query])[0]
         try:
             results = retry(
-                self.collection.query,
-                query_embeddings=[query_embedding],
-                n_results=top_k,
-                where=where_filter,
-                include=["documents", "metadatas", "distances"],
-                operation_name="chroma_filtered_query",
+                idx.query,
+                vector=embedding,
+                top_k=top_k,
+                include_metadata=True,
+                filter=pinecone_filter,
+                operation_name="pinecone_filtered_query",
             )
         except Exception:
             return self._semantic_search(query, top_k)
 
         ranked = []
-        documents = results.get("documents", [[]])[0]
-        metadatas = results.get("metadatas", [[]])[0]
-        distances = results.get("distances", [[]])[0]
-        ids = results.get("ids", [[]])[0] if results.get("ids") else []
-        for index, document in enumerate(documents):
-            ranked.append(
-                {
-                    "id": ids[index]
-                    if index < len(ids)
-                    else self._lookup_id(document, metadatas[index]),
-                    "document": document,
-                    "metadata": metadatas[index] if index < len(metadatas) else {},
-                    "distance": distances[index] if index < len(distances) else None,
-                    "rank": index + 1,
-                }
-            )
+        for match in results.get("matches", []):
+            meta = match.get("metadata", {})
+            ranked.append({
+                "id": match.get("id", ""),
+                "document": meta.get("document", ""),
+                "metadata": {k: v for k, v in meta.items() if k != "document"},
+                "distance": match.get("score", 0.0),
+                "rank": len(ranked) + 1,
+            })
         return ranked
 
     def _bm25_search_filtered(self, query_tokens, filtered_results):
-        """BM25 search over metadata-filtered subset only."""
         if not query_tokens or not filtered_results:
             return []
         filtered_tokens = [self._tokenize(r["document"]) for r in filtered_results]
@@ -674,16 +518,14 @@ class HectorHybridRetriever:
         for rank, (index, score) in enumerate(scored_rows[:200], start=1):
             result = filtered_results[index]
             normalized = self._normalize_bm25_score(score, min_score, max_score)
-            ranked.append(
-                {
-                    "id": result["id"],
-                    "document": result["document"],
-                    "metadata": result["metadata"],
-                    "score": score,
-                    "normalized_score": normalized,
-                    "rank": rank,
-                }
-            )
+            ranked.append({
+                "id": result["id"],
+                "document": result["document"],
+                "metadata": result["metadata"],
+                "score": score,
+                "normalized_score": normalized,
+                "rank": rank,
+            })
         return ranked
 
     def _tokenize(self, text):
@@ -709,40 +551,32 @@ class HectorHybridRetriever:
         }
 
     def _semantic_search(self, query, top_k):
-        if self.collection is None or self.semantic_disabled:
+        idx = self._pinecone
+        if idx is None or self.semantic_disabled:
             return []
 
-        embed_fn = self._get_embedding_function()
-        if embed_fn is None:
+        embedding = self._embed_text(query)
+        if embedding is None:
             return []
 
-        query_embedding = embed_fn([query])[0]
         results = retry(
-            self.collection.query,
-            query_embeddings=[query_embedding],
-            n_results=top_k,
-            include=["documents", "metadatas", "distances"],
-            operation_name="chromadb_query",
+            idx.query,
+            vector=embedding,
+            top_k=top_k,
+            include_metadata=True,
+            operation_name="pinecone_query",
         )
 
         ranked = []
-        documents = results.get("documents", [[]])[0]
-        metadatas = results.get("metadatas", [[]])[0]
-        distances = results.get("distances", [[]])[0]
-        ids = results.get("ids", [[]])[0] if results.get("ids") else []
-
-        for index, document in enumerate(documents):
-            ranked.append(
-                {
-                    "id": ids[index]
-                    if index < len(ids)
-                    else self._lookup_id(document, metadatas[index]),
-                    "document": document,
-                    "metadata": metadatas[index] if index < len(metadatas) else {},
-                    "distance": distances[index] if index < len(distances) else None,
-                    "rank": index + 1,
-                }
-            )
+        for match in results.get("matches", []):
+            meta = match.get("metadata", {})
+            ranked.append({
+                "id": match.get("id", ""),
+                "document": meta.get("document", ""),
+                "metadata": {k: v for k, v in meta.items() if k != "document"},
+                "distance": match.get("score", 0.0),
+                "rank": len(ranked) + 1,
+            })
         return ranked
 
     def _bm25_search(self, query_tokens, top_k):
@@ -767,16 +601,14 @@ class HectorHybridRetriever:
             scored_rows[:top_k], start=1
         ):
             record = self.records[index]
-            ranked.append(
-                {
-                    "id": record["id"],
-                    "document": record["document"],
-                    "metadata": record["metadata"],
-                    "score": score,
-                    "normalized_score": normalized_score,
-                    "rank": rank,
-                }
-            )
+            ranked.append({
+                "id": record["id"],
+                "document": record["document"],
+                "metadata": record["metadata"],
+                "score": score,
+                "normalized_score": normalized_score,
+                "rank": rank,
+            })
         return ranked
 
     def _fuse_rankings(self, semantic_rank, bm25_rank, k=60):
@@ -897,61 +729,28 @@ class HectorHybridRetriever:
         if not candidates:
             return []
 
-        # Try provider abstraction first
-        if get_rerank_provider is not None:
-            try:
-                provider = os.getenv("HECTOR_RERANK_PROVIDER", "local")
-                if provider == "nemotron":
-                    reranker = get_rerank_provider("nemotron")
-                    return reranker.rerank(query, candidates)
-            except Exception:
-                pass  # Fall through to local reranker
+        try:
+            from core.rerank_provider import get_rerank_provider
 
-        reranker = self._get_cross_encoder()
-        if reranker is not None:
-            pairs = [(query, item["document"]) for item in candidates]
-            raw_scores = reranker.predict(pairs)
-            for item, raw_score in zip(candidates, raw_scores):
-                reranker_score = self._sigmoid(float(raw_score))
-                item["reranker_score"] = round(reranker_score, 6)
-                # Blend reranker with hybrid boost (preserve legal/domain signals)
-                hybrid_score = item.get("score", 0.5)
-                item["score"] = round(0.85 * reranker_score + 0.15 * hybrid_score, 6)
-                item["similarity_score"] = item["score"]
-                item["reasons"] = [*item.get("reasons", []), "cross-encoder-reranked"]
-        else:
-            for item in candidates:
-                fallback_score = self._fallback_reranker_score(item)
-                item["reranker_score"] = round(fallback_score, 6)
-                item["score"] = item["reranker_score"]
-                item["similarity_score"] = item["reranker_score"]
-                item["reasons"] = [
-                    *item.get("reasons", []),
-                    "cross-encoder-unavailable",
-                ]
+            provider = os.getenv("HECTOR_RERANK_PROVIDER", "local")
+            if provider == "nemotron":
+                reranker = get_rerank_provider("nemotron")
+                return reranker.rerank(query, candidates)
+        except Exception:
+            pass
+
+        for item in candidates:
+            fallback_score = self._fallback_reranker_score(item)
+            item["reranker_score"] = round(fallback_score, 6)
+            item["score"] = item["reranker_score"]
+            item["similarity_score"] = item["reranker_score"]
+            item["reasons"] = [
+                *item.get("reasons", []),
+                "cross-encoder-unavailable",
+            ]
 
         candidates.sort(key=lambda item: item["reranker_score"], reverse=True)
         return candidates
-
-    def _get_cross_encoder(self):
-        if self.cross_encoder is not None:
-            return self.cross_encoder
-        if self.reranker_disabled:
-            return None
-        if CrossEncoder is None:
-            self.reranker_disabled = True
-            return None
-
-        try:
-            os.environ.setdefault("HF_HUB_OFFLINE", "1")
-            model_name = os.getenv(
-                "HECTOR_CROSS_ENCODER_MODEL", DEFAULT_CROSS_ENCODER_MODEL
-            )
-            self.cross_encoder = CrossEncoder(model_name)
-            return self.cross_encoder
-        except Exception:
-            self.reranker_disabled = True
-            return None
 
     def _fallback_reranker_score(self, item):
         base = (
@@ -961,14 +760,6 @@ class HectorHybridRetriever:
             + item.get("boost_score", 0.0)
         )
         return max(0.0, min(base, 1.0))
-
-    @staticmethod
-    def _sigmoid(value):
-        if value >= 0:
-            z = math.exp(-value)
-            return 1 / (1 + z)
-        z = math.exp(value)
-        return z / (1 + z)
 
     def _legal_boost(self, record, legal_query):
         boost = 0.0
@@ -1095,7 +886,6 @@ class HectorHybridRetriever:
         return boost, ", ".join(reasons) if reasons else None
 
     def _source_type_boost(self, record):
-        """Boost Bare Act text over commentary. Primary sources are authoritative."""
         metadata = record.get("metadata", {})
         source_type = metadata.get("source_type", "")
         if source_type == "bare_act":
@@ -1231,30 +1021,30 @@ class HectorHybridRetriever:
                 continue
         return None
 
-    def _get_embedding_function(self):
-        if self.embed_fn is not None:
-            return self.embed_fn
-        if self.semantic_disabled:
+    def _embed_text(self, text):
+        """Embed text using Pinecone Inference API (free 5M tokens/month)."""
+        api_key = os.getenv("PINECONE_API_KEY", "")
+        if not api_key or _requests is None:
             return None
-
         try:
-            # Try provider abstraction first
-            if get_embedding_provider is not None:
-                provider = os.getenv("HECTOR_EMBEDDING_PROVIDER", "local")
-                if provider == "nemotron":
-                    embedder = get_embedding_provider("nemotron")
-                    self.embed_fn = embedder.get_chroma_embedding_function()
-                    return self.embed_fn
-
-            # Fall back to default local embedding
-            if embedding_functions is None:
-                self.semantic_disabled = True
-                return None
-            os.environ.setdefault("HF_HUB_OFFLINE", "1")
-            self.embed_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
-                model_name="all-MiniLM-L6-v2"
+            resp = _requests.post(
+                "https://api.pinecone.io/embed",
+                headers={
+                    "api-key": api_key,
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": EMBEDDING_MODEL,
+                    "inputs": [text],
+                    "parameters": {"input_type": "query", "truncate": "END"},
+                },
+                timeout=15,
             )
-            return self.embed_fn
+            resp.raise_for_status()
+            data = resp.json()
+            vectors = data.get("data", [])
+            if vectors:
+                return vectors[0].get("values", [])
         except Exception:
-            self.semantic_disabled = True
-            return None
+            pass
+        return None

@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-import shutil
 import time
 import uuid
 from threading import Lock
@@ -251,39 +250,24 @@ def healthz():
 
 @app.get("/readyz")
 def readyz(svc: HectorApiService = Depends(get_service)):
-    """Readiness probe - checks ChromaDB and critical dependencies."""
+    """Readiness probe - checks Pinecone and critical dependencies."""
     checks = {}
     healthy = True
 
-    # ChromaDB check
+    # Pinecone check
     try:
-        count = retry(
-            svc.retriever.collection.count,
-            max_attempts=2,
-            operation_name="chromadb_count_readyz",
-        )
-        checks["chromadb"] = {"status": "ok", "records": count}
-        metrics.set("chromadb_records", count)
+        pinecone_idx = getattr(svc.retriever, "_pinecone", None)
+        if pinecone_idx is not None:
+            stats = pinecone_idx.describe_index_stats()
+            count = stats.get("total_vector_count", 0)
+            checks["pinecone"] = {"status": "ok", "records": count}
+            metrics.set("pinecone_records", count)
+        else:
+            checks["pinecone"] = {"status": "unavailable"}
+            healthy = False
     except Exception as exc:
-        checks["chromadb"] = {"status": "error", "detail": str(type(exc).__name__)}
+        checks["pinecone"] = {"status": "error", "detail": str(type(exc).__name__)}
         healthy = False
-
-    # Disk space check
-    try:
-        db_path = os.getenv(
-            "HECTOR_DB_PATH",
-            os.path.join(
-                os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"
-            ),
-        )
-        usage = shutil.disk_usage(db_path)
-        free_mb = usage.free // (1024 * 1024)
-        checks["disk"] = {"status": "ok", "free_mb": free_mb}
-        metrics.set("disk_free_mb", free_mb)
-        if free_mb < 100:
-            checks["disk"]["status"] = "warning"
-    except Exception:
-        checks["disk"] = {"status": "unknown"}
 
     # Groq API check
     try:
@@ -296,19 +280,15 @@ def readyz(svc: HectorApiService = Depends(get_service)):
     except Exception as exc:
         checks["groq"] = {"status": "error", "detail": type(exc).__name__}
 
-    # Embedding model check
+    # Embedding model check (Pinecone Inference)
     try:
-        if (
-            hasattr(svc.retriever, "embedding_fn")
-            and svc.retriever.embedding_fn is not None
-        ):
-            checks["embedding_model"] = {"status": "ok"}
+        api_key = os.getenv("PINECONE_API_KEY", "")
+        if api_key:
+            checks["embedding_model"] = {"status": "ok", "provider": "pinecone_inference"}
         else:
             checks["embedding_model"] = {"status": "unavailable"}
-            healthy = False
     except Exception as exc:
         checks["embedding_model"] = {"status": "error", "detail": type(exc).__name__}
-        healthy = False
 
     metrics.inc("healthcheck_total")
     return {"status": "ok" if healthy else "degraded", "checks": checks}
@@ -349,26 +329,15 @@ def status_endpoint(
 
     # Add health checks
     try:
-        retry(
-            svc.retriever.collection.count,
-            max_attempts=2,
-            operation_name="chromadb_count_status",
-        )
-        payload["chromadb_connected"] = True
+        pinecone_idx = getattr(svc.retriever, "_pinecone", None)
+        if pinecone_idx is not None:
+            stats = pinecone_idx.describe_index_stats()
+            payload["pinecone_connected"] = True
+            payload["pinecone_records"] = stats.get("total_vector_count", 0)
+        else:
+            payload["pinecone_connected"] = False
     except Exception:
-        payload["chromadb_connected"] = False
-
-    try:
-        db_path = os.getenv(
-            "HECTOR_DB_PATH",
-            os.path.join(
-                os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hector_db"
-            ),
-        )
-        usage = shutil.disk_usage(db_path)
-        payload["disk_space_mb"] = usage.free // (1024 * 1024)
-    except Exception:
-        payload["disk_space_mb"] = 0
+        payload["pinecone_connected"] = False
 
     # Groq API connectivity check
     try:
@@ -383,18 +352,13 @@ def status_endpoint(
 
     # Embedding model availability check
     try:
-        if (
-            hasattr(svc.retriever, "embedding_fn")
-            and svc.retriever.embedding_fn is not None
-        ):
-            payload["embedding_model_loaded"] = True
-        else:
-            payload["embedding_model_loaded"] = False
+        api_key = os.getenv("PINECONE_API_KEY", "")
+        payload["embedding_model_loaded"] = bool(api_key)
     except Exception:
         payload["embedding_model_loaded"] = False
 
     # Set status based on health
-    if not payload.get("chromadb_connected"):
+    if not payload.get("pinecone_connected"):
         payload["status"] = "degraded"
 
     # Add cache metrics

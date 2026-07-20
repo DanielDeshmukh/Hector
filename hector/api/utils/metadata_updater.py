@@ -10,7 +10,10 @@ This script enhances existing records by:
 For full legal structure extraction, use the enhanced_ingestor to reprocess all PDFs.
 """
 
-import chromadb
+try:
+    import chromadb
+except ImportError:
+    chromadb = None
 
 
 DB_PATH = "./hector_db"

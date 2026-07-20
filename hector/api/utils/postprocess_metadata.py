@@ -9,7 +9,10 @@ Run after ingestion completes to fix metadata:
 import re
 import sys
 import io
-import chromadb
+try:
+    import chromadb
+except ImportError:
+    chromadb = None
 from collections import Counter
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")

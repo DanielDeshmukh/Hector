@@ -55,7 +55,6 @@ def setup_logging():
     root_logger.addHandler(handler)
 
     # Suppress noisy third-party loggers
-    logging.getLogger("chromadb").setLevel(logging.WARNING)
     logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.getLogger("httpcore").setLevel(logging.WARNING)
     logging.getLogger("urllib3").setLevel(logging.WARNING)

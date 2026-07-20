@@ -73,7 +73,7 @@ class HectorApiService:
             candidate_pool=max(40, retrieval_window * 2),
             max_attempts=3,
             retryable_exceptions=(Exception,),
-            operation_name="chromadb_search",
+            operation_name="pinecone_search",
         )
         t_retrieve = time.perf_counter()
         timings["retrieve_ms"] = round((t_retrieve - t_route) * 1000, 1)
@@ -251,7 +251,7 @@ class HectorApiService:
             top_k=request.page_size,
             max_attempts=3,
             retryable_exceptions=(Exception,),
-            operation_name="chromadb_compare_requested",
+            operation_name="pinecone_compare_requested",
         )
 
         counterpart_results = []
@@ -263,7 +263,7 @@ class HectorApiService:
                 top_k=request.page_size,
                 max_attempts=3,
                 retryable_exceptions=(Exception,),
-                operation_name="chromadb_compare_counterpart",
+                operation_name="pinecone_compare_counterpart",
             )
 
         return CompareResponse(

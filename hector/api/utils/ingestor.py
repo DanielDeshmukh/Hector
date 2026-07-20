@@ -6,8 +6,14 @@ import uuid
 import warnings
 from datetime import datetime
 
-import chromadb
-import pytesseract
+try:
+    import chromadb
+except ImportError:
+    chromadb = None
+try:
+    import pytesseract
+except ImportError:
+    pytesseract = None
 from dotenv import load_dotenv
 from pdf2image import convert_from_path
 from rich.console import Console

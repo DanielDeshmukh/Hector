@@ -146,8 +146,7 @@ class StatusResponse(BaseModel):
     uptime_seconds: int
     cached: bool = False
     request_id: str | None = None
-    chromadb_connected: bool = True
-    disk_space_mb: int = 0
+    pinecone_connected: bool = True
 
 
 class ErrorResponse(BaseModel):

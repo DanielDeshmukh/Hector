@@ -8,12 +8,9 @@ python-dotenv~=1.0.1
 # --- AI & Inference ---
 openai~=1.61.0
 groq~=0.13.0
-langchain~=0.3.0
-langchain-openai~=0.3.0
 
 # --- RAG & Retrieval ---
-chromadb~=1.2.0
-sentence-transformers~=3.4.0
+pinecone>=5.0.0
 numpy~=2.2.0
 rank-bm25~=0.2.2
 
@@ -38,7 +35,3 @@ pyyaml~=6.0.0
 pytest~=8.3.0
 pytest-asyncio~=0.25.0
 pytest-timeout~=2.3.0
-
-# --- RAG Evaluation ---
-ragas~=0.2.0
-datasets>=2.0.0

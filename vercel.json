@@ -1,6 +1,17 @@
 {
   "rootDirectory": "hector",
-  "framework": "nextjs",
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.py/$1"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
