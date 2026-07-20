@@ -81,12 +81,12 @@ def _make_retriever():
 class TestBuildWhereFilter:
     def test_section_number_only(self):
         retriever = _make_retriever()
-        where = retriever._build_where_filter(["302"], [])
+        where = retriever._build_pinecone_filter(["302"], [])
         assert where == {"section_number": {"$eq": "302"}}
 
     def test_multiple_section_numbers(self):
         retriever = _make_retriever()
-        where = retriever._build_where_filter(["302", "304"], [])
+        where = retriever._build_pinecone_filter(["302", "304"], [])
         assert where == {
             "$or": [
                 {"section_number": {"$eq": "302"}},
@@ -96,7 +96,7 @@ class TestBuildWhereFilter:
 
     def test_section_and_act(self):
         retriever = _make_retriever()
-        where = retriever._build_where_filter(["302"], ["IPC"])
+        where = retriever._build_pinecone_filter(["302"], ["IPC"])
         assert where == {
             "$and": [
                 {"section_number": {"$eq": "302"}},
@@ -106,11 +106,11 @@ class TestBuildWhereFilter:
 
     def test_empty_returns_none(self):
         retriever = _make_retriever()
-        assert retriever._build_where_filter([], []) is None
+        assert retriever._build_pinecone_filter([], []) is None
 
     def test_bns_act_filter(self):
         retriever = _make_retriever()
-        where = retriever._build_where_filter([], ["BNS"])
+        where = retriever._build_pinecone_filter([], ["BNS"])
         assert where == {"real_act_name": {"$eq": "Bharatiya Nyaya Sanhita, 2023"}}
 
 

@@ -174,7 +174,7 @@ class TestEnhancedHealthEndpoints:
         assert resp.status_code == 200
         data = resp.json()
         assert data["status"] in ("ok", "degraded")
-        assert "chromadb_connected" in data
+        assert "pinecone_connected" in data
 
     def test_readyz_includes_checks(self, stub_service):
         from fastapi.testclient import TestClient
