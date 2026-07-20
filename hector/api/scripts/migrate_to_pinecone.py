@@ -27,7 +27,8 @@ INDEX_NAME = "hector-legal"
 DIMENSION = 1024
 EMBEDDING_MODEL = "nvidia/nv-embedqa-e5-v5"
 BATCH_SIZE = 100
-EMBED_BATCH_SIZE = 50
+EMBED_BATCH_SIZE = 20
+REQUEST_INTERVAL = 2.0  # 40 RPM = 1 req/1.5s, use 2s for safety
 PROGRESS_FILE = "pinecone_migration_progress.json"
 
 
@@ -93,13 +94,31 @@ def get_local_records():
 
 
 def embed_with_nim(texts):
-    """Embed texts using NVIDIA NIM API."""
-    import httpx
+    """Embed texts using NVIDIA NIM API (40 RPM account-wide limit).
 
+    Honors Retry-After header from 429 responses.
+    Saves progress to resume if interrupted.
+    """
+    import httpx
+    import json as _json
+
+    progress_path = Path(__file__).resolve().parent / PROGRESS_FILE
     all_embeddings = []
-    for i in range(0, len(texts), EMBED_BATCH_SIZE):
+    start_idx = 0
+
+    # Resume from saved progress
+    if progress_path.exists():
+        try:
+            saved = _json.loads(progress_path.read_text())
+            all_embeddings = saved.get("embeddings", [])
+            start_idx = len(all_embeddings)
+            print(f"  Resuming from {start_idx}/{len(texts)}...")
+        except Exception:
+            pass
+
+    for i in range(start_idx, len(texts), EMBED_BATCH_SIZE):
         batch = texts[i : i + EMBED_BATCH_SIZE]
-        for attempt in range(5):
+        for attempt in range(10):
             try:
                 resp = httpx.post(
                     f"{NIM_BASE_URL}/embeddings",
@@ -112,28 +131,38 @@ def embed_with_nim(texts):
                         "model": EMBEDDING_MODEL,
                         "encoding_format": "float",
                         "input_type": "passage",
+                        "truncate": "END",
                     },
                     timeout=60.0,
                 )
+                if resp.status_code == 429:
+                    retry_after = int(resp.headers.get("Retry-After", 0))
+                    wait = max(retry_after, 15 * (attempt + 1))
+                    print(f"  429 Retry-After={retry_after}, waiting {wait}s...")
+                    time.sleep(wait)
+                    continue
+                if resp.status_code == 400:
+                    print(f"  400 body: {resp.text[:300]}")
                 resp.raise_for_status()
                 data = resp.json()
                 for item in sorted(data.get("data", []), key=lambda x: x["index"]):
                     all_embeddings.append(item["embedding"])
                 break
             except Exception as e:
-                if "429" in str(e) or "rate" in str(e).lower():
-                    wait = 10 * (attempt + 1)
-                    print(f"  Rate limited, waiting {wait}s...")
-                    time.sleep(wait)
-                else:
-                    print(f"  Error on batch {i}: {e}")
-                    time.sleep(5)
+                print(f"  Error on batch {i}: {e}")
+                time.sleep(10)
 
         done = min(i + EMBED_BATCH_SIZE, len(texts))
-        if done % (EMBED_BATCH_SIZE * 5) == 0 or done == len(texts):
+        if done % (EMBED_BATCH_SIZE * 10) == 0 or done == len(texts):
             print(f"  Embedded {done}/{len(texts)}...")
+            # Save progress every 10 batches
+            progress_path.write_text(_json.dumps({"embeddings": all_embeddings}))
 
-        time.sleep(1)
+        time.sleep(REQUEST_INTERVAL)
+
+    # Clean up progress file on completion
+    if progress_path.exists():
+        progress_path.unlink()
 
     return all_embeddings
 
