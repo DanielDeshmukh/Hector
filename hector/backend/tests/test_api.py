@@ -3,6 +3,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
+# Add the backend directory to sys.path (same pattern as conftest.py)
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from api.app import app, cache, get_service
