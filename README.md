@@ -3,19 +3,20 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/DanielDeshmukh/Hector/actions"><img src="https://img.shields.io/github/actions/workflow/status/DanielDeshmukh/Hector/ci.yml?branch=main&style=for-the-badge&label=CI&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="CI"></a>
-  <a href="https://github.com/DanielDeshmukh/Hector"><img src="https://img.shields.io/github/stars/DanielDeshmukh/Hector?style=for-the-badge&color=%23111315&labelColor=%231a1a1a&label=Stars&messageColor=%23c9a962&border_radius=10" alt="Stars"></a>
-  <a href="#"><img src="https://img.shields.io/badge/tests-1124%20passed-22c55e?style=for-the-badge&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="Tests"></a>
-  <a href="#"><img src="https://img.shields.io/badge/live-vercel.app-000?style=for-the-badge&color=%23111315&labelColor=%231a1a1a&logo=vercel&logoColor=white&messageColor=%23c9a962&border_radius=10" alt="Live"></a>
+  <a href="https://github.com/DanielDeshmukh/Hector/actions"><img src="https://img.shields.io/github/actions/workflow/status/DanielDeshmukh/Hector/ci.yml?branch=main&style=for-the-badge&label=CI&color=%23c9a962&labelColor=%231a1a1a" alt="CI"></a>
+  <a href="https://github.com/DanielDeshmukh/Hector"><img src="https://img.shields.io/github/stars/DanielDeshmukh/Hector?style=for-the-badge&color=%23c9a962&labelColor=%231a1a1a&label=Stars" alt="Stars"></a>
+  <a href="#"><img src="https://img.shields.io/badge/tests-1080%20passed-22c55e?style=for-the-badge&labelColor=%231a1a1a" alt="Tests"></a>
+  <a href="#"><img src="https://img.shields.io/badge/live-vercel.app-000?style=for-the-badge&logo=vercel&logoColor=white&labelColor=%231a1a1a" alt="Live"></a>
+  <a href="https://github.com/DanielDeshmukh/Hector/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-c9a962?style=for-the-badge&labelColor=%231a1a1a" alt="License"></a>
 </p>
 
 <p align="center">
-  <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-16-000?style=for-the-badge&logo=next.js&logoColor=white&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="Next.js"></a>
-  <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5-3178c6?style=for-the-badge&logo=typescript&logoColor=white&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="TypeScript"></a>
-  <a href="https://build.nvidia.com/nim"><img src="https://img.shields.io/badge/NVIDIA%20NIM-Llama%203.1-76b900?style=for-the-badge&logo=nvidia&logoColor=white&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="NVIDIA NIM"></a>
-  <a href="https://www.pinecone.io"><img src="https://img.shields.io/badge/Pinecone-Vector%20DB-000?style=for-the-badge&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="Pinecone"></a>
-  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.13-3776ab?style=for-the-badge&logo=python&logoColor=white&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="Python"></a>
-  <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white&color=%23111315&labelColor=%231a1a1a&messageColor=%23c9a962&border_radius=10" alt="FastAPI"></a>
+  <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-16-000?style=for-the-badge&logo=next.js&logoColor=white&labelColor=%231a1a1a" alt="Next.js"></a>
+  <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5-3178c6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=%231a1a1a" alt="TypeScript"></a>
+  <a href="https://build.nvidia.com/nim"><img src="https://img.shields.io/badge/NVIDIA%20NIM-Llama%203.1-76b900?style=for-the-badge&logo=nvidia&logoColor=white&labelColor=%231a1a1a" alt="NVIDIA NIM"></a>
+  <a href="https://www.pinecone.io"><img src="https://img.shields.io/badge/Pinecone-Vector%20DB-000?style=for-the-badge&logo=pinecone&logoColor=white&labelColor=%231a1a1a" alt="Pinecone"></a>
+  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.13-3776ab?style=for-the-badge&logo=python&logoColor=white&labelColor=%231a1a1a" alt="Python"></a>
+  <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white&labelColor=%231a1a1a" alt="FastAPI"></a>
 </p>
 
 ---
