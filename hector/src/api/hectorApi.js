@@ -1,5 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "";
+const API_URL = "/api";
+const API_KEY = "";
 
 function getCitationValue(citation, key, fallback = "") {
   return citation?.[key] ?? citation?.[key.toLowerCase()] ?? fallback;
@@ -154,7 +154,6 @@ function toUiResponse(payload) {
 function authHeaders() {
   return {
     "Content-Type": "application/json",
-    "X-API-Key": API_KEY,
   };
 }
 
