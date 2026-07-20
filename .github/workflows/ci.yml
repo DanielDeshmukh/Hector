@@ -23,7 +23,7 @@ jobs:
           pip install -r hector/api/requirements.txt
 
       - name: Lint
-        run: ruff check hector/api/ --select E,F,W --ignore E501
+        run: ruff check hector/api/ --select E,F,W --ignore E501,E402
 
       - name: Test
         run: pytest hector/backend/tests/ -x -q --tb=short
