@@ -26,7 +26,8 @@ jobs:
         run: ruff check hector/api/ --select E,F,W --ignore E501,E402,E401,F401
 
       - name: Test
-        run: pytest hector/backend/tests/ -x -q --tb=short
+        working-directory: hector
+        run: pytest backend/tests/ -x -q --tb=short
         env:
           HECTOR_API_KEY: test-api-key-for-testing-only
           HECTOR_JWT_SECRET: test-jwt-secret-32-bytes-minimum-value
