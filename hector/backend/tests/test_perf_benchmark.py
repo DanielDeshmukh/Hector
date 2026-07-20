@@ -30,25 +30,28 @@ from benchmark.adapters.hector_adapter import profile_query
 # ---------------------------------------------------------------------------
 
 
+_BENCH_DIR = str(Path(__file__).resolve().parents[1] / "benchmark")
+
+
 class TestBenchmarkConfig:
     """Tests for benchmark YAML config loading."""
 
     def test_load_quick_profile(self):
         """Quick profile config loads without error."""
-        cfg = load_config("benchmark/configs/quick_profile.yaml")
+        cfg = load_config(os.path.join(_BENCH_DIR, "configs", "quick_profile.yaml"))
         assert cfg.target.url == "http://localhost:8000"
         assert cfg.profiling.enabled is True
         assert cfg.aiperf.enabled is False
 
     def test_load_single_run(self):
         """Single run config loads with aiperf enabled."""
-        cfg = load_config("benchmark/configs/single_run.yaml")
+        cfg = load_config(os.path.join(_BENCH_DIR, "configs", "single_run.yaml"))
         assert cfg.aiperf.enabled is True
         assert cfg.aiperf.concurrency == 5
 
     def test_load_sweep(self):
         """Sweep config loads with list-valued axes."""
-        cfg = load_config("benchmark/configs/sweep.yaml")
+        cfg = load_config(os.path.join(_BENCH_DIR, "configs", "sweep.yaml"))
         assert isinstance(cfg.aiperf.concurrency, list)
         assert isinstance(cfg.rag.top_k, list)
         assert len(cfg.aiperf.concurrency) >= 3
@@ -73,7 +76,7 @@ class TestQueryLoading:
 
     def test_load_queries(self):
         """Loads queries from benchmark/queries.jsonl."""
-        queries = load_queries("benchmark/queries.jsonl")
+        queries = load_queries(os.path.join(_BENCH_DIR, "queries.jsonl"))
         assert len(queries) >= 20
         assert all(isinstance(q, str) for q in queries)
         assert all(len(q) > 5 for q in queries)
@@ -226,7 +229,7 @@ class TestPerformanceThresholds:
         """Config loading completes in < 100ms."""
         t0 = time.perf_counter()
         for _ in range(10):
-            load_config("benchmark/configs/quick_profile.yaml")
+            load_config(os.path.join(_BENCH_DIR, "configs", "quick_profile.yaml"))
         elapsed = (time.perf_counter() - t0) * 1000
         assert elapsed < 100, f"Config loading took {elapsed:.0f}ms (>100ms)"
 
@@ -234,7 +237,7 @@ class TestPerformanceThresholds:
         """Query loading completes in < 50ms."""
         t0 = time.perf_counter()
         for _ in range(10):
-            load_queries("benchmark/queries.jsonl")
+            load_queries(os.path.join(_BENCH_DIR, "queries.jsonl"))
         elapsed = (time.perf_counter() - t0) * 1000
         assert elapsed < 50, f"Query loading took {elapsed:.0f}ms (>50ms)"
 
