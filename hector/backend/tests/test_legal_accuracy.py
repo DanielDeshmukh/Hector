@@ -15,7 +15,7 @@ from core.router import HectorRouter
 
 @pytest.fixture(scope="module")
 def mapping_data():
-    path = os.path.join(os.path.dirname(__file__), os.pardir, "core", "mapping.json")
+    path = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "api", "core", "mapping.json")
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
