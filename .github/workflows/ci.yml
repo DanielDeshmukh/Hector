@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff pytest
+          pip install -r hector/api/requirements.txt
+
+      - name: Lint
+        run: ruff check hector/api/ --select E,F,W --ignore E501
+
+      - name: Test
+        run: pytest hector/backend/tests/ -x -q --tb=short
+        env:
+          HECTOR_API_KEY: test-api-key-for-testing-only
+          HECTOR_JWT_SECRET: test-jwt-secret-32-bytes-minimum-value
+          HECTOR_DB_PATH: /tmp/hector_test_db
+          HECTOR_BOOKS_DIR: hector/api/data/Books
