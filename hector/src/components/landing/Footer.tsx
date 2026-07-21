@@ -37,7 +37,9 @@ export default function Footer() {
               </p>
               <div className="flex items-center gap-4">
                 <a
-                  href="#"
+                  href="https://x.com/DeshmukhDa71837"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-charcoal flex items-center justify-center hover:bg-slate-custom transition-colors"
                 >
                   <svg
@@ -49,7 +51,9 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/daniel-deshmukh-7b08602b2"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-charcoal flex items-center justify-center hover:bg-slate-custom transition-colors"
                 >
                   <svg
@@ -61,7 +65,9 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/DanielDeshmukh"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-charcoal flex items-center justify-center hover:bg-slate-custom transition-colors"
                 >
                   <svg

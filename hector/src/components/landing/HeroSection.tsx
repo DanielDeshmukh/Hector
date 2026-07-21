@@ -131,9 +131,9 @@ export default function HeroSection() {
                         <span className="font-semibold text-gold">
                           Section 302 IPC
                         </span>{" "}
-                        has been renumbered as{" "}
+                        (Murder) has been renumbered as{" "}
                         <span className="font-semibold text-gold">
-                          Section 103(1)
+                          Section 101
                         </span>
                         .
                       </p>
@@ -144,7 +144,7 @@ export default function HeroSection() {
                           liable to fine.&quot;
                         </p>
                         <p className="text-xs text-silver/60 mt-2 font-mono">
-                          — BNS Section 103(1)
+                          — BNS Section 101
                         </p>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-silver">
@@ -164,8 +164,8 @@ export default function HeroSection() {
                     <Icons.Shield />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-white">99.7%</p>
-                    <p className="text-xs text-silver">Citation Accuracy</p>
+                    <p className="text-2xl font-bold text-white">94%</p>
+                    <p className="text-xs text-silver">Evaluation Accuracy</p>
                   </div>
                 </div>
               </div>

@@ -34,7 +34,7 @@ export default function CTASection() {
           </div>
 
           <p className="text-sm text-silver mt-6">
-            Trusted by 500+ legal professionals across India
+            Built for Indian law practitioners, researchers, and legal teams
           </p>
         </div>
       </div>

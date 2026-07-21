@@ -11,7 +11,7 @@ function cn(...classes: (string | boolean | undefined)[]) {
 const stats = [
   { value: 13479, suffix: "+", label: "Legal Chunks Indexed", icon: Icons.Database },
   { value: 45, suffix: "", label: "Bare Acts Covered", icon: Icons.BookOpen },
-  { value: 99, suffix: ".7%", label: "Citation Accuracy", icon: Icons.Shield },
+  { value: 94, suffix: "%", label: "Evaluation Accuracy", icon: Icons.Shield },
   { value: 0, suffix: "", label: "Hallucinations", icon: Icons.Zap },
 ];
 
