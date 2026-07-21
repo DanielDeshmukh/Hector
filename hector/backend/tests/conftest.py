@@ -3,9 +3,9 @@
 import os
 import sys
 
-# Ensure server/ and project root are on path
+# Ensure api/ and project root are on path
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-API_ROOT = os.path.join(PROJECT_ROOT, "server")
+API_ROOT = os.path.join(PROJECT_ROOT, "api")
 for p in (API_ROOT, PROJECT_ROOT):
     if p not in sys.path:
         sys.path.insert(0, p)

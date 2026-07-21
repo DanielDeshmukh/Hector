@@ -20,10 +20,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install ruff pytest
-          pip install -r hector/server/requirements.txt
+          pip install -r hector/api/requirements.txt
 
       - name: Lint
-        run: ruff check hector/server/ --select E,F,W --ignore E501,E402,E401,F401
+        run: ruff check hector/api/ --select E,F,W --ignore E501,E402,E401,F401
 
       - name: Test
         working-directory: hector
@@ -32,4 +32,4 @@ jobs:
           HECTOR_API_KEY: test-api-key-for-testing-only
           HECTOR_JWT_SECRET: test-jwt-secret-32-bytes-minimum-value
           HECTOR_DB_PATH: /tmp/hector_test_db
-          HECTOR_BOOKS_DIR: hector/server/data/Books
+          HECTOR_BOOKS_DIR: hector/api/data/Books
