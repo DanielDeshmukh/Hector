@@ -147,6 +147,16 @@ async def general_exception_handler(request, exc):
 
 
 @app.middleware("http")
+async def strip_api_prefix_middleware(request: Request, call_next):
+    path = request.url.path
+    if path.startswith("/api/"):
+        request.scope["path"] = path[4:]
+    elif path == "/api":
+        request.scope["path"] = "/"
+    return await call_next(request)
+
+
+@app.middleware("http")
 async def security_headers_middleware(request: Request, call_next):
     # Generate request ID and set in context var for logging
     request_id = str(uuid.uuid4())
