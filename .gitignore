@@ -224,6 +224,7 @@ __marimo__/
 # Legal PDF corpus (large binaries, regenerable)
 /data/Books
 hector/api/data/Books/
+hector/server/data/Books/
 
 # Project planning documents
 /completion-roadmap.md
