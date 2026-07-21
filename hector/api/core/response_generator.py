@@ -177,8 +177,22 @@ When answering legal queries:
             self._source_payload(item, index, len(results))
             for index, item in enumerate(results, start=1)
         ]
-        ipc_sources = [source for source in sources if source["act"] == "IPC"]
-        bns_sources = [source for source in sources if source["act"] == "BNS"]
+        ipc_sources = [
+            source
+            for source in sources
+            if any(
+                kw in source["act"]
+                for kw in ("IPC", "INDIAN PENAL CODE")
+            )
+        ]
+        bns_sources = [
+            source
+            for source in sources
+            if any(
+                kw in source["act"]
+                for kw in ("BNS", "BHARATIYA NYAYA SANHITA")
+            )
+        ]
 
         overview_lines = []
         if ipc_sources:
@@ -265,8 +279,22 @@ When answering legal queries:
             self._source_payload(item, index, len(results))
             for index, item in enumerate(results, start=1)
         ]
-        ipc_sources = [source for source in sources if source["act"] == "IPC"]
-        bns_sources = [source for source in sources if source["act"] == "BNS"]
+        ipc_sources = [
+            source
+            for source in sources
+            if any(
+                kw in source["act"]
+                for kw in ("IPC", "INDIAN PENAL CODE")
+            )
+        ]
+        bns_sources = [
+            source
+            for source in sources
+            if any(
+                kw in source["act"]
+                for kw in ("BNS", "BHARATIYA NYAYA SANHITA")
+            )
+        ]
 
         lines = [
             f"[HECTOR Intelligence Report] · [{len(sources)} sources retrieved] · Query: {query}",
