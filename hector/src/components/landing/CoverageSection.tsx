@@ -1,18 +1,19 @@
+import Link from "next/link";
 import { Icons } from "./Icons";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const acts = [
-  { name: "Bharatiya Nyaya Sanhita (BNS)", year: "2023", status: "Active", icon: Icons.Scale },
-  { name: "Bharatiya Nagarik Suraksha Sanhita (BNSS)", year: "2023", status: "Active", icon: Icons.Shield },
-  { name: "Bharatiya Sakshya Adhiniyam (BSA)", year: "2023", status: "Active", icon: Icons.FileText },
-  { name: "Indian Penal Code (IPC)", year: "1860", status: "Mapped", icon: Icons.Scale },
-  { name: "Code of Criminal Procedure (CrPC)", year: "1973", status: "Mapped", icon: Icons.BookOpen },
-  { name: "Indian Evidence Act", year: "1872", status: "Mapped", icon: Icons.FileText },
-  { name: "Constitution of India", year: "1950", status: "Active", icon: Icons.Scale },
-  { name: "Companies Act", year: "2013", status: "Active", icon: Icons.BookOpen },
+const featuredActs = [
+  { name: "Bharatiya Nyaya Sanhita (BNS)", year: "2023", status: "Active", category: "Criminal", icon: Icons.Scale },
+  { name: "Bharatiya Nagarik Suraksha Sanhita (BNSS)", year: "2023", status: "Active", category: "Criminal Procedure", icon: Icons.Shield },
+  { name: "Bharatiya Sakshya Adhiniyam (BSA)", year: "2023", status: "Active", category: "Evidence", icon: Icons.FileText },
+  { name: "Indian Penal Code (IPC)", year: "1860", status: "Repealed", category: "Criminal", icon: Icons.Scale },
+  { name: "Code of Criminal Procedure (CrPC)", year: "1973", status: "Repealed", category: "Criminal Procedure", icon: Icons.BookOpen },
+  { name: "Indian Evidence Act", year: "1872", status: "Repealed", category: "Evidence", icon: Icons.FileText },
+  { name: "Constitution of India", year: "1950", status: "Active", category: "Constitutional", icon: Icons.Scale },
+  { name: "Indian Contract Act", year: "1872", status: "Active", category: "Civil", icon: Icons.BookOpen },
 ];
 
 export default function CoverageSection() {
@@ -25,7 +26,7 @@ export default function CoverageSection() {
               Legal Coverage
             </span>
             <h2 className="font-serif text-3xl lg:text-5xl font-semibold text-white mb-6">
-              45 Bare Acts, Fully Indexed
+              38 Bare Acts, Fully Indexed
             </h2>
             <p className="text-lg text-silver">
               Comprehensive coverage of civil and criminal law with full
@@ -34,7 +35,7 @@ export default function CoverageSection() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {acts.map((act) => (
+            {featuredActs.map((act) => (
               <div
                 key={act.name}
                 className="group p-6 bg-slate-custom rounded-xl border border-white/5 hover:border-gold-light hover:bg-gold-light/10 transition-all"
@@ -57,16 +58,21 @@ export default function CoverageSection() {
                 <h3 className="font-medium text-white mb-1 line-clamp-2">
                   {act.name}
                 </h3>
-                <p className="text-sm text-silver">Year {act.year}</p>
+                <p className="text-sm text-silver">
+                  Year {act.year} &middot; {act.category}
+                </p>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-gold font-medium hover:text-gold transition-colors">
-              View all 45 bare acts
+            <Link
+              href="/landing/acts"
+              className="inline-flex items-center gap-2 text-gold font-medium hover:text-gold transition-colors"
+            >
+              View all 38 bare acts
               <Icons.ArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

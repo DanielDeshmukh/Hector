@@ -12,7 +12,7 @@ const features = [
     icon: Icons.Search,
     title: "Intelligent Legal Search",
     description:
-      "Natural language queries across 45+ bare acts with semantic understanding of legal terminology and context.",
+      "Natural language queries across 38+ bare acts with semantic understanding of legal terminology and context.",
     details: [
       "Semantic search across 13,479+ legal chunks",
       "Context-aware query interpretation",

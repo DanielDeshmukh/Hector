@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "What bare acts are covered?",
     answer:
-      "HECTOR covers 45+ bare acts including all major criminal and civil laws. This includes the new Bharatiya Nyaya Sanhita (BNS), Bharatiya Nagarik Suraksha Sanhita (BNSS), Bharatiya Sakshya Adhiniyam (BSA), as well as legacy codes like IPC, CrPC, and Evidence Act with full cross-referencing.",
+      "HECTOR covers 38+ bare acts including all major criminal and civil laws. This includes the new Bharatiya Nyaya Sanhita (BNS), Bharatiya Nagarik Suraksha Sanhita (BNSS), Bharatiya Sakshya Adhiniyam (BSA), as well as legacy codes like IPC, CrPC, and Evidence Act with full cross-referencing.",
   },
   {
     question: "Can I use HECTOR citations in court?",

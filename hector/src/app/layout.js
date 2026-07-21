@@ -8,7 +8,7 @@ export const metadata = {
     template: "%s | HECTOR",
   },
   description:
-    "Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval. AI-powered legal research engine for Indian Law with 13,479 chunks across 45 bare acts, IPC-to-BNS cross-referencing, and chain-of-verification for zero-hallucination cited responses.",
+    "Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval. AI-powered legal research engine for Indian Law with 13,479 chunks across 38 bare acts, IPC-to-BNS cross-referencing, and chain-of-verification for zero-hallucination cited responses.",
   keywords: [
     "Indian law",
     "legal research",
@@ -37,7 +37,7 @@ export const metadata = {
     siteName: "HECTOR",
     title: "HECTOR — Zero-Hallucination Legal Research for Indian Law",
     description:
-      "AI-powered legal research engine for Indian Law. 45 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing, chain-of-verification.",
+      "AI-powered legal research engine for Indian Law. 38 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing, chain-of-verification.",
     images: [
       {
         url: "/tab-icon.png",
@@ -51,7 +51,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "HECTOR — Zero-Hallucination Legal Research for Indian Law",
     description:
-      "AI-powered legal research engine for Indian Law. 45 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing.",
+      "AI-powered legal research engine for Indian Law. 38 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing.",
     images: ["/tab-icon.png"],
   },
   icons: {

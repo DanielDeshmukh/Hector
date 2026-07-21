@@ -43,7 +43,7 @@ export default function HeroSection() {
 
               <p className="text-lg text-silver leading-relaxed max-w-xl">
                 AI-powered legal research engine with chain-of-verification
-                technology. Access 13,479+ chunks across 45 bare acts with
+                technology. Access 13,479+ chunks across 38 bare acts with
                 IPC-to-BNS cross-referencing and guaranteed citation accuracy.
               </p>
 
