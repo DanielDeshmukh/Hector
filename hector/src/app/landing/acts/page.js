@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Icons } from "@/components/landing/Icons";
 
-function cn(...classes: (string | boolean | undefined)[]) {
+function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
