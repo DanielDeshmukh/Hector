@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/index.py/$1"
+      "dest": "api/index.py"
     }
   ],
   "headers": [
