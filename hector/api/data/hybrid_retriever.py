@@ -731,8 +731,11 @@ class HectorHybridRetriever:
             provider = os.getenv("HECTOR_RERANK_PROVIDER", "nemotron")
             reranker = get_rerank_provider(provider)
             return reranker.rerank(query, candidates)
-        except Exception:
-            pass
+        except Exception as e:
+            import logging
+            logging.getLogger("hector.retriever").warning(
+                f"Nemotron rerank failed, using fallback: {e}"
+            )
 
         # Last resort: heuristic scoring
         for item in candidates:

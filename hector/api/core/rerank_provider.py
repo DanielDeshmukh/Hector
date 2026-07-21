@@ -92,11 +92,19 @@ class NemotronReranker:
         self,
         model_name: str = NEMOTRON_RERANK_MODEL,
         api_key: str | None = None,
-        base_url: str = "https://ai.api.nvidia.com/v1/retrieval",
+        base_url: str | None = None,
     ):
         self.model_name = model_name
-        self.api_key = api_key or os.getenv("NVIDIA_API_KEY", "")
-        self.base_url = base_url
+        self.api_key = (
+            api_key
+            or os.getenv("NVIDIA_API_KEY", "")
+            or os.getenv("NIM_API_KEY", "")
+        )
+        if base_url:
+            self.base_url = base_url
+        else:
+            raw = os.getenv("NIM_BASE_URL", "https://ai.api.nvidia.com/v1")
+            self.base_url = raw.rstrip("/") + "/retrieval"
         self._available = None
 
     def _check_available(self) -> bool:
@@ -110,14 +118,19 @@ class NemotronReranker:
             return False
 
         try:
-            import requests
+            import httpx
 
-            resp = requests.get(
+            resp = httpx.get(
                 f"{self.base_url}/nvidia/nemotron-rerank-v1",
                 headers={"Authorization": f"Bearer {self.api_key}"},
                 timeout=10,
             )
             self._available = resp.status_code in (200, 405)
+            if not self._available:
+                logger.warning(
+                    f"Nemotron health check returned {resp.status_code}: "
+                    f"{resp.text[:200]}"
+                )
         except Exception as e:
             logger.warning(f"Nemotron rerank health check failed: {e}")
             self._available = False
@@ -140,15 +153,20 @@ class NemotronReranker:
         if not documents:
             return documents
 
-        import requests
+        import httpx
 
         if not self.api_key:
             raise ValueError("NVIDIA_API_KEY is required for Nemotron reranking")
 
-        # Build passages list for the API
-        passages = [doc.get("document", "") for doc in documents]
+        # Build passages list for the API (truncate long docs)
+        passages = []
+        for doc in documents:
+            text = doc.get("document", "")
+            if len(text) > 512:
+                text = text[:512] + "..."
+            passages.append(text)
 
-        resp = requests.post(
+        resp = httpx.post(
             f"{self.base_url}/nvidia/nemotron-rerank-v1",
             headers={
                 "Authorization": f"Bearer {self.api_key}",
@@ -163,6 +181,10 @@ class NemotronReranker:
         )
         resp.raise_for_status()
         data = resp.json()
+        logger.info(
+            f"Nemotron rerank returned {len(data.get('rankings', []))} rankings "
+            f"for {len(documents)} passages"
+        )
 
         # Parse scores from response
         ranked = data.get("rankings", data.get("data", []))

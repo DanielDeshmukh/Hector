@@ -176,9 +176,12 @@ OUTPUT FORMAT:
                 "answer_confidence": 0.0,
             }
 
-        sources = [
+        all_sources = [
             self._source_payload(item, index, len(results))
             for index, item in enumerate(results, start=1)
+        ]
+        sources = [
+            s for s in all_sources if s["similarity"] >= 0.70
         ]
         ipc_sources = [
             source
@@ -266,7 +269,7 @@ OUTPUT FORMAT:
                     "rows": comparison_rows,
                 },
             ],
-            "source_sections": sources,
+            "source_sections": all_sources,
             "answer_confidence": float(self._answer_confidence(sources)),
         }
 
