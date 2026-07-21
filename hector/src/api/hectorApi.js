@@ -1,5 +1,5 @@
-const API_URL = "/api";
-const API_KEY = "";
+const API_URL = process.env.NEXT_PUBLIC_HECTOR_API_URL || process.env.VITE_HECTOR_API_URL || "/api";
+const API_KEY = process.env.NEXT_PUBLIC_HECTOR_API_KEY || process.env.VITE_HECTOR_API_KEY || "";
 
 function getCitationValue(citation, key, fallback = "") {
   return citation?.[key] ?? citation?.[key.toLowerCase()] ?? fallback;
@@ -152,9 +152,15 @@ function toUiResponse(payload) {
 }
 
 function authHeaders() {
-  return {
+  const headers = {
     "Content-Type": "application/json",
   };
+
+  if (API_KEY) {
+    headers["X-API-Key"] = API_KEY;
+  }
+
+  return headers;
 }
 
 export async function searchHector(query) {
@@ -278,7 +284,7 @@ export function createSearchWebSocket(query, onEvent, onError, _retries = 0, _ma
     retries++;
     const delay = Math.min(1000 * Math.pow(2, retries - 1), 10000);
     setTimeout(() => {
-      createSearchWebSocket(query, onEvent, onError, authHeaders, retries, maxRetries);
+      createSearchWebSocket(query, onEvent, onError, retries, maxRetries);
     }, delay);
   };
 
