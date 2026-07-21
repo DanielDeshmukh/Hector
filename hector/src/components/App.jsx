@@ -95,6 +95,7 @@ export default function App() {
   const [compareData, setCompareData] = useState(null);
   const [compareLoading, setCompareLoading] = useState(false);
   const [compareError, setCompareError] = useState("");
+  const [inputResetKey, setInputResetKey] = useState(0);
   const responseRef = useRef(null);
   const querySuggestions = buildQuerySuggestions(searchHistory, currentResponse);
 
@@ -155,6 +156,7 @@ export default function App() {
     setActiveSource(null);
     setSubmittedQuery("");
     setError("");
+    setInputResetKey((k) => k + 1);
   }, []);
 
   useEffect(() => {
@@ -434,6 +436,7 @@ export default function App() {
                 isLoading={appState === "processing"}
                 showSuggestions={appState === "idle"}
                 suggestions={querySuggestions}
+                resetKey={inputResetKey}
               />
             </div>
           </div>

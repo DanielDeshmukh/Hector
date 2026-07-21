@@ -8,12 +8,17 @@ export default function QueryInput({
   isLoading,
   showSuggestions,
   suggestions = [],
+  resetKey = 0,
 }) {
   const [query, setQuery] = useState("");
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
   const textareaRef = useRef(null);
   const recognitionRef = useRef(null);
+
+  useEffect(() => {
+    setQuery("");
+  }, [resetKey]);
 
   useEffect(() => {
     const SpeechRecognition =
@@ -55,6 +60,7 @@ export default function QueryInput({
   const handleSubmit = () => {
     if (query.trim() && !isLoading) {
       onSubmit(query.trim());
+      setQuery("");
     }
   };
 
@@ -119,6 +125,7 @@ export default function QueryInput({
           placeholder='Enter your legal query - e.g., "What is the BNS equivalent of IPC Section 302?"'
           rows={1}
           disabled={isLoading}
+          autoComplete="off"
           aria-label="Legal search query"
           role="searchbox"
           className="w-full resize-none bg-transparent px-4 pt-4 pb-12 text-[14.5px] text-gold-light placeholder-silver/40 outline-none disabled:opacity-50"
