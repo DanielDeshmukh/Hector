@@ -724,16 +724,17 @@ class HectorHybridRetriever:
         if not candidates:
             return []
 
+        # Try Nemotron reranker first (API-based, works on Vercel)
         try:
             from core.rerank_provider import get_rerank_provider
 
-            provider = os.getenv("HECTOR_RERANK_PROVIDER", "local")
-            if provider == "nemotron":
-                reranker = get_rerank_provider("nemotron")
-                return reranker.rerank(query, candidates)
+            provider = os.getenv("HECTOR_RERANK_PROVIDER", "nemotron")
+            reranker = get_rerank_provider(provider)
+            return reranker.rerank(query, candidates)
         except Exception:
             pass
 
+        # Last resort: heuristic scoring
         for item in candidates:
             fallback_score = self._fallback_reranker_score(item)
             item["reranker_score"] = round(fallback_score, 6)

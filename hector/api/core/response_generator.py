@@ -45,19 +45,21 @@ class ContextualResponseGenerator:
     """
 
     # Legal-specific system prompt for LLM-enhanced responses
-    LEGAL_SYSTEM_PROMPT = """You are HECTOR, a legal research assistant specializing in Indian law.
-Your responses must:
-1. Cite sources with exact section numbers and page references
-2. Use precise legal terminology
-3. Include hierarchical context (Section within Chapter within Act)
-4. Never hallucinate - only state what is in the source documents
-5. Format citations as: [Source Name, Page X, Section Y Act]
+    LEGAL_SYSTEM_PROMPT = """You are HECTOR, a zero-hallucination legal research assistant specializing in Indian law.
 
-When answering legal queries:
-- Provide the relevant statutory text
-- Include any exceptions or illustrations
-- Note any amendments or recent changes
-- Suggest related provisions that might be relevant"""
+RULES:
+1. Answer ONLY from the provided source documents. Never invent legal provisions.
+2. Cite every claim with [Source N] where N matches the source number.
+3. Use precise legal terminology (section, clause, proviso, explanation).
+4. If comparing IPC and BNS, clearly state what changed and what stayed the same.
+5. If the sources don't contain enough information, say so explicitly.
+6. Keep answers concise and direct — no filler phrases.
+
+OUTPUT FORMAT:
+- Start with a direct answer to the query.
+- Then provide the statutory text or key provisions.
+- Then note any differences between IPC and BNS (if both are relevant).
+- End with a brief note on practical implications if applicable."""
 
     def __init__(self, retriever: "HectorHybridRetriever"):
         self.retriever = retriever
@@ -80,21 +82,26 @@ When answering legal queries:
         if nim is None:
             return None
 
-        # Build context from retrieved chunks
         context_parts = []
         for i, r in enumerate(results[:5], 1):
             doc = r.get("document", "")
             meta = r.get("metadata", {})
-            act = meta.get("act", meta.get("source_file", "Unknown"))
-            section = meta.get("section", "")
-            page = meta.get("page", "")
-            citation = f"[Source {i}: {act}"
+            citation = r.get("citation", {})
+            act = (
+                meta.get("real_act_name")
+                or meta.get("act_name")
+                or meta.get("act")
+                or "Unknown"
+            )
+            section = citation.get("section") or meta.get("section_number") or ""
+            page = meta.get("page") or ""
+            label = f"[Source {i}: {act}"
             if section:
-                citation += f", Section {section}"
+                label += f", Section {section}"
             if page:
-                citation += f", Page {page}"
-            citation += "]"
-            context_parts.append(f"{citation}\n{doc[:1500]}")
+                label += f", Page {page}"
+            label += "]"
+            context_parts.append(f"{label}\n{doc[:1500]}")
 
         context = "\n\n---\n\n".join(context_parts)
 
@@ -103,9 +110,8 @@ When answering legal queries:
             {
                 "role": "user",
                 "content": f"Query: {query}\n\nRetrieved Sources:\n{context}\n\n"
-                "Answer the query using ONLY the retrieved sources. "
-                "Cite sources with [Source N] format. "
-                "If the sources don't contain enough information, say so explicitly.",
+                "Provide a direct, well-structured answer. "
+                "Cite with [Source N]. Compare IPC and BNS if both are present.",
             },
         ]
 
@@ -130,22 +136,19 @@ When answering legal queries:
         """
         Generate a formatted response from retrieval results.
 
-        Args:
-            query: The original user query
-            results: List of retrieved document chunks
-            format: Output format (summary, detailed, citations)
-            include_related: Whether to include related provisions
-
         Returns:
-            Dictionary with generated_response, citations, and related_provisions
+            Dictionary with generated_response, answer_sections, source_sections, etc.
         """
         citations = self._extract_citations(results)
         related = self._find_related_provisions(results) if include_related else []
         structured = self._build_legal_rag_payload(results)
 
-        # Try LLM synthesis first, fall back to template
+        # Try LLM synthesis — if it works, use it as the primary answer body
         llm_response = self._synthesize_with_llm(query, results) if results else None
         if llm_response:
+            # Replace the Grounded Answer body with the LLM response
+            if structured["answer_sections"]:
+                structured["answer_sections"][0]["body"] = llm_response
             response = llm_response
         else:
             response = self._format_legal_rag(query, results, related)
@@ -222,7 +225,7 @@ When answering legal queries:
                 f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
             )
 
-        comparison_rows = [
+        all_rows = [
             {
                 "point": "Section reference",
                 "ipc": self._table_section(ipc_sources, "IPC"),
@@ -243,6 +246,11 @@ When answering legal queries:
                 "ipc": self._table_status(ipc_sources),
                 "bns": self._table_status(bns_sources),
             },
+        ]
+        # Only keep rows where at least one side has real data
+        comparison_rows = [
+            row for row in all_rows
+            if row["ipc"] != "Not directly stated" or row["bns"] != "Not directly stated"
         ]
 
         return {
