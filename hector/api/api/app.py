@@ -364,6 +364,67 @@ def cache_invalidate(body: dict):
     }
 
 
+# ---------------------------------------------------------------------------
+# Analytics endpoints
+# ---------------------------------------------------------------------------
+
+
+@app.get("/analytics/overview")
+def analytics_overview(days: int = 30):
+    """Return high-level search analytics."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_overview(days=days)
+
+
+@app.get("/analytics/popular")
+def analytics_popular(limit: int = 10, days: int = 30):
+    """Return most popular queries."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_popular_queries(limit=limit, days=days)
+
+
+@app.get("/analytics/domains")
+def analytics_domains(days: int = 30):
+    """Return domain (route) breakdown."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_domain_breakdown(days=days)
+
+
+@app.get("/analytics/hourly")
+def analytics_hourly(days: int = 7):
+    """Return hourly query distribution."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_hourly_distribution(days=days)
+
+
+@app.get("/analytics/confidence")
+def analytics_confidence(days: int = 30):
+    """Return confidence level distribution."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_confidence_distribution(days=days)
+
+
+@app.get("/analytics/trend")
+def analytics_trend(days: int = 7, bucket_hours: int = 6):
+    """Return response time trend."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_response_time_trend(days=days, bucket_hours=bucket_hours)
+
+
+@app.get("/analytics/recent")
+def analytics_recent(limit: int = 20):
+    """Return recent queries."""
+    from core.analytics import get_analytics
+
+    return get_analytics().get_recent_queries(limit=limit)
+
+
 @app.get("/status")
 def status_endpoint(
     request: Request,
