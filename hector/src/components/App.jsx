@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect, lazy, Suspense } from "react";
-import { AlertTriangle, RefreshCw } from "lucide-react";
+import { AlertTriangle, RefreshCw, Menu, X } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import QueryInput from "@/components/QueryInput";
 import ResponseDisplay from "@/components/ResponseDisplay";
@@ -81,6 +81,7 @@ function buildQuerySuggestions(history, response) {
 export default function App() {
   const { lang, toggleLang, t } = useLanguage();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(loadSidebarState);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [appState, setAppState] = useState("idle");
   const [currentResponse, setCurrentResponse] = useState(null);
   const [activeSourceId, setActiveSourceId] = useState(null);
@@ -270,6 +271,8 @@ export default function App() {
         bookmarks={bookmarks}
         onRemoveBookmark={handleRemoveBookmark}
         systemStatus={systemStatus}
+        mobileOpen={mobileMenuOpen}
+        onMobileClose={() => setMobileMenuOpen(false)}
       />
 
       {/* Main Area */}
@@ -281,8 +284,16 @@ export default function App() {
           }`}
         >
           {/* Top Bar */}
-          <header className="flex items-center justify-between border-b border-slate-custom/30 bg-cream/90 px-6 py-2.5 backdrop-blur-sm">
+          <header className="flex items-center justify-between border-b border-slate-custom/30 bg-cream/90 px-4 md:px-6 py-2.5 backdrop-blur-sm">
             <div className="flex items-center gap-3">
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="md:hidden flex h-8 w-8 items-center justify-center rounded-lg text-silver/60 hover:bg-slate-custom/30 hover:text-silver"
+                aria-label="Open menu"
+              >
+                <Menu size={18} />
+              </button>
               {appState === "responded" && (
                 <div className="flex items-center gap-2 animate-fade-in">
                   <span className="h-1.5 w-1.5 rounded-full bg-success"></span>
