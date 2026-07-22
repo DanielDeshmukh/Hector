@@ -248,7 +248,6 @@ def export_docx(response_data: dict) -> bytes:
         if isinstance(c, dict) and c.get("act", "").strip() and c.get("section", "").strip()
     ]
     if valid_citations:
-        doc.add_page_break()
         doc.add_heading("Citations", level=1)
         for i, citation in enumerate(valid_citations, 1):
             act = citation.get("act", "")
