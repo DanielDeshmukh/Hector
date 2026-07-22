@@ -28,11 +28,11 @@ const faqs = [
     answer:
       "Yes. HECTOR provides verified citations with hyperlinks to source documents. However, we recommend verifying critical citations independently before final submission, as you would with any research tool. Our verification reports can be exported for your records.",
   },
-  {
-    question: "Is there a free trial available?",
-    answer:
-      "Yes, we offer a 14-day free trial with full access to all features. No credit card is required to start. After the trial, you can choose from our subscription plans based on your firm's needs.",
-  },
+    {
+      question: "How do I start using HECTOR?",
+      answer:
+        "HECTOR is available as a web application. No account or sign-up is required. Simply visit the app and start your legal research. We also offer an API for developers who want to integrate HECTOR into their own tools.",
+    },
   {
     question: "How often is the database updated?",
     answer:

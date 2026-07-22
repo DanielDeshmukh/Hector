@@ -52,7 +52,7 @@ export default function HeroSection() {
                   href="#demo"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-charcoal font-medium rounded-xl hover:bg-gold-light transition-all hover:shadow-xl hover:shadow-gold/20"
                 >
-                  Start Free Trial
+                  Try HECTOR Now
                   <Icons.ArrowRight />
                 </a>
                 <a
@@ -66,11 +66,11 @@ export default function HeroSection() {
               <div className="flex items-center gap-6 pt-4 text-sm text-silver">
                 <div className="flex items-center gap-2">
                   <Icons.Check />
-                  <span>No credit card required</span>
+                  <span>No sign-up required</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Icons.Check />
-                  <span>14-day free trial</span>
+                  <span>Free to use</span>
                 </div>
               </div>
             </div>

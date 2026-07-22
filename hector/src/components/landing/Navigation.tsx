@@ -69,7 +69,7 @@ export default function Navigation() {
               href="#demo"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-charcoal text-sm font-medium rounded-lg hover:bg-gold-light transition-colors"
             >
-              Request Access
+              Try HECTOR
               <Icons.ArrowRight />
             </a>
           </div>
@@ -101,7 +101,7 @@ export default function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="block w-full py-3 px-4 bg-gold text-charcoal text-center font-medium rounded-lg mt-4"
             >
-              Request Access
+              Try HECTOR
             </a>
           </div>
         </div>
