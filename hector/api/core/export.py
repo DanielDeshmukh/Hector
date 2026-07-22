@@ -240,12 +240,38 @@ def export_docx(response_data: dict) -> bytes:
             doc.add_heading(f"{i}. {title}", level=2)
             if body:
                 doc.add_paragraph(body)
+            rows = section.get("rows") or []
+            if rows:
+                from docx.shared import Inches
+                from docx.enum.table import WD_TABLE_ALIGNMENT
+                table = doc.add_table(rows=1, cols=3)
+                table.style = "Light Grid Accent 1"
+                table.alignment = WD_TABLE_ALIGNMENT.CENTER
+                hdr = table.rows[0].cells
+                hdr[0].text = "Point"
+                hdr[1].text = "IPC"
+                hdr[2].text = "BNS"
+                for row in rows:
+                    tr = table.add_row().cells
+                    tr[0].text = row.get("point", "")
+                    tr[1].text = row.get("ipc", "")
+                    tr[2].text = row.get("bns", "")
+                doc.add_paragraph()
 
-    # --- Citations (filtered: must have both act and section) ---
+    # --- Citations (filtered: must have act, section, and similarity >= 0.70) ---
     citations = response_data.get("citations", [])
+    source_sections = response_data.get("source_sections", [])
+    valid_source_acts = {
+        s.get("act", "").upper()
+        for s in source_sections
+        if isinstance(s, dict) and s.get("similarity", 0) >= 0.70
+    }
     valid_citations = [
         c for c in citations
-        if isinstance(c, dict) and c.get("act", "").strip() and c.get("section", "").strip()
+        if isinstance(c, dict)
+        and c.get("act", "").strip()
+        and c.get("section", "").strip()
+        and (not valid_source_acts or c.get("act", "").upper() in valid_source_acts)
     ]
     if valid_citations:
         doc.add_heading("Citations", level=1)
@@ -262,7 +288,6 @@ def export_docx(response_data: dict) -> bytes:
             p.add_run(cite_str)
 
     # --- Source Sections (filtered: similarity >= 0.70) ---
-    source_sections = response_data.get("source_sections", [])
     valid_sources = [
         s for s in source_sections
         if isinstance(s, dict) and s.get("similarity", 0) >= 0.70
