@@ -290,6 +290,8 @@ class HectorHybridRetriever:
                 fetched = retry(
                     idx.fetch,
                     ids=ids,
+                    include_values=False,
+                    include_metadata=True,
                     max_attempts=3,
                     operation_name="pinecone_fetch",
                 )
