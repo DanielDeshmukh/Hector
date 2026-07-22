@@ -17,10 +17,16 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-_DEFAULT_DB_PATH = os.getenv(
-    "HECTOR_ANALYTICS_DB",
-    os.path.join(os.path.dirname(__file__), "..", "data", "analytics.db"),
-)
+def _resolve_db_path() -> str:
+    env_path = os.getenv("HECTOR_ANALYTICS_DB")
+    if env_path:
+        return env_path
+    if os.getenv("VERCEL"):
+        return "/tmp/analytics.db"
+    return os.path.join(os.path.dirname(__file__), "..", "data", "analytics.db")
+
+
+_DEFAULT_DB_PATH = _resolve_db_path()
 
 
 class SearchAnalytics:
