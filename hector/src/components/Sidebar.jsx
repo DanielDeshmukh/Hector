@@ -22,6 +22,8 @@ export default function Sidebar({
   bookmarks = [],
   onRemoveBookmark,
   systemStatus,
+  mobileOpen,
+  onMobileClose,
 }) {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [activeTab, setActiveTab] = useState("history");
@@ -41,13 +43,23 @@ export default function Sidebar({
   };
 
   return (
-    <aside
-      className={`relative flex flex-col border-r border-slate-custom/60 bg-cream transition-all duration-300 ${
-        collapsed ? "w-[56px]" : "w-[280px]"
-      }`}
-      role="navigation"
-      aria-label="Search history and bookmarks"
-    >
+    <>
+      {/* Mobile backdrop */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={onMobileClose}
+        />
+      )}
+
+      <aside
+        className={`flex flex-col border-r border-slate-custom/60 bg-cream transition-all duration-300
+          fixed inset-y-0 left-0 z-50 md:relative md:z-auto
+          ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+          ${collapsed ? "w-[56px]" : "w-[280px]"}`}
+        role="navigation"
+        aria-label="Search history and bookmarks"
+      >
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-slate-custom/40 px-3 py-4">
         {!collapsed && (
@@ -220,14 +232,15 @@ export default function Sidebar({
         </div>
       )}
 
-      {/* Collapse Toggle */}
+      {/* Collapse Toggle (desktop only) */}
       <button
         onClick={onToggle}
         aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        className="absolute -right-3 top-5 z-10 flex h-6 w-6 items-center justify-center rounded-full border border-slate-custom/60 bg-cream text-silver transition-colors hover:border-gold/40 hover:text-gold"
+        className="absolute -right-3 top-5 z-10 hidden md:flex h-6 w-6 items-center justify-center rounded-full border border-slate-custom/60 bg-cream text-silver transition-colors hover:border-gold/40 hover:text-gold"
       >
         {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
       </button>
     </aside>
+    </>
   );
 }
