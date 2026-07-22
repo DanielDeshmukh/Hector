@@ -32,7 +32,7 @@ export default function ComparisonView({
       </div>
 
       <form onSubmit={handleSubmit} className="w-full max-w-md animate-fade-in-delay-1" role="search" aria-label="Section comparison">
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-col sm:flex-row gap-2 mb-4">
           <select
             value={act}
             onChange={(e) => setAct(e.target.value)}
