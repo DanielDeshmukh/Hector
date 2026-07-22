@@ -153,7 +153,7 @@ function StructuredAnswer({ response, onSourceClick, activeSourceId }) {
           <h3 className="mb-2 font-serif text-[16px] font-semibold text-gold-light">
             {section.title}
           </h3>
-          <div className="space-y-2">{renderBodyLines(section.body)}</div>
+          <div className="space-y-2">{renderFormattedText(section.body)}</div>
           <ComparisonTable rows={section.rows} />
         </section>
       ))}
