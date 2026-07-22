@@ -65,18 +65,16 @@ def export_pdf(response_data: dict) -> bytes:
     pdf.set_text_color(120, 120, 120)
     generated_at = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
     pdf.cell(usable_w, 6, f"Generated: {generated_at}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
-    pdf.ln(4)
 
     # --- Divider ---
     pdf.set_draw_color(200, 200, 200)
     pdf.line(10, pdf.get_y(), 200, pdf.get_y())
-    pdf.ln(6)
+    pdf.ln(3)
 
     # --- Query ---
     pdf.set_text_color(0, 0, 0)
     _heading("Query")
     _body(response_data.get("query", "N/A"))
-    pdf.ln(3)
 
     # --- Route & Confidence ---
     route = response_data.get("route", "LEGAL_RESEARCH")
@@ -85,12 +83,11 @@ def export_pdf(response_data: dict) -> bytes:
     pdf.set_text_color(100, 100, 100)
     pdf.set_x(pdf.l_margin)
     pdf.cell(usable_w, 5, f"Route: {route}  |  Confidence: {confidence}%", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.ln(4)
 
     # --- Divider ---
     pdf.set_draw_color(200, 200, 200)
     pdf.line(10, pdf.get_y(), 200, pdf.get_y())
-    pdf.ln(6)
+    pdf.ln(3)
 
     # --- Generated Response ---
     pdf.set_text_color(0, 0, 0)
@@ -99,13 +96,11 @@ def export_pdf(response_data: dict) -> bytes:
     for paragraph in response_text.split("\n\n"):
         paragraph = paragraph.strip()
         if paragraph:
-            _body(paragraph)
-            pdf.ln(2)
+                _body(paragraph)
 
     # --- Answer Sections ---
     answer_sections = response_data.get("answer_sections", [])
     if answer_sections:
-        pdf.ln(4)
         _heading("Answer Sections")
         for i, section in enumerate(answer_sections, 1):
             title = section.get("title", f"Section {i}")
@@ -115,7 +110,6 @@ def export_pdf(response_data: dict) -> bytes:
             pdf.multi_cell(usable_w, 6, _sanitize_for_pdf(f"{i}. {title}"))
             if body:
                 _body(body)
-            pdf.ln(2)
 
     # --- Citations ---
     citations = response_data.get("citations", [])
@@ -135,12 +129,10 @@ def export_pdf(response_data: dict) -> bytes:
                 cite_str = f"{i}. {str(citation)}"
             pdf.set_x(pdf.l_margin)
             pdf.multi_cell(usable_w, 5, _sanitize_for_pdf(cite_str))
-            pdf.ln(1)
 
     # --- Source Sections ---
     source_sections = response_data.get("source_sections", [])
     if source_sections:
-        pdf.ln(4)
         _heading("Source Sections")
         pdf.set_font("Helvetica", "", 9)
         for i, src in enumerate(source_sections, 1):
@@ -148,10 +140,9 @@ def export_pdf(response_data: dict) -> bytes:
             section = src.get("section", "")
             pdf.set_x(pdf.l_margin)
             pdf.multi_cell(usable_w, 5, _sanitize_for_pdf(f"{i}. {act} Section {section}"))
-            pdf.ln(1)
 
     # --- Footer ---
-    pdf.ln(10)
+    pdf.ln(6)
     pdf.set_font("Helvetica", "I", 8)
     pdf.set_text_color(150, 150, 150)
     pdf.set_x(pdf.l_margin)
@@ -218,8 +209,6 @@ def export_docx(response_data: dict) -> bytes:
     run.font.size = Pt(9)
     run.font.color.rgb = RGBColor(120, 120, 120)
 
-    doc.add_paragraph()  # spacer
-
     # --- Query ---
     doc.add_heading("Query", level=1)
     doc.add_paragraph(response_data.get("query", "N/A"))
@@ -231,8 +220,6 @@ def export_docx(response_data: dict) -> bytes:
     run = meta_p.add_run(f"Route: {route}  |  Confidence: {confidence}%")
     run.font.size = Pt(9)
     run.font.color.rgb = RGBColor(100, 100, 100)
-
-    doc.add_paragraph()  # spacer
 
     # --- Generated Response ---
     doc.add_heading("Response", level=1)
@@ -289,7 +276,6 @@ def export_docx(response_data: dict) -> bytes:
             doc.add_paragraph(f"{i}. {act} Section {section_num}")
 
     # --- Footer ---
-    doc.add_paragraph()
     footer = doc.add_paragraph()
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = footer.add_run(
