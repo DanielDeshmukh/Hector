@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect, lazy, Suspense } from "react";
-import { AlertTriangle, RefreshCw, Menu, X } from "lucide-react";
+import { AlertTriangle, RefreshCw, Menu, X, Layers } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import QueryInput from "@/components/QueryInput";
 import ResponseDisplay from "@/components/ResponseDisplay";
 import DocumentPanel from "@/components/DocumentPanel";
 import WelcomeScreen from "@/components/WelcomeScreen";
 import ProcessingIndicator from "@/components/ProcessingIndicator";
+import BatchQueryPanel from "@/components/BatchQueryPanel";
 import { ResponseSkeleton, SearchSkeleton, CompareSkeleton } from "@/components/Skeleton";
 import { searchHector, compareHector, getStatusHector } from "@/api/hectorApi";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -82,6 +83,7 @@ export default function App() {
   const { lang, toggleLang, t } = useLanguage();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(loadSidebarState);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [batchPanelOpen, setBatchPanelOpen] = useState(false);
   const [appState, setAppState] = useState("idle");
   const [currentResponse, setCurrentResponse] = useState(null);
   const [activeSourceId, setActiveSourceId] = useState(null);
@@ -328,6 +330,15 @@ export default function App() {
             </div>
             <div className="flex items-center gap-2 text-[10px] text-silver/25">
               <button
+                onClick={() => setBatchPanelOpen(true)}
+                className="hidden md:flex items-center gap-1 rounded-md px-2 py-1 transition-colors hover:bg-slate-custom/30 hover:text-silver font-medium"
+                title="Batch Query"
+              >
+                <Layers size={12} />
+                <span>Batch</span>
+              </button>
+              <span className="hidden md:inline text-slate-custom">|</span>
+              <button
                 onClick={toggleLang}
                 className="rounded-md px-2 py-1 transition-colors hover:bg-slate-custom/30 hover:text-silver font-medium"
               >
@@ -476,6 +487,11 @@ export default function App() {
           </div>
         )}
       </div>
+
+      {/* Batch Query Panel */}
+      {batchPanelOpen && (
+        <BatchQueryPanel onClose={() => setBatchPanelOpen(false)} />
+      )}
     </div>
   );
 }
