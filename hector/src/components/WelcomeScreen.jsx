@@ -1,6 +1,6 @@
 "use client";
 
-import { Scale, Shield, Search, Layers, FileCheck } from "lucide-react";
+import { Shield, Search, Layers, FileCheck } from "lucide-react";
 
 export default function WelcomeScreen() {
   const features = [
@@ -30,9 +30,7 @@ export default function WelcomeScreen() {
     <div className="flex flex-col items-center py-12 px-4">
       {/* Logo & Title */}
       <div className="mb-10 text-center animate-fade-in">
-        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-xl border border-gold/25 bg-gold/8">
-          <Scale size={28} className="text-gold" />
-        </div>
+        <img src="/tab-icon.png" alt="HECTOR" className="mx-auto mb-5 h-16 w-16 rounded-xl" />
         <h1 className="font-serif text-3xl font-semibold tracking-wide text-gold-light">
           HECTOR
         </h1>

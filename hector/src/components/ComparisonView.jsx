@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Scale, ArrowRight, BookOpen, Search } from "lucide-react";
+import { ArrowRight, BookOpen, Search } from "lucide-react";
 
 export default function ComparisonView({
   onCompare,
@@ -22,9 +22,7 @@ export default function ComparisonView({
   return (
     <div className="flex flex-col items-center py-12 px-4">
       <div className="mb-8 text-center animate-fade-in">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-gold/25 bg-gold/8">
-          <Scale size={24} className="text-gold" />
-        </div>
+        <img src="/tab-icon.png" alt="HECTOR" className="mx-auto mb-4 h-14 w-14 rounded-xl" />
         <h2 className="font-serif text-2xl font-semibold text-gold-light">
           IPC &harr; BNS Comparison
         </h2>

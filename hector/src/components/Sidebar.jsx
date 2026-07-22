@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import {
-  Scale,
   Clock,
   Plus,
   ChevronLeft,
@@ -53,9 +52,7 @@ export default function Sidebar({
       <div className="flex items-center gap-3 border-b border-slate-custom/40 px-3 py-4">
         {!collapsed && (
           <div className="flex items-center gap-2.5 animate-fade-in">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md border border-gold/30 bg-gold/10">
-              <Scale size={16} className="text-gold" />
-            </div>
+            <img src="/tab-icon.png" alt="HECTOR" className="h-8 w-8 rounded-md" />
             <div>
               <h1 className="font-serif text-lg font-semibold tracking-wide text-gold-light leading-none">
                 HECTOR
@@ -67,9 +64,7 @@ export default function Sidebar({
           </div>
         )}
         {collapsed && (
-          <div className="flex h-8 w-8 items-center justify-center rounded-md border border-gold/30 bg-gold/10">
-            <Scale size={16} className="text-gold" />
-          </div>
+          <img src="/tab-icon.png" alt="HECTOR" className="h-8 w-8 rounded-md" />
         )}
       </div>
 
