@@ -27,7 +27,7 @@ export default function WelcomeScreen() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center py-12 px-4">
+    <div className="flex flex-col items-center py-12 px-4">
       {/* Logo & Title */}
       <div className="mb-10 text-center animate-fade-in">
         <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-xl border border-gold/25 bg-gold/8">

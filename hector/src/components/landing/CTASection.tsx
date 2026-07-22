@@ -4,7 +4,7 @@ export default function CTASection() {
   return (
     <section
       id="demo"
-      className="py-24 lg:py-32 bg-charcoal border-t border-white/5"
+      className="py-16 lg:py-20 bg-charcoal border-t border-white/5"
     >
       <div className="w-full px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
