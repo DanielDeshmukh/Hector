@@ -256,20 +256,23 @@ OUTPUT FORMAT:
             if row["ipc"] != "Not directly stated" or row["bns"] != "Not directly stated"
         ]
 
+        answer_sections = [
+            {
+                "title": "Grounded Answer",
+                "body": "\n".join(overview_lines),
+                "rows": [],
+            },
+        ]
+        if comparison_rows:
+            answer_sections.append({
+                "title": "Comparison",
+                "body": "",
+                "rows": comparison_rows,
+            })
+
         return {
-            "answer_sections": [
-                {
-                    "title": "Grounded Answer",
-                    "body": "\n".join(overview_lines),
-                    "rows": [],
-                },
-                {
-                    "title": "Comparison",
-                    "body": "",
-                    "rows": comparison_rows,
-                },
-            ],
-            "source_sections": all_sources,
+            "answer_sections": answer_sections,
+            "source_sections": sources,
             "answer_confidence": float(self._answer_confidence(sources)),
         }
 
