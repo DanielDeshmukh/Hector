@@ -224,7 +224,7 @@ class TestRerankProviderFactory:
     def test_nemotron_with_valid_api(self):
         """'nemotron' with valid API returns NemotronReranker."""
         with patch.dict(os.environ, {"NVIDIA_API_KEY": "test-key"}):
-            with patch("requests.get") as mock_get:
+            with patch("core.rerank_provider.httpx.get") as mock_get:
                 mock_get.return_value = MagicMock(status_code=200)
                 provider = get_rerank_provider("nemotron")
                 assert isinstance(provider, NemotronReranker)
@@ -232,7 +232,7 @@ class TestRerankProviderFactory:
     def test_nemotron_fallback_on_failure(self):
         """'nemotron' falls back to local on API failure."""
         with patch.dict(os.environ, {"NVIDIA_API_KEY": "test-key"}):
-            with patch("requests.get", side_effect=Exception("fail")):
+            with patch("core.rerank_provider.httpx.get", side_effect=Exception("fail")):
                 provider = get_rerank_provider("nemotron")
                 assert isinstance(provider, LocalReranker)
 
