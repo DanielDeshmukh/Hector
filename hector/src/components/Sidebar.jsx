@@ -34,7 +34,7 @@ export default function Sidebar({
         return <FileText size={14} />;
       case "LEGAL_RESEARCH":
       case "Legal Research":
-        return <Scale size={14} />;
+        return <BookOpen size={14} />;
       default:
         return <BookOpen size={14} />;
     }
