@@ -345,3 +345,37 @@ export async function exportPdf(query) {
 export async function exportDocx(query) {
   return triggerExport(query, "docx");
 }
+
+// ---------------------------------------------------------------------------
+// Batch query functions
+// ---------------------------------------------------------------------------
+
+export async function runBatchQuery(queries) {
+  const response = await fetch(`${API_URL}/batch`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ queries }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Batch query failed with status ${response.status}`);
+  }
+
+  return response.json();
+}
+
+export async function parseBatchText(text) {
+  const response = await fetch(`${API_URL}/batch/parse`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ text }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Parse failed with status ${response.status}`);
+  }
+
+  return response.json();
+}
