@@ -324,6 +324,46 @@ def metrics_endpoint():
     )
 
 
+# ---------------------------------------------------------------------------
+# Query cache management endpoints
+# ---------------------------------------------------------------------------
+
+
+@app.get("/cache/stats")
+def cache_stats():
+    """Return persistent query cache statistics."""
+    from core.query_cache import get_query_cache
+
+    return get_query_cache().stats()
+
+
+@app.post("/cache/clear")
+def cache_clear():
+    """Evict all entries from the persistent query cache."""
+    from core.query_cache import get_query_cache
+
+    cleared = get_query_cache().clear()
+    return {"cleared": cleared, "message": f"Removed {cleared} cached entries."}
+
+
+@app.post("/cache/invalidate")
+def cache_invalidate(body: dict):
+    """Invalidate a specific query from the cache."""
+    from core.query_cache import get_query_cache
+
+    query = body.get("query", "")
+    if not query:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Missing 'query' field in request body."},
+        )
+    removed = get_query_cache().invalidate(query)
+    return {
+        "removed": removed,
+        "message": "Cache entry removed." if removed else "No matching cache entry found.",
+    }
+
+
 @app.get("/status")
 def status_endpoint(
     request: Request,
