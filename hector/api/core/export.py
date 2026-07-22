@@ -7,10 +7,23 @@ and metadata. Supports both PDF (via fpdf2) and DOCX (via python-docx).
 
 import io
 import logging
-import textwrap
+import unicodedata
+from fpdf.enums import XPos, YPos
 from datetime import UTC, datetime
 
 logger = logging.getLogger(__name__)
+
+
+def _sanitize_for_pdf(text: str) -> str:
+    """Replace Unicode characters unsupported by Latin-1 with ASCII equivalents."""
+    replacements = {
+        "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
+        "\u2014": " - ", "\u2013": "-", "\u2026": "...",
+        "\u00a0": " ", "\u2022": "*", "\u00b6": "",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return unicodedata.normalize("NFKD", text).encode("latin-1", "replace").decode("latin-1")
 
 
 def export_pdf(response_data: dict) -> bytes:
@@ -32,13 +45,13 @@ def export_pdf(response_data: dict) -> bytes:
 
     # --- Title ---
     pdf.set_font("Helvetica", "B", 16)
-    pdf.cell(0, 10, "HECTOR Legal Research Report", ln=True, align="C")
+    pdf.cell(0, 10, "HECTOR Legal Research Report", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
 
     # --- Metadata ---
     pdf.set_font("Helvetica", "", 9)
     pdf.set_text_color(120, 120, 120)
     generated_at = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
-    pdf.cell(0, 6, f"Generated: {generated_at}", ln=True, align="C")
+    pdf.cell(0, 6, f"Generated: {generated_at}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
     pdf.ln(4)
 
     # --- Divider ---
@@ -49,10 +62,10 @@ def export_pdf(response_data: dict) -> bytes:
     # --- Query ---
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 7, "Query", ln=True)
+    pdf.cell(0, 7, "Query", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.set_font("Helvetica", "", 10)
     query = response_data.get("query", "N/A")
-    pdf.multi_cell(0, 6, query)
+    pdf.multi_cell(0, 6, _sanitize_for_pdf(query))
     pdf.ln(3)
 
     # --- Route & Confidence ---
@@ -60,7 +73,7 @@ def export_pdf(response_data: dict) -> bytes:
     confidence = response_data.get("answer_confidence", 0)
     pdf.set_font("Helvetica", "", 9)
     pdf.set_text_color(100, 100, 100)
-    pdf.cell(0, 5, f"Route: {route}  |  Confidence: {confidence}%", ln=True)
+    pdf.cell(0, 5, f"Route: {route}  |  Confidence: {confidence}%", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(4)
 
     # --- Divider ---
@@ -71,13 +84,13 @@ def export_pdf(response_data: dict) -> bytes:
     # --- Generated Response ---
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 7, "Response", ln=True)
+    pdf.cell(0, 7, "Response", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.set_font("Helvetica", "", 10)
     response_text = response_data.get("generated_response", "No response generated.")
     for paragraph in response_text.split("\n\n"):
         paragraph = paragraph.strip()
         if paragraph:
-            pdf.multi_cell(0, 6, paragraph)
+            pdf.multi_cell(0, 6, _sanitize_for_pdf(paragraph))
             pdf.ln(2)
 
     # --- Answer Sections ---
@@ -85,16 +98,16 @@ def export_pdf(response_data: dict) -> bytes:
     if answer_sections:
         pdf.ln(4)
         pdf.set_font("Helvetica", "B", 11)
-        pdf.cell(0, 7, "Answer Sections", ln=True)
+        pdf.cell(0, 7, "Answer Sections", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         pdf.set_font("Helvetica", "", 10)
         for i, section in enumerate(answer_sections, 1):
             title = section.get("title", f"Section {i}")
             body = section.get("body", "")
             pdf.set_font("Helvetica", "B", 10)
-            pdf.multi_cell(0, 6, f"{i}. {title}")
+            pdf.multi_cell(0, 6, _sanitize_for_pdf(f"{i}. {title}"))
             pdf.set_font("Helvetica", "", 10)
             if body:
-                pdf.multi_cell(0, 6, body)
+                pdf.multi_cell(0, 6, _sanitize_for_pdf(body))
             pdf.ln(2)
 
     # --- Citations ---
@@ -102,7 +115,7 @@ def export_pdf(response_data: dict) -> bytes:
     if citations:
         pdf.add_page()
         pdf.set_font("Helvetica", "B", 11)
-        pdf.cell(0, 7, "Citations", ln=True)
+        pdf.cell(0, 7, "Citations", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         pdf.set_font("Helvetica", "", 9)
         for i, citation in enumerate(citations, 1):
             if isinstance(citation, dict):
@@ -114,7 +127,7 @@ def export_pdf(response_data: dict) -> bytes:
                     cite_str += f" — {text[:120]}"
             else:
                 cite_str = f"{i}. {str(citation)}"
-            pdf.multi_cell(0, 5, cite_str)
+            pdf.multi_cell(0, 5, _sanitize_for_pdf(cite_str))
             pdf.ln(1)
 
     # --- Source Sections ---
@@ -122,7 +135,7 @@ def export_pdf(response_data: dict) -> bytes:
     if source_sections:
         pdf.ln(4)
         pdf.set_font("Helvetica", "B", 11)
-        pdf.cell(0, 7, "Source Sections", ln=True)
+        pdf.cell(0, 7, "Source Sections", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         pdf.set_font("Helvetica", "", 9)
         for i, src in enumerate(source_sections, 1):
             act = src.get("act", "")
