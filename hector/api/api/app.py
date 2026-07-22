@@ -663,3 +663,53 @@ def export_docx_endpoint(
             "Content-Disposition": f'attachment; filename="hector-report-{request.query[:30].replace(" ", "-")}.docx"'
         },
     )
+
+
+# ---------------------------------------------------------------------------
+# Batch query endpoints
+# ---------------------------------------------------------------------------
+
+
+@app.post("/batch")
+def batch_query_endpoint(
+    body: dict,
+    _: dict = Depends(enforce_rate_limit),
+):
+    """Process multiple queries in a single request."""
+    from core.batch import get_batch_processor
+
+    queries = body.get("queries", [])
+    if not queries:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Missing or empty 'queries' list in request body."},
+        )
+    if len(queries) > 50:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Maximum 50 queries per batch request."},
+        )
+
+    processor = get_batch_processor()
+    job = processor.process_batch(queries)
+    return processor.to_export_data(job)
+
+
+@app.post("/batch/parse")
+def batch_parse_endpoint(
+    body: dict,
+    _: dict = Depends(enforce_rate_limit),
+):
+    """Parse CSV or newline-separated text into a list of queries."""
+    from core.batch import get_batch_processor
+
+    text = body.get("text", "")
+    if not text.strip():
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Missing or empty 'text' field in request body."},
+        )
+
+    processor = get_batch_processor()
+    queries = processor.parse_text(text)
+    return {"queries": queries, "count": len(queries)}
