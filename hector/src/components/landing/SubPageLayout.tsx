@@ -14,7 +14,6 @@ const footerLinks = {
   Product: [
     { label: "Features", href: "/landing#features" },
     { label: "Technology", href: "/landing#technology" },
-    { label: "Pricing", href: "/landing/pricing" },
     { label: "API Access", href: "/landing/api-access" },
     { label: "Changelog", href: "/landing/changelog" },
   ],
@@ -23,14 +22,10 @@ const footerLinks = {
     { label: "Bare Act Index", href: "/landing/acts" },
     { label: "IPC-BNS Guide", href: "/landing/ipc-bns-guide" },
     { label: "Case Studies", href: "/landing/case-studies" },
-    { label: "Blog", href: "/landing/blog" },
   ],
   Company: [
     { label: "About", href: "/landing/about" },
-    { label: "Team", href: "/landing/team" },
-    { label: "Careers", href: "/landing/careers" },
     { label: "Contact", href: "/landing/contact" },
-    { label: "Press Kit", href: "/landing/press-kit" },
   ],
   Legal: [
     { label: "Terms of Service", href: "/landing/terms" },
