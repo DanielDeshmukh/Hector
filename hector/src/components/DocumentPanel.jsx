@@ -98,9 +98,10 @@ export default function DocumentPanel({ source, onClose }) {
         </div>
         <button
           onClick={onClose}
-          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver"
+          className="mt-0.5 flex items-center gap-1.5 h-8 w-8 md:h-7 md:w-auto md:px-2 shrink-0 justify-center rounded-md text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver"
         >
-          <X size={15} />
+          <X size={16} />
+          <span className="hidden md:inline text-[11px]">Close</span>
         </button>
       </div>
 
