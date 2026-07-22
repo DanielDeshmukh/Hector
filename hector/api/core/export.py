@@ -174,6 +174,16 @@ def export_pdf(response_data: dict) -> bytes:
     return output.getvalue()
 
 
+def _strip_markdown(text: str) -> str:
+    """Remove common markdown formatting from text."""
+    import re
+    text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
+    text = re.sub(r'\*(.+?)\*', r'\1', text)
+    text = re.sub(r'^#+\s*', '', text, flags=re.MULTILINE)
+    text = re.sub(r'^[-*]\s+', '• ', text, flags=re.MULTILINE)
+    return text.strip()
+
+
 def export_docx(response_data: dict) -> bytes:
     """
     Generate a Word document from a HECTOR search response.
@@ -227,6 +237,7 @@ def export_docx(response_data: dict) -> bytes:
     # --- Generated Response ---
     doc.add_heading("Response", level=1)
     response_text = response_data.get("generated_response", "No response generated.")
+    response_text = _strip_markdown(response_text)
     for paragraph in response_text.split("\n\n"):
         paragraph = paragraph.strip()
         if paragraph:
@@ -238,36 +249,41 @@ def export_docx(response_data: dict) -> bytes:
         doc.add_heading("Answer Sections", level=1)
         for i, section in enumerate(answer_sections, 1):
             title = section.get("title", f"Section {i}")
-            body = section.get("body", "")
+            body = _strip_markdown(section.get("body", ""))
             doc.add_heading(f"{i}. {title}", level=2)
             if body:
                 doc.add_paragraph(body)
 
-    # --- Citations ---
+    # --- Citations (filtered: must have both act and section) ---
     citations = response_data.get("citations", [])
-    if citations:
+    valid_citations = [
+        c for c in citations
+        if isinstance(c, dict) and c.get("act", "").strip() and c.get("section", "").strip()
+    ]
+    if valid_citations:
         doc.add_page_break()
         doc.add_heading("Citations", level=1)
-        for i, citation in enumerate(citations, 1):
-            if isinstance(citation, dict):
-                act = citation.get("act", "")
-                section_num = citation.get("section", "")
-                text = citation.get("text", "")
-                cite_str = f"{act} Section {section_num}"
-                if text:
-                    cite_str += f" — {text[:200]}"
-            else:
-                cite_str = str(citation)
+        for i, citation in enumerate(valid_citations, 1):
+            act = citation.get("act", "")
+            section_num = citation.get("section", "")
+            text = citation.get("text", "")
+            cite_str = f"{act} Section {section_num}"
+            if text:
+                cite_str += f" — {_strip_markdown(text[:200])}"
             p = doc.add_paragraph()
             run = p.add_run(f"{i}. ")
             run.bold = True
             p.add_run(cite_str)
 
-    # --- Source Sections ---
+    # --- Source Sections (filtered: similarity >= 0.70) ---
     source_sections = response_data.get("source_sections", [])
-    if source_sections:
+    valid_sources = [
+        s for s in source_sections
+        if isinstance(s, dict) and s.get("similarity", 0) >= 0.70
+    ]
+    if valid_sources:
         doc.add_heading("Source Sections", level=1)
-        for i, src in enumerate(source_sections, 1):
+        for i, src in enumerate(valid_sources, 1):
             act = src.get("act", "")
             section_num = src.get("section", "")
             doc.add_paragraph(f"{i}. {act} Section {section_num}")
