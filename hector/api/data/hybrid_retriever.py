@@ -188,7 +188,10 @@ class HectorHybridRetriever:
         self.corpus = []
         self.tokenized_corpus = []
         self.bm25 = None
-        self._index_loaded = False
+        if self.collection is not None:
+            self.refresh_index()
+        elif self.pinecone_index is not None:
+            self.refresh_index()
 
     def _init_pinecone(self):
         if Pinecone is None:
@@ -306,13 +309,7 @@ class HectorHybridRetriever:
 
         self._load_records(all_records)
 
-    def _ensure_loaded(self):
-        if not self._index_loaded:
-            self._index_loaded = True
-            self.refresh_index()
-
     def search(self, query, top_k=5, candidate_pool=30):
-        self._ensure_loaded()
         if not self.records:
             return []
         if not self._is_legal_query(query):

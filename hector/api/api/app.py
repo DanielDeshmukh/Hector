@@ -49,7 +49,12 @@ _service_lock = Lock()
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    logger.info("HECTOR service starting (lazy init on first request)...")
+    logger.info("Pre-warming HECTOR service (loading models, BM25 index)...")
+    try:
+        get_service()
+        logger.info("Service ready.")
+    except Exception as e:
+        logger.warning("Service pre-warm failed (will retry on first request): %s", e)
     yield
 
 
