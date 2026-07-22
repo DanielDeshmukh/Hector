@@ -12,7 +12,6 @@ Pipeline flow:
 """
 
 import time
-import hashlib
 from collections import OrderedDict
 
 from core.router import HectorRouter
@@ -22,6 +21,7 @@ from core.query_expander import QueryExpander, get_query_expander
 from core.entity_reranker import EntityReranker, get_entity_reranker
 from data.hybrid_retriever import HectorHybridRetriever
 from core.query_intelligence import analyze_query
+from core.query_cache import get_query_cache
 
 # Optional: Only import verifier if available (graceful degradation)
 try:
@@ -46,9 +46,8 @@ class HectorOrchestrator:
         self._entity_reranker = None
         self._response_generator = None
 
-        # Query cache: exact queries → (response, sources, timing)
-        self._cache = OrderedDict()
-        self._cache_max_size = 100
+        # Persistent query cache (SQLite-backed, survives restarts)
+        self._cache = get_query_cache()
 
     @property
     def query_parser(self) -> LegalQueryParser:
@@ -94,12 +93,11 @@ class HectorOrchestrator:
         7. Generate response
         8. Verify (if enabled)
         """
-        # Check cache first
-        cache_key = hashlib.md5(query.strip().lower().encode()).hexdigest()
-        if cache_key in self._cache:
-            self._cache.move_to_end(cache_key)
-            cached = self._cache[cache_key]
-            self._last_timing = cached["timing"]
+        # Check persistent cache first
+        cached = self._cache.get(query)
+        if cached is not None:
+            self._last_timing = cached.get("timing", {})
+            self._last_timing["cache_hit"] = True
             return cached["response"]
 
         # Step 0: Query Intelligence — analyze query structure before routing
@@ -215,10 +213,13 @@ class HectorOrchestrator:
             "qi": qi_analysis.to_dict() if qi_analysis else None,
         }
 
-        # Store in cache
-        self._cache[cache_key] = {"response": response, "timing": self._last_timing}
-        if len(self._cache) > self._cache_max_size:
-            self._cache.popitem(last=False)
+        # Store in persistent cache
+        self._cache.set(
+            query,
+            response,
+            timing=self._last_timing,
+            route=route,
+        )
 
         return response
 
