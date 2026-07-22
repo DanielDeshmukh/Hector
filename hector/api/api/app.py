@@ -551,3 +551,54 @@ async def search_websocket(websocket: WebSocket):
                 await websocket.send_json(event)
     except WebSocketDisconnect:
         return
+
+
+# ---------------------------------------------------------------------------
+# Export endpoints — PDF and Word document generation
+# ---------------------------------------------------------------------------
+
+
+@app.post("/export/pdf")
+def export_pdf_endpoint(
+    request: SearchRequest,
+    _: dict = Depends(enforce_rate_limit),
+    svc: HectorApiService = Depends(get_service),
+):
+    """Run a search and return the result as a PDF document."""
+    from fastapi.responses import Response
+    from core.export import export_pdf
+
+    result = svc.search(request)
+    response_data = result.model_dump(mode="json")
+    pdf_bytes = export_pdf(response_data)
+
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="hector-report-{request.query[:30].replace(" ", "-")}.pdf"'
+        },
+    )
+
+
+@app.post("/export/docx")
+def export_docx_endpoint(
+    request: SearchRequest,
+    _: dict = Depends(enforce_rate_limit),
+    svc: HectorApiService = Depends(get_service),
+):
+    """Run a search and return the result as a Word document."""
+    from fastapi.responses import Response
+    from core.export import export_docx
+
+    result = svc.search(request)
+    response_data = result.model_dump(mode="json")
+    docx_bytes = export_docx(response_data)
+
+    return Response(
+        content=docx_bytes,
+        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        headers={
+            "Content-Disposition": f'attachment; filename="hector-report-{request.query[:30].replace(" ", "-")}.docx"'
+        },
+    )
