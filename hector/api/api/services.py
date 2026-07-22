@@ -56,6 +56,11 @@ class HectorApiService:
 
         self._query_cache = get_query_cache()
 
+        # Search analytics
+        from core.analytics import get_analytics
+
+        self._analytics = get_analytics()
+
     def search(self, request: SearchRequest) -> SearchResponse:
         timings: dict[str, float] = {}
 
@@ -70,6 +75,18 @@ class HectorApiService:
                     **(cached_data.get("stage_timings") or {}),
                     "cache_hit": True,
                 }
+                # Record analytics for cache hit
+                try:
+                    self._analytics.record_search(
+                        query=request.query,
+                        route=cached_data.get("route"),
+                        confidence=cached_data.get("answer_confidence"),
+                        result_count=len(cached_data.get("items", [])),
+                        response_ms=0,
+                        cache_hit=True,
+                    )
+                except Exception:
+                    pass
                 return SearchResponse(**cached_data)
             except (json.JSONDecodeError, KeyError, TypeError):
                 pass  # Fall through to full search
@@ -200,6 +217,19 @@ class HectorApiService:
                 )
             except Exception as exc:
                 logger.warning("Failed to cache query response: %s", exc)
+
+        # Record analytics
+        try:
+            self._analytics.record_search(
+                query=request.query,
+                route=intent.get("route"),
+                confidence=raw_confidence,
+                result_count=total_results,
+                response_ms=timings.get("total_ms"),
+                cache_hit=False,
+            )
+        except Exception as exc:
+            logger.warning("Failed to record analytics: %s", exc)
 
         return response
 

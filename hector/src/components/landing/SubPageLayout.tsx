@@ -15,6 +15,7 @@ const footerLinks = {
     { label: "Features", href: "/landing#features" },
     { label: "Technology", href: "/landing#technology" },
     { label: "API Access", href: "/landing/api-access" },
+    { label: "Analytics", href: "/analytics" },
     { label: "Changelog", href: "/landing/changelog" },
   ],
   Resources: [
