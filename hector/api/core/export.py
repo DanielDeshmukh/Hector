@@ -41,17 +41,30 @@ def export_pdf(response_data: dict) -> bytes:
 
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=20)
+    pdf.set_left_margin(10)
+    pdf.set_right_margin(10)
     pdf.add_page()
+    usable_w = pdf.w - pdf.l_margin - pdf.r_margin
+
+    def _heading(text):
+        pdf.set_x(pdf.l_margin)
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(usable_w, 7, _sanitize_for_pdf(text), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    def _body(text, size=10):
+        pdf.set_x(pdf.l_margin)
+        pdf.set_font("Helvetica", "", size)
+        pdf.multi_cell(usable_w, 6, _sanitize_for_pdf(text))
 
     # --- Title ---
     pdf.set_font("Helvetica", "B", 16)
-    pdf.cell(0, 10, "HECTOR Legal Research Report", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
+    pdf.cell(usable_w, 10, "HECTOR Legal Research Report", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
 
     # --- Metadata ---
     pdf.set_font("Helvetica", "", 9)
     pdf.set_text_color(120, 120, 120)
     generated_at = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
-    pdf.cell(0, 6, f"Generated: {generated_at}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
+    pdf.cell(usable_w, 6, f"Generated: {generated_at}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align="C")
     pdf.ln(4)
 
     # --- Divider ---
@@ -61,11 +74,8 @@ def export_pdf(response_data: dict) -> bytes:
 
     # --- Query ---
     pdf.set_text_color(0, 0, 0)
-    pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 7, "Query", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.set_font("Helvetica", "", 10)
-    query = response_data.get("query", "N/A")
-    pdf.multi_cell(0, 6, _sanitize_for_pdf(query))
+    _heading("Query")
+    _body(response_data.get("query", "N/A"))
     pdf.ln(3)
 
     # --- Route & Confidence ---
@@ -73,7 +83,8 @@ def export_pdf(response_data: dict) -> bytes:
     confidence = response_data.get("answer_confidence", 0)
     pdf.set_font("Helvetica", "", 9)
     pdf.set_text_color(100, 100, 100)
-    pdf.cell(0, 5, f"Route: {route}  |  Confidence: {confidence}%", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.set_x(pdf.l_margin)
+    pdf.cell(usable_w, 5, f"Route: {route}  |  Confidence: {confidence}%", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(4)
 
     # --- Divider ---
@@ -83,39 +94,34 @@ def export_pdf(response_data: dict) -> bytes:
 
     # --- Generated Response ---
     pdf.set_text_color(0, 0, 0)
-    pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 7, "Response", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.set_font("Helvetica", "", 10)
+    _heading("Response")
     response_text = response_data.get("generated_response", "No response generated.")
     for paragraph in response_text.split("\n\n"):
         paragraph = paragraph.strip()
         if paragraph:
-            pdf.multi_cell(0, 6, _sanitize_for_pdf(paragraph))
+            _body(paragraph)
             pdf.ln(2)
 
     # --- Answer Sections ---
     answer_sections = response_data.get("answer_sections", [])
     if answer_sections:
         pdf.ln(4)
-        pdf.set_font("Helvetica", "B", 11)
-        pdf.cell(0, 7, "Answer Sections", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-        pdf.set_font("Helvetica", "", 10)
+        _heading("Answer Sections")
         for i, section in enumerate(answer_sections, 1):
             title = section.get("title", f"Section {i}")
             body = section.get("body", "")
             pdf.set_font("Helvetica", "B", 10)
-            pdf.multi_cell(0, 6, _sanitize_for_pdf(f"{i}. {title}"))
-            pdf.set_font("Helvetica", "", 10)
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(usable_w, 6, _sanitize_for_pdf(f"{i}. {title}"))
             if body:
-                pdf.multi_cell(0, 6, _sanitize_for_pdf(body))
+                _body(body)
             pdf.ln(2)
 
     # --- Citations ---
     citations = response_data.get("citations", [])
     if citations:
         pdf.add_page()
-        pdf.set_font("Helvetica", "B", 11)
-        pdf.cell(0, 7, "Citations", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        _heading("Citations")
         pdf.set_font("Helvetica", "", 9)
         for i, citation in enumerate(citations, 1):
             if isinstance(citation, dict):
@@ -124,31 +130,33 @@ def export_pdf(response_data: dict) -> bytes:
                 text = citation.get("text", "")
                 cite_str = f"{i}. {act} Section {section}"
                 if text:
-                    cite_str += f" — {text[:120]}"
+                    cite_str += f" - {text[:120]}"
             else:
                 cite_str = f"{i}. {str(citation)}"
-            pdf.multi_cell(0, 5, _sanitize_for_pdf(cite_str))
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(usable_w, 5, _sanitize_for_pdf(cite_str))
             pdf.ln(1)
 
     # --- Source Sections ---
     source_sections = response_data.get("source_sections", [])
     if source_sections:
         pdf.ln(4)
-        pdf.set_font("Helvetica", "B", 11)
-        pdf.cell(0, 7, "Source Sections", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        _heading("Source Sections")
         pdf.set_font("Helvetica", "", 9)
         for i, src in enumerate(source_sections, 1):
             act = src.get("act", "")
             section = src.get("section", "")
-            pdf.multi_cell(0, 5, f"{i}. {act} Section {section}")
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(usable_w, 5, _sanitize_for_pdf(f"{i}. {act} Section {section}"))
             pdf.ln(1)
 
     # --- Footer ---
     pdf.ln(10)
     pdf.set_font("Helvetica", "I", 8)
     pdf.set_text_color(150, 150, 150)
+    pdf.set_x(pdf.l_margin)
     pdf.multi_cell(
-        0,
+        usable_w,
         4,
         "This document was generated by HECTOR (Hierarchical Evaluation of "
         "Civil-Criminal Textual's Orchestrator & Retrieval). Responses are "
