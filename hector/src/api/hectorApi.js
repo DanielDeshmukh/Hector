@@ -83,24 +83,29 @@ function confidenceFromPayload(payload) {
 
 function buildPipelineFromPayload(payload) {
   const t = payload.stage_timings || {};
+  const isCacheHit = t.cache_hit === true;
   const stages = [
     {
       id: "stage-1",
       name: "Intent Routing",
-      status: payload.route ? "completed" : "pending",
-      detail: payload.route
+      status: isCacheHit ? "completed" : (payload.route ? "completed" : "pending"),
+      detail: isCacheHit
+        ? "Served from cache"
+        : payload.route
         ? `Routed as: ${payload.route.replace(/_/g, " ")}${t.route_ms ? ` (${Math.round(t.route_ms)}ms)` : ""}`
         : "Awaiting routing...",
-      timing: t.route_ms || null,
+      timing: isCacheHit ? null : (t.route_ms || null),
     },
     {
       id: "stage-2",
       name: "Hybrid Retrieval",
-      status: (payload.items?.length > 0) ? "completed" : "pending",
-      detail: payload.items?.length
+      status: isCacheHit ? "completed" : ((payload.items?.length > 0) ? "completed" : "pending"),
+      detail: isCacheHit
+        ? "Served from cache"
+        : payload.items?.length
         ? `${payload.items.length} results retrieved${t.retrieve_ms ? ` (${Math.round(t.retrieve_ms)}ms)` : ""}`
         : "Awaiting retrieval...",
-      timing: t.retrieve_ms || null,
+      timing: isCacheHit ? null : (t.retrieve_ms || null),
     },
     {
       id: "stage-3",
@@ -121,11 +126,12 @@ function buildPipelineFromPayload(payload) {
       timing: t.generate_ms || null,
     },
   ];
-  return stages;
+  return { stages, cacheHit: isCacheHit };
 }
 
 function toUiResponse(payload) {
   const sources = (payload.items || []).map(toSourceReference);
+  const pipelineData = buildPipelineFromPayload(payload);
 
   return {
     id: `${payload.route || "search"}-${payload.retrieved_at || Date.now()}`,
@@ -144,7 +150,8 @@ function toUiResponse(payload) {
     relatedProvisions: payload.related_provisions || [],
     normalizedQuery: payload.normalized_query || null,
     sources,
-    pipeline: buildPipelineFromPayload(payload),
+    pipeline: pipelineData.stages,
+    cacheHit: pipelineData.cacheHit,
     stageTimings: payload.stage_timings || null,
     timestamp: payload.retrieved_at || new Date().toISOString(),
     raw: payload,

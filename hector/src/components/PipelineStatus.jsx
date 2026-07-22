@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Loader2, Circle, Shield, Search, Layers, FileCheck } from "lucide-react";
+import { Check, Loader2, Circle, Shield, Search, Layers, FileCheck, Database } from "lucide-react";
 
 const stageIcons = {
   "Intent Routing": <Shield size={13} />,
@@ -9,13 +9,22 @@ const stageIcons = {
   "Citation Grounding": <FileCheck size={13} />,
 };
 
-export default function PipelineStatus({ stages }) {
+export default function PipelineStatus({ stages, cacheHit }) {
   return (
     <div className="rounded-lg border border-slate-custom/40 bg-cream/80 px-4 py-3">
       <div className="mb-2.5 flex items-center gap-2">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/50">
-          Chain of Verification
-        </span>
+        {cacheHit ? (
+          <>
+            <Database size={12} className="text-gold" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold">
+              Served from Cache
+            </span>
+          </>
+        ) : (
+          <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/50">
+            Chain of Verification
+          </span>
+        )}
       </div>
       <div className="flex items-center gap-1">
         {stages.map((stage, index) => (

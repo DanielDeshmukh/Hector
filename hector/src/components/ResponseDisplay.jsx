@@ -179,7 +179,7 @@ export default function ResponseDisplay({
   const isBookmarked = (sourceId) => bookmarks.some((b) => b.id === sourceId);
   return (
     <div className="space-y-5 animate-fade-in">
-      <PipelineStatus stages={response.pipeline} />
+      <PipelineStatus stages={response.pipeline} cacheHit={response.cacheHit} />
 
       <div className="flex flex-wrap items-center gap-3">
         <span className="flex items-center gap-1.5 rounded-md border border-gold/20 bg-gold/5 px-2.5 py-1 text-[11px] font-medium text-gold">
