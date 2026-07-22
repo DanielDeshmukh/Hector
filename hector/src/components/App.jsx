@@ -455,7 +455,7 @@ export default function App() {
 
         {/* Document Reference Panel */}
         {activeSource && (
-          <div className="w-[420px] shrink-0 overflow-hidden">
+          <div className="fixed inset-0 z-50 md:relative md:z-auto w-full md:w-[420px] shrink-0 overflow-hidden bg-cream md:bg-transparent">
             <DocumentPanel
               source={activeSource}
               onClose={() => {
