@@ -1,3 +1,4 @@
+import logging
 import math
 import os
 import re
@@ -7,6 +8,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 from utils.retry import retry
+
+logger = logging.getLogger(__name__)
 
 try:
     from pinecone import Pinecone
@@ -293,8 +296,6 @@ class HectorHybridRetriever:
                 fetched = retry(
                     idx.fetch,
                     ids=ids,
-                    include_values=False,
-                    include_metadata=True,
                     max_attempts=3,
                     operation_name="pinecone_fetch",
                 )
@@ -304,8 +305,8 @@ class HectorHybridRetriever:
                         "document": (vec.metadata or {}).get("document", ""),
                         "metadata": {k: v for k, v in (vec.metadata or {}).items() if k != "document"},
                     })
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.error("refresh_index failed: %s", exc, exc_info=True)
 
         self._load_records(all_records)
 
