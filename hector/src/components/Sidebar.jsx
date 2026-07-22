@@ -11,6 +11,7 @@ import {
   FileText,
   Bookmark,
   BookmarkX,
+  X,
 } from "lucide-react";
 
 export default function Sidebar({
@@ -63,9 +64,9 @@ export default function Sidebar({
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-slate-custom/40 px-3 py-4">
         {!collapsed && (
-          <div className="flex items-center gap-2.5 animate-fade-in">
-            <img src="/tab-icon.png" alt="HECTOR" className="h-8 w-8 rounded-md" />
-            <div>
+          <div className="flex items-center gap-2.5 animate-fade-in flex-1 min-w-0">
+            <img src="/tab-icon.png" alt="HECTOR" className="h-8 w-8 rounded-md shrink-0" />
+            <div className="min-w-0">
               <h1 className="font-serif text-lg font-semibold tracking-wide text-gold-light leading-none">
                 HECTOR
               </h1>
@@ -74,6 +75,15 @@ export default function Sidebar({
               </p>
             </div>
           </div>
+        )}
+        {!collapsed && onMobileClose && (
+          <button
+            onClick={onMobileClose}
+            className="md:hidden flex h-7 w-7 items-center justify-center rounded-md text-silver/50 hover:bg-slate-custom/30 hover:text-silver shrink-0"
+            aria-label="Close menu"
+          >
+            <X size={14} />
+          </button>
         )}
         {collapsed && (
           <img src="/tab-icon.png" alt="HECTOR" className="h-8 w-8 rounded-md" />
