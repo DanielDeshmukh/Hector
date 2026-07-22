@@ -297,3 +297,51 @@ export function createSearchWebSocket(query, onEvent, onError, _retries = 0, _ma
 
   return ws;
 }
+
+// ---------------------------------------------------------------------------
+// Export functions — triggers browser download of PDF/DOCX
+// ---------------------------------------------------------------------------
+
+async function triggerExport(query, format) {
+  const response = await fetch(`${API_URL}/export/${format}`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({
+      query,
+      page: 1,
+      page_size: 5,
+      verify: true,
+      format: "summary",
+      include_related: true,
+    }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Export failed with status ${response.status}`);
+  }
+
+  const blob = await response.blob();
+  const disposition = response.headers.get("Content-Disposition") || "";
+  const filenameMatch = disposition.match(/filename="(.+)"/);
+  const filename = filenameMatch
+    ? filenameMatch[1]
+    : `hector-report.${format === "pdf" ? "pdf" : "docx"}`;
+
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+}
+
+export async function exportPdf(query) {
+  return triggerExport(query, "pdf");
+}
+
+export async function exportDocx(query) {
+  return triggerExport(query, "docx");
+}
