@@ -35,7 +35,7 @@ export default function Navigation() {
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a href="#" className="flex items-center gap-3 group">
+            <a href="/landing" className="flex items-center gap-3 group">
             <img
               src="/tab-icon.png"
               alt="HECTOR"
@@ -66,7 +66,7 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="#demo"
+              href="/"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-charcoal text-sm font-medium rounded-lg hover:bg-gold-light transition-colors"
             >
               Try HECTOR
@@ -97,7 +97,7 @@ export default function Navigation() {
               </a>
             ))}
             <a
-              href="#demo"
+              href="/"
               onClick={() => setIsMobileMenuOpen(false)}
               className="block w-full py-3 px-4 bg-gold text-charcoal text-center font-medium rounded-lg mt-4"
             >

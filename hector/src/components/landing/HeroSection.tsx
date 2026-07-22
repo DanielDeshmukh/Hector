@@ -49,7 +49,7 @@ export default function HeroSection() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#demo"
+                  href="/"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-charcoal font-medium rounded-xl hover:bg-gold-light transition-all hover:shadow-xl hover:shadow-gold/20"
                 >
                   Try HECTOR Now
