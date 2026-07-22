@@ -176,6 +176,16 @@ export default function App() {
     window.localStorage.setItem(COMPARE_MODE_KEY, String(compareMode));
   }, [compareMode]);
 
+  // Close mobile menu when viewport expands to desktop
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 768px)");
+    const handler = (e) => {
+      if (e.matches) setMobileMenuOpen(false);
+    };
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
   const handleToggleBookmark = useCallback(
     (source) => {
       setBookmarks((prev) => {
