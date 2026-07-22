@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect, lazy, Suspense } from "react";
-import { AlertTriangle, RefreshCw } from "lucide-react";
+import { AlertTriangle, RefreshCw, Menu, X } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import QueryInput from "@/components/QueryInput";
 import ResponseDisplay from "@/components/ResponseDisplay";
@@ -81,6 +81,7 @@ function buildQuerySuggestions(history, response) {
 export default function App() {
   const { lang, toggleLang, t } = useLanguage();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(loadSidebarState);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [appState, setAppState] = useState("idle");
   const [currentResponse, setCurrentResponse] = useState(null);
   const [activeSourceId, setActiveSourceId] = useState(null);
@@ -174,6 +175,16 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(COMPARE_MODE_KEY, String(compareMode));
   }, [compareMode]);
+
+  // Close mobile menu when viewport expands to desktop
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 768px)");
+    const handler = (e) => {
+      if (e.matches) setMobileMenuOpen(false);
+    };
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   const handleToggleBookmark = useCallback(
     (source) => {
@@ -270,6 +281,8 @@ export default function App() {
         bookmarks={bookmarks}
         onRemoveBookmark={handleRemoveBookmark}
         systemStatus={systemStatus}
+        mobileOpen={mobileMenuOpen}
+        onMobileClose={() => setMobileMenuOpen(false)}
       />
 
       {/* Main Area */}
@@ -281,8 +294,16 @@ export default function App() {
           }`}
         >
           {/* Top Bar */}
-          <header className="flex items-center justify-between border-b border-slate-custom/30 bg-cream/90 px-6 py-2.5 backdrop-blur-sm">
+          <header className="flex items-center justify-between border-b border-slate-custom/30 bg-cream/90 px-4 md:px-6 py-2.5 backdrop-blur-sm">
             <div className="flex items-center gap-3">
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="md:hidden flex h-8 w-8 items-center justify-center rounded-lg text-silver/60 hover:bg-slate-custom/30 hover:text-silver"
+                aria-label="Open menu"
+              >
+                <Menu size={18} />
+              </button>
               {appState === "responded" && (
                 <div className="flex items-center gap-2 animate-fade-in">
                   <span className="h-1.5 w-1.5 rounded-full bg-success"></span>
@@ -332,7 +353,7 @@ export default function App() {
 
           {/* Content Area */}
           <div className="flex-1 overflow-y-auto">
-            <div className="mx-auto max-w-3xl px-6 py-6">
+            <div className="mx-auto max-w-3xl px-4 md:px-6 py-4 md:py-6">
               {/* Idle State */}
               {appState === "idle" && !compareMode && (
                 <>
@@ -429,7 +450,7 @@ export default function App() {
           </div>
 
           {/* Fixed Input at Bottom */}
-          <div className="border-t border-slate-custom/20 bg-cream/95 backdrop-blur-md px-6 py-4">
+          <div className="border-t border-slate-custom/20 bg-cream/95 backdrop-blur-md px-4 md:px-6 py-3 md:py-4">
             <div className="mx-auto max-w-3xl">
               <QueryInput
                 onSubmit={handleSubmit}
@@ -444,7 +465,7 @@ export default function App() {
 
         {/* Document Reference Panel */}
         {activeSource && (
-          <div className="w-[420px] shrink-0 overflow-hidden">
+          <div className="fixed inset-0 z-50 md:relative md:z-auto w-full md:w-[420px] shrink-0 overflow-hidden bg-cream md:bg-transparent">
             <DocumentPanel
               source={activeSource}
               onClose={() => {

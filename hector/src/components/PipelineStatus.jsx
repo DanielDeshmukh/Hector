@@ -26,7 +26,7 @@ export default function PipelineStatus({ stages, cacheHit }) {
           </span>
         )}
       </div>
-      <div className="flex items-center gap-1">
+      <div className="flex flex-wrap items-center gap-1">
         {stages.map((stage, index) => (
           <div key={stage.id} className="flex items-center gap-1">
             <div
