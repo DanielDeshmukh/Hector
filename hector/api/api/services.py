@@ -51,8 +51,28 @@ class HectorApiService:
 
         self.response_generator = ContextualResponseGenerator(self.retriever)
 
+        # Persistent query cache
+        from core.query_cache import get_query_cache
+
+        self._query_cache = get_query_cache()
+
     def search(self, request: SearchRequest) -> SearchResponse:
         timings: dict[str, float] = {}
+
+        # Check persistent query cache first
+        cached = self._query_cache.get(request.query)
+        if cached is not None:
+            logger.info("Cache hit for query: %s", request.query[:60])
+            try:
+                cached_data = json.loads(cached["response"])
+                cached_data["cached"] = True
+                cached_data["stage_timings"] = {
+                    **(cached_data.get("stage_timings") or {}),
+                    "cache_hit": True,
+                }
+                return SearchResponse(**cached_data)
+            except (json.JSONDecodeError, KeyError, TypeError):
+                pass  # Fall through to full search
 
         t0 = time.perf_counter()
         intent = self.router.get_route(request.query)
@@ -168,6 +188,20 @@ class HectorApiService:
             retrieved_at=datetime.now(UTC),
             stage_timings=timings,
         )
+
+        # Store in persistent cache (only for successful legal research queries)
+        if intent.get("route") == "LEGAL_RESEARCH" and generated_response:
+            try:
+                self._query_cache.set(
+                    request.query,
+                    response.model_dump_json(),
+                    timing=timings,
+                    route=intent.get("route"),
+                )
+            except Exception as exc:
+                logger.warning("Failed to cache query response: %s", exc)
+
+        return response
 
     def _assess_confidence(
         self, raw_score: float, route: str, num_results: int
