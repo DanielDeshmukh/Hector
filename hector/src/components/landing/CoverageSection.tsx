@@ -68,7 +68,7 @@ export default function CoverageSection() {
           <div className="text-center mt-8">
             <Link
               href="/landing/acts"
-              className="inline-flex items-center gap-2 text-gold font-medium hover:text-gold transition-colors"
+              className="inline-flex items-center gap-2 text-gold font-sans font-medium hover:text-gold transition-colors"
             >
               View all 38 bare acts
               <Icons.ArrowRight />

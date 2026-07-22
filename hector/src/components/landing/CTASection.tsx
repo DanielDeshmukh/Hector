@@ -19,7 +19,7 @@ export default function CTASection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-charcoal text-white font-semibold rounded-xl hover:bg-slate-custom transition-colors border border-white/10"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-charcoal text-white font-sans font-semibold rounded-xl hover:bg-slate-custom transition-colors border border-white/10"
             >
               Try HECTOR Now
               <Icons.ArrowRight />

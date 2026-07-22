@@ -105,7 +105,7 @@ export default function FeaturesSection() {
                     <div className="flex-1">
                       <h3
                         className={cn(
-                          "font-semibold text-lg mb-1",
+                          "font-sans font-semibold text-lg mb-1",
                           activeFeature === index ? "text-white" : "text-silver"
                         )}
                       >

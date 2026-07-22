@@ -50,14 +50,14 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-charcoal font-medium rounded-xl hover:bg-gold-light transition-all hover:shadow-xl hover:shadow-gold/20"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-charcoal font-sans font-medium rounded-xl hover:bg-gold-light transition-all hover:shadow-xl hover:shadow-gold/20"
                 >
                   Try HECTOR Now
                   <Icons.ArrowRight />
                 </a>
                 <a
                   href="#technology"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-charcoal text-white font-medium rounded-xl border-2 border-white/10 hover:border-gold-light hover:bg-gold-light/10 transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-charcoal text-white font-sans font-medium rounded-xl border-2 border-white/10 hover:border-gold-light hover:bg-gold-light/10 transition-all"
                 >
                   Learn How It Works
                 </a>

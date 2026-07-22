@@ -67,7 +67,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-charcoal text-sm font-medium rounded-lg hover:bg-gold-light transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-charcoal text-sm font-sans font-medium rounded-lg hover:bg-gold-light transition-colors"
             >
               Try HECTOR
               <Icons.ArrowRight />
@@ -99,7 +99,7 @@ export default function Navigation() {
             <a
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full py-3 px-4 bg-gold text-charcoal text-center font-medium rounded-lg mt-4"
+              className="block w-full py-3 px-4 bg-gold text-charcoal text-center font-sans font-medium rounded-lg mt-4"
             >
               Try HECTOR
             </a>

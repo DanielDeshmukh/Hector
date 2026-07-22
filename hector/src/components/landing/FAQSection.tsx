@@ -68,7 +68,7 @@ export default function FAQSection() {
                   }
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-custom transition-colors"
                 >
-                  <span className="font-medium text-white pr-4">
+                  <span className="font-sans font-medium text-white pr-4">
                     {faq.question}
                   </span>
                   <span
