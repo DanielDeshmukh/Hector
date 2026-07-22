@@ -343,7 +343,7 @@ export default function App() {
 
           {/* Content Area */}
           <div className="flex-1 overflow-y-auto">
-            <div className="mx-auto max-w-3xl px-6 py-6">
+            <div className="mx-auto max-w-3xl px-4 md:px-6 py-4 md:py-6">
               {/* Idle State */}
               {appState === "idle" && !compareMode && (
                 <>
@@ -440,7 +440,7 @@ export default function App() {
           </div>
 
           {/* Fixed Input at Bottom */}
-          <div className="border-t border-slate-custom/20 bg-cream/95 backdrop-blur-md px-6 py-4">
+          <div className="border-t border-slate-custom/20 bg-cream/95 backdrop-blur-md px-4 md:px-6 py-3 md:py-4">
             <div className="mx-auto max-w-3xl">
               <QueryInput
                 onSubmit={handleSubmit}
