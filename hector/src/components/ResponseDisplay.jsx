@@ -1,8 +1,10 @@
 "use client";
 
-import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck, SearchX, AlertTriangle, Link2 } from "lucide-react";
+import { useState } from "react";
+import { BookOpen, ExternalLink, Tag, BarChart3, Bookmark, BookmarkCheck, SearchX, AlertTriangle, Link2, Download, FileText, FileDown } from "lucide-react";
 import PipelineStatus from "./PipelineStatus";
 import EmptyState from "./EmptyState";
+import { exportPdf, exportDocx } from "@/api/hectorApi";
 
 function sanitizeHtml(html) {
   return String(html || "")
@@ -218,6 +220,9 @@ export default function ResponseDisplay({
         </span>
       </div>
 
+      {/* Export buttons */}
+      <ExportButtons query={response.query} />
+
       {response.confidenceWarning && (
         <div className="flex items-start gap-2 rounded-md border border-gold/20 bg-gold/5 px-3 py-2 text-[11.5px] leading-relaxed text-gold/80">
           <AlertTriangle size={13} className="mt-0.5 shrink-0 text-gold/60" />
@@ -382,6 +387,55 @@ export default function ResponseDisplay({
         </div>
         )}
       </div>
+    </div>
+  );
+}
+
+
+function ExportButtons({ query }) {
+  const [exporting, setExporting] = useState(null);
+
+  const handleExport = async (format) => {
+    setExporting(format);
+    try {
+      if (format === "pdf") {
+        await exportPdf(query);
+      } else {
+        await exportDocx(query);
+      }
+    } catch (err) {
+      console.error("Export failed:", err);
+    } finally {
+      setExporting(null);
+    }
+  };
+
+  return (
+    <div className="flex items-center gap-2">
+      <button
+        onClick={() => handleExport("pdf")}
+        disabled={exporting === "pdf"}
+        className="flex items-center gap-1.5 rounded-md border border-slate-custom/40 bg-charcoal/30 px-3 py-1.5 text-[11px] font-medium text-silver/60 transition-colors hover:border-gold/30 hover:text-gold disabled:opacity-40"
+      >
+        {exporting === "pdf" ? (
+          <Download size={11} className="animate-pulse" />
+        ) : (
+          <FileDown size={11} />
+        )}
+        Export PDF
+      </button>
+      <button
+        onClick={() => handleExport("docx")}
+        disabled={exporting === "docx"}
+        className="flex items-center gap-1.5 rounded-md border border-slate-custom/40 bg-charcoal/30 px-3 py-1.5 text-[11px] font-medium text-silver/60 transition-colors hover:border-gold/30 hover:text-gold disabled:opacity-40"
+      >
+        {exporting === "docx" ? (
+          <Download size={11} className="animate-pulse" />
+        ) : (
+          <FileText size={11} />
+        )}
+        Export Word
+      </button>
     </div>
   );
 }
