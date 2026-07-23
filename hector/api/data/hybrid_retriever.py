@@ -734,6 +734,19 @@ class HectorHybridRetriever:
         if not candidates:
             return []
 
+        if self.reranker_disabled:
+            for item in candidates:
+                fallback_score = self._fallback_reranker_score(item)
+                item["reranker_score"] = round(fallback_score, 6)
+                item["score"] = item["reranker_score"]
+                item["similarity_score"] = item["reranker_score"]
+                item["reasons"] = [
+                    *item.get("reasons", []),
+                    "reranker-disabled",
+                ]
+            candidates.sort(key=lambda item: item["reranker_score"], reverse=True)
+            return candidates
+
         # Try Nemotron reranker first (API-based, works on Vercel)
         try:
             from core.rerank_provider import get_rerank_provider
