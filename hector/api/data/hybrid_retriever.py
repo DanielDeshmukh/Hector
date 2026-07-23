@@ -121,6 +121,15 @@ class HectorHybridRetriever:
             "article", "constitutional", "high court", "supreme court", "tribunal",
             "crime", "offence", "offense", "criminal", "cognizable", "bailable",
             "remedy", "relief", "claim", "dispute", "case", "suit",
+            "stole", "steal", "stealing", "stolen", "robbed", "robbery", "rob",
+            "killed", "killing", "kill", "stabbed", "stab", "hit", "struck",
+            "damaged", "vandalized", "broke", "broken", "snatched", "snatch",
+            "picked", "pocket", "burglary", "break-in", "trespassing",
+            "dupe", "scam", "defraud", "blackmail", "extortion", "bribery",
+            "bike", "vehicle", "car", "motorcycle", "scooter", "property",
+            "silencer", "battery", "wheel", "part", "component",
+            "file", "complaint", "police", "station", "ipc section", "bns section",
+            "punishable", "imprisonment", "jail", "prison",
         )
     )
 
