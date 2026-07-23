@@ -322,8 +322,6 @@ class HectorHybridRetriever:
     def search(self, query, top_k=5, candidate_pool=30):
         if not self.records:
             return []
-        if not self._is_legal_query(query):
-            return []
 
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
