@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "api"))
@@ -93,25 +94,42 @@ def build_stub_service():
     )
 
 
-app.dependency_overrides[get_service] = build_stub_service
-client = TestClient(app)
-HEADERS = {"X-API-Key": auth_manager.api_key}
-
-
-def setup_function():
+@pytest.fixture(autouse=True)
+def stub_override():
+    from core.query_cache import get_query_cache
+    previous = app.dependency_overrides.get(get_service)
+    app.dependency_overrides[get_service] = build_stub_service
     cache.clear()
+    get_query_cache().clear()
+    yield
+    if previous is not None:
+        app.dependency_overrides[get_service] = previous
+    else:
+        app.dependency_overrides.pop(get_service, None)
+    cache.clear()
+    get_query_cache().clear()
 
 
-def test_status_endpoint_requires_auth_and_returns_health():
-    response = client.get("/status", headers=HEADERS)
+@pytest.fixture
+def client():
+    return TestClient(app)
+
+
+@pytest.fixture
+def auth():
+    return {"X-API-Key": auth_manager.api_key}
+
+
+def test_status_endpoint_requires_auth_and_returns_health(client, auth):
+    response = client.get("/status", headers=auth)
     assert response.status_code == 200
     payload = response.json()
     assert payload["status"] in ("ok", "degraded")
     assert payload["document_count"] == 2
 
 
-def test_route_endpoint_normalizes_legacy_query():
-    response = client.post("/route", headers=HEADERS, json={"query": "Section 302 IPC"})
+def test_route_endpoint_normalizes_legacy_query(client, auth):
+    response = client.post("/route", headers=auth, json={"query": "Section 302 IPC"})
     assert response.status_code == 200
     payload = response.json()
     assert payload["route"] == "LEGAL_RESEARCH"
@@ -119,9 +137,9 @@ def test_route_endpoint_normalizes_legacy_query():
     assert payload["mappings"] == ["BNS Section 103 (Murder)"]
 
 
-def test_search_endpoint_supports_pagination_and_caching():
+def test_search_endpoint_supports_pagination_and_caching(client, auth):
     request = {"query": "Section 302 IPC", "page": 1, "page_size": 1, "verify": True}
-    first = client.post("/search", headers=HEADERS, json=request)
+    first = client.post("/search", headers=auth, json=request)
     assert first.status_code == 200
     first_payload = first.json()
     assert first_payload["total_results"] == 2
@@ -129,15 +147,15 @@ def test_search_endpoint_supports_pagination_and_caching():
     assert len(first_payload["items"]) == 1
     assert first_payload["cached"] is False
 
-    second = client.post("/search", headers=HEADERS, json=request)
+    second = client.post("/search", headers=auth, json=request)
     second_payload = second.json()
     assert second_payload["cached"] is True
 
 
-def test_compare_endpoint_returns_counterpart_mapping():
+def test_compare_endpoint_returns_counterpart_mapping(client, auth):
     response = client.post(
         "/compare",
-        headers=HEADERS,
+        headers=auth,
         json={"section": "302", "act": "IPC", "page_size": 2},
     )
     assert response.status_code == 200
@@ -147,10 +165,10 @@ def test_compare_endpoint_returns_counterpart_mapping():
     assert payload["note"] == "homicide mapping"
 
 
-def test_token_auth_and_websocket_streaming_work():
+def test_token_auth_and_websocket_streaming_work(client, auth):
     token_response = client.post(
         f"/auth/token?api_key={auth_manager.api_key}",
-        headers=HEADERS,
+        headers=auth,
     )
     assert token_response.status_code == 200
     token = token_response.json()["access_token"]
@@ -163,7 +181,7 @@ def test_token_auth_and_websocket_streaming_work():
     assert search_response.status_code == 200
 
     with client.websocket_connect(
-        "/ws/search", headers={"X-API-Key": auth_manager.api_key}
+        "/ws/search", headers=auth
     ) as websocket:
         websocket.send_json(
             {"query": "Section 302 IPC", "page": 1, "page_size": 1, "verify": False}
