@@ -179,7 +179,7 @@ class HectorApiService:
                 verification_result
             )
 
-        return SearchResponse(
+        response = SearchResponse(
             route=intent.get("route", "GENERAL"),
             query=request.query,
             normalized_query=normalized_query,
