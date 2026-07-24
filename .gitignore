@@ -297,6 +297,7 @@ hector/backend/.hector_logs/
 .claude/
 skills-lock.json
 
-# --- Project pitch ---
+# --- Project pitch / prep ---
 pitch.md
+Hector-interview-prep.md
 .vercel
