@@ -236,6 +236,11 @@ hector/api/data/Books/
 *.log
 ingest.log
 
+# --- SQLite databases ---
+*.db
+*.db-shm
+*.db-wal
+
 # --- OS-specific files ---
 # Windows
 Thumbs.db

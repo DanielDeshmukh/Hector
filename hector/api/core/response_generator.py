@@ -76,13 +76,22 @@ OUTPUT FORMAT:
                 self._nim_client = False
         return self._nim_client if self._nim_client is not False else None
 
-    def _synthesize_with_llm(self, query: str, results: list[dict]) -> str | None:
+    def _synthesize_with_llm(
+        self, query: str, results: list[dict], file_context: str | None = None
+    ) -> str | None:
         """Call NVIDIA NIM to synthesize a legal answer from retrieved chunks."""
         nim = self._get_nim_client()
         if nim is None:
             return None
 
         context_parts = []
+
+        # File context is Source 0 — always listed first with highest priority
+        if file_context:
+            context_parts.append(
+                f"[Source 0: Uploaded Document]\n{file_context[:10000]}"
+            )
+
         for i, r in enumerate(results[:5], 1):
             doc = r.get("document", "")
             meta = r.get("metadata", {})
@@ -105,13 +114,23 @@ OUTPUT FORMAT:
 
         context = "\n\n---\n\n".join(context_parts)
 
+        priority_hint = ""
+        if file_context:
+            priority_hint = (
+                "\n\nIMPORTANT: The user uploaded a document (Source 0). "
+                "When the query relates to content in Source 0, prioritize and answer "
+                "from the uploaded document FIRST. Only use other sources to supplement "
+                "or cross-reference.\n"
+            )
+
         messages = [
             {"role": "system", "content": self.LEGAL_SYSTEM_PROMPT},
             {
                 "role": "user",
                 "content": f"Query: {query}\n\nRetrieved Sources:\n{context}\n\n"
                 "Provide a direct, well-structured answer. "
-                "Cite with [Source N]. Compare IPC and BNS if both are present.",
+                "Cite with [Source N]. Compare IPC and BNS if both are present."
+                f"{priority_hint}",
             },
         ]
 
@@ -132,6 +151,7 @@ OUTPUT FORMAT:
         results: list[dict],
         format: str = ResponseFormat.SUMMARY,
         include_related: bool = True,
+        file_context: str | None = None,
     ) -> dict:
         """
         Generate a formatted response from retrieval results.
@@ -144,7 +164,11 @@ OUTPUT FORMAT:
         structured = self._build_legal_rag_payload(results)
 
         # Try LLM synthesis — if it works, use it as the primary answer body
-        llm_response = self._synthesize_with_llm(query, results) if results else None
+        llm_response = (
+            self._synthesize_with_llm(query, results, file_context=file_context)
+            if results
+            else None
+        )
         if llm_response:
             # Replace the Grounded Answer body with the LLM response
             if structured["answer_sections"]:
@@ -153,10 +177,22 @@ OUTPUT FORMAT:
         else:
             response = self._format_legal_rag(query, results, related)
 
+        # Inject file context as a source if provided
+        source_sections = structured["source_sections"]
+        if file_context:
+            source_sections = [
+                {
+                    "act": "Uploaded Document",
+                    "section": "User-provided file",
+                    "similarity": 1.0,
+                    "snippet": file_context[:500],
+                }
+            ] + source_sections
+
         return {
             "generated_response": response,
             "answer_sections": structured["answer_sections"],
-            "source_sections": structured["source_sections"],
+            "source_sections": source_sections,
             "answer_confidence": structured["answer_confidence"],
             "citations": [self._citation_to_dict(c) for c in citations],
             "related_provisions": related,

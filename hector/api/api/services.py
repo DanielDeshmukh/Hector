@@ -155,6 +155,7 @@ class HectorApiService:
                 results=paginated,
                 format=request.format,
                 include_related=request.include_related,
+                file_context=request.file_context,
             )
             generated_response = response_data["generated_response"]
         else:
