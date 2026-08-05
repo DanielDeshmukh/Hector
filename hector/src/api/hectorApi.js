@@ -170,18 +170,60 @@ function authHeaders() {
   return headers;
 }
 
-export async function searchHector(query) {
+function authHeadersRaw() {
+  const headers = {};
+  if (API_KEY) {
+    headers["X-API-Key"] = API_KEY;
+  }
+  return headers;
+}
+
+export async function uploadFile(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch(`${API_URL}/upload`, {
+    method: "POST",
+    headers: authHeadersRaw(),
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Upload failed with status ${response.status}`);
+  }
+
+  return response.json();
+}
+
+export async function searchHector(query, file = null) {
+  let fileContext = null;
+
+  if (file) {
+    const uploadResult = await uploadFile(file);
+    if (uploadResult.error) {
+      throw new Error(uploadResult.error);
+    }
+    fileContext = uploadResult.text;
+  }
+
+  const body = {
+    query,
+    page: 1,
+    page_size: 5,
+    verify: true,
+    format: "summary",
+    include_related: true,
+  };
+
+  if (fileContext) {
+    body.file_context = fileContext;
+  }
+
   const response = await fetch(`${API_URL}/search`, {
     method: "POST",
     headers: authHeaders(),
-    body: JSON.stringify({
-      query,
-      page: 1,
-      page_size: 5,
-      verify: true,
-      format: "summary",
-      include_related: true,
-    }),
+    body: JSON.stringify(body),
   });
 
   if (!response.ok) {

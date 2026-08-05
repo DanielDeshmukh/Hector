@@ -114,7 +114,7 @@ export default function App() {
   }, []);
 
   const handleSubmit = useCallback(
-    async (query) => {
+    async (query, file = null) => {
       setSubmittedQuery(query);
       setActiveSourceId(null);
       setActiveSource(null);
@@ -123,7 +123,7 @@ export default function App() {
 
       const stopProcessingAnimation = startProcessingAnimation();
       try {
-        const response = await searchHector(query);
+        const response = await searchHector(query, file);
         setProcessingStage(4);
         setCurrentResponse(response);
         setSearchHistory((history) => {

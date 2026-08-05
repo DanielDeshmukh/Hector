@@ -17,6 +17,7 @@ class SearchRequest(BaseModel):
     verify: bool = True
     format: Literal["summary", "detailed", "citations"] = "summary"
     include_related: bool = True
+    file_context: str | None = None
 
 
 class CompareRequest(BaseModel):

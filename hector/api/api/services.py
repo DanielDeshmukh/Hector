@@ -139,9 +139,19 @@ class HectorApiService:
             "related_provisions": [],
         }
 
+        # Build the effective query — append file context if provided
+        effective_query = request.query
+        if request.file_context:
+            effective_query = (
+                f"{request.query}\n\n"
+                f"--- Uploaded Document Context ---\n"
+                f"{request.file_context[:8000]}\n"
+                f"--- End Document Context ---"
+            )
+
         if intent.get("route") == "LEGAL_RESEARCH":
             response_data = self.response_generator.generate(
-                query=request.query,
+                query=effective_query,
                 results=paginated,
                 format=request.format,
                 include_related=request.include_related,

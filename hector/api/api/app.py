@@ -11,9 +11,11 @@ from utils.retry import retry
 from fastapi import (
     Depends,
     FastAPI,
+    File,
     HTTPException,
     Query,
     Request,
+    UploadFile,
     WebSocket,
     WebSocketDisconnect,
 )
@@ -713,3 +715,86 @@ def batch_parse_endpoint(
     processor = get_batch_processor()
     queries = processor.parse_text(text)
     return {"queries": queries, "count": len(queries)}
+
+
+# ---------------------------------------------------------------------------
+# File upload endpoint
+# ---------------------------------------------------------------------------
+
+MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB
+
+
+@app.post("/upload")
+async def upload_file(
+    file: UploadFile = File(...),
+    _: dict = Depends(require_auth),
+):
+    """Accept a file upload and return extracted text content."""
+    content = await file.read()
+    if len(content) > MAX_UPLOAD_BYTES:
+        return JSONResponse(
+            status_code=413,
+            content={"error": f"File too large. Max {MAX_UPLOAD_BYTES // (1024*1024)} MB."},
+        )
+
+    filename = file.filename or "uploaded_file"
+    mime = file.content_type or ""
+    text = ""
+
+    try:
+        if mime == "application/pdf" or filename.lower().endswith(".pdf"):
+            from pypdf import PdfReader
+            import io
+
+            reader = PdfReader(io.BytesIO(content))
+            pages = []
+            for i, page in enumerate(reader.pages):
+                page_text = page.extract_text() or ""
+                if page_text.strip():
+                    pages.append(f"[Page {i + 1}]\n{page_text.strip()}")
+            text = "\n\n".join(pages)
+
+        elif (
+            mime.startswith("text/")
+            or mime in ("application/json", "application/xml", "text/csv")
+            or filename.lower().endswith(
+                (".txt", ".md", ".csv", ".json", ".xml", ".html", ".py", ".js",
+                 ".ts", ".tsx", ".jsx", ".log", ".yaml", ".yml", ".cfg", ".ini")
+            )
+        ):
+            text = content.decode("utf-8", errors="replace")
+
+        elif filename.lower().endswith((".docx", ".doc")):
+            from docx import Document
+            import io
+
+            doc = Document(io.BytesIO(content))
+            text = "\n\n".join(p.text for p in doc.paragraphs if p.text.strip())
+
+        else:
+            return JSONResponse(
+                status_code=415,
+                content={
+                    "error": f"Unsupported file type: {mime or filename}. "
+                    "Supported: PDF, TXT, MD, CSV, JSON, XML, HTML, Python, JS, TS, Word (.docx)."
+                },
+            )
+
+        # Truncate extremely long extracts
+        if len(text) > 50000:
+            text = text[:50000] + "\n\n... (truncated at 50K characters)"
+
+        return {
+            "filename": filename,
+            "mime_type": mime,
+            "size": len(content),
+            "text": text,
+            "char_count": len(text),
+        }
+
+    except Exception as e:
+        logger.error("File upload processing failed: %s", e)
+        return JSONResponse(
+            status_code=500,
+            content={"error": f"Failed to process file: {str(e)}"},
+        )
