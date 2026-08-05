@@ -22,11 +22,17 @@ export default function BatchQueryPanel({ onClose }) {
   };
 
   const handleRun = async () => {
-    if (queries.length === 0) return;
     setLoading(true);
     setError(null);
     try {
-      const result = await runBatchQuery(queries);
+      let qs = queries;
+      if (qs.length === 0 && inputText.trim()) {
+        const parsed = await parseBatchText(inputText);
+        qs = parsed.queries;
+        setQueries(qs);
+      }
+      if (qs.length === 0) return;
+      const result = await runBatchQuery(qs);
       setResults(result);
       setMode("results");
     } catch (err) {
@@ -191,6 +197,24 @@ export default function BatchQueryPanel({ onClose }) {
               >
                 <Download size={11} />
                 Export CSV
+              </button>
+            )}
+            {mode === "input" && queries.length === 0 && inputText.trim() && (
+              <button
+                onClick={handleParse}
+                className="flex items-center gap-1.5 rounded-lg border border-slate-custom/40 px-3 py-2 text-[11px] font-medium text-silver/60 hover:border-gold/30 hover:text-gold"
+              >
+                <FileText size={11} />
+                Parse
+              </button>
+            )}
+            {mode === "input" && queries.length > 0 && (
+              <button
+                onClick={() => { setQueries([]); }}
+                className="flex items-center gap-1.5 rounded-lg border border-slate-custom/40 px-3 py-2 text-[11px] font-medium text-silver/60 hover:border-gold/30 hover:text-gold"
+              >
+                <X size={11} />
+                Clear
               </button>
             )}
             {mode === "input" && queries.length > 0 && (
