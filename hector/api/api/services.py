@@ -149,7 +149,7 @@ class HectorApiService:
                 f"--- End Document Context ---"
             )
 
-        if intent.get("route") == "LEGAL_RESEARCH":
+        if intent.get("route") == "LEGAL_RESEARCH" or request.file_context:
             response_data = self.response_generator.generate(
                 query=effective_query,
                 results=paginated,
@@ -176,7 +176,7 @@ class HectorApiService:
 
         # Run hallucination check on generated response
         hallucination_check = None
-        if generated_response and intent.get("route") == "LEGAL_RESEARCH":
+        if generated_response and (intent.get("route") == "LEGAL_RESEARCH" or request.file_context):
             from core.verifier import HallucinationDetector
 
             verification_result = {
