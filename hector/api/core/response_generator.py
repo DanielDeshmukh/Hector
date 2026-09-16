@@ -64,8 +64,15 @@ OUTPUT FORMAT:
     def __init__(self, retriever: "HectorHybridRetriever"):
         self.retriever = retriever
         self._nim_client = None
+        self._nim_last_failure = 0  # timestamp of last NIM failure
+        self._nim_cooldown = 60  # seconds to wait before retrying NIM
 
     def _get_nim_client(self):
+        import time as _time
+        now = _time.time()
+        # Reset NIM client after cooldown period
+        if self._nim_client is False and (now - self._nim_last_failure) > self._nim_cooldown:
+            self._nim_client = None
         if self._nim_client is None:
             try:
                 from core.nim_llm import get_nim_llm, NIM_MODELS
@@ -74,6 +81,7 @@ OUTPUT FORMAT:
                 self._generation_model = NIM_MODELS["generation"]
             except Exception:
                 self._nim_client = False
+                self._nim_last_failure = now
         return self._nim_client if self._nim_client is not False else None
 
     def _synthesize_with_llm(
@@ -413,7 +421,7 @@ OUTPUT FORMAT:
 
         confidence = self._answer_confidence(sources)
         confidence_line = f"Answer confidence: {confidence}%"
-        if sources[0]["similarity"] < 0.70:
+        if sources and sources[0]["similarity"] < 0.70:
             confidence_line += (
                 " Low confidence — retrieved sources may not fully cover this query."
             )

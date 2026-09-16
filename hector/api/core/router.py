@@ -285,6 +285,8 @@ class HectorRouter:
         )
         self.model = os.getenv("HECTOR_ROUTER_MODEL", "llama-3.3-70b-versatile")
         self._nim = None
+        self._nim_last_failure = 0  # timestamp of last NIM failure
+        self._nim_cooldown = 60  # seconds to wait before retrying NIM
         self.system_prompt = (
             "Classify the user query into exactly one route: "
             "LEGAL_RESEARCH, STRATEGIC_ADVICE, DOCUMENT_ANALYSIS, or GENERAL. "
@@ -433,11 +435,17 @@ class HectorRouter:
 
         # Try NIM first, fall back to Groq, fall back to rule-based
         try:
+            import time as _time
+            now = _time.time()
+            # Reset NIM client after cooldown period
+            if self._nim is False and (now - self._nim_last_failure) > self._nim_cooldown:
+                self._nim = None
             if self._nim is None:
                 try:
                     self._nim = get_nim_llm()
                 except Exception:
                     self._nim = False
+                    self._nim_last_failure = now
             if self._nim and self._nim is not False:
                 parsed = self._nim.chat_json(
                     messages=[

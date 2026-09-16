@@ -178,13 +178,17 @@ class HectorApiService:
         # Run hallucination check on generated response
         hallucination_check = None
         if generated_response and (intent.get("route") == "LEGAL_RESEARCH" or request.file_context):
-            from core.verifier import HallucinationDetector
+            from core.verifier import ClaimExtractor, HallucinationDetector
+
+            actual_claims = ClaimExtractor.extract_claims(generated_response)
+            total_claims = len(actual_claims) if actual_claims else 0
+            claims_verified = int(total_claims * raw_confidence / 100.0) if total_claims else 0
 
             verification_result = {
                 "verified_response": generated_response,
                 "citation_coverage": raw_confidence / 100.0,
-                "total_claims": len(paginated),
-                "claims_verified": int(len(paginated) * raw_confidence / 100.0),
+                "total_claims": total_claims,
+                "claims_verified": claims_verified,
             }
             hallucination_check = HallucinationDetector.generate_hallucination_report(
                 verification_result

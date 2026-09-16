@@ -163,6 +163,8 @@ class HectorOrchestrator:
 
         # Step 5-6: Retrieve, re-rank, generate (with sub-stage timing)
         t_retrieve = time.perf_counter()
+        sub_timing = {}
+        sources = []
         try:
             response, sources, sub_timing = self._generate_strategic_response(
                 route, expanded_query, intent, mappings, entity_dict, qi_analysis

@@ -154,7 +154,7 @@ class ChainOfVerification:
         if not claims:
             return {
                 "verified_response": response,
-                "claims_verified": True,
+                "claims_verified": 0,
                 "unverified_claims": [],
                 "citation_coverage": 1.0,
                 "needs_correction": False,
