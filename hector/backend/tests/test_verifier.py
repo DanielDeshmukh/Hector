@@ -120,7 +120,7 @@ class ChainOfVerificationTests(unittest.TestCase):
         response = "I don't know."
         result = self.verifier.verify_response(response, self.sample_sources)
 
-        self.assertTrue(result["claims_verified"])
+        self.assertEqual(result["claims_verified"], 0)
 
     def test_builds_verification_context(self):
         context = self.verifier._build_verification_context(self.sample_sources)
