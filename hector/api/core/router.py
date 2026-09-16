@@ -425,8 +425,10 @@ class HectorRouter:
         """Determines intent and always returns a validated routing payload."""
         rule_based_intent = self._route_with_rules(user_query)
 
-        # Fast-path obvious requests and preserve latency for routing.
-        if rule_based_intent["confidence"] >= 0.9:
+        # Fast-path: trust rule-based router if it matched a specific keyword
+        # (LEGAL_RESEARCH, DOCUMENT_ANALYSIS, STRATEGIC_ADVICE) regardless
+        # of confidence. Only call LLM for ambiguous GENERAL queries.
+        if rule_based_intent["confidence"] >= 0.85 or rule_based_intent["route"] != "GENERAL":
             return rule_based_intent
 
         # Try NIM first, fall back to Groq, fall back to rule-based
