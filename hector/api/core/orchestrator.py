@@ -157,6 +157,30 @@ class HectorOrchestrator:
             expanded_query = self.query_expander.expand_with_entities(
                 normalized_query, entity_dict
             )
+            # Extract section numbers added by query expander and add to entities
+            # so metadata filters can find the right bare acts
+            import re as _re
+            for sec_match in _re.finditer(r"section\s+(\d+[A-Za-z]*)\s+(bns|ipc|crpc|bnss)", expanded_query.lower()):
+                sec_num = sec_match.group(1)
+                act_suffix = sec_match.group(2)
+                if act_suffix == "bns":
+                    bns_list = entity_dict.setdefault("bns_sections", [])
+                    if sec_num not in bns_list:
+                        bns_list.append(sec_num)
+                elif act_suffix == "ipc":
+                    ipc_list = entity_dict.setdefault("ipc_sections", [])
+                    if sec_num not in ipc_list:
+                        ipc_list.append(sec_num)
+                else:
+                    sec_list = entity_dict.setdefault("sections", [])
+                    if sec_num not in sec_list:
+                        sec_list.append(sec_num)
+            # Also extract bare "section NNN" patterns (no act suffix)
+            for sec_match in _re.finditer(r"section\s+(\d+[A-Za-z]*?)(?:\s|$|[,\.\)])", expanded_query.lower()):
+                sec_num = sec_match.group(1)
+                sec_list = entity_dict.setdefault("sections", [])
+                if sec_num not in sec_list:
+                    sec_list.append(sec_num)
         else:
             expanded_query = normalized_query
         expand_ms = (time.perf_counter() - t_expand) * 1000
