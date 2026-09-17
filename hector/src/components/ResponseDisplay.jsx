@@ -188,10 +188,12 @@ export default function ResponseDisplay({
           <Tag size={11} />
           {response.domain}
         </span>
-        <span className="flex items-center gap-1.5 rounded-md border border-success/20 bg-success/5 px-2.5 py-1 text-[11px] font-medium text-success">
-          <BarChart3 size={11} />
-          Confidence: {response.confidence}%
-        </span>
+        {response.confidence > 0 && (
+          <span className="flex items-center gap-1.5 rounded-md border border-success/20 bg-success/5 px-2.5 py-1 text-[11px] font-medium text-success">
+            <BarChart3 size={11} />
+            Confidence: {response.confidence}%
+          </span>
+        )}
         {response.confidenceLevel && response.confidenceLevel !== "unknown" && (
           <span
             className={`flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[11px] font-medium ${

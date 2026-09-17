@@ -6,6 +6,7 @@ Generates legally accurate, contextually rich responses with proper citations.
 from __future__ import annotations
 from dataclasses import dataclass
 import logging
+import os
 import re
 from typing import TYPE_CHECKING
 
@@ -13,6 +14,101 @@ logger = logging.getLogger("hector.response_generator")
 
 if TYPE_CHECKING:
     from data.hybrid_retriever import HectorHybridRetriever
+
+# ── Act registry: maps keywords/aliases → (full_name, abbreviations, Books/ filename) ──
+# Built from the actual PDFs in hector/api/data/Books/
+_KNOWN_ACTS: list[tuple[list[str], str, str, str]] = [
+    (["ipc", "indian penal code", "penal code"], "Indian Penal Code, 1860", "IPC", "Indian_Penal_Code_1860.pdf"),
+    (["bns", "bharatiya nyaya sanhita", "nyaya sanhita"], "Bharatiya Nyaya Sanhita, 2023", "BNS", "Bharatiya_Nyaya_Sanhita_2023.pdf"),
+    (["crpc", "code of criminal procedure", "criminal procedure"], "Code of Criminal Procedure, 1973", "CrPC", "Code_of_Criminal_Procedure_1973.pdf"),
+    (["bnss", "bharatiya nagarik suraksha", "suraksha sanhita"], "Bharatiya Nagarik Suraksha Sanhita, 2023", "BNSS", "Bharatiya_Nagarik_Suraksha_Sanhita_2023.pdf"),
+    (["evidence act", "indian evidence act", "iea"], "Indian Evidence Act, 1872", "IEA", "Indian_Evidence_Act_1872.pdf"),
+    (["bsa", "bharatiya sakshya adhiniyam", "sakshya"], "Bharatiya Sakshya Adhiniyam, 2023", "BSA", "Bharatiya_Sakshya_Adhiniyam_2023.pdf"),
+    (["cpc", "code of civil procedure", "civil procedure"], "Code of Civil Procedure, 1908", "CPC", "Code_Of_Civil_Procedure_1908.pdf"),
+    (["contract act", "indian contract act", "section 23", "section 73"], "Indian Contract Act, 1872", "", "Indian_Contract_Act_1872.pdf"),
+    (["tpa", "transfer of property act", "property act"], "Transfer of Property Act, 1882", "TPA", "Transfer_of_Property_Act_1882.pdf"),
+    (["ni act", "negotiable instruments", "section 138"], "Negotiable Instruments Act, 1881", "NI Act", "Negotiable_Instruments_Act_1881.pdf"),
+    (["constitution", "article 14", "article 19", "article 21", "fundamental rights"], "Constitution of India", "", "Constitution_of_India.pdf"),
+    (["motor vehicles act", "mv act", "section 185"], "Motor Vehicles Act, 1988", "", "Motor_Vehicles_Act_1988.pdf"),
+    (["hindu marriage act", "section 13"], "Hindu Marriage Act, 1955", "", "Hindu_Marriage_Act_1955.pdf"),
+    (["hindu succession act", "section 6"], "Hindu Succession Act, 1956", "", "Hindu_Succession_Act_1956.pdf"),
+    (["dowry act", "dowry prohibition", "section 3"], "Dowry Prohibition Act, 1961", "", "Dowry_Prohibition_Act_1961.pdf"),
+    (["dv act", "domestic violence act", "protection of women"], "Protection of Women from Domestic Violence Act, 2005", "", "Protection_of_Women_from_Domestic_Violence_Act_2005.pdf"),
+    (["ndps act", "narcotic", "section 20"], "Narcotic Drugs and Psychotropic Substances Act, 1985", "NDPS", "Narcotic_Drugs_and_Psychotropic_Substances_Act_1985.pdf"),
+    (["consumer protection act", "cpa"], "Consumer Protection Act, 2019", "", "Consumer_Protection_Act_2019.pdf"),
+    (["it act", "information technology act", "section 43", "section 66"], "Information Technology Act, 2000", "IT Act", "Information_Technology_Act_2000.pdf"),
+    (["limitation act"], "Limitation Act, 1963", "", "Limitation_Act_1963.pdf"),
+    (["arbitration act", "section 8", "section 34"], "Arbitration and Conciliation Act, 1996", "", "Arbitration_and_Conciliation_Act_1996.pdf"),
+    (["industrial disputes act", "section 25f"], "Industrial Disputes Act, 1947", "IDA", "Industrial_Disputes_Act_1947.pdf"),
+    (["family courts act"], "Family Courts Act, 1984", "", "Family_Courts_Act_1984.pdf"),
+    (["competition act"], "Competition Act, 2002", "", "Competition_Act_2002.pdf"),
+    (["jj act", "juvenile justice act", "section 10"], "Juvenile Justice Act, 2015", "", "Juvenile_Justice_Act_2015.pdf"),
+    (["forest act", "section 4"], "Forest Act, 1927", "", "Forest_Act_1927.pdf"),
+    (["specific relief act"], "Specific Relief Act, 1963", "", "Specific_Relief_Act_1963.pdf"),
+    (["factories act", "section 7a"], "Factories Act, 1948", "", "Factories_Act_1948.pdf"),
+    (["easements act"], "Easements Act, 1882", "", "Easements_Act_1882.pdf"),
+    (["arms act"], "Arms Act, 1959", "", "Arms_Act_1959.pdf"),
+    (["copyright act"], "Copyright Act, 1957", "", "Copyright_Act_1957.pdf"),
+    (["environment protection act", "epa"], "Environment Protection Act, 1986", "", "Environment_Protection_Act_1986.pdf"),
+    (["rti act", "right to information"], "Right to Information Act, 2005", "RTI", "Right_To_Information_Act_2005.pdf"),
+    (["legal services act", "legal services authorities"], "Legal Services Authorities Act, 1987", "", "Legal_Services_Authorities_Act_1987.pdf"),
+    (["prevention of corruption act"], "Prevention of Corruption Act, 1988", "", "Prevention_of_Corruption_Act_1988.pdf"),
+    (["gram nyayalayas act"], "Gram Nyayalayas Act, 2008", "", "Gram_Nyayalayas_Act_2008.pdf"),
+    (["trusts act"], "Trusts Act, 1882", "", "Trusts_Act_1882.pdf"),
+    (["hindu minority", "guardianship act"], "Hindu Minority and Guardianship Act, 1956", "", "Hindu_Minority_And_Guardianship_Act_1956.pdf"),
+]
+
+# Pre-build a quick-lookup dict for the Books/ directory
+_BOOKS_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "Books")
+
+
+def _books_exist() -> bool:
+    return os.path.isdir(_BOOKS_DIR)
+
+
+def detect_act_from_query(query: str) -> list[str]:
+    """Return list of full act names that the query is likely about."""
+    q = query.lower()
+    detected = []
+    for keywords, full_name, _abbrev, _pdf in _KNOWN_ACTS:
+        if any(kw in q for kw in keywords):
+            if full_name not in detected:
+                detected.append(full_name)
+    return detected
+
+
+def get_act_ingestion_status(query: str) -> str | None:
+    """
+    Detect which act the query targets, check if it's in Books/,
+    and return an honest status message.
+
+    Returns None if the act IS indexed and found in results.
+    Returns a user-facing message if the act is missing or not indexed.
+    """
+    detected = detect_act_from_query(query)
+    if not detected:
+        return None
+
+    books_dir = _BOOKS_DIR if _books_exist() else None
+    messages = []
+    for act_name in detected:
+        entry = next((e for e in _KNOWN_ACTS if e[1] == act_name), None)
+        if not entry:
+            continue
+        pdf_file = entry[3]
+        if books_dir and os.path.isfile(os.path.join(books_dir, pdf_file)):
+            # PDF exists in Books/ but wasn't found in results — likely not properly indexed
+            messages.append(
+                f"The {act_name} is present in our corpus but the specific section "
+                f"you're looking for may not be properly indexed yet. "
+                f"Our team is working on improving coverage for this act."
+            )
+        else:
+            messages.append(
+                f"The {act_name} is not yet included in HECTOR's legal database. "
+                f"Our team is actively working on adding it."
+            )
+    return "\n\n".join(messages) if messages else None
 
 
 class ResponseFormat:
@@ -220,6 +316,12 @@ OUTPUT FORMAT:
                 "answer_confidence": 0.0,
             }
 
+        # Check act ingestion status early for empty IPC/BNS messages
+        _query_from_results = " ".join(
+            (r.get("document") or "")[:100] for r in results[:3]
+        )
+        _act_status_hint = get_act_ingestion_status(_query_from_results)
+
         all_sources = [
             self._source_payload(item, index, len(results))
             for index, item in enumerate(results, start=1)
@@ -227,9 +329,11 @@ OUTPUT FORMAT:
         sources = [
             s for s in all_sources if s["similarity"] >= 0.70
         ]
+        # Fallback to all sources if high-similarity filter removed everything
+        effective_sources = sources if sources else all_sources
         ipc_sources = [
             source
-            for source in sources
+            for source in effective_sources
             if any(
                 kw in source["act"]
                 for kw in ("IPC", "INDIAN PENAL CODE")
@@ -237,7 +341,7 @@ OUTPUT FORMAT:
         ]
         bns_sources = [
             source
-            for source in sources
+            for source in effective_sources
             if any(
                 kw in source["act"]
                 for kw in ("BNS", "BHARATIYA NYAYA SANHITA")
@@ -250,9 +354,20 @@ OUTPUT FORMAT:
             overview_lines.append(
                 f"Indian Penal Code, 1860 [IPC]: {self._framework_sentence(source)} [S{source['number']}]"
             )
+        elif _act_status_hint:
+            overview_lines.append(
+                f"Indian Penal Code, 1860 [IPC]: {_act_status_hint}"
+            )
+        elif sources:
+            source = self._best_source(sources)
+            act_name = source.get("act", "related source")
+            overview_lines.append(
+                f"Indian Penal Code, 1860 [IPC]: No direct IPC bare act section retrieved. "
+                f"Nearest related provision found in {act_name}, Section {source['section']}. [S{source['number']}]"
+            )
         else:
             overview_lines.append(
-                "Indian Penal Code, 1860 [IPC]: No directly retrieved IPC chunk supports an answer for this query."
+                "Indian Penal Code, 1860 [IPC]: No relevant sources found for this query."
             )
 
         if bns_sources:
@@ -260,17 +375,29 @@ OUTPUT FORMAT:
             overview_lines.append(
                 f"Bharatiya Nyaya Sanhita, 2023 [BNS]: {self._framework_sentence(source)} [S{source['number']}]"
             )
+        elif _act_status_hint:
+            overview_lines.append(
+                f"Bharatiya Nyaya Sanhita, 2023 [BNS]: {_act_status_hint}"
+            )
+        elif sources:
+            source = self._best_source(sources)
+            act_name = source.get("act", "related source")
+            overview_lines.append(
+                f"Bharatiya Nyaya Sanhita, 2023 [BNS]: No direct BNS bare act section retrieved. "
+                f"Nearest related provision found in {act_name}, Section {source['section']}. [S{source['number']}]"
+            )
         else:
             overview_lines.append(
-                "Bharatiya Nyaya Sanhita, 2023 [BNS]: No directly retrieved BNS chunk supports an answer for this query."
+                "Bharatiya Nyaya Sanhita, 2023 [BNS]: No relevant sources found for this query."
             )
 
-        if ipc_sources and bns_sources:
-            ipc = self._best_source(ipc_sources)
-            bns = self._best_source(bns_sources)
-            overview_lines.append(
-                f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
-            )
+        if (ipc_sources or sources) and (bns_sources or sources):
+            ipc = self._best_source(ipc_sources) if ipc_sources else self._best_source(sources)
+            bns = self._best_source(bns_sources) if bns_sources else self._best_source(sources)
+            if ipc_sources and bns_sources:
+                overview_lines.append(
+                    f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
+                )
 
         all_rows = [
             {
@@ -325,11 +452,16 @@ OUTPUT FORMAT:
     ) -> str:
         """Format a response using the HECTOR Research Report format."""
         if not results:
+            act_status = get_act_ingestion_status(query)
+            if act_status:
+                return (
+                    f"[HECTOR Intelligence Report] · [0 sources retrieved] · Query: {query}\n\n"
+                    f"{act_status}\n\n"
+                    "Note: This information is provided for research purposes and does not constitute formal legal advice."
+                )
             return (
                 f"[HECTOR Intelligence Report] · [0 sources retrieved] · Query: {query}\n\n"
                 "No relevant sources found for this query.\n\n"
-                "RETRIEVED SOURCES\n\n"
-                "Answer confidence: 0% Low confidence — retrieved sources may not fully cover this query.\n\n"
                 "Note: This information is provided for research purposes and does not constitute formal legal advice."
             )
 
@@ -354,6 +486,8 @@ OUTPUT FORMAT:
             )
         ]
 
+        act_status_hint = get_act_ingestion_status(query)
+
         lines = [
             f"[HECTOR Intelligence Report] · [{len(sources)} sources retrieved] · Query: {query}",
             "",
@@ -364,9 +498,20 @@ OUTPUT FORMAT:
             lines.append(
                 f"**Indian Penal Code, 1860** [IPC]: {self._framework_sentence(source)} [§{source['number']}]"
             )
+        elif act_status_hint:
+            lines.append(
+                f"**Indian Penal Code, 1860** [IPC]: {act_status_hint}"
+            )
+        elif sources:
+            source = self._best_source(sources)
+            act_name = source.get("act", "related source")
+            lines.append(
+                f"**Indian Penal Code, 1860** [IPC]: No direct IPC bare act section retrieved. "
+                f"Nearest related provision found in {act_name}, Section {source['section']}. [§{source['number']}]"
+            )
         else:
             lines.append(
-                "**Indian Penal Code, 1860** [IPC]: No directly retrieved IPC chunk supports an answer for this query."
+                "**Indian Penal Code, 1860** [IPC]: No relevant sources found for this query."
             )
 
         if bns_sources:
@@ -374,17 +519,29 @@ OUTPUT FORMAT:
             lines.append(
                 f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: {self._framework_sentence(source)} [§{source['number']}]"
             )
+        elif act_status_hint:
+            lines.append(
+                f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: {act_status_hint}"
+            )
+        elif sources:
+            source = self._best_source(sources)
+            act_name = source.get("act", "related source")
+            lines.append(
+                f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: No direct BNS bare act section retrieved. "
+                f"Nearest related provision found in {act_name}, Section {source['section']}. [§{source['number']}]"
+            )
         else:
             lines.append(
-                "**Bharatiya Nyaya Sanhita, 2023** [BNS]: No directly retrieved BNS chunk supports an answer for this query."
+                "**Bharatiya Nyaya Sanhita, 2023** [BNS]: No relevant sources found for this query."
             )
 
-        if ipc_sources and bns_sources:
-            ipc = self._best_source(ipc_sources)
-            bns = self._best_source(bns_sources)
-            lines.append(
-                f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [§{ipc['number']}] [§{bns['number']}]"
-            )
+        if (ipc_sources or sources) and (bns_sources or sources):
+            ipc = self._best_source(ipc_sources) if ipc_sources else self._best_source(sources)
+            bns = self._best_source(bns_sources) if bns_sources else self._best_source(sources)
+            if ipc_sources and bns_sources:
+                lines.append(
+                    f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
+                )
 
         lines.extend(
             [
