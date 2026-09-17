@@ -374,11 +374,22 @@ class HectorApiService:
 
     def status(self) -> StatusResponse:
         document_count = len(getattr(self.retriever, "records", []))
-        status = "ok" if document_count > 0 else "degraded"
+        # Also check Pinecone directly for accurate count
+        pinecone_records = 0
+        try:
+            idx = getattr(self.retriever, "_pinecone", None)
+            if idx is not None:
+                stats = idx.describe_index_stats()
+                pinecone_records = stats.get("total_vector_count", 0) if isinstance(stats, dict) else getattr(stats, "total_vector_count", 0)
+        except Exception:
+            pass
+        # Use the higher of in-memory or Pinecone count
+        effective_count = max(document_count, pinecone_records)
+        status = "ok" if effective_count > 0 else "degraded"
         return StatusResponse(
             status=status,
             collection_name=getattr(self.retriever, "collection_name", "unknown"),
-            document_count=document_count,
+            document_count=effective_count,
             verifier_enabled=bool(self.orchestrator.enable_verification),
             semantic_search_enabled=not bool(
                 getattr(self.retriever, "semantic_disabled", False)

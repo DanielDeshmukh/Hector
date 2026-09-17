@@ -265,7 +265,7 @@ OUTPUT FORMAT:
         """
         citations = self._extract_citations(results)
         related = self._find_related_provisions(results) if include_related else []
-        structured = self._build_legal_rag_payload(results)
+        structured = self._build_legal_rag_payload(results, query=query)
 
         # Try LLM synthesis — if it works, use it as the primary answer body
         llm_response = (
@@ -302,7 +302,7 @@ OUTPUT FORMAT:
             "related_provisions": related,
         }
 
-    def _build_legal_rag_payload(self, results: list[dict]) -> dict:
+    def _build_legal_rag_payload(self, results: list[dict], query: str = "") -> dict:
         if not results:
             return {
                 "answer_sections": [
@@ -316,11 +316,7 @@ OUTPUT FORMAT:
                 "answer_confidence": 0.0,
             }
 
-        # Check act ingestion status early for empty IPC/BNS messages
-        _query_from_results = " ".join(
-            (r.get("document") or "")[:100] for r in results[:3]
-        )
-        _act_status_hint = get_act_ingestion_status(_query_from_results)
+        _act_status_hint = get_act_ingestion_status(query) if query else None
 
         all_sources = [
             self._source_payload(item, index, len(results))

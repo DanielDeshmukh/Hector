@@ -299,7 +299,11 @@ class HectorHybridRetriever:
         all_records = []
         try:
             for vector_list in idx.list():
-                ids = [v.id for v in vector_list]
+                # Pinecone SDK v7 returns string IDs; older versions return objects with .id
+                ids = [
+                    v if isinstance(v, str) else v.id
+                    for v in vector_list
+                ]
                 if not ids:
                     continue
                 fetched = retry(
@@ -320,11 +324,16 @@ class HectorHybridRetriever:
         self._load_records(all_records)
 
     def search(self, query, top_k=5, candidate_pool=30):
-        if not self.records:
-            return []
-
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
+
+        if not self.records:
+            logger.warning("BM25 records not loaded yet — falling back to pure Pinecone search")
+            semantic_rank = self._semantic_search(query, candidate_pool)
+            deduped = self._deduplicate_results(semantic_rank)
+            reranked = self._rerank_with_cross_encoder(query, deduped)
+            return reranked[:top_k]
+
         bm25_tokens = self._tokenize(query)
 
         with ThreadPoolExecutor(max_workers=2) as executor:
@@ -344,7 +353,7 @@ class HectorHybridRetriever:
         return reranked[:top_k]
 
     def search_with_metadata_filters(self, query, entities, top_k=5, candidate_pool=20):
-        if not self.records or not entities:
+        if not entities:
             return self.search(query, top_k, candidate_pool)
 
         section_numbers = list(
