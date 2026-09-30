@@ -5,6 +5,7 @@ Retry utility with exponential backoff for transient failures.
 import logging
 import os
 import time
+from random import uniform
 from typing import Any, Callable
 
 logger = logging.getLogger(__name__)
@@ -29,6 +30,9 @@ def retry(
 ) -> Any:
     """
     Execute a function with retry and exponential backoff.
+
+    Backoff delays are multiplied by a random jitter factor in [0.5, 1.5]
+    so concurrent callers do not retry in lockstep.
 
     Args:
         func: Function to call.
@@ -68,6 +72,7 @@ def retry(
                 raise
 
             delay = min(_base * (_factor ** (attempt - 1)), _max_d)
+            delay = min(delay * uniform(0.5, 1.5), _max_d)
             logger.warning(
                 "%s failed (attempt %d/%d): %s — retrying in %.1fs",
                 operation_name,

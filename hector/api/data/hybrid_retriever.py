@@ -21,7 +21,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DEFAULT_INDEX_NAME = "hector-legal"
 DEFAULT_COLLECTION = "indian_law_bns"
 EMBEDDING_MODEL = "multilingual-e5-large"
-EMBEDDING_DIM = 1024
+EMBEDDING_DIM = 2048
 
 
 class SimpleBM25:
@@ -200,6 +200,7 @@ class HectorHybridRetriever:
         self.corpus = []
         self.tokenized_corpus = []
         self.bm25 = None
+        self.last_search_mode = None
         if self.collection is not None:
             self.refresh_index()
         elif self.pinecone_index is not None:
@@ -251,6 +252,7 @@ class HectorHybridRetriever:
         instance.corpus = []
         instance.tokenized_corpus = []
         instance.bm25 = None
+        instance.last_search_mode = None
         instance._load_records(records)
         return instance
 
@@ -329,9 +331,17 @@ class HectorHybridRetriever:
 
         if not self.records:
             logger.warning("BM25 records not loaded yet — falling back to pure Pinecone search")
-            semantic_rank = self._semantic_search(query, candidate_pool)
+            try:
+                semantic_rank = self._semantic_search(query, candidate_pool)
+            except Exception as exc:
+                logger.warning(
+                    "semantic retrieval failed (%s) — no results available", exc
+                )
+                semantic_rank = []
             deduped = self._deduplicate_results(semantic_rank)
             reranked = self._rerank_with_cross_encoder(query, deduped)
+            reranked = self._apply_relevance_threshold(reranked)
+            self._record_mode(semantic_rank, [])
             return reranked[:top_k]
 
         bm25_tokens = self._tokenize(query)
@@ -343,14 +353,66 @@ class HectorHybridRetriever:
             bm25_future = executor.submit(
                 self._bm25_search, bm25_tokens, candidate_pool
             )
-            semantic_rank = semantic_future.result()
+            try:
+                semantic_rank = semantic_future.result()
+            except Exception as exc:
+                logger.warning(
+                    "semantic retrieval failed (%s) — continuing with bm25 only",
+                    exc,
+                )
+                semantic_rank = []
             bm25_rank = bm25_future.result()
 
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
         deduped = self._deduplicate_results(ranked)
         reranked = self._rerank_with_cross_encoder(query, deduped)
+        reranked = self._apply_relevance_threshold(reranked)
+        self._record_mode(semantic_rank, bm25_rank)
         return reranked[:top_k]
+
+    def _min_relevance(self) -> float:
+        raw = os.getenv("HECTOR_MIN_RELEVANCE", "0.05")
+        try:
+            return float(raw)
+        except ValueError:
+            logger.warning("invalid HECTOR_MIN_RELEVANCE=%r — using 0.05", raw)
+            return 0.05
+
+    def _apply_relevance_threshold(self, results):
+        threshold = self._min_relevance()
+        if threshold <= 0 or not results:
+            return results
+        kept = [
+            item
+            for item in results
+            if float(item.get("score", 0.0) or 0.0) >= threshold
+        ]
+        if len(kept) != len(results):
+            logger.info(
+                "min relevance %.3f dropped %d/%d results",
+                threshold,
+                len(results) - len(kept),
+                len(results),
+            )
+        return kept
+
+    def _record_mode(self, semantic_rank, bm25_rank):
+        if semantic_rank and bm25_rank:
+            mode = "hybrid"
+        elif semantic_rank:
+            mode = "semantic_only"
+        elif bm25_rank:
+            mode = "bm25_only"
+        else:
+            mode = "none"
+        self.last_search_mode = mode
+        logger.info(
+            "retrieval mode=%s semantic_hits=%d bm25_hits=%d",
+            mode,
+            len(semantic_rank),
+            len(bm25_rank),
+        )
 
     def search_with_metadata_filters(self, query, entities, top_k=5, candidate_pool=20):
         if not entities:
@@ -401,12 +463,21 @@ class HectorHybridRetriever:
             bm25_future = executor.submit(
                 self._bm25_search_filtered, legal_query["tokens"], filtered_results
             )
-            semantic_rank = semantic_future.result()
+            try:
+                semantic_rank = semantic_future.result()
+            except Exception as exc:
+                logger.warning(
+                    "filtered semantic retrieval failed (%s) — continuing with bm25 only",
+                    exc,
+                )
+                semantic_rank = []
             bm25_rank = bm25_future.result()
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
         deduped = self._deduplicate_results(ranked)
         reranked = self._rerank_with_cross_encoder(query, deduped)
+        reranked = self._apply_relevance_threshold(reranked)
+        self._record_mode(semantic_rank, bm25_rank)
         return reranked[:top_k]
 
     def _build_pinecone_filter(self, section_numbers, acts):
@@ -761,9 +832,13 @@ class HectorHybridRetriever:
             from core.rerank_provider import get_rerank_provider
 
             provider = os.getenv("HECTOR_RERANK_PROVIDER", "nemotron")
-            reranker = get_rerank_provider(provider)
+            reranker = getattr(self, "_reranker_cached", None)
+            if reranker is None:
+                reranker = get_rerank_provider(provider)
+                self._reranker_cached = reranker
             return reranker.rerank(query, candidates)
         except Exception as e:
+            self._reranker_cached = None
             import logging
             logging.getLogger("hector.retriever").warning(
                 f"Nemotron rerank failed, using fallback: {e}"
@@ -1068,7 +1143,7 @@ class HectorHybridRetriever:
                 },
                 json={
                     "input": [text],
-                    "model": "nvidia/nv-embedqa-e5-v5",
+                    "model": "nvidia/nemotron-3-embed-1b",
                     "encoding_format": "float",
                     "input_type": "query",
                 },

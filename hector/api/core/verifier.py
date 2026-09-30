@@ -127,16 +127,117 @@ class ClaimExtractor:
                 }
             )
 
-        return claims
+        # Extract "Section N of the <Act>" references (e.g. Limitation Act)
+        for match in re.finditer(
+            r"section\s+(\d+[a-z]?)\s+of\s+(?:the\s+)?"
+            r"((?:[a-z0-9]+(?:\s|,)+){0,10}?(?:act|code|sanhita|adhiniyam|ordinance|rules)"
+            r"(?:,\s*\d{4})?)",
+            text_lower,
+        ):
+            section_num = match.group(1)
+            act_phrase = match.group(2).strip()
+            stop_words = {
+                "act", "code", "sanhita", "adhiniyam", "ordinance", "rules",
+                "of", "the",
+            }
+            act_terms = [
+                word
+                for word in re.findall(r"[a-z0-9]+", act_phrase)
+                if word not in stop_words and len(word) >= 3
+            ]
+            claims.append(
+                {
+                    "type": "section_of_act",
+                    "value": match.group(0).strip(),
+                    "section": section_num,
+                    "act_terms": act_terms,
+                    "span": match.span(),
+                }
+            )
+
+        # Extract "Section N of IPC/BNS/..." references
+        for match in re.finditer(
+            r"section\s+(\d+[a-z]?)\s+of\s+(ipc|bns|crpc|bnss|bsa|cpc)\b", text_lower
+        ):
+            claims.append(
+                {
+                    "type": "section_reference",
+                    "value": f"Section {match.group(1)} {match.group(2).upper()}",
+                    "span": match.span(),
+                }
+            )
+
+        # Extract Article references (Constitution etc.)
+        for match in re.finditer(r"\barticle\s+(\d+[a-z]?)\b", text_lower):
+            claims.append(
+                {
+                    "type": "article_reference",
+                    "value": f"Article {match.group(1)}",
+                    "span": match.span(),
+                }
+            )
+
+        deduped = []
+        seen: set[tuple[str, str]] = set()
+        for claim in claims:
+            key = (claim["type"], str(claim["value"]).lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            deduped.append(claim)
+        return deduped
 
 
 class ChainOfVerification:
     """Implements the CoVe workflow for hallucination prevention."""
 
+    _REFUSAL_MARKERS = (
+        "i cannot find this information",
+        "cannot find this information",
+        "i cannot answer",
+        "i can't answer",
+        "i do not know",
+        "i don't know",
+        "does not contain",
+        "do not contain",
+        "no authoritative source",
+        "knowledge base does not",
+        "not able to find",
+        "unable to answer",
+        "do not have access",
+        "don't have access",
+        "i'm sorry",
+        "could not find sufficiently relevant sources",
+        "not generating an answer",
+    )
+    _LEGAL_MARKERS = re.compile(
+        r"\b(section|article|act|code|ipc|bns|crpc|bnss|bsa|cpc|"
+        r"offence|offense|punish(?:ed|ment|able)|imprisonment|fine|"
+        r"court|judgment|judgement|tribunal|plaintiff|defendant|writ)\b",
+        re.IGNORECASE,
+    )
+    _OFFENCE_STOPWORDS = frozenset(
+        "a an the and or but if then else who whom whose whoever any every each "
+        "is are was were be been being shall will may must should can could "
+        "has have had do does did nor so as of to in at by for with from into "
+        "upon under over between within without than then there thereof which "
+        "that this these those it its their his her our your my me you he she "
+        "we they i".split()
+    )
+
     def __init__(self):
         api_key = os.getenv("GROQ_API_KEY")
         self.client = Groq(api_key=api_key) if api_key else None
         self.model = "llama-3.3-70b-versatile"
+
+    @classmethod
+    def _empty_claim_status(cls, response: str) -> str:
+        lowered = response.lower()
+        if any(marker in lowered for marker in cls._REFUSAL_MARKERS):
+            return "NOT_APPLICABLE"
+        if cls._LEGAL_MARKERS.search(response):
+            return "UNVERIFIED"
+        return "NOT_APPLICABLE"
 
     def verify_response(
         self, response: str, source_documents: list[dict]
@@ -145,20 +246,35 @@ class ChainOfVerification:
         Run full Chain-of-Verification pipeline.
 
         Returns:
-            dict with keys: verified_response, claims_verified, unverified_claims,
-                           citation_coverage, needs_correction, correction_notes
+            dict with keys: verified_response, claims_verified, total_claims,
+                           claims_total, claims_supported, claims_unsupported,
+                           unverified_claims, citation_coverage, needs_correction,
+                           correction_notes, status
         """
         # Step 1: Extract claims from response
         claims = ClaimExtractor.extract_claims(response)
 
         if not claims:
+            status = self._empty_claim_status(response)
+            if status == "NOT_APPLICABLE":
+                notes = "No verifiable claims — refusal or non-legal response."
+            else:
+                notes = (
+                    "Response references legal material but no verifiable "
+                    "claims could be extracted — coverage not scored."
+                )
             return {
                 "verified_response": response,
                 "claims_verified": 0,
+                "total_claims": 0,
+                "claims_total": 0,
+                "claims_supported": 0,
+                "claims_unsupported": 0,
                 "unverified_claims": [],
-                "citation_coverage": 1.0,
+                "citation_coverage": None,
                 "needs_correction": False,
-                "correction_notes": "No explicit claims to verify.",
+                "correction_notes": notes,
+                "status": status,
             }
 
         # Step 2: Build verification context from source documents
@@ -183,9 +299,14 @@ class ChainOfVerification:
 
         # Step 4: Calculate metrics
         total_claims = len(claims)
-        citation_coverage = (
-            len(verified_claims) / total_claims if total_claims > 0 else 1.0
-        )
+        citation_coverage = len(verified_claims) / total_claims
+
+        if not unverified_claims:
+            status = "VERIFIED"
+        elif not verified_claims:
+            status = "UNVERIFIED"
+        else:
+            status = "PARTIAL"
 
         # Step 5: Determine if correction needed
         needs_correction = citation_coverage < 0.5 or len(unverified_claims) > 0
@@ -203,10 +324,14 @@ class ChainOfVerification:
             "verified_response": corrected_response,
             "claims_verified": len(verified_claims),
             "total_claims": total_claims,
+            "claims_total": total_claims,
+            "claims_supported": len(verified_claims),
+            "claims_unsupported": len(unverified_claims),
             "unverified_claims": unverified_claims,
             "citation_coverage": round(citation_coverage, 3),
             "needs_correction": needs_correction,
             "correction_notes": correction_notes,
+            "status": status,
         }
 
     def _build_verification_context(self, source_documents: list[dict]) -> str:
@@ -257,6 +382,48 @@ class ChainOfVerification:
                 if claim_value.replace(",", "") in doc_text.replace(",", ""):
                     return True, f"Fine amount found in {doc_source}"
 
+            elif claim_type == "offence_definition":
+                terms = [
+                    word
+                    for word in re.findall(r"[a-z0-9]+", claim_value.lower())
+                    if len(word) >= 3 and word not in self._OFFENCE_STOPWORDS
+                ]
+                if terms:
+                    matched = [term for term in terms if term in doc_text]
+                    if matched and (
+                        len(matched) == len(terms)
+                        or (
+                            len(terms) >= 4
+                            and len(matched) / len(terms) >= 0.6
+                        )
+                    ):
+                        return True, f"Offence definition grounded in {doc_source}"
+                elif claim_value.lower() in doc_text:
+                    return True, f"Offence definition found in {doc_source}"
+
+            elif claim_type == "section_of_act":
+                if claim_value.lower() in doc_text:
+                    return True, f"Found in {doc_source} page {doc_page}"
+                act_terms = claim.get("act_terms") or []
+                section_num = claim.get("section") or ""
+                if section_num and act_terms and all(
+                    term in doc_text for term in act_terms
+                ):
+                    section_hit = re.search(
+                        rf"\bsection\s+{re.escape(section_num)}\b", doc_text
+                    ) or re.search(
+                        rf"(?:^|\n)\s*{re.escape(section_num)}\.\s", doc_text
+                    )
+                    if section_hit:
+                        return True, (
+                            f"Section {section_num} of matched act found in "
+                            f"{doc_source}"
+                        )
+
+            elif claim_type == "article_reference":
+                if claim_value.lower() in doc_text:
+                    return True, f"Found in {doc_source} page {doc_page}"
+
         return False, "Claim not found in any source document"
 
     def _correct_response(
@@ -273,7 +440,7 @@ class ChainOfVerification:
         for claim in unverified:
             claim_value = claim.get("value", "")
             note = claim.get("note", "")
-            corrections.append(f"Removed unverified: {claim_value[:50]}... ({note})")
+            corrections.append(f"Flagged unsupported: {claim_value[:50]}... ({note})")
 
         # Add disclaimer if corrections made
         if corrections:
@@ -528,8 +695,12 @@ class HallucinationDetector:
         fabricated = HallucinationDetector.detect_fabricated_citations(response)
         temporal = HallucinationDetector.detect_temporal_inconsistencies(response)
 
-        # Determine overall score
-        if coverage >= 0.9 and len(fabricated) == 0 and len(temporal) == 0:
+        if coverage is None:
+            if verification_result.get("status") == "NOT_APPLICABLE":
+                status = "NOT_APPLICABLE"
+            else:
+                status = "HIGH_RISK"
+        elif coverage >= 0.9 and len(fabricated) == 0 and len(temporal) == 0:
             status = "LOW_RISK"
         elif coverage >= 0.7:
             status = "MEDIUM_RISK"
@@ -543,7 +714,7 @@ class HallucinationDetector:
             "total_claims": total_claims,
             "fabricated_citations": fabricated,
             "temporal_inconsistencies": temporal,
-            "needs_review": status != "LOW_RISK",
+            "needs_review": status not in ("LOW_RISK", "NOT_APPLICABLE"),
         }
 
 

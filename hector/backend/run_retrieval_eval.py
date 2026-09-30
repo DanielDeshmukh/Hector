@@ -190,16 +190,21 @@ TEST_QUERIES = [
 ]
 
 
-def score_retrieval(query, chunks, expected_kw, category):
+def score_retrieval(
+    query, chunks, expected_kw, category, abstained=False, citations=None
+):
     if category == "irrelevant":
+        if abstained:
+            return 100 if (citations or 0) == 0 else 0
         legal_terms = ["section", "act", "court", "punishment", "IPC", "BNS"]
         legal_hits = sum(1 for c in chunks if any(t in c.lower() for t in legal_terms))
-        if legal_hits == 0:
-            return 100
-        elif legal_hits <= 2:
-            return 70
+        if legal_hits <= 2:
+            return 40
         else:
             return 30
+
+    if abstained and not chunks:
+        return 0
 
     all_text = " ".join(chunks).lower()
     matched = 0
@@ -219,6 +224,9 @@ def run():
     retriever = HybridRetriever()
     expander = QueryExpander()
     results = []
+    false_refusals = []
+    abstained_irrelevant = []
+    mode_counts = {}
     start = time.time()
 
     for q in TEST_QUERIES:
@@ -228,7 +236,21 @@ def run():
         elapsed = time.time() - t0
 
         chunks = [r.get("document", r.get("text", "")) for r in search_results]
-        score = score_retrieval(q["query"], chunks, q["kw"], q["category"])
+        abstained = len(search_results) == 0
+        mode = getattr(retriever, "last_search_mode", None) or "unknown"
+        mode_counts[mode] = mode_counts.get(mode, 0) + 1
+        score = score_retrieval(
+            q["query"],
+            chunks,
+            q["kw"],
+            q["category"],
+            abstained=abstained,
+            citations=0,
+        )
+        if q["category"] in ("exact", "similar") and abstained:
+            false_refusals.append(q["id"])
+        if q["category"] == "irrelevant" and abstained:
+            abstained_irrelevant.append(q["id"])
 
         result = {
             "id": q["id"],
@@ -237,12 +259,15 @@ def run():
             "score": score,
             "retrieve_ms": round(elapsed * 1000, 1),
             "n_chunks": len(chunks),
+            "abstained": abstained,
+            "mode": mode,
         }
         results.append(result)
 
         status = "PASS" if score >= 50 else "FAIL"
         print(
-            f"Q{q['id']:2d} [{q['category']:9s}] {score:3d}/100 [{status}] {elapsed * 1000:6.0f}ms | {q['query'][:55]}"
+            f"Q{q['id']:2d} [{q['category']:9s}] {score:3d}/100 [{status}] "
+            f"{elapsed * 1000:6.0f}ms [{mode}] | {q['query'][:55]}"
         )
 
     elapsed_total = time.time() - start
@@ -265,6 +290,15 @@ def run():
     )
     print(f"OVERALL:        {sum(all_scores) / len(all_scores):.1f}% avg")
     print(
+        f"False refusals: {len(false_refusals)} in-scope queries abstained "
+        f"({false_refusals})"
+    )
+    print(
+        f"Correct abstain: {len(abstained_irrelevant)}/10 irrelevant "
+        f"({abstained_irrelevant})"
+    )
+    print(f"Search modes:   {mode_counts}")
+    print(
         f"Time:           {elapsed_total:.0f}s total ({elapsed_total / 30:.1f}s/query)"
     )
 
@@ -274,6 +308,9 @@ def run():
         "exact_pct": round(sum(exact_scores) / len(exact_scores), 1),
         "similar_pct": round(sum(similar_scores) / len(similar_scores), 1),
         "irrelevant_pct": round(sum(irrelevant_scores) / len(irrelevant_scores), 1),
+        "false_refusal_ids": false_refusals,
+        "abstained_irrelevant_ids": abstained_irrelevant,
+        "mode_counts": mode_counts,
         "results": results,
     }
     with open("retrieval_test_results_v2.json", "w") as f:

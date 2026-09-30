@@ -148,14 +148,20 @@ RULES:
 2. Cite every claim with [Source N] where N matches the source number.
 3. Use precise legal terminology (section, clause, proviso, explanation).
 4. If comparing IPC and BNS, clearly state what changed and what stayed the same.
-5. If the sources don't contain enough information, say so explicitly.
-6. Keep answers concise and direct — no filler phrases.
+    5. If the sources don't contain enough information, say so explicitly.
+    6. Keep answers concise and direct — no filler phrases.
 
 OUTPUT FORMAT:
 - Start with a direct answer to the query.
 - Then provide the statutory text or key provisions.
 - Then note any differences between IPC and BNS (if both are relevant).
 - End with a brief note on practical implications if applicable."""
+
+    ABSTENTION_MESSAGE = (
+        "I could not find sufficiently relevant sources in the indexed legal "
+        "corpus to answer this question, so I am not generating an answer. "
+        "Please rephrase using a specific section, act, or legal issue."
+    )
 
     def __init__(self, retriever: "HectorHybridRetriever"):
         self.retriever = retriever
@@ -261,8 +267,29 @@ OUTPUT FORMAT:
         Generate a formatted response from retrieval results.
 
         Returns:
-            Dictionary with generated_response, answer_sections, source_sections, etc.
+            Dictionary with generated_response, answer_sections, source_sections,
+            etc. When no sources clear the relevance threshold, generation is
+            skipped and an explicit abstention is returned with "abstained": True
+            and zero citations.
         """
+        if not results and not file_context:
+            logger.info("abstained (no sources): query=%r", query[:80])
+            return {
+                "generated_response": self.ABSTENTION_MESSAGE,
+                "answer_sections": [
+                    {
+                        "title": "No grounded sources",
+                        "body": self.ABSTENTION_MESSAGE,
+                        "rows": [],
+                    }
+                ],
+                "source_sections": [],
+                "answer_confidence": 0.0,
+                "citations": [],
+                "related_provisions": [],
+                "abstained": True,
+            }
+
         citations = self._extract_citations(results)
         related = self._find_related_provisions(results) if include_related else []
         structured = self._build_legal_rag_payload(results, query=query)
@@ -300,6 +327,7 @@ OUTPUT FORMAT:
             "answer_confidence": structured["answer_confidence"],
             "citations": [self._citation_to_dict(c) for c in citations],
             "related_provisions": related,
+            "abstained": False,
         }
 
     def _build_legal_rag_payload(self, results: list[dict], query: str = "") -> dict:

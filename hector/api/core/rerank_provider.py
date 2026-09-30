@@ -24,6 +24,10 @@ logger = logging.getLogger("hector.rerank")
 LOCAL_CROSS_ENCODER = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 NEMOTRON_RERANK_MODEL = "nvidia/nemotron-rerank-v1"
 
+# Shared cache of loaded cross-encoder models so each new provider instance
+# reuses an already-loaded model instead of reloading from disk per query.
+_shared_cross_encoders: dict[str, Any] = {}
+
 
 def _sigmoid(value: float) -> float:
     """Sigmoid normalization for raw scores."""
@@ -44,11 +48,16 @@ class LocalReranker:
     def _load(self):
         if self._model is not None:
             return
+        cached = _shared_cross_encoders.get(self.model_name)
+        if cached is not None:
+            self._model = cached
+            return
         try:
             from sentence_transformers import CrossEncoder
 
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
             self._model = CrossEncoder(self.model_name)
+            _shared_cross_encoders[self.model_name] = self._model
             logger.info(f"Loaded local reranker: {self.model_name}")
         except Exception as e:
             logger.error(f"Failed to load local reranker: {e}")
@@ -237,3 +246,25 @@ def get_rerank_provider(
             return LocalReranker()
 
     return LocalReranker()
+
+
+def warmup_reranker(provider: str | None = None) -> bool:
+    """
+    Pre-load the reranker (and its model weights) before the first query so
+    search latency does not include model-load time.
+
+    Returns True when warmup completed (or the provider needs no loading).
+    """
+    try:
+        if provider is None:
+            provider = os.getenv("HECTOR_RERANK_PROVIDER", "nemotron")
+        reranker = get_rerank_provider(provider)
+        if isinstance(reranker, LocalReranker):
+            reranker._load()
+            logger.info("Reranker warm-up complete: %s", reranker.model_name)
+        else:
+            logger.info("Reranker warm-up complete: %s (API)", reranker.model_name)
+        return True
+    except Exception as exc:
+        logger.warning("Reranker warm-up failed: %s", exc)
+        return False

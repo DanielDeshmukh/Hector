@@ -57,6 +57,12 @@ async def lifespan(_: FastAPI):
         logger.info("Service ready.")
     except Exception as e:
         logger.warning("Service pre-warm failed (will retry on first request): %s", e)
+    try:
+        from core.rerank_provider import warmup_reranker
+
+        warmup_reranker()
+    except Exception as e:
+        logger.warning("Reranker pre-load failed: %s", e)
     yield
 
 

@@ -207,8 +207,14 @@ class HectorOrchestrator:
             if verification.get("needs_correction"):
                 response = verification.get("verified_response", response)
 
-            coverage = verification.get("citation_coverage", 0)
-            if coverage < 0.8:
+            coverage = verification.get("citation_coverage")
+            if coverage is None:
+                if verification.get("status") == "UNVERIFIED":
+                    response += (
+                        "\n\n[Verification: claims could not be verified"
+                        " against sources]"
+                    )
+            elif coverage < 0.8:
                 verification_note = (
                     f"\n\n[Verification: {coverage:.0%} claims verified]"
                 )
