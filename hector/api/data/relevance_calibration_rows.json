@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "category": "exact",
+    "query": "What is the punishment for murder under Section 302 IPC",
+    "top1_score": 0.999856,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 15356.3,
+    "error": null
+  },
+  {
+    "id": 2,
+    "category": "exact",
+    "query": "Section 376 IPC punishment for rape",
+    "top1_score": 0.999708,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2325.1,
+    "error": null
+  },
+  {
+    "id": 3,
+    "category": "exact",
+    "query": "Bharatiya Nagarik Suraksha Sanhita bail provisions",
+    "top1_score": 0.999514,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4121.5,
+    "error": null
+  },
+  {
+    "id": 4,
+    "category": "exact",
+    "query": "Indian Evidence Act Section 65B admissibility of electronic evidence",
+    "top1_score": 0.999634,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2695.9,
+    "error": null
+  },
+  {
+    "id": 5,
+    "category": "exact",
+    "query": "Transfer of Property Act Section 54 sale of immovable property",
+    "top1_score": 0.996977,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2784.6,
+    "error": null
+  },
+  {
+    "id": 6,
+    "category": "exact",
+    "query": "Section 144 CrPC now Section 163 BNSS power to issue orders",
+    "top1_score": 0.993548,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2679.8,
+    "error": null
+  },
+  {
+    "id": 7,
+    "category": "exact",
+    "query": "Section 498A IPC punishment for dowry harassment",
+    "top1_score": 0.99735,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2482.7,
+    "error": null
+  },
+  {
+    "id": 8,
+    "category": "exact",
+    "query": "NDPS Act Section 20 punishment for drug trafficking",
+    "top1_score": 0.997507,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4079.7,
+    "error": null
+  },
+  {
+    "id": 9,
+    "category": "exact",
+    "query": "Article 21 Constitution of India right to life and personal liberty",
+    "top1_score": 0.998256,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 3517.1,
+    "error": null
+  },
+  {
+    "id": 10,
+    "category": "exact",
+    "query": "Consumer Protection Act Section 38 unfair trade practice",
+    "top1_score": 0.992372,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2684.0,
+    "error": null
+  },
+  {
+    "id": 11,
+    "category": "similar",
+    "query": "What happens if someone is charged with a crime they didn't commit?",
+    "top1_score": 0.738803,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 3978.2,
+    "error": null
+  },
+  {
+    "id": 12,
+    "category": "similar",
+    "query": "My in-laws are demanding money from me. What legal options do I have?",
+    "top1_score": 0.002476,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4192.1,
+    "error": null
+  },
+  {
+    "id": 13,
+    "category": "similar",
+    "query": "Someone forged my signature on a document. Is that a crime?",
+    "top1_score": 0.967341,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 2996.4,
+    "error": null
+  },
+  {
+    "id": 14,
+    "category": "similar",
+    "query": "Is a confession made to police admissible in court?",
+    "top1_score": 0.999749,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 3643.5,
+    "error": null
+  },
+  {
+    "id": 15,
+    "category": "similar",
+    "query": "What is the time limit to file a civil suit in India?",
+    "top1_score": 0.632558,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4074.5,
+    "error": null
+  },
+  {
+    "id": 16,
+    "category": "similar",
+    "query": "My employer is not paying wages. What legal remedy do I have?",
+    "top1_score": 0.059991,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 5201.2,
+    "error": null
+  },
+  {
+    "id": 17,
+    "category": "similar",
+    "query": "Can a minor enter into a valid contract?",
+    "top1_score": 0.89983,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 6154.4,
+    "error": null
+  },
+  {
+    "id": 18,
+    "category": "similar",
+    "query": "What is the punishment for driving under influence of alcohol in India?",
+    "top1_score": 0.945665,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 5449.7,
+    "error": null
+  },
+  {
+    "id": 19,
+    "category": "similar",
+    "query": "How does inheritance work if someone dies without a will in Hindu family?",
+    "top1_score": 0.710025,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4429.2,
+    "error": null
+  },
+  {
+    "id": 20,
+    "category": "similar",
+    "query": "What rights does an accused person have during police interrogation?",
+    "top1_score": 0.996632,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4781.3,
+    "error": null
+  },
+  {
+    "id": 21,
+    "category": "irrelevant",
+    "query": "What is the capital of France?",
+    "top1_score": 0.001272,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4988.9,
+    "error": null
+  },
+  {
+    "id": 22,
+    "category": "irrelevant",
+    "query": "Tell me a joke about lawyers",
+    "top1_score": 0.009121,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4757.9,
+    "error": null
+  },
+  {
+    "id": 23,
+    "category": "irrelevant",
+    "query": "How do I make pasta carbonara?",
+    "top1_score": 1.7e-05,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4182.3,
+    "error": null
+  },
+  {
+    "id": 24,
+    "category": "irrelevant",
+    "query": "What is the best programming language?",
+    "top1_score": 0.00065,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4891.1,
+    "error": null
+  },
+  {
+    "id": 25,
+    "category": "irrelevant",
+    "query": "Who won the last FIFA World Cup?",
+    "top1_score": 0.000612,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 3716.1,
+    "error": null
+  },
+  {
+    "id": 26,
+    "category": "irrelevant",
+    "query": "How do I train my dog?",
+    "top1_score": 0.002922,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4779.5,
+    "error": null
+  },
+  {
+    "id": 27,
+    "category": "irrelevant",
+    "query": "What is machine learning?",
+    "top1_score": 0.000975,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 5776.6,
+    "error": null
+  },
+  {
+    "id": 28,
+    "category": "irrelevant",
+    "query": "Recommend a good restaurant in Mumbai",
+    "top1_score": 0.000267,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 4315.7,
+    "error": null
+  },
+  {
+    "id": 29,
+    "category": "irrelevant",
+    "query": "What is the weather today?",
+    "top1_score": 0.000305,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 5345.9,
+    "error": null
+  },
+  {
+    "id": 30,
+    "category": "irrelevant",
+    "query": "How do I invest in cryptocurrency?",
+    "top1_score": 0.000198,
+    "n_results": 10,
+    "mode": "hybrid",
+    "retrieve_ms": 6622.3,
+    "error": null
+  }
+]

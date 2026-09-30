@@ -1,3 +1,4 @@
+import json
 import logging
 import math
 import os
@@ -6,6 +7,7 @@ import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
+from pathlib import Path
 
 from utils.retry import retry
 
@@ -195,6 +197,11 @@ class HectorHybridRetriever:
         else:
             self.collection = None
             self._init_pinecone()
+            # Round 2 (task 5): attach the local Chroma store as the dense
+            # leg + record fallback. The Pinecone data plane is unusable
+            # (monthly egress quota -> HTTP 429), so without this the dense
+            # leg never runs and refresh_index leaves the BM25 corpus empty.
+            self._attach_local_collection()
 
         self.records = []
         self.corpus = []
@@ -235,6 +242,87 @@ class HectorHybridRetriever:
     @property
     def _pinecone(self):
         return getattr(self, "pinecone_index", None)
+
+    def _pinecone_unusable(self) -> bool:
+        """True when the Pinecone data plane must be skipped (Round 2)."""
+        return bool(getattr(self, "_pinecone_dead", False))
+
+    def _attach_local_collection(self):
+        """Attach the local Chroma collection as dense-leg + record source.
+
+        Resolution order: HECTOR_LOCAL_CHROMA_PATH/COLLECTION env overrides,
+        then the project's indian_law_bns_local store, then collection_name.
+        Best-effort: any failure leaves self.collection None and the retriever
+        degrades to BM25-only (previous behaviour).
+        """
+        if self.collection is not None:
+            return
+        try:
+            import chromadb
+        except Exception as exc:
+            logger.info("chromadb unavailable for local dense leg: %s", exc)
+            return
+        try:
+            default_path = str(Path(__file__).resolve().parents[3] / "hector_db")
+            db_path = os.getenv("HECTOR_LOCAL_CHROMA_PATH", default_path)
+            if not os.path.isdir(db_path):
+                logger.info("local chroma path not found: %s", db_path)
+                return
+            client = chromadb.PersistentClient(path=db_path)
+            names = []
+            env_name = os.getenv("HECTOR_LOCAL_CHROMA_COLLECTION")
+            if env_name:
+                names.append(env_name)
+            names.extend(["indian_law_bns_local", self.collection_name])
+            for name in dict.fromkeys(names):
+                try:
+                    coll = client.get_collection(name)
+                except Exception:
+                    continue
+                self.collection = coll
+                logger.info(
+                    "attached local chroma collection %s (%d vectors)",
+                    name,
+                    coll.count(),
+                )
+                return
+        except Exception as exc:
+            logger.warning("local chroma attach failed: %s", exc)
+
+    def _load_local_records(self) -> list[dict]:
+        """Load full records (for BM25) from the local Chroma store."""
+        coll = self.collection
+        if coll is None:
+            return []
+        records: list[dict] = []
+        try:
+            batch = 1000
+            offset = 0
+            while True:
+                page = coll.get(
+                    include=["documents", "metadatas"], limit=batch, offset=offset
+                )
+                docs = page.get("documents") or []
+                if not docs:
+                    break
+                metas = page.get("metadatas") or []
+                ids = page.get("ids") or []
+                for rid, doc, meta in zip(ids, docs, metas):
+                    records.append(
+                        {
+                            "id": rid,
+                            "document": doc or "",
+                            "metadata": meta or {},
+                        }
+                    )
+                offset += len(docs)
+                if len(docs) < batch:
+                    break
+            logger.info("loaded %d records from local chroma", len(records))
+        except Exception as exc:
+            logger.warning("local record load failed: %s", exc)
+            return []
+        return records
 
     @classmethod
     def from_records(cls, records):
@@ -295,33 +383,55 @@ class HectorHybridRetriever:
 
     def refresh_index(self):
         idx = self._pinecone
-        if idx is None:
-            return
-
         all_records = []
-        try:
-            for vector_list in idx.list():
-                # Pinecone SDK v7 returns string IDs; older versions return objects with .id
-                ids = [
-                    v if isinstance(v, str) else v.id
-                    for v in vector_list
-                ]
-                if not ids:
-                    continue
-                fetched = retry(
+
+        if idx is not None and not self._pinecone_unusable():
+            # Round 2: one cheap fetch probes the data plane. Under the
+            # monthly egress quota every vector read returns HTTP 429 after
+            # seconds of retry backoff; probing once with max_attempts=1
+            # marks the plane dead so later refreshes/searches skip it.
+            try:
+                retry(
                     idx.fetch,
-                    ids=ids,
-                    max_attempts=3,
-                    operation_name="pinecone_fetch",
+                    ids=["__hector_quota_probe__"],
+                    max_attempts=1,
+                    operation_name="pinecone_quota_probe",
                 )
-                for vid, vec in fetched.vectors.items():
-                    all_records.append({
-                        "id": vid,
-                        "document": (vec.metadata or {}).get("document", ""),
-                        "metadata": {k: v for k, v in (vec.metadata or {}).items() if k != "document"},
-                    })
-        except Exception as exc:
-            logger.error("refresh_index failed: %s", exc, exc_info=True)
+            except Exception as exc:
+                self._pinecone_dead = True
+                logger.warning(
+                    "pinecone data plane unavailable (%s) — using local store",
+                    exc,
+                )
+
+        if idx is not None and not self._pinecone_unusable():
+            try:
+                for vector_list in idx.list():
+                    # Pinecone SDK v7 returns string IDs; older versions return objects with .id
+                    ids = [
+                        v if isinstance(v, str) else v.id
+                        for v in vector_list
+                    ]
+                    if not ids:
+                        continue
+                    fetched = retry(
+                        idx.fetch,
+                        ids=ids,
+                        max_attempts=3,
+                        operation_name="pinecone_fetch",
+                    )
+                    for vid, vec in fetched.vectors.items():
+                        all_records.append({
+                            "id": vid,
+                            "document": (vec.metadata or {}).get("document", ""),
+                            "metadata": {k: v for k, v in (vec.metadata or {}).items() if k != "document"},
+                        })
+            except Exception as exc:
+                logger.error("refresh_index failed: %s", exc, exc_info=True)
+                self._pinecone_dead = True
+
+        if not all_records:
+            all_records = self._load_local_records()
 
         self._load_records(all_records)
 
@@ -372,12 +482,34 @@ class HectorHybridRetriever:
         return reranked[:top_k]
 
     def _min_relevance(self) -> float:
-        raw = os.getenv("HECTOR_MIN_RELEVANCE", "0.05")
+        """Relevance floor: env HECTOR_MIN_RELEVANCE > threshold file > 0.05.
+
+        Round 2 (task 4): the default comes from a data-derived calibration
+        artifact (hector/api/data/relevance_threshold.json, written by
+        hector/backend/calibrate_relevance_threshold.py) instead of a
+        hardcoded 0.05. Env remains the highest-priority override so tests
+        and operators can pin a value.
+        """
+        raw = os.getenv("HECTOR_MIN_RELEVANCE")
+        if raw not in (None, ""):
+            try:
+                return float(raw)
+            except ValueError:
+                logger.warning(
+                    "invalid HECTOR_MIN_RELEVANCE=%r — falling back to file", raw
+                )
+        path = os.getenv("HECTOR_RELEVANCE_THRESHOLD_JSON") or str(
+            Path(__file__).with_name("relevance_threshold.json")
+        )
         try:
-            return float(raw)
-        except ValueError:
-            logger.warning("invalid HECTOR_MIN_RELEVANCE=%r — using 0.05", raw)
-            return 0.05
+            with open(path, encoding="utf-8") as fh:
+                value = float(json.load(fh).get("threshold"))
+            return value
+        except FileNotFoundError:
+            pass
+        except Exception as exc:
+            logger.warning("relevance threshold file %s unusable: %s", path, exc)
+        return 0.05
 
     def _apply_relevance_threshold(self, results):
         threshold = self._min_relevance()
@@ -528,7 +660,7 @@ class HectorHybridRetriever:
 
     def _pinecone_filtered_search(self, pinecone_filter, top_k=200):
         idx = self._pinecone
-        if idx is None:
+        if idx is None or self._pinecone_unusable():
             return []
         try:
             matching_ids = []
@@ -556,8 +688,14 @@ class HectorHybridRetriever:
 
     def _semantic_search_with_filter(self, query, top_k, pinecone_filter):
         idx = self._pinecone
-        if idx is None or self.semantic_disabled:
-            return []
+        if (
+            idx is None
+            or getattr(self, "semantic_disabled", False)
+            or self._pinecone_unusable()
+        ):
+            # No/failed Pinecone leg: same unfiltered-dense fallback the
+            # exception path below uses (local Chroma when attached).
+            return self._local_dense_search(query, top_k)
         embedding = self._embed_text(query)
         if embedding is None:
             return []
@@ -637,29 +775,73 @@ class HectorHybridRetriever:
 
     def _semantic_search(self, query, top_k):
         idx = self._pinecone
-        if idx is None or self.semantic_disabled:
+        if (
+            idx is not None
+            and not getattr(self, "semantic_disabled", False)
+            and not self._pinecone_unusable()
+        ):
+            try:
+                embedding = self._embed_text(query)
+                if embedding is not None:
+                    results = retry(
+                        idx.query,
+                        vector=embedding,
+                        top_k=top_k,
+                        include_metadata=True,
+                        operation_name="pinecone_query",
+                    )
+                    ranked = []
+                    for match in results.get("matches", []):
+                        meta = match.get("metadata", {})
+                        ranked.append({
+                            "id": match.get("id", ""),
+                            "document": meta.get("document", ""),
+                            "metadata": {k: v for k, v in meta.items() if k != "document"},
+                            "distance": match.get("score", 0.0),
+                            "rank": len(ranked) + 1,
+                        })
+                    return ranked
+            except Exception as exc:
+                # Round 2: quota/errors on the Pinecone data plane switch the
+                # dense leg to the local Chroma store for the process lifetime.
+                self._pinecone_dead = True
+                logger.warning(
+                    "pinecone semantic query failed (%s) — switching to local dense",
+                    exc,
+                )
+        return self._local_dense_search(query, top_k)
+
+    def _local_dense_search(self, query, top_k):
+        """Dense search against the local Chroma collection (Round 2, task 5).
+
+        Returns the same item shape as the Pinecone leg (id/document/metadata/
+        distance/rank) so fusion, scoring, and dedup are unchanged. Chroma
+        default distance is L2 (lower = better), which the existing
+        _normalize_semantic_score already expects.
+        """
+        coll = self.collection
+        if coll is None:
             return []
-
-        embedding = self._embed_text(query)
-        if embedding is None:
+        try:
+            res = coll.query(
+                query_texts=[query],
+                n_results=max(int(top_k), 1),
+                include=["documents", "metadatas", "distances"],
+            )
+        except Exception as exc:
+            logger.warning("local dense query failed: %s", exc)
             return []
-
-        results = retry(
-            idx.query,
-            vector=embedding,
-            top_k=top_k,
-            include_metadata=True,
-            operation_name="pinecone_query",
-        )
-
+        ids = (res.get("ids") or [[]])[0]
+        docs = (res.get("documents") or [[]])[0]
+        metas = (res.get("metadatas") or [[]])[0]
+        dists = (res.get("distances") or [[]])[0]
         ranked = []
-        for match in results.get("matches", []):
-            meta = match.get("metadata", {})
+        for i, rid in enumerate(ids):
             ranked.append({
-                "id": match.get("id", ""),
-                "document": meta.get("document", ""),
-                "metadata": {k: v for k, v in meta.items() if k != "document"},
-                "distance": match.get("score", 0.0),
+                "id": rid,
+                "document": docs[i] if i < len(docs) else "",
+                "metadata": (metas[i] if i < len(metas) else None) or {},
+                "distance": dists[i] if i < len(dists) else 0.0,
                 "rank": len(ranked) + 1,
             })
         return ranked

@@ -15,6 +15,10 @@ os.environ.setdefault("HECTOR_API_KEY", "test-api-key-for-testing-only")
 os.environ.setdefault("HECTOR_JWT_SECRET", "test-jwt-secret-32-bytes-minimum-value!")
 os.environ.setdefault("HECTOR_DB_PATH", os.path.join(PROJECT_ROOT, "test_hector_db"))
 os.environ.setdefault("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Books"))
+# Round 2: pin the relevance floor to the legacy value so the data-derived
+# calibration artifact (api/data/relevance_threshold.json) cannot shift
+# retrieval expectations inside the unit suite.
+os.environ.setdefault("HECTOR_MIN_RELEVANCE", "0.05")
 
 import pytest  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
