@@ -24,8 +24,8 @@ PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
 NIM_API_KEY = os.getenv("NIM_API_KEY", "")
 NIM_BASE_URL = os.getenv("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
 INDEX_NAME = "hector-legal"
-DIMENSION = 1024
-EMBEDDING_MODEL = "nvidia/nv-embedqa-e5-v5"
+DIMENSION = 2048
+EMBEDDING_MODEL = "nvidia/nemotron-3-embed-1b"
 BATCH_SIZE = 100
 EMBED_BATCH_SIZE = 20
 REQUEST_INTERVAL = 2.0  # 40 RPM = 1 req/1.5s, use 2s for safety

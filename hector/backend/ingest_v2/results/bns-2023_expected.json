@@ -1,0 +1,1434 @@
+[
+  {
+    "number": "1",
+    "title": "Short title, commencement and application."
+  },
+  {
+    "number": "2",
+    "title": "Definitions."
+  },
+  {
+    "number": "3",
+    "title": "General explanations."
+  },
+  {
+    "number": "4",
+    "title": "Punishments."
+  },
+  {
+    "number": "5",
+    "title": "Commutation of sentence."
+  },
+  {
+    "number": "6",
+    "title": "Fractions of terms of punishment."
+  },
+  {
+    "number": "7",
+    "title": "Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple."
+  },
+  {
+    "number": "8",
+    "title": "Amount of fine, liability in default of payment of fine, etc."
+  },
+  {
+    "number": "9",
+    "title": "Limit of punishment of offence made up of several offences."
+  },
+  {
+    "number": "10",
+    "title": "Punishment of person guilty of one of several offences, judgment stating that it is doubtful of which."
+  },
+  {
+    "number": "11",
+    "title": "Solitary confinement."
+  },
+  {
+    "number": "12",
+    "title": "Limit of solitary confinement."
+  },
+  {
+    "number": "13",
+    "title": "Enhanced punishment for certain offences after previous conviction."
+  },
+  {
+    "number": "14",
+    "title": "Act done by a person bound, or by mistake of fact believing himself bound, by law."
+  },
+  {
+    "number": "15",
+    "title": "Act of Judge when acting judicially."
+  },
+  {
+    "number": "16",
+    "title": "Act done pursuant to judgment or order of Court."
+  },
+  {
+    "number": "17",
+    "title": "Act done by a person justified, or by mistake of fact believing himself justified, by law."
+  },
+  {
+    "number": "18",
+    "title": "Accident in doing a lawful act."
+  },
+  {
+    "number": "19",
+    "title": "Act likely to cause harm, but done without criminal intent, and to prevent other harm."
+  },
+  {
+    "number": "20",
+    "title": "Act of a child under seven years of age."
+  },
+  {
+    "number": "21",
+    "title": "Act of a child above seven and under twelve years of age of immature understanding."
+  },
+  {
+    "number": "22",
+    "title": "Act of a person of unsound mind."
+  },
+  {
+    "number": "23",
+    "title": "Act of a person incapable of judgment by reason of intoxication caused against his will."
+  },
+  {
+    "number": "24",
+    "title": "Offence requiring a particular intent or knowledge committed by one who is intoxicated."
+  },
+  {
+    "number": "25",
+    "title": "Act not intended and not known to be likely to cause death or grievous hurt, done by consent."
+  },
+  {
+    "number": "26",
+    "title": "Act not intended to cause death, done by consent in good faith for person's benefit."
+  },
+  {
+    "number": "27",
+    "title": "Act done in good faith for benefit of child or person of unsound mind, by, or by consent of guardian."
+  },
+  {
+    "number": "28",
+    "title": "Consent known to be given under fear or misconception."
+  },
+  {
+    "number": "29",
+    "title": "Exclusion of acts which are offences independently of harm caused."
+  },
+  {
+    "number": "30",
+    "title": "Act done in good faith for benefit of a person without consent."
+  },
+  {
+    "number": "31",
+    "title": "Communication made in good faith."
+  },
+  {
+    "number": "32",
+    "title": "Act to which a person is compelled by threats."
+  },
+  {
+    "number": "33",
+    "title": "Act causing slight harm. Of right of private defence"
+  },
+  {
+    "number": "34",
+    "title": "Things done in private defence. IndiaCode"
+  },
+  {
+    "number": "35",
+    "title": "Right of private defence of body and of property."
+  },
+  {
+    "number": "36",
+    "title": "Right of private defence against act of a person of unsound mind, etc."
+  },
+  {
+    "number": "37",
+    "title": "Acts against which there is no right of private defence."
+  },
+  {
+    "number": "38",
+    "title": "When right of private defence of body extends to causing death."
+  },
+  {
+    "number": "39",
+    "title": "When such right extends to causing any harm other than death."
+  },
+  {
+    "number": "40",
+    "title": "Commencement and continuance of right of private defence of body."
+  },
+  {
+    "number": "41",
+    "title": "When right of private defence of property extends to causing death."
+  },
+  {
+    "number": "42",
+    "title": "When such right extends to causing any harm other than death."
+  },
+  {
+    "number": "43",
+    "title": "Commencement and continuance of right of private defence of property."
+  },
+  {
+    "number": "44",
+    "title": "Right of private defence against deadly assault when there is risk of harm to innocent person."
+  },
+  {
+    "number": "45",
+    "title": "Abetment of a thing."
+  },
+  {
+    "number": "46",
+    "title": "Abettor."
+  },
+  {
+    "number": "47",
+    "title": "Abetment in India of offences outside India."
+  },
+  {
+    "number": "48",
+    "title": "Abetment outside India for offence in India."
+  },
+  {
+    "number": "49",
+    "title": "Punishment of abetment if act abetted is committed in consequence and where no express provision is made for its punishment."
+  },
+  {
+    "number": "50",
+    "title": "Punishment of abetment if person abetted does act with different intention from that of abettor."
+  },
+  {
+    "number": "51",
+    "title": "Liability of abettor when one act abetted and different act done."
+  },
+  {
+    "number": "52",
+    "title": "Abettor when liable to cumulative punishment for act abetted and for act done."
+  },
+  {
+    "number": "53",
+    "title": "Liability of abettor for an effect caused by act abetted different from that intended by abettor."
+  },
+  {
+    "number": "54",
+    "title": "Abettor present when offence is committed."
+  },
+  {
+    "number": "55",
+    "title": "Abetment of offence punishable with death or imprisonment for life."
+  },
+  {
+    "number": "56",
+    "title": "Abetment of offence punishable with imprisonment."
+  },
+  {
+    "number": "57",
+    "title": "Abetting commission of offence by public or by more than ten persons."
+  },
+  {
+    "number": "58",
+    "title": "Concealing design to commit offence punishable with death or imprisonment for life."
+  },
+  {
+    "number": "59",
+    "title": "Public servant concealing design to commit offence which it is his duty to prevent."
+  },
+  {
+    "number": "60",
+    "title": "Concealing design to commit offence punishable with imprisonment. Of criminal conspiracy"
+  },
+  {
+    "number": "61",
+    "title": "Criminal conspiracy. Of attempt"
+  },
+  {
+    "number": "62",
+    "title": "Punishment for attempting to commit offences punishable with imprisonment for life or other imprisonment. IndiaCode"
+  },
+  {
+    "number": "63",
+    "title": "Rape."
+  },
+  {
+    "number": "64",
+    "title": "Punishment for rape."
+  },
+  {
+    "number": "65",
+    "title": "Punishment for rape in certain cases."
+  },
+  {
+    "number": "66",
+    "title": "Punishment for causing death or resulting in persistent vegetative state of victim."
+  },
+  {
+    "number": "67",
+    "title": "Sexual intercourse by husband upon his wife during separation."
+  },
+  {
+    "number": "68",
+    "title": "Sexual intercourse by a person in authority."
+  },
+  {
+    "number": "69",
+    "title": "Sexual intercourse by employing deceitful means, etc."
+  },
+  {
+    "number": "70",
+    "title": "Gang rape."
+  },
+  {
+    "number": "71",
+    "title": "Punishment for repeat offenders."
+  },
+  {
+    "number": "72",
+    "title": "Disclosure of identity of victim of certain offences, etc."
+  },
+  {
+    "number": "73",
+    "title": "Printing or publishing any matter relating to Court proceedings without permission. Of criminal force and assault against woman"
+  },
+  {
+    "number": "74",
+    "title": "Assault or use of criminal force to woman with intent to outrage her modesty."
+  },
+  {
+    "number": "75",
+    "title": "Sexual harassment."
+  },
+  {
+    "number": "76",
+    "title": "Assault or use of criminal force to woman with intent to disrobe."
+  },
+  {
+    "number": "77",
+    "title": "Voyeurism."
+  },
+  {
+    "number": "78",
+    "title": "Stalking."
+  },
+  {
+    "number": "79",
+    "title": "Word, gesture or act intended to insult modesty of a woman. Of offences relating to marriage"
+  },
+  {
+    "number": "80",
+    "title": "Dowry death."
+  },
+  {
+    "number": "81",
+    "title": "Cohabitation caused by man deceitfully inducing belief of lawful marriage."
+  },
+  {
+    "number": "82",
+    "title": "Marrying again during lifetime of husband or wife."
+  },
+  {
+    "number": "83",
+    "title": "Marriage ceremony fraudulently gone through without lawful marriage."
+  },
+  {
+    "number": "84",
+    "title": "Enticing or taking away or detaining with criminal intent a married woman."
+  },
+  {
+    "number": "85",
+    "title": "Husband or relative of husband of a woman subjecting her to cruelty."
+  },
+  {
+    "number": "86",
+    "title": "Cruelty defined."
+  },
+  {
+    "number": "87",
+    "title": "Kidnapping, abducting or inducing woman to compel her marriage, etc. Of causing miscarriage, etc."
+  },
+  {
+    "number": "88",
+    "title": "Causing miscarriage."
+  },
+  {
+    "number": "89",
+    "title": "Causing miscarriage without woman's consent."
+  },
+  {
+    "number": "90",
+    "title": "Death caused by act done with intent to cause miscarriage. IndiaCode"
+  },
+  {
+    "number": "91",
+    "title": "Act done with intent to prevent child being born alive or to cause to die after birth."
+  },
+  {
+    "number": "92",
+    "title": "Causing death of quick unborn child by act amounting to culpable homicide. Of offences against child"
+  },
+  {
+    "number": "93",
+    "title": "Exposure and abandonment of child under twelve years of age, by parent or person having care of it."
+  },
+  {
+    "number": "94",
+    "title": "Concealment of birth by secret disposal of dead body."
+  },
+  {
+    "number": "95",
+    "title": "Hiring, employing or engaging a child to commit an offence."
+  },
+  {
+    "number": "96",
+    "title": "Procuration of child."
+  },
+  {
+    "number": "97",
+    "title": "Kidnapping or abducting child under ten years of age with intent to steal from its person."
+  },
+  {
+    "number": "98",
+    "title": "Selling child for purposes of prostitution, etc."
+  },
+  {
+    "number": "99",
+    "title": "Buying child for purposes of prostitution, etc."
+  },
+  {
+    "number": "100",
+    "title": "Culpable homicide."
+  },
+  {
+    "number": "101",
+    "title": "Murder."
+  },
+  {
+    "number": "102",
+    "title": "Culpable homicide by causing death of person other than person whose death was intended."
+  },
+  {
+    "number": "103",
+    "title": "Punishment for murder."
+  },
+  {
+    "number": "104",
+    "title": "Punishment for murder by life-convict."
+  },
+  {
+    "number": "105",
+    "title": "Punishment for culpable homicide not amounting to murder."
+  },
+  {
+    "number": "106",
+    "title": "Causing death by negligence."
+  },
+  {
+    "number": "107",
+    "title": "Abetment of suicide of child or person of unsound mind."
+  },
+  {
+    "number": "108",
+    "title": "Abetment of suicide."
+  },
+  {
+    "number": "109",
+    "title": "Attempt to murder."
+  },
+  {
+    "number": "110",
+    "title": "Attempt to commit culpable homicide."
+  },
+  {
+    "number": "111",
+    "title": "Organised crime."
+  },
+  {
+    "number": "112",
+    "title": "Petty organised crime."
+  },
+  {
+    "number": "113",
+    "title": "Terrorist act. Of hurt"
+  },
+  {
+    "number": "114",
+    "title": "Hurt."
+  },
+  {
+    "number": "115",
+    "title": "Voluntarily causing hurt."
+  },
+  {
+    "number": "116",
+    "title": "Grievous hurt."
+  },
+  {
+    "number": "117",
+    "title": "Voluntarily causing grievous hurt."
+  },
+  {
+    "number": "118",
+    "title": "Voluntarily causing hurt or grievous hurt by dangerous weapons or means."
+  },
+  {
+    "number": "119",
+    "title": "Voluntarily causing hurt or grievous hurt to extort property, or to constrain to an illegal act."
+  },
+  {
+    "number": "120",
+    "title": "Voluntarily causing hurt or grievous hurt to extort confession, or to compel restoration of property. IndiaCode"
+  },
+  {
+    "number": "121",
+    "title": "Voluntarily causing hurt or grievous hurt to deter public servant from his duty."
+  },
+  {
+    "number": "122",
+    "title": "Voluntarily causing hurt or grievous hurt on provocation."
+  },
+  {
+    "number": "123",
+    "title": "Causing hurt by means of poison, etc., with intent to commit an offence."
+  },
+  {
+    "number": "124",
+    "title": "Voluntarily causing grievous hurt by use of acid, etc."
+  },
+  {
+    "number": "125",
+    "title": "Act endangering life or personal safety of others. Of wrongful restraint and wrongful confinement"
+  },
+  {
+    "number": "126",
+    "title": "Wrongful restraint."
+  },
+  {
+    "number": "127",
+    "title": "Wrongful confinement. Of criminal force and assault"
+  },
+  {
+    "number": "128",
+    "title": "Force."
+  },
+  {
+    "number": "129",
+    "title": "Criminal force."
+  },
+  {
+    "number": "130",
+    "title": "Assault."
+  },
+  {
+    "number": "131",
+    "title": "Punishment for assault or criminal force otherwise than on grave provocation."
+  },
+  {
+    "number": "132",
+    "title": "Assault or criminal force to deter public servant from discharge of his duty."
+  },
+  {
+    "number": "133",
+    "title": "Assault or criminal force with intent to dishonour person, otherwise than on grave provocation."
+  },
+  {
+    "number": "134",
+    "title": "Assault or criminal force in attempt to commit theft of property carried by a person."
+  },
+  {
+    "number": "135",
+    "title": "Assault or criminal force in attempt to wrongfully confine a person."
+  },
+  {
+    "number": "136",
+    "title": "Assault or criminal force on grave provocation. Of kidnapping, abduction, slavery and forced labour"
+  },
+  {
+    "number": "137",
+    "title": "Kidnapping."
+  },
+  {
+    "number": "138",
+    "title": "Abduction."
+  },
+  {
+    "number": "139",
+    "title": "Kidnapping or maiming a child for purposes of begging."
+  },
+  {
+    "number": "140",
+    "title": "Kidnapping or abducting in order to murder or for ransom, etc."
+  },
+  {
+    "number": "141",
+    "title": "Importation of girl or boy from foreign country."
+  },
+  {
+    "number": "142",
+    "title": "Wrongfully concealing or keeping in confinement, kidnapped or abducted person."
+  },
+  {
+    "number": "143",
+    "title": "Trafficking of person."
+  },
+  {
+    "number": "144",
+    "title": "Exploitation of a trafficked person."
+  },
+  {
+    "number": "145",
+    "title": "Habitual dealing in slaves."
+  },
+  {
+    "number": "146",
+    "title": "Unlawful compulsory labour."
+  },
+  {
+    "number": "147",
+    "title": "Waging, or attempting to wage war, or abetting waging of war, against Government of India."
+  },
+  {
+    "number": "148",
+    "title": "Conspiracy to commit offences punishable by section 147."
+  },
+  {
+    "number": "149",
+    "title": "Collecting arms, etc., with intention of waging war against Government of India."
+  },
+  {
+    "number": "150",
+    "title": "Concealing with intent to facilitate design to wage war. IndiaCode"
+  },
+  {
+    "number": "151",
+    "title": "Assaulting President, Governor, etc., with intent to compel or restrain exercise of any lawful power."
+  },
+  {
+    "number": "152",
+    "title": "Act endangering sovereignty, unity and integrity of India."
+  },
+  {
+    "number": "153",
+    "title": "Waging war against Government of any foreign State at peace with Government of India."
+  },
+  {
+    "number": "154",
+    "title": "Committing depredation on territories of foreign State at peace with Government of India."
+  },
+  {
+    "number": "155",
+    "title": "Receiving property taken by war or depredation mentioned in sections 153 and 154."
+  },
+  {
+    "number": "156",
+    "title": "Public servant voluntarily allowing prisoner of State or war to escape."
+  },
+  {
+    "number": "157",
+    "title": "Public servant negligently suffering such prisoner to escape."
+  },
+  {
+    "number": "158",
+    "title": "Aiding escape of, rescuing or harbouring such prisoner."
+  },
+  {
+    "number": "159",
+    "title": "Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty."
+  },
+  {
+    "number": "160",
+    "title": "Abetment of mutiny, if mutiny is committed in consequence thereof."
+  },
+  {
+    "number": "161",
+    "title": "Abetment of assault by soldier, sailor or airman on his superior officer, when in execution of his office."
+  },
+  {
+    "number": "162",
+    "title": "Abetment of such assault, if assault committed."
+  },
+  {
+    "number": "163",
+    "title": "Abetment of desertion of soldier, sailor or airman."
+  },
+  {
+    "number": "164",
+    "title": "Harbouring deserter."
+  },
+  {
+    "number": "165",
+    "title": "Deserter concealed on board merchant vessel through negligence of master."
+  },
+  {
+    "number": "166",
+    "title": "Abetment of act of insubordination by soldier, sailor or airman."
+  },
+  {
+    "number": "167",
+    "title": "Persons subject to certain Acts."
+  },
+  {
+    "number": "168",
+    "title": "Wearing garb or carrying token used by soldier, sailor or airman."
+  },
+  {
+    "number": "169",
+    "title": "Candidate, electoral right defined."
+  },
+  {
+    "number": "170",
+    "title": "Bribery."
+  },
+  {
+    "number": "171",
+    "title": "Undue influence at elections."
+  },
+  {
+    "number": "172",
+    "title": "Personation at elections."
+  },
+  {
+    "number": "173",
+    "title": "Punishment for bribery."
+  },
+  {
+    "number": "174",
+    "title": "Punishment for undue influence or personation at an election."
+  },
+  {
+    "number": "175",
+    "title": "False statement in connection with an election."
+  },
+  {
+    "number": "176",
+    "title": "Illegal payments in connection with an election."
+  },
+  {
+    "number": "177",
+    "title": "Failure to keep election accounts."
+  },
+  {
+    "number": "178",
+    "title": "Counterfeiting coin, Government stamps, currency-notes or bank-notes. IndiaCode"
+  },
+  {
+    "number": "179",
+    "title": "Using as genuine, forged or counterfeit coin, Government stamp, currency-notes or bank-notes."
+  },
+  {
+    "number": "180",
+    "title": "Possession of forged or counterfeit coin, Government stamp, currency-notes or bank-notes."
+  },
+  {
+    "number": "181",
+    "title": "Making or possessing instruments or materials for forging or counterfeiting coin, Government stamp, currency-notes or bank-notes."
+  },
+  {
+    "number": "182",
+    "title": "Making or using documents resembling currency-notes or bank-notes."
+  },
+  {
+    "number": "183",
+    "title": "Effacing writing from substance bearing Government stamp, or removing from document a stamp used for it, with intent to cause loss to Government."
+  },
+  {
+    "number": "184",
+    "title": "Using Government stamp known to have been before used."
+  },
+  {
+    "number": "185",
+    "title": "Erasure of mark denoting that stamp has been used."
+  },
+  {
+    "number": "186",
+    "title": "Prohibition of fictitious stamps."
+  },
+  {
+    "number": "187",
+    "title": "Person employed in mint causing coin to be of different weight or composition from that fixed by law."
+  },
+  {
+    "number": "188",
+    "title": "Unlawfully taking coining instrument from mint."
+  },
+  {
+    "number": "189",
+    "title": "Unlawful assembly."
+  },
+  {
+    "number": "190",
+    "title": "Every member of unlawful assembly guilty of offence committed in prosecution of common object."
+  },
+  {
+    "number": "191",
+    "title": "Rioting."
+  },
+  {
+    "number": "192",
+    "title": "Wantonly giving provocation with intent to cause riot-if rioting be committed; if not committed."
+  },
+  {
+    "number": "193",
+    "title": "Liability of owner, occupier, etc., of land on which an unlawful assembly or riot takes place."
+  },
+  {
+    "number": "194",
+    "title": "Affray."
+  },
+  {
+    "number": "195",
+    "title": "Assaulting or obstructing public servant when suppressing riot, etc."
+  },
+  {
+    "number": "196",
+    "title": "Promoting enmity between different groups on grounds of religion, race, place of birth, residence, language, etc., and doing acts prejudicial to maintenance of harmony."
+  },
+  {
+    "number": "197",
+    "title": "Imputations, assertions prejudicial to national integration."
+  },
+  {
+    "number": "198",
+    "title": "Public servant disobeying law, with intent to cause injury to any person."
+  },
+  {
+    "number": "199",
+    "title": "Public servant disobeying direction under law."
+  },
+  {
+    "number": "200",
+    "title": "Punishment for non-treatment of victim."
+  },
+  {
+    "number": "201",
+    "title": "Public servant framing an incorrect document with intent to cause injury."
+  },
+  {
+    "number": "202",
+    "title": "Public servant unlawfully engaging in trade."
+  },
+  {
+    "number": "203",
+    "title": "Public servant unlawfully buying or bidding for property."
+  },
+  {
+    "number": "204",
+    "title": "Personating a public servant."
+  },
+  {
+    "number": "205",
+    "title": "Wearing garb or carrying token used by public servant with fraudulent intent. IndiaCode"
+  },
+  {
+    "number": "206",
+    "title": "Absconding to avoid service of summons or other proceeding."
+  },
+  {
+    "number": "207",
+    "title": "Preventing service of summons or other proceeding, or preventing publication thereof."
+  },
+  {
+    "number": "208",
+    "title": "Non-attendance in obedience to an order from public servant."
+  },
+  {
+    "number": "209",
+    "title": "Non-appearance in response to a proclamation under section 84 of Bharatiya Nagarik Suraksha Sanhita, 2023."
+  },
+  {
+    "number": "210",
+    "title": "Omission to produce document or electronic record to public servant by person legally bound to produce it."
+  },
+  {
+    "number": "211",
+    "title": "Omission to give notice or information to public servant by person legally bound to give it."
+  },
+  {
+    "number": "212",
+    "title": "Furnishing false information."
+  },
+  {
+    "number": "213",
+    "title": "Refusing oath or affirmation when duly required by public servant to make it."
+  },
+  {
+    "number": "214",
+    "title": "Refusing to answer public servant authorised to question."
+  },
+  {
+    "number": "215",
+    "title": "Refusing to sign statement."
+  },
+  {
+    "number": "216",
+    "title": "False statement on oath or affirmation to public servant or person authorised to administer an oath or affirmation."
+  },
+  {
+    "number": "217",
+    "title": "False information, with intent to cause public servant to use his lawful power to injury of another person."
+  },
+  {
+    "number": "218",
+    "title": "Resistance to taking of property by lawful authority of a public servant."
+  },
+  {
+    "number": "219",
+    "title": "Obstructing sale of property offered for sale by authority of public servant."
+  },
+  {
+    "number": "220",
+    "title": "Illegal purchase or bid for property offered for sale by authority of public servant."
+  },
+  {
+    "number": "221",
+    "title": "Obstructing public servant in discharge of public functions."
+  },
+  {
+    "number": "222",
+    "title": "Omission to assist public servant when bound by law to give assistance."
+  },
+  {
+    "number": "223",
+    "title": "Disobedience to order duly promulgated by public servant."
+  },
+  {
+    "number": "224",
+    "title": "Threat of injury to public servant."
+  },
+  {
+    "number": "225",
+    "title": "Threat of injury to induce person to refrain from applying for protection to public servant."
+  },
+  {
+    "number": "226",
+    "title": "Attempt to commit suicide to compel or restrain exercise of lawful power."
+  },
+  {
+    "number": "227",
+    "title": "Giving false evidence."
+  },
+  {
+    "number": "228",
+    "title": "Fabricating false evidence."
+  },
+  {
+    "number": "229",
+    "title": "Punishment for false evidence."
+  },
+  {
+    "number": "230",
+    "title": "Giving or fabricating false evidence with intent to procure conviction of capital offence."
+  },
+  {
+    "number": "231",
+    "title": "Giving or fabricating false evidence with intent to procure conviction of offence punishable with imprisonment for life or imprisonment."
+  },
+  {
+    "number": "232",
+    "title": "Threatening any person to give false evidence."
+  },
+  {
+    "number": "233",
+    "title": "Using evidence known to be false."
+  },
+  {
+    "number": "234",
+    "title": "Issuing or signing false certificate. IndiaCode"
+  },
+  {
+    "number": "235",
+    "title": "Using as true a certificate known to be false."
+  },
+  {
+    "number": "236",
+    "title": "False statement made in declaration which is by law receivable as evidence."
+  },
+  {
+    "number": "237",
+    "title": "Using as true such declaration knowing it to be false."
+  },
+  {
+    "number": "238",
+    "title": "Causing disappearance of evidence of offence, or giving false information to screen offender."
+  },
+  {
+    "number": "239",
+    "title": "Intentional omission to give information of offence by person bound to inform."
+  },
+  {
+    "number": "240",
+    "title": "Giving false information respecting an offence committed."
+  },
+  {
+    "number": "241",
+    "title": "Destruction of document or electronic record to prevent its production as evidence."
+  },
+  {
+    "number": "242",
+    "title": "False personation for purpose of act or proceeding in suit or prosecution."
+  },
+  {
+    "number": "243",
+    "title": "Fraudulent removal or concealment of property to prevent its seizure as forfeited or in execution."
+  },
+  {
+    "number": "244",
+    "title": "Fraudulent claim to property to prevent its seizure as forfeited or in execution."
+  },
+  {
+    "number": "245",
+    "title": "Fraudulently suffering decree for sum not due."
+  },
+  {
+    "number": "246",
+    "title": "Dishonestly making false claim in Court."
+  },
+  {
+    "number": "247",
+    "title": "Fraudulently obtaining decree for sum not due."
+  },
+  {
+    "number": "248",
+    "title": "False charge of offence made with intent to injure."
+  },
+  {
+    "number": "249",
+    "title": "Harbouring offender."
+  },
+  {
+    "number": "250",
+    "title": "Taking gift, etc., to screen an offender from punishment."
+  },
+  {
+    "number": "251",
+    "title": "Offering gift or restoration of property in consideration of screening offender."
+  },
+  {
+    "number": "252",
+    "title": "Taking gift to help to recover stolen property, etc."
+  },
+  {
+    "number": "253",
+    "title": "Harbouring offender who has escaped from custody or whose apprehension has been ordered."
+  },
+  {
+    "number": "254",
+    "title": "Penalty for harbouring robbers or dacoits."
+  },
+  {
+    "number": "255",
+    "title": "Public servant disobeying direction of law with intent to save person from punishment or property from forfeiture."
+  },
+  {
+    "number": "256",
+    "title": "Public servant framing incorrect record or writing with intent to save person from punishment or property from forfeiture."
+  },
+  {
+    "number": "257",
+    "title": "Public servant in judicial proceeding corruptly making report, etc., contrary to law."
+  },
+  {
+    "number": "258",
+    "title": "Commitment for trial or confinement by person having authority who knows that he is acting contrary to law."
+  },
+  {
+    "number": "259",
+    "title": "Intentional omission to apprehend on part of public servant bound to apprehend."
+  },
+  {
+    "number": "260",
+    "title": "Intentional omission to apprehend on part of public servant bound to apprehend person under sentence or lawfully committed."
+  },
+  {
+    "number": "261",
+    "title": "Escape from confinement or custody negligently suffered by public servant."
+  },
+  {
+    "number": "262",
+    "title": "Resistance or obstruction by a person to his lawful apprehension."
+  },
+  {
+    "number": "263",
+    "title": "Resistance or obstruction to lawful apprehension of another person."
+  },
+  {
+    "number": "264",
+    "title": "Omission to apprehend, or sufferance of escape, on part of public servant, in cases not otherwise provided for. IndiaCode"
+  },
+  {
+    "number": "265",
+    "title": "Resistance or obstruction to lawful apprehension or escape or rescue in cases not otherwise provided for."
+  },
+  {
+    "number": "266",
+    "title": "Violation of condition of remission of punishment."
+  },
+  {
+    "number": "267",
+    "title": "Intentional insult or interruption to public servant sitting in judicial proceeding."
+  },
+  {
+    "number": "268",
+    "title": "Personation of assessor."
+  },
+  {
+    "number": "269",
+    "title": "Failure by person released on bail bond or bond to appear in Court."
+  },
+  {
+    "number": "270",
+    "title": "Public nuisance."
+  },
+  {
+    "number": "271",
+    "title": "Negligent act likely to spread infection of disease dangerous to life."
+  },
+  {
+    "number": "272",
+    "title": "Malignant act likely to spread infection of disease dangerous to life."
+  },
+  {
+    "number": "273",
+    "title": "Disobedience to quarantine rule."
+  },
+  {
+    "number": "274",
+    "title": "Adulteration of food or drink intended for sale."
+  },
+  {
+    "number": "275",
+    "title": "Sale of noxious food or drink."
+  },
+  {
+    "number": "276",
+    "title": "Adulteration of drugs."
+  },
+  {
+    "number": "277",
+    "title": "Sale of adulterated drugs."
+  },
+  {
+    "number": "278",
+    "title": "Sale of drug as a different drug or preparation."
+  },
+  {
+    "number": "279",
+    "title": "Fouling water of public spring or reservoir."
+  },
+  {
+    "number": "280",
+    "title": "Making atmosphere noxious to health."
+  },
+  {
+    "number": "281",
+    "title": "Rash driving or riding on a public way."
+  },
+  {
+    "number": "282",
+    "title": "Rash navigation of vessel."
+  },
+  {
+    "number": "283",
+    "title": "Exhibition of false light, mark or buoy."
+  },
+  {
+    "number": "284",
+    "title": "Conveying person by water for hire in unsafe or overloaded vessel."
+  },
+  {
+    "number": "285",
+    "title": "Danger or obstruction in public way or line of navigation."
+  },
+  {
+    "number": "286",
+    "title": "Negligent conduct with respect to poisonous substance."
+  },
+  {
+    "number": "287",
+    "title": "Negligent conduct with respect to fire or combustible matter."
+  },
+  {
+    "number": "288",
+    "title": "Negligent conduct with respect to explosive substance."
+  },
+  {
+    "number": "289",
+    "title": "Negligent conduct with respect to machinery."
+  },
+  {
+    "number": "290",
+    "title": "Negligent conduct with respect to pulling down, repairing or constructing buildings, etc."
+  },
+  {
+    "number": "291",
+    "title": "Negligent conduct with respect to animal."
+  },
+  {
+    "number": "292",
+    "title": "Punishment for public nuisance in cases not otherwise provided for."
+  },
+  {
+    "number": "293",
+    "title": "Continuance of nuisance after injunction to discontinue."
+  },
+  {
+    "number": "294",
+    "title": "Sale, etc., of obscene books, etc."
+  },
+  {
+    "number": "295",
+    "title": "Sale, etc., of obscene objects to child."
+  },
+  {
+    "number": "296",
+    "title": "Obscene acts and songs. IndiaCode"
+  },
+  {
+    "number": "297",
+    "title": "Keeping lottery office."
+  },
+  {
+    "number": "298",
+    "title": "Injuring or defiling place of worship with intent to insult religion of any class."
+  },
+  {
+    "number": "299",
+    "title": "Deliberate and malicious acts, intended to outrage religious feelings of any class by insulting its religion or religious beliefs."
+  },
+  {
+    "number": "300",
+    "title": "Disturbing religious assembly."
+  },
+  {
+    "number": "301",
+    "title": "Trespassing on burial places, etc."
+  },
+  {
+    "number": "302",
+    "title": "Uttering words, etc., with deliberate intent to wound religious feelings of any person."
+  },
+  {
+    "number": "303",
+    "title": "Theft."
+  },
+  {
+    "number": "304",
+    "title": "Snatching."
+  },
+  {
+    "number": "305",
+    "title": "Theft in a dwelling house, or means of transportation or place of worship, etc."
+  },
+  {
+    "number": "306",
+    "title": "Theft by clerk or servant of property in possession of master."
+  },
+  {
+    "number": "307",
+    "title": "Theft after preparation made for causing death, hurt or restraint in order to committing of theft. Of extortion"
+  },
+  {
+    "number": "308",
+    "title": "Extortion. Of robbery and dacoity"
+  },
+  {
+    "number": "309",
+    "title": "Robbery."
+  },
+  {
+    "number": "310",
+    "title": "Dacoity."
+  },
+  {
+    "number": "311",
+    "title": "Robbery, or dacoity, with attempt to cause death or grievous hurt."
+  },
+  {
+    "number": "312",
+    "title": "Attempt to commit robbery or dacoity when armed with deadly weapon."
+  },
+  {
+    "number": "313",
+    "title": "Punishment for belonging to gang of robbers, etc."
+  },
+  {
+    "number": "314",
+    "title": "Dishonest misappropriation of property."
+  },
+  {
+    "number": "315",
+    "title": "Dishonest misappropriation of property possessed by deceased person at the time of his death. Of criminal breach of trust"
+  },
+  {
+    "number": "316",
+    "title": "Criminal breach of trust. Of receiving stolen property"
+  },
+  {
+    "number": "317",
+    "title": "Stolen property. Of cheating"
+  },
+  {
+    "number": "318",
+    "title": "Cheating. IndiaCode"
+  },
+  {
+    "number": "319",
+    "title": "Cheating by personation. Of fraudulent deeds and dispositions of property"
+  },
+  {
+    "number": "320",
+    "title": "Dishonest or fraudulent removal or concealment of property to prevent distribution among creditors."
+  },
+  {
+    "number": "321",
+    "title": "Dishonestly or fraudulently preventing debt being available for creditors."
+  },
+  {
+    "number": "322",
+    "title": "Dishonest or fraudulent execution of deed of transfer containing false statement of consideration."
+  },
+  {
+    "number": "323",
+    "title": "Dishonest or fraudulent removal or concealment of property. Of mischief"
+  },
+  {
+    "number": "324",
+    "title": "Mischief."
+  },
+  {
+    "number": "325",
+    "title": "Mischief by killing or maiming animal."
+  },
+  {
+    "number": "326",
+    "title": "Mischief by injury, inundation, fire or explosive substance, etc."
+  },
+  {
+    "number": "327",
+    "title": "Mischief with intent to destroy or make unsafe a rail, aircraft, decked vessel or one of twenty tons burden."
+  },
+  {
+    "number": "328",
+    "title": "Punishment for intentionally running vessel aground or ashore with intent to commit theft, etc. Of criminal trespass"
+  },
+  {
+    "number": "329",
+    "title": "Criminal trespass and house-trespass."
+  },
+  {
+    "number": "330",
+    "title": "House-trespass and hous-ebreaking."
+  },
+  {
+    "number": "331",
+    "title": "Punishment for house-trespass or house-breaking."
+  },
+  {
+    "number": "332",
+    "title": "House-trespass in order to commit offence."
+  },
+  {
+    "number": "333",
+    "title": "House-trespass after preparation for hurt, assault or wrongful restraint."
+  },
+  {
+    "number": "334",
+    "title": "Dishonestly breaking open receptacle containing property."
+  },
+  {
+    "number": "335",
+    "title": "Making a false document."
+  },
+  {
+    "number": "336",
+    "title": "Forgery."
+  },
+  {
+    "number": "337",
+    "title": "Forgery of record of Court or of public register, etc."
+  },
+  {
+    "number": "338",
+    "title": "Forgery of valuable security, will, etc."
+  },
+  {
+    "number": "339",
+    "title": "Having possession of document described in section 337 or section 338, knowing it to be forged and intending to use it as genuine."
+  },
+  {
+    "number": "340",
+    "title": "Forged document or electronic record and using it as genuine."
+  },
+  {
+    "number": "341",
+    "title": "Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under section 338."
+  },
+  {
+    "number": "342",
+    "title": "Counterfeiting device or mark used for authenticating documents described in section 338, or possessing counterfeit marked material."
+  },
+  {
+    "number": "343",
+    "title": "Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable security."
+  },
+  {
+    "number": "344",
+    "title": "Falsification of accounts. IndiaCode Of property marks"
+  },
+  {
+    "number": "345",
+    "title": "Property mark."
+  },
+  {
+    "number": "346",
+    "title": "Tampering with property mark with intent to cause injury."
+  },
+  {
+    "number": "347",
+    "title": "Counterfeiting a property mark."
+  },
+  {
+    "number": "348",
+    "title": "Making or possession of any instrument for counterfeiting a property mark."
+  },
+  {
+    "number": "349",
+    "title": "Selling goods marked with a counterfeit property mark."
+  },
+  {
+    "number": "350",
+    "title": "Making a false mark upon any receptacle containing goods."
+  },
+  {
+    "number": "351",
+    "title": "Criminal intimidation."
+  },
+  {
+    "number": "352",
+    "title": "Intentional insult with intent to provoke breach of peace."
+  },
+  {
+    "number": "353",
+    "title": "Statements conducing to public mischief."
+  },
+  {
+    "number": "354",
+    "title": "Act caused by inducing person to believe that he will be rendered an object of Divine displeasure."
+  },
+  {
+    "number": "355",
+    "title": "Misconduct in public by a drunken person. Of defamation"
+  },
+  {
+    "number": "356",
+    "title": "Defamation. Of breach of contract to attend on and supply wants of helpless person"
+  },
+  {
+    "number": "357",
+    "title": "Breach of contract to attend on and supply wants of helpless person."
+  },
+  {
+    "number": "358",
+    "title": "Repeal and savings."
+  }
+]

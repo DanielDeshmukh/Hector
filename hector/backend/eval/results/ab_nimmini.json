@@ -1,0 +1,21 @@
+{
+  "mode": "nimmini",
+  "pool": 30,
+  "reranker_disabled": false,
+  "hits": 39,
+  "total": 39,
+  "recall": 1.0,
+  "pass": true,
+  "rerank_path_flags": {
+    "api": 39,
+    "ce": 0,
+    "disabled": 0,
+    "other": 0
+  },
+  "dense_p50": 950.4,
+  "rerank_p50": 1794.9,
+  "total_p50": 2913.1,
+  "total_p95": 8465.6,
+  "misses": [],
+  "elapsed_s": 220
+}

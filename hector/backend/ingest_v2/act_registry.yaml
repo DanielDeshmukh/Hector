@@ -1,0 +1,64 @@
+# HECTOR ingest_v2 pilot - act registry
+# STEP 1 of the ingest_v2 pilot. This file lists the acts in the pilot.
+# act_name must equal the official title as printed on page 1 of the source PDF
+# (verified by G1 in step6_validate.py).
+
+acts:
+  - act_id: consumer-protection-2019
+    act_name: "The Consumer Protection Act, 2019"
+    act_short: "Consumer Protection Act"
+    year: 2019
+    source_file: sources/consumer-protection-2019.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_pending: source_pending_toc
+    status_note: "paused by user decision (checkpoint 1): source PDF has no Arrangement of Sections/CONTENTS in any of its 40 pages (evidence: results/step2_inspect.log). Files kept. Await replacement PDF with a ToC; no section list will be guessed."
+
+  - act_id: ipc-1860
+    act_name: "The Indian Penal Code, 1860"
+    act_short: "Indian Penal Code"
+    year: 1860
+    source_file: sources/ipc-1860.pdf
+    source_type: bare_act
+    language: en
+    status: repealed
+    repealed_on: "2024-07-01"
+    replaced_by: bns-2023
+    sequence_only_fallback: true
+    status_note: "user-supplied; verify against the BNS repeal and savings section when BNS is ingested. sequence_only_fallback=true is the user's 2026-10-01 decision: if no ToC is found, use SEQUENCE_ONLY mode (weaker evidence than a ToC, reported as SEQUENCE_ONLY everywhere)."
+
+  # BNS family - three current codes replacing IPC / CrPC / Evidence Act.
+  # act_name copied verbatim from page 1 of each source PDF (2026-10-03:
+  # diag_bns_page1.py), which also prints "(ACT NO. 45/46/47 OF 2023)" and
+  # "[As on the 6th October, 2025]". ARRANGEMENT OF SECTIONS begins on page 3
+  # of all three, so a real ToC exists and sequence_only_fallback is NOT set.
+  - act_id: bns-2023
+    act_name: "The Bharatiya Nyaya Sanhita, 2023"
+    act_short: "Bharatiya Nyaya Sanhita"
+    year: 2023
+    source_file: sources/bns-2023.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "replaces ipc-1860. Corpus triage 2026-10-03: 358 markers, span 1..358, density 1.000, 0 order violations at best_start=15."
+
+  - act_id: bnss-2023
+    act_name: "The Bharatiya Nagarik Suraksha Sanhita, 2023"
+    act_short: "Bharatiya Nagarik Suraksha Sanhita"
+    year: 2023
+    source_file: sources/bnss-2023.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "replaces the Code of Criminal Procedure, 1973. Corpus triage 2026-10-03: 531 markers, span 1..531, density 1.000, 0 order violations at best_start=16."
+
+  - act_id: bsa-2023
+    act_name: "The Bharatiya Sakshya Adhiniyam, 2023"
+    act_short: "Bharatiya Sakshya Adhiniyam"
+    year: 2023
+    source_file: sources/bsa-2023.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "replaces the Indian Evidence Act, 1872. Corpus triage 2026-10-03: 170 markers, span 1..170, density 1.000, 0 order violations at best_start=0 - that 0 is a triage sweep artifact (ToC starts on page 3), so step2's own body start must be verified against 170 markers."

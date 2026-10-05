@@ -20,10 +20,52 @@ except ImportError:
 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DEFAULT_INDEX_NAME = "hector-legal"
+# Single index for v2 records. Keep this in sync with step9_push.INDEX_NAME,
+# eval fast_recall.DEFAULT_INDEX and bench_retrieval's HECTOR_EVAL_INDEX
+# default - three stale spellings (hector-legal / hector-legal-v2) previously
+# pointed at indexes that no longer exist, and because this module AUTO-CREATES
+# a missing index, the wrong name would have silently spawned a stray empty
+# index on the account.
+DEFAULT_INDEX_NAME = os.getenv("HECTOR_EVAL_INDEX", "hector")
 DEFAULT_COLLECTION = "indian_law_bns"
 EMBEDDING_MODEL = "multilingual-e5-large"
 EMBEDDING_DIM = 2048
+# Share of the returned slots a single-act query gets to reserve for its own
+# act (see _apply_same_act_floor). 0.5 -> 5 of the default top-10.
+SAME_ACT_FLOOR_RATIO = 0.5
+# Shared keep-alive client for NIM embeddings (see _embed_text).
+_EMBED_CLIENT = None
+
+# IPC<->BNS crosswalk from core/mapping.json["IPC_TO_BNS"] - the same table
+# router._load_mapping() exposes as legal_map and compare() uses to pick
+# counterpart panels. Loaded once per process; (forward, reverse) with
+# section numbers normalized UPPER.
+_MAPPING_PATH = Path(__file__).resolve().parents[1] / "core" / "mapping.json"
+_mapping_cache = None
+
+
+def _load_ipc_bns_crosswalk():
+    global _mapping_cache
+    if _mapping_cache is None:
+        forward, reverse = {}, {}
+        try:
+            with open(_MAPPING_PATH, encoding="utf-8") as fh:
+                raw = json.load(fh).get("IPC_TO_BNS") or {}
+            for old, info in raw.items():
+                new = str((info or {}).get("new") or "").strip().upper()
+                old_key = str(old).strip().upper()
+                if not new or not old_key:
+                    continue
+                forward.setdefault(old_key, []).append(new)
+                reverse.setdefault(new, []).append(old_key)
+        except Exception as exc:
+            logger.warning(
+                "mapping.json crosswalk unavailable (%s) - "
+                "counterpart injection disabled",
+                exc,
+            )
+        _mapping_cache = (forward, reverse)
+    return _mapping_cache
 
 
 class SimpleBM25:
@@ -208,6 +250,7 @@ class HectorHybridRetriever:
         self.tokenized_corpus = []
         self.bm25 = None
         self.last_search_mode = None
+        self.last_stage_info = None
         if self.collection is not None:
             self.refresh_index()
         elif self.pinecone_index is not None:
@@ -341,6 +384,7 @@ class HectorHybridRetriever:
         instance.tokenized_corpus = []
         instance.bm25 = None
         instance.last_search_mode = None
+        instance.last_stage_info = None
         instance._load_records(records)
         return instance
 
@@ -363,6 +407,9 @@ class HectorHybridRetriever:
         self.corpus = [record["document"] for record in self.records]
         self.tokenized_corpus = [record["tokens"] for record in self.records]
         self.bm25 = SimpleBM25(self.tokenized_corpus) if self.records else None
+        # Citations are resolved from the fresh record set - drop any index
+        # built for a previous one (ingest/refresh replace records wholesale).
+        self._section_index = None
 
     def _is_legal_query(self, query: str) -> bool:
         q = query.lower()
@@ -435,33 +482,69 @@ class HectorHybridRetriever:
 
         self._load_records(all_records)
 
-    def search(self, query, top_k=5, candidate_pool=30):
+    def search(self, query, top_k=5, candidate_pool=30, *, raw_query=None):
         candidate_pool = max(top_k, candidate_pool)
         legal_query = self._parse_query(query)
+        # Citation injection must see only what the USER wrote: query
+        # expansion appends "section 44 section 106 ..." concept hints to
+        # non-citing queries, and treating those as explicit citations
+        # flooded the top-10 with wrong sections (measured 2026-10-04:
+        # BNS recall 0.9948 -> 0.6477). Callers that expand pass the
+        # original text as raw_query.
+        injection_query = query if raw_query is None else raw_query
+        stage_info = {"timings_ms": {}, "stages": {}, "detail": {}}
+        t_total = time.perf_counter()
+
+        def _snap(name, started):
+            stage_info["timings_ms"][name] = round(
+                (time.perf_counter() - started) * 1000, 1
+            )
+
+        def _ids(items):
+            return [item["id"] for item in items]
 
         if not self.records:
             logger.warning("BM25 records not loaded yet — falling back to pure Pinecone search")
             try:
-                semantic_rank = self._semantic_search(query, candidate_pool)
+                semantic_rank = self._timed_stage(
+                    stage_info, "dense_ms", self._semantic_search, query, candidate_pool
+                )
             except Exception as exc:
                 logger.warning(
                     "semantic retrieval failed (%s) — no results available", exc
                 )
                 semantic_rank = []
+            stage_info["stages"]["dense"] = _ids(semantic_rank)
+            started = time.perf_counter()
             deduped = self._deduplicate_results(semantic_rank)
+            _snap("dedup_ms", started)
+            stage_info["stages"]["dedup"] = _ids(deduped)
+            started = time.perf_counter()
             reranked = self._rerank_with_cross_encoder(query, deduped)
+            _snap("rerank_ms", started)
+            stage_info["stages"]["rerank"] = _ids(reranked)
+            started = time.perf_counter()
             reranked = self._apply_relevance_threshold(reranked)
+            _snap("threshold_ms", started)
+            started = time.perf_counter()
+            reranked = self._apply_same_act_floor(reranked, top_k, legal_query)
+            _snap("floor_ms", started)
+            stage_info["stages"]["final"] = _ids(reranked)
+            _snap("total_ms", t_total)
             self._record_mode(semantic_rank, [])
+            self.last_stage_info = stage_info
             return reranked[:top_k]
 
         bm25_tokens = self._tokenize(query)
 
         with ThreadPoolExecutor(max_workers=2) as executor:
             semantic_future = executor.submit(
-                self._semantic_search, query, candidate_pool
+                self._timed_stage, stage_info, "dense_ms",
+                self._semantic_search, query, candidate_pool,
             )
             bm25_future = executor.submit(
-                self._bm25_search, bm25_tokens, candidate_pool
+                self._timed_stage, stage_info, "bm25_ms",
+                self._bm25_search, bm25_tokens, candidate_pool,
             )
             try:
                 semantic_rank = semantic_future.result()
@@ -472,14 +555,84 @@ class HectorHybridRetriever:
                 )
                 semantic_rank = []
             bm25_rank = bm25_future.result()
+        stage_info["stages"]["dense"] = _ids(semantic_rank)
+        stage_info["stages"]["bm25"] = _ids(bm25_rank)
 
+        started = time.perf_counter()
         fused = self._fuse_rankings(semantic_rank, bm25_rank)
+        _snap("fuse_ms", started)
+        stage_info["stages"]["rrf"] = [
+            entry["id"]
+            for entry in sorted(
+                fused.values(), key=lambda entry: entry["rrf_score"], reverse=True
+            )
+        ]
+
+        started = time.perf_counter()
         ranked = self._score_candidates(fused, semantic_rank, bm25_rank, legal_query)
+        _snap("score_ms", started)
+        stage_info["stages"]["scored"] = _ids(ranked)
+        stage_info["detail"]["scored_top"] = [
+            {
+                key: item.get(key)
+                for key in (
+                    "id", "score", "retrieval_score", "boost_score",
+                    "semantic_score", "bm25_score", "rrf_score", "act", "reasons",
+                )
+            }
+            for item in ranked[:10]
+        ]
+
+        started = time.perf_counter()
         deduped = self._deduplicate_results(ranked)
-        reranked = self._rerank_with_cross_encoder(query, deduped)
-        reranked = self._apply_relevance_threshold(reranked)
+        _snap("dedup_ms", started)
+        stage_info["stages"]["dedup"] = _ids(deduped)
+
+        started = time.perf_counter()
+        injected = self._citation_injection_rows(
+            injection_query, self._parse_query(injection_query)
+        )
+        injected_ids = {row["id"] for row in injected}
+        if injected:
+            present = {item["id"] for item in deduped}
+            fresh = [row for row in injected if row["id"] not in present]
+            if fresh:
+                deduped = fresh + deduped
+            stage_info["detail"]["injected"] = [
+                {"id": row["id"], "kind": row["reasons"][0]}
+                for row in injected
+            ]
+        _snap("inject_ms", started)
+
+        started = time.perf_counter()
+        reranked = self._rerank_with_cross_encoder(query, deduped, injected_ids)
+        _snap("rerank_ms", started)
+        stage_info["stages"]["rerank"] = _ids(reranked)
+
+        started = time.perf_counter()
+        reranked = self._apply_relevance_threshold(reranked, injected_ids)
+        _snap("threshold_ms", started)
+
+        started = time.perf_counter()
+        reranked = self._apply_same_act_floor(reranked, top_k, legal_query)
+        reranked = self._apply_injection_floor(reranked, top_k, injected_ids)
+        _snap("floor_ms", started)
+        stage_info["stages"]["final"] = _ids(reranked)
+
+        _snap("total_ms", t_total)
         self._record_mode(semantic_rank, bm25_rank)
+        self.last_stage_info = stage_info
         return reranked[:top_k]
+
+    @staticmethod
+    def _timed_stage(stage_info, name, fn, *args):
+        started = time.perf_counter()
+        try:
+            return fn(*args)
+        finally:
+            stage_info["timings_ms"][name] = round(
+                (time.perf_counter() - started) * 1000, 1
+            )
 
     def _min_relevance(self) -> float:
         """Relevance floor: env HECTOR_MIN_RELEVANCE > threshold file > 0.05.
@@ -511,14 +664,15 @@ class HectorHybridRetriever:
             logger.warning("relevance threshold file %s unusable: %s", path, exc)
         return 0.05
 
-    def _apply_relevance_threshold(self, results):
+    def _apply_relevance_threshold(self, results, keep_ids=None):
         threshold = self._min_relevance()
         if threshold <= 0 or not results:
             return results
         kept = [
             item
             for item in results
-            if float(item.get("score", 0.0) or 0.0) >= threshold
+            if item.get("id") in (keep_ids or set())
+            or float(item.get("score", 0.0) or 0.0) >= threshold
         ]
         if len(kept) != len(results):
             logger.info(
@@ -528,6 +682,91 @@ class HectorHybridRetriever:
                 len(results),
             )
         return kept
+
+    def _apply_same_act_floor(self, ranked, top_k, legal_query):
+        """Guarantee a share of the returned slots to the act the query names.
+
+        The merged IPC+BNS index holds paired provisions that are semantically
+        near-identical - BNS 103 "Punishment for murder" against IPC 300
+        "Murder" - so a cross-encoder alone will happily fill all ten slots of
+        an IPC question with BNS text. Measured 2026-10-03 on iter2: the query
+        "What treatment does the Indian Penal Code provide for murder?" returned
+        top-10 = 100% BNS, with IPC 300 at rank 19.
+
+        This reserves ceil(top_k * SAME_ACT_FLOOR_RATIO) slots for the named
+        act by moving the best same-act candidates to the front and appending
+        every other candidate in its existing reranked order, so cross-act
+        chunks stay available for comparison questions.
+
+        It only ever PROMOTES. If the window already holds the floor, the list
+        is returned untouched - a query whose results are genuinely dominated
+        by its own act behaves exactly as before, and no same-act chunk is
+        ever evicted to make room for a cross-act one.
+
+        No-op when the query names no act or names more than one (comparison
+        questions have no single act to reserve for).
+        """
+        acts = (legal_query or {}).get("acts") or []
+        if len(acts) != 1 or top_k < 2 or not ranked:
+            return ranked
+
+        target = acts[0]
+        floor = min(top_k, max(1, math.ceil(top_k * SAME_ACT_FLOOR_RATIO)))
+        window = ranked[:top_k]
+        same_in_window = sum(1 for item in window if item.get("act") == target)
+        if same_in_window >= floor:
+            return ranked
+
+        same = [item for item in ranked if item.get("act") == target]
+        if not same:
+            return ranked
+
+        promoted = same[:floor]
+        promoted_ids = {id(item) for item in promoted}
+        rest = [item for item in ranked if id(item) not in promoted_ids]
+        logger.debug(
+            "same-act floor: window had %d %s candidates (< %d) - promoted %d",
+            same_in_window, target, floor, len(promoted),
+        )
+        return promoted + rest
+
+    def _apply_injection_floor(self, ranked, top_k, injected_ids):
+        """Guarantee cited/counterpart rows a slot in the top-k window.
+
+        Follows the same promote-only contract as _apply_same_act_floor.
+        The blend alone leaves injected rows at blended rank ~31 when the
+        cross-encoder saturates on sister-act lookalikes (measured
+        2026-10-04: compare recall 118/162 with blend, counterparts still
+        missing top-10) - the injection already marked these rows as
+        authoritative (explicit citation or crosswalk), so the window is
+        reordered to carry them, capped at top_k - 1 to keep at least one
+        naturally-ranked result when top_k > 1. Honors the same
+        HECTOR_RERANK_BLEND >= 1.0 legacy opt-out as _apply_rerank_blend.
+        """
+        if not ranked or not injected_ids or top_k < 1:
+            return ranked
+        try:
+            alpha = float(os.getenv("HECTOR_RERANK_BLEND", "0.5"))
+        except ValueError:
+            alpha = 0.5
+        if not 0.0 <= alpha < 1.0:
+            return ranked
+        window_ids = {item.get("id") for item in ranked[:top_k]}
+        outside = [
+            item
+            for item in ranked
+            if item.get("id") in injected_ids and item.get("id") not in window_ids
+        ]
+        if not outside:
+            return ranked
+        promote = outside[: max(1, top_k - 1)] if top_k > 1 else outside[:1]
+        promote_ids = {id(item) for item in promote}
+        rest = [item for item in ranked if id(item) not in promote_ids]
+        logger.debug(
+            "injection floor: promoted %d/%d injected rows into top-%d",
+            len(promote), len(injected_ids), top_k,
+        )
+        return promote + rest
 
     def _record_mode(self, semantic_rank, bm25_rank):
         if semantic_rank and bm25_rank:
@@ -546,9 +785,14 @@ class HectorHybridRetriever:
             len(bm25_rank),
         )
 
-    def search_with_metadata_filters(self, query, entities, top_k=5, candidate_pool=20):
+    def search_with_metadata_filters(
+        self, query, entities, top_k=5, candidate_pool=20, *, raw_query=None
+    ):
+        # Round 4: the filtered pipeline below does not populate stage info;
+        # clear any stale snapshot from a previous plain search().
+        self.last_stage_info = None
         if not entities:
-            return self.search(query, top_k, candidate_pool)
+            return self.search(query, top_k, candidate_pool, raw_query=raw_query)
 
         section_numbers = list(
             dict.fromkeys(
@@ -560,11 +804,11 @@ class HectorHybridRetriever:
         acts = list(dict.fromkeys(entities.get("acts") or []))
 
         if not section_numbers and not acts:
-            return self.search(query, top_k, candidate_pool)
+            return self.search(query, top_k, candidate_pool, raw_query=raw_query)
 
         pinecone_filter = self._build_pinecone_filter(section_numbers, acts)
         if pinecone_filter is None:
-            return self.search(query, top_k, candidate_pool)
+            return self.search(query, top_k, candidate_pool, raw_query=raw_query)
 
         filtered_results = self._pinecone_filtered_search(
             pinecone_filter, top_k=min(candidate_pool, 200)
@@ -581,7 +825,7 @@ class HectorHybridRetriever:
             )
 
         if not filtered_results:
-            return self.search(query, top_k, candidate_pool)
+            return self.search(query, top_k, candidate_pool, raw_query=raw_query)
 
         legal_query = self._parse_query(query)
 
@@ -609,8 +853,314 @@ class HectorHybridRetriever:
         deduped = self._deduplicate_results(ranked)
         reranked = self._rerank_with_cross_encoder(query, deduped)
         reranked = self._apply_relevance_threshold(reranked)
+        reranked = self._apply_same_act_floor(reranked, top_k, legal_query)
         self._record_mode(semantic_rank, bm25_rank)
         return reranked[:top_k]
+
+    def search_exact_section(self, query, section_number, act, top_k=3):
+        """Exact act+section chunks for one IPC<->BNS compare panel.
+
+        Why not search_with_metadata_filters: its Pinecone leg goes
+        _pinecone_filtered_search -> idx.list(filter=...), which raises
+        TypeError (this SDK's Index.list() takes no filter kwarg) and that
+        method's bare `except: return []` swallows it - measured
+        2026-10-04, all 80 "filtered" compare calls silently degraded to
+        full hybrid search (p50 4.8s/side, ~4s of it a cross-encoder
+        rerank over 30 docs). idx.query(vector, filter=...) accepts the
+        same metadata filter, so the Pinecone leg here is ONE filtered
+        vector query and no rerank: the filter already leaves only the
+        wanted act's own chunks for the wanted section.
+
+        Empty list means the section does not exist in that act (BNS only
+        has sections 1-358); the caller's exact panel selector renders
+        that as an empty panel rather than lookalike neighbours.
+
+        Fallback chain: Pinecone absent/unusable, embed/query failure, or
+        zero matches -> exact metadata scan over loaded records (tests,
+        offline mode; same corpus, no network). Rows share the
+        _score_candidates shape so _select_compare_panel and _to_hit work
+        unchanged.
+        """
+        want_sec = str(section_number or "").strip().upper().replace(" ", "")
+        want_act = str(act or "").strip().upper()
+        top_k = max(1, int(top_k or 1))
+        rows = self._exact_section_pinecone_rows(
+            query, section_number, want_act, top_k
+        )
+        if not rows:
+            rows = self._exact_section_record_rows(want_sec, want_act, top_k)
+        return rows[:top_k]
+
+    def _exact_section_pinecone_rows(self, query, section_number, act, top_k):
+        idx = self._pinecone
+        if (
+            idx is None
+            or self._pinecone_unusable()
+            or getattr(self, "semantic_disabled", False)
+        ):
+            return []
+        sec_raw = str(section_number or "").strip()
+        # lettered sections are stored uppercase (120B, 153AA); match all
+        # case variants so an uppercased compare request cannot miss them.
+        sec_variants = list(
+            dict.fromkeys(v for v in (sec_raw, sec_raw.upper(), sec_raw.lower()) if v)
+        )
+        acts = [act] if act else []
+        pinecone_filter = self._build_pinecone_filter(sec_variants, acts)
+        if pinecone_filter is None:
+            return []
+        embedding = self._embed_text(query or f"Section {sec_raw} {act}")
+        if not embedding:
+            return []
+        try:
+            results = retry(
+                idx.query,
+                vector=embedding,
+                top_k=top_k,
+                include_metadata=True,
+                filter=pinecone_filter,
+                operation_name="pinecone_exact_section_query",
+            )
+        except Exception as exc:
+            logger.warning(
+                "exact-section pinecone query failed (%s) - falling back to records",
+                exc,
+            )
+            return []
+        rows = []
+        for match in results.get("matches", []):
+            meta = match.get("metadata") or {}
+            document = meta.get("document", "")
+            clean = {k: v for k, v in meta.items() if k != "document"}
+            score = float(match.get("score", 0.0) or 0.0)
+            rows.append(
+                {
+                    "id": match.get("id", ""),
+                    "document": document,
+                    "metadata": clean,
+                    "score": round(score, 6),
+                    "hybrid_score": round(score, 6),
+                    "retrieval_score": round(score, 6),
+                    "similarity_score": round(score, 6),
+                    "act": self._infer_act(document, clean),
+                    "citation": self._extract_document_citation(document, clean),
+                    "reasons": ["exact-section-query"],
+                }
+            )
+        return rows[:top_k]
+
+    def _exact_section_record_rows(self, want_sec, want_act, top_k):
+        matches = []
+        for record in self.records:
+            meta = record.get("metadata") or {}
+            rec_sec = (
+                str(meta.get("section_number") or "").strip().upper().replace(" ", "")
+            )
+            if rec_sec != want_sec:
+                continue
+            rec_act = str(
+                record.get("act") or self._infer_act(record.get("document", ""), meta)
+            ).strip().upper()
+            if want_act and rec_act and rec_act != want_act:
+                continue
+            matches.append((meta.get("chunk_index"), record))
+        matches.sort(key=lambda item: (int(item[0] or 0), str(item[1].get("id"))))
+        rows = []
+        for _, record in matches[:top_k]:
+            meta = record.get("metadata") or {}
+            document = record.get("document", "")
+            rows.append(
+                {
+                    "id": record.get("id", ""),
+                    "document": document,
+                    "metadata": meta,
+                    "score": 1.0,
+                    "hybrid_score": 1.0,
+                    "retrieval_score": 1.0,
+                    "similarity_score": 1.0,
+                    "act": record.get("act") or None,
+                    "citation": record.get("citation")
+                    or self._extract_document_citation(document, meta),
+                    "reasons": ["exact-section-scan"],
+                }
+            )
+        return rows
+
+    def _get_section_index(self):
+        """(ACT, SECTION_NUMBER) -> records, built once per record set.
+
+        Sections may span multiple chunks; entries are sorted by chunk order
+        so the section opening is injected first.
+        """
+        index = getattr(self, "_section_index", None)
+        if index is None:
+            index = {}
+            for record in self.records:
+                meta = record.get("metadata") or {}
+                sec = str(
+                    meta.get("section_number") or ""
+                ).strip().upper().replace(" ", "")
+                act = str(record.get("act") or "").strip().upper()
+                if not sec or not act:
+                    continue
+                index.setdefault((act, sec), []).append(record)
+            for entries in index.values():
+                entries.sort(
+                    key=lambda rec: (
+                        int((rec.get("metadata") or {}).get("chunk_index") or 0),
+                        str(rec.get("id")),
+                    )
+                )
+            self._section_index = index
+        return index
+
+    def _cited_act_sections(self, query, legal_query):
+        """(section_number, [acts]) per 'section N' mention in the query.
+
+        The act comes from the text FOLLOWING the mention first ("Section 103
+        of the Indian Penal Code" -> IPC); the preceding text is checked only
+        when the follow-up names no act ("...predecessor of Section 193" with
+        "Bharatiya Nyaya Sanhita" behind it). Both sides are windowed at 45
+        chars - wider windows catch the other act of a comparison sentence
+        and attribute the section to both, injecting unrelated lookalikes.
+        """
+        named = list((legal_query or {}).get("acts") or [])
+        if not named:
+            return []
+        surfaces = {
+            act: [
+                surface
+                for surface, canon in self.ACT_ALIASES.items()
+                if canon == act
+            ]
+            for act in named
+        }
+
+        def _acts_in(text):
+            lowered = text.lower()
+            return [
+                act
+                for act in named
+                if any(
+                    re.search(r"\b" + re.escape(surface) + r"\b", lowered)
+                    for surface in surfaces[act]
+                )
+            ]
+
+        out, seen = [], set()
+        for match in self.SECTION_PATTERN.finditer(query or ""):
+            num = match.group(1).upper()
+            after = query[match.end(): match.end() + 45]
+            before = query[max(0, match.start() - 45): match.start()]
+            acts = _acts_in(after) or _acts_in(before) or list(named)
+            key = (num, tuple(acts))
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append((num, acts))
+        return out
+
+    def _citation_injection_rows(self, query, legal_query):
+        """Candidate rows for cited sections and their mapped counterparts.
+
+        Reranker-only ranking drops cited sections: measured 2026-10-04, on
+        compare questions the cited IPC section reached scored rank 1 and fell
+        to rerank rank 32 (sister-act lookalikes hold rerank scores
+        0.98-0.997), and the unnamed counterpart was in neither the dense nor
+        the bm25 top-30 at all - section_recall@10 = 74/162 = 0.46. Injecting
+        these rows before rerank guarantees they enter the pool; the final
+        blend (_apply_rerank_blend) keeps their retrieval evidence decisive.
+
+        - "citation-injection": every section the query explicitly names, in
+          the act attributed to that mention (retrieval evidence 1.0).
+        - "counterpart-injection": mapping.json-derived other side of a
+          two-act query (0.9 - authoritative, but not what the user cited).
+        Counterparts only fire when BOTH acts of the pair are named in the
+        query, so single-act queries keep their act-scoped behaviour.
+        """
+        if not self.records:
+            return []
+        cited = self._cited_act_sections(query, legal_query)
+        if not cited:
+            return []
+        named = set((legal_query or {}).get("acts") or [])
+        forward, reverse = _load_ipc_bns_crosswalk()
+        index = self._get_section_index()
+
+        targets, seen = [], set()
+
+        def _add(act, sec, kind):
+            key = (act, sec, kind)
+            if key not in seen:
+                seen.add(key)
+                targets.append((act, sec, kind))
+
+        for num, acts in cited:
+            for act in acts:
+                _add(act, num, "citation-injection")
+                if act == "IPC" and "BNS" in named:
+                    for counterpart in forward.get(num, []):
+                        _add("BNS", counterpart, "counterpart-injection")
+                elif act == "BNS" and "IPC" in named:
+                    for counterpart in reverse.get(num, []):
+                        _add("IPC", counterpart, "counterpart-injection")
+
+        rows = []
+        for act, sec, kind in targets:
+            for record in index.get((act, sec), [])[:1]:
+                rows.append(self._build_injection_row(record, kind, legal_query))
+        return rows
+
+    def _build_injection_row(self, record, kind, legal_query):
+        """Same shape/score fields _score_candidates emits, for injected rows."""
+        legal_boost, boost_reasons = self._legal_boost(record, legal_query)
+        concept_boost, concept_reason = self._concept_term_boost(
+            record, legal_query
+        )
+        current_law_boost, current_law_reason = self._current_law_boost(
+            record, legal_query
+        )
+        jurisdiction_boost, jurisdiction_reason = self._jurisdiction_recency_boost(
+            record
+        )
+        source_type_boost, source_type_reason = self._source_type_boost(record)
+        retrieval_score = 1.0 if kind == "citation-injection" else 0.9
+        boost_score = (
+            legal_boost
+            + concept_boost
+            + current_law_boost
+            + jurisdiction_boost
+            + source_type_boost
+        )
+        hybrid_score = retrieval_score + boost_score
+        reasons = [
+            reason
+            for reason in [
+                kind,
+                concept_reason,
+                current_law_reason,
+                jurisdiction_reason,
+                source_type_reason,
+            ]
+            if reason
+        ]
+        reasons.extend(boost_reasons)
+        return {
+            "id": record["id"],
+            "document": record["document"],
+            "metadata": record["metadata"],
+            "score": round(hybrid_score, 6),
+            "hybrid_score": round(hybrid_score, 6),
+            "retrieval_score": round(retrieval_score, 6),
+            "boost_score": round(boost_score, 6),
+            "rrf_score": 0.0,
+            "semantic_score": 0.0,
+            "bm25_score": 0.0,
+            "bm25_raw_score": 0.0,
+            "act": record.get("act"),
+            "citation": record.get("citation"),
+            "reasons": reasons,
+        }
 
     def _build_pinecone_filter(self, section_numbers, acts):
         if not section_numbers and not acts:
@@ -718,7 +1268,10 @@ class HectorHybridRetriever:
                 "id": match.get("id", ""),
                 "document": meta.get("document", ""),
                 "metadata": {k: v for k, v in meta.items() if k != "document"},
-                "distance": match.get("score", 0.0),
+                # Round 4: Pinecone cosine metric returns similarity
+                # (higher = better); store as distance (lower = better) so
+                # _normalize_semantic_score ranks correctly for production.
+                "distance": max(0.0, 1.0 - float(match.get("score", 0.0))),
                 "rank": len(ranked) + 1,
             })
         return ranked
@@ -797,7 +1350,12 @@ class HectorHybridRetriever:
                             "id": match.get("id", ""),
                             "document": meta.get("document", ""),
                             "metadata": {k: v for k, v in meta.items() if k != "document"},
-                            "distance": match.get("score", 0.0),
+                            # Round 4: cosine similarity (higher = better)
+                            # stored as distance (lower = better) — see
+                            # _semantic_search_with_filter.
+                            "distance": max(
+                                0.0, 1.0 - float(match.get("score", 0.0))
+                            ),
                             "rank": len(ranked) + 1,
                         })
                     return ranked
@@ -992,13 +1550,16 @@ class HectorHybridRetriever:
         normalized = (raw_score - min_score) / (max_score - min_score)
         return max(0.0, min(normalized, 1.0))
 
-    def _rerank_with_cross_encoder(self, query, candidates):
+    def _rerank_with_cross_encoder(self, query, candidates, injected_ids=None):
         if not candidates:
             return []
 
         if self.reranker_disabled:
+            term_idf = self._query_term_idf(candidates, query)
             for item in candidates:
-                fallback_score = self._fallback_reranker_score(item)
+                fallback_score = self._fallback_reranker_score(
+                    item, query=query, term_idf=term_idf
+                )
                 item["reranker_score"] = round(fallback_score, 6)
                 item["score"] = item["reranker_score"]
                 item["similarity_score"] = item["reranker_score"]
@@ -1018,7 +1579,23 @@ class HectorHybridRetriever:
             if reranker is None:
                 reranker = get_rerank_provider(provider)
                 self._reranker_cached = reranker
-            return reranker.rerank(query, candidates)
+            # Capture retrieval evidence before the provider overwrites
+            # item["score"] with the cross-encoder value.
+            for item in candidates:
+                item["pre_rerank_score"] = round(
+                    min(
+                        float(
+                            item.get("hybrid_score")
+                            or item.get("score")
+                            or 0.0
+                        ),
+                        1.0,
+                    ),
+                    6,
+                )
+            return self._apply_rerank_blend(
+                reranker.rerank(query, candidates), injected_ids
+            )
         except Exception as e:
             self._reranker_cached = None
             import logging
@@ -1026,9 +1603,13 @@ class HectorHybridRetriever:
                 f"Nemotron rerank failed, using fallback: {e}"
             )
 
-        # Last resort: heuristic scoring
+        # Last resort: heuristic scoring (already retrieval-derived, so it is
+        # blended-equivalent - no _apply_rerank_blend here).
+        term_idf = self._query_term_idf(candidates, query)
         for item in candidates:
-            fallback_score = self._fallback_reranker_score(item)
+            fallback_score = self._fallback_reranker_score(
+                item, query=query, term_idf=term_idf
+            )
             item["reranker_score"] = round(fallback_score, 6)
             item["score"] = item["reranker_score"]
             item["similarity_score"] = item["reranker_score"]
@@ -1040,13 +1621,172 @@ class HectorHybridRetriever:
         candidates.sort(key=lambda item: item["reranker_score"], reverse=True)
         return candidates
 
-    def _fallback_reranker_score(self, item):
+    def _apply_rerank_blend(self, items, injected_ids=None):
+        """Lift injected rows above rerank noise; natural rows keep pure
+        reranker order (legacy behavior).
+
+        Why injection-only: the cross-encoder alone cannot separate merged
+        acts on COMPARE queries - sister-act restatements saturate at
+        0.98-0.997 while the cited section sinks (measured 2026-10-04:
+        cited IPC section of cmpf-103-112 at rerank rank 32, compare
+        recall 74/162 = 0.46). Injecting the cited/crosswalk rows with
+        retrieval evidence 1.0 and blending them back repairs that.
+
+        Why NOT whole-list blending: mixing fused retrieval evidence at
+        half weight into every row reorders single-act queries the
+        cross-encoder already handled - measured 2026-10-04, whole-list
+        blend tanked BNS recall 192/193 -> 125/193 and IPC 155/198 with
+        lexical-pre rows outranking semantically-correct ones. With no
+        injected ids this returns items untouched, so single-act recall
+        is exactly the legacy pure-rerank path.
+
+        HECTOR_RERANK_BLEND sets alpha for the injected-row blend
+        (default 0.5; >= 1.0 disables blend AND the injection floor,
+        restoring fully legacy ordering).
+        """
+        try:
+            alpha = float(os.getenv("HECTOR_RERANK_BLEND", "0.5"))
+        except ValueError:
+            alpha = 0.5
+        if not 0.0 <= alpha < 1.0 or not injected_ids:
+            return items
+        natural_max = 0.0
+        for item in items:
+            if item.get("id") not in injected_ids:
+                natural_max = max(
+                    natural_max,
+                    float(item.get("reranker_score") or item.get("score") or 0.0),
+                )
+        # Injected rows rank above every natural row regardless of how
+        # saturated the cross-encoder got; their internal order still
+        # follows the blend below.
+        lifted = min(round(natural_max + 0.001, 6), 1.0)
+        for item in items:
+            if item.get("id") in injected_ids:
+                reranker_score = float(
+                    item.get("reranker_score") or item.get("score") or 0.0
+                )
+                pre_score = float(item.get("pre_rerank_score") or 0.0)
+                item["score"] = round(
+                    max(alpha * reranker_score + (1.0 - alpha) * pre_score, lifted),
+                    6,
+                )
+        items.sort(key=lambda item: item.get("score", 0.0), reverse=True)
+        return items
+
+    def _candidate_haystack(self, item):
+        metadata = item.get("metadata") or {}
+        return " ".join(
+            str(value)
+            for value in (
+                item.get("document") or "",
+                metadata.get("source") or "",
+                metadata.get("section_title") or "",
+                metadata.get("act_name") or "",
+            )
+        ).lower()
+
+    def _query_term_idf(self, candidates, query):
+        """IDF weights for the query's concept terms over this candidate pool.
+        Ubiquitous legal boilerplate ("indian", "punishment") drops out, rare
+        defining terms ("good faith", "thug") dominate the overlap bonus."""
+        terms = self._extract_concept_terms(query)
+        if not terms or not candidates:
+            return {}
+        haystacks = [self._candidate_haystack(item) for item in candidates]
+        n = len(haystacks)
+        idf = {}
+        for term in terms:
+            pattern = rf"\b{re.escape(term)}\b"
+            df = sum(1 for h in haystacks if re.search(pattern, h))
+            weight = math.log((n + 1) / (df + 1))
+            if weight >= 0.1:
+                idf[term] = weight
+        return idf
+
+    def _query_overlap_bonus(self, item, query, term_idf=None):
+        """Definitional misses ("good faith", "life", "thug") lose on fusion
+        score to look-alike sections; credit candidates that contain the
+        query's RARE distinctive terms and adjacent phrases (IDF-weighted)."""
+        if not term_idf:
+            return 0.0
+        haystack = self._candidate_haystack(item)
+        if not haystack:
+            return 0.0
+        total = sum(term_idf.values())
+        if total <= 0:
+            return 0.0
+        hits = sum(
+            weight
+            for term, weight in term_idf.items()
+            if re.search(rf"\b{re.escape(term)}\b", haystack)
+        )
+        bonus = 0.25 * (hits / total)
+        content_tokens = [
+            token for token in self._tokenize(query)
+            if len(token) >= 4 and token not in self.CONCEPT_STOPWORDS
+        ]
+        pair_value = 0.0
+        for a, b in zip(content_tokens, content_tokens[1:]):
+            weight = term_idf.get(a, 0.0) + term_idf.get(b, 0.0)
+            if weight <= 0:
+                continue
+            if re.search(rf"\b{re.escape(a)}\s+{re.escape(b)}\b", haystack):
+                pair_value = max(pair_value, weight)
+        bonus += 0.10 * (pair_value / total)
+        return min(bonus, 0.35)
+
+    def _quoted_phrases(self, query):
+        phrases = []
+        for match in re.finditer(
+            r'[“"\']([^”"\']{2,60})[”"\']', query or ""
+        ):
+            phrase = " ".join(match.group(1).split()).lower()
+            if phrase and phrase not in phrases:
+                phrases.append(phrase)
+        return phrases
+
+    def _definition_bonus(self, item, query):
+        """Definitional queries quote the concept (“good faith”, “life”);
+        sections whose TITLE defines that phrase get a decisive lift."""
+        phrases = self._quoted_phrases(query)
+        if not phrases:
+            return 0.0
+        metadata = item.get("metadata") or {}
+        normalize = lambda text: re.sub(
+            r"[-–—/]+", " ", str(text or "").lower()
+        )
+        title = normalize(metadata.get("section_title"))
+        haystack = normalize(self._candidate_haystack(item))
+        for phrase in phrases:
+            pattern = rf"(?<!\w){re.escape(phrase)}(?!\w)"
+            if title and re.search(pattern, title):
+                return 0.35
+            if haystack and re.search(pattern, haystack):
+                return 0.18
+        return 0.0
+
+    def _fallback_reranker_score(self, item, query=None, term_idf=None):
+        rrf_w = float(os.environ.get("HECTOR_FALLBACK_W_RRF", "12.0"))
+        bm25_w = float(os.environ.get("HECTOR_FALLBACK_W_BM25", "0.30"))
+        sem_w = float(os.environ.get("HECTOR_FALLBACK_W_SEM", "0.25"))
         base = (
-            item.get("rrf_score", 0.0) * 12.0
-            + item.get("bm25_score", 0.0) * 0.30
-            + item.get("semantic_score", 0.0) * 0.25
+            item.get("rrf_score", 0.0) * rrf_w
+            + item.get("bm25_score", 0.0) * bm25_w
+            + item.get("semantic_score", 0.0) * sem_w
             + item.get("boost_score", 0.0)
         )
+        # Injected rows carry their evidence only in retrieval_score (rrf/
+        # bm25/semantic are 0 by construction) - without this the fallback
+        # scorer ranks a cited section below unrelated bm25 hits.
+        if any(
+            reason in ("citation-injection", "counterpart-injection")
+            for reason in item.get("reasons") or []
+        ):
+            base += float(item.get("retrieval_score") or 0.0)
+        if query:
+            base += self._query_overlap_bonus(item, query, term_idf=term_idf)
+            base += self._definition_bonus(item, query)
         return max(0.0, min(base, 1.0))
 
     def _legal_boost(self, record, legal_query):
@@ -1267,8 +2007,20 @@ class HectorHybridRetriever:
             metadata.get("act_name") or metadata.get("act") or ""
         ).strip()
         if explicit_act:
-            canonical = self.ACT_ALIASES.get(explicit_act.lower(), explicit_act.upper())
-            return canonical
+            key = explicit_act.lower()
+            canonical = self.ACT_ALIASES.get(key)
+            if canonical:
+                return canonical
+            # Long-form citations are not alias keys. Corpus rows carry
+            # "The Indian Penal Code, 1860", and falling through to .upper()
+            # made record["act"] = "THE INDIAN PENAL CODE, 1860" while queries
+            # resolve to "IPC" - so the act-match boost in _legal_boost never
+            # fired (verified 2026-10-03). Longest alias first so "indian
+            # penal code" wins over any shorter alias inside the same string.
+            for alias in sorted(self.ACT_ALIASES, key=len, reverse=True):
+                if alias in key:
+                    return self.ACT_ALIASES[alias]
+            return explicit_act.upper()
 
         source = (metadata.get("source") or "").lower()
         text = (document or "").lower()
@@ -1312,12 +2064,23 @@ class HectorHybridRetriever:
     def _embed_text(self, text):
         """Embed text using NVIDIA NIM API."""
         try:
-            import httpx
+            global _EMBED_CLIENT
             nim_key = os.getenv("NIM_API_KEY", "")
             nim_url = os.getenv("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
             if not nim_key:
                 return None
-            resp = httpx.post(
+            if _EMBED_CLIENT is None:
+                import httpx
+
+                # Reuse TCP/TLS connections. A fresh handshake per query cost
+                # ~0.85s of the retrieval budget (measured 1146ms -> 300ms).
+                _EMBED_CLIENT = httpx.Client(
+                    timeout=15,
+                    limits=httpx.Limits(
+                        max_keepalive_connections=4, max_connections=8
+                    ),
+                )
+            resp = _EMBED_CLIENT.post(
                 f"{nim_url}/embeddings",
                 headers={
                     "Authorization": f"Bearer {nim_key}",

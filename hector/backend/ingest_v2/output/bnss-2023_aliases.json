@@ -1,0 +1,5 @@
+{
+  "act_id": "bnss-2023",
+  "rule": "each plain base of a range marker maps to the range record id; a suffixed endpoint token maps too, unless it has its own accepted marker",
+  "aliases": {}
+}

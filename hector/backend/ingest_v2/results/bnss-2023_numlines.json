@@ -1,0 +1,3923 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 531,
+    "footnote": 1,
+    "UNKNOWN": 11
+  },
+  "labels": {
+    "header": 162,
+    "boilerplate": 265,
+    "footnote": 2,
+    "page_number": 773,
+    "separator": 62
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 3473,
+      "page": 95,
+      "text": "2023. A may be separately charged with, and convicted of, the possession of each seal under",
+      "context": [
+        "(c) A has in his possession several seals, knowing them to be counterfeit and intending to use them ",
+        "the purpose of committing several forgeries punishable under section 337 of the Bharatiya Nyaya Sanh",
+        "2023. A may be separately charged with, and convicted of, the possession of each seal under",
+        "sub-section (2) of section 341 of the Bharatiya Nyaya Sanhita, 2023.",
+        "(d) With intent to cause injury to B, A institutes a criminal proceeding against him, knowing that t"
+      ]
+    },
+    {
+      "line": 13574,
+      "page": 264,
+      "text": "20..............................................,..............................................(name",
+      "context": [
+        "WHEREAS at the session held before me on the........................................................",
+        "of..............................................,",
+        "20..............................................,..............................................(name",
+        "of",
+        "prisoner), the (1st, 2nd, 3rd, as the case may be), prisoner in case No. ................. of the Ca"
+      ]
+    },
+    {
+      "line": 13577,
+      "page": 264,
+      "text": "20.............. at the said Session, was duly convicted of the offence of culpable homicide amounting to murder",
+      "context": [
+        "of",
+        "prisoner), the (1st, 2nd, 3rd, as the case may be), prisoner in case No. ................. of the Ca",
+        "20.............. at the said Session, was duly convicted of the offence of culpable homicide amounti",
+        "under section ..............................................of the Bharatiya Nyaya Sanhita, 2023, an",
+        "subject to the confirmation of the said sentence by the............................................."
+      ]
+    },
+    {
+      "line": 13977,
+      "page": 282,
+      "text": "2. Fast and efficient justice system is an essential component of good governance. However, delay in",
+      "context": [
+        "provides for a mechanism for conducting trials in a criminal case. It gives the procedure for regist",
+        "complaint, conducting a trial and passing an order, and filing an appeal against any order.",
+        "2. Fast and efficient justice system is an essential component of good governance. However, delay in",
+        "delivery of justice due to complex legal procedures, large pendency of cases in the Courts, low conv",
+        "rates, low level of uses of technology in legal system, delays in investigation system, complex proc"
+      ]
+    },
+    {
+      "line": 13982,
+      "page": 282,
+      "text": " 3. The experience of seven decades of Indian democracy calls for comprehensive review of our criminal",
+      "context": [
+        "inadequate use of forensics are the biggest hurdles in speedy delivery of justice, which impacts poo",
+        "adversely. In order to address these issues a citizens centric criminal procedures are need of hour.",
+        " 3. The experience of seven decades of Indian democracy calls for comprehensive review of our crimin",
+        "laws, including the Code of Criminal Procedure and adopt them in accordance with the contemporary ne",
+        "and aspirations of the people."
+      ]
+    },
+    {
+      "line": 13985,
+      "page": 282,
+      "text": "4. The Government with the mantra, “Sabka Saath, Sabka Vikas, Sabka Vishwas and Sabka Prayas” is",
+      "context": [
+        "laws, including the Code of Criminal Procedure and adopt them in accordance with the contemporary ne",
+        "and aspirations of the people.",
+        "4. The Government with the mantra, “Sabka Saath, Sabka Vikas, Sabka Vishwas and Sabka Prayas” is",
+        "committed to ensure speedy justice to all citizens in conformity with these constitutional democrati",
+        "aspirations. The Government is committed to make comprehensive review of the framework of criminal"
+      ]
+    },
+    {
+      "line": 13990,
+      "page": 282,
+      "text": "5. In view of the above, it is proposed to repeal the Code of Criminal Procedure, 1973 and enact a new",
+      "context": [
+        "laws to provide accessible and speedy justice to all.",
+        "IndiaCode",
+        "5. In view of the above, it is proposed to repeal the Code of Criminal Procedure, 1973 and enact a n",
+        "law, namely, the Bharatiya Nagarik Suraksha Sanhita, 2023. It provides for the use of technology and",
+        "forensic sciences in the investigation of crime and furnishing and lodging of information, service o"
+      ]
+    },
+    {
+      "line": 14000,
+      "page": 282,
+      "text": "6. The Notes on Clauses explains the various provisions of the Bill.",
+      "context": [
+        "trial has been made mandatory for petty and less serious cases. The accused persons may be examined",
+        "through electronic means, like video conferencing. The magisterial system has also been streamlined.",
+        "6. The Notes on Clauses explains the various provisions of the Bill.",
+        " 7. The Bill seeks to achieve the above objectives.",
+        " AMIT SHAH."
+      ]
+    },
+    {
+      "line": 14001,
+      "page": 282,
+      "text": " 7. The Bill seeks to achieve the above objectives.",
+      "context": [
+        "through electronic means, like video conferencing. The magisterial system has also been streamlined.",
+        "6. The Notes on Clauses explains the various provisions of the Bill.",
+        " 7. The Bill seeks to achieve the above objectives.",
+        " AMIT SHAH.",
+        "     NEW DELHI;"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 38,
+      "page": 18,
+      "text": " 1. 1st July, 2024, [except the provisions of the entry relation to Section 106(2) in the first Schedule], vide notification No. S.O.",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 7,
+      "page": 18,
+      "text": "1. Short title, extent and commencement.—(1) This Act may be called the Bharatiya Nagarik",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 23,
+      "page": 18,
+      "text": "2. Definitions.—(1) In this Sanhita, unless the context otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 38,
+      "page": 18,
+      "text": " 1. 1st July, 2024, [except the provisions of the entry relation to Section 106(2) in the first Schedule], vide notification No. S.O.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 106,
+      "page": 20,
+      "text": "3. Construction of references.—(1) Unless the context otherwise requires, any reference in any law,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 119,
+      "page": 20,
+      "text": "4. Trial of offences under Bharatiya Nyaya Sanhita, 2023 and other laws.—(1) All offences under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 125,
+      "page": 20,
+      "text": "5. Saving.—Nothing contained in this Sanhita shall, in the absence of a specific provision to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 131,
+      "page": 21,
+      "text": "6. Classes of Criminal Courts.— Besides the High Courts and the Courts constituted under any law,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 137,
+      "page": 21,
+      "text": "7. Territorial divisions.—(1) Every State shall be a sessions division or shall consist of sessions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 147,
+      "page": 21,
+      "text": "8. Court of Session.—(1) The State Government shall establish a Court of Session for every sessions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 176,
+      "page": 22,
+      "text": "9. Courts of Judicial Magistrates.—(1) In every district there shall be established as many Courts of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 189,
+      "page": 22,
+      "text": "10. Chief Judicial Magistrate and Additional Chief Judicial Magistrate, etc.—(1) In every district,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 201,
+      "page": 22,
+      "text": "11. Special Judicial Magistrates.—(1) The High Court may, if requested by the Central or State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 209,
+      "page": 22,
+      "text": "12. Local Jurisdiction of Judicial Magistrates.—(1) Subject to the control of the High Court, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 223,
+      "page": 23,
+      "text": "13. Subordination of Judicial Magistrates.—(1) Every Chief Judicial Magistrate shall be subordinate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 228,
+      "page": 23,
+      "text": "14. Executive Magistrates.—(1) In every district, the State Government may appoint as many persons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 245,
+      "page": 23,
+      "text": "15. Special Executive Magistrates.—The State Government may appoint, for such term as it may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 250,
+      "page": 23,
+      "text": "16. Local Jurisdiction of Executive.—(1) Subject to the control of the State Government, the District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 255,
+      "page": 23,
+      "text": "17. Subordination of Executive Magistrates.—(1) All Executive Magistrates shall be subordinate to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 263,
+      "page": 24,
+      "text": "18. Public Prosecutors.—(1) For every High Court, the Central Government or the State Government",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 312,
+      "page": 25,
+      "text": "19. Assistant Public Prosecutors.—(1) The State Government shall appoint in every district one or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 326,
+      "page": 25,
+      "text": "20. Directorate of Prosecution.—(1) The State Government may establish,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 369,
+      "page": 26,
+      "text": "21. Courts by which offences are triable.—Subject to the other provisions of this Sanhita,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 381,
+      "page": 26,
+      "text": "22. Sentences which High Courts and Sessions Judges may pass.—(1) A High Court may pass any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 385,
+      "page": 26,
+      "text": "23. Sentences which Magistrates may pass.—(1) The Court of a Chief Judicial Magistrate may pass",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 396,
+      "page": 27,
+      "text": "24. Sentence of imprisonment in default of fine.—(1) The Court of a Magistrate may award such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 405,
+      "page": 27,
+      "text": "25. Sentence in cases of conviction of several offences at one trial.—(1) When a person is convicted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 420,
+      "page": 27,
+      "text": "26. Mode of conferring powers.—(1) In conferring powers under this Sanhita, the High Court or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 425,
+      "page": 27,
+      "text": "27. Powers of officers appointed.—Whenever any person holding an office in the service of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 431,
+      "page": 27,
+      "text": "28. Withdrawal of powers.—(1) The High Court or the State Government, as the case may be, may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 437,
+      "page": 28,
+      "text": "29. Powers of Judges and Magistrates exercisable by their successors-in office.—(1) Subject to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 449,
+      "page": 28,
+      "text": "30. Powers of superior officers of police.—Police officers superior in rank to an officer in charge of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 453,
+      "page": 28,
+      "text": "31. Public when to assist Magistrates and police.—Every person is bound to assist a Magistrate or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 459,
+      "page": 28,
+      "text": "32. Aid to person, other than police officer, executing warrant.—When a warrant is directed to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 462,
+      "page": 28,
+      "text": "33. Public to give information of certain offences.—(1) Every person, aware of the commission of,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 481,
+      "page": 29,
+      "text": "34. Duty of officers employed in connection with affairs of a village to make certain",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 513,
+      "page": 29,
+      "text": "35. When police may arrest without warrant.—(1) Any police officer may without an order from a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 578,
+      "page": 31,
+      "text": "36. Procedure of arrest and duties of officer making arrest.—Every police officer while making an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 590,
+      "page": 31,
+      "text": "37. Designated police officer.—The State Government shall—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 597,
+      "page": 31,
+      "text": "38. Right of arrested person to meet an advocate of his choice during interrogation.—When any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 600,
+      "page": 31,
+      "text": "39. Arrest on refusal to give name and residence.—(1) When any person who, in the presence of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 613,
+      "page": 32,
+      "text": "40. Arrest by private person and procedure on such arrest.—(1) Any private person may arrest or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 625,
+      "page": 32,
+      "text": "41. Arrest by Magistrate.—(1) When any offence is committed in the presence of a Magistrate,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 632,
+      "page": 32,
+      "text": "42. Protection of members of Armed Forces from arrest.—(1) Notwithstanding anything contained",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 641,
+      "page": 32,
+      "text": "43. Arrest how made.—(1) In making an arrest the police officer or other person making the same",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 662,
+      "page": 33,
+      "text": "44. Search of place entered by person sought to be arrested.—(1) If any person acting under a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 682,
+      "page": 33,
+      "text": "45. Pursuit of offenders into other jurisdictions.—A police officer may, for the purpose of arresting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 684,
+      "page": 33,
+      "text": "46. No unnecessary restraint.—The person arrested shall not be subjected to more restraint than is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 686,
+      "page": 33,
+      "text": "47. Person arrested to be informed of grounds of arrest and of right to bail.—(1) Every police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 691,
+      "page": 33,
+      "text": "48. Obligation of person making arrest to inform about arrest, etc., to relative or friend.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 704,
+      "page": 34,
+      "text": "49. Search of arrested person.—(1) Whenever,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 717,
+      "page": 34,
+      "text": "50. Power to seize offensive weapons.—The police officer or other person making any arrest under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 721,
+      "page": 34,
+      "text": "51. Examination of accused by medical practitioner at request of police officer.—(1) When a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 741,
+      "page": 34,
+      "text": "52. Examination of person accused of rape by medical practitioner.—(1) When a person is arrested",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 765,
+      "page": 35,
+      "text": "53. Examination of arrested person by medical officer.—(1) When any person is arrested, he shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 780,
+      "page": 35,
+      "text": "54. Identification of person arrested.—Where a person is arrested on a charge of committing an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 789,
+      "page": 35,
+      "text": "55. Procedure when police officer deputes subordinate to arrest without warrant.—(1) When any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 799,
+      "page": 36,
+      "text": "56. Health and safety of arrested person.—It shall be the duty of the person having the custody of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 801,
+      "page": 36,
+      "text": "57. Person arrested to be taken before Magistrate or officer in charge of police station.—A police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 805,
+      "page": 36,
+      "text": "58. Person arrested not to be detained more than twenty-four hours.—No police officer shall detain",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 811,
+      "page": 36,
+      "text": "59. Police to report apprehensions.— Officers in charge of police stations shall report to the District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 815,
+      "page": 36,
+      "text": "60. Discharge of person apprehended.—No person who has been arrested by a police officer shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 817,
+      "page": 36,
+      "text": "61. Power, on escape, to pursue and retake.—(1) If a person in lawful custody escapes or is rescued,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 822,
+      "page": 36,
+      "text": "62. Arrest to be made strictly according to Sanhita.— No arrest shall be made except in accordance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 827,
+      "page": 36,
+      "text": "63. Form of summons.—Every summons issued by a Court under this Sanhita shall be,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 832,
+      "page": 36,
+      "text": "64. Summons how served.—(1) Every summons shall be served by a police officer, or subject to such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 844,
+      "page": 37,
+      "text": "65. Service of summons on corporate bodies, firms, and societies.—(1) Service of a summons on a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 857,
+      "page": 37,
+      "text": "66. Service when persons summoned cannot be found.—Where the person summoned cannot, by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 862,
+      "page": 37,
+      "text": "67. Procedure when service cannot be effected as before provided.—If service cannot by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 868,
+      "page": 37,
+      "text": "68. Service on Government servant.—(1) Where the person summoned is in the active service of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 874,
+      "page": 37,
+      "text": "69. Service of summons outside local limits.—When a Court desires that a summons issued by it shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 877,
+      "page": 37,
+      "text": "70. Proof of service in such cases and when serving officer not present.—(1) When a summons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 890,
+      "page": 38,
+      "text": "71. Service of summons on witness.—(1) Notwithstanding anything contained in the preceding",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 901,
+      "page": 38,
+      "text": "72. Form of warrant of arrest and duration.—(1) Every warrant of arrest issued by a Court under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 906,
+      "page": 38,
+      "text": "73. Power to direct security to be taken.—(1) Any Court issuing a warrant for the arrest of any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 918,
+      "page": 38,
+      "text": "74. Warrants to whom directed.—(1) A warrant of arrest shall ordinarily be directed to one or more",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 924,
+      "page": 38,
+      "text": "75. Warrant may be directed to any person.—(1) The Chief Judicial Magistrate or a Magistrate of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 934,
+      "page": 39,
+      "text": "76. Warrant directed to police officer.—A warrant directed to any police officer may also be executed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 937,
+      "page": 39,
+      "text": "77. Notification of substance of warrant.—The police officer or other person executing a warrant of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 940,
+      "page": 39,
+      "text": "78. Person arrested to be brought before Court without delay.—The police officer or other person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 947,
+      "page": 39,
+      "text": "79. Where warrant may be executed.—A warrant of arrest may be executed at any place in India.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 948,
+      "page": 39,
+      "text": "80. Warrant forwarded for execution outside jurisdiction.—(1) When a warrant is to be executed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 958,
+      "page": 39,
+      "text": "81. Warrant directed to police officer for execution outside jurisdiction.—(1) When a warrant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 970,
+      "page": 39,
+      "text": "82. Procedure on  arrest of person against whom warrant issued.—(1) When a warrant of arrest is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 980,
+      "page": 40,
+      "text": "83. Procedure by Magistrate before whom such person arrested is brought.—(1) The Executive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 997,
+      "page": 40,
+      "text": "84. Proclamation for person absconding.—(1) If any Court has reason to believe (whether after",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1022,
+      "page": 41,
+      "text": "85. Attachment of property of person absconding.—(1) The Court issuing a proclamation under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1054,
+      "page": 41,
+      "text": "86. Identification and attachment of property of proclaimed person.—The Court may, on the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1059,
+      "page": 41,
+      "text": "87. Claims and objections to attachment.—(1) If any claim is preferred to, or objection made to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1079,
+      "page": 42,
+      "text": "88. Release, sale and restoration of attached property.—(1) If the proclaimed person appears within",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1097,
+      "page": 42,
+      "text": "89. Appeal from order rejecting application for restoration of attached property.—Any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1102,
+      "page": 42,
+      "text": "90. Issue of warrant in lieu of, or in addition to, summons.—A Court may, in any case in which it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1111,
+      "page": 43,
+      "text": "91. Power to take bond or bail bond for appearance.—When any person for whose appearance or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1115,
+      "page": 43,
+      "text": "92. Arrest on breach of bond or bail bond for appearance.—When any person who is bound by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1118,
+      "page": 43,
+      "text": "93. Provisions of this Chapter generally applicable to summons and warrants of arrest.—The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1126,
+      "page": 43,
+      "text": "94. Summons to produce document or other thing.—(1) Whenever any Court or any officer in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1142,
+      "page": 43,
+      "text": "95. Procedure as to letters.—(1) If any document, parcel or thing in the custody of a postal authority",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1154,
+      "page": 44,
+      "text": "96. When search-warrant may be issued.—(1) Where—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1170,
+      "page": 44,
+      "text": "97. Search of place suspected to contain stolen property, forged documents, etc.—(1) If a District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1198,
+      "page": 45,
+      "text": "98. Power to declare certain publications forfeited and to issue search-warrants for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1217,
+      "page": 45,
+      "text": "99. Application to High Court to set aside declaration of forfeiture.—(1) Any person having any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1236,
+      "page": 45,
+      "text": "100. Search for persons wrongfully confined.—If any District Magistrate, Sub-divisional Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1243,
+      "page": 46,
+      "text": "101. Power to compel restoration of abducted females.—Upon complaint made on oath of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1250,
+      "page": 46,
+      "text": "102. Direction, etc., of search-warrants.—The provisions of sections 32, 72, 74, 76, 79, 80 and 81",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1253,
+      "page": 46,
+      "text": "103. Persons in charge of closed place to allow search.—(1) Whenever any place liable to search or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1280,
+      "page": 46,
+      "text": "104. Disposal of things found in search beyond jurisdiction.—When, in the execution of a search-warrant at any place beyond the local jurisdiction of the Court ",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1288,
+      "page": 47,
+      "text": "105. Recording of search and seizure through audio-video electronic means.—The process of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1294,
+      "page": 47,
+      "text": "106. Power of police officer to seize certain property.—(1) Any police officer may seize any property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1312,
+      "page": 47,
+      "text": "107. Attachment, forfeiture or restoration of property.—(1) Where a police officer making an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1344,
+      "page": 48,
+      "text": "108. Magistrate may direct search in his presence.—Any Magistrate may direct a search to be made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1346,
+      "page": 48,
+      "text": "109. Power to impound document, etc., produced.—Any Court may, if it thinks fit, impound any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1349,
+      "page": 48,
+      "text": "110. Reciprocal arrangements regarding processes.—(1) Where a Court in the territories to which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1392,
+      "page": 49,
+      "text": "111. Definitions.—In this Chapter, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1407,
+      "page": 49,
+      "text": "112. Letter of request to competent authority for investigation in a country or place outside",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1421,
+      "page": 50,
+      "text": "113. Letter of request from a country or place outside India to a Court or an authority for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1437,
+      "page": 50,
+      "text": "114. Assistance in securing transfer of persons.—(1) Where a Court in India, in relation to a criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1461,
+      "page": 50,
+      "text": "115. Assistance in relation to orders of attachment or forfeiture of property.—(1) Where a Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1476,
+      "page": 51,
+      "text": "116. Identifying unlawfully acquired property.—(1) The Court shall, under sub-section (1), or on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1485,
+      "page": 51,
+      "text": "117. Seizure or attachment of property.—(1) Where any officer conducting an inquiry or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1494,
+      "page": 51,
+      "text": "118. Management of properties seized or forfeited under this Chapter.—(1) The Court may appoint",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1502,
+      "page": 51,
+      "text": "119. Notice of forfeiture of property.—(1) If as a result of the inquiry, investigation or survey under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1512,
+      "page": 52,
+      "text": "120. Forfeiture of property in certain cases.—(1) The Court may, after considering the explanation,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1532,
+      "page": 52,
+      "text": "121. Fine in lieu of forfeiture.—(1) Where the Court makes a declaration that any property stands",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1541,
+      "page": 52,
+      "text": "122. Certain transfers to be null and void.—Where after the making of an order under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1546,
+      "page": 52,
+      "text": "123. Procedure in respect of letter of request.—Every letter of request, summons or warrant, received",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1551,
+      "page": 52,
+      "text": "124. Application of this Chapter.—The Central Government may, by notification in the Official",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1558,
+      "page": 53,
+      "text": "125. Security for keeping peace on conviction.—(1) When a Court of Session or Court of a Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1577,
+      "page": 53,
+      "text": "126. Security for keeping peace in other cases.—(1) When an Executive Magistrate receives",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1587,
+      "page": 53,
+      "text": "127. Security for good behaviour from persons disseminating certain matters.—(1) When an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1610,
+      "page": 54,
+      "text": "128. Security for good behaviour from suspected persons.—When an Executive Magistrate receives",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1617,
+      "page": 54,
+      "text": "129. Security for good behaviour from habitual offenders.—When an Executive Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1646,
+      "page": 55,
+      "text": "130. Order to be made.—When a Magistrate acting under section 126, section 127, section 128 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1651,
+      "page": 55,
+      "text": "131. Procedure in respect of person present in Court.—If the person in respect of whom such order",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1654,
+      "page": 55,
+      "text": "132. Summons or warrant in case of person not so present.—If such person is not present in Court,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1663,
+      "page": 55,
+      "text": "133. Copy of order to accompany summons or warrant.—Every summons or warrant issued under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1667,
+      "page": 55,
+      "text": "134. Power to dispense with personal attendance.—The Magistrate may, if he sees sufficient cause,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1670,
+      "page": 55,
+      "text": "135. Inquiry as to truth of information.—(1) When an order under section 130 has been read or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1707,
+      "page": 56,
+      "text": "136. Order to give security.—If, upon such inquiry, it is proved that it is necessary for keeping the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1717,
+      "page": 56,
+      "text": "137. Discharge of person informed against.—If, on an inquiry under section 135, it is not proved that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1722,
+      "page": 56,
+      "text": "138. Commencement of period for which security is required.—(1) If any person, in respect of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1728,
+      "page": 56,
+      "text": "139. Contents of bond.—The bond or bail bond to be executed by any such person shall bind him to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1733,
+      "page": 57,
+      "text": "140. Power to reject sureties.— (1) A Magistrate may refuse to accept any surety offered, or may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1750,
+      "page": 57,
+      "text": "141. Imprisonment in default of security.—(1) (a) If any person ordered to give security under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1786,
+      "page": 58,
+      "text": "142. Power to release persons imprisoned for failing to give security.— (1) Whenever the District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1831,
+      "page": 59,
+      "text": "143. Security for unexpired period of bond.—(1) When a person for whose appearance a summons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1840,
+      "page": 59,
+      "text": "144. Order for maintenance of wives, children and parents.—(1) If any person having sufficient",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1892,
+      "page": 60,
+      "text": "145. Procedure.— (1) Proceedings under section 144 may be taken against any person in any district—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1909,
+      "page": 60,
+      "text": "146. Alteration in allowance.—(1) On proof of a change in the circumstances of any person, receiving,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1938,
+      "page": 61,
+      "text": "147. Enforcement of order of maintenance.—A copy of the order of maintenance or interim",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1948,
+      "page": 61,
+      "text": "148. Dispersal of assembly by use of civil force.—(1) Any Executive Magistrate or officer in charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1959,
+      "page": 61,
+      "text": "149. Use of armed forces to disperse assembly.—(1) If any assembly referred to in sub-section (1) of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1971,
+      "page": 62,
+      "text": "150. Power of certain armed force officers to disperse assembly.—When the public security is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1980,
+      "page": 62,
+      "text": "151. Protection against prosecution for acts done under sections 148, 149 and 150.—(1) No",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2002,
+      "page": 62,
+      "text": "152. Conditional order for removal of nuisance.—(1) Whenever a District Magistrate or a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2043,
+      "page": 63,
+      "text": "153. Service or notification of order.—(1) The order shall, if practicable, be served on the person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2048,
+      "page": 63,
+      "text": "154. Person to whom order is addressed to obey or show cause.—The person against whom such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2054,
+      "page": 64,
+      "text": "155. Penalty for failure to comply with section 154.—If the person against whom an order is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2058,
+      "page": 64,
+      "text": "156. Procedure where existence of public right is denied.— (1) Where an order is made under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2072,
+      "page": 64,
+      "text": "157. Procedure where person against whom order is made under section 152 appears to show",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2082,
+      "page": 64,
+      "text": "158. Power of Magistrate to direct local investigation and examination of an expert.—The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2086,
+      "page": 64,
+      "text": "159. Power of Magistrate to furnish written instructions, etc.—(1) Where the Magistrate directs a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2095,
+      "page": 65,
+      "text": "160. Procedure on order being made absolute and consequences of disobedience.—(1) When an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2107,
+      "page": 65,
+      "text": "161. Injunction pending inquiry.—(1) If a Magistrate making an order under section 152 considers",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2115,
+      "page": 65,
+      "text": "162. Magistrate may prohibit repetition or Continuance of public nuisance.—A District Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2121,
+      "page": 65,
+      "text": "163. Power to issue order in urgent cases of nuisance or apprehended danger.— (1) In cases where,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2153,
+      "page": 66,
+      "text": "164. Procedure where dispute concerning land or water is likely to cause breach of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2200,
+      "page": 67,
+      "text": "165. Power to attach subject of dispute and to appoint receiver.— (1) If the Magistrate at any time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2220,
+      "page": 67,
+      "text": "166. Dispute concerning right of use of land or water.— (1) Whenever an Executive Magistrate is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2248,
+      "page": 68,
+      "text": "167. Local inquiry.—(1) Whenever a local inquiry is necessary for the purposes of section 164, section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2262,
+      "page": 68,
+      "text": "168. Police to prevent cognizable offences.—Every police officer may interpose for the purpose of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2264,
+      "page": 68,
+      "text": "169. Information of design to commit cognizable offences.—Every police officer receiving",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2268,
+      "page": 68,
+      "text": "170. Arrest to prevent commission of cognizable offences.— (1) A police officer knowing of a design",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2275,
+      "page": 68,
+      "text": "171. Prevention of injury to public property.—A police officer may of his own authority interpose",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2278,
+      "page": 68,
+      "text": "172. Persons bound to conform to lawful directions of police.— (1) All persons shall be bound to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2286,
+      "page": 69,
+      "text": "173. Information in cognizable cases.—(1) Every information relating to the commission of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2330,
+      "page": 70,
+      "text": "174. Information as to non-cognizable cases and investigation of such cases.—(1) When",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2345,
+      "page": 70,
+      "text": "175. Police officer’s power to investigate cognizable case.—(1) Any officer in charge of a police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2362,
+      "page": 70,
+      "text": "176. Procedure for investigation.—(1) If, from information received or otherwise, an officer in charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2394,
+      "page": 71,
+      "text": "177. Report how submitted.—(1) Every report sent to a Magistrate under section 176 shall, if the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2400,
+      "page": 71,
+      "text": "178. Power to hold investigation or preliminary inquiry.—The Magistrate, on receiving a report",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2404,
+      "page": 71,
+      "text": "179. Police officer's power to require attendance of witnesses.—(1) Any police officer making an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2418,
+      "page": 72,
+      "text": "180. Examination of witnesses by police.—(1) Any police officer making an investigation under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2435,
+      "page": 72,
+      "text": "181. Statements to police and use thereof.—(1) No statement made by any person to a police officer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2453,
+      "page": 72,
+      "text": "182. No inducement to be offered.—(1) No police officer or other person in authority shall offer or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2461,
+      "page": 73,
+      "text": "183. Recording of confessions and statements.—(1) Any Magistrate of the District in which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2513,
+      "page": 74,
+      "text": "184. Medical examination of victim of rape.—(1) Where, during the stage when an offence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2542,
+      "page": 74,
+      "text": "185. Search by police officer.—(1) Whenever an officer in charge of a police station or a police officer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2566,
+      "page": 75,
+      "text": "186. When officer in charge of police station may require another to issue search-warrant.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2585,
+      "page": 75,
+      "text": "187. Procedure when investigation cannot be completed in twenty-four hours.—(1) Whenever any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2660,
+      "page": 77,
+      "text": "188. Report of investigation by subordinate police officer.—When any subordinate police officer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2663,
+      "page": 77,
+      "text": "189. Release of accused when evidence deficient.—If, upon an investigation under this Chapter, it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2669,
+      "page": 77,
+      "text": "190. Cases to be sent to Magistrate, when evidence is sufficient.—(1) If, upon an investigation under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2692,
+      "page": 78,
+      "text": "191. Complainant and witnesses not to be required to accompany police officer and not to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2699,
+      "page": 78,
+      "text": "192. Diary of proceedings in investigation.—(1) Every police officer making an investigation under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2714,
+      "page": 78,
+      "text": "193. Report of police officer on completion of investigation.—(1) Every investigation under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2775,
+      "page": 80,
+      "text": "194. Police to enquire and report on suicide, etc.—(1) When the officer in charge of a police station",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2805,
+      "page": 80,
+      "text": "195. Power to summon persons.—(1) A police officer proceeding under section 194 may, by order in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2818,
+      "page": 81,
+      "text": "196. Inquiry by Magistrate into cause of death.—(1) When the case is of the nature referred to in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2847,
+      "page": 81,
+      "text": "197. Ordinary place of inquiry and trial.—Every offence shall ordinarily be inquired into and tried",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2849,
+      "page": 81,
+      "text": "198. Place of inquiry or trial.—(a) When it is uncertain in which of several local areas an offence was",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2856,
+      "page": 81,
+      "text": "199. Offence triable where act is done or consequence ensues.—When an act is an offence by reason",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2861,
+      "page": 82,
+      "text": "200. Place of trial where act is an offence by reason of relation to other offence.—When an act is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2865,
+      "page": 82,
+      "text": "201. Place of trial in case of certain offences.—(1) Any offence of dacoity, or of dacoity with murder,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2882,
+      "page": 82,
+      "text": "202. Offences committed by means of electronic communications, letters, etc.—(1) Any offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2892,
+      "page": 82,
+      "text": "203. Offence committed on journey or voyage.—When an offence is committed whilst the person by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2896,
+      "page": 82,
+      "text": "204. Place of trial for offences triable together.—Where—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2902,
+      "page": 82,
+      "text": "205. Power to order cases to be tried in different sessions divisions.—Notwithstanding anything",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2908,
+      "page": 83,
+      "text": "206. High Court to decide, in case of doubt, district where inquiry or trial shall take place.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2915,
+      "page": 83,
+      "text": "207. Power to issue summons or warrant for offence committed beyond local jurisdiction.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2930,
+      "page": 83,
+      "text": "208. Offence committed outside India.—When an offence is committed outside India—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2937,
+      "page": 83,
+      "text": "209. Receipt of evidence relating to offences committed outside India.—When any offence alleged",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2946,
+      "page": 83,
+      "text": "210. Cognizance of offences by Magistrate.—(1) Subject to the provisions of this Chapter, any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2957,
+      "page": 84,
+      "text": "211. Transfer on application of accused.—When a Magistrate takes cognizance of an offence under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2963,
+      "page": 84,
+      "text": "212. Making over of cases to Magistrates.—(1) Any Chief Judicial Magistrate may, after taking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2971,
+      "page": 84,
+      "text": "213. Cognizance of offences by Court of Session.—Except as otherwise expressly provided by this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2975,
+      "page": 84,
+      "text": "214. Additional Sessions Judges to try cases made over to them.—An Additional Sessions Judge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2978,
+      "page": 84,
+      "text": "215. Prosecution for contempt of lawful authority of public servants, for offences against public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2999,
+      "page": 85,
+      "text": "216. Procedure for witnesses in case of threatening, etc.—A witness or any other person may file a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3001,
+      "page": 85,
+      "text": "217. Prosecution for offences against State and for criminal conspiracy to commit such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3026,
+      "page": 85,
+      "text": "218. Prosecution of Judges and public servants.—(1) When any person who is or was a Judge or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3065,
+      "page": 86,
+      "text": "219. Prosecution for offences against marriage.—(1) No Court shall take cognizance of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3102,
+      "page": 87,
+      "text": "220. Prosecution of offences under section 85 of Bharatiya Nyaya Sanhita, 2023.— No Court shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3108,
+      "page": 87,
+      "text": "221. Cognizance of offence.— No Court shall take cognizance of an offence punishable under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3112,
+      "page": 87,
+      "text": "222. Prosecution for defamation.—(1) No Court shall take cognizance of an offence punishable under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3144,
+      "page": 88,
+      "text": "223. Examination of complainant.—(1) A Magistrate having jurisdiction while taking cognizance of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3165,
+      "page": 88,
+      "text": "224. Procedure by Magistrate not competent to take cognizance of case.—If the complaint is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3170,
+      "page": 88,
+      "text": "225. Postponement of issue of process.—(1) Any Magistrate, on receipt of a complaint of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3189,
+      "page": 89,
+      "text": "226. Dismissal of complaint.—If, after considering the statements on oath (if any) of the complainant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3196,
+      "page": 89,
+      "text": "227. Issue of process.—(1) If in the opinion of a Magistrate taking cognizance of an offence there is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3211,
+      "page": 89,
+      "text": "228. Magistrate may dispense with personal attendance of accused.—(1) Whenever a Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3217,
+      "page": 89,
+      "text": "229. Special summons in cases of petty offence.—(1) If, in the opinion of a Magistrate taking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3238,
+      "page": 90,
+      "text": "230. Supply to accused of copy of police report and other documents.—In any case where the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3259,
+      "page": 90,
+      "text": "231. Supply of copies of statements and documents to accused in other cases triable by Court of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3272,
+      "page": 91,
+      "text": "232. Commitment of case to Court of Session when offence is triable exclusively by it.—When in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3290,
+      "page": 91,
+      "text": "233. Procedure to be followed when there is a complaint case and police investigation in respect",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3307,
+      "page": 92,
+      "text": "234. Contents of charge.—(1) Every charge under this Sanhita shall state the offence with which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3342,
+      "page": 92,
+      "text": "235. Particulars as to time, place and person.—(1) The charge shall contain such particulars as to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3354,
+      "page": 93,
+      "text": "236. When manner of committing offence must be stated.—When the nature of the case is such that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3373,
+      "page": 93,
+      "text": "237. Words in charge taken in sense of law under which offence is punishable.—In every charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3376,
+      "page": 93,
+      "text": "238. Effect of errors.—No error in stating either the offence or the particulars required to be stated in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3403,
+      "page": 94,
+      "text": "239. Court may alter charge.—(1) Any Court may alter or add to any charge at any time before",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3418,
+      "page": 94,
+      "text": "240. Recall of witnesses when charge altered.—Whenever a charge is altered or added to by the Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3426,
+      "page": 94,
+      "text": "241. Separate charges for distinct offences.—(1) For every distinct offence of which any person is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3437,
+      "page": 95,
+      "text": "242. Offences of same kind within year may be charged together.— (1) When a person is accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3448,
+      "page": 95,
+      "text": "243. Trial for more than one offence.—(1) If, in one series of acts so connected together as to form",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3473,
+      "page": 95,
+      "text": "2023. A may be separately charged with, and convicted of, the possession of each seal under",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 3511,
+      "page": 96,
+      "text": "244. Where it is doubtful what offence has been committed.—(1) If a single act or series of acts is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3532,
+      "page": 97,
+      "text": "245. When offence proved included in offence charged.—(1) When a person is charged with an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3552,
+      "page": 97,
+      "text": "246. What persons may be charged jointly.—The following persons may be charged and tried",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3577,
+      "page": 98,
+      "text": "247. Withdrawal of remaining charges on conviction on one of several charges.—When a charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3588,
+      "page": 98,
+      "text": "248. Trial to be conducted by Public Prosecutor.—In every trial before a Court of Session, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3590,
+      "page": 98,
+      "text": "249. Opening case for prosecution.—When the accused appears or is brought before the Court, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3594,
+      "page": 98,
+      "text": "250. Discharge.—(1) The accused may prefer an application for discharge within a period of sixty days",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3600,
+      "page": 98,
+      "text": "251. Framing of charge.—(1) If, after such consideration and hearing as aforesaid, the Judge is of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3612,
+      "page": 98,
+      "text": "252. Conviction on plea of guilty.—If the accused pleads guilty, the Judge shall record the plea and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3615,
+      "page": 99,
+      "text": "253. Date for prosecution evidence.—If the accused refuses to plead, or does not plead, or claims to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3619,
+      "page": 99,
+      "text": "254. Evidence for prosecution.— (1) On the date so fixed, the Judge shall proceed to take all such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3627,
+      "page": 99,
+      "text": "255. Acquittal.—If, after taking the evidence for the prosecution, examining the accused and hearing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3631,
+      "page": 99,
+      "text": "256. Entering upon defence.—(1) Where the accused is not acquitted under section 255, he shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3638,
+      "page": 99,
+      "text": "257. Arguments.—When the examination of the witnesses (if any) for the defence is complete, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3642,
+      "page": 99,
+      "text": "258. Judgment of acquittal or conviction.—(1) After hearing arguments and points of law (if any),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3648,
+      "page": 99,
+      "text": "259. Previous conviction.— In a case where a previous conviction is charged under the provisions of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3655,
+      "page": 99,
+      "text": "260. Procedure in cases instituted under sub-section (2) of section 222.—(1) A Court of Session",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3690,
+      "page": 100,
+      "text": "261. Compliance with section 230.—When, in any warrant-case instituted on a police report, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3693,
+      "page": 100,
+      "text": "262. When accused shall be discharged.—(1) The accused may prefer an application for discharge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3700,
+      "page": 100,
+      "text": "263. Framing of charge.—(1) If, upon such consideration, examination, if any, and hearing, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3708,
+      "page": 101,
+      "text": "264. Conviction on plea of guilty.— If the accused pleads guilty, the Magistrate shall record the plea",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3710,
+      "page": 101,
+      "text": "265. Evidence for prosecution.—(1) If the accused refuses to plead or does not plead, or claims to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3724,
+      "page": 101,
+      "text": "266. Evidence for defence.—(1) The accused shall then be called upon to enter upon his defence and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3741,
+      "page": 101,
+      "text": "267. Evidence for prosecution.—(1) When, in any warrant-case instituted otherwise than on a police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3746,
+      "page": 101,
+      "text": "268. When accused shall be discharged.—(1) If, upon taking all the evidence referred to in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3753,
+      "page": 102,
+      "text": "269. Procedure where accused is not discharged.—(1) If, when such evidence has been taken, or at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3775,
+      "page": 102,
+      "text": "270. Evidence for defence.—The accused shall then be called upon to enter upon his defence and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3778,
+      "page": 102,
+      "text": "271. Acquittal or conviction.—(1) If, in any case under this Chapter in which a charge has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3789,
+      "page": 102,
+      "text": "272. Absence of complainant.—When the proceedings have been instituted upon complaint, and on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3795,
+      "page": 103,
+      "text": "273. Compensation for accusation without reasonable cause.—(1) If, in any case instituted upon",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3831,
+      "page": 103,
+      "text": "274. Substance of accusation to be stated.—When in a summons-case the accused appears or is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3838,
+      "page": 104,
+      "text": "275. Conviction on plea of guilty.—If the accused pleads guilty, the Magistrate shall record the plea",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3840,
+      "page": 104,
+      "text": "276. Conviction on plea of guilty in absence of accused in petty cases.—(1) Where a summons has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3849,
+      "page": 104,
+      "text": "277. Procedure when not convicted.—(1) If the Magistrate does not convict the accused under section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3858,
+      "page": 104,
+      "text": "278. Acquittal or conviction.—(1) If the Magistrate, upon taking the evidence referred to in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3867,
+      "page": 104,
+      "text": "279. Non-appearance or death of complainant.—(1) If the summons has been issued on complaint,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3877,
+      "page": 104,
+      "text": "280. Withdrawal of complaint.—If a complainant, at any time before a final order is passed in any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3882,
+      "page": 104,
+      "text": "281. Power to stop proceedings in certain cases.—In any summons-case instituted otherwise than",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3889,
+      "page": 105,
+      "text": "282. Power of Court to convert summonscases into warrant-cases.—When in the course of the trial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3897,
+      "page": 105,
+      "text": "283. Power to try summarily.—(1) Notwithstanding anything contained in this Sanhita—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3924,
+      "page": 105,
+      "text": "284. Summary trial by Magistrate of second class.—The High Court may confer on any Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3929,
+      "page": 106,
+      "text": "285. Procedure for summary trials.—(1) In trials under this Chapter, the procedure specified in this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3933,
+      "page": 106,
+      "text": "286. Record in summary trials.—In every case tried summarily, the Magistrate shall enter, in such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3948,
+      "page": 106,
+      "text": "287. Judgment in cases tried summarily.—In every case tried summarily in which the accused does",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3951,
+      "page": 106,
+      "text": "288. Language of record and judgment.—(1) Every such record and judgment shall be written in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3958,
+      "page": 106,
+      "text": "289. Application of Chapter.—(1) This Chapter shall apply in respect of an accused against whom—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3973,
+      "page": 107,
+      "text": "290. Application for plea bargaining.—(1) A person accused of an offence may file an application",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3996,
+      "page": 107,
+      "text": "291. Guidelines for mutually satisfactory disposition.—In working out a mutually satisfactory",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4015,
+      "page": 108,
+      "text": "292. Report of mutually satisfactory disposition to be submitted before Court.—Where in a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4021,
+      "page": 108,
+      "text": "293. Disposal of case.—Where a satisfactory disposition of the case has been worked out under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4043,
+      "page": 108,
+      "text": "294. Judgment of Court.—The Court shall deliver its judgment in terms of section 293 in the open",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4045,
+      "page": 108,
+      "text": "295. Finality of judgment.—The judgment delivered by the Court under this section shall be final and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4048,
+      "page": 108,
+      "text": "296. Power of Court in plea bargaining.—A Court shall have, for the purposes of discharging its",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4051,
+      "page": 108,
+      "text": "297. Period of detention undergone by accused to be set off against sentence of imprisonment.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4055,
+      "page": 108,
+      "text": "298. Savings.—The provisions of this Chapter shall have effect notwithstanding anything inconsistent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4062,
+      "page": 109,
+      "text": "299. Statements of accused not to be used.—Notwithstanding anything contained in any law for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4065,
+      "page": 109,
+      "text": "300. Non-application of Chapter.—Nothing in this Chapter shall apply to any juvenile or child as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4069,
+      "page": 109,
+      "text": "301. Definitions.—In this Chapter,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4076,
+      "page": 109,
+      "text": "302. Power to require attendance of prisoners.—(1) Whenever, in the course of an inquiry, trial or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4089,
+      "page": 109,
+      "text": "303. Power of State Government or Central Government to exclude certain persons from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4105,
+      "page": 110,
+      "text": "304. Officer in charge of prison to abstain from carrying out order in certain",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4120,
+      "page": 110,
+      "text": "305. Prisoner to be brought to Court in custody.—Subject to the provisions of section 304, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4127,
+      "page": 110,
+      "text": "306. Power to issue commission for examination of witness in prison.—The provisions of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4135,
+      "page": 110,
+      "text": "307. Language of Courts.— The State Government may determine what shall be, for purposes of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4137,
+      "page": 110,
+      "text": "308. Evidence to be taken in presence of accused.—Except as otherwise expressly provided, all",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4148,
+      "page": 111,
+      "text": "309. Record in summonscases and inquiries.— (1) In all summons-cases tried before a Magistrate,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4156,
+      "page": 111,
+      "text": "310. Record in warrant-cases.— (1) In all warrant-cases tried before a Magistrate, the evidence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4169,
+      "page": 111,
+      "text": "311. Record in trial before Court of Session.—(1) In all trials before a Court of Session, the evidence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4177,
+      "page": 111,
+      "text": "312. Language of record of evidence.—In every case where evidence is taken down under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4192,
+      "page": 112,
+      "text": "313. Procedure in regard to such evidence when completed.—(1) As the evidence of each witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4202,
+      "page": 112,
+      "text": "314. Interpretation of evidence to accused or his advocate.—(1) Whenever any evidence is given in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4210,
+      "page": 112,
+      "text": "315. Remarks respecting demeanour of witness.—When a presiding Judge or Magistrate has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4213,
+      "page": 112,
+      "text": "316. Record of examination of accused.—(1) Whenever the accused is examined by any Magistrate,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4230,
+      "page": 112,
+      "text": "317. Interpreter to be bound to interpret truthfully.—When the services of an interpreter are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4234,
+      "page": 113,
+      "text": "318. Record in High Court.—Every High Court may, by general rule, prescribe the manner in which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4238,
+      "page": 113,
+      "text": "319. When attendance of witness may be dispensed with and commission issued.—(1) Whenever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4251,
+      "page": 113,
+      "text": "320. Commission to whom to be issued.—(1) If the witness is within the territories to which this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4261,
+      "page": 113,
+      "text": "321. Execution of commissions.—Upon receipt of the commission, the Chief Judicial Magistrate or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4265,
+      "page": 113,
+      "text": "322. Parties may examine witnesses.—(1) The parties to any proceeding under this Sanhita in which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4272,
+      "page": 113,
+      "text": "323. Return of commission.—(1) After any commission issued under section 319 has been duly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4281,
+      "page": 114,
+      "text": "324. Adjournment of proceeding.—In every case in which a commission is issued under section 319,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4284,
+      "page": 114,
+      "text": "325. Execution of foreign commissions.—(1) The provisions of section 321 and so much of section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4296,
+      "page": 114,
+      "text": "326. Deposition of medical witness.—(1) The deposition of a civil surgeon or other medical witness,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4302,
+      "page": 114,
+      "text": "327. Identification report of Magistrate.—(1) Any document purporting to be a report of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4312,
+      "page": 114,
+      "text": "328. Evidence of officers of Mint.—(1) Any document purporting to be a report under the hand of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4333,
+      "page": 115,
+      "text": "329. Reports of certain Government scientific experts.— (1) Any document purporting to be a report",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4354,
+      "page": 115,
+      "text": "330. No formal proof of certain documents.—(1) Where any document is filed before any Court by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4367,
+      "page": 115,
+      "text": "331. Affidavit in proof of conduct of public servants.—When any application is made to any Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4372,
+      "page": 116,
+      "text": "332. Evidence of formal character on affidavit.—(1) The evidence of any person whose evidence is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4377,
+      "page": 116,
+      "text": "333. Authorities before whom affidavits may be sworn.—(1) Affidavits to be used before any Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4388,
+      "page": 116,
+      "text": "334. Previous conviction or acquittal how proved.—In any inquiry, trial or other proceeding under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4397,
+      "page": 116,
+      "text": "335. Record of evidence in absence of accused.—(1) If it is proved that an accused person has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4410,
+      "page": 116,
+      "text": "336. Evidence of public servants, experts, police officers in certain cases.—Where any document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4427,
+      "page": 117,
+      "text": "337. Person once convicted or acquitted not to be tried for same offence.—(1) A person who has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4468,
+      "page": 118,
+      "text": "338. Appearance by Public Prosecutors.—(1) The Public Prosecutor or Assistant Public Prosecutor",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4477,
+      "page": 118,
+      "text": "339. Permission to conduct prosecution.—(1) Any Magistrate inquiring into or trying a case may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4484,
+      "page": 118,
+      "text": "340. Right of person against whom proceedings are instituted to be defended.— Any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4487,
+      "page": 118,
+      "text": "341. Legal aid to accused at State expense in certain cases.—(1) Where, in a trial or appeal before a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4500,
+      "page": 118,
+      "text": "342. Procedure when corporation or registered society is an accused.—(1) In this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4522,
+      "page": 119,
+      "text": "343. Tender of pardon to accomplice.—(1) With a view to obtaining the evidence of any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4553,
+      "page": 120,
+      "text": "344. Power to direct tender of pardon.—At any time after commitment of a case but before judgment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4557,
+      "page": 120,
+      "text": "345. Trial of person not complying with conditions of pardon.—(1) Where, in regard to a person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4584,
+      "page": 120,
+      "text": "346. Power to postpone or adjourn proceedings.—(1) In every inquiry or trial the proceedings shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4620,
+      "page": 121,
+      "text": "347. Local inspection.—(1) Any Judge or Magistrate may, at any stage of any inquiry, trial or other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4628,
+      "page": 121,
+      "text": "348. Power to summon material witness, or examine person present.—Any Court may, at any stage",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4633,
+      "page": 121,
+      "text": "349. Power of Magistrate to order person to give specimen signatures or handwriting, etc.—If a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4644,
+      "page": 122,
+      "text": "350. Expenses of complainants and witnesses.—Subject to any rules made by the State Government,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4648,
+      "page": 122,
+      "text": "351. Power to examine accused.—(1) In every inquiry or trial, for the purpose of enabling the accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4666,
+      "page": 122,
+      "text": "352. Oral arguments and memorandum of arguments.—(1) Any party to a proceeding may, as soon",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4675,
+      "page": 122,
+      "text": "353. Accused person to be competent witness.—(1) Any person accused of an offence before a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4691,
+      "page": 123,
+      "text": "354. No influence to be used to induce disclosure.—Except as provided in sections 343 and 344, no",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4694,
+      "page": 123,
+      "text": "355. Provision for inquiries and trial being held in absence of accused in certain cases.—(1) At",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4707,
+      "page": 123,
+      "text": "356. Inquiry, trial or judgment in absentia of proclaimed offender.—(1) Notwithstanding anything",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4749,
+      "page": 124,
+      "text": "357. Procedure where accused does not understand proceedings.—If the accused, though not a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4754,
+      "page": 124,
+      "text": "358. Power to proceed against other persons appearing to be guilty of offence.—(1) Where, in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4768,
+      "page": 125,
+      "text": "359. Compounding of offences.—(1) The offences punishable under the sections of the Bharatiya",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5064,
+      "page": 129,
+      "text": "360. Withdrawal from prosecution.—The Public Prosecutor or Assistant Public Prosecutor in charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5086,
+      "page": 129,
+      "text": "361. Procedure in cases which Magistrate cannot dispose of.—(1) If, in the course of any inquiry",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5098,
+      "page": 130,
+      "text": "362. Procedure when after commencement of inquiry or trial, Magistrate finds case should be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5103,
+      "page": 130,
+      "text": "363. Trial of persons previously convicted of offences against coinage, stamp-law or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5117,
+      "page": 130,
+      "text": "364. Procedure when Magistrate cannot pass sentence sufficiently severe.—(1) Whenever a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5131,
+      "page": 130,
+      "text": "365. Conviction or commitment on evidence partly recorded by one Magistrate and partly by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5146,
+      "page": 131,
+      "text": "366. Court to be open.—(1) The place in which any Criminal Court is held for the purpose of inquiring",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5167,
+      "page": 131,
+      "text": "367. Procedure in case of accused being person of unsound mind.—(1) When a Magistrate holding",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5202,
+      "page": 132,
+      "text": "368. Procedure in case of person of unsound mind tried before Court.—(1) If at the trial of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5231,
+      "page": 133,
+      "text": "369. Release of person of unsound mind pending investigation or trial.—(1) Whenever a person if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5260,
+      "page": 133,
+      "text": "370. Resumption of inquiry or trial.—(1) Whenever an inquiry or a trial is postponed under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5267,
+      "page": 133,
+      "text": "371. Procedure on accused appearing before Magistrate or Court.—(1) If, when the accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5274,
+      "page": 133,
+      "text": "372. When accused appears to have been of sound mind.—When the accused appears to be of sound",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5282,
+      "page": 134,
+      "text": "373. Judgment of acquittal on ground of unsoundness of mind.—Whenever any person is acquitted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5286,
+      "page": 134,
+      "text": "374. Person acquitted on ground of unsoundness of mind to be detained in safe custody.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5304,
+      "page": 134,
+      "text": "375. Power of State Government to empower officer in charge to discharge.—The State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5308,
+      "page": 134,
+      "text": "376. Procedure where prisoner of unsound mind is reported capable of making his defence.—If",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5316,
+      "page": 134,
+      "text": "377. Procedure where person of unsound mind detained is declared fit to be released.—(1) If a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5327,
+      "page": 135,
+      "text": "378. Delivery of person of unsound mind to care of relative or friend.—(1) Whenever any relative",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5347,
+      "page": 135,
+      "text": "379. Procedure in cases mentioned in section 215.—(1) When, upon an application made to it in this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5371,
+      "page": 136,
+      "text": "380. Appeal.—(1) Any person on whose application any Court other than a High Court has refused to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5380,
+      "page": 136,
+      "text": "381. Power to order costs.—Any Court dealing with an application made to it for filing a complaint",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5384,
+      "page": 136,
+      "text": "382. Procedure of Magistrate taking cognizance.—(1) A Magistrate to whom a complaint is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5391,
+      "page": 136,
+      "text": "383. Summary procedure for trial for giving false evidence.—(1) If, at the time of delivery of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5411,
+      "page": 136,
+      "text": "384. Procedure in certain cases of contempt.—(1) When any such offence as is described",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5425,
+      "page": 137,
+      "text": "385. Procedure where Court considers that case should not be dealt with under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5437,
+      "page": 137,
+      "text": "386. When Registrar or Sub-Registrar to be deemed a Civil Court.—When the State Government",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5440,
+      "page": 137,
+      "text": "387. Discharge of offender on submission of apology.—When any Court has under section 384",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5445,
+      "page": 137,
+      "text": "388. Imprisonment or committal of person refusing to answer or produce document.—If any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5454,
+      "page": 137,
+      "text": "389. Summary procedure for punishment for non-attendance by a witness in obedience to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5465,
+      "page": 138,
+      "text": "390. Appeals from convictions under sections 383, 384, 388 and 389.—(1) Any person sentenced by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5478,
+      "page": 138,
+      "text": "391. Certain Judges and Magistrates not to try certain offences when committed before",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5485,
+      "page": 138,
+      "text": "392. Judgment.—(1) The judgment in every trial in any Criminal Court of original jurisdiction shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5519,
+      "page": 139,
+      "text": "393. Language and contents of judgment.—(1) Except as otherwise expressly provided by this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5545,
+      "page": 139,
+      "text": "394. Order for notifying address of previously convicted offender.—(1) When any person, having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5563,
+      "page": 140,
+      "text": "395. Order to pay compensation.—(1) When a Court imposes a sentence of fine or a sentence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5590,
+      "page": 140,
+      "text": "396. Victim compensation scheme.—(1) Every State Government in co-ordination with the Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5614,
+      "page": 141,
+      "text": "397. Treatment of victims.—All hospitals, public or private, whether run by the Central Government,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5620,
+      "page": 141,
+      "text": "398. Witness protection scheme.—Every State Government shall prepare and notify a Witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5622,
+      "page": 141,
+      "text": "399. Compensation to persons groundlessly arrested.—(1) Whenever any person causes a police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5632,
+      "page": 141,
+      "text": "400. Order to pay costs in non-cognizable cases.—(1) Whenever any complaint of a non-cognizable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5640,
+      "page": 141,
+      "text": "401. Order to release on probation of good conduct or after admonition.—(1) When any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5693,
+      "page": 143,
+      "text": "402. Special reasons to be recorded in certain cases.—Where in any case the Court could have dealt",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5701,
+      "page": 143,
+      "text": "403. Court not to alter judgment.—Save as otherwise provided by this Sanhita or by any other law",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5705,
+      "page": 143,
+      "text": "404. Copy of judgment to be given to accused and other persons.—(1) When the accused is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5728,
+      "page": 143,
+      "text": "405. Judgment when to be translated.—The original judgment shall be filed with the record of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5732,
+      "page": 144,
+      "text": "406. Court of Session to send copy of finding and sentence to District Magistrate.—In cases tried",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5738,
+      "page": 144,
+      "text": "407. Sentence of death to be submitted by Court of Session for confirmation.—(1) When the Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5742,
+      "page": 144,
+      "text": "408. Power to direct further inquiry to be made or additional evidence to be taken.—(1) If, when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5751,
+      "page": 144,
+      "text": "409. Power of High Court to confirm sentence or annul conviction.—In any case submitted under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5760,
+      "page": 144,
+      "text": "410. Confirmation or new sentence to be signed by two Judges.—In every case so submitted, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5763,
+      "page": 144,
+      "text": "411. Procedure in case of difference of opinion.—Where any such case is heard before a Bench of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5766,
+      "page": 144,
+      "text": "412. Procedure in cases submitted to High Court for confirmation.—In cases submitted by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5773,
+      "page": 144,
+      "text": "413. No appeal to lie unless otherwise provided.—No appeal shall lie from any judgment or order of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5779,
+      "page": 145,
+      "text": "414. Appeal from orders requiring security or refusal to accept or rejecting surety for keeping",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5787,
+      "page": 145,
+      "text": "415. Appeals from convictions.—(1) Any person convicted on a trial held by a High Court in its",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5802,
+      "page": 145,
+      "text": "416. No appeal in certain cases when accused pleads guilty.—Notwithstanding anything in section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5808,
+      "page": 145,
+      "text": "417. No appeal in petty cases.—Notwithstanding anything in section 415, there shall be no appeal by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5825,
+      "page": 146,
+      "text": "418. Appeal by State Government against sentence.—(1) Save as otherwise provided in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5845,
+      "page": 146,
+      "text": "419. Appeal in case of acquittal.—(1) Save as otherwise provided in sub-section (2), and subject",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5873,
+      "page": 147,
+      "text": "420. Appeal against conviction by High Court in certain cases.—Where the High Court has, on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5878,
+      "page": 147,
+      "text": "421. Special right of appeal in certain cases.—Notwithstanding anything in this Chapter, when more",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5881,
+      "page": 147,
+      "text": "422. Appeal to Court of Session how heard.—(1) Subject to the provisions of sub-section (2), an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5889,
+      "page": 147,
+      "text": "423. Petition of appeal.—Every appeal shall be made in the form of a petition in writing presented by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5892,
+      "page": 147,
+      "text": "424. Procedure when appellant in jail.—If the appellant is in jail, he may present his petition of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5895,
+      "page": 147,
+      "text": "425. Summary dismissal of appeal.—(1) If upon examining the petition of appeal and copy of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5916,
+      "page": 148,
+      "text": "426. Procedure for hearing appeals not dismissed summarily.—(1) If the Appellate Court does not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5932,
+      "page": 148,
+      "text": "427. Powers of Appellate Court.—After perusing such record and hearing the appellant or his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5960,
+      "page": 149,
+      "text": "428. Judgments of subordinate Appellate Court.—The rules contained in Chapter XXIX as to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5966,
+      "page": 149,
+      "text": "429. Order of High Court on appeal to be certified to lower Court.—(1) Whenever a case is decided",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5975,
+      "page": 149,
+      "text": "430. Suspension of sentence pending appeal; release of appellant on bail.—(1) Pending any appeal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5999,
+      "page": 150,
+      "text": "431. Arrest of accused in appeal from acquittal.—When an appeal is presented under section 419,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6003,
+      "page": 150,
+      "text": "432. Appellate Court may take further evidence or direct it to be taken.—(1) In dealing with any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6013,
+      "page": 150,
+      "text": "433. Procedure where Judges of Court of appeal are equally divided.—When an appeal under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6020,
+      "page": 150,
+      "text": "434. Finality of judgments and orders on appeal.—Judgments and orders passed by an Appellate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6027,
+      "page": 150,
+      "text": "435. Abatement of appeals.—(1) Every appeal under section 418 or section 419 shall finally abate on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6040,
+      "page": 151,
+      "text": "436. Reference to High Court.—(1) Where any Court is satisfied that a case pending before it involves",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6055,
+      "page": 151,
+      "text": "437. Disposal of case according to decision of High Court.—(1) When a question has been so",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6060,
+      "page": 151,
+      "text": "438. Calling for records to exercise powers of revision.—(1) The High Court or any Sessions Judge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6073,
+      "page": 151,
+      "text": "439. Power to order inquiry.—On examining any record under section 438 or otherwise, the High",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6081,
+      "page": 152,
+      "text": "440. Sessions Judge's powers of revision.—(1) In the case of any proceeding the record of which has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6091,
+      "page": 152,
+      "text": "441. Power of Additional Sessions Judge.—An Additional Sessions Judge shall have and may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6094,
+      "page": 152,
+      "text": "442. High Court's powers of revision.—(1) In the case of any proceeding the record of which has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6110,
+      "page": 152,
+      "text": "443. Power of High Court to withdraw or transfer revision cases.—(1) Whenever one or more",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6127,
+      "page": 153,
+      "text": "444. Option of Court to hear parties.—Save as otherwise expressly provided by this Sanhita, no party",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6131,
+      "page": 153,
+      "text": "445. High Court's order to be certified to lower Court.—When a case is revised under this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6138,
+      "page": 153,
+      "text": "446. Power of Supreme Court to transfer cases and appeals.—(1) Whenever it is made to appear to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6152,
+      "page": 153,
+      "text": "447. Power of High Court to transfer cases and appeals.—(1) Whenever it is made to appear to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6195,
+      "page": 154,
+      "text": "448. Power of Sessions Judge to transfer cases and appeals.—(1) Whenever it is made to appear to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6206,
+      "page": 154,
+      "text": "449. Withdrawal of cases and appeals by Sessions Judges.—(1) A Sessions Judge may withdraw",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6216,
+      "page": 155,
+      "text": "450. Withdrawal of cases by Judicial Magistrates.—(1) Any Chief Judicial Magistrate may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6222,
+      "page": 155,
+      "text": "451. Making over or withdrawal of cases by Executive Magistrates.—Any District Magistrate or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6228,
+      "page": 155,
+      "text": "452. Reasons to be recorded.—A Sessions Judge or Magistrate making an order under section 448,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6234,
+      "page": 155,
+      "text": "453. Execution of order passed under section 409.—When in a case submitted to the High Court for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6238,
+      "page": 155,
+      "text": "454. Execution of sentence of death passed by High Court.—When a sentence of death is passed by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6241,
+      "page": 155,
+      "text": "455. Postponement of execution of sentence of death in case of appeal to Supreme",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6257,
+      "page": 155,
+      "text": "456. Commutation of sentence of death on pregnant woman.—If a woman sentenced to death is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6261,
+      "page": 156,
+      "text": "457. Power to appoint place of imprisonment.—(1) Except when otherwise provided by any law for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6276,
+      "page": 156,
+      "text": "458. Execution of sentence of imprisonment.—(1) Where the accused is sentenced to imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6288,
+      "page": 156,
+      "text": "459. Direction of warrant for execution.—Every warrant for the execution of a sentence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6291,
+      "page": 156,
+      "text": "460. Warrant with whom to be lodged.—When the prisoner is to be confined in a jail, the warrant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6294,
+      "page": 156,
+      "text": "461. Warrant for levy of fine.—(1) When an offender has been sentenced to pay a fine, but no such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6313,
+      "page": 157,
+      "text": "462. Effect of such warrant.—A warrant issued under clause (a) of sub-section (1) of section 461 by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6317,
+      "page": 157,
+      "text": "463. Warrant for levy of fine issued by a Court in any territory to which this Sanhita does not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6326,
+      "page": 157,
+      "text": "464. Suspension of execution of sentence of imprisonment.—(1) When an offender has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6345,
+      "page": 157,
+      "text": "465. Who may issue warrant.—Every warrant for the execution of a sentence may be issued either by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6347,
+      "page": 157,
+      "text": "466. Sentence on escaped convict when to take effect.—(1) When a sentence of death, imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6360,
+      "page": 158,
+      "text": "467. Sentence on offender already sentenced for another offence.—(1) When a person already",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6372,
+      "page": 158,
+      "text": "468. Period of detention undergone by accused to be set off against sentence of imprisonment.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6381,
+      "page": 158,
+      "text": "469. Saving.—(1) Nothing in section 466 or section 467 shall be held to excuse any person from any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6388,
+      "page": 158,
+      "text": "470. Return of warrant on execution of sentence.—When a sentence has been fully executed, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6391,
+      "page": 158,
+      "text": "471. Money ordered to be paid recoverable as a fine.—Any money (other than a fine) payable by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6399,
+      "page": 159,
+      "text": "472. Mercy petition in death sentence cases.—(1) A convict under the sentence of death or his legal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6428,
+      "page": 159,
+      "text": "473. Power to suspend or remit sentences.—(1) When any person has been sentenced to punishment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6465,
+      "page": 160,
+      "text": "474. Power to commute sentence.—The appropriate Government may, without the consent of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6474,
+      "page": 160,
+      "text": "475. Restriction on powers of remission or commutation in certain cases.—Notwithstanding",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6479,
+      "page": 160,
+      "text": "476. Concurrent power of Central Government in case of death sentences.—The powers conferred",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6482,
+      "page": 160,
+      "text": "477. State Government to act after concurrence with Central Government in certain cases.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6503,
+      "page": 161,
+      "text": "478. In what cases bail to be taken.—(1) When any person other than a person accused of a non-bailable offence is arrested or detained without warrant by an off",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6519,
+      "page": 161,
+      "text": "479. Maximum period for which under trial prisoner can be detained.—(1) Where a person has,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6541,
+      "page": 162,
+      "text": "480. When bail may be taken in case of non-bailable offence.—(1) When any person accused of, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6594,
+      "page": 163,
+      "text": "481. Bail to require accused to appear before next Appellate Court.—(1) Before conclusion of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6601,
+      "page": 163,
+      "text": "482. Direction for grant of bail to person apprehending arrest.—(1) When any person has reason",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6625,
+      "page": 164,
+      "text": "483. Special powers of High Court or Court of Session regarding bail.—(1) A High Court or Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6646,
+      "page": 164,
+      "text": "484. Amount of bond and reduction thereof.—(1) The amount of every bond executed under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6650,
+      "page": 164,
+      "text": "485. Bond of accused and sureties.—(1) Before any person is released on bond or bail bond, a bond",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6664,
+      "page": 165,
+      "text": "486. Declaration by sureties.—Every person standing surety to an accused person for his release on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6667,
+      "page": 165,
+      "text": "487. Discharge from custody.—(1) As soon as the bond or bail bond has been executed, the person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6674,
+      "page": 165,
+      "text": "488. Power to order sufficient bail when that first taken is insufficient.—If, through mistake,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6679,
+      "page": 165,
+      "text": "489. Discharge of sureties.—(1) All or any sureties for the attendance and appearance of a person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6687,
+      "page": 165,
+      "text": "490. Deposit instead of recognizance.—When any person is required by any Court or officer to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6691,
+      "page": 165,
+      "text": "491. Procedure when bond has been forfeited.—(1) Where, —",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6719,
+      "page": 166,
+      "text": "492. Cancellation of bond and bail bond.—Without prejudice to the provisions of section 491, where",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6732,
+      "page": 166,
+      "text": "493. Procedure in case of insolvency or death of surety or when a bond is forfeited.—When any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6738,
+      "page": 166,
+      "text": "494. Bond required from child.—When the person required by any Court, or officer to execute a bond",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6740,
+      "page": 166,
+      "text": "495. Appeal from orders under section 491.—All orders passed under section 491 shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6745,
+      "page": 166,
+      "text": "496. Power to direct levy of amount due on certain recognizances.—The High Court or Court of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6750,
+      "page": 166,
+      "text": "497. Order for custody and disposal of property pending trial in certain cases.—(1) When any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6773,
+      "page": 167,
+      "text": "498. Order for disposal of property at conclusion of trial.—(1) When an investigation, inquiry or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6792,
+      "page": 167,
+      "text": "499. Payment to innocent purchaser of money found on accused.—When any person is convicted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6800,
+      "page": 168,
+      "text": "500. Appeal against orders under section 498 or section 499.—(1) Any person aggrieved by an order",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6807,
+      "page": 168,
+      "text": "501. Destruction of libellous and other matter.—(1) On a conviction under section 294, section 295,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6815,
+      "page": 168,
+      "text": "502. Power to restore possession of immovable property.—(1) When a person is convicted of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6829,
+      "page": 168,
+      "text": "503. Procedure by police upon seizure of property.—(1) Whenever the seizure of property by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6840,
+      "page": 168,
+      "text": "504. Procedure where no claimant appears within six months.—(1) If no person within such period",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6848,
+      "page": 169,
+      "text": "505. Power to sell perishable property.—If the person entitled to the possession of such property is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6856,
+      "page": 169,
+      "text": "506. Irregularities which do not vitiate proceedings.—If any Magistrate not empowered by law to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6870,
+      "page": 169,
+      "text": "507. Irregularities which vitiate proceedings.—If any Magistrate, not being empowered by law in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6892,
+      "page": 170,
+      "text": "508. Proceedings in wrong place.—No finding, sentence or order of any Criminal Court shall be set",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6896,
+      "page": 170,
+      "text": "509. Non-compliance with provisions of section 183 or section 316.—(1) If any Court before which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6905,
+      "page": 170,
+      "text": "510. Effect of omission to frame, or absence of, or error in, charge.—(1) No finding, sentence or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6918,
+      "page": 170,
+      "text": "511. Finding or sentence when reversible by reason of error, omission or irregularity.—(1) Subject",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6930,
+      "page": 171,
+      "text": "512. Defect or error not to make attachment unlawful.—No attachment made under this Sanhita",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6935,
+      "page": 171,
+      "text": "513. Definitions.—For the purposes of this Chapter, unless the context otherwise requires, “period of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6937,
+      "page": 171,
+      "text": "514. Bar to taking cognizance after lapse of period of limitation.—(1) Except as otherwise provided",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6951,
+      "page": 171,
+      "text": "515. Commencement of period of limitation.—(1) The period of limitation, in relation to an offender,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6961,
+      "page": 171,
+      "text": "516. Exclusion of time in certain cases.—(1) In computing the period of limitation, the time during",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6984,
+      "page": 172,
+      "text": "517. Exclusion of date on which Court is closed.—Where the period of limitation expires on a day",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6989,
+      "page": 172,
+      "text": "518. Continuing offence.—In the case of a continuing offence, a fresh period of limitation shall begin",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6991,
+      "page": 172,
+      "text": "519. Extension of period of limitation in certain cases.—Notwithstanding anything contained in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6997,
+      "page": 172,
+      "text": "520. Trials before High Courts.—When an offence is tried by the High Court otherwise than under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7000,
+      "page": 172,
+      "text": "521. Delivery to commanding officers of persons liable to be tried by Court-martial.—(1) The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7019,
+      "page": 173,
+      "text": "522. Forms.—Subject to the power conferred by article 227 of the Constitution, the forms set forth in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7022,
+      "page": 173,
+      "text": "523. Power of High Court to make rules.—(1) Every High Court may, with the previous approval of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7034,
+      "page": 173,
+      "text": "524. Power to alter functions allocated to Executive Magistrate in certain cases.—If the Legislative",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7038,
+      "page": 173,
+      "text": "525. Cases in which Judge or Magistrate is personally interested.—No Judge or Magistrate shall,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7047,
+      "page": 173,
+      "text": "526. Practising advocate not to sit as Magistrate in certain Courts.—No advocate who practices in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7050,
+      "page": 173,
+      "text": "527. Public servant concerned in sale not to purchase or bid for property.—A public servant having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7053,
+      "page": 173,
+      "text": "528. Saving of inherent powers of High Court.—Nothing in this Sanhita shall be deemed to limit or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7058,
+      "page": 174,
+      "text": "529. Duty of High Court to exercise continuous superintendence over Courts.—Every High Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7062,
+      "page": 174,
+      "text": "530. Trial and proceedings to be held in electronic mode.—All trials, inquires and proceedings under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7069,
+      "page": 174,
+      "text": "531. Repeal and savings.—(1) The Code of Criminal Procedure, 1973 (2 of 1974) is hereby repealed.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 13574,
+      "page": 264,
+      "text": "20..............................................,..............................................(name",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 13577,
+      "page": 264,
+      "text": "20.............. at the said Session, was duly convicted of the offence of culpable homicide amounting to murder",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 13977,
+      "page": 282,
+      "text": "2. Fast and efficient justice system is an essential component of good governance. However, delay in",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 13982,
+      "page": 282,
+      "text": " 3. The experience of seven decades of Indian democracy calls for comprehensive review of our criminal",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 13985,
+      "page": 282,
+      "text": "4. The Government with the mantra, “Sabka Saath, Sabka Vikas, Sabka Vishwas and Sabka Prayas” is",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 13990,
+      "page": 282,
+      "text": "5. In view of the above, it is proposed to repeal the Code of Criminal Procedure, 1973 and enact a new",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 14000,
+      "page": 282,
+      "text": "6. The Notes on Clauses explains the various provisions of the Bill.",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 14001,
+      "page": 282,
+      "text": " 7. The Bill seeks to achieve the above objectives.",
+      "cls": "UNKNOWN",
+      "label": null
+    }
+  ]
+}

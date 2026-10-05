@@ -1,0 +1,21 @@
+{
+  "mode": "pool15",
+  "pool": 15,
+  "reranker_disabled": false,
+  "hits": 197,
+  "total": 198,
+  "recall": 0.9949494949494949,
+  "pass": true,
+  "dense_p50": 1130.0,
+  "rerank_p50": 1679.1,
+  "total_p50": 2778.9,
+  "total_p95": 9982.9,
+  "misses": [
+    [
+      "ipc-310-a",
+      "IPC 310",
+      "What treatment does the Indian Penal Code provide for thug?"
+    ]
+  ],
+  "elapsed_s": 783
+}

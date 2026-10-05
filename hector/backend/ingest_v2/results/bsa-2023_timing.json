@@ -1,0 +1,29 @@
+{
+  "act_id": "bsa-2023",
+  "steps": {
+    "step2_inspect": {
+      "exit": 0,
+      "seconds": 1.82
+    },
+    "step3_clean": {
+      "exit": 0,
+      "seconds": 0.89
+    },
+    "step4_segment": {
+      "exit": 0,
+      "seconds": 0.76
+    },
+    "step5_records": {
+      "exit": 0,
+      "seconds": 0.55
+    },
+    "step6_validate": {
+      "exit": 0,
+      "seconds": 5.28
+    },
+    "step7_report": {
+      "exit": 0,
+      "seconds": 0.8
+    }
+  }
+}

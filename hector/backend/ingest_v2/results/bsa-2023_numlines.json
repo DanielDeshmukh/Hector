@@ -1,0 +1,1319 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 170,
+    "footnote": 1,
+    "UNKNOWN": 5
+  },
+  "labels": {
+    "header": 42,
+    "boilerplate": 104,
+    "footnote": 2,
+    "page_number": 45
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 2011,
+      "page": 54,
+      "text": "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
+      "context": [
+        "relating to evidence on which the Court could come to the conclusion about the facts of the case and",
+        "then pronounce judgment thereupon and it came into force on 1st September, 1872.",
+        "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
+        "criminal laws including the Indian Evidence Act, 1872 and adopt them in accordance with the",
+        "contemporary needs and aspirations of the people. The law of evidence (not being substantive or"
+      ]
+    },
+    {
+      "line": 2017,
+      "page": 54,
+      "text": "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
+      "context": [
+        "which the substantive or procedural laws are operationalised. The existing law does not address the",
+        "technological advancement undergone in the country during the last few decades.",
+        "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
+        "11th August, 2023. The Bill was referred to the Department-related Parliamentary Standing Committee",
+        "on Home Affairs for its consideration and report. The Committee after deliberations made its"
+      ]
+    },
+    {
+      "line": 2025,
+      "page": 54,
+      "text": "4. The proposed legislation, inter alia, provides as under:-",
+      "context": [
+        "the Committee that have been accepted by the Government.",
+        "IndiaCode",
+        "4. The proposed legislation, inter alia, provides as under:-",
+        "(i) it provides that \"evidence\" includes any information given electronically, which would permit",
+        "appearance of witnesses, accused, experts and victims through electronic means;"
+      ]
+    },
+    {
+      "line": 2038,
+      "page": 54,
+      "text": "5. The Notes on Clauses explain the various provisions of the Bill.",
+      "context": [
+        "courts. The proposed Bill introduces more precise and uniform rules of practice of courts in dealing",
+        "with facts and circumstances of the case by means of evidence.",
+        "5. The Notes on Clauses explain the various provisions of the Bill.",
+        "6. The Bill seeks to achieve the above objectives.",
+        "AMIT SHAH."
+      ]
+    },
+    {
+      "line": 2039,
+      "page": 54,
+      "text": "6. The Bill seeks to achieve the above objectives.",
+      "context": [
+        "with facts and circumstances of the case by means of evidence.",
+        "5. The Notes on Clauses explain the various provisions of the Bill.",
+        "6. The Bill seeks to achieve the above objectives.",
+        "AMIT SHAH.",
+        "       NEW DELHI;"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 39,
+      "page": 10,
+      "text": "1. 1st day of July, 2024, vide notification No. S.O. 849(E), dated, 23rd February, 2024, see Gazette of India, Extraordinary, Part",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 8,
+      "page": 10,
+      "text": "1. Short title, application and commencement.–– (1) This Act may be called the Bharatiya Sakshya",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 15,
+      "page": 10,
+      "text": "2. Definitions.— (1) In this Adhiniyam, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 39,
+      "page": 10,
+      "text": "1. 1st day of July, 2024, vide notification No. S.O. 849(E), dated, 23rd February, 2024, see Gazette of India, Extraordinary, Part",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 90,
+      "page": 12,
+      "text": "3. Evidence may be given of facts in issue and relevant facts.— Evidence may be given in any suit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 107,
+      "page": 12,
+      "text": "4. Relevancy of facts forming part of same transaction.—Facts which, though not in issue, are so",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 123,
+      "page": 12,
+      "text": "5. Facts which are occasion, cause or effect of facts in issue or relevant facts.— Facts which are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 137,
+      "page": 13,
+      "text": "6. Motive, preparation and previous or subsequent conduct.—(1) Any fact is relevant which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 188,
+      "page": 14,
+      "text": "7. Facts necessary to explain or introduce fact in issue or relevant facts.—Facts necessary to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 217,
+      "page": 14,
+      "text": "8. Things said or done by conspirator in reference to common design.—Where there is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 236,
+      "page": 15,
+      "text": "9. When facts not otherwise relevant become relevant.—Facts not otherwise relevant are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 250,
+      "page": 15,
+      "text": "10. Facts tending to enable Court to determine amount are relevant in suits for damages.—In",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 253,
+      "page": 15,
+      "text": "11. Facts relevant when right or custom is in question.—Where the question is as to the existence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 264,
+      "page": 15,
+      "text": "12. Facts showing existence of state of mind, or of body or bodily feeling.—Facts showing the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 332,
+      "page": 17,
+      "text": "13. Facts bearing on question whether act was accidental or intentional.—When there is a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 351,
+      "page": 17,
+      "text": "14. Existence of course of business when relevant.—When there is a question whether a particular",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 361,
+      "page": 17,
+      "text": "15. Admission defined.—An admission is a statement, oral or documentary or contained in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 365,
+      "page": 18,
+      "text": "16. Admission by party to proceeding or his agent.—(1) Statements made by a party to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 377,
+      "page": 18,
+      "text": "17. Admissions by persons whose position must be proved as against party to suit.—Statements",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 387,
+      "page": 18,
+      "text": "18. Admissions by persons expressly referred to by party to suit.—Statements made by persons to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 393,
+      "page": 18,
+      "text": "19. Proof of admissions against persons making them, and by or on their behalf.—Admissions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 428,
+      "page": 19,
+      "text": "20. When oral admissions as to contents of documents are relevant.—Oral admissions as to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 432,
+      "page": 19,
+      "text": "21. Admissions in civil cases when relevant.—In civil cases no admission is relevant, if it is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 437,
+      "page": 19,
+      "text": "22. Confession caused by inducement, threat, coercion or promise, when irrelevant in criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 452,
+      "page": 19,
+      "text": "23. Confession to police officer.—(1) No confession made to a police officer shall be proved as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 460,
+      "page": 20,
+      "text": "24. Consideration of proved confession affecting person making it and others jointly under trial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 477,
+      "page": 20,
+      "text": "25. Admissions not conclusive proof, but may estop.—Admissions are not conclusive proof of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 480,
+      "page": 20,
+      "text": "26. Cases in which statement of relevant fact by person who is dead or cannot be found, etc., is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 555,
+      "page": 21,
+      "text": "27. Relevancy of certain evidence for proving, in subsequent proceeding, truth of facts therein",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 569,
+      "page": 22,
+      "text": "28. Entries in books of account when relevant.—Entries in the books of account, including those",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 578,
+      "page": 22,
+      "text": "29. Relevancy of entry in public record or an electronic record made in performance of duty.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 583,
+      "page": 22,
+      "text": "30. Relevancy of statements in maps, charts and plans.—Statements of facts in issue or relevant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 587,
+      "page": 22,
+      "text": "31. Relevancy of statement as to fact of public nature contained in certain Acts or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 592,
+      "page": 22,
+      "text": "32. Relevancy of statements as to any law contained in law books including electronic or digital",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 599,
+      "page": 22,
+      "text": "33. What evidence to be given when statement forms part of a conversation, document,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 609,
+      "page": 23,
+      "text": "34. Previous judgments relevant to bar a second suit or trial.—The existence of any judgment,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 613,
+      "page": 23,
+      "text": "35. Relevancy of certain judgments in probate, etc., jurisdiction.—(1) A final judgment, order or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 630,
+      "page": 23,
+      "text": "36. Relevancy and effect of judgments, orders or decrees, other than those mentioned in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 639,
+      "page": 23,
+      "text": "37. Judgments, etc., other than those mentioned in sections 34, 35 and 36 when relevant.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 657,
+      "page": 24,
+      "text": "38. Fraud or collusion in obtaining judgment, or incompetency of Court, may be proved.—Any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 662,
+      "page": 24,
+      "text": "39. Opinions of experts.—(1) When the Court has to form an opinion upon a point of foreign law or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 686,
+      "page": 24,
+      "text": "40. Facts bearing upon opinions of experts.—Facts, not otherwise relevant, are relevant if they",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 695,
+      "page": 24,
+      "text": "41. Opinion as to handwriting and signature, when relevant.—(1) When the Court has to form an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 714,
+      "page": 25,
+      "text": "42. Opinion as to existence of general custom or right, when relevant.—When the Court has to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 723,
+      "page": 25,
+      "text": "43. Opinion as to usages, tenets, etc., when relevant.—When the Court has to form an opinion as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 729,
+      "page": 25,
+      "text": "44. Opinion on relationship, when relevant.—When the Court has to form an opinion as to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 741,
+      "page": 25,
+      "text": "45. Grounds of opinion, when relevant.—Whenever the opinion of any living person is relevant,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 748,
+      "page": 26,
+      "text": "46. In civil cases character to prove conduct imputed, irrelevant.—In civil cases the fact that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 751,
+      "page": 26,
+      "text": "47. In criminal cases previous good character relevant.—In criminal proceedings the fact that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 753,
+      "page": 26,
+      "text": "48. Evidence of character or previous sexual experience not relevant in certain cases.—In a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 760,
+      "page": 26,
+      "text": "49. Previous bad character not relevant, except in reply.—In criminal proceedings, the fact that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 766,
+      "page": 26,
+      "text": "50. Character as affecting damages.—In civil cases, the fact that the character of any person is such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 776,
+      "page": 26,
+      "text": "51. Fact judicially noticeable need not be proved.—No fact of which the Court will take judicial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 778,
+      "page": 26,
+      "text": "52. Facts of which Court shall take judicial notice.—(1) The Court shall take judicial notice of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 809,
+      "page": 27,
+      "text": "53. Facts admitted need not be proved.—No fact needs to be proved in any proceeding which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 817,
+      "page": 27,
+      "text": "54. Proof of facts by oral evidence.—All facts, except the contents of documents may be proved by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 819,
+      "page": 27,
+      "text": "55. Oral evidence to be direct.—Oral evidence shall, in all cases whatever, be direct; if it refers",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 837,
+      "page": 28,
+      "text": "56. Proof of contents of documents.—The contents of documents may be proved either by primary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 839,
+      "page": 28,
+      "text": "57. Primary evidence.—Primary evidence means the document itself produced for the inspection of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 861,
+      "page": 28,
+      "text": "58. Secondary evidence.—Secondary evidence includes—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 885,
+      "page": 29,
+      "text": "59. Proof of documents by primary evidence.— Documents shall be proved by primary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 887,
+      "page": 29,
+      "text": "60. Cases in which secondary evidence relating to documents may be given.—Secondary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 915,
+      "page": 29,
+      "text": "61. Electronic or digital record.—Nothing in this Adhiniyam shall apply to deny the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 919,
+      "page": 29,
+      "text": "62. Special provisions as to evidence relating to electronic record.—The contents of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 922,
+      "page": 30,
+      "text": "63. Admissibility of electronic records.—(1) Notwithstanding anything contained in this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 983,
+      "page": 31,
+      "text": "64. Rules as to notice to produce.—Secondary evidence of the contents of the documents referred to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1000,
+      "page": 31,
+      "text": "65. Proof of signature and handwriting of person alleged to have signed or written document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1004,
+      "page": 31,
+      "text": "66. Proof as to electronic signature.—Except in the case of a secure electronic signature, if the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1007,
+      "page": 31,
+      "text": "67. Proof of execution of document required by law to be attested.—If a document is required by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1015,
+      "page": 31,
+      "text": "68. Proof where no attesting witness found.—If no such attesting witness can be found, it must be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1019,
+      "page": 32,
+      "text": "69. Admission of execution by party to attested document.—The admission of a party to an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1022,
+      "page": 32,
+      "text": "70. Proof when attesting witness denies execution.—If the attesting witness denies or does not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1024,
+      "page": 32,
+      "text": "71. Proof of document not required by law to be attested.—An attested document not required by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1026,
+      "page": 32,
+      "text": "72. Comparison of signature, writing or seal with others admitted or proved.—(1) In order to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1036,
+      "page": 32,
+      "text": "73. Proof as to verification of digital signature.—In order to ascertain whether a digital signature is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1043,
+      "page": 32,
+      "text": "74. Public and private documents.—(1) The following documents are public documents:—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1050,
+      "page": 32,
+      "text": "75. Certified copies of public documents.—Every public officer having the custody of a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1058,
+      "page": 32,
+      "text": "76. Proof of documents by production of certified copies.—Such certified copies may be produced",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1061,
+      "page": 32,
+      "text": "77. Proof of other official documents.—The following public documents may be proved as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1089,
+      "page": 33,
+      "text": "78. Presumption as to genuineness of certified copies.—(1) The Court shall presume to be genuine",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1097,
+      "page": 33,
+      "text": "79. Presumption as to documents produced as record of evidence, etc.—Whenever any document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1107,
+      "page": 33,
+      "text": "80. Presumption as to Gazettes, newspapers, and other documents.—The Court shall presume the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1116,
+      "page": 34,
+      "text": "81. Presumption as to Gazettes in electronic or digital record.—The Court shall presume the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1124,
+      "page": 34,
+      "text": "82. Presumption as to maps or plans made by authority of Government.—The Court shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1129,
+      "page": 34,
+      "text": "83. Presumption as to collections of laws and reports of decisions.—The Court shall presume the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1133,
+      "page": 34,
+      "text": "84. Presumption as to powers-of-attorney.—The Court shall presume that every document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1137,
+      "page": 34,
+      "text": "85. Presumption as to electronic agreements.—The Court shall presume that every electronic",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1140,
+      "page": 34,
+      "text": "86. Presumption as to electronic records and electronic signatures.—(1) In any proceeding",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1150,
+      "page": 34,
+      "text": "87. Presumption as to Electronic Signature Certificates.—The Court shall presume, unless",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1154,
+      "page": 34,
+      "text": "88. Presumption as to certified copies of foreign judicial records.—(1) The Court may presume",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1164,
+      "page": 35,
+      "text": "89. Presumption as to books, maps and charts.—The Court may presume that any book to which it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1169,
+      "page": 35,
+      "text": "90. Presumption as to electronic messages.—The Court may presume that an electronic message,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1173,
+      "page": 35,
+      "text": "91. Presumption as to due execution, etc., of documents not produced.—The Court shall presume",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1177,
+      "page": 35,
+      "text": "92. Presumption as to documents thirty years old.—Where any document, purporting or proved to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1191,
+      "page": 35,
+      "text": "93. Presumption as to electronic records five years old.—Where any electronic record, purporting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1198,
+      "page": 35,
+      "text": "94. Evidence of terms of contracts, grants and other dispositions of property reduced to form of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1226,
+      "page": 36,
+      "text": "95. Exclusion of evidence of oral agreement.—When the terms of any such contract, grant or other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1281,
+      "page": 37,
+      "text": "96.  Exclusion of evidence to explain or amend ambiguous document.—When the language used",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1289,
+      "page": 37,
+      "text": "97. Exclusion of evidence against application of document to existing facts.—When language",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1296,
+      "page": 37,
+      "text": "98. Evidence as to document unmeaning in reference to existing facts.—When language used in a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1304,
+      "page": 38,
+      "text": "99.  Evidence as to application of language which can apply to one only of several persons.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1313,
+      "page": 38,
+      "text": "100. Evidence as to application of language to one of two sets of facts, to neither of which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1322,
+      "page": 38,
+      "text": "101. Evidence as to meaning of illegible characters, etc.—Evidence may be given to show the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1328,
+      "page": 38,
+      "text": "102. Who may give evidence of agreement varying terms of document.—Persons who are not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1335,
+      "page": 38,
+      "text": "103. Saving of provisions of Indian Succession Act relating to wills.—Nothing in this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1342,
+      "page": 38,
+      "text": "104. Burden of proof.—Whoever desires any Court to give judgment as to any legal right or liability",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1352,
+      "page": 39,
+      "text": "105. On whom burden of proof lies.—The burden of proof in a suit or proceeding lies on that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1362,
+      "page": 39,
+      "text": "106. Burden of proof as to particular fact.—The burden of proof as to any particular fact lies on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1369,
+      "page": 39,
+      "text": "107. Burden of proving fact to be proved to make evidence admissible.—The burden of proving",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1376,
+      "page": 39,
+      "text": "108. Burden of proving that case of accused comes within exceptions.—When a person is accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1391,
+      "page": 40,
+      "text": "109. Burden of proving fact especially within knowledge.—When any fact is especially within the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1398,
+      "page": 40,
+      "text": "110. Burden of proving death of person known to have been alive within thirty years.—When",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1401,
+      "page": 40,
+      "text": "111. Burden of proving that person is alive who has not been heard of for seven years.—When",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1405,
+      "page": 40,
+      "text": "112. Burden of proof as to relationship in the cases of partners, landlord and tenant, principal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1411,
+      "page": 40,
+      "text": "113. Burden of proof as to ownership.—When the question is whether any person is owner of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1414,
+      "page": 40,
+      "text": "114. Proof of good faith in transactions where one party is in relation of active confidence.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1423,
+      "page": 40,
+      "text": "115. Presumption as to certain offences.—(1) Where a person is accused of having committed any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1439,
+      "page": 41,
+      "text": "116. Birth during marriage, conclusive proof of legitimacy.—The fact that any person was born",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1444,
+      "page": 41,
+      "text": "117. Presumption as to abetment of suicide by a married woman.—When the question is whether",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1452,
+      "page": 41,
+      "text": "118. Presumption as to dowry death.—When the question is whether a person has committed the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1459,
+      "page": 41,
+      "text": "119. Court may presume existence of certain facts.—(1) The Court may presume the existence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1509,
+      "page": 42,
+      "text": "120. Presumption as to absence of consent in certain prosecution for rape.—In a prosecution for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1518,
+      "page": 42,
+      "text": "121. Estoppel.—When one person has, by his declaration, act or omission, intentionally caused or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1526,
+      "page": 42,
+      "text": "122. Estoppel of tenant and of licensee of person in possession.—No tenant of immovable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1533,
+      "page": 43,
+      "text": "123. Estoppel of acceptor of bill of exchange, bailee or licensee.—No acceptor of a bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1543,
+      "page": 43,
+      "text": "124. Who may testify.—All persons shall be competent to testify unless the Court considers that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1550,
+      "page": 43,
+      "text": "125. Witness unable to communicate verbally.—A witness who is unable to speak may give his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1556,
+      "page": 43,
+      "text": "126. Competency of husband and wife as witnesses in certain cases.—(1) In all civil proceedings",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1560,
+      "page": 43,
+      "text": "127. Judges and Magistrates.—No Judge or Magistrate shall, except upon the special order of some",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1573,
+      "page": 43,
+      "text": "128. Communications during marriage.—No person who is or has been married, shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1579,
+      "page": 44,
+      "text": "129. Evidence as to affairs of State.—No one shall be permitted to give any evidence derived from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1582,
+      "page": 44,
+      "text": "130. Official communications.—No public officer shall be compelled to disclose communications",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1585,
+      "page": 44,
+      "text": "131. Information as to commission of offences.—No Magistrate or police officer shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1591,
+      "page": 44,
+      "text": "132. Professional communications.—(1) No advocate, shall at any time be permitted, unless with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1620,
+      "page": 44,
+      "text": "133. Privilege not waived by volunteering evidence.—If any party to a suit gives evidence therein",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1625,
+      "page": 44,
+      "text": "134. Confidential communication with legal advisers.—No one shall be compelled to disclose to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1631,
+      "page": 45,
+      "text": "135. Production of title-deeds of witness not a party.—No witness who is not a party to a suit shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1636,
+      "page": 45,
+      "text": "136. Production of documents or electronic records which another person, having possession,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1640,
+      "page": 45,
+      "text": "137. Witness not excused from answering on ground that answer will criminate.—A witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1649,
+      "page": 45,
+      "text": "138. Accomplice.—An accomplice shall be a competent witness against an accused person; and a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1651,
+      "page": 45,
+      "text": "139. Number of witnesses.—No particular number of witnesses shall in any case be required for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1655,
+      "page": 45,
+      "text": "140. Order of production and examination of witnesses.—The order in which witnesses are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1658,
+      "page": 45,
+      "text": "141. Judge to decide as to admissibility of evidence.—(1) When either party proposes to give",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1684,
+      "page": 46,
+      "text": "142. Examination of witnesses.—(1) The examination of a witness by the party who calls him shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1689,
+      "page": 46,
+      "text": "143. Order of examinations.—(1) Witnesses shall be first examined-in-chief, then (if the adverse",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1697,
+      "page": 46,
+      "text": "144. Cross-examination of person called to produce a document.—A person summoned to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1700,
+      "page": 46,
+      "text": "145. Witnesses to character.—Witnesses to character may be cross-examined and re-examined.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1701,
+      "page": 46,
+      "text": "146. Leading questions.—(1) Any question suggesting the answer which the person putting it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1708,
+      "page": 46,
+      "text": "147. Evidence as to matters in writing.—Any witness may be asked, while under examination,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1720,
+      "page": 46,
+      "text": "148. Cross-examination as to previous statements in writing.—A witness may be cross-examined",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1726,
+      "page": 47,
+      "text": "149. Questions lawful in cross-examination.—When a witness is cross-examined, he may, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1740,
+      "page": 47,
+      "text": "150. When witness to be compelled to answer.—If any such question relates to a matter relevant to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1742,
+      "page": 47,
+      "text": "151. Court to decide when question shall be asked and when witness compelled to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1760,
+      "page": 47,
+      "text": "152. Question not to be asked without reasonable grounds.—No such question as is referred to in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1775,
+      "page": 48,
+      "text": "153. Procedure of Court in case of question being asked without reasonable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1779,
+      "page": 48,
+      "text": "154. Indecent and scandalous questions.—The Court may forbid any questions or inquiries",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1783,
+      "page": 48,
+      "text": "155. Questions intended to insult or annoy.—The Court shall forbid any question which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1786,
+      "page": 48,
+      "text": "156. Exclusion of evidence to contradict answers to questions testing veracity.—When a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1809,
+      "page": 48,
+      "text": "157.  Question by party to his own witness.—(1) The Court may, in its discretion, permit the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1814,
+      "page": 48,
+      "text": "158. Impeaching credit of witness.—The credit of a witness may be impeached in the following",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1835,
+      "page": 49,
+      "text": "159. Questions tending to corroborate evidence of relevant fact, admissible.—When a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1845,
+      "page": 49,
+      "text": "160. Former statements of witness may be proved to corroborate later testimony as to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1849,
+      "page": 49,
+      "text": "161. What matters may be proved in connection with proved statement relevant under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1854,
+      "page": 49,
+      "text": "162. Refreshing memory.—(1) A witness may, while under examination, refresh his memory by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1866,
+      "page": 50,
+      "text": "163. Testimony to facts stated in document mentioned in section 162.—A witness may also",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1874,
+      "page": 50,
+      "text": "164. Right of adverse party as to writing used to refresh memory.—Any writing referred to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1877,
+      "page": 50,
+      "text": "165. Production of documents.—(1) A witness summoned to produce a document shall, if it is in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1890,
+      "page": 50,
+      "text": "166. Giving, as evidence, of document called for and produced on notice.—When a party",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1894,
+      "page": 50,
+      "text": "167. Using, as evidence, of document production of which was refused on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1902,
+      "page": 50,
+      "text": "168. Judge’s power to put questions or order production.—The Judge may, in order to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1919,
+      "page": 51,
+      "text": "169. No new trial for improper admission or rejection of evidence.—The improper",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1926,
+      "page": 51,
+      "text": "170. Repeal and savings.—(1) The Indian Evidence Act, 1872 (1 of 1872) is hereby repealed.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2011,
+      "page": 54,
+      "text": "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 2017,
+      "page": 54,
+      "text": "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 2025,
+      "page": 54,
+      "text": "4. The proposed legislation, inter alia, provides as under:-",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 2038,
+      "page": 54,
+      "text": "5. The Notes on Clauses explain the various provisions of the Bill.",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 2039,
+      "page": 54,
+      "text": "6. The Bill seeks to achieve the above objectives.",
+      "cls": "UNKNOWN",
+      "label": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "act_id": "ipc-1860",
+  "rule": "each plain base of a range marker maps to the range record id; a suffixed endpoint token maps too, unless it has its own accepted marker",
+  "aliases": {
+    "161": "ipc-1860:s:161 to 165a:0",
+    "162": "ipc-1860:s:161 to 165a:0",
+    "163": "ipc-1860:s:161 to 165a:0",
+    "164": "ipc-1860:s:161 to 165a:0",
+    "165": "ipc-1860:s:161 to 165a:0",
+    "165A": "ipc-1860:s:161 to 165a:0"
+  }
+}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import time
 from datetime import UTC, datetime
 from pathlib import Path
@@ -316,34 +317,50 @@ class HectorApiService:
                 counterpart_section = str(matched.get("new"))
                 note = matched.get("note")
         else:
-            for ipc_section, mapped in mapping.items():
-                if str(mapped.get("new")).upper() == request.section:
-                    counterpart_act = "IPC"
-                    counterpart_section = ipc_section
-                    note = mapped.get("note")
-                    break
+            candidates = [
+                (ipc_section, mapped)
+                for ipc_section, mapped in mapping.items()
+                if str(mapped.get("new")).upper() == request.section
+            ]
+            if candidates:
+                counterpart_act = "IPC"
+                counterpart_section, note = self._pick_reverse_counterpart(
+                    request.section, candidates
+                )
 
-        requested_query = f"Section {request.section} {request.act}"
-        requested_results = retry(
-            self.retriever.search,
-            requested_query,
-            top_k=request.page_size,
-            max_attempts=3,
-            retryable_exceptions=(Exception,),
-            operation_name="pinecone_compare_requested",
+        # panel_pool widens the candidate pool beyond page_size so the
+        # panel selector has the wanted act's cards to choose from even
+        # when raw ranking interleaves cross-act neighbours (paired
+        # IPC/BNS provisions are near-identical).
+        panel_pool = max(request.page_size * 4, 12)
+        candidate_pool = max(panel_pool, 30)
+
+        requested_results = self._compare_retrieve(
+            f"Section {request.section} {request.act}",
+            request.act,
+            request.section,
+            panel_pool,
+            candidate_pool,
+            "pinecone_compare_requested",
         )
 
         counterpart_results = []
         if counterpart_act and counterpart_section:
-            counterpart_query = f"Section {counterpart_section} {counterpart_act}"
-            counterpart_results = retry(
-                self.retriever.search,
-                counterpart_query,
-                top_k=request.page_size,
-                max_attempts=3,
-                retryable_exceptions=(Exception,),
-                operation_name="pinecone_compare_counterpart",
+            counterpart_results = self._compare_retrieve(
+                f"Section {counterpart_section} {counterpart_act}",
+                counterpart_act,
+                counterpart_section,
+                panel_pool,
+                candidate_pool,
+                "pinecone_compare_counterpart",
             )
+
+        requested_selected = self._select_compare_panel(
+            requested_results, request.act, request.section, request.page_size
+        )
+        counterpart_selected = self._select_compare_panel(
+            counterpart_results, counterpart_act, counterpart_section, request.page_size
+        )
 
         return CompareResponse(
             requested_act=request.act,
@@ -351,10 +368,177 @@ class HectorApiService:
             counterpart_act=counterpart_act,
             counterpart_section=counterpart_section,
             note=note,
-            requested_results=[self._to_hit(item) for item in requested_results],
-            counterpart_results=[self._to_hit(item) for item in counterpart_results],
+            requested_results=[self._to_hit(item) for item in requested_selected],
+            counterpart_results=[self._to_hit(item) for item in counterpart_selected],
             compared_at=datetime.now(UTC),
         )
+
+    def _compare_retrieve(
+        self, query, act, section, top_k, candidate_pool, operation_name
+    ):
+        """Retrieve candidates for one compare panel.
+
+        Prefers the retriever's exact-section lookup (one Pinecone
+        metadata-filtered vector query, no cross-encoder rerank - see
+        HectorHybridRetriever.search_exact_section). Measured 2026-10-04,
+        the previous search_with_metadata_filters path silently degraded
+        to full hybrid search: its Pinecone leg calls idx.list(filter=...),
+        which raises TypeError on this SDK and its bare except returns []
+        - so every compare cost p50 9.7s (two ~4.8s full searches, ~4s of
+        each a rerank over 30 docs) and correctness rested solely on
+        _select_compare_panel filtering afterwards.
+
+        Stubs without the method fall back to search_with_metadata_filters
+        (which internally degrades to plain hybrid search), then to plain
+        search; _select_compare_panel keeps only exact hits either way.
+        """
+        exact = getattr(self.retriever, "search_exact_section", None)
+        if exact is not None:
+            return retry(
+                exact,
+                query,
+                section,
+                act,
+                top_k=top_k,
+                max_attempts=3,
+                retryable_exceptions=(Exception,),
+                operation_name=operation_name,
+            )
+        filtered = getattr(self.retriever, "search_with_metadata_filters", None)
+        if filtered is not None:
+            entities = {"sections": [str(section)], "acts": [str(act)]}
+            return retry(
+                filtered,
+                query,
+                entities,
+                top_k=top_k,
+                candidate_pool=candidate_pool,
+                max_attempts=3,
+                retryable_exceptions=(Exception,),
+                operation_name=operation_name,
+            )
+        return retry(
+            self.retriever.search,
+            query,
+            top_k=top_k,
+            candidate_pool=candidate_pool,
+            max_attempts=3,
+            retryable_exceptions=(Exception,),
+            operation_name=operation_name,
+        )
+
+    @staticmethod
+    def _title_tokens(title: str) -> set:
+        return {t for t in re.findall(r"[a-z0-9]+", str(title or "").lower()) if len(t) >= 3}
+
+    def _titles_index(self) -> dict:
+        """{(act, section): section_title} built once from retriever records."""
+        index = getattr(self, "_title_index", None)
+        if index is None:
+            index = {}
+            for record in getattr(self.retriever, "records", None) or []:
+                meta = record.get("metadata") or {}
+                title = meta.get("section_title")
+                section = meta.get("section_number")
+                if not title or section in (None, ""):
+                    continue
+                act = self._compare_hit_act(record)
+                if act:
+                    index[(act, str(section).strip().upper().replace(" ", ""))] = str(title)
+            self._title_index = index
+        return index
+
+    def _pick_reverse_counterpart(self, bns_section, candidates):
+        """Pick the IPC entry for a BNS section among mapping duplicates.
+
+        mapping.json contains 111 duplicate `new` values (several IPC
+        sections consolidate into one BNS section), and the old first-match
+        in dict order returned IPC 94 "Act to which a person is compelled by
+        threats" for BNS 103 "Punishment for murder" - while candidate IPC
+        304 "Punishment for culpable homicide not amounting to murder" is
+        the sensible comparison. The tie-break scores each candidate's
+        corpus section_title by token overlap against the BNS section's own
+        corpus title: data-driven, no section numbers hardcoded, and it only
+        reorders candidates mapping.json itself provides. Ties and missing
+        titles keep the original first-entry behaviour.
+        """
+        if len(candidates) == 1:
+            section, mapped = candidates[0]
+            return section, mapped.get("note")
+        titles = self._titles_index()
+        target_key = ("BNS", str(bns_section).strip().upper().replace(" ", ""))
+        target_tokens = self._title_tokens(titles.get(target_key, ""))
+        if not target_tokens:
+            section, mapped = candidates[0]
+            return section, mapped.get("note")
+        best_section, best_mapped = candidates[0]
+        best_score = -1
+        for ipc_section, mapped in candidates:
+            cand_key = ("IPC", str(ipc_section).strip().upper().replace(" ", ""))
+            score = len(target_tokens & self._title_tokens(titles.get(cand_key, "")))
+            if score > best_score:
+                best_section, best_mapped, best_score = ipc_section, mapped, score
+        return best_section, best_mapped.get("note")
+
+    @staticmethod
+    def _compare_hit_act(item: dict) -> str:
+        """Canonical act ('IPC'/'BNS') for a raw retrieval hit, '' if unknown."""
+        raw = str(item.get("act") or "").strip().upper()
+        if raw in ("IPC", "BNS"):
+            return raw
+        meta = item.get("metadata") or {}
+        blob = " ".join(
+            str(meta.get(key, ""))
+            for key in ("real_act_name", "act_name", "act", "source")
+        ).upper()
+        if "BHARATIYA NYAYA" in blob:
+            return "BNS"
+        if "INDIAN PENAL" in blob:
+            return "IPC"
+        return ""
+
+    @staticmethod
+    def _compare_hit_section(item: dict) -> str:
+        meta = item.get("metadata") or {}
+        for key in ("section_number", "section"):
+            val = meta.get(key)
+            if val not in (None, ""):
+                return str(val).strip().upper().replace(" ", "")
+        cit = item.get("citation") or {}
+        val = cit.get("section") or cit.get("provision")
+        return str(val or "").strip().upper().replace(" ", "")
+
+    def _select_compare_panel(self, items, want_act, want_section, page_size):
+        """Keep only exact-section cards of the wanted act for a compare panel.
+
+        A panel headed "BNS Results" must not show IPC cards (their
+        bookTitle would contradict the heading) and a request for section
+        302 must not lead with a neighbour. Measured 2026-10-03 on 40
+        sections per direction: raw ranking gave the correct act at top-1
+        only 77.5% of the time and fully act-pure panels 17.5%; after the
+        first (act-only) fix every nonempty panel was act-pure but sections
+        absent from an act (BNS has 1-358 only) still showed same-act
+        neighbours - e.g. BNS 394 returned BNS 39. Exact-only means a panel
+        is either the section's own cards or empty, never a lookalike.
+
+        Passthrough (unfiltered pool) when the pool carries no recognisable
+        act at all, so metadata-poor stubs are never emptied.
+        """
+        want_act = str(want_act or "").strip().upper()
+        want_sec = str(want_section or "").strip().upper().replace(" ", "")
+        if not items:
+            return items
+        if not want_act:
+            return items[:page_size]
+        acts = [self._compare_hit_act(item) for item in items]
+        if not any(acts):
+            return items[:page_size]
+        exact = [
+            item
+            for item, act in zip(items, acts)
+            if act == want_act and self._compare_hit_section(item) == want_sec
+        ]
+        return exact[:page_size]
 
     def route(self, query: str) -> RouteResponse:
         payload = self.router.get_route(query)
@@ -410,6 +594,8 @@ class HectorApiService:
         ingestor = EnhancedHectorIngestor(reindex_mode=request.reindex_mode)
         result = ingestor.process_book(file_path.name, str(file_path))
         self.retriever.refresh_index()
+        # New chunks may carry new section titles for the compare tie-break.
+        self._title_index = None
 
         return IngestResponse(
             filename=result["filename"],

@@ -232,7 +232,9 @@ def run():
     for q in TEST_QUERIES:
         t0 = time.time()
         expanded_q = expander.expand(q["query"])
-        search_results = retriever.search(expanded_q, top_k=10)
+        search_results = retriever.search(
+            expanded_q, top_k=10, raw_query=q["query"]
+        )
         elapsed = time.time() - t0
 
         chunks = [r.get("document", r.get("text", "")) for r in search_results]

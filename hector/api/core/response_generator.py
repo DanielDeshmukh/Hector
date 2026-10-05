@@ -10,6 +10,8 @@ import os
 import re
 from typing import TYPE_CHECKING
 
+from core.verifier import is_abstention_answer
+
 logger = logging.getLogger("hector.response_generator")
 
 if TYPE_CHECKING:
@@ -144,18 +146,72 @@ class ContextualResponseGenerator:
     LEGAL_SYSTEM_PROMPT = """You are HECTOR, a zero-hallucination legal research assistant specializing in Indian law.
 
 RULES:
-1. Answer ONLY from the provided source documents. Never invent legal provisions.
-2. Cite every claim with [Source N] where N matches the source number.
-3. Use precise legal terminology (section, clause, proviso, explanation).
-4. If comparing IPC and BNS, clearly state what changed and what stayed the same.
-    5. If the sources don't contain enough information, say so explicitly.
-    6. Keep answers concise and direct — no filler phrases.
+1. SECTION-NUMBER RULE - this rule outranks every other rule and the OUTPUT FORMAT below.
+   Write a section number ONLY when that section's own text appears in the retrieved sources.
+   If a related, corresponding, neighbouring or comparative provision exists but its text
+   is not in the sources, describe it WITHOUT a number: no "Section N", no "§ N", no
+   "Section N(1)", no "cf. Section N", no "up to X years under Section N", no
+   comparison-table row or bullet carrying a number absent from the sources.
+   When in doubt, leave the number out.
+   Hedged guesses are still section numbers and are equally forbidden:
+   "likely Section N", "possibly Section N", "probably Section N",
+   "Section N or a subsequent provision" - only when that text is present.
+2. Answer ONLY from the provided source documents. Never invent legal provisions.
+3. Cite every claim with [Source N] where N matches the source number.
+4. Use precise legal terminology (section, clause, proviso, explanation).
+5. If comparing IPC and BNS, compare ONLY sections whose text is in the retrieved sources.
+6. If the sources don't contain enough information, say so explicitly.
+7. Keep answers concise and direct — no filler phrases.
 
 OUTPUT FORMAT:
 - Start with a direct answer to the query.
 - Then provide the statutory text or key provisions.
-- Then note any differences between IPC and BNS (if both are relevant).
+- Then note differences between IPC and BNS only for sections present in the sources.
 - End with a brief note on practical implications if applicable."""
+
+    # Used when no BNS source was retrieved. Without this branch the model
+    # appends "a direct comparison between IPC Section N and its BNS
+    # counterpart cannot be made from the available material", which the
+    # abstention-clause detector in core.verifier classifies as negated and
+    # therefore scores as an ungrounded citation even though the section is
+    # present in the retrieved sources.
+    LEGAL_SYSTEM_PROMPT_NO_BNS = """You are HECTOR, a zero-hallucination legal research assistant specializing in Indian law.
+
+RULES:
+1. SECTION-NUMBER RULE - this rule outranks every other rule and the OUTPUT FORMAT below.
+   Write a section number ONLY when that section's own text appears in the retrieved sources.
+   If a related, corresponding, neighbouring or comparative provision exists but its text
+   is not in the sources, describe it WITHOUT a number: no "Section N", no "§ N", no
+   "Section N(1)", no "cf. Section N", no "up to X years under Section N", no
+   comparison-table row or bullet carrying a number absent from the sources.
+   When in doubt, leave the number out.
+   Hedged guesses are still section numbers and are equally forbidden:
+   "likely Section N", "possibly Section N", "probably Section N",
+   "Section N or a subsequent provision" - only when that text is present.
+2. Answer ONLY from the provided source documents. Never invent legal provisions.
+3. Cite every claim with [Source N] where N matches the source number.
+4. Use precise legal terminology (section, clause, proviso, explanation).
+5. If the sources don't contain enough information, say so explicitly.
+6. Keep answers concise and direct — no filler phrases.
+7. Do not mention, compare against, or speculate about other codes (BNS, BNSS, BSA) unless a source for them is among the retrieved sources.
+
+OUTPUT FORMAT:
+- Start with a direct answer to the query.
+- Then provide the statutory text or key provisions.
+- End with a brief note on practical implications if applicable."""
+
+    @staticmethod
+    def _has_bns_source(results: list[dict]) -> bool:
+        """True when at least one retrieved chunk belongs to a new code."""
+        for r in results or []:
+            meta = r.get("metadata") or {}
+            blob = " ".join(
+                str(meta.get(k) or "")
+                for k in ("real_act_name", "act_name", "abbreviation", "source")
+            ).lower()
+            if "nyaya sanhita" in blob or "bns" in blob:
+                return True
+        return False
 
     ABSTENTION_MESSAGE = (
         "I could not find sufficiently relevant sources in the indexed legal "
@@ -220,7 +276,15 @@ OUTPUT FORMAT:
             if page:
                 label += f", Page {page}"
             label += "]"
-            context_parts.append(f"{label}\n{doc[:1500]}")
+            if len(doc) <= 5000:
+                body = doc
+            else:
+                body = (
+                    doc[:3000]
+                    + "\n[... middle of this section omitted to fit the prompt ...]\n"
+                    + doc[-2000:]
+                )
+            context_parts.append(f"{label}\n{body}")
 
         context = "\n\n---\n\n".join(context_parts)
 
@@ -233,13 +297,23 @@ OUTPUT FORMAT:
                 "or cross-reference.\n"
             )
 
+        has_bns = self._has_bns_source(results)
+        system_prompt = (
+            self.LEGAL_SYSTEM_PROMPT if has_bns else self.LEGAL_SYSTEM_PROMPT_NO_BNS
+        )
+        compare_hint = (
+            "Compare IPC and BNS if both are present."
+            if has_bns
+            else "Answer only from the retrieved sources; do not introduce other codes."
+        )
+
         messages = [
-            {"role": "system", "content": self.LEGAL_SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {
                 "role": "user",
                 "content": f"Query: {query}\n\nRetrieved Sources:\n{context}\n\n"
                 "Provide a direct, well-structured answer. "
-                "Cite with [Source N]. Compare IPC and BNS if both are present."
+                f"Cite with [Source N]. {compare_hint}"
                 f"{priority_hint}",
             },
         ]
@@ -327,7 +401,7 @@ OUTPUT FORMAT:
             "answer_confidence": structured["answer_confidence"],
             "citations": [self._citation_to_dict(c) for c in citations],
             "related_provisions": related,
-            "abstained": False,
+            "abstained": is_abstention_answer(response),
         }
 
     def _build_legal_rag_payload(self, results: list[dict], query: str = "") -> dict:
@@ -374,7 +448,7 @@ OUTPUT FORMAT:
 
         overview_lines = []
         if ipc_sources:
-            source = self._best_source(ipc_sources)
+            source = self._best_source(ipc_sources, query=query)
             overview_lines.append(
                 f"Indian Penal Code, 1860 [IPC]: {self._framework_sentence(source)} [S{source['number']}]"
             )
@@ -383,7 +457,7 @@ OUTPUT FORMAT:
                 f"Indian Penal Code, 1860 [IPC]: {_act_status_hint}"
             )
         elif sources:
-            source = self._best_source(sources)
+            source = self._best_source(sources, query=query)
             act_name = source.get("act", "related source")
             overview_lines.append(
                 f"Indian Penal Code, 1860 [IPC]: No direct IPC bare act section retrieved. "
@@ -395,7 +469,7 @@ OUTPUT FORMAT:
             )
 
         if bns_sources:
-            source = self._best_source(bns_sources)
+            source = self._best_source(bns_sources, query=query)
             overview_lines.append(
                 f"Bharatiya Nyaya Sanhita, 2023 [BNS]: {self._framework_sentence(source)} [S{source['number']}]"
             )
@@ -404,7 +478,7 @@ OUTPUT FORMAT:
                 f"Bharatiya Nyaya Sanhita, 2023 [BNS]: {_act_status_hint}"
             )
         elif sources:
-            source = self._best_source(sources)
+            source = self._best_source(sources, query=query)
             act_name = source.get("act", "related source")
             overview_lines.append(
                 f"Bharatiya Nyaya Sanhita, 2023 [BNS]: No direct BNS bare act section retrieved. "
@@ -416,8 +490,8 @@ OUTPUT FORMAT:
             )
 
         if (ipc_sources or sources) and (bns_sources or sources):
-            ipc = self._best_source(ipc_sources) if ipc_sources else self._best_source(sources)
-            bns = self._best_source(bns_sources) if bns_sources else self._best_source(sources)
+            ipc = self._best_source(ipc_sources, query=query) if ipc_sources else self._best_source(sources, query=query)
+            bns = self._best_source(bns_sources, query=query) if bns_sources else self._best_source(sources, query=query)
             if ipc_sources and bns_sources:
                 overview_lines.append(
                     f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
@@ -426,23 +500,23 @@ OUTPUT FORMAT:
         all_rows = [
             {
                 "point": "Section reference",
-                "ipc": self._table_section(ipc_sources, "IPC"),
-                "bns": self._table_section(bns_sources, "BNS"),
+                "ipc": self._table_section(ipc_sources, "IPC", query=query),
+                "bns": self._table_section(bns_sources, "BNS", query=query),
             },
             {
                 "point": "Simple/basic offence punishment",
-                "ipc": self._table_punishment(ipc_sources),
-                "bns": self._table_punishment(bns_sources),
+                "ipc": self._table_punishment(ipc_sources, query=query),
+                "bns": self._table_punishment(bns_sources, query=query),
             },
             {
                 "point": "Repeat/aggravated offence punishment",
-                "ipc": self._table_aggravated(ipc_sources),
-                "bns": self._table_aggravated(bns_sources),
+                "ipc": self._table_aggravated(ipc_sources, query=query),
+                "bns": self._table_aggravated(bns_sources, query=query),
             },
             {
                 "point": "Cognisable status",
-                "ipc": self._table_status(ipc_sources),
-                "bns": self._table_status(bns_sources),
+                "ipc": self._table_status(ipc_sources, query=query),
+                "bns": self._table_status(bns_sources, query=query),
             },
         ]
         # Only keep rows where at least one side has real data
@@ -518,7 +592,7 @@ OUTPUT FORMAT:
         ]
 
         if ipc_sources:
-            source = self._best_source(ipc_sources)
+            source = self._best_source(ipc_sources, query=query)
             lines.append(
                 f"**Indian Penal Code, 1860** [IPC]: {self._framework_sentence(source)} [§{source['number']}]"
             )
@@ -527,7 +601,7 @@ OUTPUT FORMAT:
                 f"**Indian Penal Code, 1860** [IPC]: {act_status_hint}"
             )
         elif sources:
-            source = self._best_source(sources)
+            source = self._best_source(sources, query=query)
             act_name = source.get("act", "related source")
             lines.append(
                 f"**Indian Penal Code, 1860** [IPC]: No direct IPC bare act section retrieved. "
@@ -539,7 +613,7 @@ OUTPUT FORMAT:
             )
 
         if bns_sources:
-            source = self._best_source(bns_sources)
+            source = self._best_source(bns_sources, query=query)
             lines.append(
                 f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: {self._framework_sentence(source)} [§{source['number']}]"
             )
@@ -548,7 +622,7 @@ OUTPUT FORMAT:
                 f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: {act_status_hint}"
             )
         elif sources:
-            source = self._best_source(sources)
+            source = self._best_source(sources, query=query)
             act_name = source.get("act", "related source")
             lines.append(
                 f"**Bharatiya Nyaya Sanhita, 2023** [BNS]: No direct BNS bare act section retrieved. "
@@ -560,8 +634,8 @@ OUTPUT FORMAT:
             )
 
         if (ipc_sources or sources) and (bns_sources or sources):
-            ipc = self._best_source(ipc_sources) if ipc_sources else self._best_source(sources)
-            bns = self._best_source(bns_sources) if bns_sources else self._best_source(sources)
+            ipc = self._best_source(ipc_sources, query=query) if ipc_sources else self._best_source(sources, query=query)
+            bns = self._best_source(bns_sources, query=query) if bns_sources else self._best_source(sources, query=query)
             if ipc_sources and bns_sources:
                 lines.append(
                     f"Key difference: the retrieved IPC source is centred on Section {ipc['section']} IPC, while the retrieved BNS source is centred on Section {bns['section']} BNS. [S{ipc['number']}] [S{bns['number']}]"
@@ -575,16 +649,16 @@ OUTPUT FORMAT:
         )
         lines.append("| --- | --- | --- |")
         lines.append(
-            f"| Section reference (definition) | {self._table_section(ipc_sources, 'IPC')} | {self._table_section(bns_sources, 'BNS')} |"
+            f"| Section reference (definition) | {self._table_section(ipc_sources, 'IPC', query=query)} | {self._table_section(bns_sources, 'BNS', query=query)} |"
         )
         lines.append(
-            f"| Simple/basic offence punishment | {self._table_punishment(ipc_sources)} | {self._table_punishment(bns_sources)} |"
+            f"| Simple/basic offence punishment | {self._table_punishment(ipc_sources, query=query)} | {self._table_punishment(bns_sources, query=query)} |"
         )
         lines.append(
-            f"| Repeat/aggravated offence punishment | {self._table_aggravated(ipc_sources)} | {self._table_aggravated(bns_sources)} |"
+            f"| Repeat/aggravated offence punishment | {self._table_aggravated(ipc_sources, query=query)} | {self._table_aggravated(bns_sources, query=query)} |"
         )
         lines.append(
-            f"| Cognisable status | {self._table_status(ipc_sources)} | {self._table_status(bns_sources)} |"
+            f"| Cognisable status | {self._table_status(ipc_sources, query=query)} | {self._table_status(bns_sources, query=query)} |"
         )
 
         lines.extend(["", "STATUTORY SOURCES", ""])
@@ -653,7 +727,33 @@ OUTPUT FORMAT:
             "reasons": item.get("reasons") or [],
         }
 
-    def _best_source(self, sources: list[dict]) -> dict:
+    _QUERY_STOPWORDS = frozenset({
+        "the", "and", "for", "with", "under", "from", "this", "that", "what",
+        "which", "does", "are", "was", "were", "been", "being", "have", "has",
+        "had", "shall", "must", "may", "can", "not", "any", "all", "its",
+        "their", "there", "then", "than", "when", "who", "whom", "how", "why",
+        "into", "upon", "said", "says", "also", "but", "you", "your", "our",
+        "them", "they", "please", "tell", "give", "explain", "about",
+        "between", "among", "within", "please", "kindly", "regarding",
+    })
+
+    def _query_tokens(self, query: str) -> set[str]:
+        tokens = set(re.findall(r"[a-z0-9]{3,}", (query or "").lower()))
+        return tokens - self._QUERY_STOPWORDS
+
+    def _doc_tokens(self, document: str) -> set[str]:
+        return set(re.findall(r"[a-z0-9]{3,}", (document or "").lower()))
+
+    def _best_source(self, sources: list[dict], query: str = "") -> dict:
+        if query and sources:
+            q_tokens = self._query_tokens(query)
+            if q_tokens:
+                matching = [
+                    source for source in sources
+                    if q_tokens & self._doc_tokens(source["document"])
+                ]
+                if matching:
+                    sources = matching
         return max(sources, key=lambda source: source["similarity"])
 
     def _normalize_score(self, score: float) -> float:
@@ -715,39 +815,55 @@ OUTPUT FORMAT:
         excerpt = source["excerpt"].rstrip(".")
         return f'Section {source["section"]} {source["act"]} is the retrieved provision; the source states: "{excerpt}."'
 
-    def _table_section(self, sources: list[dict], act: str) -> str:
+    def _table_section(self, sources: list[dict], act: str, query: str = "") -> str:
         if not sources:
             return "No direct source retrieved"
-        source = self._best_source(sources)
+        source = self._best_source(sources, query=query)
         return f"Section {source['section']} {act} [§{source['number']}]"
 
-    def _table_punishment(self, sources: list[dict]) -> str:
+    def _table_punishment(self, sources: list[dict], query: str = "") -> str:
         source = self._first_matching_source(
-            sources, ("punish", "imprison", "fine", "community service")
+            sources, ("punish", "imprison", "fine", "community service"),
+            query=query,
         )
         if not source:
             return "Not directly stated"
         return f"{source['excerpt']} [§{source['number']}]"
 
-    def _table_aggravated(self, sources: list[dict]) -> str:
+    def _table_aggravated(self, sources: list[dict], query: str = "") -> str:
         source = self._first_matching_source(
-            sources, ("subsequent", "repeat", "aggravated", "second", "again")
+            sources, ("subsequent", "repeat", "aggravated", "second", "again"),
+            query=query,
         )
         if not source:
             return "Not directly stated"
         return f"{source['excerpt']} [§{source['number']}]"
 
-    def _table_status(self, sources: list[dict]) -> str:
+    def _table_status(self, sources: list[dict], query: str = "") -> str:
         source = self._first_matching_source(
-            sources, ("cognizable", "cognisable", "bailable", "non-cognizable")
+            sources, ("cognizable", "cognisable", "bailable", "non-cognizable"),
+            query=query,
         )
         if not source:
             return "Not directly stated"
         return f"{source['excerpt']} [§{source['number']}]"
 
     def _first_matching_source(
-        self, sources: list[dict], keywords: tuple[str, ...]
+        self, sources: list[dict], keywords: tuple[str, ...], query: str = ""
     ) -> dict | None:
+        if query and sources:
+            q_tokens = self._query_tokens(query)
+            if q_tokens:
+                matching = [
+                    source for source in sources
+                    if q_tokens & self._doc_tokens(source["document"])
+                ]
+                if matching:
+                    matched_ids = {id(source) for source in matching}
+                    sources = matching + [
+                        source for source in sources
+                        if id(source) not in matched_ids
+                    ]
         for source in sources:
             haystack = source["document"].lower()
             if any(keyword in haystack for keyword in keywords):

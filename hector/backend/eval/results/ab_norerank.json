@@ -1,0 +1,77 @@
+{
+  "mode": "norerank",
+  "pool": 30,
+  "reranker_disabled": true,
+  "hits": 187,
+  "total": 198,
+  "recall": 0.9444444444444444,
+  "pass": false,
+  "rerank_path_flags": {
+    "groq": 0,
+    "ce": 0,
+    "disabled": 198,
+    "other": 0
+  },
+  "dense_p50": 1535.8,
+  "rerank_p50": 64.3,
+  "total_p50": 1671.0,
+  "total_p95": 3019.7,
+  "misses": [
+    [
+      "ipc-12-a",
+      "IPC 12",
+      "How is \u201cpublic\u201d handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-146-a",
+      "IPC 146",
+      "How is rioting handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-2-a",
+      "IPC 2",
+      "How does the Indian Penal Code deal with punishment of offences commit"
+    ],
+    [
+      "ipc-21-a",
+      "IPC 21",
+      "What are the provisions of the Indian Penal Code regarding \u201cpublic ser"
+    ],
+    [
+      "ipc-310-a",
+      "IPC 310",
+      "What treatment does the Indian Penal Code provide for thug?"
+    ],
+    [
+      "ipc-33-a",
+      "IPC 33",
+      "Under the Indian Penal Code, what applies to \u201cact\u201d. \u201comission\u201d?"
+    ],
+    [
+      "ipc-42-a",
+      "IPC 42",
+      "What does the Indian Penal Code say about \u201clocal law\u201d?"
+    ],
+    [
+      "ipc-45-a",
+      "IPC 45",
+      "Under the Indian Penal Code, what applies to \u201clife\u201d?"
+    ],
+    [
+      "ipc-465-a",
+      "IPC 465",
+      "Under the Indian Penal Code, what applies to punishment for forgery?"
+    ],
+    [
+      "ipc-479-a",
+      "IPC 479",
+      "What does the Indian Penal Code say about property mark?"
+    ],
+    [
+      "ipc-52-a",
+      "IPC 52",
+      "What treatment does the Indian Penal Code provide for \u201cgood faith\u201d?"
+    ]
+  ],
+  "elapsed_s": 344
+}

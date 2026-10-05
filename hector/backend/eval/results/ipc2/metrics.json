@@ -1,0 +1,956 @@
+{
+  "meta": {
+    "timestamp": "2026-10-05 00:15:30",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "gold_questions": 200,
+    "runs_per_question": 1,
+    "raw_rows": 200,
+    "judged_rows": 200,
+    "unjudged_rows": 0,
+    "top_k": 10,
+    "candidate_pool": 30,
+    "run_seeds": [
+      20260930
+    ],
+    "retrieval_modes": [
+      "hybrid"
+    ]
+  },
+  "overall": {
+    "correct_abstention": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": null,
+      "denom": "abstain-expected runs"
+    },
+    "false_refusal": {
+      "k": 0,
+      "n": 198,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.019
+      ],
+      "denom": "answerable runs"
+    },
+    "premise_correction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": null,
+      "denom": "false-premise runs"
+    },
+    "injection_blocked": {
+      "k": 2,
+      "n": 2,
+      "rate": 1.0,
+      "ci95": [
+        0.3424,
+        1.0
+      ],
+      "denom": "injection runs"
+    },
+    "section_recall@10": {
+      "k": 198,
+      "n": 198,
+      "rate": 1.0,
+      "ci95": [
+        0.981,
+        1.0
+      ],
+      "denom": "expected sections x runs"
+    },
+    "citation_grounded_ratio": {
+      "k": 1110,
+      "n": 1119,
+      "rate": 0.992,
+      "ci95": [
+        0.9848,
+        0.9958
+      ],
+      "denom": "assertive statute mentions pooled"
+    },
+    "fabricated_free_rate": {
+      "k": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9812,
+        1.0
+      ],
+      "denom": "runs"
+    },
+    "claim_support_ratio": {
+      "k": 811,
+      "n": 906,
+      "rate": 0.8951,
+      "ci95": [
+        0.8735,
+        0.9135
+      ],
+      "denom": "claims pooled"
+    },
+    "point_coverage": {
+      "mean": 0.9263,
+      "k": 289,
+      "n": 312,
+      "ci95": null
+    },
+    "point_supported_rate": {
+      "k": 289,
+      "n": 312,
+      "rate": 0.9263,
+      "ci95": [
+        0.8918,
+        0.9504
+      ],
+      "denom": "expected points x runs"
+    },
+    "judge_grounding_ok": {
+      "k": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9812,
+        1.0
+      ],
+      "denom": "runs"
+    },
+    "answered_rate": {
+      "k": 198,
+      "n": 198,
+      "rate": 1.0,
+      "ci95": [
+        0.981,
+        1.0
+      ],
+      "denom": "answerable runs"
+    },
+    "consistency_3run": {
+      "k": 200,
+      "n": 200,
+      "rate": 1.0,
+      "ci95": [
+        0.9812,
+        1.0
+      ],
+      "denom": "questions",
+      "disagreements": []
+    }
+  },
+  "per_category": {
+    "answerable": {
+      "correct_abstention": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "abstain-expected runs"
+      },
+      "false_refusal": {
+        "k": 0,
+        "n": 198,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.019
+        ],
+        "denom": "answerable runs"
+      },
+      "premise_correction": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "false-premise runs"
+      },
+      "injection_blocked": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "injection runs"
+      },
+      "section_recall@10": {
+        "k": 198,
+        "n": 198,
+        "rate": 1.0,
+        "ci95": [
+          0.981,
+          1.0
+        ],
+        "denom": "expected sections x runs"
+      },
+      "citation_grounded_ratio": {
+        "k": 1110,
+        "n": 1119,
+        "rate": 0.992,
+        "ci95": [
+          0.9848,
+          0.9958
+        ],
+        "denom": "assertive statute mentions pooled"
+      },
+      "fabricated_free_rate": {
+        "k": 198,
+        "n": 198,
+        "rate": 1.0,
+        "ci95": [
+          0.981,
+          1.0
+        ],
+        "denom": "runs"
+      },
+      "claim_support_ratio": {
+        "k": 811,
+        "n": 906,
+        "rate": 0.8951,
+        "ci95": [
+          0.8735,
+          0.9135
+        ],
+        "denom": "claims pooled"
+      },
+      "zero_claim_rows": {
+        "k": 1,
+        "n": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.2065,
+          1.0
+        ],
+        "denom": "runs"
+      },
+      "point_coverage": {
+        "mean": 0.9263,
+        "k": 289,
+        "n": 312,
+        "ci95": null
+      },
+      "point_supported_rate": {
+        "k": 289,
+        "n": 312,
+        "rate": 0.9263,
+        "ci95": [
+          0.8918,
+          0.9504
+        ],
+        "denom": "expected points x runs"
+      },
+      "judge_grounding_ok": {
+        "k": 198,
+        "n": 198,
+        "rate": 1.0,
+        "ci95": [
+          0.981,
+          1.0
+        ],
+        "denom": "runs"
+      },
+      "answered_rate": {
+        "k": 198,
+        "n": 198,
+        "rate": 1.0,
+        "ci95": [
+          0.981,
+          1.0
+        ],
+        "denom": "answerable runs"
+      },
+      "consistency_3run": {
+        "k": 198,
+        "n": 198,
+        "rate": 1.0,
+        "ci95": [
+          0.981,
+          1.0
+        ],
+        "denom": "questions"
+      }
+    },
+    "unanswerable": {
+      "correct_abstention": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "abstain-expected runs"
+      },
+      "false_refusal": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "premise_correction": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "false-premise runs"
+      },
+      "injection_blocked": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "injection runs"
+      },
+      "section_recall@10": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected sections x runs"
+      },
+      "citation_grounded_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "assertive statute mentions pooled"
+      },
+      "fabricated_free_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "claim_support_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "claims pooled"
+      },
+      "zero_claim_rows": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "point_coverage": {
+        "mean": null,
+        "k": 0,
+        "n": 0,
+        "ci95": null
+      },
+      "point_supported_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected points x runs"
+      },
+      "judge_grounding_ok": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "answered_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "consistency_3run": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "questions"
+      }
+    },
+    "false_premise": {
+      "correct_abstention": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "abstain-expected runs"
+      },
+      "false_refusal": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "premise_correction": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "false-premise runs"
+      },
+      "injection_blocked": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "injection runs"
+      },
+      "section_recall@10": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected sections x runs"
+      },
+      "citation_grounded_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "assertive statute mentions pooled"
+      },
+      "fabricated_free_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "claim_support_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "claims pooled"
+      },
+      "zero_claim_rows": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "point_coverage": {
+        "mean": null,
+        "k": 0,
+        "n": 0,
+        "ci95": null
+      },
+      "point_supported_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected points x runs"
+      },
+      "judge_grounding_ok": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "answered_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "consistency_3run": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "questions"
+      }
+    },
+    "amended_or_repealed": {
+      "correct_abstention": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "abstain-expected runs"
+      },
+      "false_refusal": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "premise_correction": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "false-premise runs"
+      },
+      "injection_blocked": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "injection runs"
+      },
+      "section_recall@10": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected sections x runs"
+      },
+      "citation_grounded_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "assertive statute mentions pooled"
+      },
+      "fabricated_free_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "claim_support_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "claims pooled"
+      },
+      "zero_claim_rows": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "point_coverage": {
+        "mean": null,
+        "k": 0,
+        "n": 0,
+        "ci95": null
+      },
+      "point_supported_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected points x runs"
+      },
+      "judge_grounding_ok": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "answered_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "consistency_3run": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "questions"
+      }
+    },
+    "out_of_scope": {
+      "correct_abstention": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "abstain-expected runs"
+      },
+      "false_refusal": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "premise_correction": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "false-premise runs"
+      },
+      "injection_blocked": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "injection runs"
+      },
+      "section_recall@10": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected sections x runs"
+      },
+      "citation_grounded_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "assertive statute mentions pooled"
+      },
+      "fabricated_free_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "claim_support_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "claims pooled"
+      },
+      "zero_claim_rows": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "point_coverage": {
+        "mean": null,
+        "k": 0,
+        "n": 0,
+        "ci95": null
+      },
+      "point_supported_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected points x runs"
+      },
+      "judge_grounding_ok": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "runs"
+      },
+      "answered_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "consistency_3run": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "questions"
+      }
+    },
+    "prompt_injection": {
+      "correct_abstention": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "abstain-expected runs"
+      },
+      "false_refusal": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "premise_correction": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "false-premise runs"
+      },
+      "injection_blocked": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.3424,
+          1.0
+        ],
+        "denom": "injection runs"
+      },
+      "section_recall@10": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected sections x runs"
+      },
+      "citation_grounded_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "assertive statute mentions pooled"
+      },
+      "fabricated_free_rate": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.3424,
+          1.0
+        ],
+        "denom": "runs"
+      },
+      "claim_support_ratio": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "claims pooled"
+      },
+      "zero_claim_rows": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.3424,
+          1.0
+        ],
+        "denom": "runs"
+      },
+      "point_coverage": {
+        "mean": null,
+        "k": 0,
+        "n": 0,
+        "ci95": null
+      },
+      "point_supported_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "expected points x runs"
+      },
+      "judge_grounding_ok": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.3424,
+          1.0
+        ],
+        "denom": "runs"
+      },
+      "answered_rate": {
+        "k": 0,
+        "n": 0,
+        "rate": null,
+        "ci95": null,
+        "denom": "answerable runs"
+      },
+      "consistency_3run": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.3424,
+          1.0
+        ],
+        "denom": "questions"
+      }
+    }
+  },
+  "latency": {
+    "expand_ms": {
+      "p50": 0,
+      "p95": 24,
+      "mean": 6.9,
+      "max": 69,
+      "n": 200
+    },
+    "retrieve_ms": {
+      "p50": 7075,
+      "p95": 20320,
+      "mean": 10026.2,
+      "max": 22814,
+      "n": 200
+    },
+    "retrieval_total_ms": {
+      "p50": 7079,
+      "p95": 20327,
+      "mean": 10033.1,
+      "n": 200
+    },
+    "generation_ms": {
+      "p50": 27157,
+      "p95": 62110,
+      "mean": 32097.5,
+      "max": 189694,
+      "n": 200
+    },
+    "verify_ms": {
+      "p50": 6,
+      "p95": 26,
+      "mean": 9.2,
+      "max": 58,
+      "n": 200
+    },
+    "total_ms": {
+      "p50": 77771,
+      "p95": 155594,
+      "mean": 80707.8,
+      "max": 255175,
+      "n": 200
+    },
+    "retrieval_phases_ms": {
+      "dense_leg": {
+        "p50": 3931.8,
+        "p95": 6607.7,
+        "mean": 3650.8,
+        "max": 11555.8,
+        "n": 200
+      },
+      "bm25_leg": {
+        "p50": 17.8,
+        "p95": 62.0,
+        "mean": 26.3,
+        "max": 154.8,
+        "n": 200
+      },
+      "fuse": {
+        "p50": 0.1,
+        "p95": 0.2,
+        "mean": 0.1,
+        "max": 0.8,
+        "n": 200
+      },
+      "score": {
+        "p50": 47.2,
+        "p95": 271.0,
+        "mean": 75.2,
+        "max": 407.0,
+        "n": 200
+      },
+      "dedup": {
+        "p50": 2.8,
+        "p95": 12.4,
+        "mean": 4.2,
+        "max": 19.3,
+        "n": 200
+      },
+      "rerank": {
+        "p50": 2413.8,
+        "p95": 15444.9,
+        "mean": 6289.2,
+        "max": 16254.5,
+        "n": 200
+      },
+      "threshold": {
+        "p50": 0.5,
+        "p95": 1.4,
+        "mean": 0.8,
+        "max": 4.1,
+        "n": 200
+      },
+      "retriever_total": {
+        "p50": 7075.1,
+        "p95": 20319.2,
+        "mean": 10025.4,
+        "max": 22812.8,
+        "n": 200
+      }
+    },
+    "one_time": {
+      "corpus_s": 0.1,
+      "index_s": 2.5,
+      "warmup_s": 1.1
+    }
+  },
+  "abstention_alignment": {
+    "definitions": {
+      "round3_generator_flag_old": "True ONLY when retrieval returned zero results (response_generator pre-round-4)",
+      "round3_primary": "LLM judge verdict.is_abstention (noisy on refusal-shaped answers)",
+      "round4_generator_flag_new": "core.verifier.is_abstention_answer(response): every substantive sentence is a marker-bearing refusal/source-absence statement (citation-only lines ignored; empty answer -> False)",
+      "marker_rule_applied_to_both_rounds": true
+    },
+    "round4": {
+      "rows": 200,
+      "judge": {
+        "n": 200,
+        "hit": 2,
+        "rate": 0.01
+      },
+      "marker": {
+        "n": 200,
+        "hit": 2,
+        "rate": 0.01
+      },
+      "generator_flag": {
+        "n": 200,
+        "hit": 2,
+        "rate": 0.01
+      },
+      "marker_vs_judge": {
+        "agree": 200,
+        "n": 200,
+        "rate": 1.0
+      },
+      "on_should_abstain": {
+        "n": 0,
+        "judge": {
+          "n": 0,
+          "hit": 0,
+          "rate": null
+        },
+        "marker": {
+          "n": 0,
+          "hit": 0,
+          "rate": null
+        },
+        "generator_flag": {
+          "n": 0,
+          "hit": 0,
+          "rate": null
+        }
+      },
+      "on_should_answer": {
+        "n": 200,
+        "judge": {
+          "n": 200,
+          "hit": 2,
+          "rate": 0.01
+        },
+        "marker": {
+          "n": 200,
+          "hit": 2,
+          "rate": 0.01
+        },
+        "generator_flag": {
+          "n": 200,
+          "hit": 2,
+          "rate": 0.01
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "mode": "base",
+  "pool": 30,
+  "reranker_disabled": false,
+  "hits": 198,
+  "total": 198,
+  "recall": 1.0,
+  "pass": true,
+  "dense_p50": 961.4,
+  "rerank_p50": 2561.5,
+  "total_p50": 3636.8,
+  "total_p95": 13842.9,
+  "misses": [],
+  "elapsed_s": 994
+}

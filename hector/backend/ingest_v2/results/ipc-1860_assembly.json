@@ -1,0 +1,127 @@
+{
+  "act_id": "ipc-1860",
+  "page_spanning_total": 71,
+  "shown": [
+    {
+      "number": "4",
+      "page_start": 14,
+      "page_end": 15,
+      "joins": [
+        {
+          "from_page": 14,
+          "to_page": 14,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "9[4. Extension of Code to extra-territorial offences.—The provisions of this Code apply also to any\noffence committed by—",
+          "after_head": "10[(1) any citizen of India in any place without and beyond India;\n(2) any person on any ship or aircraft registered in India wherever it ma"
+        },
+        {
+          "from_page": 14,
+          "to_page": 15,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ection—\n(a) the word “offence” includes every act committed outside India which, if committed in\nIndia, would be punishable under this Code;",
+          "after_head": "(b) the expression “computer resource” shall have the meaning assigned to it in clause (k) of\nsub-section (1) of section 2 of the Informatio"
+        }
+      ]
+    },
+    {
+      "number": "21",
+      "page_start": 16,
+      "page_end": 18,
+      "joins": [
+        {
+          "from_page": 16,
+          "to_page": 17,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "on to whom any cause or matter has been referred for decision\nor report by any Court of Justice, or by any other competent public authority;",
+          "after_head": "Seventh.—Every person who holds any office by virtue of which he is empowered to place or keep\nany person in confinement;\nEighth.—Every offi"
+        },
+        {
+          "from_page": 17,
+          "to_page": 17,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "owered to prepare,\npublish, maintain or revise an electoral roll or to conduct an election or part of an election;]\n4[Twelfth.—Every person—",
+          "after_head": "(a) in the service or pay of the Government or remunerated by fees or commission for the\nperformance of any public duty by the Government;\n("
+        },
+        {
+          "from_page": 17,
+          "to_page": 17,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "public authority, of whatever character, the method of selection to\nwhich is by, or under, any law prescribed as by election.]\n5*\n *\n *\n *\n*",
+          "after_head": "Rajasthan\nAmendment of Section 21, Central Act 45 of 1860.—In section 21 of the Indian Penal Code, 1860 (Central\nAct 45 of 1860), in its app"
+        },
+        {
+          "from_page": 17,
+          "to_page": 18,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "in the conduct and supervision of any\nexamination recognised or approved under any law.\nExplanation.—The expression \"Public Body\" includes.—",
+          "after_head": "(a) a University, Board of Education or other body, either established by or under a Central or State Act\nor under the provisions of the Con"
+        }
+      ]
+    },
+    {
+      "number": "55",
+      "page_start": 21,
+      "page_end": 22,
+      "joins": [
+        {
+          "from_page": 21,
+          "to_page": 22,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": ".—In every case in which sentence of\n7[imprisonment] for life shall have been passed, 8[the appropriate Government] may, without the consent",
+          "after_head": "of the offender, commute the punishment for imprisonment of either description for a term not exceeding\nfourteen years."
+        }
+      ]
+    },
+    {
+      "number": "79",
+      "page_start": 24,
+      "page_end": 25,
+      "joins": [
+        {
+          "from_page": 24,
+          "to_page": 25,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "lieving himself justified, by law.—\nNothing is an offence which is done by any person who is justified by law, or who by reason of a mistake",
+          "after_head": "of fact and not by reason of a mistake of law in good faith, believes himself to be justified by law, in\ndoing it.\nIllustration\nA sees Z com"
+        }
+      ]
+    },
+    {
+      "number": "87",
+      "page_start": 25,
+      "page_end": 26,
+      "joins": [
+        {
+          "from_page": 25,
+          "to_page": 26,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "rt, and which is not known by the\ndoer to be likely to cause death or grievous hurt, is an offence by reason of any harm which it may cause,",
+          "after_head": "or be intended by the doer to cause, to any person, above eighteen years of age, who has given consent,\nwhether express or implied, to suffe"
+        }
+      ]
+    }
+  ]
+}

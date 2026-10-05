@@ -1,0 +1,9581 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "margin": 550,
+    "restated": 547,
+    "footnote": 284,
+    "UNKNOWN": 2
+  },
+  "labels": {
+    "header": 111,
+    "separator": 128,
+    "footnote": 690,
+    "page_number": 119
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 2068,
+      "page": 53,
+      "text": "121.--Whoever within or without 2*[India] conspires to commit any",
+      "context": [
+        "Conspiracy to commit offences punishable by section 121.",
+        "1*[121A. Conspiracy to commit offences punishable by section",
+        "121.--Whoever within or without 2*[India] conspires to commit any",
+        "of the offences punishable by section 121, 3*** or conspires to",
+        "overawe, by means of criminal force or the show of criminal force,"
+      ]
+    },
+    {
+      "line": 3689,
+      "page": 91,
+      "text": "460.]",
+      "context": [
+        "any of the following sections, namely, 302, 304, 382, 392, 393, 394,",
+        "395, 396, 397, 398, 399, 402, 435, 436, 449, 450, 457, 458, 459 and",
+        "460.]",
+        "204.",
+        "Destruction of document to prevent its production as evidence."
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 5771,
+      "page": 131,
+      "text": "7.",
+      "cls": "footnote"
+    },
+    {
+      "line": 73,
+      "page": 2,
+      "text": "5.",
+      "cls": "footnote"
+    },
+    {
+      "line": 320,
+      "page": 8,
+      "text": "5.",
+      "cls": "footnote"
+    },
+    {
+      "line": 45,
+      "page": 2,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 313,
+      "page": 8,
+      "text": "2.",
+      "cls": "footnote"
+    },
+    {
+      "line": 9240,
+      "page": 215,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 616,
+      "page": 16,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2415,
+      "page": 61,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 5676,
+      "page": 129,
+      "text": "4.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2139,
+      "page": 55,
+      "text": "15. The words \"or a Member of the Council of the Governor General of",
+      "cls": "footnote"
+    },
+    {
+      "line": 2483,
+      "page": 63,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2490,
+      "page": 63,
+      "text": "3.",
+      "cls": "footnote"
+    },
+    {
+      "line": 622,
+      "page": 16,
+      "text": "4.",
+      "cls": "footnote"
+    },
+    {
+      "line": 9663,
+      "page": 225,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 4252,
+      "page": 101,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 6806,
+      "page": 158,
+      "text": "3.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1074,
+      "page": 28,
+      "text": "3.",
+      "cls": "footnote"
+    },
+    {
+      "line": 9588,
+      "page": 223,
+      "text": "3.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2046,
+      "page": 53,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 631,
+      "page": 17,
+      "text": "8.",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 10,
+      "page": 1,
+      "text": "1.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 12,
+      "page": 1,
+      "text": "1. Title and extent of operation of the Code.--This Act shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 15,
+      "page": 1,
+      "text": "2.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 17,
+      "page": 1,
+      "text": "2. Punishment of offences committed within India.--Every person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 21,
+      "page": 1,
+      "text": "3.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 24,
+      "page": 2,
+      "text": "3. Punishment of offences committed beyond, but which by law may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 32,
+      "page": 2,
+      "text": "4.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 45,
+      "page": 2,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 59,
+      "page": 2,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 62,
+      "page": 2,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 70,
+      "page": 2,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 73,
+      "page": 2,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 75,
+      "page": 2,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 78,
+      "page": 2,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 81,
+      "page": 3,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 83,
+      "page": 3,
+      "text": "9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 100,
+      "page": 3,
+      "text": "5.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 111,
+      "page": 3,
+      "text": "6.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 113,
+      "page": 3,
+      "text": "6. Definitions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 133,
+      "page": 4,
+      "text": "7.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 135,
+      "page": 4,
+      "text": "7. Sense of expression once explained.--Every expression which is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 138,
+      "page": 4,
+      "text": "8.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 140,
+      "page": 4,
+      "text": "8. Gender.--The pronoun \"he\" and its derivatives are used of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 142,
+      "page": 4,
+      "text": "9.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 144,
+      "page": 4,
+      "text": "9. Number.--Unless the contrary appears from the context, words",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 147,
+      "page": 4,
+      "text": "10.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 149,
+      "page": 5,
+      "text": "10. \"Man\". \"Woman\".--The word \"man\" denotes a male human being of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 152,
+      "page": 5,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 154,
+      "page": 5,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 156,
+      "page": 5,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 158,
+      "page": 5,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 161,
+      "page": 5,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 164,
+      "page": 5,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 166,
+      "page": 5,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 169,
+      "page": 5,
+      "text": "11.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 171,
+      "page": 5,
+      "text": "11. \"Person\".--The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 175,
+      "page": 5,
+      "text": "12.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 177,
+      "page": 5,
+      "text": "12. \"Public\".--The word \"public\" includes any class of the public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 179,
+      "page": 5,
+      "text": "13.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 181,
+      "page": 5,
+      "text": "14.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 191,
+      "page": 6,
+      "text": "15.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 193,
+      "page": 6,
+      "text": "16.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 195,
+      "page": 6,
+      "text": "17.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 199,
+      "page": 6,
+      "text": "18.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 203,
+      "page": 6,
+      "text": "19.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 205,
+      "page": 6,
+      "text": "19. \"Judge\".--The word \"Judge\" denotes not only every person who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 224,
+      "page": 7,
+      "text": "20.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 226,
+      "page": 7,
+      "text": "20. \"Court of Justice\".--The words \"Court of Jutsice\" denote a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 234,
+      "page": 7,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 236,
+      "page": 7,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 238,
+      "page": 7,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 241,
+      "page": 7,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 243,
+      "page": 7,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 246,
+      "page": 7,
+      "text": "21.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 248,
+      "page": 7,
+      "text": "21. \"Public servant\".--The words \"public servant\" denote a person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 311,
+      "page": 8,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 313,
+      "page": 8,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 315,
+      "page": 8,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 318,
+      "page": 8,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 320,
+      "page": 8,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 322,
+      "page": 8,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 324,
+      "page": 9,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 326,
+      "page": 9,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 363,
+      "page": 9,
+      "text": "22.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 365,
+      "page": 9,
+      "text": "22. \"Movable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 371,
+      "page": 9,
+      "text": "23.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 373,
+      "page": 10,
+      "text": "23. \"Wrongful gain\".--\"Wrongful gain\" is gain by unlawful means",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 384,
+      "page": 10,
+      "text": "24.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 386,
+      "page": 10,
+      "text": "24. \"Dishonestly\".--Whoever does anything with the intention of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 389,
+      "page": 10,
+      "text": "25.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 391,
+      "page": 10,
+      "text": "25. \"Fraudulently\".--A person is said to do a thing fraudulently",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 394,
+      "page": 10,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 396,
+      "page": 10,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 399,
+      "page": 10,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 401,
+      "page": 10,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 405,
+      "page": 11,
+      "text": "26.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 407,
+      "page": 11,
+      "text": "26. \"Reason to believe\".--A person is said to have \"reason to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 410,
+      "page": 11,
+      "text": "27.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 412,
+      "page": 11,
+      "text": "27. Property in possession of wife, clerk or servant.--When",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 419,
+      "page": 11,
+      "text": "28.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 421,
+      "page": 11,
+      "text": "28. \"Counterfeit\".--A person is said to \"counterfeit\" who causes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 433,
+      "page": 11,
+      "text": "29.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 435,
+      "page": 12,
+      "text": "29. \"Document\".--The word \"document\" denotes any matter expressed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 463,
+      "page": 12,
+      "text": "30.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 465,
+      "page": 12,
+      "text": "30. \"Valuable security\".--The words \"valuable security\" denote a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 471,
+      "page": 12,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 479,
+      "page": 13,
+      "text": "31.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 481,
+      "page": 13,
+      "text": "31. \"A will\".--The words \"a will\" denote any testamentary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 483,
+      "page": 13,
+      "text": "32.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 485,
+      "page": 13,
+      "text": "32. Words referring to acts include illegal omissions.--In every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 489,
+      "page": 13,
+      "text": "33.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 491,
+      "page": 13,
+      "text": "33. \"Act\". \"Omission\".--The word \"act\" denotes as well as series",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 494,
+      "page": 13,
+      "text": "34.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 502,
+      "page": 13,
+      "text": "35.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 505,
+      "page": 14,
+      "text": "35. When such an act is criminal by reason of its being done with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 512,
+      "page": 14,
+      "text": "36.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 514,
+      "page": 14,
+      "text": "36. Effect caused partly by act and partly by omission.--Wherever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 522,
+      "page": 14,
+      "text": "37.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 524,
+      "page": 14,
+      "text": "37. Co-operation by doing one of several acts constituting an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 544,
+      "page": 15,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 556,
+      "page": 15,
+      "text": "38.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 560,
+      "page": 15,
+      "text": "38. Persons concerned in criminal Act may be guilty of different",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 571,
+      "page": 15,
+      "text": "39.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 573,
+      "page": 15,
+      "text": "39. \"Voluntarily\".--A",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 585,
+      "page": 16,
+      "text": "40.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 606,
+      "page": 16,
+      "text": "41.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 608,
+      "page": 16,
+      "text": "41. \"Special",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 611,
+      "page": 16,
+      "text": "42.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 613,
+      "page": 16,
+      "text": "42. \"Local law\".--A \"local law\" is a law applicable only to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 616,
+      "page": 16,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 618,
+      "page": 16,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 620,
+      "page": 16,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 622,
+      "page": 16,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 624,
+      "page": 16,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 626,
+      "page": 17,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 628,
+      "page": 17,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 631,
+      "page": 17,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 635,
+      "page": 17,
+      "text": "43.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 638,
+      "page": 17,
+      "text": "43. \"Illegal\". \"Legally bound to do\".--The word \"illegal\" is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 643,
+      "page": 17,
+      "text": "44.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 645,
+      "page": 17,
+      "text": "44. \"Injury\".--The word \"injury\" denotes any harm whatever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 647,
+      "page": 17,
+      "text": "45.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 649,
+      "page": 17,
+      "text": "45. \"Life\".--The word \"life\" denotes the life of a human being,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 651,
+      "page": 17,
+      "text": "46.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 653,
+      "page": 17,
+      "text": "46. \"Death\".--The word \"death\" denotes the death of a human being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 655,
+      "page": 17,
+      "text": "47.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 657,
+      "page": 18,
+      "text": "47. \"Animal\".--The word \"animal\" denotes any living creature,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 659,
+      "page": 18,
+      "text": "48.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 661,
+      "page": 18,
+      "text": "48. \"Vessel\".--The word \"vessel\" denotes anything made for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 663,
+      "page": 18,
+      "text": "49.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 666,
+      "page": 18,
+      "text": "49. \"Year\". \"Month\".--Wherever the word \"year\" or the word",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 669,
+      "page": 18,
+      "text": "50.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 671,
+      "page": 18,
+      "text": "50. \"Section\".--The word \"section\" denotes one of those portions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 674,
+      "page": 18,
+      "text": "51.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 676,
+      "page": 18,
+      "text": "51. \"Oath\".--The word \"oath\" includes a solemn affirmation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 680,
+      "page": 18,
+      "text": "52.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 682,
+      "page": 19,
+      "text": "52. \"Good faith\".--Nothing is said to be done or believed in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 684,
+      "page": 19,
+      "text": "52A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 697,
+      "page": 19,
+      "text": "53.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 699,
+      "page": 19,
+      "text": "53. Punishments.--The punishments to which offenders are liable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 716,
+      "page": 20,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 718,
+      "page": 20,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 721,
+      "page": 20,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 725,
+      "page": 20,
+      "text": "53A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 757,
+      "page": 20,
+      "text": "54.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 759,
+      "page": 20,
+      "text": "54. Commutation of sentence of death.--In every case in which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 766,
+      "page": 21,
+      "text": "55.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 768,
+      "page": 21,
+      "text": "55. Commutation of sentence of imprisonment for life.--In every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 777,
+      "page": 21,
+      "text": "55A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 791,
+      "page": 21,
+      "text": "56.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 792,
+      "page": 21,
+      "text": "56. [Sentence of Europeans and Americans to penal servitude.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 796,
+      "page": 21,
+      "text": "57.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 798,
+      "page": 21,
+      "text": "57. Fractions of terms of punishment.--In calculating fractions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 801,
+      "page": 21,
+      "text": "58.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 802,
+      "page": 22,
+      "text": "58. [Offenders sentenced to transportation how dealt with until",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 806,
+      "page": 22,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 808,
+      "page": 22,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 810,
+      "page": 22,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 814,
+      "page": 22,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 817,
+      "page": 22,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 820,
+      "page": 22,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 824,
+      "page": 22,
+      "text": "59.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 825,
+      "page": 22,
+      "text": "59. [Transportation instead of imprisonment.] Rep. by the Code of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 828,
+      "page": 22,
+      "text": "60.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 831,
+      "page": 22,
+      "text": "60. Sentence may be (in certain cases of imprisonment) wholly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 838,
+      "page": 22,
+      "text": "61.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 839,
+      "page": 22,
+      "text": "61. [Sentence of forfeiture of property.] Rep. by the Indian",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 841,
+      "page": 22,
+      "text": "62.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 842,
+      "page": 23,
+      "text": "62. [Forfeiture of property, in respect of offenders punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 844,
+      "page": 23,
+      "text": "63.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 846,
+      "page": 23,
+      "text": "63. Amount of fine.--Where no sum is expressed to which a fine",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 849,
+      "page": 23,
+      "text": "64.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 851,
+      "page": 23,
+      "text": "64. Sentence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 874,
+      "page": 23,
+      "text": "65.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 877,
+      "page": 23,
+      "text": "65. Limit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 885,
+      "page": 23,
+      "text": "66.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 887,
+      "page": 24,
+      "text": "66. Description of imprisonment for non-payment of fine.--The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 891,
+      "page": 24,
+      "text": "67.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 894,
+      "page": 24,
+      "text": "67. Imprisonment for non-payment of fine, when offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 904,
+      "page": 24,
+      "text": "68.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 906,
+      "page": 24,
+      "text": "68. Imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 915,
+      "page": 24,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 918,
+      "page": 24,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 920,
+      "page": 24,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 923,
+      "page": 24,
+      "text": "69.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 925,
+      "page": 24,
+      "text": "69. Termination of imprisonment on payment of proportional part",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 944,
+      "page": 25,
+      "text": "70.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 947,
+      "page": 25,
+      "text": "70. Fine leviable within six years, or during imprisonment. Death",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 956,
+      "page": 25,
+      "text": "71.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 958,
+      "page": 25,
+      "text": "71. Limit of punishment of offence made up of several offences.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 984,
+      "page": 26,
+      "text": "72.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 987,
+      "page": 26,
+      "text": "72. Punishment of person guilty of one of several offences, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 995,
+      "page": 26,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 999,
+      "page": 26,
+      "text": "73.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1001,
+      "page": 26,
+      "text": "73. Solitary confinement.--Whenever any person is convicted of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1013,
+      "page": 27,
+      "text": "74.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1015,
+      "page": 27,
+      "text": "74. Limit of solitary confinement.--In executing a sentence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1023,
+      "page": 27,
+      "text": "75.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1048,
+      "page": 28,
+      "text": "76.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1051,
+      "page": 28,
+      "text": "76. Act done by a person bound, or by mistake of fact believing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1063,
+      "page": 28,
+      "text": "77.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1065,
+      "page": 28,
+      "text": "77. Act of Judge when acting judicially.--Nothing is an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1070,
+      "page": 28,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1072,
+      "page": 28,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1074,
+      "page": 28,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1076,
+      "page": 28,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1079,
+      "page": 28,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1084,
+      "page": 28,
+      "text": "78.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1086,
+      "page": 29,
+      "text": "78. Act done pursuant to the judgment or order of Court.--Nothing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1093,
+      "page": 29,
+      "text": "79.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1096,
+      "page": 29,
+      "text": "79. Act done by a person justified, or by mistake of fact",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1108,
+      "page": 29,
+      "text": "80.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1110,
+      "page": 29,
+      "text": "80. Accident in doing a lawful act.--Nothing is an offence which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1118,
+      "page": 29,
+      "text": "81.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1121,
+      "page": 30,
+      "text": "81. Act likely to cause harm, but done without criminal intent,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1151,
+      "page": 30,
+      "text": "82.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1153,
+      "page": 30,
+      "text": "82. Act of a child under seven years of age.--Nothing is an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1155,
+      "page": 30,
+      "text": "83.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1163,
+      "page": 31,
+      "text": "83. Act of a child above seven and under twelve of immature",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1168,
+      "page": 31,
+      "text": "84.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1170,
+      "page": 31,
+      "text": "84. Act of a person of unsound mind.--Nothing is an offence which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1174,
+      "page": 31,
+      "text": "85.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1177,
+      "page": 31,
+      "text": "85. Act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1185,
+      "page": 31,
+      "text": "86.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1188,
+      "page": 31,
+      "text": "86. Offence requiring a particular intent or knowledge committed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1195,
+      "page": 31,
+      "text": "87.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1198,
+      "page": 32,
+      "text": "87. Act not intended and not known to be likely to cause death or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1212,
+      "page": 32,
+      "text": "88.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1215,
+      "page": 32,
+      "text": "88. Act not intended to cause death, done by consent in good",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1228,
+      "page": 32,
+      "text": "89.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1231,
+      "page": 32,
+      "text": "89. Act done in good faith for benefit of child or insane person,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1264,
+      "page": 33,
+      "text": "90.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1266,
+      "page": 33,
+      "text": "90. Consent known to be given under fear or misconception.--A",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1281,
+      "page": 34,
+      "text": "91.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1283,
+      "page": 34,
+      "text": "91. Exclusion of acts which are offences independently of harm",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1295,
+      "page": 34,
+      "text": "92.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1297,
+      "page": 34,
+      "text": "92. Act done in good faith for benefit of a person without",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1347,
+      "page": 35,
+      "text": "93.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1349,
+      "page": 35,
+      "text": "93. Communication made in good faith.--No communication made in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1357,
+      "page": 36,
+      "text": "94.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1359,
+      "page": 36,
+      "text": "94. Act to which a person is compelled by threats.--Except",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1380,
+      "page": 36,
+      "text": "95.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1382,
+      "page": 36,
+      "text": "95. Act causing slight harm.--Nothing is an offence by reason",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1387,
+      "page": 36,
+      "text": "96.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1389,
+      "page": 37,
+      "text": "96. Things done in private defence.--Nothing is an offence which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1391,
+      "page": 37,
+      "text": "97.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1393,
+      "page": 37,
+      "text": "97. Right of private defence of the body and of property.--Every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1403,
+      "page": 37,
+      "text": "98.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1406,
+      "page": 37,
+      "text": "98. Right of private defence against the act of a person of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1423,
+      "page": 37,
+      "text": "99.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1425,
+      "page": 38,
+      "text": "99. Acts against which there is no right of private defence.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1453,
+      "page": 38,
+      "text": "100.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1456,
+      "page": 38,
+      "text": "100. When the right of private defence of the body extends to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1483,
+      "page": 39,
+      "text": "101.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1485,
+      "page": 39,
+      "text": "101. When such right extends to causing any harm other than",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1491,
+      "page": 39,
+      "text": "102.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1494,
+      "page": 39,
+      "text": "102. Commencement and continuance of the right of private defence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1500,
+      "page": 39,
+      "text": "103.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1503,
+      "page": 40,
+      "text": "103. When the right of private defence of property extends to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1520,
+      "page": 40,
+      "text": "104.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1522,
+      "page": 40,
+      "text": "104. When such right to causing any harm other than death.--If",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1530,
+      "page": 40,
+      "text": "105.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1533,
+      "page": 40,
+      "text": "105. Commencement and continuance of the right of private defence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1552,
+      "page": 41,
+      "text": "106.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1555,
+      "page": 41,
+      "text": "106. Right of private defence against deadly assault when there",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1572,
+      "page": 41,
+      "text": "107.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1574,
+      "page": 41,
+      "text": "107. Abetment of a thing.--A person abets the doing of a thing,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1597,
+      "page": 42,
+      "text": "108.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1599,
+      "page": 42,
+      "text": "108. Abettor.--A person abets an offence, who abets either the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1671,
+      "page": 44,
+      "text": "108A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1680,
+      "page": 44,
+      "text": "109.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1683,
+      "page": 44,
+      "text": "109. Punishment of abetment if the act abetted is committed in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1709,
+      "page": 45,
+      "text": "110.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1712,
+      "page": 45,
+      "text": "110. Punishment of abetment if person abetted does act with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1723,
+      "page": 45,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1725,
+      "page": 45,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1728,
+      "page": 45,
+      "text": "111.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1730,
+      "page": 45,
+      "text": "111. Liability of abettor when one act abetted and different act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1759,
+      "page": 46,
+      "text": "112.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1762,
+      "page": 46,
+      "text": "112. Abettor when liable to cumulative punishment for act abetted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1778,
+      "page": 46,
+      "text": "113.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1781,
+      "page": 47,
+      "text": "113. Liability of abettor for an effect caused by the act abetted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1796,
+      "page": 47,
+      "text": "114.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1798,
+      "page": 47,
+      "text": "114. Abettor present when offence is committed.--Whenever any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1804,
+      "page": 47,
+      "text": "115.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1807,
+      "page": 47,
+      "text": "115. Abetment of offence punishable with death or imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1829,
+      "page": 48,
+      "text": "116.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1832,
+      "page": 48,
+      "text": "116. Abetment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1866,
+      "page": 49,
+      "text": "117.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1869,
+      "page": 49,
+      "text": "117. Abetting commission of offence by the public or by more than",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1875,
+      "page": 49,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1886,
+      "page": 49,
+      "text": "118.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1891,
+      "page": 49,
+      "text": "118. Concealing design to commit offence punishable with death or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1915,
+      "page": 50,
+      "text": "119.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1918,
+      "page": 50,
+      "text": "119. Public servant concealing design to commit offence which it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1960,
+      "page": 51,
+      "text": "120.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1962,
+      "page": 51,
+      "text": "120. Concealing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1974,
+      "page": 51,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1990,
+      "page": 52,
+      "text": "120A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 1992,
+      "page": 52,
+      "text": "120A. Definition of criminal conspiracy.--When two or more",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2004,
+      "page": 52,
+      "text": "120B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2006,
+      "page": 52,
+      "text": "120B. Punishment of criminal conspiracy.--(1) Whoever is a party",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2020,
+      "page": 53,
+      "text": "121.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2023,
+      "page": 53,
+      "text": "121. Waging, or attempting to wage war, or abetting waging of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2046,
+      "page": 53,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2048,
+      "page": 53,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2050,
+      "page": 53,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2052,
+      "page": 53,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2055,
+      "page": 53,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2058,
+      "page": 53,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2060,
+      "page": 53,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2062,
+      "page": 53,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2065,
+      "page": 53,
+      "text": "121A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2068,
+      "page": 53,
+      "text": "121.--Whoever within or without 2*[India] conspires to commit any",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 2078,
+      "page": 54,
+      "text": "122.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2081,
+      "page": 54,
+      "text": "122. Collecting arms, etc., with intention of waging war against",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2088,
+      "page": 54,
+      "text": "123.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2090,
+      "page": 54,
+      "text": "123. Concealing with intent to facilitate design to wage war.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2097,
+      "page": 54,
+      "text": "124.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2100,
+      "page": 54,
+      "text": "124. Assaulting President, Governor, etc., with intent to compel",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2111,
+      "page": 54,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2113,
+      "page": 54,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2115,
+      "page": 55,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2118,
+      "page": 55,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2120,
+      "page": 55,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2122,
+      "page": 55,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2125,
+      "page": 55,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2127,
+      "page": 55,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2129,
+      "page": 55,
+      "text": "9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2132,
+      "page": 55,
+      "text": "10. Subs. by Act 16 of 1921, s. 2, for \"and shall forfeit all his",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2134,
+      "page": 55,
+      "text": "11. Subs. by the A. O. 1950, for \"Governor General\".",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2135,
+      "page": 55,
+      "text": "12. Subs. by Act 3 of 1951, s. 3 and Sch., for \"Governor\".",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2136,
+      "page": 55,
+      "text": "13. The words \"or Rajpramukh\" omitted by the Adaptation of Laws (No.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2138,
+      "page": 55,
+      "text": "14. The words \"or a Leutenant-Governor\" rep. by the A. O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2139,
+      "page": 55,
+      "text": "15. The words \"or a Member of the Council of the Governor General of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2141,
+      "page": 55,
+      "text": "16. The words \"or of the Council of any Presidency\" rep. by the A. O.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2142,
+      "page": 55,
+      "text": "1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2143,
+      "page": 55,
+      "text": "17. The original words \"Governor General, Governor, Lieutenant-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2151,
+      "page": 55,
+      "text": "124A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2175,
+      "page": 56,
+      "text": "125.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2178,
+      "page": 56,
+      "text": "125. Waging war against any Asiatic Power in alliance with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2185,
+      "page": 56,
+      "text": "126.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2188,
+      "page": 56,
+      "text": "126. Committing depredation on territories of Power at peace with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2199,
+      "page": 56,
+      "text": "127.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2202,
+      "page": 57,
+      "text": "127. Receiving property taken by war or depredation mentioned in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2208,
+      "page": 57,
+      "text": "128.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2211,
+      "page": 57,
+      "text": "128. Public servant voluntarily allowing prisoner of state or war",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2219,
+      "page": 57,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2222,
+      "page": 57,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2226,
+      "page": 57,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2228,
+      "page": 57,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2231,
+      "page": 57,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2234,
+      "page": 57,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2236,
+      "page": 57,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2240,
+      "page": 57,
+      "text": "129.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2242,
+      "page": 57,
+      "text": "129. Public servant negligently suffering such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2249,
+      "page": 57,
+      "text": "130.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2251,
+      "page": 58,
+      "text": "130. Aiding escape of, rescuing or harbouring such prisoner.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2271,
+      "page": 58,
+      "text": "131.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2274,
+      "page": 58,
+      "text": "131. Abetting mutiny, or attempting to seduce a soldier, sailor",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2294,
+      "page": 58,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2297,
+      "page": 59,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2299,
+      "page": 59,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2301,
+      "page": 59,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2303,
+      "page": 59,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2305,
+      "page": 59,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2307,
+      "page": 59,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2309,
+      "page": 59,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2311,
+      "page": 59,
+      "text": "9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2313,
+      "page": 59,
+      "text": "10. Subs. by Act 10 of 1927, s. 2 and Sch. I, for \"Articles of War",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2316,
+      "page": 59,
+      "text": "11. Subs. by Act 3 of 1951, s. 3 and Sch., for \"the Indian Army Act,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2318,
+      "page": 59,
+      "text": "12. The words \"or that Act as modified by\" were rep. by the A.O.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2319,
+      "page": 59,
+      "text": "1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2320,
+      "page": 59,
+      "text": "13. Subs. by Act 14 of 1932, s. 130 and Sch., for \"or the Air Force",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2322,
+      "page": 59,
+      "text": "14. Subs. by Act 3 of 1951, s.3 and Sch., for \"the Indian Air Force",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2326,
+      "page": 59,
+      "text": "132.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2328,
+      "page": 59,
+      "text": "132. Abetment of mutiny, if mutiny is committed in consequence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2342,
+      "page": 59,
+      "text": "133.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2345,
+      "page": 59,
+      "text": "133. Abetment of assault by soldier, sailor or airman on his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2352,
+      "page": 59,
+      "text": "134.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2354,
+      "page": 60,
+      "text": "134. Abetment of such assault, if the assault committed.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2361,
+      "page": 60,
+      "text": "135.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2363,
+      "page": 60,
+      "text": "135. Abetment of desertion of soldier, sailor or airman.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2368,
+      "page": 60,
+      "text": "136.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2370,
+      "page": 60,
+      "text": "136. Harbouring",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2382,
+      "page": 60,
+      "text": "137.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2385,
+      "page": 60,
+      "text": "137. Deserter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2397,
+      "page": 61,
+      "text": "138.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2399,
+      "page": 61,
+      "text": "138. Abetment of act of insubordination by soldier, sailor or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2410,
+      "page": 61,
+      "text": "138A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2412,
+      "page": 61,
+      "text": "138A. [Application of foregoing sections to the Indian Marine",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2415,
+      "page": 61,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2417,
+      "page": 61,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2419,
+      "page": 61,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2421,
+      "page": 61,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2425,
+      "page": 61,
+      "text": "139.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2427,
+      "page": 61,
+      "text": "139. Persons subject to certain Acts.--No person subject to 1*",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2434,
+      "page": 61,
+      "text": "140.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2436,
+      "page": 62,
+      "text": "140. Wearing garb or carrying token used by soldier, sailor or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2449,
+      "page": 62,
+      "text": "141.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2451,
+      "page": 62,
+      "text": "141. Unlawful assembly.--An assembly of five or more persons is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2476,
+      "page": 63,
+      "text": "142.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2478,
+      "page": 63,
+      "text": "142. Being member of unlawful assembly.--Whoever, being aware of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2483,
+      "page": 63,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2487,
+      "page": 63,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2490,
+      "page": 63,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2492,
+      "page": 63,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2497,
+      "page": 63,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2500,
+      "page": 63,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2502,
+      "page": 63,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2504,
+      "page": 63,
+      "text": "9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2506,
+      "page": 63,
+      "text": "10. Subs., ibid., for \"the Central or any Provincial Government or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2510,
+      "page": 63,
+      "text": "143.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2512,
+      "page": 63,
+      "text": "143. Punishment.--Whoever is a member of an unlawful assembly,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2515,
+      "page": 64,
+      "text": "144.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2517,
+      "page": 64,
+      "text": "144. Joining unlawful assembly armed with deadly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2524,
+      "page": 64,
+      "text": "145.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2527,
+      "page": 64,
+      "text": "145. Joining or continuing in unlawful assembly, knowing it has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2533,
+      "page": 64,
+      "text": "146.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2535,
+      "page": 64,
+      "text": "146. Rioting.--Whenever force or violence is used by an unlawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2539,
+      "page": 64,
+      "text": "147.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2541,
+      "page": 64,
+      "text": "147. Punishment for rioting.--Whoever is guilty of rioting, shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2544,
+      "page": 64,
+      "text": "148.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2546,
+      "page": 65,
+      "text": "148. Rioting, armed with deadly weapon.--Whoever is guilty of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2551,
+      "page": 65,
+      "text": "149.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2554,
+      "page": 65,
+      "text": "149. Every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2563,
+      "page": 65,
+      "text": "150.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2565,
+      "page": 65,
+      "text": "150. Hiring, or conniving at hiring, of persons to join unlawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2574,
+      "page": 65,
+      "text": "151.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2577,
+      "page": 65,
+      "text": "151. Knowingly joining or continuing in assembly of five or more",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2586,
+      "page": 66,
+      "text": "145.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2587,
+      "page": 66,
+      "text": "152.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2589,
+      "page": 66,
+      "text": "152. Assaulting or obstructing public servant when suppressing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2600,
+      "page": 66,
+      "text": "153.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2603,
+      "page": 66,
+      "text": "153. Want only giving provocation with intent to cause riot--if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2614,
+      "page": 66,
+      "text": "153A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2653,
+      "page": 67,
+      "text": "153B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2681,
+      "page": 68,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2683,
+      "page": 68,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2704,
+      "page": 68,
+      "text": "154.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2706,
+      "page": 68,
+      "text": "154. Owner or occupier of land on which an unlawful assembly is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2720,
+      "page": 68,
+      "text": "155.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2722,
+      "page": 68,
+      "text": "155. Liability of person for whose benefit riot is committed.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2736,
+      "page": 69,
+      "text": "156.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2739,
+      "page": 69,
+      "text": "156. Liability of agent of owner or occupier for whose benefit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2751,
+      "page": 69,
+      "text": "157.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2753,
+      "page": 69,
+      "text": "157. Harbouring persons hired for an unlawful assembly.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2760,
+      "page": 69,
+      "text": "158.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2762,
+      "page": 69,
+      "text": "158. Being hired to take part in an unlawful assembly or riot;-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2775,
+      "page": 70,
+      "text": "159.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2777,
+      "page": 70,
+      "text": "159. Affray.--When two or more persons, by fighting in a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2779,
+      "page": 70,
+      "text": "160.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2781,
+      "page": 70,
+      "text": "160. Punishment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2794,
+      "page": 71,
+      "text": "166.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2797,
+      "page": 71,
+      "text": "166. Public servant disobeying law, with intent to cause injury",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2810,
+      "page": 71,
+      "text": "167.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2813,
+      "page": 71,
+      "text": "167. Public servant framing an incorrect document with intent to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2821,
+      "page": 71,
+      "text": "168.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2823,
+      "page": 71,
+      "text": "168. Public servant unlawfully engaging in trade.--Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2828,
+      "page": 71,
+      "text": "169.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2830,
+      "page": 72,
+      "text": "169. Public servant unlawfully buying or bidding for property.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2839,
+      "page": 72,
+      "text": "170.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2841,
+      "page": 72,
+      "text": "170. Personating a public servant.--Whoever pretends to hold any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2849,
+      "page": 72,
+      "text": "171.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2852,
+      "page": 72,
+      "text": "171. Wearing garb or carrying token used by public servant with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2865,
+      "page": 73,
+      "text": "171A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2867,
+      "page": 73,
+      "text": "171A. \"Candidate\", \"Electoral right\" defined.--For the purposes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2874,
+      "page": 73,
+      "text": "171B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2876,
+      "page": 73,
+      "text": "171B. Bribery.--(1) Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2895,
+      "page": 73,
+      "text": "171C.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2897,
+      "page": 74,
+      "text": "171C. Undue influence at elections.--(1) Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2913,
+      "page": 74,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2915,
+      "page": 74,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2923,
+      "page": 74,
+      "text": "171D.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2925,
+      "page": 74,
+      "text": "171D. Personation at elections.--Whoever at an election applies",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2936,
+      "page": 74,
+      "text": "171E.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2938,
+      "page": 74,
+      "text": "171E. Punishment for bribery.--Whoever commits the offence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2945,
+      "page": 75,
+      "text": "171F.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2947,
+      "page": 75,
+      "text": "171F. Punishment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2957,
+      "page": 75,
+      "text": "171G.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2959,
+      "page": 75,
+      "text": "171G. False statement in connection with an election.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2965,
+      "page": 75,
+      "text": "171H.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2967,
+      "page": 75,
+      "text": "171H. Illegal payments in connection with an election.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2990,
+      "page": 76,
+      "text": "172.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 2992,
+      "page": 76,
+      "text": "172. Absconding to avoid service of summons or other proceeding.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3004,
+      "page": 76,
+      "text": "173.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3007,
+      "page": 76,
+      "text": "173. Preventing service of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3028,
+      "page": 77,
+      "text": "174.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3030,
+      "page": 77,
+      "text": "174. Non-attendance in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3058,
+      "page": 78,
+      "text": "175.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3061,
+      "page": 78,
+      "text": "175. Omission to produce document to public servant by person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3074,
+      "page": 78,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3076,
+      "page": 78,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3090,
+      "page": 78,
+      "text": "176.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3093,
+      "page": 78,
+      "text": "176. Omission to give notice or information to public servant by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3113,
+      "page": 79,
+      "text": "177.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3115,
+      "page": 79,
+      "text": "177. Furnishing false information.--Whoever, being legally bound",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3148,
+      "page": 79,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3150,
+      "page": 79,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3152,
+      "page": 79,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3163,
+      "page": 80,
+      "text": "178.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3166,
+      "page": 80,
+      "text": "178. Refusing oath or affirmation when duly required by public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3173,
+      "page": 80,
+      "text": "179.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3175,
+      "page": 80,
+      "text": "179. Refusing to answer public servant authorized to question.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3183,
+      "page": 80,
+      "text": "180.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3185,
+      "page": 80,
+      "text": "180. Refusing to sign statement.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3194,
+      "page": 80,
+      "text": "181.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3197,
+      "page": 81,
+      "text": "181. False statement on oath or affirmation to public servant or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3209,
+      "page": 81,
+      "text": "182.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3226,
+      "page": 81,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3228,
+      "page": 81,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3230,
+      "page": 81,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3232,
+      "page": 81,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3254,
+      "page": 82,
+      "text": "183.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3257,
+      "page": 82,
+      "text": "183. Resistance to the taking of property by the lawful authority",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3264,
+      "page": 82,
+      "text": "184.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3267,
+      "page": 82,
+      "text": "184. Obstructing sale of property offered for sale by authority",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3278,
+      "page": 82,
+      "text": "185.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3281,
+      "page": 82,
+      "text": "185. Illegal purchase or bid for property offered for sale by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3291,
+      "page": 83,
+      "text": "186.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3293,
+      "page": 83,
+      "text": "186. Obstructing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3303,
+      "page": 83,
+      "text": "187.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3308,
+      "page": 83,
+      "text": "187. Omission to assist public servant when bound by law to give",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3325,
+      "page": 83,
+      "text": "188.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3327,
+      "page": 83,
+      "text": "188. Disobedience to order duly promulgated by public servant.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3352,
+      "page": 84,
+      "text": "189.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3354,
+      "page": 84,
+      "text": "189. Threat of injury to public servant.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3363,
+      "page": 84,
+      "text": "190.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3367,
+      "page": 84,
+      "text": "190. Threat of injury to induce person to refrain from applying",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3383,
+      "page": 85,
+      "text": "191.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3385,
+      "page": 85,
+      "text": "191. Giving false evidence.--Whoever, being legally bound by an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3422,
+      "page": 86,
+      "text": "192.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3424,
+      "page": 86,
+      "text": "192. Fabricating false evidence.--Whoever causes any circumstance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3462,
+      "page": 86,
+      "text": "193.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3464,
+      "page": 86,
+      "text": "193. Punishment for false evidence.--Whoever intentionally gives",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3509,
+      "page": 87,
+      "text": "194.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3512,
+      "page": 87,
+      "text": "194. Giving or fabricating false evidence with intent to procure",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3527,
+      "page": 88,
+      "text": "195.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3530,
+      "page": 88,
+      "text": "195. Giving or fabricating false evidence with intent to procure",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3547,
+      "page": 88,
+      "text": "196.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3549,
+      "page": 88,
+      "text": "196. Using evidence known to be false.--Whoever corruptly uses or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3555,
+      "page": 88,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3558,
+      "page": 88,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3561,
+      "page": 88,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3563,
+      "page": 89,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3566,
+      "page": 89,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3569,
+      "page": 89,
+      "text": "197.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3571,
+      "page": 89,
+      "text": "197. Issuing or signing false certificate.--Whoever issues or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3577,
+      "page": 89,
+      "text": "198.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3579,
+      "page": 89,
+      "text": "198. Using as true a certificate known to be false.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3583,
+      "page": 89,
+      "text": "199.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3586,
+      "page": 89,
+      "text": "199. False statement made in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3603,
+      "page": 89,
+      "text": "200.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3605,
+      "page": 90,
+      "text": "200. Using as true such declaration",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3615,
+      "page": 90,
+      "text": "201.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3621,
+      "page": 90,
+      "text": "201. Causing disappearance of evidence of offence, or giving",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3661,
+      "page": 91,
+      "text": "202.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3664,
+      "page": 91,
+      "text": "202. Intentional omission to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3672,
+      "page": 91,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3676,
+      "page": 91,
+      "text": "203.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3678,
+      "page": 91,
+      "text": "203. Giving false information respecting an offence committed.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3689,
+      "page": 91,
+      "text": "460.]",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 3690,
+      "page": 91,
+      "text": "204.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3692,
+      "page": 91,
+      "text": "204. Destruction",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3706,
+      "page": 92,
+      "text": "205.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3711,
+      "page": 92,
+      "text": "205. False personation for purpose of act or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3725,
+      "page": 92,
+      "text": "206.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3728,
+      "page": 92,
+      "text": "206. Fraudulent removal or concealment of property to prevent its",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3746,
+      "page": 92,
+      "text": "207.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3749,
+      "page": 92,
+      "text": "207. Fraudulent claim to property to prevent its seizure as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3767,
+      "page": 93,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3769,
+      "page": 93,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3772,
+      "page": 93,
+      "text": "208.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3774,
+      "page": 93,
+      "text": "208. Fraudulently suffering",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3792,
+      "page": 93,
+      "text": "209.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3794,
+      "page": 93,
+      "text": "209. Dishonesty making",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3804,
+      "page": 94,
+      "text": "210.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3806,
+      "page": 94,
+      "text": "210. Fraudulently",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3822,
+      "page": 94,
+      "text": "211.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3824,
+      "page": 94,
+      "text": "211. False charge of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3846,
+      "page": 94,
+      "text": "212.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3852,
+      "page": 94,
+      "text": "212. Harbouring",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3890,
+      "page": 95,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3913,
+      "page": 95,
+      "text": "213.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3920,
+      "page": 95,
+      "text": "213. Taking gift, etc., to screen an offender from punishment--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3948,
+      "page": 96,
+      "text": "214.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 3952,
+      "page": 96,
+      "text": "214. Offering gift or restoration of property in consideration of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3982,
+      "page": 97,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3984,
+      "page": 97,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3986,
+      "page": 97,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3989,
+      "page": 97,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4007,
+      "page": 97,
+      "text": "215.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4009,
+      "page": 97,
+      "text": "215. Taking gift to help to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4027,
+      "page": 97,
+      "text": "216.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4036,
+      "page": 98,
+      "text": "216. Harbouring offender who has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4095,
+      "page": 98,
+      "text": "216A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4104,
+      "page": 99,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4106,
+      "page": 99,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4108,
+      "page": 99,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4111,
+      "page": 99,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4113,
+      "page": 99,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4115,
+      "page": 99,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4118,
+      "page": 99,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4135,
+      "page": 99,
+      "text": "216B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4142,
+      "page": 99,
+      "text": "216A.] Rep. by the Indian",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4146,
+      "page": 99,
+      "text": "217.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4149,
+      "page": 99,
+      "text": "217. Public servant disobeying",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4164,
+      "page": 100,
+      "text": "218.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4167,
+      "page": 100,
+      "text": "218. Public servant framing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4190,
+      "page": 100,
+      "text": "219.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4194,
+      "page": 100,
+      "text": "219. Public servant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4211,
+      "page": 100,
+      "text": "220.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4216,
+      "page": 100,
+      "text": "220. Commitment for trial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4231,
+      "page": 101,
+      "text": "221.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4234,
+      "page": 101,
+      "text": "221. Intentional omission to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4252,
+      "page": 101,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4254,
+      "page": 101,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4290,
+      "page": 101,
+      "text": "222.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4293,
+      "page": 101,
+      "text": "222. Intentional omission to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4326,
+      "page": 102,
+      "text": "223.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4330,
+      "page": 102,
+      "text": "223. Escape from confinement or custody negligently suffered by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4340,
+      "page": 102,
+      "text": "224.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4342,
+      "page": 102,
+      "text": "224. Resistance or obstruction",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4361,
+      "page": 103,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4364,
+      "page": 103,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4366,
+      "page": 103,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4369,
+      "page": 103,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4371,
+      "page": 103,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4374,
+      "page": 103,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4378,
+      "page": 103,
+      "text": "225.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4380,
+      "page": 103,
+      "text": "225. Resistance or obstruction to lawful apprehension of another",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4425,
+      "page": 104,
+      "text": "225A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4446,
+      "page": 104,
+      "text": "225B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4449,
+      "page": 104,
+      "text": "225B. Resistance or obstruction to lawful apprehension, or escape",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4464,
+      "page": 104,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4467,
+      "page": 104,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4469,
+      "page": 104,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4472,
+      "page": 104,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4474,
+      "page": 104,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4479,
+      "page": 105,
+      "text": "226.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4481,
+      "page": 105,
+      "text": "226. [Unlawful return from transportation.] Rep. by the Code of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4483,
+      "page": 105,
+      "text": "227.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4485,
+      "page": 105,
+      "text": "227. Violation of condition of remission of punishment.--Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4495,
+      "page": 105,
+      "text": "228.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4498,
+      "page": 105,
+      "text": "228. Intentional insult or interruption to public servant sitting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4510,
+      "page": 105,
+      "text": "228A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4583,
+      "page": 106,
+      "text": "229.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4585,
+      "page": 106,
+      "text": "229. Personation of a juror or assessor.--Whoever, by personation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4601,
+      "page": 106,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4609,
+      "page": 107,
+      "text": "230.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4611,
+      "page": 107,
+      "text": "230. \"Coin\" defined.--1*[Coin is metal used for the time being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4636,
+      "page": 107,
+      "text": "231.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4638,
+      "page": 108,
+      "text": "231. Counterfeiting coin.--Whoever counterfeits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4654,
+      "page": 108,
+      "text": "232.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4656,
+      "page": 108,
+      "text": "232. Counterfeiting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4667,
+      "page": 108,
+      "text": "233.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4669,
+      "page": 108,
+      "text": "233. Making or selling instrument",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4681,
+      "page": 108,
+      "text": "234.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4683,
+      "page": 108,
+      "text": "234. Making or selling",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4699,
+      "page": 109,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4701,
+      "page": 109,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4703,
+      "page": 109,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4705,
+      "page": 109,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4707,
+      "page": 109,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4712,
+      "page": 109,
+      "text": "235.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4715,
+      "page": 109,
+      "text": "235. Possession of instrument or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4738,
+      "page": 109,
+      "text": "236.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4740,
+      "page": 109,
+      "text": "236. Abetting in India the counterfeiting out of India of coin.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4746,
+      "page": 109,
+      "text": "237.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4748,
+      "page": 109,
+      "text": "237. Import or export of counterfeit coin.--Whoever imports into",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4757,
+      "page": 110,
+      "text": "238.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4759,
+      "page": 110,
+      "text": "238. Import or export",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4783,
+      "page": 110,
+      "text": "239.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4786,
+      "page": 110,
+      "text": "239. Delivery of coin",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4805,
+      "page": 110,
+      "text": "240.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4813,
+      "page": 110,
+      "text": "240. Delivery of Indian coin, possessed with knowledge that it is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4825,
+      "page": 110,
+      "text": "241.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4830,
+      "page": 111,
+      "text": "241. Delivery of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4848,
+      "page": 111,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4850,
+      "page": 111,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4852,
+      "page": 111,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4871,
+      "page": 111,
+      "text": "242.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4874,
+      "page": 111,
+      "text": "242. Possession of counterfeit coin by person who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4887,
+      "page": 111,
+      "text": "243.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4890,
+      "page": 112,
+      "text": "243. Possession of Indian coin by person who knew it to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4903,
+      "page": 112,
+      "text": "244.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4908,
+      "page": 112,
+      "text": "244. Person employed in mint causing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4918,
+      "page": 112,
+      "text": "245.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4920,
+      "page": 112,
+      "text": "245. Unlawfully taking coining instrument from mint.--Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4927,
+      "page": 112,
+      "text": "246.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4930,
+      "page": 112,
+      "text": "246. Fraudulently or dishonestly diminishing weight or altering",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4942,
+      "page": 113,
+      "text": "247.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4945,
+      "page": 113,
+      "text": "247. Fraudulently or dishonestly diminishing weight or altering",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4953,
+      "page": 113,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4955,
+      "page": 113,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4957,
+      "page": 113,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4961,
+      "page": 113,
+      "text": "248.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4964,
+      "page": 113,
+      "text": "248. Altering appearance of coin with intent that it shall pass",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4970,
+      "page": 113,
+      "text": "249.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4973,
+      "page": 113,
+      "text": "249. Altering appearance of Indian coin with intent that it shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4980,
+      "page": 114,
+      "text": "250.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4982,
+      "page": 114,
+      "text": "250. Delivery of coin possessed with knowledge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4992,
+      "page": 114,
+      "text": "251.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 4994,
+      "page": 114,
+      "text": "251. Delivery of Indian coin, possessed with knowledge that it is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5004,
+      "page": 114,
+      "text": "252.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5007,
+      "page": 114,
+      "text": "252. Possession of coin by person who knew it to be altered when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5015,
+      "page": 114,
+      "text": "253.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5018,
+      "page": 115,
+      "text": "253. Possession of Indian coin by person who knew it to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5027,
+      "page": 115,
+      "text": "254.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5030,
+      "page": 115,
+      "text": "254. Delivery of coin as genuine which, when first possessed, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5044,
+      "page": 115,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5051,
+      "page": 115,
+      "text": "255.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5053,
+      "page": 115,
+      "text": "255. Counterfeiting Government stamp.--Whoever counterfeits, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5063,
+      "page": 116,
+      "text": "256.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5069,
+      "page": 116,
+      "text": "256. Having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5091,
+      "page": 116,
+      "text": "257.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5093,
+      "page": 116,
+      "text": "257. Making or selling instrument for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5109,
+      "page": 116,
+      "text": "258.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5111,
+      "page": 116,
+      "text": "258. Sale of counterfeit Government stamp.--Whoever sells, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5117,
+      "page": 116,
+      "text": "259.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5119,
+      "page": 116,
+      "text": "259. Having possession of counterfeit Government stamp.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5126,
+      "page": 117,
+      "text": "260.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5128,
+      "page": 117,
+      "text": "260. Using",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5138,
+      "page": 117,
+      "text": "261.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5143,
+      "page": 117,
+      "text": "261. Effacing writing from substance bearing Government stamp, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5155,
+      "page": 117,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5160,
+      "page": 117,
+      "text": "262.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5162,
+      "page": 117,
+      "text": "262. Using Government stamp known to have been before used.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5168,
+      "page": 118,
+      "text": "263.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5170,
+      "page": 118,
+      "text": "263. Erasure of mark denoting that stamp has been used.--Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5180,
+      "page": 118,
+      "text": "263A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5222,
+      "page": 119,
+      "text": "264.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5224,
+      "page": 119,
+      "text": "264. Fraudulent use of false instrument for weighing.--Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5230,
+      "page": 119,
+      "text": "265.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5232,
+      "page": 119,
+      "text": "265. Fraudulent use",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5241,
+      "page": 119,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5243,
+      "page": 119,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5248,
+      "page": 119,
+      "text": "266.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5250,
+      "page": 119,
+      "text": "266. Being in possession of false weight or measure.--Whoever is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5256,
+      "page": 120,
+      "text": "267.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5258,
+      "page": 120,
+      "text": "267. Making or selling false weight or measure.--Whoever makes,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5272,
+      "page": 120,
+      "text": "268.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5274,
+      "page": 120,
+      "text": "268. Public nuisance.--A person is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5283,
+      "page": 120,
+      "text": "269.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5286,
+      "page": 121,
+      "text": "269. Negligent act likely to spread",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5298,
+      "page": 121,
+      "text": "270.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5304,
+      "page": 121,
+      "text": "270. Malignant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5315,
+      "page": 121,
+      "text": "271.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5317,
+      "page": 121,
+      "text": "271. Disobedience to quarantine rule.--Whoever knowingly disobeys",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5328,
+      "page": 121,
+      "text": "272.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5330,
+      "page": 121,
+      "text": "272. Adulteration of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5339,
+      "page": 121,
+      "text": "273.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5341,
+      "page": 122,
+      "text": "273. Sale of noxious food or drink.--Whoever sells, or offers or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5347,
+      "page": 122,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5349,
+      "page": 122,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5351,
+      "page": 122,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5353,
+      "page": 122,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5355,
+      "page": 122,
+      "text": "1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5366,
+      "page": 122,
+      "text": "274.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5368,
+      "page": 122,
+      "text": "274. Adulteration of drugs.--Whoever adulterates",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5382,
+      "page": 122,
+      "text": "275.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5384,
+      "page": 122,
+      "text": "275. Sale of adulterated drugs.--Whoever, knowing any drug or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5398,
+      "page": 123,
+      "text": "276.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5400,
+      "page": 123,
+      "text": "276. Sale of drug as a different drug or preparation.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5411,
+      "page": 123,
+      "text": "277.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5413,
+      "page": 123,
+      "text": "277. Fouling water of public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5425,
+      "page": 123,
+      "text": "278.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5427,
+      "page": 123,
+      "text": "278. Making",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5434,
+      "page": 123,
+      "text": "279.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5436,
+      "page": 123,
+      "text": "279. Rash driving or riding on a public way.--Whoever drives any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5445,
+      "page": 124,
+      "text": "280.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5447,
+      "page": 124,
+      "text": "280. Rash navigation of vessel.--Whoever navigates any vessel in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5454,
+      "page": 124,
+      "text": "281.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5456,
+      "page": 124,
+      "text": "281. Exhibition of false light, mark or buoy.--Whoever exhibits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5462,
+      "page": 124,
+      "text": "282.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5464,
+      "page": 124,
+      "text": "282. Conveying person by water for hire in unsafe or overloaded",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5472,
+      "page": 124,
+      "text": "283.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5474,
+      "page": 124,
+      "text": "283. Danger or obstruction in public way or line of navigation.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5480,
+      "page": 125,
+      "text": "284.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5482,
+      "page": 125,
+      "text": "284. Negligent conduct with respect to poisonous substance.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5492,
+      "page": 125,
+      "text": "285.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5494,
+      "page": 125,
+      "text": "285. Negligent conduct with respect to fire or combustible",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5505,
+      "page": 125,
+      "text": "286.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5507,
+      "page": 125,
+      "text": "286. Negligent conduct with respect to explosive substance.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5518,
+      "page": 126,
+      "text": "287.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5520,
+      "page": 126,
+      "text": "287. Negligent conduct with respect to machinery.--Whoever does,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5533,
+      "page": 126,
+      "text": "288.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5536,
+      "page": 126,
+      "text": "288. Negligent conduct with respect to pulling down or repairing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5546,
+      "page": 126,
+      "text": "289.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5548,
+      "page": 126,
+      "text": "289. Negligent conduct with respect to animal.--Whoever knowingly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5555,
+      "page": 127,
+      "text": "290.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5557,
+      "page": 127,
+      "text": "290. Punishment for public nuisance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5565,
+      "page": 127,
+      "text": "291.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5567,
+      "page": 127,
+      "text": "291. Continuance of nuisance after injunction to discontinue.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5577,
+      "page": 127,
+      "text": "292.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5613,
+      "page": 128,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5615,
+      "page": 128,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5617,
+      "page": 128,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5646,
+      "page": 129,
+      "text": "293.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5660,
+      "page": 129,
+      "text": "294.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5670,
+      "page": 129,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5672,
+      "page": 129,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5674,
+      "page": 129,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5676,
+      "page": 129,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5680,
+      "page": 129,
+      "text": "294A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5703,
+      "page": 130,
+      "text": "295.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5707,
+      "page": 130,
+      "text": "295. Injuring or defiling",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5717,
+      "page": 130,
+      "text": "295A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5736,
+      "page": 131,
+      "text": "296.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5738,
+      "page": 131,
+      "text": "296. Disturbing religious assembly.--Whoever voluntarily causes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5743,
+      "page": 131,
+      "text": "297.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5745,
+      "page": 131,
+      "text": "297. Trespassing on burial places, etc.--Whoever, with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5756,
+      "page": 131,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5758,
+      "page": 131,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5760,
+      "page": 131,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5765,
+      "page": 131,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5767,
+      "page": 131,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5769,
+      "page": 131,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5771,
+      "page": 131,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5773,
+      "page": 131,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5779,
+      "page": 132,
+      "text": "298.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5782,
+      "page": 132,
+      "text": "298. Uttering words, etc., with deliberate intent to wound",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5796,
+      "page": 132,
+      "text": "299.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5798,
+      "page": 132,
+      "text": "299. Culpable homicide.--Whoever causes death by doing an act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5832,
+      "page": 133,
+      "text": "300.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5834,
+      "page": 133,
+      "text": "300. Murder.--Except in the cases hereinafter excepted, culpable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5949,
+      "page": 136,
+      "text": "301.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5952,
+      "page": 136,
+      "text": "301. Culpable homicide by causing death of person other than",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5960,
+      "page": 136,
+      "text": "302.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5962,
+      "page": 136,
+      "text": "302. Punishment for murder.--Whoever commits murder shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5966,
+      "page": 136,
+      "text": "303.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5968,
+      "page": 136,
+      "text": "303. Punishment for murder by life-convict.--Whoever, being under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5973,
+      "page": 136,
+      "text": "304.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5975,
+      "page": 136,
+      "text": "304. Punishment for culpable homicide not amounting to murder.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5988,
+      "page": 137,
+      "text": "304A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 5997,
+      "page": 137,
+      "text": "304B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6019,
+      "page": 137,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6022,
+      "page": 137,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6024,
+      "page": 137,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6027,
+      "page": 137,
+      "text": "305.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6029,
+      "page": 138,
+      "text": "305. Abetment of suicide of child or insane person.--If any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6036,
+      "page": 138,
+      "text": "306.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6038,
+      "page": 138,
+      "text": "306. Abetment of suicide.--If any person commits suicide, whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6043,
+      "page": 138,
+      "text": "307.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6045,
+      "page": 138,
+      "text": "307. Attempt to murder.--Whoever does any act with such intention",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6080,
+      "page": 139,
+      "text": "308.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6082,
+      "page": 139,
+      "text": "308. Attempt to commit culpable homicide.--Whoever does any act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6091,
+      "page": 139,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6094,
+      "page": 139,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6096,
+      "page": 139,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6105,
+      "page": 139,
+      "text": "309.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6107,
+      "page": 139,
+      "text": "309. Attempt to commit suicide.--Whoever attempts to commit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6111,
+      "page": 140,
+      "text": "310.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6113,
+      "page": 140,
+      "text": "310. Thug.--Whoever, at any time after the passing of this Act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6117,
+      "page": 140,
+      "text": "311.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6119,
+      "page": 140,
+      "text": "311. Punishment.--Whoever is a thug, shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6123,
+      "page": 140,
+      "text": "312.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6125,
+      "page": 140,
+      "text": "312. Causing miscarraige.--Whoever voluntarily causes a woman",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6135,
+      "page": 140,
+      "text": "313.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6137,
+      "page": 140,
+      "text": "313. Causing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6149,
+      "page": 141,
+      "text": "314.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6151,
+      "page": 141,
+      "text": "314. Death caused by act done with intent to cause miscarriage.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6162,
+      "page": 141,
+      "text": "315.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6165,
+      "page": 141,
+      "text": "315. Act done with intent to prevent child being born alive or to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6171,
+      "page": 141,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6174,
+      "page": 141,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6184,
+      "page": 141,
+      "text": "316.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6187,
+      "page": 142,
+      "text": "316. Causing death of quick unborn child by act amounting to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6199,
+      "page": 142,
+      "text": "317.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6202,
+      "page": 142,
+      "text": "317. Exposure and abandonment of child under twelve years, by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6212,
+      "page": 142,
+      "text": "318.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6214,
+      "page": 142,
+      "text": "318. Concealment of birth by secret disposal of dead body.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6221,
+      "page": 143,
+      "text": "319.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6223,
+      "page": 143,
+      "text": "319. Hurt.--Whoever causes bodily pain, disease or infirmity to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6225,
+      "page": 143,
+      "text": "320.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6227,
+      "page": 143,
+      "text": "320. Grievous hurt.--The following kinds of hurt only are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6241,
+      "page": 143,
+      "text": "321.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6243,
+      "page": 143,
+      "text": "321. Voluntarily causing hurt.--Whoever does any act with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6247,
+      "page": 143,
+      "text": "322.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6249,
+      "page": 144,
+      "text": "322. Voluntarily causing grievous hurt.--Whoever voluntarily",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6264,
+      "page": 144,
+      "text": "323.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6266,
+      "page": 144,
+      "text": "323. Punishment for voluntarily causing hurt.--Whoever, except in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6271,
+      "page": 144,
+      "text": "324.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6273,
+      "page": 144,
+      "text": "324. Voluntarily causing hurt by dangerous weapons or means.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6284,
+      "page": 144,
+      "text": "325.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6286,
+      "page": 145,
+      "text": "325. Punishment for voluntarily causing grievous hurt.-Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6293,
+      "page": 145,
+      "text": "326.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6295,
+      "page": 145,
+      "text": "326. Voluntarily causing grievous hurt by dangerous weapons or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6308,
+      "page": 145,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6313,
+      "page": 145,
+      "text": "327.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6316,
+      "page": 145,
+      "text": "327. Voluntarily causing hurt to extort property, or to constrain",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6324,
+      "page": 145,
+      "text": "328.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6327,
+      "page": 146,
+      "text": "328. Causing hurt by means of poison, etc., with intent to commit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6335,
+      "page": 146,
+      "text": "329.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6338,
+      "page": 146,
+      "text": "329. Voluntarily causing grievous hurt to extort property, or to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6347,
+      "page": 146,
+      "text": "330.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6354,
+      "page": 146,
+      "text": "320. Voluntarily causing hurt to extort confession or to compel",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6378,
+      "page": 147,
+      "text": "331.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6381,
+      "page": 147,
+      "text": "331. Voluntarily causing grievous hurt to extort confession, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6393,
+      "page": 147,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6404,
+      "page": 147,
+      "text": "332.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6406,
+      "page": 147,
+      "text": "332. Voluntarily causing hurt to deter public servant from his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6415,
+      "page": 148,
+      "text": "333.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6418,
+      "page": 148,
+      "text": "333. Voluntarily causing grievous hurt to deter public servant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6427,
+      "page": 148,
+      "text": "334.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6429,
+      "page": 148,
+      "text": "334.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6441,
+      "page": 148,
+      "text": "335.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6443,
+      "page": 148,
+      "text": "335. Voluntarily causing grievous hurt on provocation.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6452,
+      "page": 148,
+      "text": "336.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6454,
+      "page": 149,
+      "text": "336. Act endangering life or personal safety of others.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6459,
+      "page": 149,
+      "text": "337.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6461,
+      "page": 149,
+      "text": "337. Causing hurt by act endangering life or personal safety of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6468,
+      "page": 149,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6472,
+      "page": 149,
+      "text": "338.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6475,
+      "page": 149,
+      "text": "338. Causing grievous hurt by act endangering life or personal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6482,
+      "page": 149,
+      "text": "339.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6484,
+      "page": 149,
+      "text": "339. Wrongful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6496,
+      "page": 150,
+      "text": "340.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6498,
+      "page": 150,
+      "text": "340. Wrongful confinement.--Whoever wrongfully restrains any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6513,
+      "page": 150,
+      "text": "341.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6515,
+      "page": 150,
+      "text": "341. Punishment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6520,
+      "page": 150,
+      "text": "342.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6522,
+      "page": 150,
+      "text": "342. Punishment for wrongful confinement.--Whoever wrongfully",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6526,
+      "page": 150,
+      "text": "343.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6528,
+      "page": 151,
+      "text": "343. Wrongful confinement for three or more days.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6532,
+      "page": 151,
+      "text": "344.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6534,
+      "page": 151,
+      "text": "344. Wrongful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6541,
+      "page": 151,
+      "text": "345.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6544,
+      "page": 151,
+      "text": "345. Wrongful confinement of person for whose liberation writ has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6551,
+      "page": 151,
+      "text": "346.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6553,
+      "page": 151,
+      "text": "346. Wrongful confinement in secret.--Whoever wrongfully confines",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6562,
+      "page": 152,
+      "text": "347.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6564,
+      "page": 152,
+      "text": "347. Wrongful confinement to extort property, or constrain to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6573,
+      "page": 152,
+      "text": "348.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6576,
+      "page": 152,
+      "text": "348. Wrongful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6590,
+      "page": 152,
+      "text": "349.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6592,
+      "page": 152,
+      "text": "349. Force.--A person is said to use force to another if he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6609,
+      "page": 153,
+      "text": "350.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6611,
+      "page": 153,
+      "text": "350. Criminal force.--Whoever intentionally uses force to any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6670,
+      "page": 154,
+      "text": "351.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6672,
+      "page": 154,
+      "text": "351. Assault.--Whoever makes any gesture, or any preparation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6694,
+      "page": 155,
+      "text": "352.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6697,
+      "page": 155,
+      "text": "352. Punishment for assault or criminal force otherwise than on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6714,
+      "page": 155,
+      "text": "353.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6717,
+      "page": 155,
+      "text": "353. Assault or criminal force to deter public servant from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6727,
+      "page": 156,
+      "text": "354.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6730,
+      "page": 156,
+      "text": "354. Assault or criminal force to woman with intent to outrage",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6736,
+      "page": 156,
+      "text": "355.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6739,
+      "page": 156,
+      "text": "355. Assault or criminal force with intent to dishonour person,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6746,
+      "page": 156,
+      "text": "356.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6749,
+      "page": 156,
+      "text": "356. Assault or criminal force in attempt to commit theft of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6755,
+      "page": 156,
+      "text": "357.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6757,
+      "page": 156,
+      "text": "357. Assault or criminal force in attempt wrongfully to confine a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6763,
+      "page": 157,
+      "text": "358.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6765,
+      "page": 157,
+      "text": "358. Assault or criminal force on grave provocation.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6773,
+      "page": 157,
+      "text": "359.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6775,
+      "page": 157,
+      "text": "359. Kidnapping.--Kidnapping is of two kinds : kidnapping from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6777,
+      "page": 157,
+      "text": "360.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6779,
+      "page": 157,
+      "text": "360. Kidnapping from India.--Whoever conveys any person beyond",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6785,
+      "page": 157,
+      "text": "361.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6787,
+      "page": 157,
+      "text": "361. Kidnapping from lawful guardianship.--Whoever takes or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6802,
+      "page": 158,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6804,
+      "page": 158,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6806,
+      "page": 158,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6815,
+      "page": 158,
+      "text": "362.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6817,
+      "page": 158,
+      "text": "362. Abduction.--Whoever by force compels, or by any deceitful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6820,
+      "page": 158,
+      "text": "363.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6822,
+      "page": 158,
+      "text": "363. Punishment for kidnapping.--Whoever kidnaps any person from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6829,
+      "page": 158,
+      "text": "363A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6875,
+      "page": 159,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6877,
+      "page": 159,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6881,
+      "page": 159,
+      "text": "364.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6883,
+      "page": 159,
+      "text": "364. Kidnapping or abducting in order to murder.--Whoever kidnaps",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6897,
+      "page": 160,
+      "text": "364A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6908,
+      "page": 160,
+      "text": "365.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6911,
+      "page": 160,
+      "text": "365. Kidnapping or abducting with intent secretly and wrongfully",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6916,
+      "page": 160,
+      "text": "366.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6918,
+      "page": 160,
+      "text": "366. Kidnapping, abducting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6952,
+      "page": 161,
+      "text": "366B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6954,
+      "page": 161,
+      "text": "366B. Importation of girl from foreign country.--Whoever imports",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6970,
+      "page": 161,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6973,
+      "page": 161,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6975,
+      "page": 161,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6977,
+      "page": 161,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6979,
+      "page": 161,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6981,
+      "page": 161,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6983,
+      "page": 161,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6985,
+      "page": 161,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6989,
+      "page": 161,
+      "text": "367.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 6992,
+      "page": 162,
+      "text": "367. Kidnapping or abducting in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7008,
+      "page": 162,
+      "text": "368.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7011,
+      "page": 162,
+      "text": "368. Wrongfully concealing or keeping in confinement, kidnapped",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7023,
+      "page": 162,
+      "text": "369.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7028,
+      "page": 162,
+      "text": "369. Kidnapping or abducting child under ten years with intent to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7040,
+      "page": 162,
+      "text": "370.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7042,
+      "page": 162,
+      "text": "370. Buying or disposing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7052,
+      "page": 163,
+      "text": "371.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7054,
+      "page": 163,
+      "text": "371. Habitual dealing in slaves.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7064,
+      "page": 163,
+      "text": "372.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7066,
+      "page": 163,
+      "text": "372. Selling minor for purposes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7120,
+      "page": 163,
+      "text": "373.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7122,
+      "page": 163,
+      "text": "373. Buying minor for purposes of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7129,
+      "page": 164,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7132,
+      "page": 164,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7144,
+      "page": 164,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7172,
+      "page": 164,
+      "text": "374.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7174,
+      "page": 164,
+      "text": "374. Unlawful compulsory labour.--Whoever unlawfully compels any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7180,
+      "page": 164,
+      "text": "375.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7182,
+      "page": 164,
+      "text": "375. Rape.--A man is said to commit \"rape\" who,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7223,
+      "page": 165,
+      "text": "376.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7225,
+      "page": 165,
+      "text": "376. Punishment for rape.--(1) Whoever, except",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7238,
+      "page": 165,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7240,
+      "page": 165,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7294,
+      "page": 166,
+      "text": "376A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7296,
+      "page": 167,
+      "text": "376A. Intercourse by a man with his wife during separation.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7303,
+      "page": 167,
+      "text": "376B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7305,
+      "page": 167,
+      "text": "376B. Intercourse by public servant with woman in his custody.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7313,
+      "page": 167,
+      "text": "376C.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7315,
+      "page": 167,
+      "text": "376C. Intercourse by superintendent of jail, remand home, etc.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7333,
+      "page": 168,
+      "text": "376D.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7336,
+      "page": 168,
+      "text": "376D. Intercourse by any member of the management or staff of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7347,
+      "page": 168,
+      "text": "377.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7349,
+      "page": 168,
+      "text": "377. Unnatural",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7370,
+      "page": 168,
+      "text": "378.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7372,
+      "page": 168,
+      "text": "378. Theft.--Whoever, intending to take dishonestly any movable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7382,
+      "page": 169,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7472,
+      "page": 171,
+      "text": "379.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7474,
+      "page": 171,
+      "text": "379. Punishment for theft.--Whoever commits theft shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7477,
+      "page": 171,
+      "text": "380.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7479,
+      "page": 171,
+      "text": "380. Theft in dwelling house, etc.--Whoever commits theft in any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7484,
+      "page": 171,
+      "text": "381.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7486,
+      "page": 171,
+      "text": "381. Theft by clerk or servant of property in possession of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7492,
+      "page": 171,
+      "text": "382.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7495,
+      "page": 171,
+      "text": "382. Theft after preparation made for causing death, hurt or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7515,
+      "page": 172,
+      "text": "383.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7517,
+      "page": 172,
+      "text": "383. Extortion.--Whoever intentionally puts any person in fear of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7538,
+      "page": 173,
+      "text": "384.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7540,
+      "page": 173,
+      "text": "384. Punishment for extortion.--Whoever commits extortion shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7543,
+      "page": 173,
+      "text": "385.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7545,
+      "page": 173,
+      "text": "385. Putting person in fear of injury in order to commit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7550,
+      "page": 173,
+      "text": "386.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7552,
+      "page": 173,
+      "text": "386. Extortion by putting a person in fear of death or grievous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7557,
+      "page": 173,
+      "text": "387.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7560,
+      "page": 173,
+      "text": "387. Putting person in fear of death or of grievous hurt, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7566,
+      "page": 173,
+      "text": "388.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7569,
+      "page": 174,
+      "text": "388. Extortion by threat of accusation of an offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7578,
+      "page": 174,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7587,
+      "page": 174,
+      "text": "389.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7590,
+      "page": 174,
+      "text": "389. Putting person in fear or accusation of offence, in order to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7601,
+      "page": 174,
+      "text": "390.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7603,
+      "page": 174,
+      "text": "390. Robbery.--In all robbery there is either theft or extortion.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7643,
+      "page": 175,
+      "text": "391.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7645,
+      "page": 175,
+      "text": "391. Dacoity.--When five or more persons conjointly commit or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7652,
+      "page": 176,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7657,
+      "page": 176,
+      "text": "392.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7659,
+      "page": 176,
+      "text": "392. Punishment for robbery.--Whoever commits robbery shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7664,
+      "page": 176,
+      "text": "393.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7666,
+      "page": 176,
+      "text": "393. Attempt to commit robbery.--Whoever attempts to commit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7669,
+      "page": 176,
+      "text": "394.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7671,
+      "page": 176,
+      "text": "394. Voluntarily causing hurt in committing robbery.--If any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7677,
+      "page": 176,
+      "text": "395.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7679,
+      "page": 176,
+      "text": "395. Punishment for dacoity.--Whoever commits dacoity shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7687,
+      "page": 177,
+      "text": "396.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7689,
+      "page": 177,
+      "text": "396. Dacoity with murder.--If any one of five or more persons,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7694,
+      "page": 177,
+      "text": "397.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7696,
+      "page": 177,
+      "text": "397. Robbery or dacoity, with attempt to cause death or grievous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7703,
+      "page": 177,
+      "text": "398.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7705,
+      "page": 177,
+      "text": "398. Attempt to commit robbery or dacoity when armed with deadly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7710,
+      "page": 177,
+      "text": "399.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7712,
+      "page": 177,
+      "text": "399. Making preparation to commit dacoity.--Whoever makes any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7716,
+      "page": 177,
+      "text": "400.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7718,
+      "page": 178,
+      "text": "400. Punishment for belonging to gang of dacoits.--Whoever, at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7724,
+      "page": 178,
+      "text": "401.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7726,
+      "page": 178,
+      "text": "401. Punishment for belonging to gang of thieves.--Whoever, at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7732,
+      "page": 178,
+      "text": "402.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7734,
+      "page": 178,
+      "text": "402. Assembling for purpose of committing dacoity.--Whoever, at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7740,
+      "page": 178,
+      "text": "403.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7742,
+      "page": 178,
+      "text": "403. Dishonest misappropriation of property.--Whoever dishonestly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7747,
+      "page": 178,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7816,
+      "page": 180,
+      "text": "404.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7819,
+      "page": 180,
+      "text": "404. Dishonest misappropriation of property possessed by deceased",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7838,
+      "page": 180,
+      "text": "405.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7840,
+      "page": 181,
+      "text": "405. Criminal breach of trust.--Whoever, being in any manner",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7871,
+      "page": 181,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7873,
+      "page": 181,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7876,
+      "page": 181,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7878,
+      "page": 181,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7916,
+      "page": 182,
+      "text": "406.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7918,
+      "page": 182,
+      "text": "406. Punishment for criminal breach of trust.--Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7922,
+      "page": 182,
+      "text": "407.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7924,
+      "page": 182,
+      "text": "407. Criminal breach of trust by carrier, etc.--Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7929,
+      "page": 182,
+      "text": "408.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7931,
+      "page": 183,
+      "text": "408. Criminal breach of trust by clerk or servant.--Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7940,
+      "page": 183,
+      "text": "409.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7943,
+      "page": 183,
+      "text": "409. Criminal breach of trust by public servant, or by banker,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7953,
+      "page": 183,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7959,
+      "page": 183,
+      "text": "410.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7961,
+      "page": 183,
+      "text": "410. Stolen property.--Property, the possession whereof has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7972,
+      "page": 183,
+      "text": "411.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7974,
+      "page": 184,
+      "text": "411. Dishonestly receiving stolen property.--Whoever dishonestly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7979,
+      "page": 184,
+      "text": "412.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7981,
+      "page": 184,
+      "text": "412. Dishonestly receiving property stolen in the commission of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7997,
+      "page": 184,
+      "text": "413.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 7999,
+      "page": 184,
+      "text": "413. Habitually dealing in stolen property.--Whoever habitually",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8005,
+      "page": 184,
+      "text": "414.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8007,
+      "page": 184,
+      "text": "414. Assisting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8015,
+      "page": 184,
+      "text": "415.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8017,
+      "page": 185,
+      "text": "415. Cheating.--Whoever, by deceiving any person, fraudulently or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8031,
+      "page": 185,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8034,
+      "page": 185,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8036,
+      "page": 185,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8038,
+      "page": 185,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8077,
+      "page": 186,
+      "text": "416.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8079,
+      "page": 186,
+      "text": "416. Cheating by personation.--A person is said to \"cheat by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8091,
+      "page": 186,
+      "text": "417.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8093,
+      "page": 186,
+      "text": "417. Punishment for cheating.-Whoever cheats shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8097,
+      "page": 186,
+      "text": "418.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8100,
+      "page": 187,
+      "text": "418. Cheating with knowledge that wrongful loss may ensue to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8107,
+      "page": 187,
+      "text": "419.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8109,
+      "page": 187,
+      "text": "419. Punishment for cheating by personation.--Whoever cheats by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8113,
+      "page": 187,
+      "text": "420.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8115,
+      "page": 187,
+      "text": "420. Cheating and dishonestly inducing delivery of property.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8124,
+      "page": 187,
+      "text": "421.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8127,
+      "page": 187,
+      "text": "421. Dishonest or fraudulent removal or concealment of property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8142,
+      "page": 188,
+      "text": "422.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8145,
+      "page": 188,
+      "text": "422. Dishonestly or fraudulently preventing debt being available",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8152,
+      "page": 188,
+      "text": "423.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8155,
+      "page": 188,
+      "text": "423. Dishonest or fraudulent execution of deed of transfer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8165,
+      "page": 188,
+      "text": "424.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8167,
+      "page": 188,
+      "text": "424. Dishonest or fraudulent removal or concealment of property.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8175,
+      "page": 189,
+      "text": "425.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8177,
+      "page": 189,
+      "text": "425. Mischief.--Whoever with intent to cause, or knowing that he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8218,
+      "page": 190,
+      "text": "426.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8220,
+      "page": 190,
+      "text": "426. Punishment for mischief.--Whoever commits mischief shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8223,
+      "page": 190,
+      "text": "427.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8225,
+      "page": 190,
+      "text": "427. Mischief causing damage to the amount of fifty rupees.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8230,
+      "page": 190,
+      "text": "428.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8232,
+      "page": 190,
+      "text": "428. Mischief by killing or maiming animal of the value of ten",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8237,
+      "page": 190,
+      "text": "429.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8240,
+      "page": 190,
+      "text": "429. Mischief by killing or maiming cattle, etc., of any value or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8248,
+      "page": 191,
+      "text": "430.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8251,
+      "page": 191,
+      "text": "430. Mischief by injury to works of irrigation or by wrongfully",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8259,
+      "page": 191,
+      "text": "431.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8261,
+      "page": 191,
+      "text": "431. Mischief by injury to public road, bridge, river or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8271,
+      "page": 191,
+      "text": "432.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8274,
+      "page": 191,
+      "text": "432. Mischief by causing inundation or obstruction to public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8280,
+      "page": 191,
+      "text": "433.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8283,
+      "page": 191,
+      "text": "433. Mischief by destroying, moving or rendering less useful a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8290,
+      "page": 192,
+      "text": "434.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8293,
+      "page": 192,
+      "text": "434. Mischief by destroying or moving, etc., a land-mark fixed by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8299,
+      "page": 192,
+      "text": "435.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8303,
+      "page": 192,
+      "text": "435. Mischief by fire or explosive substance with intent to cause",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8315,
+      "page": 192,
+      "text": "436.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8318,
+      "page": 192,
+      "text": "436. Mischief by fire or explosive substance with intent to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8327,
+      "page": 193,
+      "text": "437.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8330,
+      "page": 193,
+      "text": "437. Mischief with intent to destroy or make unsafe a decked",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8338,
+      "page": 193,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8340,
+      "page": 193,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8345,
+      "page": 193,
+      "text": "438.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8348,
+      "page": 193,
+      "text": "438. Punishment for the mischief described in section 437",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8359,
+      "page": 193,
+      "text": "439.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8362,
+      "page": 193,
+      "text": "439. Punishment for intentionally running vessel aground or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8370,
+      "page": 194,
+      "text": "440.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8372,
+      "page": 194,
+      "text": "440. Mischief committed after preparation made for causing death",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8380,
+      "page": 194,
+      "text": "441.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8382,
+      "page": 194,
+      "text": "441. Criminal trespass.--Whoever enters into or upon property in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8389,
+      "page": 194,
+      "text": "442.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8391,
+      "page": 194,
+      "text": "442. House-trespass.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8400,
+      "page": 194,
+      "text": "443.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8402,
+      "page": 194,
+      "text": "443. Lurking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8408,
+      "page": 195,
+      "text": "444.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8410,
+      "page": 195,
+      "text": "444. Lurking house-trespass by night.--Whoever commits lurking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8413,
+      "page": 195,
+      "text": "445.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8415,
+      "page": 195,
+      "text": "445. House-breaking.--A person is said to commit \"house-breaking\"",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8425,
+      "page": 195,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8475,
+      "page": 196,
+      "text": "446.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8477,
+      "page": 196,
+      "text": "446. House-breaking by night.--Whoever commits house-breaking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8480,
+      "page": 196,
+      "text": "447.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8482,
+      "page": 197,
+      "text": "447. Punishment for criminal trespass.--Whoever commits criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8486,
+      "page": 197,
+      "text": "448.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8488,
+      "page": 197,
+      "text": "448. Punishment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8493,
+      "page": 197,
+      "text": "449.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8495,
+      "page": 197,
+      "text": "449. House-trespass in order to commit offence punishable with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8505,
+      "page": 197,
+      "text": "450.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8508,
+      "page": 197,
+      "text": "450. House-trespass in order to commit offence punishable with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8516,
+      "page": 197,
+      "text": "451.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8525,
+      "page": 197,
+      "text": "451. House-trespass in order to commit offence punishable with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8537,
+      "page": 198,
+      "text": "452.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8541,
+      "page": 198,
+      "text": "452. House-trespass alter preparation for hurt, assault or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8549,
+      "page": 198,
+      "text": "453.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8551,
+      "page": 198,
+      "text": "453. Punishment for lurking house-trespass or house-breaking.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8555,
+      "page": 198,
+      "text": "454.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8558,
+      "page": 198,
+      "text": "454. Lurking house-trespass or house-breaking in order to commit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8565,
+      "page": 198,
+      "text": "455.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8568,
+      "page": 199,
+      "text": "455. Lurking house-trespass or house-breaking after preparation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8578,
+      "page": 199,
+      "text": "456.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8580,
+      "page": 199,
+      "text": "456. Punishment for lurking house-trespass or house-breaking by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8585,
+      "page": 199,
+      "text": "457.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8588,
+      "page": 199,
+      "text": "457. Lurking house-trespass or house-breaking by night in order",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8596,
+      "page": 199,
+      "text": "458.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8599,
+      "page": 199,
+      "text": "458. Lurking house-trespass or house-breaking by night after",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8608,
+      "page": 200,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8613,
+      "page": 200,
+      "text": "459.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8616,
+      "page": 200,
+      "text": "459. Grievous hurt caused whilst committing lurking house-trespass or house-breaking.--Whoever, whilst committing lurking house-trespass or house-breaking, caus",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8622,
+      "page": 200,
+      "text": "460.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8626,
+      "page": 200,
+      "text": "460. All persons jointly concerned in lurking house-trespass or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8636,
+      "page": 200,
+      "text": "461.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8638,
+      "page": 200,
+      "text": "461. Dishonestly breaking open receptacle containing property.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8644,
+      "page": 201,
+      "text": "462.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8647,
+      "page": 201,
+      "text": "462. Punishment for same offence when committed by person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8658,
+      "page": 201,
+      "text": "463.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8660,
+      "page": 201,
+      "text": "463. Forgery.--Whoever makes any false document or part of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8666,
+      "page": 201,
+      "text": "464.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8668,
+      "page": 201,
+      "text": "464. Making a false document.--A person is said to make a false",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8694,
+      "page": 202,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8697,
+      "page": 202,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8797,
+      "page": 204,
+      "text": "465.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8799,
+      "page": 204,
+      "text": "465. Punishment for forgery.--Whoever commits forgery shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8802,
+      "page": 204,
+      "text": "466.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8804,
+      "page": 204,
+      "text": "466. Forgery of record of Court or of public register, etc.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8815,
+      "page": 205,
+      "text": "467.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8817,
+      "page": 205,
+      "text": "467. Forgery of valuable security, will, etc.--Whoever forges a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8836,
+      "page": 205,
+      "text": "468.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8838,
+      "page": 205,
+      "text": "468. Forgery for purpose of cheating.--Whoever commits forgery,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8843,
+      "page": 205,
+      "text": "469.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8845,
+      "page": 205,
+      "text": "469. Forgery for purpose of harming reputation.--Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8851,
+      "page": 205,
+      "text": "470.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8853,
+      "page": 205,
+      "text": "470. Forged document.--A false document made wholly or in part by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8855,
+      "page": 206,
+      "text": "471.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8857,
+      "page": 206,
+      "text": "471. Using as genuine a forged document.--Whoever fraudulently or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8861,
+      "page": 206,
+      "text": "472.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8864,
+      "page": 206,
+      "text": "472. Making or possessing counterfeit seal, etc., with intent to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8876,
+      "page": 206,
+      "text": "473.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8879,
+      "page": 206,
+      "text": "473. Making or possessing counterfeit seal, etc., with intent to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8889,
+      "page": 206,
+      "text": "474.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8892,
+      "page": 207,
+      "text": "474. Having possession of document described in section 466 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8905,
+      "page": 207,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8909,
+      "page": 207,
+      "text": "475.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8912,
+      "page": 207,
+      "text": "475. Counterfeiting device or mark used for authenticating",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8925,
+      "page": 207,
+      "text": "476.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8929,
+      "page": 207,
+      "text": "476. Counterfeiting device or mark used for authenticating",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8941,
+      "page": 208,
+      "text": "477.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8944,
+      "page": 208,
+      "text": "477. Fraudulent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8957,
+      "page": 208,
+      "text": "477A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8981,
+      "page": 208,
+      "text": "478.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 8983,
+      "page": 209,
+      "text": "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8986,
+      "page": 209,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8989,
+      "page": 209,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8991,
+      "page": 209,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8994,
+      "page": 209,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8999,
+      "page": 209,
+      "text": "479.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9003,
+      "page": 209,
+      "text": "480.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9005,
+      "page": 209,
+      "text": "480. [Using",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9009,
+      "page": 209,
+      "text": "481.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9011,
+      "page": 209,
+      "text": "481. Using a false property mark.--Whoever marks any movable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9019,
+      "page": 209,
+      "text": "482.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9021,
+      "page": 210,
+      "text": "482. Punishment for using a false property mark.--Whoever uses",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9026,
+      "page": 210,
+      "text": "483.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9028,
+      "page": 210,
+      "text": "483. Counterfeiting a property mark used by another.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9032,
+      "page": 210,
+      "text": "484.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9034,
+      "page": 210,
+      "text": "484. Counterfeiting a mark used by a public servant.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9043,
+      "page": 210,
+      "text": "485.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9062,
+      "page": 210,
+      "text": "486.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9064,
+      "page": 211,
+      "text": "486. Selling goods marked with a counterfeit property mark.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9070,
+      "page": 211,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9073,
+      "page": 211,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9076,
+      "page": 211,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9079,
+      "page": 211,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9082,
+      "page": 211,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9097,
+      "page": 211,
+      "text": "487.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9099,
+      "page": 211,
+      "text": "487. Making a false mark upon any receptacle containing goods.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9110,
+      "page": 212,
+      "text": "488.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9112,
+      "page": 212,
+      "text": "488. Punishment for making use of any such false mark.--Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9117,
+      "page": 212,
+      "text": "489.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9119,
+      "page": 212,
+      "text": "489. Tampering with property mark with intent to cause injury.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9127,
+      "page": 212,
+      "text": "489A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9129,
+      "page": 212,
+      "text": "489A. Counterfeiting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9149,
+      "page": 212,
+      "text": "489B.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9151,
+      "page": 213,
+      "text": "489B. Using as genuine, forged or counterfeit currency-notes or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9160,
+      "page": 213,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9162,
+      "page": 213,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9165,
+      "page": 213,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9168,
+      "page": 213,
+      "text": "489C.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9170,
+      "page": 213,
+      "text": "489C. Possession of forged or counterfeit currency-notes or bank-notes.-Whoever has in his possession any forged or counterfeit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9176,
+      "page": 213,
+      "text": "489D.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9181,
+      "page": 213,
+      "text": "489D. Making or possessing instruments or materials for forging",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9197,
+      "page": 213,
+      "text": "489E.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9221,
+      "page": 214,
+      "text": "490.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9222,
+      "page": 214,
+      "text": "490. [Preach of contract of service during voyage or journey.]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9225,
+      "page": 214,
+      "text": "491.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9227,
+      "page": 214,
+      "text": "491. Breach of contract to attend on and supply wants of helpless",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9235,
+      "page": 215,
+      "text": "492.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9236,
+      "page": 215,
+      "text": "492. [Breach of contract to serve at distant place to which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9240,
+      "page": 215,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9243,
+      "page": 215,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9250,
+      "page": 215,
+      "text": "493.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9253,
+      "page": 215,
+      "text": "493. Cohabitation caused by a man deceitfully inducing a belief",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9259,
+      "page": 215,
+      "text": "494.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9261,
+      "page": 215,
+      "text": "494. Marrying again during lifetime of husband or wife.--Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9279,
+      "page": 216,
+      "text": "495.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9282,
+      "page": 216,
+      "text": "495. Same offence with concealment of former marriage from person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9289,
+      "page": 216,
+      "text": "496.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9291,
+      "page": 216,
+      "text": "496. Marriage ceremony fraudulently gone through without lawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9297,
+      "page": 216,
+      "text": "497.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9299,
+      "page": 216,
+      "text": "497. Adultery.--Whoever has sexual intercourse with a person who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9307,
+      "page": 217,
+      "text": "498.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9310,
+      "page": 217,
+      "text": "498. Enticing or taking away or detaining with criminal intent a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9322,
+      "page": 217,
+      "text": "498A.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9324,
+      "page": 217,
+      "text": "498A. Husband or relative of husband of a woman subjecting her to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9330,
+      "page": 217,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9347,
+      "page": 218,
+      "text": "499.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9349,
+      "page": 218,
+      "text": "499. Defamation.--Whoever by words either spoken or intended to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9514,
+      "page": 221,
+      "text": "500.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9516,
+      "page": 221,
+      "text": "500. Punishment for defamation.--Whoever defames another shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9519,
+      "page": 221,
+      "text": "501.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9521,
+      "page": 222,
+      "text": "501. Printing or engraving matter known to be defamatory.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9526,
+      "page": 222,
+      "text": "502.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9528,
+      "page": 222,
+      "text": "502. Sale of printed or engraved substance containing defamatory",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9537,
+      "page": 222,
+      "text": "503.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9539,
+      "page": 222,
+      "text": "503. Criminal intimidation.--Whoever threatens another with any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9553,
+      "page": 223,
+      "text": "504.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9555,
+      "page": 223,
+      "text": "504. Intentional insult with intent to provoke breach of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9564,
+      "page": 223,
+      "text": "505.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9584,
+      "page": 223,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9586,
+      "page": 223,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9588,
+      "page": 223,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9590,
+      "page": 223,
+      "text": "4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9592,
+      "page": 223,
+      "text": "5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9623,
+      "page": 224,
+      "text": "506.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9625,
+      "page": 224,
+      "text": "506. Punishment for criminal intimidation.--Whoever commits the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9638,
+      "page": 224,
+      "text": "507.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9640,
+      "page": 225,
+      "text": "507. Criminal intimidation by an anonymous communication.-",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9647,
+      "page": 225,
+      "text": "508.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9650,
+      "page": 225,
+      "text": "508. Act caused by inducing person to believe that he will be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9663,
+      "page": 225,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9665,
+      "page": 225,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9667,
+      "page": 225,
+      "text": "3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9680,
+      "page": 225,
+      "text": "509.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9682,
+      "page": 226,
+      "text": "509. Word, gesture or act intended to insult the modesty of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9689,
+      "page": 226,
+      "text": "510.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9691,
+      "page": 226,
+      "text": "510. Misconduct in public by a drunken person.--Whoever, in a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9701,
+      "page": 226,
+      "text": "511.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 9707,
+      "page": 226,
+      "text": "511. Punishment for attempting to commit offences punishable with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9726,
+      "page": 227,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9728,
+      "page": 227,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

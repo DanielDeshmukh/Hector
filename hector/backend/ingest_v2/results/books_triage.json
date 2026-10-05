@@ -1,0 +1,469 @@
+{
+  "step": 2,
+  "max_start": 32,
+  "elapsed_s": 201.0,
+  "books": {
+    "Bharatiya Nagarik Suraksha Sanhita-2023.pdf": {
+      "best_start": 16,
+      "markers": 531,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        531
+      ],
+      "missing": 0,
+      "rejected": 9,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "Bharatiya Nyaya Sanhita-2023.pdf": {
+      "best_start": 15,
+      "markers": 358,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        358
+      ],
+      "missing": 0,
+      "rejected": 7,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "Bharatiya Sakshya Adhiniyam-2023.pdf": {
+      "best_start": 0,
+      "markers": 170,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        170
+      ],
+      "missing": 0,
+      "rejected": 6,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "The Arbitration and Conciliation Act-1996.pdf": {
+      "best_start": 0,
+      "markers": 107,
+      "density": 0.0437,
+      "viol": 0,
+      "span": [
+        1,
+        2015
+      ],
+      "missing": 1927,
+      "rejected": 146,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE ARMS ACT-1959.pdf": {
+      "best_start": 20,
+      "markers": 1,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        37,
+        37
+      ],
+      "missing": 0,
+      "rejected": 0,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "The Code of Civil Procedure-1908.pdf": {
+      "best_start": 18,
+      "markers": 7,
+      "density": 0.0036,
+      "viol": 0,
+      "span": [
+        1,
+        1952
+      ],
+      "missing": 1945,
+      "rejected": 1770,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE CODE OF CRIMINAL PROCEDURE-1974-2.pdf": {
+      "best_start": 6,
+      "markers": 17,
+      "density": 0.0467,
+      "viol": 0,
+      "span": [
+        11,
+        374
+      ],
+      "missing": 347,
+      "rejected": 5,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE COMPETITION ACT-2002.pdf": {
+      "best_start": 27,
+      "markers": 36,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        40,
+        66
+      ],
+      "missing": 0,
+      "rejected": 18,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "The Consumer Protection Act-2019.pdf": {
+      "best_start": 0,
+      "markers": 107,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        107
+      ],
+      "missing": 0,
+      "rejected": 8,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "The Copyright Act-1957.pdf": {
+      "best_start": 8,
+      "markers": 102,
+      "density": 0.987,
+      "viol": 0,
+      "span": [
+        3,
+        79
+      ],
+      "missing": 1,
+      "rejected": 88,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE DOWRY PROHIBITION ACT-1961.pdf": {
+      "best_start": 0,
+      "markers": 6,
+      "density": 0.003,
+      "viol": 0,
+      "span": [
+        1,
+        1973
+      ],
+      "missing": 1967,
+      "rejected": 23,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE ENVIRONMENT (PROTECTION) ACT-1986.pdf": {
+      "best_start": 0,
+      "markers": 36,
+      "density": 0.9615,
+      "viol": 0,
+      "span": [
+        1,
+        26
+      ],
+      "missing": 1,
+      "rejected": 10,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE FAMILY COURTS ACT-1984.pdf": {
+      "best_start": 1,
+      "markers": 23,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        23
+      ],
+      "missing": 0,
+      "rejected": 6,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "The Gram Nyayalayas Act-2008.pdf": {
+      "best_start": 11,
+      "markers": 5,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        36,
+        40
+      ],
+      "missing": 0,
+      "rejected": 1,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "The Hindu Marriage Act-1955.pdf": {
+      "best_start": 0,
+      "markers": 37,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        30
+      ],
+      "missing": 0,
+      "rejected": 60,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE HINDU MINORITY AND GUARDIANSHIP ACT-1956.pdf": {
+      "best_start": 0,
+      "markers": 13,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        13
+      ],
+      "missing": 0,
+      "rejected": 2,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE HINDU SUCCESSION ACT-1956.pdf": {
+      "best_start": 8,
+      "markers": 1,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        31,
+        31
+      ],
+      "missing": 0,
+      "rejected": 0,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE INDIAN CONTRACT ACT-1872.pdf": {
+      "best_start": 9,
+      "markers": 153,
+      "density": 0.1309,
+      "viol": 0,
+      "span": [
+        1,
+        1161
+      ],
+      "missing": 1009,
+      "rejected": 167,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE INDIAN EASEMENTS ACT-1882.pdf": {
+      "best_start": 4,
+      "markers": 61,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        4,
+        64
+      ],
+      "missing": 0,
+      "rejected": 2,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE INDIAN EVIDENCE ACT-1872.pdf": {
+      "best_start": 10,
+      "markers": 160,
+      "density": 0.1226,
+      "viol": 0,
+      "span": [
+        4,
+        1161
+      ],
+      "missing": 1016,
+      "rejected": 73,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE INDIAN FOREST ACT-1927.pdf": {
+      "best_start": 9,
+      "markers": 102,
+      "density": 0.9877,
+      "viol": 0,
+      "span": [
+        6,
+        86
+      ],
+      "missing": 1,
+      "rejected": 22,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE INDIAN PENAL CODE-1860-45.pdf": {
+      "best_start": 6,
+      "markers": 581,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        511
+      ],
+      "missing": 0,
+      "rejected": 323,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE INDIAN TRUSTS ACT-1882.pdf": {
+      "best_start": 5,
+      "markers": 94,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        4,
+        96
+      ],
+      "missing": 0,
+      "rejected": 4,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE JUVENILE JUSTICE (CARE AND PROTECTION OF CHILDREN) ACT-2015.pdf": {
+      "best_start": 0,
+      "markers": 111,
+      "density": 0.9911,
+      "viol": 0,
+      "span": [
+        1,
+        112
+      ],
+      "missing": 1,
+      "rejected": 48,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE LEGAL SERVICES AUTHORITIES ACT-1987.pdf": {
+      "best_start": 2,
+      "markers": 40,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        30
+      ],
+      "missing": 0,
+      "rejected": 30,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE LIMITATION ACT-1963.pdf": {
+      "best_start": 6,
+      "markers": 28,
+      "density": 0.0148,
+      "viol": 0,
+      "span": [
+        15,
+        1908
+      ],
+      "missing": 1866,
+      "rejected": 24,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE NARCOTIC DRUGS AND PSYCHOTROPIC SUBSTANCES, ACT-1985.pdf": {
+      "best_start": 6,
+      "markers": 125,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        3,
+        83
+      ],
+      "missing": 0,
+      "rejected": 51,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE NEGOTIABLE INSTRUMENTS ACT-1881.pdf": {
+      "best_start": 7,
+      "markers": 155,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        148
+      ],
+      "missing": 0,
+      "rejected": 67,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "The Prevention of Corruption Act-1988.pdf": {
+      "best_start": 0,
+      "markers": 39,
+      "density": 0.9677,
+      "viol": 0,
+      "span": [
+        1,
+        31
+      ],
+      "missing": 1,
+      "rejected": 32,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    },
+    "THE PROTECTION OF WOMEN FROM DOMESTIC VIOLENCE ACT-2005.pdf": {
+      "best_start": 0,
+      "markers": 37,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        37
+      ],
+      "missing": 0,
+      "rejected": 2,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "The Right to Information Act-2005.pdf": {
+      "best_start": 0,
+      "markers": 31,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        31
+      ],
+      "missing": 0,
+      "rejected": 45,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE SPECIFIC RELIEF ACT-1963.pdf": {
+      "best_start": 0,
+      "markers": 46,
+      "density": 1.0,
+      "viol": 0,
+      "span": [
+        1,
+        42
+      ],
+      "missing": 0,
+      "rejected": 25,
+      "verdict": "PARSEABLE",
+      "edge": false
+    },
+    "THE TRANSFER OF PROPERTY ACT-1882.pdf": {
+      "best_start": 8,
+      "markers": 101,
+      "density": 0.3163,
+      "viol": 0,
+      "span": [
+        4,
+        297
+      ],
+      "missing": 201,
+      "rejected": 103,
+      "verdict": "NEEDS OWN REGEX",
+      "edge": false
+    }
+  }
+}

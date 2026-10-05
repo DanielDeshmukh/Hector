@@ -1,0 +1,71 @@
+{
+  "long_unsplit": [
+    {
+      "number": "2",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 4616
+    },
+    {
+      "number": "6",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 4325
+    },
+    {
+      "number": "12",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 5797
+    },
+    {
+      "number": "26",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 6193
+    },
+    {
+      "number": "95",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 4489
+    },
+    {
+      "number": "170",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 6256
+    }
+  ],
+  "null_titles": [],
+  "split_sections": [
+    {
+      "number": "63",
+      "part_count": 2
+    },
+    {
+      "number": "119",
+      "part_count": 2
+    }
+  ],
+  "page_spanning_records": 30,
+  "a1_shown": [
+    "2",
+    "5",
+    "6",
+    "8",
+    "12"
+  ]
+}

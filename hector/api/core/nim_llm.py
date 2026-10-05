@@ -7,6 +7,8 @@ Used for intent routing and response generation.
 import json
 import logging
 import os
+import threading
+from typing import Any, Callable
 
 from dotenv import load_dotenv
 
@@ -18,20 +20,79 @@ logger = logging.getLogger("hector.nim_llm")
 
 NIM_BASE_URL = os.getenv("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
 NIM_API_KEY = os.getenv("NIM_API_KEY") or os.getenv("NVIDIA_API_KEY")
-DEFAULT_CHAT_MODEL = os.getenv("HECTOR_NIM_CHAT_MODEL", "meta/llama-3.1-8b-instruct")
+# Every model id previously defaulted here is gone: meta/llama-3.1-8b-instruct
+# was retired 2026-08-26 and nvidia/llama-3.1-nemotron-nano-8b-v1 likewise
+# (both HTTP 410), so the production defaults were failing on every call.
+# Verified 2026-10-03 against this account's /models + live completions:
+# only nemotron-3-ultra-550b-a55b, nemotron-3-nano-omni-30b-a3b-reasoning and
+# nemotron-3.5-lightning-30b-a3b answer (the rest 404 for this account).
+# lightning emits a "thinking process" preamble, so it is not used here.
+DEFAULT_CHAT_MODEL = os.getenv(
+    "HECTOR_NIM_CHAT_MODEL", "nvidia/nemotron-3-ultra-550b-a55b"
+)
+
+# Hard wall-clock ceiling for ONE completions attempt.
+#
+# The OpenAI client's timeout=120 below is an httpx *read* timeout: it fires
+# only after 120s with no bytes on the socket. A server that trickles bytes
+# (very slow generation) or a gateway that parks the connection never trips
+# it. Measured 2026-10-03 in eval iter4: three calls (ipc-197-a, ipc-171A-a,
+# ipc-78-b) each ran ~7,390s (2h03m) and returned successfully, and with
+# HECTOR_EVAL_WORKERS=3 all three pool workers were occupied, so the whole
+# evaluation stalled behind them. A wall-clock deadline is independent of
+# byte arrival; exceeding it raises TimeoutError, which retry() treats as
+# transient and retries. 0 disables the deadline.
+CALL_DEADLINE_S = float(os.getenv("HECTOR_NIM_CALL_DEADLINE_S", "300") or 0)
+
+
+def call_with_deadline(
+    func: Callable[..., Any], deadline_s: float, **kwargs: Any
+) -> Any:
+    """Run func(**kwargs), abandoning it after deadline_s of wall-clock time.
+
+    The call runs in a *daemon* thread: the caller stops waiting at the
+    deadline and the abandoned call can never block interpreter shutdown
+    (a ThreadPoolExecutor worker thread is non-daemon and would be joined
+    at exit, reintroducing the stall at process end).
+    """
+    if deadline_s <= 0:
+        return func(**kwargs)
+    box: dict[str, Any] = {}
+
+    def runner() -> None:
+        try:
+            box["value"] = func(**kwargs)
+        except BaseException as exc:  # re-raised in the caller's thread
+            box["error"] = exc
+
+    worker = threading.Thread(
+        target=runner, daemon=True, name="nim-call-deadline"
+    )
+    worker.start()
+    worker.join(deadline_s)
+    if "value" in box:
+        return box["value"]
+    if "error" in box:
+        raise box["error"]
+    raise TimeoutError(
+        f"NIM call exceeded {deadline_s:.0f}s wall-clock deadline"
+    )
 
 # Model registry — different models for different pipeline stages.
 # Each env value may be a comma-separated fallback chain (tried in order).
 NIM_MODELS = {
-    "router": os.getenv("HECTOR_NIM_ROUTER_MODEL", "meta/llama-3.1-8b-instruct"),
+    "router": os.getenv(
+        "HECTOR_NIM_ROUTER_MODEL", "nvidia/nemotron-3-ultra-550b-a55b"
+    ),
     "generation": os.getenv(
-        "HECTOR_NIM_GENERATION_MODEL", "meta/llama-3.1-8b-instruct"
+        "HECTOR_NIM_GENERATION_MODEL", "nvidia/nemotron-3-ultra-550b-a55b"
     ),
     "verification": os.getenv(
-        "HECTOR_NIM_VERIFICATION_MODEL", "meta/llama-3.1-8b-instruct"
+        "HECTOR_NIM_VERIFICATION_MODEL", "nvidia/nemotron-3-ultra-550b-a55b"
     ),
     "query_intelligence": os.getenv(
-        "HECTOR_NIM_QI_MODEL", "nvidia/llama-3.1-nemotron-nano-8b-v1"
+        "HECTOR_NIM_QI_MODEL",
+        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
     ),
 }
 
@@ -140,8 +201,14 @@ class NimLLMClient:
                 kwargs["response_format"] = response_format
 
             try:
+                # Bound each attempt by CALL_DEADLINE_S (see above) — the
+                # client-level read timeout alone cannot stop a call that
+                # keeps the socket open. TimeoutError is retryable, so a
+                # stalled call costs at most deadline x attempts, not hours.
                 response = retry(
-                    client.chat.completions.create,
+                    lambda **req: call_with_deadline(
+                        client.chat.completions.create, CALL_DEADLINE_S, **req
+                    ),
                     max_attempts=3,
                     operation_name=f"nim_chat[{candidate}]",
                     **kwargs,

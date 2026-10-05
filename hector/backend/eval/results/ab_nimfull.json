@@ -1,0 +1,42 @@
+{
+  "mode": "nimfull",
+  "pool": 30,
+  "reranker_disabled": false,
+  "hits": 194,
+  "total": 198,
+  "recall": 0.9797979797979798,
+  "pass": false,
+  "rerank_path_flags": {
+    "api": 194,
+    "ce": 0,
+    "disabled": 0,
+    "other": 4
+  },
+  "dense_p50": 1098.7,
+  "rerank_p50": 1863.3,
+  "total_p50": 3098.6,
+  "total_p95": 8013.5,
+  "misses": [
+    [
+      "ipc-310-a",
+      "IPC 310",
+      "What treatment does the Indian Penal Code provide for thug?"
+    ],
+    [
+      "ipc-45-a",
+      "IPC 45",
+      "Under the Indian Penal Code, what applies to \u201clife\u201d?"
+    ],
+    [
+      "ipc-478-a",
+      "IPC 478",
+      "How is trade mark handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-52-a",
+      "IPC 52",
+      "What treatment does the Indian Penal Code provide for \u201cgood faith\u201d?"
+    ]
+  ],
+  "elapsed_s": 1181
+}

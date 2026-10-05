@@ -7,7 +7,15 @@ import time
 from typing import Any
 
 import bcrypt
+from dotenv import load_dotenv
 from fastapi import Header, HTTPException, status
+
+# api.app imports this module before anything that reads configuration, so
+# the repo-root .env has to be loaded here for HECTOR_JWT_SECRET /
+# HECTOR_API_KEY to exist when AuthManager is constructed at import time
+# (E2E bring-up, 2026-10-05).  load_dotenv() walks up from this file to the
+# repo root and never overrides variables already set in the environment.
+load_dotenv()
 
 
 def _b64url_encode(raw: bytes) -> str:

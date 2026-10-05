@@ -81,7 +81,7 @@ class TestRetryUtility:
                 retryable_exceptions=(ValueError,),
             )
 
-    def test_exponential_backoff_timing(self):
+    def test_exponential_backoff_timing(self, monkeypatch):
         call_count = 0
 
         def fail_three_times():
@@ -90,6 +90,16 @@ class TestRetryUtility:
             if call_count < 4:
                 raise RuntimeError("fail")
             return "done"
+
+        # retry() multiplies every delay by uniform(0.5, 1.5) jitter, so the
+        # real floor is 0.35 * ~0.5 ~= 0.175s and the >= 0.30 assertion below
+        # raced the RNG (measured 2026-10-04: passed one run, failed the next,
+        # elapsed 0.2929). Pinning the jitter to 1.0 in the test makes the
+        # check measure the backoff schedule itself (0.05 + 0.10 + 0.20 =
+        # 0.35s) deterministically - stricter than before, not looser.
+        import utils.retry as retry_mod
+
+        monkeypatch.setattr(retry_mod, "uniform", lambda lo, hi: 1.0)
 
         start = time.time()
         result = retry(

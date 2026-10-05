@@ -1,0 +1,2654 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 358,
+    "footnote": 1,
+    "UNKNOWN": 6
+  },
+  "labels": {
+    "header": 49,
+    "boilerplate": 192,
+    "footnote": 2,
+    "page_number": 97
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 4610,
+      "page": 112,
+      "text": "2. The Commission suggested various enactments to the Government. One of the important",
+      "context": [
+        "Thomas Babington Macaulay to examine the jurisdiction, power and rules of the existing Courts as wel",
+        "as the police establishments and the laws in force in India.",
+        "2. The Commission suggested various enactments to the Government. One of the important",
+        "recommendations made by the Commission was on, Indian Penal Code which was enacted in 1860 and",
+        "the said Code is still continuing in the country with some amendments made thereto from time to time"
+      ]
+    },
+    {
+      "line": 4613,
+      "page": 112,
+      "text": "3. The Government of India considered it expedient and necessary to review the existing criminal",
+      "context": [
+        "recommendations made by the Commission was on, Indian Penal Code which was enacted in 1860 and",
+        "the said Code is still continuing in the country with some amendments made thereto from time to time",
+        "3. The Government of India considered it expedient and necessary to review the existing criminal",
+        "laws with an aim to strengthen law and order and also focus on simplifying legal procedure so that e",
+        "of living is ensured to the common man. The Government also considered to make existing laws relevan"
+      ]
+    },
+    {
+      "line": 4619,
+      "page": 112,
+      "text": "4. Now, it is proposed to enact a new law, namely, the Bharatiya Nyaya Sanhita Bill, 2023 by",
+      "context": [
+        "stakeholders were consulted keeping in mind contemporary needs and aspirations of the people and wit",
+        "a view to create a legal structure which is citizen centric and to secure life and liberty of the ci",
+        "4. Now, it is proposed to enact a new law, namely, the Bharatiya Nyaya Sanhita Bill, 2023 by",
+        "repealing the Indian Penal Code to streamline provisions relating to offences and penalties. It is p",
+        "to provide first time community service as one of the punishments for petty offences. The offences"
+      ]
+    },
+    {
+      "line": 4629,
+      "page": 112,
+      "text": "5. Accordingly, a Bill, namely, the Bharatiya Nyaya Sanhita, 2023 was introduced in the Lok Sabha",
+      "context": [
+        "also been added. The fines and punishment for various offences have also been suitably enhanced.",
+        "IndiaCode",
+        "5. Accordingly, a Bill, namely, the Bharatiya Nyaya Sanhita, 2023 was introduced in the Lok Sabha",
+        "on 11th August, 2023. The Bill was referred to the Department-related Parliamentary Standing",
+        "Committee on Home Affairs for its consideration and report. The Committee after deliberations made i"
+      ]
+    },
+    {
+      "line": 4636,
+      "page": 112,
+      "text": "6. The Notes on Clauses explains the various provisions of the Bill.",
+      "context": [
+        "pending in Lok Sabha and introduce a new Bill incorporating therein those recommendations made by th",
+        "Committee that have been accepted by the Government.",
+        "6. The Notes on Clauses explains the various provisions of the Bill.",
+        "7. The Bill seeks to achieve the above objectives.",
+        "AMIT SHAH."
+      ]
+    },
+    {
+      "line": 4637,
+      "page": 112,
+      "text": "7. The Bill seeks to achieve the above objectives.",
+      "context": [
+        "Committee that have been accepted by the Government.",
+        "6. The Notes on Clauses explains the various provisions of the Bill.",
+        "7. The Bill seeks to achieve the above objectives.",
+        "AMIT SHAH.",
+        "NEW DELHI;"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 39,
+      "page": 16,
+      "text": "1. 1st day of July, 2024, except the provision of sub-section (2) of section 106, vide notification No. S.O. 850(E), dated, 23rd",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 8,
+      "page": 16,
+      "text": "1. Short title, commencement and application.––(1) This Act may be called the Bharatiya Nyaya",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 31,
+      "page": 16,
+      "text": "2. Definitions. –– In this Sanhita, unless the context otherwise requires,––",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 39,
+      "page": 16,
+      "text": "1. 1st day of July, 2024, except the provision of sub-section (2) of section 106, vide notification No. S.O. 850(E), dated, 23rd",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 209,
+      "page": 20,
+      "text": "3. General explanations.—(1) Throughout this Sanhita every definition of an offence, every penal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 272,
+      "page": 21,
+      "text": "4. Punishments. —The punishments to which offenders are liable under the provisions of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 283,
+      "page": 22,
+      "text": "5. Commutation of sentence.—The appropriate Government may, without the consent of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 293,
+      "page": 22,
+      "text": "6. Fractions of terms of punishment.—In calculating fractions of terms of punishment,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 296,
+      "page": 22,
+      "text": "7.  Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple.—In",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 301,
+      "page": 22,
+      "text": "8. Amount of fine, liability in default of payment of fine, etc.—(1) Where no sum is expressed to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 348,
+      "page": 23,
+      "text": "9. Limit of punishment of offence made up of several offences.—(1) Where anything which is an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 366,
+      "page": 23,
+      "text": "10. Punishment of person guilty of one of several offences, judgment stating that it is doubtful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 371,
+      "page": 23,
+      "text": "11. Solitary confinement.—Whenever any person is convicted of an offence for which under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 381,
+      "page": 24,
+      "text": "12. Limit of solitary confinement.—In executing a sentence of solitary confinement, such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 387,
+      "page": 24,
+      "text": "13. Enhanced punishment for certain offences after previous conviction.—Whoever, having been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 396,
+      "page": 24,
+      "text": "14. Act done by a person bound, or by mistake of fact believing himself bound, by law.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 404,
+      "page": 24,
+      "text": "15. Act of Judge when acting judicially.—Nothing is an offence which is done by a Judge when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 407,
+      "page": 24,
+      "text": "16. Act done pursuant to judgment or order of Court.—Nothing which is done in pursuance of, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 411,
+      "page": 24,
+      "text": "17. Act done by a person justified, or by mistake of fact believing himself justified, by law.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 421,
+      "page": 25,
+      "text": "18. Accident in doing a lawful act.—Nothing is an offence which is done by accident or misfortune,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 427,
+      "page": 25,
+      "text": "19. Act likely to cause harm, but done without criminal intent, and to prevent other harm.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 448,
+      "page": 25,
+      "text": "20. Act of a child under seven years of age.—Nothing is an offence which is done by a child under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 450,
+      "page": 25,
+      "text": "21. Act of a child above seven and under twelve years of age of immature understanding.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 454,
+      "page": 25,
+      "text": "22. Act of a person of unsound mind.—Nothing is an offence which is done by a person who, at the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 457,
+      "page": 25,
+      "text": "23. Act of a person incapable of judgment by reason of intoxication caused against his will.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 462,
+      "page": 25,
+      "text": "24. Offence requiring a particular intent or knowledge committed by one who is intoxicated.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 468,
+      "page": 26,
+      "text": "25. Act not intended and not known to be likely to cause death or grievous hurt, done by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 478,
+      "page": 26,
+      "text": "26. Act not intended to cause death, done by consent in good faith for person’s benefit.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 488,
+      "page": 26,
+      "text": "27. Act done in good faith for benefit of child or person of unsound mind, by, or by consent of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 506,
+      "page": 26,
+      "text": "28. Consent known to be given under fear or misconception.—A consent is not such a consent as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 516,
+      "page": 27,
+      "text": "29. Exclusion of acts which are offences independently of harm caused.—The exceptions in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 525,
+      "page": 27,
+      "text": "30. Act done in good faith for benefit of a person without consent.—Nothing is an offence by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 556,
+      "page": 27,
+      "text": "31. Communication made in good faith.—No communication made in good faith is an offence by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 563,
+      "page": 28,
+      "text": "32. Act to which a person is compelled by threats.—Except murder, and offences against the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 577,
+      "page": 28,
+      "text": "33. Act causing slight harm.—Nothing is an offence by reason that it causes, or that it is intended to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 581,
+      "page": 28,
+      "text": "34. Things done in private defence.—Nothing is an offence which is done in the exercise of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 583,
+      "page": 28,
+      "text": "35. Right of private defence of body and of property.—Every person has a right, subject to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 590,
+      "page": 28,
+      "text": "36. Right of private defence against act of a person of unsound mind, etc.—When an act, which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 602,
+      "page": 28,
+      "text": "37. Acts against which there is no right of private defence.—(1) There is no right of private",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 621,
+      "page": 29,
+      "text": "38. When right of private defence of body extends to causing death.—The right of private",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 638,
+      "page": 29,
+      "text": "39. When such right extends to causing any harm other than death.—If the offence be not of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 642,
+      "page": 29,
+      "text": "40. Commencement and continuance of right of private defence of body.—The right of private",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 646,
+      "page": 29,
+      "text": "41. When right of private defence of property extends to causing death.—The right of private",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 659,
+      "page": 30,
+      "text": "42. When such right extends to causing any harm other than death.—If the offence, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 664,
+      "page": 30,
+      "text": "43. Commencement and continuance of right of private defence of property.—The right of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 677,
+      "page": 30,
+      "text": "44. Right of private defence against deadly assault when there is risk of harm to innocent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 688,
+      "page": 30,
+      "text": "45. Abetment of a thing.—A person abets the doing of a thing, who—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 705,
+      "page": 31,
+      "text": "46. Abettor.—A person abets an offence, who abets either the commission of an offence, or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 757,
+      "page": 32,
+      "text": "47. Abetment in India of offences outside India.—A person abets an offence within the meaning of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 763,
+      "page": 32,
+      "text": "48. Abetment outside India for offence in India.—A person abets an offence within the meaning of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 769,
+      "page": 32,
+      "text": "49. Punishment of abetment if act abetted is committed in consequence and where no express",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 783,
+      "page": 32,
+      "text": "50. Punishment of abetment if person abetted does act with different intention from that of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 788,
+      "page": 32,
+      "text": "51. Liability of abettor when one act abetted and different act done.—When an act is abetted and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 808,
+      "page": 33,
+      "text": "52. Abettor when liable to cumulative punishment for act abetted and for act done.—If the act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 819,
+      "page": 33,
+      "text": "53. Liability of abettor for an effect caused by act abetted different from that intended by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 829,
+      "page": 33,
+      "text": "54. Abettor present when offence is committed.—Whenever any person, who is absent would be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 832,
+      "page": 33,
+      "text": "55. Abetment of offence punishable with death or imprisonment for life.—Whoever abets the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 847,
+      "page": 34,
+      "text": "56. Abetment of offence punishable with imprisonment.—Whoever abets an offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 866,
+      "page": 34,
+      "text": "57. Abetting commission of offence by public or by more than ten persons.—Whoever abets the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 874,
+      "page": 34,
+      "text": "58. Concealing design to commit offence punishable with death or imprisonment for life.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 889,
+      "page": 34,
+      "text": "59. Public servant concealing design to commit offence which it is his duty to prevent.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 911,
+      "page": 35,
+      "text": "60. Concealing design to commit offence punishable with imprisonment.—Whoever, intending to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 921,
+      "page": 35,
+      "text": "61. Criminal conspiracy.—(1) When two or more persons agree with the common object to do, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 940,
+      "page": 36,
+      "text": "62. Punishment for attempting to commit offences punishable with imprisonment for life or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 958,
+      "page": 36,
+      "text": "63. Rape.—A man is said to commit “rape” if he—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 992,
+      "page": 37,
+      "text": "64. Punishment for rape.—(1) Whoever, except in the cases provided for in sub-section (2),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1037,
+      "page": 38,
+      "text": "65. Punishment for rape in certain cases.—(1) Whoever, commits rape on a woman under sixteen",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1052,
+      "page": 38,
+      "text": "66. Punishment for causing death or resulting in persistent vegetative state of victim.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1058,
+      "page": 38,
+      "text": "67. Sexual intercourse by husband upon his wife during separation.—Whoever has sexual",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1065,
+      "page": 38,
+      "text": "68. Sexual intercourse by a person in authority.—Whoever, being—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1087,
+      "page": 39,
+      "text": "69. Sexual intercourse by employing deceitful means, etc.—Whoever, by deceitful means or by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1095,
+      "page": 39,
+      "text": "70. Gang rape.—(1) Where a woman is raped by one or more persons constituting a group or acting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1110,
+      "page": 39,
+      "text": "71. Punishment for repeat offenders.—Whoever has been previously convicted of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1114,
+      "page": 39,
+      "text": "72. Disclosure of identity of victim of certain offences, etc.—(1) Whoever prints or publishes the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1134,
+      "page": 40,
+      "text": "73. Printing or publishing any matter relating to Court proceedings without permission.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1143,
+      "page": 40,
+      "text": "74. Assault or use of criminal force to woman with intent to outrage her modesty.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1147,
+      "page": 40,
+      "text": "75. Sexual harassment.—(1) A man committing any of the following acts:—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1159,
+      "page": 40,
+      "text": "76. Assault or use of criminal force to woman with intent to disrobe.—Whoever assaults or uses",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1163,
+      "page": 40,
+      "text": "77. Voyeurism.—Whoever watches, or captures the image of a woman engaging in a private act in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1178,
+      "page": 41,
+      "text": "78. Stalking.—(1) Any man who—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1196,
+      "page": 41,
+      "text": "79. Word, gesture or act intended to insult modesty of a woman.—Whoever, intending to insult",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1202,
+      "page": 41,
+      "text": "80. Dowry death.—(1) Where the death of a woman is caused by any burns or bodily injury or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1211,
+      "page": 41,
+      "text": "81. Cohabitation caused by man deceitfully inducing belief of lawful marriage.—Every man who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1216,
+      "page": 41,
+      "text": "82. Marrying again during lifetime of husband or wife.—(1) Whoever, having a husband or wife",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1233,
+      "page": 42,
+      "text": "83. Marriage ceremony fraudulently gone through without lawful marriage.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1237,
+      "page": 42,
+      "text": "84. Enticing or taking away or detaining with criminal intent a married woman.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1243,
+      "page": 42,
+      "text": "85. Husband or relative of husband of a woman subjecting her to cruelty.—Whoever, being the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1246,
+      "page": 42,
+      "text": "86. Cruelty defined.—For the purposes of section 85, “cruelty” means—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1253,
+      "page": 42,
+      "text": "     87. Kidnapping, abducting or inducing woman to compel her marriage, etc.—Whoever kidnaps",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1263,
+      "page": 42,
+      "text": "88. Causing miscarriage.—Whoever voluntarily causes a woman with child to miscarry, shall, if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1269,
+      "page": 42,
+      "text": "89. Causing miscarriage without woman’s consent.—Whoever commits the offence under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1274,
+      "page": 43,
+      "text": "90. Death caused by act done with intent to cause miscarriage.—(1) Whoever, with intent to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1282,
+      "page": 43,
+      "text": "91. Act done with intent to prevent child being born alive or to cause to die after birth.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1289,
+      "page": 43,
+      "text": "92. Causing death of quick unborn child by act amounting to culpable homicide.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1300,
+      "page": 43,
+      "text": "93. Exposure and abandonment of child under twelve years of age, by parent or person having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1307,
+      "page": 43,
+      "text": "94. Concealment of birth by secret disposal of dead body.—Whoever, by secretly burying or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1311,
+      "page": 43,
+      "text": "95. Hiring, employing or engaging a child to commit an offence.—Whoever hires, employs or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1318,
+      "page": 43,
+      "text": "96. Procuration of child.—Whoever, by any means whatsoever, induces any child to go from any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1323,
+      "page": 44,
+      "text": "97. Kidnapping or abducting child under ten years of age with intent to steal from its person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1327,
+      "page": 44,
+      "text": "98. Selling child for purposes of prostitution, etc.—Whoever sells, lets to hire, or otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1343,
+      "page": 44,
+      "text": "99. Buying child for purposes of prostitution, etc.—Whoever buys, hires or otherwise obtains",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1357,
+      "page": 44,
+      "text": "100. Culpable homicide.—Whoever causes death by doing an act with the intention of causing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1381,
+      "page": 45,
+      "text": "101. Murder.—Except in the cases hereinafter excepted, culpable homicide is murder,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1463,
+      "page": 46,
+      "text": "102. Culpable homicide by causing death of person other than person whose death was",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1470,
+      "page": 47,
+      "text": "103. Punishment for murder.—(1) Whoever commits murder shall be punished with death or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1476,
+      "page": 47,
+      "text": "104. Punishment for murder by life-convict.—Whoever, being under sentence of imprisonment for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1479,
+      "page": 47,
+      "text": "105. Punishment for culpable homicide not amounting to murder.—Whoever commits culpable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1488,
+      "page": 47,
+      "text": "106. Causing death by negligence.—(1) Whoever causes death of any person by doing any rash or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1502,
+      "page": 47,
+      "text": "107. Abetment of suicide of child or person of unsound mind.—If any child, any person of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1506,
+      "page": 47,
+      "text": "108. Abetment of suicide.—If any person commits suicide, whoever abets the commission of such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1509,
+      "page": 47,
+      "text": "109. Attempt to murder.—(1) Whoever does any act with such intention or knowledge, and under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1531,
+      "page": 48,
+      "text": "110. Attempt to commit culpable homicide.—Whoever does any act with such intention or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1541,
+      "page": 48,
+      "text": "111. Organised crime.—(1) Any continuing unlawful activity including kidnapping, robbery,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1590,
+      "page": 49,
+      "text": "112. Petty organised crime.—(1) Whoever, being a member of a group or gang, either singly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1599,
+      "page": 49,
+      "text": "113. Terrorist act.—(1) Whoever does any act with the intent to threaten or likely to threaten the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1660,
+      "page": 51,
+      "text": "114. Hurt.—Whoever causes bodily pain, disease or infirmity to any person is said to cause hurt.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1661,
+      "page": 51,
+      "text": "115. Voluntarily causing hurt.—(1) Whoever does any act with the intention of thereby causing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1667,
+      "page": 51,
+      "text": "116. Grievous hurt.—The following kinds of hurt only are designated as “grievous”, namely:—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1678,
+      "page": 51,
+      "text": "117. Voluntarily causing grievous hurt.—(1) Whoever voluntarily causes hurt, if the hurt which he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1702,
+      "page": 51,
+      "text": "118. Voluntarily causing hurt or grievous hurt by dangerous weapons or means.—(1) Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1715,
+      "page": 52,
+      "text": "119. Voluntarily causing hurt or grievous hurt to extort property, or to constrain to an illegal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1725,
+      "page": 52,
+      "text": "120. Voluntarily causing hurt or grievous hurt to extort confession, or to compel restoration of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1743,
+      "page": 52,
+      "text": "121. Voluntarily causing hurt or grievous hurt to deter public servant from his duty.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1756,
+      "page": 53,
+      "text": "122. Voluntarily causing hurt or grievous hurt on provocation.—(1) Whoever voluntarily causes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1766,
+      "page": 53,
+      "text": "123. Causing hurt by means of poison, etc., with intent to commit an offence.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1773,
+      "page": 53,
+      "text": "124. Voluntarily causing grievous hurt by use of acid, etc.—(1) Whoever causes permanent or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1793,
+      "page": 53,
+      "text": "125. Act endangering life or personal safety of others.—Whoever does any act so rashly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1805,
+      "page": 54,
+      "text": "126. Wrongful restraint.—(1) Whoever voluntarily obstructs any person so as to prevent that person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1815,
+      "page": 54,
+      "text": "127. Wrongful confinement.—(1) Whoever wrongfully restrains any person in such a manner as to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1857,
+      "page": 55,
+      "text": "128. Force.—A person is said to use force to another if he causes motion, change of motion, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1869,
+      "page": 55,
+      "text": "129. Criminal force.—Whoever intentionally uses force to any person, without that person’s",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1909,
+      "page": 56,
+      "text": "130. Assault.—Whoever makes any gesture, or any preparation intending or knowing it to be likely",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1926,
+      "page": 56,
+      "text": "131. Punishment for assault or criminal force otherwise than on grave provocation.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1940,
+      "page": 56,
+      "text": "132. Assault or criminal force to deter public servant from discharge of his duty.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1946,
+      "page": 56,
+      "text": "133. Assault or criminal force with intent to dishonour person, otherwise than on grave",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1951,
+      "page": 57,
+      "text": "134. Assault or criminal force in attempt to commit theft of property carried by a person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1955,
+      "page": 57,
+      "text": "135. Assault or criminal force in attempt to wrongfully confine a person.—Whoever assaults or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1959,
+      "page": 57,
+      "text": "136. Assault or criminal force on grave provocation.—Whoever assaults or uses criminal force to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1965,
+      "page": 57,
+      "text": "137. Kidnapping.—(1) Kidnapping is of two kinds: kidnapping from India, and kidnapping from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1982,
+      "page": 57,
+      "text": "138. Abduction.—Whoever by force compels, or by any deceitful means induces, any person to go",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1984,
+      "page": 57,
+      "text": "139. Kidnapping or maiming a child for purposes of begging.—(1) Whoever kidnaps any child or,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2005,
+      "page": 58,
+      "text": "140. Kidnapping or abducting in order to murder or for ransom, etc.—(1) Whoever kidnaps or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2029,
+      "page": 58,
+      "text": "141. Importation of girl or boy from foreign country.—Whoever imports into India from any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2034,
+      "page": 58,
+      "text": "142. Wrongfully concealing or keeping in confinement, kidnapped or abducted person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2039,
+      "page": 58,
+      "text": "143. Trafficking of person.—(1) Whoever, for the purpose of exploitation recruits, transports,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2075,
+      "page": 59,
+      "text": "144. Exploitation of a trafficked person.—(1) Whoever, knowingly or having reason to believe that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2083,
+      "page": 59,
+      "text": "145. Habitual dealing in slaves.—Whoever habitually imports, exports, removes, buys, sells, traffics",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2086,
+      "page": 59,
+      "text": "146. Unlawful compulsory labour.—Whoever unlawfully compels any person to labour against the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2091,
+      "page": 59,
+      "text": "147. Waging, or attempting to wage war, or abetting waging of war, against Government of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2098,
+      "page": 60,
+      "text": "148. Conspiracy to commit offences punishable by section 147.—Whoever within or without and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2105,
+      "page": 60,
+      "text": "149. Collecting arms, etc., with intention of waging war against Government of India.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2110,
+      "page": 60,
+      "text": "150. Concealing with intent to facilitate design to wage war.—Whoever by any act, or by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2116,
+      "page": 60,
+      "text": "151. Assaulting President, Governor, etc., with intent to compel or restrain exercise of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2123,
+      "page": 60,
+      "text": "152. Act endangering sovereignty, unity and integrity of India.—Whoever, purposely or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2134,
+      "page": 60,
+      "text": "153. Waging war against Government of any foreign State at peace with Government of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2139,
+      "page": 60,
+      "text": "154. Committing depredation on territories of foreign State at peace with Government of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2146,
+      "page": 61,
+      "text": "155. Receiving property taken by war or depredation mentioned in sections 153 and 154.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2151,
+      "page": 61,
+      "text": "156. Public servant voluntarily allowing prisoner of State or war to escape.—Whoever, being a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2156,
+      "page": 61,
+      "text": "157. Public servant negligently suffering such prisoner to escape.—Whoever, being a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2160,
+      "page": 61,
+      "text": "158. Aiding escape of, rescuing or harbouring such prisoner.—Whoever knowingly aids or assists",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2172,
+      "page": 61,
+      "text": "159. Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2177,
+      "page": 61,
+      "text": "160. Abetment of mutiny, if mutiny is committed in consequence thereof.—Whoever abets the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2182,
+      "page": 61,
+      "text": "161. Abetment of assault by soldier, sailor or airman on his superior officer, when in execution",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2187,
+      "page": 61,
+      "text": "162. Abetment of such assault, if assault committed.—Whoever abets an assault by an officer,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2192,
+      "page": 61,
+      "text": "163. Abetment of desertion of soldier, sailor or airman.—Whoever abets the desertion of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2197,
+      "page": 62,
+      "text": "164. Harbouring deserter.—Whoever, except as hereinafter excepted, knowing or having reason to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2203,
+      "page": 62,
+      "text": "165. Deserter concealed on board merchant vessel through negligence of master.—The master or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2209,
+      "page": 62,
+      "text": "166. Abetment of act of insubordination by soldier, sailor or airman.—Whoever abets what he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2215,
+      "page": 62,
+      "text": "167. Persons subject to certain Acts.—No person subject to the Air Force Act, 1950 (45 of 1950),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2218,
+      "page": 62,
+      "text": "168. Wearing garb or carrying token used by soldier, sailor or airman.—Whoever, not being a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2226,
+      "page": 62,
+      "text": "169. Candidate, electoral right defined.—For the purposes of this Chapter—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2230,
+      "page": 62,
+      "text": "170. Bribery.—(1) Whoever—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2245,
+      "page": 63,
+      "text": "171. Undue influence at elections.—(1) Whoever voluntarily interferes or attempts to interfere with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2257,
+      "page": 63,
+      "text": "172. Personation at elections.—Whoever at an election applies for a voting paper on votes in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2265,
+      "page": 63,
+      "text": "173. Punishment for bribery.—Whoever commits the offence of bribery shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2270,
+      "page": 63,
+      "text": "174. Punishment for undue influence or personation at an election.—Whoever commits the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2273,
+      "page": 63,
+      "text": "175. False statement in connection with an election.—Whoever with intent to affect the result of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2277,
+      "page": 63,
+      "text": "176. Illegal payments in connection with an election.—Whoever without the general or special",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2286,
+      "page": 63,
+      "text": "177. Failure to keep election accounts.—Whoever being required by any law for the time being in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2293,
+      "page": 64,
+      "text": "178. Counterfeiting coin, Government stamps, currency-notes or bank-notes.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2315,
+      "page": 64,
+      "text": "179. Using as genuine, forged or counterfeit coin, Government stamp, currency-notes or bank-notes.—Whoever imports or exports, or sells or delivers to, or buys ",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2320,
+      "page": 64,
+      "text": "180. Possession of forged or counterfeit coin, Government stamp, currency-notes or bank-notes.—Whoever has in his possession any forged or counterfeit coin, sta",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2327,
+      "page": 64,
+      "text": "181. Making or possessing instruments or materials for forging or counterfeiting coin,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2335,
+      "page": 64,
+      "text": "182. Making or using documents resembling currency-notes or bank-notes.—(1) Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2349,
+      "page": 65,
+      "text": "183. Effacing writing from substance bearing Government stamp, or removing from document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2357,
+      "page": 65,
+      "text": "184. Using Government stamp known to have been before used.—Whoever, fraudulently or with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2361,
+      "page": 65,
+      "text": "185. Erasure of mark denoting that stamp has been used.—Whoever, fraudulently or with intent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2368,
+      "page": 65,
+      "text": "186. Prohibition of fictitious stamps.—(1) Whoever—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2385,
+      "page": 65,
+      "text": "187. Person employed in mint causing coin to be of different weight or composition from that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2392,
+      "page": 66,
+      "text": "188. Unlawfully taking coining instrument from mint.—Whoever, without lawful authority, takes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2398,
+      "page": 66,
+      "text": "189. Unlawful assembly.—(1) An assembly of five or more persons is designated an “unlawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2449,
+      "page": 67,
+      "text": "190. Every member of unlawful assembly guilty of offence committed in prosecution of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2455,
+      "page": 67,
+      "text": "191. Rioting.—(1) Whenever force or violence is used by an unlawful assembly, or by any member",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2463,
+      "page": 67,
+      "text": "192. Wantonly giving provocation with intent to cause riot-if rioting be committed; if not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2470,
+      "page": 67,
+      "text": "193. Liability of owner, occupier, etc., of land on which an unlawful assembly or riot takes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2495,
+      "page": 68,
+      "text": "194. Affray.—(1) When two or more persons, by fighting in a public place, disturb the public peace,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2499,
+      "page": 68,
+      "text": "195. Assaulting or obstructing public servant when suppressing riot, etc.—(1) Whoever assaults",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2509,
+      "page": 68,
+      "text": "196. Promoting enmity between different groups on grounds of religion, race, place of birth,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2531,
+      "page": 68,
+      "text": "197. Imputations, assertions prejudicial to national integration.—(1) Whoever, by words either",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2555,
+      "page": 69,
+      "text": "198. Public servant disobeying law, with intent to cause injury to any person.—Whoever, being a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2564,
+      "page": 69,
+      "text": "199. Public servant disobeying direction under law.—Whoever, being a public servant,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2576,
+      "page": 69,
+      "text": "200. Punishment for non-treatment of victim.—Whoever, being in charge of a hospital, public or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2580,
+      "page": 69,
+      "text": "201. Public servant framing an incorrect document with intent to cause injury.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2587,
+      "page": 70,
+      "text": "202. Public servant unlawfully engaging in trade.—Whoever, being a public servant, and being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2591,
+      "page": 70,
+      "text": "203. Public servant unlawfully buying or bidding for property.—Whoever, being a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2596,
+      "page": 70,
+      "text": "204. Personating a public servant.—Whoever pretends to hold any particular office as a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2601,
+      "page": 70,
+      "text": "205. Wearing garb or carrying token used by public servant with fraudulent intent.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2610,
+      "page": 70,
+      "text": "206. Absconding to avoid service of summons or other proceeding.—Whoever absconds in order",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2618,
+      "page": 70,
+      "text": "207. Preventing service of summons or other proceeding, or preventing publication thereof.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2631,
+      "page": 70,
+      "text": "208. Non-attendance in obedience to an order from public servant.—Whoever, being legally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2648,
+      "page": 71,
+      "text": "209. Non-appearance in response to a proclamation under section 84 of Bharatiya Nagarik",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2656,
+      "page": 71,
+      "text": "210. Omission to produce document or electronic record to public servant by person legally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2668,
+      "page": 71,
+      "text": "211. Omission to give notice or information to public servant by person legally bound to give",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2682,
+      "page": 71,
+      "text": "212. Furnishing false information.—Whoever, being legally bound to furnish information on any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2709,
+      "page": 72,
+      "text": "213. Refusing oath or affirmation when duly required by public servant to make it.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2714,
+      "page": 72,
+      "text": "214. Refusing to answer public servant authorised to question.—Whoever, being legally bound to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2719,
+      "page": 72,
+      "text": "215. Refusing to sign statement.—Whoever refuses to sign any statement made by him, when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2723,
+      "page": 72,
+      "text": "216. False statement on oath or affirmation to public servant or person authorised to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2730,
+      "page": 72,
+      "text": "217. False information, with intent to cause public servant to use his lawful power to injury of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2755,
+      "page": 73,
+      "text": "218. Resistance to taking of property by lawful authority of a public servant.—Whoever offers",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2760,
+      "page": 73,
+      "text": "219. Obstructing sale of property offered for sale by authority of public servant.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2764,
+      "page": 73,
+      "text": "220. Illegal purchase or bid for property offered for sale by authority of public servant.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2771,
+      "page": 73,
+      "text": "221. Obstructing public servant in discharge of public functions.—Whoever voluntarily obstructs",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2775,
+      "page": 73,
+      "text": "222. Omission to assist public servant when bound by law to give assistance.—Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2787,
+      "page": 74,
+      "text": "223. Disobedience to order duly promulgated by public servant.—Whoever, knowing that, by an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2807,
+      "page": 74,
+      "text": "224. Threat of injury to public servant.—Whoever holds out any threat of injury to any public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2812,
+      "page": 74,
+      "text": "225. Threat of injury to induce person to refrain from applying for protection to public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2818,
+      "page": 74,
+      "text": "226. Attempt to commit suicide to compel or restrain exercise of lawful power.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2824,
+      "page": 74,
+      "text": "227. Giving false evidence.—Whoever, being legally bound by an oath or by an express provision of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2850,
+      "page": 75,
+      "text": "228. Fabricating false evidence.—Whoever causes any circumstance to exist or makes any false",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2867,
+      "page": 75,
+      "text": "229. Punishment for false evidence.—(1) Whoever intentionally gives false evidence in any stage",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2889,
+      "page": 76,
+      "text": "230. Giving or fabricating false evidence with intent to procure conviction of capital offence.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2899,
+      "page": 76,
+      "text": "231. Giving or fabricating false evidence with intent to procure conviction of offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2910,
+      "page": 76,
+      "text": "232. Threatening any person to give false evidence.—(1) Whoever threatens another with any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2918,
+      "page": 76,
+      "text": "233. Using evidence known to be false.—Whoever corruptly uses or attempts to use as true or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2921,
+      "page": 76,
+      "text": "234. Issuing or signing false certificate.—Whoever issues or signs any certificate required by law to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2925,
+      "page": 76,
+      "text": "235. Using as true a certificate known to be false.—Whoever corruptly uses or attempts to use any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2928,
+      "page": 76,
+      "text": "236. False statement made in declaration which is by law receivable as evidence.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2935,
+      "page": 77,
+      "text": "237. Using as true such declaration knowing it to be false.—Whoever corruptly uses or attempts to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2940,
+      "page": 77,
+      "text": "238. Causing disappearance of evidence of offence, or giving false information to screen",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2959,
+      "page": 77,
+      "text": "239. Intentional omission to give information of offence by person bound to inform.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2964,
+      "page": 77,
+      "text": "240. Giving false information respecting an offence committed.—Whoever, knowing or having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2973,
+      "page": 77,
+      "text": "241. Destruction of document or electronic record to prevent its production as evidence.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2982,
+      "page": 78,
+      "text": "242. False personation for purpose of act or proceeding in suit or prosecution.—Whoever falsely",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2987,
+      "page": 78,
+      "text": "243. Fraudulent removal or concealment of property to prevent its seizure as forfeited or in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2995,
+      "page": 78,
+      "text": "244. Fraudulent claim to property to prevent its seizure as forfeited or in execution.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3005,
+      "page": 78,
+      "text": "245. Fraudulently suffering decree for sum not due.—Whoever fraudulently causes or suffers a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3017,
+      "page": 78,
+      "text": "246. Dishonestly making false claim in Court.—Whoever fraudulently or dishonestly, or with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3021,
+      "page": 78,
+      "text": "247. Fraudulently obtaining decree for sum not due.—Whoever fraudulently obtains a decree or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3027,
+      "page": 78,
+      "text": "248. False charge of offence made with intent to injure.—Whoever, with intent to cause injury to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3038,
+      "page": 79,
+      "text": "249. Harbouring offender.—Whenever an offence has been committed, whoever harbours or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3063,
+      "page": 79,
+      "text": "250. Taking gift, etc., to screen an offender from punishment.—Whoever accepts or attempts to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3076,
+      "page": 79,
+      "text": "251. Offering gift or restoration of property in consideration of screening offender.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3092,
+      "page": 80,
+      "text": "252. Taking gift to help to recover stolen property, etc.—Whoever takes or agrees or consents to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3098,
+      "page": 80,
+      "text": "253. Harbouring offender who has escaped from custody or whose apprehension has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3122,
+      "page": 80,
+      "text": "254. Penalty for harbouring robbers or dacoits.—Whoever, knowing or having reason to believe",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3131,
+      "page": 80,
+      "text": "255.—Public servant disobeying direction of law with intent to save person from punishment or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3139,
+      "page": 81,
+      "text": "256. Public servant framing incorrect record or writing with intent to save person from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3148,
+      "page": 81,
+      "text": "257. Public servant in judicial proceeding corruptly making report, etc., contrary to law.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3154,
+      "page": 81,
+      "text": "258. Commitment for trial or confinement by person having authority who knows that he is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3160,
+      "page": 81,
+      "text": "259. Intentional omission to apprehend on part of public servant bound to apprehend.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3176,
+      "page": 81,
+      "text": "260. Intentional omission to apprehend on part of public servant bound to apprehend person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3194,
+      "page": 82,
+      "text": "261. Escape from confinement or custody negligently suffered by public servant.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3199,
+      "page": 82,
+      "text": "262. Resistance or obstruction by a person to his lawful apprehension.—Whoever intentionally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3208,
+      "page": 82,
+      "text": "263. Resistance or obstruction to lawful apprehension of another person.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3228,
+      "page": 82,
+      "text": "264. Omission to apprehend, or sufferance of escape, on part of public servant, in cases not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3238,
+      "page": 83,
+      "text": "265. Resistance or obstruction to lawful apprehension or escape or rescue in cases not otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3245,
+      "page": 83,
+      "text": "266. Violation of condition of remission of punishment.—Whoever, having accepted any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3250,
+      "page": 83,
+      "text": "267. Intentional insult or interruption to public servant sitting in judicial proceeding.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3256,
+      "page": 83,
+      "text": "268. Personation of assessor.—Whoever, by personation or otherwise, shall intentionally cause, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3262,
+      "page": 83,
+      "text": "269. Failure by person released on bail bond or bond to appear in Court.—Whoever, having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3273,
+      "page": 83,
+      "text": "270. Public nuisance.—A person is guilty of a public nuisance who does any act or is guilty of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3278,
+      "page": 83,
+      "text": "271. Negligent act likely to spread infection of disease dangerous to life.—Whoever unlawfully or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3282,
+      "page": 83,
+      "text": "272. Malignant act likely to spread infection of disease dangerous to life.—Whoever malignantly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3287,
+      "page": 84,
+      "text": "273. Disobedience to quarantine rule.—Whoever knowingly disobeys any rule made by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3292,
+      "page": 84,
+      "text": "274. Adulteration of food or drink intended for sale.—Whoever adulterates any article of food or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3297,
+      "page": 84,
+      "text": "275. Sale of noxious food or drink.—Whoever sells, or offers or exposes for sale, as food or drink,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3303,
+      "page": 84,
+      "text": "276. Adulteration of drugs.—Whoever adulterates any drug or medical preparation in such a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3309,
+      "page": 84,
+      "text": "277. Sale of adulterated drugs.—Whoever, knowing any drug or medical preparation to have been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3315,
+      "page": 84,
+      "text": "278. Sale of drug as a different drug or preparation.—Whoever knowingly sells, or offers or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3320,
+      "page": 84,
+      "text": "279. Fouling water of public spring or reservoir.—Whoever voluntarily corrupts or fouls the water",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3324,
+      "page": 84,
+      "text": "280. Making atmosphere noxious to health.—Whoever voluntarily vitiates the atmosphere in any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3328,
+      "page": 84,
+      "text": "281. Rash driving or riding on a public way.—Whoever drives any vehicle, or rides, on any public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3332,
+      "page": 84,
+      "text": "282. Rash navigation of vessel.—Whoever navigates any vessel in a manner so rash or negligent as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3337,
+      "page": 85,
+      "text": "283. Exhibition of false light, mark or buoy.—Whoever exhibits any false light, mark or buoy,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3341,
+      "page": 85,
+      "text": "284. Conveying person by water for hire in unsafe or overloaded vessel.—Whoever knowingly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3346,
+      "page": 85,
+      "text": "285. Danger or obstruction in public way or line of navigation.—Whoever, by doing any act, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3350,
+      "page": 85,
+      "text": "286. Negligent conduct with respect to poisonous substance.—Whoever does, with any poisonous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3357,
+      "page": 85,
+      "text": "287. Negligent conduct with respect to fire or combustible matter.—Whoever does, with fire or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3364,
+      "page": 85,
+      "text": "288. Negligent conduct with respect to explosive substance.—Whoever does, with any explosive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3370,
+      "page": 85,
+      "text": "289. Negligent conduct with respect to machinery.—Whoever does, with any machinery, any act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3376,
+      "page": 85,
+      "text": "290. Negligent conduct with respect to pulling down, repairing or constructing buildings, etc.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3382,
+      "page": 85,
+      "text": "291. Negligent conduct with respect to animal.—Whoever knowingly or negligently omits to take",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3388,
+      "page": 86,
+      "text": "292. Punishment for public nuisance in cases not otherwise provided for.—Whoever commits a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3391,
+      "page": 86,
+      "text": "293. Continuance of nuisance after injunction to discontinue.—Whoever repeats or continues a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3395,
+      "page": 86,
+      "text": "294. Sale, etc., of obscene books, etc.—(1) For the purposes of sub-section (2), a book, pamphlet,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3433,
+      "page": 86,
+      "text": "295. Sale, etc., of obscene objects to child.—Whoever sells, lets to hire, distributes, exhibits or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3440,
+      "page": 87,
+      "text": "296. Obscene acts and songs.—Whoever, to the annoyance of others,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3445,
+      "page": 87,
+      "text": "297. Keeping lottery office.—(1) Whoever keeps any office or place for the purpose of drawing any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3455,
+      "page": 87,
+      "text": "298. Injuring or defiling place of worship with intent to insult religion of any class.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3461,
+      "page": 87,
+      "text": "299. Deliberate and malicious acts, intended to outrage religious feelings of any class by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3467,
+      "page": 87,
+      "text": "300. Disturbing religious assembly.—Whoever voluntarily causes disturbance to any assembly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3470,
+      "page": 87,
+      "text": "301. Trespassing on burial places, etc.—Whoever, with the intention of wounding the feelings of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3478,
+      "page": 87,
+      "text": "302. Uttering words, etc., with deliberate intent to wound religious feelings of any person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3487,
+      "page": 88,
+      "text": "303. Theft.—(1) Whoever, intending to take dishonestly any movable property out of the possession",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3561,
+      "page": 89,
+      "text": "304. Snatching.—(1) Theft is snatching if, in order to commit theft, the offender suddenly or quickly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3566,
+      "page": 89,
+      "text": "305. Theft in a dwelling house, or means of transportation or place of worship, etc.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3577,
+      "page": 89,
+      "text": "306. Theft by clerk or servant of property in possession of master.—Whoever, being a clerk or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3582,
+      "page": 90,
+      "text": "307. Theft after preparation made for causing death, hurt or restraint in order to committing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3597,
+      "page": 90,
+      "text": "308. Extortion.—(1) Whoever intentionally puts any person in fear of any injury to that person, or to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3639,
+      "page": 91,
+      "text": "309. Robbery.—(1) In all robbery there is either theft or extortion.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3674,
+      "page": 91,
+      "text": "310. Dacoity.—(1) When five or more persons conjointly commit or attempt to commit a robbery, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3693,
+      "page": 92,
+      "text": "311. Robbery, or dacoity, with attempt to cause death or grievous hurt.—If, at the time of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3697,
+      "page": 92,
+      "text": "312. Attempt to commit robbery or dacoity when armed with deadly weapon.—If, at the time of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3700,
+      "page": 92,
+      "text": "313. Punishment for belonging to gang of robbers, etc.—Whoever belongs to any gang of persons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3704,
+      "page": 92,
+      "text": "314. Dishonest misappropriation of property.—Whoever dishonestly misappropriates or converts",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3753,
+      "page": 93,
+      "text": "315. Dishonest misappropriation of property possessed by deceased person at the time of his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3764,
+      "page": 93,
+      "text": "316. Criminal breach of trust.—(1) Whoever, being in any manner entrusted with property, or with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3825,
+      "page": 95,
+      "text": "317. Stolen property.—(1) Property, the possession whereof has been transferred by theft or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3848,
+      "page": 95,
+      "text": "318. Cheating.—(1) Whoever, by deceiving any person, fraudulently or dishonestly induces the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3893,
+      "page": 96,
+      "text": "319. Cheating by personation.—(1) A person is said to cheat by personation if he cheats by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3904,
+      "page": 96,
+      "text": "320. Dishonest or fraudulent removal or concealment of property to prevent distribution",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3911,
+      "page": 96,
+      "text": "321. Dishonestly or fraudulently preventing debt being available for creditors.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3916,
+      "page": 96,
+      "text": "322. Dishonest or fraudulent execution of deed of transfer containing false statement of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3923,
+      "page": 97,
+      "text": "323. Dishonest or fraudulent removal or concealment of property.—Whoever dishonestly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3929,
+      "page": 97,
+      "text": "324. Mischief.—(1) Whoever with intent to cause, or knowing that he is likely to cause, wrongful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3974,
+      "page": 98,
+      "text": "325. Mischief by killing or maiming animal.—Whoever commits mischief by killing, poisoning,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3977,
+      "page": 98,
+      "text": "326. Mischief by injury, inundation, fire or explosive substance, etc.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4009,
+      "page": 98,
+      "text": "327. Mischief with intent to destroy or make unsafe a rail, aircraft, decked vessel or one of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4019,
+      "page": 99,
+      "text": "328. Punishment for intentionally running vessel aground or ashore with intent to commit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4025,
+      "page": 99,
+      "text": "329. Criminal trespass and house-trespass.—(1) Whoever enters into or upon property in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4041,
+      "page": 99,
+      "text": "330. House-trespass and house-breaking.—(1) Whoever commits house-trespass having taken",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4081,
+      "page": 100,
+      "text": "331. Punishment for house-trespass or house-breaking.—(1) Whoever commits lurking house-trespass or house-breaking, shall be punished with imprisonment of eithe",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4116,
+      "page": 101,
+      "text": "332. House-trespass in order to commit offence.—Whoever commits house-trespass in order to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4127,
+      "page": 101,
+      "text": "333. House-trespass after preparation for hurt, assault or wrongful restraint.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4132,
+      "page": 101,
+      "text": "334. Dishonestly breaking open receptacle containing property.—(1) Whoever dishonestly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4142,
+      "page": 101,
+      "text": "335. Making a false document.—A person is said to make a false document or false electronic",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4237,
+      "page": 103,
+      "text": "336. Forgery.—(1) Whoever makes any false document or false electronic record or part of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4250,
+      "page": 103,
+      "text": "337. Forgery of record of Court or of public register, etc.—Whoever forges a document or an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4261,
+      "page": 104,
+      "text": "338. Forgery of valuable security, will, etc.—Whoever forges a document which purports to be a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4269,
+      "page": 104,
+      "text": "339. Having possession of document described in section 337 or section 338, knowing it to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4278,
+      "page": 104,
+      "text": "340. Forged document or electronic record and using it as genuine.—(1) A false document or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4283,
+      "page": 104,
+      "text": "341. Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4302,
+      "page": 104,
+      "text": "342. Counterfeiting device or mark used for authenticating documents described in section 338,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4318,
+      "page": 105,
+      "text": "343. Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4326,
+      "page": 105,
+      "text": "344. Falsification of accounts.—Whoever, being a clerk, officer or servant, or employed or acting in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4339,
+      "page": 105,
+      "text": " 345. Property mark.—(1) A mark used for denoting that movable property belongs to a particular",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4349,
+      "page": 105,
+      "text": "346. Tampering with property mark with intent to cause injury.—Whoever removes, destroys,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4353,
+      "page": 105,
+      "text": "347. Counterfeiting a property mark.—(1) Whoever counterfeits any property mark used by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4363,
+      "page": 106,
+      "text": "348. Making or possession of any instrument for counterfeiting a property mark.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4368,
+      "page": 106,
+      "text": "349. Selling goods marked with a counterfeit property mark.—Whoever sells, or exposes, or has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4381,
+      "page": 106,
+      "text": "350. Making a false mark upon any receptacle containing goods.—(1) Whoever makes any false",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4393,
+      "page": 106,
+      "text": "351. Criminal intimidation.—(1) Whoever threatens another by any means, with any injury to his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4415,
+      "page": 107,
+      "text": "352. Intentional insult with intent to provoke breach of peace.—Whoever intentionally insults in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4420,
+      "page": 107,
+      "text": "353. Statements conducing to public mischief.—(1) Whoever makes, publishes or circulates any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4444,
+      "page": 107,
+      "text": "354. Act caused by inducing person to believe that he will be rendered an object of Divine",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4459,
+      "page": 108,
+      "text": "355. Misconduct in public by a drunken person.—Whoever, in a state of intoxication, appears in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4465,
+      "page": 108,
+      "text": "356. Defamation.—(1) Whoever, by words either spoken or intended to be read, or by signs or by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4578,
+      "page": 110,
+      "text": "357. Breach of contract to attend on and supply wants of helpless person.—Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4586,
+      "page": 110,
+      "text": "358. Repeal and savings.—(1) The Indian Penal Code (45 of 1860) is hereby repealed.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4610,
+      "page": 112,
+      "text": "2. The Commission suggested various enactments to the Government. One of the important",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4613,
+      "page": 112,
+      "text": "3. The Government of India considered it expedient and necessary to review the existing criminal",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4619,
+      "page": 112,
+      "text": "4. Now, it is proposed to enact a new law, namely, the Bharatiya Nyaya Sanhita Bill, 2023 by",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4629,
+      "page": 112,
+      "text": "5. Accordingly, a Bill, namely, the Bharatiya Nyaya Sanhita, 2023 was introduced in the Lok Sabha",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4636,
+      "page": 112,
+      "text": "6. The Notes on Clauses explains the various provisions of the Bill.",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4637,
+      "page": 112,
+      "text": "7. The Bill seeks to achieve the above objectives.",
+      "cls": "UNKNOWN",
+      "label": null
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "act_id": "bns-2023",
+  "steps": {
+    "step2_inspect": {
+      "exit": 0,
+      "seconds": 4.14
+    },
+    "step3_clean": {
+      "exit": 0,
+      "seconds": 1.43
+    },
+    "step4_segment": {
+      "exit": 0,
+      "seconds": 1.5
+    },
+    "step5_records": {
+      "exit": 0,
+      "seconds": 0.92
+    },
+    "step6_validate": {
+      "exit": 0,
+      "seconds": 10.26
+    },
+    "step7_report": {
+      "exit": 0,
+      "seconds": 0.66
+    }
+  }
+}

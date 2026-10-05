@@ -1,0 +1,48 @@
+{
+  "act_id": "ipc-1860",
+  "page_spanning_total": 171,
+  "shown": [
+    {
+      "number": "3",
+      "page_start": 1,
+      "page_end": 2,
+      "joins": []
+    },
+    {
+      "number": "4",
+      "page_start": 2,
+      "page_end": 3,
+      "joins": [
+        {
+          "from_page": 2,
+          "to_page": 3,
+          "removed_labels": [
+            "footnote",
+            "page_number",
+            "separator"
+          ],
+          "before_tail": " any citizen\nof India\nin any place without and\nbeyond India;\n(2) any person on any ship or aircraft registered in India\nwherever it may be.]",
+          "after_head": "Explanation.\nExplanation.--In this section the word \"offence\" includes every\nact committed outside 1*[India] which, if committed in 1*[India"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "page_start": 3,
+      "page_end": 4,
+      "joins": []
+    },
+    {
+      "number": "10",
+      "page_start": 4,
+      "page_end": 5,
+      "joins": []
+    },
+    {
+      "number": "19",
+      "page_start": 6,
+      "page_end": 7,
+      "joins": []
+    }
+  ]
+}

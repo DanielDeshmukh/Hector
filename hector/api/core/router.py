@@ -283,7 +283,7 @@ class HectorRouter:
         self.client = (
             Groq(api_key=groq_api_key) if Groq is not None and groq_api_key else None
         )
-        self.model = os.getenv("HECTOR_ROUTER_MODEL", "llama-3.3-70b-versatile")
+        self.model = os.getenv("HECTOR_ROUTER_MODEL", "qwen/qwen3.8-27b")
         self._nim = None
         self._nim_last_failure = 0  # timestamp of last NIM failure
         self._nim_cooldown = 60  # seconds to wait before retrying NIM

@@ -26,10 +26,10 @@ class HectorDiagnostic:
         }
 
     def test_groq_reasoning(self):
-        print("\n[1/4] Testing Groq Reasoning (Llama 3.3 70B)...")
+        print("\n[1/4] Testing Groq Reasoning (Qwen 3.8 27B)...")
         try:
             chat = self.groq_client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="qwen/qwen3.8-27b",
                 messages=[
                     {
                         "role": "user",

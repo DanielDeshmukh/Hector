@@ -1,0 +1,111 @@
+{
+  "mode": "groq",
+  "pool": 30,
+  "reranker_disabled": false,
+  "hits": 179,
+  "total": 198,
+  "recall": 0.9040404040404041,
+  "pass": false,
+  "dense_p50": 905.3,
+  "rerank_p50": 1095.1,
+  "total_p50": 2114.5,
+  "total_p95": 9996.8,
+  "misses": [
+    [
+      "ipc-111-a",
+      "IPC 111",
+      "How does the Indian Penal Code deal with liability of abettor when one"
+    ],
+    [
+      "ipc-12-a",
+      "IPC 12",
+      "How is \u201cpublic\u201d handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-146-a",
+      "IPC 146",
+      "How is rioting handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-2-a",
+      "IPC 2",
+      "How does the Indian Penal Code deal with punishment of offences commit"
+    ],
+    [
+      "ipc-21-a",
+      "IPC 21",
+      "What are the provisions of the Indian Penal Code regarding \u201cpublic ser"
+    ],
+    [
+      "ipc-231-a",
+      "IPC 231",
+      "What treatment does the Indian Penal Code provide for counterfeiting c"
+    ],
+    [
+      "ipc-274-a",
+      "IPC 274",
+      "What does the Indian Penal Code say about adulteration of drugs?"
+    ],
+    [
+      "ipc-29A-a",
+      "IPC 29A",
+      "How is \u201celectronic record\u201d handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-310-a",
+      "IPC 310",
+      "What treatment does the Indian Penal Code provide for thug?"
+    ],
+    [
+      "ipc-328-a",
+      "IPC 328",
+      "What does the Indian Penal Code say about causing hurt by means of poi"
+    ],
+    [
+      "ipc-33-a",
+      "IPC 33",
+      "Under the Indian Penal Code, what applies to \u201cact\u201d. \u201comission\u201d?"
+    ],
+    [
+      "ipc-419-a",
+      "IPC 419",
+      "How is punishment for cheating by personation handled under the Indian"
+    ],
+    [
+      "ipc-42-a",
+      "IPC 42",
+      "What does the Indian Penal Code say about \u201clocal law\u201d?"
+    ],
+    [
+      "ipc-45-a",
+      "IPC 45",
+      "Under the Indian Penal Code, what applies to \u201clife\u201d?"
+    ],
+    [
+      "ipc-465-a",
+      "IPC 465",
+      "Under the Indian Penal Code, what applies to punishment for forgery?"
+    ],
+    [
+      "ipc-468-a",
+      "IPC 468",
+      "What does the Indian Penal Code say about forgery for purpose of cheat"
+    ],
+    [
+      "ipc-479-a",
+      "IPC 479",
+      "What does the Indian Penal Code say about property mark?"
+    ],
+    [
+      "ipc-52-a",
+      "IPC 52",
+      "What treatment does the Indian Penal Code provide for \u201cgood faith\u201d?"
+    ],
+    [
+      "ipc-95-a",
+      "IPC 95",
+      "What are the provisions of the Indian Penal Code regarding act causing"
+    ]
+  ],
+  "elapsed_s": 1000
+}

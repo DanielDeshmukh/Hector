@@ -1,0 +1,123 @@
+{
+  "act_id": "bnss-2023",
+  "page_spanning_total": 115,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 18,
+      "page_end": 20,
+      "joins": [
+        {
+          "from_page": 18,
+          "to_page": 19,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "al bond or an undertaking for release without surety;\n(f) “charge” includes any head of charge when the charge contains more heads than one;",
+          "after_head": "(g) “cognizable offence” means an offence for which, and \"cognizable case\" means a case in which,\na police officer may, in accordance with t"
+        },
+        {
+          "from_page": 19,
+          "to_page": 19,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "dio-video player or camera\nor any other electronic device or electronic form as may be specified by notification, by the Central\nGovernment;",
+          "after_head": "(j) “High Court” means,—\n(i) in relation to any State, the High Court for that State;\n(ii) in relation to a Union territory to which the jur"
+        },
+        {
+          "from_page": 19,
+          "to_page": 20,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "cer in charge of the police station\nis absent from the station-house or unable from illness or other cause to perform his duties, the police",
+          "after_head": "officer present at the station-house who is next in rank to such officer and is above the rank of constable\nor, when the State Government so"
+        },
+        {
+          "from_page": 20,
+          "to_page": 20,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "red any loss or injury caused by reason of the act or\nomission of the accused person and includes the guardian or legal heir of such victim;",
+          "after_head": "(z) “warrant-case” means a case relating to an offence punishable with death, imprisonment for life\nor imprisonment for a term exceeding two"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "page_start": 21,
+      "page_end": 22,
+      "joins": [
+        {
+          "from_page": 21,
+          "to_page": 22,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "udge, by the Chief Judicial Magistrate, and such Judge or Magistrate shall be deemed to have jurisdiction\nto deal with any such application.",
+          "after_head": "Explanation.—For the purposes of this Sanhita, “appointment” does not include the first appointment,\nposting or promotion of a person by the"
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "page_start": 22,
+      "page_end": 23,
+      "joins": [
+        {
+          "from_page": 22,
+          "to_page": 23,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": " Except as otherwise provided by such definition, the jurisdiction and powers of every such\nMagistrate shall extend throughout the district.",
+          "after_head": "(3) Where the local jurisdiction of a Magistrate appointed under section 9 or section 11 extends to an\narea beyond the district in which he "
+        }
+      ]
+    },
+    {
+      "number": "18",
+      "page_start": 24,
+      "page_end": 25,
+      "joins": [
+        {
+          "from_page": 24,
+          "to_page": 24,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "r one district may be\nappointed also to be a Public Prosecutor or an Additional Public Prosecutor, as the case may be, for another\ndistrict.",
+          "after_head": "(4) The District Magistrate shall, in consultation with the Sessions Judge, prepare a panel of names of\npersons, who are, in his opinion fit"
+        },
+        {
+          "from_page": 24,
+          "to_page": 25,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "secutor:\nProvided that the Court may permit the victim to engage an advocate of his choice to assist the\nprosecution under this sub-section.",
+          "after_head": "(9) For the purposes of sub-section (7) and sub-section (8), the period during which a person has been\nin practice as an advocate, or has re"
+        }
+      ]
+    },
+    {
+      "number": "20",
+      "page_start": 25,
+      "page_end": 26,
+      "joins": [
+        {
+          "from_page": 25,
+          "to_page": 26,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "hable for ten years or more, or with life imprisonment, or with death; to expedite the proceedings\nand to give opinion on filing of appeals.",
+          "after_head": "(8) The powers and functions of the Deputy Director of Prosecution shall be to examine and scrutinise\npolice report and monitor the cases in"
+        }
+      ]
+    }
+  ]
+}

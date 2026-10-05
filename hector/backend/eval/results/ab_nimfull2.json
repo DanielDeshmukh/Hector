@@ -1,0 +1,21 @@
+{
+  "mode": "nimfull2",
+  "pool": 30,
+  "reranker_disabled": false,
+  "hits": 198,
+  "total": 198,
+  "recall": 1.0,
+  "pass": true,
+  "rerank_path_flags": {
+    "api": 198,
+    "ce": 0,
+    "disabled": 0,
+    "other": 0
+  },
+  "dense_p50": 1988.7,
+  "rerank_p50": 1991.6,
+  "total_p50": 4224.5,
+  "total_p95": 9314.4,
+  "misses": [],
+  "elapsed_s": 1424
+}

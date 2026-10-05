@@ -1,0 +1,67 @@
+{
+  "mode": "pool60_norerank",
+  "pool": 60,
+  "reranker_disabled": true,
+  "hits": 189,
+  "total": 198,
+  "recall": 0.9545454545454546,
+  "pass": false,
+  "rerank_path_flags": {
+    "groq": 0,
+    "ce": 0,
+    "disabled": 198,
+    "other": 0
+  },
+  "dense_p50": 2023.5,
+  "rerank_p50": 145.5,
+  "total_p50": 2249.3,
+  "total_p95": 4177.5,
+  "misses": [
+    [
+      "ipc-111-a",
+      "IPC 111",
+      "How does the Indian Penal Code deal with liability of abettor when one"
+    ],
+    [
+      "ipc-12-a",
+      "IPC 12",
+      "How is \u201cpublic\u201d handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-146-a",
+      "IPC 146",
+      "How is rioting handled under the Indian Penal Code?"
+    ],
+    [
+      "ipc-2-a",
+      "IPC 2",
+      "How does the Indian Penal Code deal with punishment of offences commit"
+    ],
+    [
+      "ipc-21-a",
+      "IPC 21",
+      "What are the provisions of the Indian Penal Code regarding \u201cpublic ser"
+    ],
+    [
+      "ipc-310-a",
+      "IPC 310",
+      "What treatment does the Indian Penal Code provide for thug?"
+    ],
+    [
+      "ipc-33-a",
+      "IPC 33",
+      "Under the Indian Penal Code, what applies to \u201cact\u201d. \u201comission\u201d?"
+    ],
+    [
+      "ipc-45-a",
+      "IPC 45",
+      "Under the Indian Penal Code, what applies to \u201clife\u201d?"
+    ],
+    [
+      "ipc-453-a",
+      "IPC 453",
+      "Under the Indian Penal Code, what applies to punishment for lurking ho"
+    ]
+  ],
+  "elapsed_s": 462
+}

@@ -375,9 +375,51 @@ class QueryExpander:
 
         return synonyms
 
+    # An explicit section number is already the most precise signal a legal
+    # query can carry. Expanding such a query appends 30-50 tokens of other
+    # sections from the synonym table (e.g. "Section 275 IPC" -> also
+    # "section 106 ... section 115"), and those foreign numbers dominate the
+    # embedding, pushing the actual target out of dense top-30 entirely.
+    #
+    # Measured 2026-10-03 on the 9 section_recall misses in iter2: the run's
+    # expanded query put the expected section in dense top-30 for 1/6 probed,
+    # the raw question for 6/6 (at rank 0-1). It only became visible as a
+    # regression when BNS was merged into the index, because most injected
+    # numbers are BNS sections that previously matched nothing.
+    _EXPLICIT_SECTION = re.compile(
+        r"\bsection\s*[:.\-]?\s*\d+[a-z]?\b|\b§\s*\d+[a-z]?",
+        re.IGNORECASE,
+    )
+
+    # Surface forms that identify an act, used to keep expansion from adding
+    # an act the question never mentioned (see expand()).
+    _ACT_SURFACE = {
+        "IPC": ("indian penal code", "ipc"),
+        "BNS": ("bharatiya nyaya sanhita", "bns"),
+        "BNSS": ("bharatiya nagarik suraksha sanhita", "bnss"),
+        "BSA": ("bharatiya sakshya adhiniyam", "indian evidence act",
+                "evidence act", "bsa"),
+        "CRPC": ("code of criminal procedure", "crpc"),
+        "CPC": ("code of civil procedure", "cpc"),
+    }
+
+    @classmethod
+    def _acts_in(cls, text: str):
+        """Canonical act codes named anywhere in `text`."""
+        lowered = (text or "").lower()
+        found = []
+        for canon, surfaces in cls._ACT_SURFACE.items():
+            if any(re.search(r"\b" + re.escape(surface) + r"\b", lowered)
+                   for surface in surfaces):
+                found.append(canon)
+        return found
+
     def expand(self, query: str) -> str:
         """
         Expand a query with legal synonyms.
+
+        Queries that already cite a section are returned unchanged - see
+        _EXPLICIT_SECTION for the measurement behind that.
 
         Args:
             query: Original user query
@@ -385,12 +427,37 @@ class QueryExpander:
         Returns:
             Expanded query with synonyms appended
         """
+        if self._EXPLICIT_SECTION.search(query or ""):
+            logger.debug("section-citing query left unexpanded: %r", query)
+            return query
+
         matched_terms = self._find_matching_terms(query)
 
         if not matched_terms:
             return query
 
         synonyms = self._get_synonyms(matched_terms, query)
+
+        if not synonyms:
+            return query
+
+        # Never let expansion introduce an act the query did not ask about.
+        # The synonym table carries cross-act citations ("murder" -> "section
+        # 101 bns"), and _parse_query scans the whole query string for act
+        # names - so expanding "Indian Penal Code ... murder" makes it look
+        # like a two-act comparison question, which disarms act-scoped
+        # retrieval entirely (the same-act floor refuses to choose between
+        # IPC and BNS). Synonyms citing no act, or the same act, are kept.
+        query_acts = set(self._acts_in(query))
+        if query_acts:
+            kept = [s for s in synonyms
+                    if not (set(self._acts_in(s)) - query_acts)]
+            if kept != synonyms:
+                logger.debug(
+                    "dropped %d foreign-act synonym(s) (query acts=%s)",
+                    len(synonyms) - len(kept), sorted(query_acts),
+                )
+                synonyms = kept
 
         if not synonyms:
             return query

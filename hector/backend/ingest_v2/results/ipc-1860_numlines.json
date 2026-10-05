@@ -1,0 +1,6254 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 581,
+    "footnote": 329,
+    "UNKNOWN": 9
+  },
+  "labels": {
+    "header": 76,
+    "boilerplate": 106,
+    "footnote": 380,
+    "page_number": 106
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 3666,
+      "page": 85,
+      "text": "354E. Liability person present who fails to prevent the commission of offence under Section 354,",
+      "context": [
+        "Chhattisgarh",
+        "After Section 354D of the Penal Code, the following shall be inserted, namely:—",
+        "354E. Liability person present who fails to prevent the commission of offence under Section 354,",
+        "354A, 354B, 354C, 354D.—",
+        "Whoever, being present at the time of commission of an offence under section 354, section 354A,"
+      ]
+    },
+    {
+      "line": 4250,
+      "page": 96,
+      "text": "382B. Whoever commits ‘Snatching’ shall be punished with imprisonment for a term which shall not",
+      "context": [
+        "criminal force and thereby causes hurt or endangers the life of that person is said to commit the of",
+        "‘Snatching’.",
+        "382B. Whoever commits ‘Snatching’ shall be punished with imprisonment for a term which shall not",
+        "be less than seven years but may extend to a term of ten years or with fine or with both.",
+        "382C. Vehicle lifting: Whoever commits theft of a ‘vehicle’ either from open or close arena, is said"
+      ]
+    },
+    {
+      "line": 4256,
+      "page": 96,
+      "text": "382D. Whoever commits the offence of ‘vehicle lifting’ shall be punished with imprisonment for a",
+      "context": [
+        "Note:—The term ‘Vehicle’ shall have the same meaning as defined in sub-section 28 of section 2 of",
+        "Motor Vehicles Act 1988:,",
+        "382D. Whoever commits the offence of ‘vehicle lifting’ shall be punished with imprisonment for a",
+        "term which shall not be less than seven years but may extend to a term of ten years or with fine or ",
+        "both”."
+      ]
+    },
+    {
+      "line": 4259,
+      "page": 96,
+      "text": "382E. Cattle lifting: Whoever commits theft of a ‘Cattle’ either from open or close arena, is said to",
+      "context": [
+        "term which shall not be less than seven years but may extend to a term of ten years or with fine or ",
+        "both”.",
+        "382E. Cattle lifting: Whoever commits theft of a ‘Cattle’ either from open or close arena, is said t",
+        "commit the offence of ‘Cattle lifting’.",
+        "96"
+      ]
+    },
+    {
+      "line": 4265,
+      "page": 97,
+      "text": "382F. Whoever commits the offence of ‘Cattle lifting’ shall be punished with imprisonment for a",
+      "context": [
+        "female, bull, bullock, buffalo-male or female or calf of she-buffalo, whether male or female and an ",
+        "oxen.",
+        "382F. Whoever commits the offence of ‘Cattle lifting’ shall be punished with imprisonment for a",
+        "term which shall not be less than seven years but may extend to a term of tem years or with fine or ",
+        "both.”"
+      ]
+    },
+    {
+      "line": 4990,
+      "page": 110,
+      "text": "467.—Whoever makes or counterfeits any seal, plate or other instrument for making an impression, intending that",
+      "context": [
+        "record].",
+        "472. Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under sec",
+        "467.—Whoever makes or counterfeits any seal, plate or other instrument for making an impression, int",
+        "the same shall be used for the purpose of committing any forgery which would be punishable under sec",
+        "this Code, or, with such intent, has in his possession any such seal, plate or other instrument, kno"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 2683,
+      "page": 65,
+      "text": "2. Subs. by Act 42 of 1953, s. 4 and the Third Sch., for “may be seized and”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 47,
+      "page": 14,
+      "text": "5. The original words “the said territories” have successively been amended by the A.O. 1937, the A.O. 1948, the A.O. 1950 and",
+      "cls": "footnote"
+    },
+    {
+      "line": 160,
+      "page": 16,
+      "text": "6. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or Naval”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 26,
+      "page": 14,
+      "text": "1. The Indian Penal Code has been extended to Berar by the Berar Laws Act, 1941 (4 of 1941) and has been declared in force",
+      "cls": "footnote"
+    },
+    {
+      "line": 157,
+      "page": 16,
+      "text": "3. Subs. by s. 3 and the Sch., ibid., for s. 18 which was ins. by the A.O. 1950. The Original s. 18 was rep. by the A.O. 1937.",
+      "cls": "footnote"
+    },
+    {
+      "line": 4736,
+      "page": 105,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation forlife” (w.e.f. 1-1-1956).",
+      "cls": "footnote"
+    },
+    {
+      "line": 4154,
+      "page": 94,
+      "text": "1. Subs. by Act 22 of 2018, s. 7, for “section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote"
+    },
+    {
+      "line": 273,
+      "page": 18,
+      "text": "1. Subs. by Act 1 of 1889, s. 9, for the Explanation.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1299,
+      "page": 38,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the Indian Army Act, 1911”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2524,
+      "page": 62,
+      "text": "3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote"
+    },
+    {
+      "line": 1154,
+      "page": 35,
+      "text": "14. Ins. by Act 16 of 1921, s. 3.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1303,
+      "page": 38,
+      "text": "6. Subs. by Act 14 of 1932, s. 130 and the Sch., for “or the Air Force Act”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 4527,
+      "page": 101,
+      "text": "5. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote"
+    },
+    {
+      "line": 4735,
+      "page": 105,
+      "text": "1. Ins. by Act 8 of 1882, s. 10",
+      "cls": "footnote"
+    },
+    {
+      "line": 1305,
+      "page": 38,
+      "text": "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 371,
+      "page": 20,
+      "text": "1. Subs. by Act 27 of 1870, s. 2, for section 40.",
+      "cls": "footnote"
+    },
+    {
+      "line": 5134,
+      "page": 112,
+      "text": "1. Subs. by Act 43 of 1958, s. 135 and the Sch., for s. 485 (w.e.f. 25-11-1959).",
+      "cls": "footnote"
+    },
+    {
+      "line": 4473,
+      "page": 100,
+      "text": "4. Ins. by Act 38 of 1975, s. 9 (w.e.f. 1-9-1975).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2012,
+      "page": 52,
+      "text": "4. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2987,
+      "page": 71,
+      "text": "6. Subs. by Act 3 of 1951, s. 3 and the Sch., for “a lottery organized by the Central Government or the Government of a Part A",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 7,
+      "page": 14,
+      "text": "1. Title and extent of operation of the Code.—This Act shall be called the Indian Penal Code, and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 9,
+      "page": 14,
+      "text": "2. Punishment of offences committed within India.—Every person shall be liable to punishment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 12,
+      "page": 14,
+      "text": "3. Punishment of offences committed beyond, but which by law may be tried within, India.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 26,
+      "page": 14,
+      "text": "1. The Indian Penal Code has been extended to Berar by the Berar Laws Act, 1941 (4 of 1941) and has been declared in force",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 41,
+      "page": 14,
+      "text": "2. The words “British India” have successively been subs. by the A.O. 1948, the A.O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 43,
+      "page": 14,
+      "text": "3. The Original words have successively been amended by Act 12 of 1891, s. 2 and Sch. I, the A.O. 1937, the A.O. 1948 and the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 45,
+      "page": 14,
+      "text": "4. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 47,
+      "page": 14,
+      "text": "5. The original words “the said territories” have successively been amended by the A.O. 1937, the A.O. 1948, the A.O. 1950 and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 49,
+      "page": 14,
+      "text": "6. The words and figures “on or after the said first day of May, 1861” rep. by Act 12 of 1891, s. 2 and the First Sch. (w.e.f. 21-3-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 51,
+      "page": 14,
+      "text": "7. Subs. by the A.O. 1937 for “law passed by the Governor General of India in Council”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 52,
+      "page": 14,
+      "text": "8. The Original words “the limits of the said territories” have successively been amended by the A.O. 1937, the A.O.1948,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 54,
+      "page": 14,
+      "text": "9. Subs. by Act 4 of 1898, s. 2, for section 4 (w.e.f.18-2-1898).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 55,
+      "page": 14,
+      "text": "10. Subs. by the A.O. 1950, for cls. (1) to (4).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 56,
+      "page": 14,
+      "text": "11. Ins. by Act 10 of 2009, s. 51 (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 57,
+      "page": 14,
+      "text": "12. Subs. by s. 51, ibid., for the Explanation (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 74,
+      "page": 15,
+      "text": "6. Definitions in the Code to be understood subject to exceptions.—Throughout this Code every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 86,
+      "page": 15,
+      "text": "7. Sense of expression once explained.—Every expression which is explained in any part of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 88,
+      "page": 15,
+      "text": "8. Gender.—The pronoun “he” and its derivatives are used of any person, whether male or female.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 89,
+      "page": 15,
+      "text": "9. Number.—Unless the contrary appears from the context, words importing the singular number",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 91,
+      "page": 15,
+      "text": "10. “Man”.“Woman”.—The word “man” denotes a male human being of any age; the word",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 93,
+      "page": 15,
+      "text": "11. “Person”.—The word “person” includes any Company or Association or body of persons,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 95,
+      "page": 15,
+      "text": "12. “Public”.—The word “public” includes any class of the public or any community.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 96,
+      "page": 15,
+      "text": "13. [Definition of “Queen”.] Omitted by the A. O. 1950.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 99,
+      "page": 15,
+      "text": "15. [Definition of “British India”.] Rep. by the A. O. 1937.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 100,
+      "page": 15,
+      "text": "16. [Definition of “Government of India”.] Rep., ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 101,
+      "page": 15,
+      "text": "1. Subs. by Act 36 of 1957, s. 3 and Schedule II, for “lllustrations” (w.e.f. 17-9-1957).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 102,
+      "page": 15,
+      "text": "2. The brackets and letter “(a)” omitted by s. 3 and the Second Sch., ibid. (w.e.f. 17-9-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 103,
+      "page": 15,
+      "text": "3. Subs. by the A.O. 1948, for “a coolie, who is a Native Indian subject”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 104,
+      "page": 15,
+      "text": "4. Subs. by the A.O. 1950, for “a British subject of Indian domicile”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 105,
+      "page": 15,
+      "text": "5. The words “British India” have been successively amended by the A.O. 1948, the A.O. 1950 and Act 3 of 1951, s. 3 and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 107,
+      "page": 15,
+      "text": "6. Illustrations (b), (c) and (d) omitted by the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 108,
+      "page": 15,
+      "text": "7. Subs., ibid., for section 5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 109,
+      "page": 15,
+      "text": "8. Subs., ibid., for section 14.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 114,
+      "page": 16,
+      "text": "19. “Judge”.—The word “Judge” denotes not only every person who is officially designated as a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 130,
+      "page": 16,
+      "text": "20. “Court of Justice”.—The words “Court of Justice” denote a Judge who is empowered by law to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 136,
+      "page": 16,
+      "text": "21. “Public servant”.—The words “public servant” denote a person falling under any of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 155,
+      "page": 16,
+      "text": "1. Subs. by the A.O. 1950, for section 17.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 156,
+      "page": 16,
+      "text": "2. The word and letter “Part A” omitted by Act 3 of 1951, s. 3 and the Sch. (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 157,
+      "page": 16,
+      "text": "3. Subs. by s. 3 and the Sch., ibid., for s. 18 which was ins. by the A.O. 1950. The Original s. 18 was rep. by the A.O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 158,
+      "page": 16,
+      "text": "4. Rep. by the Madras Civil Courts Act, 1873 (3 of 1873).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 159,
+      "page": 16,
+      "text": "5. Cl. First omitted by the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 160,
+      "page": 16,
+      "text": "6. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or Naval”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 161,
+      "page": 16,
+      "text": "7. The original words “of the Queen while serving under the Government of India, or any Government” have successively been",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 163,
+      "page": 16,
+      "text": "8. The words “of the Dominion” omitted by the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 164,
+      "page": 16,
+      "text": "9. Subs. by Act 40 of 1964, s. 2, for cl. Third (w.e.f. 18-12-1964).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 165,
+      "page": 16,
+      "text": "10. Ins. by s. 2, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 214,
+      "page": 17,
+      "text": "1. Subs. by the A.O. 1950, for “the Crown” which had been subs. by the A.O. 1937, for “Government”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 215,
+      "page": 17,
+      "text": "2. Certain words omitted by Act 40 of 1964, s. 2 (w.e.f. 18-12-1964).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 216,
+      "page": 17,
+      "text": "3. Ins. by Act 39 of 1920, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 217,
+      "page": 17,
+      "text": "4. Subs. by Act 40 of 1964, s. 2, for Cl. Twelfth (w.e.f. 18-12-1964).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 218,
+      "page": 17,
+      "text": "5. Explanation 4 omitted by Act 39 of 1920, s. 2 Earlier Explanation Four was ins. By Act 2 of 1958, s. 2 (w.e.f. 12-2-1958).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 224,
+      "page": 18,
+      "text": "22. “Movable property”.—The words “movable property” are intended to include corporeal property of every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 227,
+      "page": 18,
+      "text": "23. “Wrongful gain”.—“Wrongful gain” is gain by unlawful means of property to which the person gaining is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 234,
+      "page": 18,
+      "text": "24. “Dishonestly”.—Whoever does anything with the intention of causing wrongful gain to one person or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 236,
+      "page": 18,
+      "text": "25. “Fraudulently”.—A person is said to do a thing fraudulently if he does that thing with intent to defraud but",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 238,
+      "page": 18,
+      "text": "26. “Reason to believe”.—A person is said to have “reason to believe” a thing if he has sufficient cause to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 241,
+      "page": 18,
+      "text": "27. “Property in possession of wife, clerk or servant”.—When property is in the possession of a person's",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 245,
+      "page": 18,
+      "text": "28. “Counterfeit”.—A person is said to “counterfeit” who causes one thing to resemble another thing,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 253,
+      "page": 18,
+      "text": "29. “Document”.—The word “document” denotes any matter expressed or described upon any substance by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 273,
+      "page": 18,
+      "text": "1. Subs. by Act 1 of 1889, s. 9, for the Explanation.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 274,
+      "page": 18,
+      "text": "2. Ins. by Act 21 of 2000, s. 91 and the First Sch. (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 276,
+      "page": 19,
+      "text": "30. “Valuable security”.—The words “valuable security” denote a document which is, or purports to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 283,
+      "page": 19,
+      "text": "31. “A will”.—The words “a will” denote any testamentary document.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 284,
+      "page": 19,
+      "text": "32. Words referring to acts include illegal omissions.—In every part of this Code, except where a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 287,
+      "page": 19,
+      "text": "33. “Act”. “Omission”.—The word “act” denotes as well as series of acts as a single act: the word",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 292,
+      "page": 19,
+      "text": "35. When such an act is criminal by reason of its being done with a criminal knowledge or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 298,
+      "page": 19,
+      "text": "36. Effect caused partly by act and partly by omission.—Wherever the causing of a certain effect,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 304,
+      "page": 19,
+      "text": "37. Co-operation by doing one of several acts constituting an offence.—When an offence is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 321,
+      "page": 19,
+      "text": "38. Persons concerned in criminal act may be guilty of different offences.—Where several",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 329,
+      "page": 19,
+      "text": "1. Subs. by Act 27 of 1870, s. 1, for section 34.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 331,
+      "page": 20,
+      "text": "39. “Voluntarily”.—A person is said to cause an effect “voluntarily” when he causes it by means",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 347,
+      "page": 20,
+      "text": "41. “Special law”.—A “special law” is a law applicable to a particular subject.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 349,
+      "page": 20,
+      "text": "42. “Local law”.—A “local law” is a law applicable only to a particular part of 7[8***9[India]].",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 350,
+      "page": 20,
+      "text": "43. “Illegal”. “Legally bound to do”.—The word “illegal” is applicable to everything which is an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 353,
+      "page": 20,
+      "text": "44. “Injury”.—The word “injury” denotes any harm whatever illegally caused to any person, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 355,
+      "page": 20,
+      "text": "45. “Life”.—The word “life” denotes the life of a human being, unless the contrary appears from the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 357,
+      "page": 20,
+      "text": "46. “Death”.—The word “death” denotes the death of a human being unless the contrary appears",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 359,
+      "page": 20,
+      "text": "47. “Animal”.—The word “animal” denotes any living creature, other than a human being.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 360,
+      "page": 20,
+      "text": "48. “Vessel”.—The word “vessel” denotes anything made for the conveyance by water of human",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 362,
+      "page": 20,
+      "text": "49. “Year”. “Month”.—Wherever the word “year” or the word “month” is used, it is to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 364,
+      "page": 20,
+      "text": "50. “Section”.—The word “section” denotes one of those portions of a Chapter of this Code which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 366,
+      "page": 20,
+      "text": "51. “Oath”.—The word “oath” includes a solemn affirmation substituted by law for an oath, and any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 369,
+      "page": 20,
+      "text": "52. “Good faith”.—Nothing is said to be done or believed in “good faith” which is done or believed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 371,
+      "page": 20,
+      "text": "1. Subs. by Act 27 of 1870, s. 2, for section 40.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 372,
+      "page": 20,
+      "text": "2. Subs. by Act 8 of 1930, s. 2 and the First Sch., for “Chapter”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 373,
+      "page": 20,
+      "text": "3. Ins. by Act 8 of 1913, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 374,
+      "page": 20,
+      "text": "4. Ins. by Act 8 of 1882, s. 1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 375,
+      "page": 20,
+      "text": "5. Ins. by Act 10 of 1886, s. 21 (1).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 376,
+      "page": 20,
+      "text": "6. Ins. by Act 10 of 2009, s. 51 (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 377,
+      "page": 20,
+      "text": "7. Subs. by the A.O. 1948, for “British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 378,
+      "page": 20,
+      "text": "8. The words “the territories comprised in” omitted by Act 48 of 1952, s. 3 and the Second Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 379,
+      "page": 20,
+      "text": "9. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the States” which had been subs. by the A.O. 1950, for “the Provinces”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 388,
+      "page": 21,
+      "text": "53. Punishments.—The punishments to which offenders are liable under the provisions of this Code",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 416,
+      "page": 21,
+      "text": "54. Commutation of sentence of death.—In every case in which sentence of death shall have been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 419,
+      "page": 21,
+      "text": "55. Commutation of sentence of imprisonment for life.—In every case in which sentence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 421,
+      "page": 21,
+      "text": "1. Ins. by Act 8 of 1942, s. 2 (w.e.f. 14-2-1942).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 422,
+      "page": 21,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “Secondly.—Transportation” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 423,
+      "page": 21,
+      "text": "3. The words “Thirdly,--Penal servitude;\" omitted by Act 17 of 1949, s. 2 (w.e.f. 6-4-1949).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 424,
+      "page": 21,
+      "text": "4. Ins. by Act 26 of 1955, s. 117 and the Sch. (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 425,
+      "page": 21,
+      "text": "5. Subs. by Act 36 of 1957, s. 3 and the Second Sch., for “1954” (w.e.f. 17-9-1957).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 426,
+      "page": 21,
+      "text": "6. Subs. by the A.O. 1950, for “the Central Government or the Provincial Government of the Province within which the offender",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 429,
+      "page": 21,
+      "text": "7. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 430,
+      "page": 21,
+      "text": "8. Subs. by the A.O. 1950, for “the Provincial Government of the Province within which the offender shall have been sentenced”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 442,
+      "page": 22,
+      "text": "56. [Sentence of Europeans and Americans to penal servitude. Proviso as to sentence for term",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 445,
+      "page": 22,
+      "text": "57. Fractions of terms of punishment.—In calculating fractions of terms of punishment,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 447,
+      "page": 22,
+      "text": "58. [Offenders sentenced to transportation how dealt with until transported.] Rep. by the Code of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 449,
+      "page": 22,
+      "text": "59. [Transportation instead of imprisonment.] Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956).",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 451,
+      "page": 22,
+      "text": "60. Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple.—In",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 456,
+      "page": 22,
+      "text": "61. [Sentence of forfeiture of property.] Rep. by the Indian Penal Code (Amendment) Act, 1921",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 458,
+      "page": 22,
+      "text": "62. [Forfeiture of property, in respect of offenders punishable with death, transportation or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 460,
+      "page": 22,
+      "text": "63. Amount of fine.—Where no sum is expressed to which a fine may extend, the amount of fine to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 462,
+      "page": 22,
+      "text": "64. Sentence of imprisonment for non-payment of fine.—3[In every case of an offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 471,
+      "page": 22,
+      "text": "65. Limit to imprisonment for non-payment of fine, when imprisonment and fine awardable.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 475,
+      "page": 22,
+      "text": "66. Description of imprisonment for non-payment of fine.—The imprisonment which the Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 478,
+      "page": 22,
+      "text": "1. Subs. by the A. O 1950. Earlier ins. by the A. O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 479,
+      "page": 22,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 480,
+      "page": 22,
+      "text": "3. Subs. by Act 8 of 1882, s. 2, for “in every case in which an offender is sentenced to a fine”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 481,
+      "page": 22,
+      "text": "4. Ins. by Act 10 of 1886, s. 21 (2).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 483,
+      "page": 23,
+      "text": "67. Imprisonment for non-payment of fine, when offence punishable with fine only.—If the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 490,
+      "page": 23,
+      "text": "68. Imprisonment to terminate on payment of fine.—The imprisonment which is imposed in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 492,
+      "page": 23,
+      "text": "69. Termination of imprisonment on payment of proportional part of fine.—If, before the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 505,
+      "page": 23,
+      "text": "70. Fine leviable within six years, or during imprisonment. Death not to discharge property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 511,
+      "page": 23,
+      "text": "71. Limit of punishment of offence made up of several offences.—Where anything which is an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 527,
+      "page": 23,
+      "text": "72. Punishment of person guilty of one of several offences, the judgment stating that it is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 532,
+      "page": 23,
+      "text": "1. Ins. by Act 8 of 1882, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 533,
+      "page": 23,
+      "text": "2. Added by s. 4, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 535,
+      "page": 24,
+      "text": "73. Solitary confinement.—Whenever any person is convicted of an offence for which under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 544,
+      "page": 24,
+      "text": "74. Limit of solitary confinement.—In executing a sentence of solitary confinement, such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 565,
+      "page": 24,
+      "text": "76. Act done by a person bound, or by mistake of fact believing himself bound, by law.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 573,
+      "page": 24,
+      "text": "77. Act of Judge when acting judicially.—Nothing is an offence which is done by a Judge when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 576,
+      "page": 24,
+      "text": "78. Act done pursuant to the judgment or order of Court.—Nothing which is done in pursuance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 581,
+      "page": 24,
+      "text": "79. Act done by a person justified, or by mistake of fact believing himself justified, by law.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 583,
+      "page": 24,
+      "text": "1. Subs. by Act 8 of 1862, s. 5, for “be less than a”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 584,
+      "page": 24,
+      "text": "2. Subs. by Act 3 of 1910, s. 2, for section 75.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 585,
+      "page": 24,
+      "text": "3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 587,
+      "page": 24,
+      "text": "4. The word “or” omitted by Act 3 of 1951, s. 3 and the Sch (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 588,
+      "page": 24,
+      "text": "5. Cl. (b) omitted by s. 3 and the Sch., ibid. (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 589,
+      "page": 24,
+      "text": "6. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 597,
+      "page": 25,
+      "text": "80. Accident in doing a lawful act.—Nothing is an offence which is done by accident or misfortune,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 603,
+      "page": 25,
+      "text": "81. Act likely to cause harm, but done without criminal intent, and to prevent other harm.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 622,
+      "page": 25,
+      "text": "82. Act of a child under seven years of age.—Nothing is an offence which is done by a child under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 624,
+      "page": 25,
+      "text": "83. Act of a child above seven and under twelve of immature understanding.—Nothing is an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 628,
+      "page": 25,
+      "text": "84. Act of a person of unsound mind.—Nothing is an offence which is done by a person who, at the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 631,
+      "page": 25,
+      "text": "85. Act of a person incapable of judgment by reason of intoxication caused against his will.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 636,
+      "page": 25,
+      "text": "86. Offence requiring a particular intent or knowledge committed by one who is intoxicated.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 641,
+      "page": 25,
+      "text": "87. Act not intended and not known to be likely to cause death or grievous hurt, done by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 651,
+      "page": 26,
+      "text": "88. Act not intended to cause death, done by consent in good faith for person's benefit.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 660,
+      "page": 26,
+      "text": "89. Act done in good faith for benefit of child or insane person, by or by consent of guardian.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 680,
+      "page": 26,
+      "text": "90. Consent known to be given under fear or misconception.—A consent is not such a consent as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 688,
+      "page": 26,
+      "text": "91. Exclusion of acts which are offences independently of harm cause.—The exceptions in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 697,
+      "page": 27,
+      "text": "92. Act done in good faith for benefit of a person without consent.—Nothing is an offence by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 725,
+      "page": 27,
+      "text": "93. Communication made in good faith.—No communication made in good faith is an offence by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 730,
+      "page": 27,
+      "text": "94. Act to which a person is compelled by threats.—Except murder, and offences against the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 742,
+      "page": 27,
+      "text": "95. Act causing slight harm.—Nothing is an offence by reason that it causes, or that it is intended to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 746,
+      "page": 27,
+      "text": "96. Things done in private defence.—Nothing is an offence which is done in the exercise of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 749,
+      "page": 28,
+      "text": "97. Right of private defence of the body and of property.—Every person has a right, subject to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 756,
+      "page": 28,
+      "text": "98. Right of private defence against the act of a person of unsound mind, etc.—When an act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 767,
+      "page": 28,
+      "text": "99. Acts against which there is no right of private defence.—There is no right of private defence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 786,
+      "page": 28,
+      "text": "100. When the right of private defence of the body extends to causing death.—The right of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 804,
+      "page": 29,
+      "text": "101. When such right extends to causing any harm other than death.—If the offence be not of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 808,
+      "page": 29,
+      "text": "102. Commencement and continuance of the right of private defence of the body.—The right of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 812,
+      "page": 29,
+      "text": "103. When the right of private defence of property extends to causing death.—The right of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 835,
+      "page": 29,
+      "text": "104. When such right extends to causing any harm other than death.—If the offence, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 841,
+      "page": 29,
+      "text": "105. Commencement and continuance of the right of private defence of property.—The right of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 850,
+      "page": 29,
+      "text": "1. Ins. by Act 13 of 2013, s. 2 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 856,
+      "page": 30,
+      "text": "106. Right of private defence against deadly assault when there is risk of harm to innocent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 866,
+      "page": 30,
+      "text": "107. Abetment of a thing.—A person abets the doing of a thing, who—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 883,
+      "page": 30,
+      "text": "108. Abettor.—A person abets an offence, who abets either the commission of an offence, or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 935,
+      "page": 31,
+      "text": "109. Punishment of abetment if the act abetted is committed in consequence and where no",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 945,
+      "page": 31,
+      "text": "1. Added by Act 4 of 1898, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 946,
+      "page": 31,
+      "text": "2. The words “British India” have successively been subs. by the A.O. 1948, the A.O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 954,
+      "page": 32,
+      "text": "110. Punishment of abetment if person abetted does act with different intention from that of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 959,
+      "page": 32,
+      "text": "111. Liability of abettor when one act abetted and different act done.—When an act is abetted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 977,
+      "page": 32,
+      "text": "112. Abettor when liable to cumulative punishment for act abetted and for act done.—If the act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 986,
+      "page": 32,
+      "text": "113. Liability of abettor for an effect caused by the act abetted different from that intended by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 996,
+      "page": 32,
+      "text": "114. Abettor present when offence is committed.—Whenever any person who is absent would be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1000,
+      "page": 33,
+      "text": "115. Abetment of offence punishable with death or imprisonment for life—if offence not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1014,
+      "page": 33,
+      "text": "116. Abetment of offence punishable with imprisonment—if offence be not committed.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1036,
+      "page": 33,
+      "text": "117. Abetting commission of offence by the public or by more than ten persons.—Whoever abets",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1044,
+      "page": 33,
+      "text": "118. Concealing design to commit offence punishable with death or imprisonment for life.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1047,
+      "page": 33,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1060,
+      "page": 34,
+      "text": "119. Public servant concealing design to commit offence which it is his duty to prevent.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1081,
+      "page": 34,
+      "text": "120. Concealing design to commit offence punishable with imprisonment.—Whoever, intending",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1092,
+      "page": 34,
+      "text": "120A. Definition of criminal conspiracy.—When two or more persons agree to do, or cause to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1097,
+      "page": 34,
+      "text": "1. Subs. by Act 10 of 2009, s. 51, for “voluntarily conceals, by any act or illegal omission, the existence of a design”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1099,
+      "page": 34,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1100,
+      "page": 34,
+      "text": "3. Ins. by Act 8 of 1913, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1107,
+      "page": 35,
+      "text": "120B. Punishment of criminal conspiracy.—(1) Whoever is a party to a criminal conspiracy to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1116,
+      "page": 35,
+      "text": "121. Waging or attempting to wage war or abetting waging of war against the Government of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1135,
+      "page": 35,
+      "text": "122. Collecting arms, etc., with intention of waging war against the Government of India.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1140,
+      "page": 35,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1141,
+      "page": 35,
+      "text": "2. Subs. by the A. O. 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1142,
+      "page": 35,
+      "text": "3. Subs. by Act 16 of 1921, s. 2, for “and shall forfeit all his property”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1143,
+      "page": 35,
+      "text": "4. Subs. by Act 36 of 1957, s. 3 and the Second Sch., for “Illustrations”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1144,
+      "page": 35,
+      "text": "5. The brackets and letter “(a)” omitted by s. 3 and the Second Sch., ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1145,
+      "page": 35,
+      "text": "6. Illustration (b) omitted, by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1146,
+      "page": 35,
+      "text": "7. Ins. by Act 27 of 1870, s. 4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1147,
+      "page": 35,
+      "text": "8. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1149,
+      "page": 35,
+      "text": "9. The words “or to deprive the Queen of the sovereignty of the Provinces or of any part thereof” omitted by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1150,
+      "page": 35,
+      "text": "10. Subs. by the A. O. 1937, for “the G. of I, or any L. G”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1151,
+      "page": 35,
+      "text": "11. Subs. by the A. O. 1950, for “Provincial”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1152,
+      "page": 35,
+      "text": "12. The words “or the Government of Burma” omitted by the A. O. 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1153,
+      "page": 35,
+      "text": "13. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life or any shorter term” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1154,
+      "page": 35,
+      "text": "14. Ins. by Act 16 of 1921, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1155,
+      "page": 35,
+      "text": "15. Subs. by Act 16 of 1921, s. 2, for “and shall forfeit all his property”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1157,
+      "page": 36,
+      "text": "123. Concealing with intent to facilitate design to wage war.—Whoever, by any act, or by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1162,
+      "page": 36,
+      "text": "124. Assaulting President, Governor, etc., with intent to compel or restrain the exercise of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1183,
+      "page": 36,
+      "text": "125. Waging war against any Asiatic Power in alliance with the Government of India.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1188,
+      "page": 36,
+      "text": "1. Subs. by the A. O 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1189,
+      "page": 36,
+      "text": "2. Subs. by the ibid., for “Governor General”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1190,
+      "page": 36,
+      "text": "3. Subs. by Act 3 of 1951, s. 3 and the Sch., for “Governor”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1191,
+      "page": 36,
+      "text": "4. The words “or Rajpramukh” omitted by the A. O. 1956.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1192,
+      "page": 36,
+      "text": "5. Subs. by the A. O. 1950, for “Province” which had been subs. by the A. O. 1937, for “Presidency”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1193,
+      "page": 36,
+      "text": "6. The words “or a Lieutenant-Governor” omitted by the A. O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1194,
+      "page": 36,
+      "text": "7. The words “or a Member of the Council of the Governor General of India” omitted by the A.O. 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1195,
+      "page": 36,
+      "text": "8. The words “or of the Council of any Presidency” omitted by the A. O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1196,
+      "page": 36,
+      "text": "9. The words “Governor General, Governor, Lieutenant-Governor or Member of Council” have successively been amended by",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1198,
+      "page": 36,
+      "text": "10. Ins. by Act 27 of 1870, s. 5 and subs. by Act 4 of 1898, s. 4, for s. 124A.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1199,
+      "page": 36,
+      "text": "11. The words “Her Majesty or” omitted by the A.O. 1950. The words “or the Crown Representative” ins. after the word",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1201,
+      "page": 36,
+      "text": "12. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1203,
+      "page": 36,
+      "text": "13. The words “or British Burma” ins. by the A. O. 1937 and omitted by the A. O 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1204,
+      "page": 36,
+      "text": "14. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life or any shorter term” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1206,
+      "page": 37,
+      "text": "126. Committing depredation on territories of Power at peace with the Government of India.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1212,
+      "page": 37,
+      "text": "127. Receiving property taken by war or depredation mentioned in sections 125 and 126.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1217,
+      "page": 37,
+      "text": "128. Public servant voluntarily allowing prisoner of State or war to escape.—Whoever, being a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1223,
+      "page": 37,
+      "text": "129. Public servant negligently suffering such prisoner to escape.—Whoever, being a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1227,
+      "page": 37,
+      "text": "130. Aiding escape of, rescuing or harbouring such prisoner.—Whoever knowingly aids or assists",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1238,
+      "page": 37,
+      "text": "131. Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1245,
+      "page": 37,
+      "text": "1. Subs. by the A. O. 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1246,
+      "page": 37,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1247,
+      "page": 37,
+      "text": "3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1249,
+      "page": 37,
+      "text": "4. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “and Navy”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1250,
+      "page": 37,
+      "text": "5. Subs. by s. 2 and the First Sch., ibid., for “or sailor”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1251,
+      "page": 37,
+      "text": "6. Subs. by s. 2 and the First Sch., ibid., for “or Navy”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1252,
+      "page": 37,
+      "text": "7. Ins. by Act 27 of 1870, s. 6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1253,
+      "page": 37,
+      "text": "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “and soldier”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1254,
+      "page": 37,
+      "text": "9. Ins. by Act 35 of 1934, s. 2 and Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1259,
+      "page": 38,
+      "text": "132. Abetment of mutiny, if mutiny is committed in consequence thereof.—Whoever abets the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1264,
+      "page": 38,
+      "text": "133. Abetment of assault by soldier, sailor or airman on his superior officer, when in execution",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1269,
+      "page": 38,
+      "text": "134. Abetment of such assault, if the assault is committed.—Whoever abets an assault by an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1275,
+      "page": 38,
+      "text": "135. Abetment of desertion of soldier, sailor or airman.—Whoever abets the desertion of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1279,
+      "page": 38,
+      "text": "136. Harbouring deserter.—Whoever, except as hereinafter excepted, knowing or having reason to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1286,
+      "page": 38,
+      "text": "137. Deserter concealed on board merchant vessel through negligence of master.—The master or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1292,
+      "page": 38,
+      "text": "138. Abetment of act of insubordination by soldier, sailor or airman.—Whoever abets what he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1297,
+      "page": 38,
+      "text": "1. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “Articles of War for the better government of Her Majesty’s Army, or to",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1299,
+      "page": 38,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the Indian Army Act, 1911”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1300,
+      "page": 38,
+      "text": "3. Ins. by Act 35 of 1934, s. 2 and the Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1301,
+      "page": 38,
+      "text": "4. The words “or that Act as modified by” omitted by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1302,
+      "page": 38,
+      "text": "5. Now see the Navy Act, 1957 (62 of 1957).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1303,
+      "page": 38,
+      "text": "6. Subs. by Act 14 of 1932, s. 130 and the Sch., for “or the Air Force Act”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1304,
+      "page": 38,
+      "text": "7. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the Indian Air Force Act, 1932”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1305,
+      "page": 38,
+      "text": "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1306,
+      "page": 38,
+      "text": "9. Subs. by s. 2 and the First Sch., ibid., for “or Navy”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1307,
+      "page": 38,
+      "text": "10. Subs. by the A. O. 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1308,
+      "page": 38,
+      "text": "11. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1310,
+      "page": 39,
+      "text": "138A. [Application of foregoing sections to the Indian Marine Service.] Rep. by the Amending Act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1312,
+      "page": 39,
+      "text": "139. Persons subject to certain Acts.—No person subject to 1[the Army Act, 2[the Army Act, 1950",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1316,
+      "page": 39,
+      "text": "140. Wearing garb or carrying token used by soldier, sailor or airman.—Whoever, not being a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1324,
+      "page": 39,
+      "text": "141. Unlawful assembly.—An assembly of five or more persons is designated an “unlawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1340,
+      "page": 39,
+      "text": "142. Being member of unlawful assembly.—Whoever, being aware of facts which render any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1343,
+      "page": 39,
+      "text": "143. Punishment.—Whoever is a member of an unlawful assembly, shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1345,
+      "page": 39,
+      "text": "144. Joining unlawful assembly armed with deadly weapon.—Whoever, being armed with any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1349,
+      "page": 39,
+      "text": "1. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “any Articles of War for the Army of Navy of the Queen, or for any part of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1351,
+      "page": 39,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the Indian Army Act, 1911”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1352,
+      "page": 39,
+      "text": "3. Ins. by Act 35 of 1934, s. 2 and the Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1353,
+      "page": 39,
+      "text": "4. The words “or that Act as modified by” omitted by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1354,
+      "page": 39,
+      "text": "5. Now see the Navy Act, 1957 (62 of 1957).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1355,
+      "page": 39,
+      "text": "6. Subs. by Act 14 of 1932, s. 130 and Sch., for “or the Air Force Act”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1356,
+      "page": 39,
+      "text": "7. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the Indian Air Force Act, 1932”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1357,
+      "page": 39,
+      "text": "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1358,
+      "page": 39,
+      "text": "9. Subs. by s. 2 and the First Sch., ibid., for “or Naval”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1359,
+      "page": 39,
+      "text": "10. Subs. by the A. O. 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1360,
+      "page": 39,
+      "text": "11. Subs., ibid., for “the Central or any Provincial Government or Legislature”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1362,
+      "page": 40,
+      "text": "145. Joining or continuing in unlawful assembly, knowing it has been commanded to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1366,
+      "page": 40,
+      "text": "146. Rioting.—Whenever force or violence is used by an unlawful assembly, or by any member",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1369,
+      "page": 40,
+      "text": "147. Punishment for rioting.—Whoever is guilty of rioting, shall be punished with imprisonment of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1371,
+      "page": 40,
+      "text": "148. Rioting, armed with deadly weapon.—Whoever is guilty of rioting, being armed with a deadly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1375,
+      "page": 40,
+      "text": "149. Every member of unlawful assembly guilty of offence committed in prosecution of common",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1381,
+      "page": 40,
+      "text": "150. Hiring, or conniving at hiring, of persons to join unlawful assembly.—Whoever hires or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1387,
+      "page": 40,
+      "text": "151. Knowingly joining or continuing in assembly of five or more persons after it has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1394,
+      "page": 40,
+      "text": "152. Assaulting or obstructing public servant when suppressing riot, etc.—Whoever assaults or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1399,
+      "page": 40,
+      "text": "153. Wantonly giving provocation with intent to cause riot—if rioting be committed—if not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1412,
+      "page": 40,
+      "text": "1. Subs. by Act 35 of 1969, s. 2, for section 153A (w.e.f. 4-9-1969).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1456,
+      "page": 41,
+      "text": "154. Owner or occupier of land on which an unlawful assembly is held.—Whenever any unlawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1462,
+      "page": 41,
+      "text": "1. Ins. by Act 31 of 1972, s. 2 (w.e.f. 14-6-1972).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1463,
+      "page": 41,
+      "text": "2. Ins. by Act 25 of 2005, s. 44 (w.e.f. 23-6-2005).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1468,
+      "page": 42,
+      "text": "155. Liability of person for whose benefit riot is committed.—Whenever a riot is committed for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1476,
+      "page": 42,
+      "text": "156. Liability of agent of owner or occupier for whose benefit riot is committed.—Whenever a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1485,
+      "page": 42,
+      "text": "157. Harbouring persons hired for an unlawful assembly.—Whoever harbours, receives or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1490,
+      "page": 42,
+      "text": "158. Being hired to take part in an unlawful assembly or riot.—Whoever is engaged, or hired, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1498,
+      "page": 42,
+      "text": "159. Affray.—When two or more persons, by fighting in a public place, disturb the public peace, they",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1500,
+      "page": 42,
+      "text": "160. Punishment for committing affray.—Whoever commits an affray, shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1523,
+      "page": 43,
+      "text": "161. [Public servant taking gratification other than legal remuneration in respect of an official act.]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1553,
+      "page": 44,
+      "text": "162. [Taking  gratification, in order, by corrupt or illegal means, to influence public servant.] Rep. by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1555,
+      "page": 44,
+      "text": "163. [Taking gratification, for the exercise personal influence with public servant.] Rep. by s. 31, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1556,
+      "page": 44,
+      "text": "164. [Punishment for abetment by public servant of offences defined in sections 162 or 163.] Rep. by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1558,
+      "page": 44,
+      "text": "165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1560,
+      "page": 44,
+      "text": "165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1561,
+      "page": 44,
+      "text": "166. Public servant disobeying law, with intent to cause injury to any person.—Whoever, being a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1595,
+      "page": 44,
+      "text": "166B. Punishment for non-treatment of victim.—Whoever, being in charge of a hospital, public or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1599,
+      "page": 44,
+      "text": "167. Public servant framing an incorrect document with intent to cause injury.—Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1603,
+      "page": 44,
+      "text": "1. Ins. by Act 13 of 2013, s. 3 (w.e.f. 03-02-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1604,
+      "page": 44,
+      "text": "2. Subs. by Act 22 of 2018, s. 2, for “section 376B, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1605,
+      "page": 44,
+      "text": "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for certain words (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1609,
+      "page": 45,
+      "text": "168. Public servant unlawfully engaging in trade.—Whoever, being a public servant, and being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1612,
+      "page": 45,
+      "text": "169. Public servant unlawfully buying or bidding for property.—Whoever, being a public servant,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1617,
+      "page": 45,
+      "text": "170. Personating a public servant.—Whoever pretends to hold any particular office as a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1622,
+      "page": 45,
+      "text": "171. Wearing garb or carrying token used by public servant with fraudulent intent.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1631,
+      "page": 45,
+      "text": "171A. “Candidate”, “Electoral right” defined.—For the purposes of this Chapter—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1635,
+      "page": 45,
+      "text": "171B. Bribery.—(1) Whoever—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1649,
+      "page": 45,
+      "text": "171C. Undue influence at elections.—(1) Whoever voluntarily interferes or attempts to interfere",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1652,
+      "page": 45,
+      "text": "1. Ins. by Act 39 of 1920, s. 2 (w.e.f. 14-9-1920).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1653,
+      "page": 45,
+      "text": "2. Subs. by Act 40 of 1975, s. 9, for cl. (a) (w.e.f. 6-8-1975).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1664,
+      "page": 46,
+      "text": "171D. Personation at elections.—Whoever at an election applies for a voting paper on votes in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1672,
+      "page": 46,
+      "text": "171E. Punishment for bribery.—Whoever commits the offence of bribery shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1678,
+      "page": 46,
+      "text": "171F. Punishment for undue influence or personation at an election.—Whoever commits the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1681,
+      "page": 46,
+      "text": "171G. False statement in connection with an election.—Whoever with intent to affect the result of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1685,
+      "page": 46,
+      "text": "171H. Illegal payments in connection with an election.—Whoever without the general or special",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1699,
+      "page": 46,
+      "text": "172. Absconding to avoid service of summons or other proceeding.—Whoever absconds in order",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1707,
+      "page": 46,
+      "text": "1. The proviso ins. by Act 24 of 2003, s. 5 (w.e.f. 22-9-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1708,
+      "page": 46,
+      "text": "2. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “produce a document in a Court of Justice” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1710,
+      "page": 47,
+      "text": "173. Preventing service of summons or other proceeding, or preventing publication thereof.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1724,
+      "page": 47,
+      "text": "174. Non-attendance in obedience to an order from public servant.—Whoever, being legally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1748,
+      "page": 47,
+      "text": "175. Omission to produce document to public servant by person legally bound to produce it.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1759,
+      "page": 47,
+      "text": "1. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “to produce a document in a Court of Justice” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1760,
+      "page": 47,
+      "text": "2. Subs. by the A. O. 1950, for “Supreme Court”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1761,
+      "page": 47,
+      "text": "3. Subs. ibid., for “Zila Judge”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1762,
+      "page": 47,
+      "text": "4. Ins. by Act 25 of 2005, s. 44 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1763,
+      "page": 47,
+      "text": "5. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “document” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1764,
+      "page": 47,
+      "text": "6. Subs. by the A.O. 1950, for “Zila Court”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1766,
+      "page": 48,
+      "text": "176. Omission to give notice or information to public servant by person legally bound to give",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1779,
+      "page": 48,
+      "text": "177. Furnishing false information.—Whoever, being legally bound to furnish information on any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1803,
+      "page": 48,
+      "text": "178. Refusing oath or affirmation when duly required by public servant to make it.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1808,
+      "page": 48,
+      "text": "179. Refusing to answer public servant authorised to question.—Whoever, being legally bound to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1811,
+      "page": 48,
+      "text": "1. Added by Act 22 of 1939, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1812,
+      "page": 48,
+      "text": "2. Rep. by Act 17 of 1862, s. VII and Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1813,
+      "page": 48,
+      "text": "3. Added by Act 3 of 1894, s. 5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1814,
+      "page": 48,
+      "text": "4. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1816,
+      "page": 48,
+      "text": "5. Ins. by Act 10 of 1873, s. 15.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1820,
+      "page": 49,
+      "text": "180. Refusing to sign statement.—Whoever refuses to sign any statement made by him, when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1824,
+      "page": 49,
+      "text": "181. False statement on oath or affirmation to public servant or person authorised to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1852,
+      "page": 49,
+      "text": "183. Resistance to the taking of property by the lawful authority of a public servant.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1857,
+      "page": 49,
+      "text": "184. Obstructing sale of property offered for sale by authority of public servant.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1861,
+      "page": 49,
+      "text": "185. Illegal purchase or bid for property offered for sale by authority of public servant.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1866,
+      "page": 49,
+      "text": "1. Ins. by Act 10 of 1873, s. 15.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1867,
+      "page": 49,
+      "text": "2. Subs. by Act 3 of 1895, s. 1, for section 182.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1871,
+      "page": 50,
+      "text": "186. Obstructing public servant in discharge of public functions.—Whoever voluntarily obstructs",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1875,
+      "page": 50,
+      "text": "187. Omission to assist public servant when bound by law to give assistance.—Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1885,
+      "page": 50,
+      "text": "188. Disobedience to order duly promulgated by public servant.—Whoever, knowing that, by an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1904,
+      "page": 50,
+      "text": "189. Threat of injury to public servant.—Whoever holds out any threat of injury to any public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1909,
+      "page": 50,
+      "text": "190. Threat of injury to induce person to refrain from applying for protection to public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1918,
+      "page": 51,
+      "text": "191. Giving false evidence.—Whoever, being legally bound by an oath or by an express provision of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1942,
+      "page": 51,
+      "text": "192. Fabricating false evidence.—Whoever causes any circumstance to exist or 1[makes any false",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1957,
+      "page": 51,
+      "text": "193. Punishment for false evidence.—Whoever intentionally gives false evidence in any stage of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1964,
+      "page": 51,
+      "text": "1. Subs. by Act 21 of 2000, s. 91 and the First Sch., for certain words (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1979,
+      "page": 52,
+      "text": "194. Giving or fabricating false evidence with intent to procure conviction of capital offence.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1988,
+      "page": 52,
+      "text": "195. Giving or fabricating false evidence with intent to procure conviction of offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2006,
+      "page": 52,
+      "text": "196. Using evidence known to be false.—Whoever corruptly uses or attempts to use as true or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2009,
+      "page": 52,
+      "text": "1. The words “or before a Military Court of Request” omitted by Act 13 of 1889, s. 2 and Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2010,
+      "page": 52,
+      "text": "2. Subs. by the A.O. 1948, for “by the law of British India or England”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2011,
+      "page": 52,
+      "text": "3. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the States”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2012,
+      "page": 52,
+      "text": "4. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2013,
+      "page": 52,
+      "text": "5. Subs. by s. 117 and the Schedule, ibid., for “such transportation” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2014,
+      "page": 52,
+      "text": "6. Ins. by Act 2 of 2006, s. 2 (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2016,
+      "page": 53,
+      "text": "197. Issuing or signing false certificate.—Whoever issues or signs any certificate required by law to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2020,
+      "page": 53,
+      "text": "198. Using as true a certificate known to be false.—Whoever corruptly uses or attempts to use any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2023,
+      "page": 53,
+      "text": "199. False statement made in declaration which is by law receivable as evidence.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2029,
+      "page": 53,
+      "text": "200. Using as true such declaration knowing it to be false.—Whoever corruptly uses or attempts to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2035,
+      "page": 53,
+      "text": "201. Causing disappearance of evidence of offence, or giving false information to screen",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2053,
+      "page": 53,
+      "text": "202. Intentional omission to give information of offence by person bound to inform.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2057,
+      "page": 53,
+      "text": "203. Giving false information respecting an offence committed.—Whoever, knowing or having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2061,
+      "page": 53,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and Schedule, for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2067,
+      "page": 54,
+      "text": "204. Destruction of document to prevent its production as evidence.—Whoever secretes or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2075,
+      "page": 54,
+      "text": "205. False personation for purpose of act or proceeding in suit or prosecution.—Whoever falsely",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2081,
+      "page": 54,
+      "text": "206. Fraudulent removal or concealment of property to prevent its seizure as forfeited or in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2089,
+      "page": 54,
+      "text": "207. Fraudulent claim to property to prevent its seizure as forfeited or in execution.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2098,
+      "page": 54,
+      "text": "208. Fraudulently suffering decree for sum not due.—Whoever fraudulently causes or suffers a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2109,
+      "page": 54,
+      "text": "1. Added by Act 3 of 1894, s. 6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2110,
+      "page": 54,
+      "text": "2. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2112,
+      "page": 54,
+      "text": "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “document” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2114,
+      "page": 55,
+      "text": "209. Dishonesty making false claim in Court.—Whoever fraudulently or dishonestly, or with intent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2118,
+      "page": 55,
+      "text": "210. Fraudulently obtaining decree for sum not due.—Whoever fraudulently obtains a decree or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2124,
+      "page": 55,
+      "text": "211. False charge of offence made with intent to injure.—Whoever, with intent to cause injury to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2144,
+      "page": 55,
+      "text": "212. Harbouring offender.—Whenever an offence has been committed, whoever harbours or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2153,
+      "page": 55,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2170,
+      "page": 56,
+      "text": "213. Taking gift, etc., to screen an offender from punishment.—Whoever accepts or attempts to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2185,
+      "page": 56,
+      "text": "214. Offering gift or restoration of property in consideration of screening offender.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2199,
+      "page": 56,
+      "text": "1. Ins. by Act 3 of 1894, s. 7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2200,
+      "page": 56,
+      "text": "2. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951 s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2202,
+      "page": 56,
+      "text": "3. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2203,
+      "page": 56,
+      "text": "4. Subs. by Act 42 of 1953, s. 4 and the Third Sch., for “to restore or cause the restoration of”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2212,
+      "page": 57,
+      "text": "215. Taking gift to help to recover stolen property, etc.—Whoever takes or agrees or consents to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2218,
+      "page": 57,
+      "text": "216. Harbouring offender who has escaped from custody or whose apprehension has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2254,
+      "page": 57,
+      "text": "1. Subs. by Act 8 of 1882, s. 6, for the original Exception.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2255,
+      "page": 57,
+      "text": "2.  Illustrations rep. by Act 10 of 1882, s. 2 and the First Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2256,
+      "page": 57,
+      "text": "3. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2257,
+      "page": 57,
+      "text": "4. Ins. by Act 10 of 1886, s. 23.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2258,
+      "page": 57,
+      "text": "5. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2260,
+      "page": 57,
+      "text": "6. The words “or under the Fugitive Offenders Act, 1881,” omitted by Act 3 of 1951, s. 3 and the Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2261,
+      "page": 57,
+      "text": "7. Ins. by Act 3 of 1894, s. 8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2263,
+      "page": 58,
+      "text": "217. Public servant disobeying direction of law with intent to save person from punishment or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2270,
+      "page": 58,
+      "text": "218. Public servant framing incorrect record or writing with intent to save person from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2279,
+      "page": 58,
+      "text": "219. Public servant in judicial proceeding corruptly making report, etc., contrary to law.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2285,
+      "page": 58,
+      "text": "220. Commitment for trial or confinement by person having authority who knows that he is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2291,
+      "page": 58,
+      "text": "221. Intentional omission to apprehend on the part of public servant bound to apprehend.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2306,
+      "page": 58,
+      "text": "222. Intentional omission to apprehend on the part of public servant bound to apprehend",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2312,
+      "page": 58,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2313,
+      "page": 58,
+      "text": "2. Ins. by Act 27 of 1870, s. 8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2326,
+      "page": 59,
+      "text": "223. Escape from confinement or custody negligently suffered by public servant.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2331,
+      "page": 59,
+      "text": "224. Resistance or obstruction by a person to his lawful apprehension.—Whoever intentionally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2340,
+      "page": 59,
+      "text": "225. Resistance or obstruction to lawful apprehension of another person.—Whoever intentionally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2359,
+      "page": 59,
+      "text": "1. Subs. by Act 26 of 1955, s. 117, and Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2360,
+      "page": 59,
+      "text": "2. The words “or penal servitude for life,” omitted by Act 17 of 1949, s. 2 (w.e.f. 6-4-1949).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2361,
+      "page": 59,
+      "text": "3. The words “or to” omitted by Act 36 of 1957, s. 3 and the Second Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2362,
+      "page": 59,
+      "text": "4. The word “transportation” omitted by Act 26 of 1955, s. 117 and the Sch. (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2363,
+      "page": 59,
+      "text": "5. The words “or penal servitude” omitted by Act 17 of 1949, s. 2 (w.e.f. 6-4-1949).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2364,
+      "page": 59,
+      "text": "6. Ins. by Act 27 of 1870, s. 8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2365,
+      "page": 59,
+      "text": "7. The words “penal servitude,” omitted by Act 17 of 1949, s. 2 (w.e.f. 6-4-1949).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2376,
+      "page": 60,
+      "text": "225B. Resistance or obstruction to lawful apprehension, or escape or rescue in cases not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2383,
+      "page": 60,
+      "text": "226. [Unlawful return from transportation.] Rep. by the Code of Criminal Procedure (Amendment)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2386,
+      "page": 60,
+      "text": "227. Violation of condition of remission of punishment.—Whoever, having accepted any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2391,
+      "page": 60,
+      "text": "228. Intentional insult or interruption to public servant sitting in judicial proceeding.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2411,
+      "page": 60,
+      "text": "1. Subs. by Act 10 of 1886, s. 24(1), for section 225A which had been ins. by Act 27 of 1870, s. 9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2412,
+      "page": 60,
+      "text": "2. Ins. by Act 43 of 1983, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2413,
+      "page": 60,
+      "text": "3. Subs. by Act 13 of 2013, s. 4, for “offence under section 376, section 376A, section 376B, section 376C or section 376D”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2415,
+      "page": 60,
+      "text": "4. Subs. by Act 22 of 2018, s. 3, for “section 376A, section 376B, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2433,
+      "page": 61,
+      "text": "229. Personation of a juror or assessor.—Whoever, by personation or otherwise, shall intentionally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2451,
+      "page": 61,
+      "text": "230. “Coin” defined.—2[Coin is metal used for the time being as money, and stamped and issued by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2463,
+      "page": 61,
+      "text": "1. Ins. by Act 25 of 2005, s. 44 (w.e.f. 23-6-2005).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2464,
+      "page": 61,
+      "text": "2. Subs. by Act 19 of 1872, s. 1, for the first paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2465,
+      "page": 61,
+      "text": "3. Subs. by the A. O. 1950, for the second paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2466,
+      "page": 61,
+      "text": "4. Subs. ibid., for “the Queen’s coin”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2467,
+      "page": 61,
+      "text": "5. Added by Act 6 of 1896, s. 1(2).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2468,
+      "page": 61,
+      "text": "6. Subs. by the A. O. 1950, for “Queen’s coin”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2470,
+      "page": 62,
+      "text": "231. Counterfeiting coin.—Whoever counterfeits or knowingly performs any part of the process of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2475,
+      "page": 62,
+      "text": "232. Counterfeiting Indian coin.—Whoever counterfeits, or knowingly performs any part of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2479,
+      "page": 62,
+      "text": "233. Making or selling instrument for counterfeiting coin.—Whoever makes or mends, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2484,
+      "page": 62,
+      "text": "234. Making or selling instrument for counterfeiting Indian coin.—Whoever makes or mends, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2489,
+      "page": 62,
+      "text": "235. Possession of instrument or material for the purpose of using the same for counterfeiting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2498,
+      "page": 62,
+      "text": "236. Abetting in India the counterfeiting out of India of coin.—Whoever, being within 3[India],",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2501,
+      "page": 62,
+      "text": "237. Import or export of counterfeit coin.—Whoever imports into 3[India], or exports therefrom,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2505,
+      "page": 62,
+      "text": "238. Import or export of counterfeits of the Indian coin.—Whoever imports into 3[India], or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2509,
+      "page": 62,
+      "text": "239. Delivery of coin, possessed with knowledge that it is counterfeit.—Whoever, having any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2514,
+      "page": 62,
+      "text": "240. Delivery of Indian coin, possessed with knowledge that it is counterfeit.—Whoever, having",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2520,
+      "page": 62,
+      "text": "241. Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2522,
+      "page": 62,
+      "text": "1. Subs. by the A. O. 1950, for “the Queen’s coin”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2523,
+      "page": 62,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2524,
+      "page": 62,
+      "text": "3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2526,
+      "page": 62,
+      "text": "4. Subs. by the A.O. 1950, for “Queen’s coin”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2539,
+      "page": 63,
+      "text": "242. Possession of counterfeit coin by person who knew it to be counterfeit when he became",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2544,
+      "page": 63,
+      "text": "243. Possession of Indian coin by person who knew it to be counterfeit when he became",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2550,
+      "page": 63,
+      "text": "244. Person employed in mint causing coin to be of different weight or composition from that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2556,
+      "page": 63,
+      "text": "245. Unlawfully taking coining instrument from mint.—Whoever, without lawful authority, takes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2560,
+      "page": 63,
+      "text": "246. Fraudulently or dishonestly diminishing weight or altering composition of coin.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2566,
+      "page": 63,
+      "text": "247. Fraudulently or dishonestly diminishing weight or altering composition of Indian coin.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2570,
+      "page": 63,
+      "text": "248. Altering appearance of coin with intent that it shall pass as coin of different description.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2574,
+      "page": 63,
+      "text": "249. Altering appearance of Indian coin with intent that it shall pass as coin of different",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2577,
+      "page": 63,
+      "text": "1. Subs. by the A. O. 1950, for “the Queen’s coin”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2578,
+      "page": 63,
+      "text": "2. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2580,
+      "page": 63,
+      "text": "3. Subs. by the A. O. 1950, for “any of the Queen’s coin”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2584,
+      "page": 64,
+      "text": "250. Delivery of coin, possessed with knowledge that it is altered.—Whoever, having coin in his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2590,
+      "page": 64,
+      "text": "251. Delivery of Indian coin, possessed with knowledge that it is altered.—Whoever, having coin",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2596,
+      "page": 64,
+      "text": "252. Possession of coin by person who knew it to be altered when he became possessed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2603,
+      "page": 64,
+      "text": "253. Possession of Indian coin by person who knew it to be altered when he became possessed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2609,
+      "page": 64,
+      "text": "254. Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2617,
+      "page": 64,
+      "text": "255. Counterfeiting Government stamp.—Whoever counterfeits, or knowingly performs any part",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2623,
+      "page": 64,
+      "text": "256. Having possession of instrument or material for counterfeiting Government stamp.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2628,
+      "page": 64,
+      "text": "257. Making or selling instrument for counterfeiting Government stamp.—Whoever makes or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2632,
+      "page": 64,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2636,
+      "page": 65,
+      "text": "258. Sale of counterfeit Government stamp.—Whoever sells, or offers for sale, any stamp which he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2640,
+      "page": 65,
+      "text": "259. Having possession of counterfeit Government stamp.—Whoever has in his possession any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2645,
+      "page": 65,
+      "text": "260. Using as genuine a Government stamp known to be counterfeit.—Whoever uses as genuine",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2649,
+      "page": 65,
+      "text": "261. Effacing writing from substance bearing Government stamp, or removing from document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2657,
+      "page": 65,
+      "text": "262. Using Government stamp known to have been before used.—Whoever, fraudulently or with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2661,
+      "page": 65,
+      "text": "263. Erasure of mark denoting that stamp has been used.—Whoever, fraudulently or with intent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2682,
+      "page": 65,
+      "text": "1. Added by Act 3 of 1895, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2683,
+      "page": 65,
+      "text": "2. Subs. by Act 42 of 1953, s. 4 and the Third Sch., for “may be seized and”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2690,
+      "page": 66,
+      "text": "264. Fraudulent use of false instrument for weighing.—Whoever fraudulently uses any instrument",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2693,
+      "page": 66,
+      "text": "265. Fraudulent use of false weight or measure.—Whoever fraudulently uses any false weight or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2697,
+      "page": 66,
+      "text": "266. Being in possession of false weight or measure.—Whoever is in possession of any instrument",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2702,
+      "page": 66,
+      "text": "267. Making or selling false weight or measure.—Whoever makes, sells or disposes of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2709,
+      "page": 66,
+      "text": "268. Public nuisance.—A person is guilty of a public nuisance who does any act or is guilty of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2714,
+      "page": 66,
+      "text": "269. Negligent act likely to spread infection of disease dangerous to life.—Whoever unlawfully or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2718,
+      "page": 66,
+      "text": "270. Malignant act likely to spread infection of disease dangerous to life.—Whoever malignantly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2722,
+      "page": 66,
+      "text": "271. Disobedience to quarantine rule.—Whoever knowingly disobeys any rule made and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2726,
+      "page": 66,
+      "text": "1. The word “and” omitted by Act 42 of 1953, s. 4 and the Third Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2727,
+      "page": 66,
+      "text": "2. Subs. by the A. O. 1937, for “by the G. of I., or by any Govt.”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2728,
+      "page": 66,
+      "text": "3. The words “Central or any Provincial” omitted by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2729,
+      "page": 66,
+      "text": "4. The words “or the Crown Representative” omitted by the A. O. 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2733,
+      "page": 67,
+      "text": "272. Adulteration of food or drink intended for sale.—Whoever adulterates any article of food or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2738,
+      "page": 67,
+      "text": "273. Sale of noxious food or drink.—Whoever sells, or offers or exposes for sale, as food or drink,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2743,
+      "page": 67,
+      "text": "274. Adulteration of drugs.—Whoever adulterates any drug or medical preparation in such a manner",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2750,
+      "page": 67,
+      "text": "275. Sale of adulterated drugs.—Whoever, knowing any drug or medical preparation to have been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2756,
+      "page": 67,
+      "text": "276. Sale of drug as a different drug or preparation.—Whoever knowingly sells, or offers or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2761,
+      "page": 67,
+      "text": "277. Fouling water of public spring or reservoir.—Whoever voluntarily corrupts or fouls the water",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2765,
+      "page": 67,
+      "text": "278. Making atmosphere noxious to health.—Whoever voluntarily vitiates the atmosphere in any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2769,
+      "page": 67,
+      "text": "279. Rash driving or riding on a public way.—Whoever drives any vehicle, or rides, on any public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2773,
+      "page": 67,
+      "text": "280. Rash navigation of vessel.—Whoever navigates any vessel in a manner so rash or negligent as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2777,
+      "page": 67,
+      "text": "281. Exhibition of false light, mark or buoy.—Whoever exhibits any false light, mark or buoy,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2782,
+      "page": 68,
+      "text": "282. Conveying person by water for hire in unsafe or overloaded vessel.—Whoever knowingly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2787,
+      "page": 68,
+      "text": "283. Danger or obstruction in public way or line of navigation.—Whoever, by doing any act, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2791,
+      "page": 68,
+      "text": " 284. Negligent conduct with respect to poisonous substance.—Whoever does, with any poisonous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2799,
+      "page": 68,
+      "text": "285. Negligent conduct with respect to fire or combustible matter.—Whoever does, with fire or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2807,
+      "page": 68,
+      "text": "286. Negligent conduct with respect to explosive substance.—Whoever does, with any explosive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2814,
+      "page": 68,
+      "text": "287. Negligent conduct with respect to machinery.—Whoever does, with any machinery, any act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2821,
+      "page": 68,
+      "text": "288. Negligent conduct with respect to pulling down or repairing buildings.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2826,
+      "page": 68,
+      "text": "289. Negligent conduct with respect to animal.—Whoever knowingly or negligently omits to take",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2843,
+      "page": 69,
+      "text": "290. Punishment for public nuisance in cases not otherwise provided for.—Whoever commits a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2847,
+      "page": 69,
+      "text": "291. Continuance of nuisance after injunction to discontinue.—Whoever repeats or continues a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2873,
+      "page": 69,
+      "text": "1. Subs. by Act 8 of 1925, s. 2, for s. 292.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2874,
+      "page": 69,
+      "text": "2. Ins. by Act 36 of 1969, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2875,
+      "page": 69,
+      "text": "3. S. 292 renumbered as sub-section (2) thereof by Act 36 of 1969, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2925,
+      "page": 70,
+      "text": "1. Subs. Act 36 of 1969,s. 2,for certain words (w.e.f.7-9-1969).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2926,
+      "page": 70,
+      "text": "2. Subs. by s. 2, ibid., for Exception (w.e.f.7-9-1969).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2979,
+      "page": 71,
+      "text": "295. Injuring or defiling place of worship, with intent to insult the religion of any class.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2982,
+      "page": 71,
+      "text": "1. Subs. by Act 8 of 1925, s. 2, for section 293.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2983,
+      "page": 71,
+      "text": "2. Subs. by Act 36 of 1969, s. 2, for certain words (w.e.f. 7-9-1969).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2984,
+      "page": 71,
+      "text": "3. Subs. by Act 3 of 1895, s. 3, for section 294.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2985,
+      "page": 71,
+      "text": "4. Ins. by Act 27 of 1870, s. 10.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2986,
+      "page": 71,
+      "text": "5. Subs. by the A. O. 1937, for “not authorized by Government”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2987,
+      "page": 71,
+      "text": "6. Subs. by Act 3 of 1951, s. 3 and the Sch., for “a lottery organized by the Central Government or the Government of a Part A",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2989,
+      "page": 71,
+      "text": "7. Subs. by the A. O. 1950, for “Provincial”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3000,
+      "page": 72,
+      "text": "296. Disturbing religious assembly.—Whoever voluntarily causes disturbance to any assembly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3003,
+      "page": 72,
+      "text": "297. Trespassing on burial places, etc.—Whoever, with the intention of wounding the feelings of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3013,
+      "page": 72,
+      "text": "298. Uttering words, etc., with deliberate intent to wound religious feelings.—Whoever, with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3021,
+      "page": 72,
+      "text": "299. Culpable homicide.—Whoever causes death by doing an act with the intention of causing death,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3037,
+      "page": 72,
+      "text": "1. Ins. by Act 25 of 1927, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3038,
+      "page": 72,
+      "text": "2. Subs. by the A. O. 1950, for “His Majesty’s subjects”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3039,
+      "page": 72,
+      "text": "3. Subs. by Act 41 of 1961, s. 3, for certain words (w.e.f. 27-9-1961).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3040,
+      "page": 72,
+      "text": "4. Subs. by s. 3, ibid., for “two years”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3048,
+      "page": 73,
+      "text": "300. Murder.—Except in the cases hereinafter excepted, culpable homicide is murder, if the act by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3124,
+      "page": 74,
+      "text": "301. Culpable homicide by causing death of person other than person whose death was",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3130,
+      "page": 74,
+      "text": "302. Punishment for murder.—Whoever commits murder shall be punished with death, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3132,
+      "page": 74,
+      "text": "303. Punishment for murder by life-convict.—Whoever, being under sentence of 1[imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3134,
+      "page": 74,
+      "text": "304. Punishment for culpable homicide not amounting to murder.—Whoever commits culpable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3139,
+      "page": 74,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3178,
+      "page": 75,
+      "text": "305. Abetment of suicide of child or insane person.—If any person under eighteen years of age,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3180,
+      "page": 75,
+      "text": "1. Ins. by Act 27 of 1870, s. 12.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3181,
+      "page": 75,
+      "text": "2. Ins. by Act 43 of 1986, s. 10 (w.e.f. 19-11-1986).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3185,
+      "page": 76,
+      "text": "306. Abetment of suicide.—If any person commits suicide, whoever abets the commission of such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3188,
+      "page": 76,
+      "text": "307. Attempt to murder.—Whoever does any act with such intention or knowledge, and under such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3207,
+      "page": 76,
+      "text": " 308. Attempt to commit culpable homicide.—Whoever does any act with such intention or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3216,
+      "page": 76,
+      "text": "309. Attempt to commit suicide.—Whoever attempts to commit suicide and does any act towards",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3219,
+      "page": 76,
+      "text": "310. Thug.—Whoever, at any time after the passing of this Act, shall have been habitually associated",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3222,
+      "page": 76,
+      "text": "311. Punishment.—Whoever is a thug, shall be punished with 1[imprisonment for life], and shall also",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3226,
+      "page": 76,
+      "text": "312. Causing miscarraige.—Whoever voluntarily causes a woman with child to miscarry, shall, if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3231,
+      "page": 76,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3232,
+      "page": 76,
+      "text": "2. Ins. by Act 24 of 1870, s. 11.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3233,
+      "page": 76,
+      "text": "3. Ins. by Act 12 of 1891, s. 2 and the Second Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3234,
+      "page": 76,
+      "text": "4. Subs. by Act 8 of 1882, s. 7, for “and shall also be liable to fine”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3237,
+      "page": 77,
+      "text": "313. Causing miscarriage without woman's consent.—Whoever commits the offence defined in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3241,
+      "page": 77,
+      "text": "314. Death caused by act done with intent to cause miscarriage.—Whoever, with intent to cause",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3249,
+      "page": 77,
+      "text": "315. Act done with intent to prevent child being born alive or to cause it to die after birth.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3256,
+      "page": 77,
+      "text": "316. Causing death of quick unborn child by act amounting to culpable homicide.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3265,
+      "page": 77,
+      "text": "317. Exposure and abandonment of child under twelve years, by parent or person having care",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3272,
+      "page": 77,
+      "text": "318. Concealment of birth by secret disposal of dead body.—Whoever, by secretly burying or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3277,
+      "page": 77,
+      "text": "319. Hurt.—Whoever causes bodily pain, disease or infirmity to any person is said to cause hurt.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3278,
+      "page": 77,
+      "text": "320. Grievous hurt.—The following kinds of hurt only are designated as “grievous”:—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3282,
+      "page": 77,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3290,
+      "page": 78,
+      "text": "321. Voluntarily causing hurt.—Whoever does any act with the intention of thereby causing hurt to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3293,
+      "page": 78,
+      "text": "322. Voluntarily causing grievous hurt.—Whoever voluntarily causes hurt, if the hurt which he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3305,
+      "page": 78,
+      "text": "323. Punishment for voluntarily causing hurt.—Whoever, except in the case provided for by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3308,
+      "page": 78,
+      "text": "324. Voluntarily causing hurt by dangerous weapons or means.—Whoever, except in the case",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3315,
+      "page": 78,
+      "text": "325. Punishment for voluntarily causing grievous hurt.—Whoever, except in the case provided for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3318,
+      "page": 78,
+      "text": "326. Voluntarily causing grievous hurt by dangerous weapons or means.—Whoever, except in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3332,
+      "page": 78,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3333,
+      "page": 78,
+      "text": "2. Ins. by Act 13 of 2013, s. 5 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3338,
+      "page": 79,
+      "text": "326B. Voluntarily throwing or attempting to throw acid.—Whoever throws or attempts to throw",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3349,
+      "page": 79,
+      "text": "327. Voluntarily causing hurt to extort property, or to constrain to an illegal to an act.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3356,
+      "page": 79,
+      "text": "328. Causing hurt by means of poison, etc., with intent to commit and offence.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3362,
+      "page": 79,
+      "text": "329. Voluntarily causing grievous hurt to extort property, or to constrain to an illegal act.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3368,
+      "page": 79,
+      "text": "330. Voluntarily causing hurt to extort confession, or to compel restoration of property.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3384,
+      "page": 79,
+      "text": "331. Voluntarily causing grievous hurt to extort confession, or to compel restoration of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3386,
+      "page": 79,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3394,
+      "page": 80,
+      "text": "332. Voluntarily causing hurt to deter public servant from his duty.—Whoever voluntarily causes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3406,
+      "page": 80,
+      "text": "333. Voluntarily causing grievous hurt to deter public servant from his duty.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3413,
+      "page": 80,
+      "text": "334. Voluntarily causing hurt on provocation.—Whoever voluntarily causes hurt on grave and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3417,
+      "page": 80,
+      "text": "335. Voluntarily causing grievous hurt on provocation.—Whoever 1[voluntarily] causes grievous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3423,
+      "page": 80,
+      "text": "336. Act endangering life or personal safety of others.—Whoever does any act so rashly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3427,
+      "page": 80,
+      "text": "337. Causing hurt by act endangering life or personal safety of others.—Whoever causes hurt to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3431,
+      "page": 80,
+      "text": "338. Causing grievous hurt by act endangering life or personal safety of others.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3436,
+      "page": 80,
+      "text": "339. Wrongful restraint.—Whoever voluntarily obstructs any person so as to prevent that person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3439,
+      "page": 80,
+      "text": "1. Ins. by Act 8 of 1882, s. 8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3446,
+      "page": 81,
+      "text": "340. Wrongful confinement.—Whoever wrongfully restrains any person in such a manner as to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3454,
+      "page": 81,
+      "text": "341. Punishment for wrongful restraint.—Whoever wrongfully restrains any person shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3457,
+      "page": 81,
+      "text": "342. Punishment for wrongful confinement.—Whoever wrongfully confines any person shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3461,
+      "page": 81,
+      "text": "343. Wrongful confinement for three or more days.—Whoever wrongfully confines any person for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3464,
+      "page": 81,
+      "text": "344. Wrongful confinement for ten or more days.—Whoever wrongfully confines any person for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3467,
+      "page": 81,
+      "text": "345. Wrongful confinement of person for whose liberation writ has been issued.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3472,
+      "page": 81,
+      "text": "346. Wrongful confinement in secret.—Whoever wrongfully confines any person in such manner as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3478,
+      "page": 81,
+      "text": "347. Wrongful confinement to extort property, or constrain to illegal act.—Whoever wrongfully",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3484,
+      "page": 81,
+      "text": "348. Wrongful confinement to extort confession, or compel restoration of property.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3494,
+      "page": 82,
+      "text": "349. Force.—A person is said to use force to another if he causes motion, change of motion, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3505,
+      "page": 82,
+      "text": "350. Criminal force.—Whoever intentionally uses force to any person, without that person's consent,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3538,
+      "page": 82,
+      "text": "351. Assault.—Whoever makes any gesture, or any preparation intending or knowing it to be likely",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3553,
+      "page": 83,
+      "text": "352. Punishment for assault or criminal force otherwise than on grave provocation.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3564,
+      "page": 83,
+      "text": "353. Assault or criminal force to deter public servant from discharge of his duty.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3576,
+      "page": 83,
+      "text": "354. Assault or criminal force to woman with intent to outrage her modesty.—Whoever assaults",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3591,
+      "page": 83,
+      "text": "1. Subs. by Act 13 of 2013, s. 6, for “shall be punished with imprisonment of either description for a term which may extend to two years, or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3593,
+      "page": 83,
+      "text": "2. Ins. by s. 7, ibid., (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3605,
+      "page": 84,
+      "text": "354B. Assault or use of criminal force to woman with intent to disrobe.—Any man who assaults",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3609,
+      "page": 84,
+      "text": "354C. Voyeurism.—Any man who watches, or captures the image of a woman engaging in a private",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3624,
+      "page": 84,
+      "text": "354D. Stalking.—(1) Any man who—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3646,
+      "page": 85,
+      "text": "354E. Sextortion.—(1) Whoever,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3666,
+      "page": 85,
+      "text": "354E. Liability person present who fails to prevent the commission of offence under Section 354,",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 3702,
+      "page": 86,
+      "text": "355. Assault or criminal force with intent to dishonour person, otherwise than on grave",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3706,
+      "page": 86,
+      "text": "356. Assault or criminal force in attempt to commit theft of property carried by a person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3710,
+      "page": 86,
+      "text": "357. Assault or criminal force in attempt wrongfully to confine a person.—Whoever assaults or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3714,
+      "page": 86,
+      "text": "358. Assault or criminal force on grave provocation.—Whoever assaults or uses criminal force to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3721,
+      "page": 86,
+      "text": "359. Kidnapping.—Kidnapping is of two kinds: kidnapping from 1[India], and kidnapping from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3723,
+      "page": 86,
+      "text": "360. Kidnapping from India.—Whoever conveys any person beyond the limits of 1[India] without",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3726,
+      "page": 86,
+      "text": "361. Kidnapping from lawful guardianship.—Whoever takes or entices any minor under 2[sixteen]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3735,
+      "page": 86,
+      "text": "362. Abduction.—Whoever by force compels, or by any deceitful means induces, any person to go",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3737,
+      "page": 86,
+      "text": "363. Punishment for kidnapping.—Whoever kidnaps any person from 1[India] or from lawful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3742,
+      "page": 86,
+      "text": "1. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3744,
+      "page": 86,
+      "text": "2. Subs. by Act 42 of 1949, s. 2, for “fourteen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3745,
+      "page": 86,
+      "text": "3. Subs. by s. 2, ibid., for “sixteen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3746,
+      "page": 86,
+      "text": "4. Ins. by Act 52 of 1959, s. 2 (w.e.f. 15-1-1960).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3768,
+      "page": 87,
+      "text": "364. Kidnapping or abducting in order to murder.—Whoever kidnaps or abducts any person in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3783,
+      "page": 87,
+      "text": "365. Kidnapping or abducting with intent secretly and wrongfully to confine person.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3787,
+      "page": 87,
+      "text": "366. Kidnapping, abducting or inducing woman to compel her marriage, etc.—Whoever kidnaps",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3792,
+      "page": 87,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3793,
+      "page": 87,
+      "text": "2. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3795,
+      "page": 87,
+      "text": "3. Ins. by Act 42 of 1993, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3796,
+      "page": 87,
+      "text": "4. Subs. by Act 24 of 1995, s. 2, for “any other person”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3806,
+      "page": 88,
+      "text": "366B. Importation of girl from foreign country.—Whoever imports into 3[India] from any country",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3811,
+      "page": 88,
+      "text": "367. Kidnapping or abducting in order to subject person to grievous hurt, slavery, etc.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3818,
+      "page": 88,
+      "text": "368. Wrongfully concealing or keeping in confinement, kidnapped or abducted person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3823,
+      "page": 88,
+      "text": "369. Kidnapping or abducting child under ten years with intent to steal from its person.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3845,
+      "page": 88,
+      "text": "1. Ins. by Act 20 of 1923, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3846,
+      "page": 88,
+      "text": "2. Ins. by s. 3, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3847,
+      "page": 88,
+      "text": "3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3849,
+      "page": 88,
+      "text": "4. Ins. by Act 3 of 1951, s. 3 and the Sch., (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3850,
+      "page": 88,
+      "text": "5. Certain words omitted by s. 3 and the Sch., ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3851,
+      "page": 88,
+      "text": "6. Subs. by Act 13 of 2013, s. 8, for section 370 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3868,
+      "page": 89,
+      "text": "370A. Exploitation of a trafficked person.—(1) Whoever, knowingly or having reason to believe",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3877,
+      "page": 89,
+      "text": "371. Habitual dealing in slaves.—Whoever habitually imports, exports, removes, buys, sells, traffics",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3880,
+      "page": 89,
+      "text": "372. Selling minor for purposes of prostitution, etc.—Whoever sells, lets to hire, or otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3894,
+      "page": 89,
+      "text": "373. Buying minor for purposes of prostitution, etc.—Whoever buys, hires or otherwise obtains",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3904,
+      "page": 89,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3905,
+      "page": 89,
+      "text": "2. Subs. by Act 18 of 1924, s. 2, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3906,
+      "page": 89,
+      "text": "3. Ins. by Act 18 of 1924, s. 3",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3907,
+      "page": 89,
+      "text": "4. Subs. by s. 2, ibid., for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3908,
+      "page": 89,
+      "text": "5. Ins. by s. 4, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3911,
+      "page": 90,
+      "text": "374. Unlawful compulsory labour.—Whoever unlawfully compels any person to labour against the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3949,
+      "page": 90,
+      "text": "376. Punishment for rape.—(1) Whoever, except in the cases provided for in sub-section (2),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3954,
+      "page": 90,
+      "text": "1. Subs. by Act 43 of 1983, s. 3, for the heading “Of rape” and ss. 375 and 376.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3955,
+      "page": 90,
+      "text": "2. Subs. by Act 13 of 2013, s. 9, for sections 375, 376, 376A, 376B, 376C and 376D (w.e.f. 03-02-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3956,
+      "page": 90,
+      "text": "3. Subs. by Act 22 of 2018, s. 4, for “shall not be less than seven years, but which may extend to imprisonment for life, and shall",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4008,
+      "page": 91,
+      "text": "1. Clause (i) omitted by Act 22 of 2018 s. 4. (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4009,
+      "page": 91,
+      "text": "2. Ins. by s. 4. ibid., (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4058,
+      "page": 92,
+      "text": "1. Subs. by Act 13 of 2013, s. 9, for sections 375, 376, 376A, 376B, 376C and 376D (w.e.f. 03-02-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4059,
+      "page": 92,
+      "text": "2. Ins. by Act 22 of 2018, s. 5 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4104,
+      "page": 93,
+      "text": "1. Subs. by Act 13 of 2013, s. 9, for sections 375, 376, 376A, 376B, 376C and 376D (w.e.f. 03-02-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4105,
+      "page": 93,
+      "text": "2. Ins. by Act 22 of 2018, s. 6 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4108,
+      "page": 94,
+      "text": "376E. Punishment for repeat offenders.—Whoever has been previously convicted of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4116,
+      "page": 94,
+      "text": "376F. Liability of person in-charge of workplace and others to give information about offence.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4130,
+      "page": 94,
+      "text": "377. Unnatural offences.—Whoever voluntarily has carnal intercourse against the order of nature",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4138,
+      "page": 94,
+      "text": "378. Theft.—Whoever, intending to take dishonestly any movable property out of the possession of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4154,
+      "page": 94,
+      "text": "1. Subs. by Act 22 of 2018, s. 7, for “section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4155,
+      "page": 94,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4196,
+      "page": 95,
+      "text": "379. Punishment for theft.—Whoever commits theft shall be punished with imprisonment of either",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4202,
+      "page": 95,
+      "text": "379A. Snatching.—(1) Whoever, with the intention to commit theft, suddenly or quickly or forcibly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4216,
+      "page": 96,
+      "text": "379B.Snatching after preparation made for causing death, hurt or restraint in order to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4223,
+      "page": 96,
+      "text": "380. Theft in dwelling house, etc.—Whoever commits theft in any building, tent or vessel, which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4227,
+      "page": 96,
+      "text": "381. Theft by clerk or servant of property in possession of master.—Whoever, being a clerk or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4232,
+      "page": 96,
+      "text": "382. Theft after preparation made for causing death, hurt or restraint in order to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4250,
+      "page": 96,
+      "text": "382B. Whoever commits ‘Snatching’ shall be punished with imprisonment for a term which shall not",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4252,
+      "page": 96,
+      "text": "382C. Vehicle lifting: Whoever commits theft of a ‘vehicle’ either from open or close arena, is said",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4256,
+      "page": 96,
+      "text": "382D. Whoever commits the offence of ‘vehicle lifting’ shall be punished with imprisonment for a",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4259,
+      "page": 96,
+      "text": "382E. Cattle lifting: Whoever commits theft of a ‘Cattle’ either from open or close arena, is said to",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4265,
+      "page": 97,
+      "text": "382F. Whoever commits the offence of ‘Cattle lifting’ shall be punished with imprisonment for a",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4270,
+      "page": 97,
+      "text": "383. Extortion.—Whoever intentionally puts any person in fear of any injury to that person, or to any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4285,
+      "page": 97,
+      "text": "384. Punishment for extortion.—Whoever commits extortion shall be punished with imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4287,
+      "page": 97,
+      "text": "385. Putting person in fear of injury in order to commit extortion.—Whoever, in order to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4291,
+      "page": 97,
+      "text": "386. Extortion by putting a person in fear of death or grievous hurt.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4295,
+      "page": 97,
+      "text": "387. Putting person in fear of death or of grievous hurt, in order to commit extortion.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4299,
+      "page": 97,
+      "text": "388. Extortion by threat of accusation of an offence punishable with death or imprisonment for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4306,
+      "page": 97,
+      "text": "389. Putting person in fear or accusation of offence, in order to commit extortion.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4314,
+      "page": 97,
+      "text": "390. Robbery.—In all robbery there is either theft or extortion.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4315,
+      "page": 97,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4341,
+      "page": 98,
+      "text": "391. Dacoity.—When five or more persons conjointly commit or attempt to commit a robbery, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4345,
+      "page": 98,
+      "text": "392. Punishment for robbery.—Whoever commits robbery shall be punished with rigorous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4349,
+      "page": 98,
+      "text": "393. Attempt to commit robbery.—Whoever attempts to commit robbery shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4351,
+      "page": 98,
+      "text": "394. Voluntarily causing hurt in committing robbery.—If any person, in committing or in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4356,
+      "page": 98,
+      "text": "395. Punishment for dacoity.—Whoever commits dacoity shall be punished with 1[imprisonment for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4359,
+      "page": 98,
+      "text": "396. Dacoity with murder.—If any one of five or more persons, who are conjointly committing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4363,
+      "page": 98,
+      "text": "397. Robbery, or dacoity, with attempt to cause death or grievous hurt.—If, at the time of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4365,
+      "page": 98,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4369,
+      "page": 99,
+      "text": "398. Attempt to commit robbery or dacoity when armed with deadly weapon.—If, at the time of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4372,
+      "page": 99,
+      "text": "399. Making preparation to commit dacoity.—Whoever makes any preparation for committing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4375,
+      "page": 99,
+      "text": "400. Punishment for belonging to gang of dacoits.—Whoever, at any time after the passing of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4379,
+      "page": 99,
+      "text": "401. Punishment for belonging to gang of thieves.—Whoever, at any time after the passing of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4383,
+      "page": 99,
+      "text": "402. Assembling for purpose of committing dacoity.—Whoever, at any time after the passing of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4389,
+      "page": 99,
+      "text": "403. Dishonest misappropriation of property.—Whoever dishonestly misappropriates or converts",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4415,
+      "page": 99,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4434,
+      "page": 100,
+      "text": "404. Dishonest misappropriation of property possessed by deceased person at the time of his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4446,
+      "page": 100,
+      "text": "405. Criminal breach of trust.—Whoever, being in any manner entrusted with property, or with any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4470,
+      "page": 100,
+      "text": "1. Ins. by Act 40 of 1973, s. 9 (w.e.f. 1-11-1973).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4471,
+      "page": 100,
+      "text": "2. Explanation numbered as Explanation 1 by Act 38 of 1975, s. 9 (w.e.f. 1-9-1975).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4472,
+      "page": 100,
+      "text": "3. Ins. by Act 33 of 1988, s. 27 (w.e.f. 1-8-1988).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4473,
+      "page": 100,
+      "text": "4. Ins. by Act 38 of 1975, s. 9 (w.e.f. 1-9-1975).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4490,
+      "page": 101,
+      "text": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of trust shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4493,
+      "page": 101,
+      "text": "407. Criminal breach of trust by carrier, etc.—Whoever, being entrusted with property as a carrier,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4498,
+      "page": 101,
+      "text": "408. Criminal breach of trust by clerk or servant.—Whoever, being a clerk or servant or employed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4503,
+      "page": 101,
+      "text": "409. Criminal breach of trust by public servant, or by banker, merchant or agent.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4510,
+      "page": 101,
+      "text": "410. Stolen property.—Property, the possession whereof has been transferred by theft, or by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4516,
+      "page": 101,
+      "text": "411. Dishonestly receiving stolen property.—Whoever dishonestly receives or retains any stolen",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4519,
+      "page": 101,
+      "text": "412. Dishonestly receiving property stolen in the commission of a dacoity.—Whoever dishonestly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4523,
+      "page": 101,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4524,
+      "page": 101,
+      "text": "2. The word “the” rep by Act 12 of 1891, s. 2 and the First Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4525,
+      "page": 101,
+      "text": "3. The words “offence of” rep. by Act 8 of1882, s. 9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4526,
+      "page": 101,
+      "text": "4. Ins. by s. 9, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4527,
+      "page": 101,
+      "text": "5. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4532,
+      "page": 102,
+      "text": "413. Habitually dealing in stolen property.—Whoever habitually receives or deals in property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4536,
+      "page": 102,
+      "text": "414. Assisting in concealment of stolen property.—Whoever voluntarily assists in concealing or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4541,
+      "page": 102,
+      "text": "415. Cheating.—Whoever, by deceiving any person, fraudulently or dishonestly induces the person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4571,
+      "page": 102,
+      "text": "416. Cheating by personation.—A person is said to “cheat by personation” if he cheats by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4579,
+      "page": 102,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4581,
+      "page": 103,
+      "text": "417. Punishment for cheating.—Whoever cheats shall be punished with imprisonment of either",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4583,
+      "page": 103,
+      "text": "418. Cheating with knowledge that wrongful loss may ensue to person whose interest offender is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4588,
+      "page": 103,
+      "text": "419. Punishment for cheating by personation.—Whoever cheats by personation shall be punished",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4591,
+      "page": 103,
+      "text": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and thereby",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4597,
+      "page": 103,
+      "text": "421. Dishonest or fraudulent removal or concealment of property to prevent distribution among",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4604,
+      "page": 103,
+      "text": "422. Dishonestly or fraudulently preventing debt being available for creditors.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4609,
+      "page": 103,
+      "text": "423. Dishonest or fraudulent execution of deed of transfer containing false statement of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4615,
+      "page": 103,
+      "text": "424. Dishonest or fraudulent removal or concealment of property.—Whoever dishonestly or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4621,
+      "page": 103,
+      "text": "425. Mischief.—Whoever with intent to cause, or knowing that he is likely to cause, wrongful loss or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4649,
+      "page": 104,
+      "text": "426. Punishment for mischief.—Whoever commits mischief shall be punished with imprisonment of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4652,
+      "page": 104,
+      "text": "427. Mischief causing damage to the amount of fifty rupees.—Whoever commits mischief and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4655,
+      "page": 104,
+      "text": "428. Mischief by killing or maiming animal of the value of ten rupees.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4659,
+      "page": 104,
+      "text": "429. Mischief by killing or maiming cattle, etc., of any value or any animal of the value of fifty",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4664,
+      "page": 104,
+      "text": "430. Mischief by injury to works of irrigation or by wrongfully diverting water.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4669,
+      "page": 104,
+      "text": "431. Mischief by injury to public road, bridge, river or channel.—Whoever commits mischief by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4674,
+      "page": 104,
+      "text": "432. Mischief by causing inundation or obstruction to public drainage attended with damage.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4679,
+      "page": 104,
+      "text": "433. Mischief by destroying, moving or rendering less useful a light-house or sea-mark.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4686,
+      "page": 105,
+      "text": "434. Mischief by destroying or moving, etc., a land-mark fixed by public authority.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4690,
+      "page": 105,
+      "text": "435. Mischief by fire or explosive substance with intent to cause damage to amount of one",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4696,
+      "page": 105,
+      "text": "436. Mischief by fire or explosive substance with intent to destroy house, etc.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4702,
+      "page": 105,
+      "text": "437. Mischief with intent to destroy or make unsafe a decked vessel or one of twenty tons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4708,
+      "page": 105,
+      "text": "438. Punishment for the mischief described in section 437 committed by fire or explosive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4713,
+      "page": 105,
+      "text": "439. Punishment for intentionally running vessel aground or ashore with intent to commit theft,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4718,
+      "page": 105,
+      "text": "440. Mischief committed after preparation made for causing death or hurt.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4723,
+      "page": 105,
+      "text": "441. Criminal trespass.—Whoever enters into or upon property in the possession of another with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4735,
+      "page": 105,
+      "text": "1. Ins. by Act 8 of 1882, s. 10",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4736,
+      "page": 105,
+      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation forlife” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4746,
+      "page": 106,
+      "text": "442. House-trespass.—Whoever commits criminal trespass by entering into or remaining in any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4751,
+      "page": 106,
+      "text": "443. Lurking house-trespass.—Whoever commits house-trespass having taken precautions to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4755,
+      "page": 106,
+      "text": "444. Lurking house-trespass by night.—Whoever commits lurking house-trespass after sunset and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4757,
+      "page": 106,
+      "text": "445. House-breaking.—A person is said to commit “house-breaking” who commits house-trespass if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4792,
+      "page": 107,
+      "text": "446. House-breaking by night.—Whoever commits house-breaking after sunset and before sunrise,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4794,
+      "page": 107,
+      "text": "447. Punishment for criminal trespass.—Whoever commits criminal trespass shall be punished",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4797,
+      "page": 107,
+      "text": "448. Punishment for house-trespass.—Whoever commits house-trespass shall be punished with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4800,
+      "page": 107,
+      "text": "449. House-trespass in order to commit offence punishable with death.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4804,
+      "page": 107,
+      "text": "450. House-trespass in order to commit offence punishable with imprisonment for life.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4809,
+      "page": 107,
+      "text": "451. House-trespass in order to commit offence punishable with imprisonment.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4814,
+      "page": 107,
+      "text": "452. House-trespass alter preparation for hurt, assault or wrongful restraint.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4819,
+      "page": 107,
+      "text": "453. Punishment for lurking house-trespass or house-breaking.—Whoever commits lurking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4822,
+      "page": 107,
+      "text": "454. Lurking house-trespass or house-breaking in order to commit offence punishable with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4827,
+      "page": 107,
+      "text": "455. Lurking house-trespass or house-breaking after preparation for hurt, assault or wrongful",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4833,
+      "page": 107,
+      "text": "456. Punishment for lurking house-trespass or house-breaking by night.—Whoever commits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4836,
+      "page": 107,
+      "text": "457. Lurking house-trespass or house-breaking by night in order to commit offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4840,
+      "page": 107,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4844,
+      "page": 108,
+      "text": "458. Lurking house-trespass or house-breaking by night after preparation for hurt, assault, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4850,
+      "page": 108,
+      "text": "459. Grievous hurt caused whilst committing lurking house-trespass or house-breaking.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4855,
+      "page": 108,
+      "text": "460. All persons jointly concerned in lurking house-trespass or house-breaking by night",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4863,
+      "page": 108,
+      "text": "461. Dishonestly breaking open receptacle containing property.—Whoever dishonestly or with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4867,
+      "page": 108,
+      "text": "462. Punishment for same offence when committed by person entrusted with custody.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4874,
+      "page": 108,
+      "text": "463. Forgery.—3[Whoever makes any false document or false electronic record or part of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4878,
+      "page": 108,
+      "text": "464. Making a false document.—3[A person is said to make a false document or false electronic",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4895,
+      "page": 108,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4896,
+      "page": 108,
+      "text": "2. The words “TRADE OR” omitted by Act 43 of 1958, s. 135 and Sch. (w.e.f. 25-11-1959).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4897,
+      "page": 108,
+      "text": "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for certain words (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4898,
+      "page": 108,
+      "text": "4. Subs. by Act 10 of 2009, s. 51, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4956,
+      "page": 109,
+      "text": "465. Punishment for forgery.—Whoever commits forgery shall be punished with imprisonment of either description for a term which may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4958,
+      "page": 109,
+      "text": "466. Forgery of record of Court or of public register, etc.—3[Whoever forges a document or an electronic record], purporting to be a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4965,
+      "page": 109,
+      "text": "467. Forgery of valuable security, will, etc.—Whoever forges a document which purports to be a valuable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4971,
+      "page": 109,
+      "text": "1. Ins. by Act 21 of 2000, s. 91 and the First Sch. (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4972,
+      "page": 109,
+      "text": "2. Subs. by Act 10 of 2009, s. 51, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4973,
+      "page": 109,
+      "text": "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for certain words (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4974,
+      "page": 109,
+      "text": "4. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4976,
+      "page": 110,
+      "text": "468. Forgery for purpose of cheating.—Whoever commits forgery, intending that the 1[document or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4979,
+      "page": 110,
+      "text": "469. Forgery for purpose of harming reputation.—Whoever commits forgery, 2[intending that the document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4983,
+      "page": 110,
+      "text": "470. Forged document.—A false 3[document or electronic record] made wholly or in part by forgery is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4985,
+      "page": 110,
+      "text": "471. Using as genuine a forged document or electronic record.—Whoever fraudulently or dishonestly uses",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4989,
+      "page": 110,
+      "text": "472. Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4990,
+      "page": 110,
+      "text": "467.—Whoever makes or counterfeits any seal, plate or other instrument for making an impression, intending that",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 4995,
+      "page": 110,
+      "text": "473. Making or possessing counterfeit seal, etc., with intent to commit forgery punishable otherwise.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5002,
+      "page": 110,
+      "text": "474. Having possession of document described in section 466 or 467, knowing it to be forged and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5010,
+      "page": 110,
+      "text": "475. Counterfeiting device or mark used for authenticating documents described in section 467,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5019,
+      "page": 110,
+      "text": "476. Counterfeiting device or mark used for authenticating documents other than those",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5028,
+      "page": 110,
+      "text": "1. Subs. by Act 21 of 2000, s. 91 and the First Sch., “document forget” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5029,
+      "page": 110,
+      "text": "2. Subs. by s. 91, and the First Sch., ibid., “intending that the document forged” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5030,
+      "page": 110,
+      "text": "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “document” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5031,
+      "page": 110,
+      "text": "5. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5032,
+      "page": 110,
+      "text": "4. Subs. by Act 21 of 2000, s. 91 and the First Sch., for certain words (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5033,
+      "page": 110,
+      "text": "6. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “any document” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5035,
+      "page": 111,
+      "text": "477. Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5056,
+      "page": 111,
+      "text": "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 andSch.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5058,
+      "page": 111,
+      "text": "479. Property mark.—A mark used for denoting that movable property belongs to a particular",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5060,
+      "page": 111,
+      "text": "480. [Using a false trade mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5062,
+      "page": 111,
+      "text": "481. Using a false property mark.—Whoever marks any movable property or goods or any case,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5067,
+      "page": 111,
+      "text": "482. Punishment for using a false property mark.—Whoever uses 6*** any false property mark",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5070,
+      "page": 111,
+      "text": "483. Counterfeiting a property mark used by another.—Whoever counterfeits any 7*** property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5073,
+      "page": 111,
+      "text": "484. Counterfeiting a mark used by a public servant.—Whoever counterfeits any property mark",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5079,
+      "page": 111,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5080,
+      "page": 111,
+      "text": "2. Ins. by Act 3 of 1895, s. 4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5081,
+      "page": 111,
+      "text": "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “book, paper, writing” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5082,
+      "page": 111,
+      "text": "4. Subs. by Act 4 of 1889, s. 3, for the original heading and ss. 478 to 489.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5083,
+      "page": 111,
+      "text": "5. The word “Trade” omitted by Act 43 of 1958, s. 135 and the Sch. (w.e.f. 25-11-1959).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5084,
+      "page": 111,
+      "text": "6. The words “any false trade mark or” omitted by s. 135 and the Sch., ibid. (w.e.f. 25-11-1959).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5085,
+      "page": 111,
+      "text": "7. The words “trade mark or” omitted by s. 135 and the Sch., ibid. (w.e.f. 25-11-1959).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5092,
+      "page": 112,
+      "text": "486. Selling goods marked with a counterfeit property mark.—2[Whoever sells, or exposes, or has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5105,
+      "page": 112,
+      "text": "487. Making a false mark upon any receptacle containing goods.—Whoever makes any false",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5112,
+      "page": 112,
+      "text": "488. Punishment for making use of any such false mark.—Whoever makes use of any such false",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5115,
+      "page": 112,
+      "text": "489. Tampering with property mark with intent to cause injury.—Whoever removes, destroys,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5120,
+      "page": 112,
+      "text": "489A. Counterfeiting currency-notes or bank-notes.—Whoever counterfeits, or knowingly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5129,
+      "page": 112,
+      "text": "489B. Using as genuine, forged or counterfeit currency-notes or bank-notes.—Whoever sells to,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5134,
+      "page": 112,
+      "text": "1. Subs. by Act 43 of 1958, s. 135 and the Sch., for s. 485 (w.e.f. 25-11-1959).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5135,
+      "page": 112,
+      "text": "2. Subs. by s. 135 and the Sch., ibid., for certain words (w.e.f. 25-11-1959).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5136,
+      "page": 112,
+      "text": "3. Added by Act 12 of 1899, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5137,
+      "page": 112,
+      "text": "4. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5138,
+      "page": 112,
+      "text": "5. Subs. by Act 35 of 1950, s. 3 and the Second Sch., for “489C and 489D”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5140,
+      "page": 113,
+      "text": "489C. Possession of forged or counterfeit currency-notes or bank-notes.—Whoever has in his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5145,
+      "page": 113,
+      "text": "489D. Making or possessing instruments or materials for forging or counterfeiting currency",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5166,
+      "page": 113,
+      "text": "490. [Breach of contract of service during voyage or journey.] Rep. by the Workmen's Breach of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5168,
+      "page": 113,
+      "text": "491. Breach of contract to attend on and supply wants of helpless person.—Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5174,
+      "page": 113,
+      "text": "492. [Breach of contract to serve at distant place to which servant is conveyed at master's expense.]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5178,
+      "page": 113,
+      "text": "493. Cohabitation caused by a man deceitfully inducing a belief of lawful marriage.—Every man",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5183,
+      "page": 113,
+      "text": "494. Marrying again during lifetime of husband or wife.—Whoever, having a husband or wife",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5187,
+      "page": 113,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5188,
+      "page": 113,
+      "text": "2. Ins. by Act 6 of 1943, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5198,
+      "page": 114,
+      "text": "495. Same offence with concealment of former marriage from person with whom subsequent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5203,
+      "page": 114,
+      "text": "496. Marriage ceremony fraudulently gone through without lawful marriage.—Whoever,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5207,
+      "page": 114,
+      "text": "497. Adultery.—Whoever has sexual intercourse with a person who is and whom he knows or has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5213,
+      "page": 114,
+      "text": "498. Enticing or taking away or detaining with criminal intent a married woman.—Whoever",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5221,
+      "page": 114,
+      "text": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoever, being",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5233,
+      "page": 114,
+      "text": "499. Defamation.—Whoever, by words either spoken or intended to be read, or by signs or by visible",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5237,
+      "page": 114,
+      "text": "1. Ins. by Act 46 of 1983, s. 2 (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5337,
+      "page": 116,
+      "text": "500. Punishment for defamation.—Whoever defames another shall be punished with simple",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5339,
+      "page": 116,
+      "text": "501. Printing or engraving matter known to be defamatory.—Whoever prints or engraves any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5342,
+      "page": 116,
+      "text": "502. Sale of printed or engraved substance containing defamatory matter.—Whoever sells or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5349,
+      "page": 117,
+      "text": "503. Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5359,
+      "page": 117,
+      "text": "504. Intentional insult with intent to provoke breach of the peace.—Whoever intentionally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5387,
+      "page": 117,
+      "text": "1. Subs. by Act 4 of 1898, s. 6, for s. 505.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5388,
+      "page": 117,
+      "text": "2. Section 505 re-numbered as sub-section (1) of that section by Act 35 of 1969, s. 3 (w.e.f. 4-9-1969).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5389,
+      "page": 117,
+      "text": "3. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5390,
+      "page": 117,
+      "text": "4. Subs. by s. 2 and the First Sch., ibid., for “or Navy”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5391,
+      "page": 117,
+      "text": "5. Subs. by the A. O. 1950, for “of Her Majesty or in the Imperial Service Troops” The words “or in the Royal Indian Marine”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5393,
+      "page": 117,
+      "text": "6. Subs. by Act 41 of 1961, s. 4, for “two years” (w.e.f. 12-9-1961).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5394,
+      "page": 117,
+      "text": "7. Ins. by Act 35 of 1969, s. 3 (w.e.f. 4-9-1969).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5398,
+      "page": 118,
+      "text": "506. Punishment for criminal intimidation.—Whoever commits the offence of criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5406,
+      "page": 118,
+      "text": "507. Criminal intimidation by an anonymous communication.—Whoever commits the offence of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5411,
+      "page": 118,
+      "text": "508. Act caused by inducing person to believe that he will be rendered an object of the Divine",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5425,
+      "page": 118,
+      "text": "509. Word, gesture or act intended to insult the modesty of a woman.—Whoever, intending to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5433,
+      "page": 118,
+      "text": "509A. Sexual harassment by relative.—Whoever, being related to a woman through blood,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5438,
+      "page": 118,
+      "text": "509B. Sexual harassment by electronic mode.—Whoever, by means of telecommunication device",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5445,
+      "page": 118,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5446,
+      "page": 118,
+      "text": "2. Subs. by Act 13 of 2013, s. 10, for “shall be punished with simple imprisonment for a term which may extend to one year, or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5449,
+      "page": 119,
+      "text": "510. Misconduct in public by a drunken person.—Whoever, in a state of intoxication, appears in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5455,
+      "page": 119,
+      "text": "511. Punishment for attempting to commit offences punishable with imprisonment for life or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5469,
+      "page": 119,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5470,
+      "page": 119,
+      "text": "2. Subs. by s. 117 and the Sch., ibid., for certain words (w.e.f. 1-1-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "act_id": "bns-2023",
+  "gates": {
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "page1_has_act_name": true,
+        "page1_has_year": true,
+        "seed": 20261010,
+        "middle_pages_0based": [
+          30,
+          42,
+          50,
+          70,
+          79
+        ],
+        "page_hits": [
+          {
+            "page_1based": 31,
+            "markers_found": [
+              "46"
+            ]
+          },
+          {
+            "page_1based": 43,
+            "markers_found": [
+              "90",
+              "91",
+              "92"
+            ]
+          },
+          {
+            "page_1based": 51,
+            "markers_found": [
+              "114",
+              "115",
+              "116"
+            ]
+          },
+          {
+            "page_1based": 71,
+            "markers_found": [
+              "209",
+              "210",
+              "211"
+            ]
+          },
+          {
+            "page_1based": 80,
+            "markers_found": [
+              "252",
+              "253",
+              "254"
+            ]
+          }
+        ]
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "mode": "toc",
+        "expected_count": 358,
+        "records": 364,
+        "missing": [],
+        "extra": [],
+        "anchor_max_plain_seen": 358,
+        "anchor_ok": false
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "part0_records": 358,
+        "needed_prefix_stripping": 0,
+        "failures": []
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "page_number_lines": 0,
+        "hyphen_breaks": 0,
+        "boilerplate": 0,
+        "repeated_30pct_lines": 0,
+        "examples_page_number": [],
+        "examples_hyphen": [],
+        "examples_boiler": [],
+        "examples_repeats": []
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "records": 364,
+        "duplicate_ids": [],
+        "malformed_ids": [],
+        "empty_texts": [],
+        "missing_or_null_nonnullable": []
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "primary_fragment_rate": 0.996737,
+        "diagnostic_whole_record_rate": 0.984317,
+        "diagnostic_line_rate": 0.999768,
+        "raw_reference": "get_text('text', sort=True)",
+        "reference_repeated_lines_stripped": [
+          "Illustration.",
+          "Illustrations.",
+          "IndiaCode"
+        ],
+        "windows": 5823,
+        "primary_failures": 19,
+        "worst_5": [
+          {
+            "id": "bns-2023:s:2:0",
+            "missing_windows": 1,
+            "page_range": [
+              16,
+              20
+            ]
+          },
+          {
+            "id": "bns-2023:s:3:0",
+            "missing_windows": 1,
+            "page_range": [
+              20,
+              21
+            ]
+          },
+          {
+            "id": "bns-2023:s:9:0",
+            "missing_windows": 1,
+            "page_range": [
+              23,
+              23
+            ]
+          },
+          {
+            "id": "bns-2023:s:14:0",
+            "missing_windows": 1,
+            "page_range": [
+              24,
+              24
+            ]
+          },
+          {
+            "id": "bns-2023:s:19:0",
+            "missing_windows": 1,
+            "page_range": [
+              25,
+              25
+            ]
+          }
+        ],
+        "threshold": 0.99
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "parents": 358,
+        "markers": 358,
+        "problems": []
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "limit": 3000,
+        "flagged_long_unsplit": [
+          [
+            "101",
+            0
+          ],
+          [
+            "111",
+            0
+          ],
+          [
+            "113",
+            0
+          ],
+          [
+            "129",
+            0
+          ],
+          [
+            "189",
+            0
+          ],
+          [
+            "2",
+            0
+          ],
+          [
+            "3",
+            0
+          ],
+          [
+            "303",
+            0
+          ],
+          [
+            "314",
+            0
+          ],
+          [
+            "316",
+            0
+          ],
+          [
+            "318",
+            0
+          ],
+          [
+            "324",
+            0
+          ],
+          [
+            "335",
+            0
+          ],
+          [
+            "356",
+            0
+          ],
+          [
+            "358",
+            0
+          ],
+          [
+            "46",
+            0
+          ]
+        ],
+        "unflagged_over_limit": [],
+        "longest_text": 12634
+      }
+    },
+    "G9": {
+      "status": "PASS",
+      "evidence": {
+        "footnotes_total": 1,
+        "footnotes_attached": 0,
+        "footnotes_unattached": 1,
+        "footnotes_ambiguous": 0,
+        "footnote_lines_detected": 2,
+        "labelled_footnote_lines": 2,
+        "attached_lines": 0,
+        "unattached_lines": 2,
+        "scope_boundaries": 97,
+        "chapter_notes": 0,
+        "groups": 1,
+        "accounting_ok": true,
+        "records_containing_footnote_lines": []
+      }
+    }
+  },
+  "summary": "OK"
+}

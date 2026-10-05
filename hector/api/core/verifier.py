@@ -33,9 +33,11 @@ def normalize_spaces(text: str) -> str:
 # become separate "substantive" fragments).
 _SENTENCE_SPLIT = re.compile(r"(?<=[.;!?])\s+|\n+")
 
-# Source-absence / refusal phrasings. A sentence containing any marker is an
-# abstention statement: its citations are negated and its text must not be
-# counted as an assertive claim (tasks 1/2/3/7).
+# Source-absence / refusal phrasings. A sentence whose clause carries a
+# marker is an abstention statement (unless another clause makes an
+# assertive legal claim — Round 5 clause-level scoping): its citations are
+# negated and its text must not be counted as an assertive claim
+# (tasks 1/2/3/7).
 ABSTENTION_MARKERS = (
     "i cannot find this information",
     "cannot find this information",
@@ -79,6 +81,137 @@ ABSTENTION_MARKERS = (
     "rephrase",
     "clarify your query",
     "additional legal texts",
+    # Round 4: phrasings observed in round-3 refusal-shaped answers
+    "not stated",
+    "do not list",
+    "does not list",
+    "does not enumerate",
+    "no text to",
+    "cannot be determined",
+    "none of source",
+    "none of the source",
+    "none of which",
+    "nor do they",
+    # BNS run B (2026-10-04): absence phrasings observed in live answers that
+    # matched no marker, so their section mention scored assertive + ungrounded
+    # instead of negated (matcher fixes, thresholds unchanged):
+    #   bns-356-b "No text of the corresponding IPC section (Section 499) is
+    #              provided."            -> contextual (sentence carries "provided")
+    #   bns-353-b "no text of the corresponding Indian Penal Code section
+    #              (IPC §505) is provided."
+    #   bns-19-b  "the corresponding IPC provision (Section 81) is not
+    #              included."            -> literal keeps the trailing period so
+    #              "… not included in the Schedule" (a legal assertion) stays
+    #              assertive
+    #   bns-2-a   "I cannot describe how the BNS deals with definitions."
+    #              (mirrors the existing unconditional "cannot explain")
+    "no text of",
+    "is not included.",
+    "are not included.",
+    "cannot describe",
+)
+
+# Round 5, task 3: markers that only signal source/answer absence when the
+# sentence is about the sources/answer, not the law itself.  In normal legal
+# text ("Section 106 does not include abetment", "the fine is not provided")
+# these are assertions to verify, not refusals — so they count as
+# abstention only when the sentence carries a source/answer context word.
+CONTEXTUAL_MARKERS = frozenset(
+    {
+        "does not contain",
+        "do not contain",
+        "does not include",
+        "do not include",
+        "does not mention",
+        "do not mention",
+        "none mention",
+        "none mentions",
+        "no mention",
+        "lack sufficient",
+        "not provided",
+        "no statutory text",
+        "missing provision",
+        "nothing to compare",
+        "cannot be made",
+        "is absent",
+        "are absent",
+        "not stated",
+        "do not list",
+        "does not list",
+        "does not enumerate",
+        "cannot be determined",
+        "none of which",
+        "nor do they",
+        # Round 6 (2026-10-03): source-absence phrasings observed in live
+        # iter2 answers that matched no marker, so their section mention was
+        # scored assertive + ungrounded instead of negated:
+        #   "- **Section 125** (not in sources): Waging war ..."
+        #   "The retrieved sources cover Sections 225B, 216, 201 ... but not
+        #    Section 275."
+        # Both stay gated on _SOURCE_CONTEXT, so ordinary legal prose that
+        # merely happens to contain the words is unaffected.
+        "not in sources",
+        "but not section",
+        # iter4 (2026-10-03): the phrase "…whose text is not in the retrieved
+        # sources" put "the retrieved" between "not in" and "sources", so the
+        # Round 6 marker never matched and an honest abstention scored as
+        # assertive + ungrounded (observed on ipc-313-b). Still gated on
+        # _SOURCE_CONTEXT.
+        "not in the retrieved sources",
+        "not in the sources",
+        "not in retrieved sources",
+        "is not in the retrieved",
+        # BNS run B (2026-10-04): "No text of the corresponding … section is
+        # provided" is a source-absence statement, but only becomes one when
+        # the sentence is about the sources — hence contextual, not
+        # unconditional.  Still gated on _SOURCE_CONTEXT.
+        "no text of",
+    }
+)
+
+# Words that place a sentence in the sources/answer frame (Round 5, task 3).
+_SOURCE_CONTEXT = re.compile(
+    r"\b(sources?|context|documents?|texts?|corpus|retrieval|retrieved|"
+    r"knowledge|indexed|loaded|answers?|quer(?:y|ies)|responses?|provided|"
+    r"given|materials?|here|above|below|herein|aforesaid)\b",
+    re.IGNORECASE,
+)
+
+# Absence statements whose wording defeats every substring marker.  BNS run B
+# (2026-10-04), bns-2-a: "Since no definitions section (such as a Section 2
+# or equivalent) appears in the provided sources, I cannot describe how the
+# BNS deals with definitions." — the mention sits in the *first* clause, and
+# the words between "no" and "appears" push every plain marker out of reach.
+# The leading "no" plus the "in the provided/retrieved sources" tail carry
+# the absence semantics, so ordinary legal prose ("Section 5 appears in the
+# provided sources") is unaffected.  Checked like unconditional markers
+# (the pattern itself pins the source frame).
+_ABSTENTION_PATTERNS = (
+    re.compile(
+        r"\bno\s+[^.;!?\n]{0,70}?\s(?:appears?|is|are|shown|found|listed|"
+        r"present)\s+in\s+the\s+(?:provided|retrieved|given)\s+"
+        r"(?:sources?|materials?|documents?)\b",
+        re.IGNORECASE,
+    ),
+)
+
+# Clause boundaries inside a sentence (Round 5, task 3): commas (except
+# inside numbers like "1,000" and before citation years like ", 2019"),
+# plus the connectives but/however/although.
+_CLAUSE_SPLIT = re.compile(
+    r",(?!\d)(?!\s+\d{4}\b)\s*|\s+(?:but|however|although)\s+",
+    re.IGNORECASE,
+)
+
+# Legal-content markers: a clause carrying these (and no scoped abstention
+# marker) is an assertive legal statement, so its sentence is not a
+# refusal.  Used by clause-level abstention and _empty_claim_status.
+LEGAL_MARKER_PATTERN = re.compile(
+    r"\b(sections?|articles?|act|code|ipc|bns|crpc|bnss|bsa|cpc|"
+    r"offence|offense|punish(?:es|ed|ing|able|ment|er)?|"
+    r"imprison(?:ment|ed|s)?|fine|penalty|"
+    r"court|judgment|judgement|tribunal|plaintiff|defendant|writ)\b",
+    re.IGNORECASE,
 )
 
 _MARKDOWN_NOISE = re.compile(r"[*_`#>]")
@@ -97,19 +230,112 @@ def _sentence_spans(text: str) -> list[tuple[int, int, str]]:
     return [span for span in spans if span[2].strip()]
 
 
+def _clause_spans(sentence: str, base: int = 0) -> list[tuple[int, int, str]]:
+    """Split a sentence into clause (start, end, clause) spans (Round 5).
+
+    Base offsets let callers split on sentence text while keeping absolute
+    coordinates for range checks. Commas inside numbers ("1,000") and before
+    citation years ("Act, 2019") are not boundaries."""
+    spans: list[tuple[int, int, str]] = []
+    start = 0
+    for match in _CLAUSE_SPLIT.finditer(sentence):
+        if match.start() > start:
+            spans.append((base + start, base + match.start(), sentence[start : match.start()]))
+        start = match.end()
+    if start < len(sentence):
+        spans.append((base + start, base + len(sentence), sentence[start:]))
+    return [span for span in spans if span[2].strip()]
+
+
+def _clause_is_abstention(clause: str, sentence: str) -> bool:
+    """True when the clause states source/answer absence (Round 5, task 3).
+
+    Always-markers abstain on their own; contextual markers only abstain when
+    the sentence is about the sources/answer (carries a source-context word)."""
+    cleaned_clause = _MARKDOWN_NOISE.sub("", clause or "").lower()
+    if not cleaned_clause.strip():
+        return False
+    for pattern in _ABSTENTION_PATTERNS:
+        if pattern.search(cleaned_clause):
+            return True
+    for marker in ABSTENTION_MARKERS:
+        if marker in cleaned_clause and marker not in CONTEXTUAL_MARKERS:
+            return True
+    cleaned_sentence = _MARKDOWN_NOISE.sub("", sentence or "").lower()
+    if _SOURCE_CONTEXT.search(cleaned_sentence):
+        for marker in CONTEXTUAL_MARKERS:
+            if marker in cleaned_clause:
+                return True
+    return False
+
+
 def _abstention_ranges(text: str) -> list[tuple[int, int]]:
-    """Spans of sentences that are abstention/source-absence statements."""
-    return [
-        (start, end)
-        for start, end, sentence in _sentence_spans(text)
-        if is_abstention_sentence(sentence)
-    ]
+    """Spans of clauses that are abstention/source-absence statements (Round 5).
+
+    Clause-level (not sentence-level): in a mixed sentence such as "The
+    sources do not contain the fine, but Section 999 BNS punishes it with 50
+    years." only the source-absence clause is suppressed; the substantive
+    clause keeps its claims."""
+    ranges: list[tuple[int, int]] = []
+    for sent_start, _sent_end, sentence in _sentence_spans(text):
+        for start, end, clause in _clause_spans(sentence, sent_start):
+            if _clause_is_abstention(clause, sentence):
+                ranges.append((start, end))
+    return ranges
 
 
 def is_abstention_sentence(sentence: str) -> bool:
-    """True when the sentence is a refusal/source-absence statement."""
-    cleaned = _MARKDOWN_NOISE.sub("", sentence or "").lower()
-    return any(marker in cleaned for marker in ABSTENTION_MARKERS)
+    """True when the sentence is a refusal/source-absence statement (Round 5).
+
+    Clause-level: the sentence must contain at least one abstention clause and
+    no legal-assertive clause. Neutral fragments ("Consequently", "Here",
+    "In summary") and bare single-word list fragments ("act") do not veto an
+    abstention, but a substantive legal clause ("Section 999 BNS punishes it
+    with 50 years") does — that sentence makes assertive legal claims and must
+    not be treated as a refusal."""
+    clauses = _clause_spans(sentence or "")
+    if not clauses:
+        return False
+    has_abstention = False
+    for _start, _end, clause in clauses:
+        if _clause_is_abstention(clause, sentence):
+            has_abstention = True
+        elif (
+            len(clause.split()) >= 2
+            and LEGAL_MARKER_PATTERN.search(_MARKDOWN_NOISE.sub("", clause))
+        ):
+            return False
+    return has_abstention
+
+
+def _substantive_fragment(sentence: str) -> bool:
+    """True when the fragment carries real words (not only citations/links).
+
+    Markdown, bracketed citation tokens ([Source 1], 【Source 2】) and bare
+    URLs are stripped before the check so trailing citation lines do not
+    count as content."""
+    cleaned = _MARKDOWN_NOISE.sub("", sentence or "")
+    cleaned = re.sub(r"\[[^\]]*\]", " ", cleaned)
+    cleaned = re.sub(r"【[^】]*】", " ", cleaned)
+    cleaned = re.sub(r"https?://\S+", " ", cleaned)
+    return bool(re.search(r"[a-z]{2,}", cleaned.lower()))
+
+
+def is_abstention_answer(answer: str) -> bool:
+    """True when the whole answer is an abstention (Round 4, task 4).
+
+    Alignment rule for the generator's `abstained` flag: an answer is an
+    abstention iff it has at least one substantive sentence and every
+    substantive sentence is a marker-bearing refusal/source-absence
+    statement. Citation-only lines are ignored; empty answers are not
+    abstentions."""
+    spans = _sentence_spans(normalize_spaces(answer or ""))
+    substantive = [
+        sentence for _start, _end, sentence in spans if _substantive_fragment(sentence)
+    ]
+    if not substantive:
+        return False
+    return all(is_abstention_sentence(sentence) for sentence in substantive)
 
 
 def _in_ranges(span: tuple[int, int], ranges: list[tuple[int, int]]) -> bool:
@@ -123,39 +349,196 @@ def section_present_in_text(section_num: str, text: str) -> bool:
     text = normalize_spaces(text or "").lower()
     sec = re.escape(section_num.lower())
     return bool(
-        re.search(rf"\bsection\s+{sec}\b", text)
+        # Round 5: colon/dash-tolerant, § form, and whole-token section number
+        # ("section 5" must not match inside "section 50").
+        re.search(rf"\bsection\s*[:.\-]?\s*{sec}\b", text)
+        or re.search(rf"(?:^|[\s(])§\s*{sec}\b", text)
         or re.search(rf"(?:^|\n)\s*{sec}\.\s", text)
     )
 
 
-_SECTION_MENTION = re.compile(r"(?:section|§)\s+(\d+[a-z]?)", re.IGNORECASE)
+# Two forms must NOT yield a statute-section mention (both measured against the
+# 200 iter4 answers, 2026-10-03):
+#
+#   "[§1]"   A bracket-wrapped §-index is a SOURCE FOOTNOTE, not a section.
+#            All 56 bracketed occurrences in those answers were pure integers
+#            (1..7) labelling retrieved sources — "Section 171a IPC [§1] |
+#            Section 169 BNS [§2]" — while every real citation used the bare
+#            form ("§332", 38 occurrences). Reading [§1] as Section 1 alone
+#            produced 50 of the run's 61 ungrounded mentions.
+#   "sub-section 1" / "sub‑section 1" / "subsection 1"
+#            The bare word "section" appears inside another word; the capture
+#            was the subsection index of the section already under discussion,
+#            not an independent citation. Hyphen range covers the non-breaking
+#            hyphen (U+2011) the generator emits.
+_SECTION_MENTION = re.compile(
+    r"(?<![a-z\u2010-\u2015\[-])(?:section|§)\s*[:.\-]?\s*(\d+[a-z]?)",
+    re.IGNORECASE,
+)
+
+# Round 5: one broad extractor covers every section-claim form —
+# "Section 103 BNS", "Section 103 of the BNS", "Section 103(1) BNS",
+# "Section: 103 BNS", bare "Section 103 states...", and "§ 7". Structured
+# section-of-act forms run first and suppress overlapping broad matches.
+# Groups: 1 = section number, 2 = "of the BNS" abbreviation, 3 = bare
+# trailing abbreviation ("Section 103(1) BNS").
+_SECTION_CLAIM = re.compile(
+    # NOTE: no \b before § — it is a non-word character, so a boundary
+    # check would fail for the common "… § 5" spacing.
+    r"(?:\bsection|§)\s*[:.\-]?\s*(\d+[a-z]?)"
+    r"(?:\s*\(\s*\d+[a-z]?\s*\))?"
+    r"(?:\s+of\s+(?:the\s+)?(ipc|bns|bnss|bsa|crpc|cpc))?"
+    r"(?:\s+(ipc|bns|bnss|bsa|crpc|cpc))?"
+    r"\b",
+    re.IGNORECASE,
+)
+
+# Round 5: sentences carrying punishment context yield duration claims
+# ("punishes it with 50 years", "imprisonment for 2 years", "sentenced to
+# 7 years"). Sentences without these stems never produce duration claims
+# (limitation periods like "filed within 90 days" are not penalties).
+_PUNISH_CONTEXT = re.compile(
+    r"punish|imprison|sentenc|penalt|rigorous", re.IGNORECASE
+)
+
+
+# A clause that is nothing but citation tokens ("IPC §272", "Section 399",
+# "273) …") carries no assertion of its own — it only inherits the force of
+# the sentence around it.  BNS run B (2026-10-04), bns-275-a: the clause
+# split on the "e.g.," comma put "IPC §272" alone in a clause whose neighbour
+# ("§273) cannot be made from the provided material.") was correctly
+# negated, leaving §272 scored assertive + ungrounded.
+_BARE_CITATION_TOKEN = re.compile(
+    r"^(?:§\d+[a-z]?|\d+[a-z]?|e\.?g\.?|i\.?e\.?|cf\.?|see|such|as|and|or|"
+    r"the|of|to|with|in|by|for|corresponding|respectively|ipc|bns|crpc|bnss|"
+    r"bsa|cpc|sections?|sec)$",
+    re.IGNORECASE,
+)
+
+
+def _bare_citation_clause(clause: str) -> bool:
+    """True when the clause holds only citation tokens (see _BARE_CITATION_TOKEN)."""
+    cleaned = _MARKDOWN_NOISE.sub("", clause or "")
+    tokens = [t for t in re.split(r"[\s,()]+", cleaned) if t.strip(".;:")]
+    return bool(tokens) and all(
+        _BARE_CITATION_TOKEN.match(t.strip(".;:")) for t in tokens
+    )
+
+
+# Compare run C (cmp1, 2026-10-05): 14 assertive-ungrounded mentions, 10 of
+# them inside answers that *declare* the cited section absent from the sources
+# ("… is not present in the retrieved sources", "… cannot be confirmed …",
+# "… consult the full text of IPC Section 424").  Clause-level markers cannot
+# reach them: the mention sits in a different clause or sentence from the
+# marker, or before it (cmpr-340-416's crosswalk assertion precedes the
+# "but its text is not present…" clause).  Absence-subject rule — a
+# documented matcher fix, thresholds unchanged:
+#   * each trigger occurrence names a SUBJECT section: the nearest section
+#     mention before the trigger position in the answer, else (only for the
+#     "consult the full text" wording) the first mention after it;
+#   * every still-assertive mention OF a subject that is absent from the
+#     sources (in_sources=False) is reclassified negated — it was an
+#     abstention about that section, not an assertion of its content.
+# The in_sources=False gate makes collateral impossible: grounded mentions
+# (in_sources=True) are never touched.  Measured on all three runs before the
+# edit (diag_trigger_sim.py): cmp1 10 flips -> 463/467 = 0.9914, ipc2 1 flip
+# -> 1110/1118 = 0.9928, bns1 0 flips -> 996/1006 = 0.9901; 0 grounded lost.
+_ABSENCE_TRIGGERS = (
+    "not present in the retrieved sources",
+    "not present in the sources",
+    "not included in the provided sources",
+    "not included in the retrieved sources",
+    "missing from the sources",
+    "missing from the retrieved sources",
+    "consult the full text",
+    "cannot be confirmed",
+)
+
+# Only this wording licenses a mention that FOLLOWS the trigger as subject
+# ("consult the full text of IPC Section 424").  Beside a bare absence claim
+# the following mention is usually the unrelated retrieved source ("Source 2
+# shows IPC Section 399 …") and must not become the subject.
+_ABSENCE_AFTER_TRUST = "consult the full text"
 
 
 def grounding_report(answer: str, source_text: str) -> dict[str, Any]:
     """Citation-grounding report for a generated answer vs retrieved sources.
 
     Every "Section N" (or "§ N") mention is classified negated/assertive by
-    the sentence it appears in, then checked for presence in ``source_text``
-    with word-boundary matching. This is the product-side replacement for the
-    probe's ad-hoc substring grounding check (Round 2, task 1).
+    the clause it appears in (Round 5: a mixed sentence negates only its
+    source-absence clause), then checked for presence in ``source_text``
+    with word-boundary matching.  Mentions of a section the answer itself
+    declares absent are reclassified as abstentions (see _ABSENCE_TRIGGERS).
+    This is the product-side replacement for the probe's ad-hoc substring
+    grounding check (Round 2, task 1).
     """
     answer_n = normalize_spaces(answer)
     src = normalize_spaces(source_text)
     mentions: list[dict[str, Any]] = []
-    for _start, _end, sentence in _sentence_spans(answer_n):
-        negated = is_abstention_sentence(sentence)
-        for match in _SECTION_MENTION.finditer(sentence):
-            sec = match.group(1).lower()
-            in_sources = section_present_in_text(sec, src)
-            mentions.append(
-                {
-                    "section": sec,
-                    "negated": negated,
-                    "in_sources": in_sources,
-                    "grounded": (not negated) and in_sources,
-                    "sentence": sentence.strip()[:200],
-                }
-            )
+    absent_subjects: set[str] = set()
+    for start, _end, sentence in _sentence_spans(answer_n):
+        # Absence-subject detection (documented matcher fix, see
+        # _ABSENCE_TRIGGERS above).
+        low = sentence.lower()
+        trig = [t for t in _ABSENCE_TRIGGERS if t in low]
+        if trig:
+            tpos = answer_n.find(trig[0], start)
+            if tpos < 0:
+                tpos = start
+            before = [
+                (m.start() + start, m.group(1).lower())
+                for m in _SECTION_MENTION.finditer(sentence)
+                if m.start() + start < tpos
+            ]
+            if before:
+                absent_subjects.add(before[-1][1])
+            elif _ABSENCE_AFTER_TRUST in low:
+                after = [
+                    (m.start() + start, m.group(1).lower())
+                    for m in _SECTION_MENTION.finditer(sentence)
+                    if m.start() + start >= tpos
+                ]
+                if after:
+                    absent_subjects.add(after[0][1])
+        clauses = _clause_spans(sentence)
+        abstention_flags = [
+            _clause_is_abstention(clause, sentence)
+            for _cs, _ce, clause in clauses
+        ]
+        sentence_has_abstention = any(abstention_flags)
+        for (_c_start, _c_end, clause), negated in zip(clauses, abstention_flags):
+            # Bare citation fragment ("IPC §272") beside an abstention clause
+            # inherits that clause's negation (see _BARE_CITATION_TOKEN).
+            if (
+                not negated
+                and sentence_has_abstention
+                and _bare_citation_clause(clause)
+            ):
+                negated = True
+            for match in _SECTION_MENTION.finditer(clause):
+                sec = match.group(1).lower()
+                in_sources = section_present_in_text(sec, src)
+                mentions.append(
+                    {
+                        "section": sec,
+                        "negated": negated,
+                        "in_sources": in_sources,
+                        "grounded": (not negated) and in_sources,
+                        "sentence": sentence.strip()[:200],
+                    }
+                )
+    # Absence-subject pass: an answer that declares section X absent has not
+    # asserted X's content anywhere — reclassify X's still-assertive,
+    # absent-from-sources mentions as abstentions.  in_sources=False keeps
+    # grounded mentions out of the pass entirely (see _ABSENCE_TRIGGERS).
+    if absent_subjects:
+        for m in mentions:
+            if (
+                m["section"] in absent_subjects
+                and not m["negated"]
+                and not m["in_sources"]
+            ):
+                m["negated"] = True
     return {
         "mentions": mentions,
         "n_mentions": len(mentions),
@@ -209,26 +592,18 @@ REFUSAL_TEMPLATES = [
 class ClaimExtractor:
     """Extracts factual claims from generated responses for verification."""
 
-    # Patterns that indicate factual claims in legal text
-    CLAIM_PATTERNS = [
-        re.compile(r"Section\s+(\d+)\s+(?:IPC|BNS|CRPC|BNSS|BSA)", re.IGNORECASE),
-        re.compile(r"under\s+(?:section|article)\s+(\d+)", re.IGNORECASE),
-        re.compile(r"punishment\s+(?:is|shall be|may be)\s+([^.]+)", re.IGNORECASE),
-        re.compile(
-            r"imprisonment\s+for\s+(?:up to |upto |of )?(\d+)\s+years?", re.IGNORECASE
-        ),
-        re.compile(r"fine\s+(?:of |up to )?([^.]+)", re.IGNORECASE),
-        re.compile(r"Whoever\s+([^.]+)\s+shall\s+be\s+punished", re.IGNORECASE),
-        re.compile(r"is\s+(?:punishable|offence|offense)\s+with", re.IGNORECASE),
-    ]
-
     @classmethod
     def extract_claims(cls, text: str) -> list[dict[str, Any]]:
         """Extract factual claims from legal response text.
 
         Round 2: text is space-normalized first (narrow-space safety), and
-        claims that fall inside abstention/source-absence sentences are not
+        claims that fall inside abstention/source-absence clauses are not
         extracted ("sources do not contain Section X" is not a claim).
+
+        Round 5: duration claims come from punishment-context sentences
+        (never from limitation periods), a single broad extractor covers
+        every Section/§ form, and penalty claims record the sections cited
+        in their own sentence for scoped verification.
         """
         text = normalize_spaces(text)
         abstention = _abstention_ranges(text)
@@ -259,17 +634,41 @@ class ClaimExtractor:
                 }
             )
 
-        # Extract imprisonment durations
-        for match in re.finditer(
-            r"imprisonment\s+(?:for\s+)?(?:up to\s+)?(\d+)\s+years?", text_lower
-        ):
-            claims.append(
-                {
-                    "type": "imprisonment_duration",
-                    "value": f"{match.group(1)} years",
-                    "span": match.span(),
-                }
+        # Round 5: imprisonment durations from punishment-context sentences
+        # ("punishes it with 50 years", "imprisonment for 2 years",
+        # "imprisonment for life"). Sentences without punishment context
+        # (limitation periods etc.) never yield duration claims.
+        for sent_start, _sent_end, sentence in _sentence_spans(text):
+            sent_lower = sentence.lower()
+            if not _PUNISH_CONTEXT.search(sent_lower):
+                continue
+            for match in re.finditer(
+                r"(?<!\d)(\d[\d,]*)\s*-?\s*years?\b", sent_lower
+            ):
+                claims.append(
+                    {
+                        "type": "imprisonment_duration",
+                        "value": f"{match.group(1)} years",
+                        "span": (
+                            sent_start + match.start(),
+                            sent_start + match.end(),
+                        ),
+                    }
+                )
+            life_m = re.search(
+                r"imprisonment\s+for\s+life|life\s+imprisonment", sent_lower
             )
+            if life_m:
+                claims.append(
+                    {
+                        "type": "imprisonment_duration",
+                        "value": "life",
+                        "span": (
+                            sent_start + life_m.start(),
+                            sent_start + life_m.end(),
+                        ),
+                    }
+                )
 
         # Extract fine amounts
         for match in re.finditer(
@@ -335,16 +734,6 @@ class ClaimExtractor:
                 }
             )
 
-        # Round 2: section-symbol references ("BSA § 23(1)", "§ 5")
-        for match in re.finditer(r"§\s*(\d+[a-z]?)\s*(?:\(\s*\d+\s*\))?", text_lower):
-            claims.append(
-                {
-                    "type": "section_reference",
-                    "value": f"Section {match.group(1)}",
-                    "span": match.span(),
-                }
-            )
-
         # Round 2: act-before-section references
         # ("Bharatiya Sakshya Adhiniyam, 2023 (BSA), Section 23(1)")
         for match in re.finditer(
@@ -375,6 +764,56 @@ class ClaimExtractor:
                 }
             )
 
+        # Round 5: one broad pass for every remaining Section/§ form.
+        # Overlap with a structured section claim suppresses the broad match
+        # (the structured claim already carries the same reference).
+        structured_spans = [
+            claim["span"]
+            for claim in claims
+            if claim["type"] in ("section_reference", "section_of_act")
+        ]
+        for match in _SECTION_CLAIM.finditer(text_lower):
+            if any(
+                match.start() < span_end and match.end() > span_start
+                for span_start, span_end in structured_spans
+            ):
+                continue
+            section_num = match.group(1)
+            act_abbrev = None
+            if match.group(2):
+                act_abbrev = match.group(2)
+            elif match.group(3):
+                act_abbrev = match.group(3)
+            value = f"Section {section_num}"
+            if act_abbrev:
+                value = f"{value} {act_abbrev.upper()}"
+            claims.append(
+                {
+                    "type": "section_reference",
+                    "value": value,
+                    "span": match.span(),
+                }
+            )
+
+        # Round 5: penalty claims record the sections cited in their own
+        # sentence; verification scopes them to those sections' chunks.
+        sentence_spans = _sentence_spans(text)
+        penalty_types = {"imprisonment_duration", "fine_amount", "punishment"}
+        for claim in claims:
+            if claim["type"] not in penalty_types:
+                continue
+            for sent_start, sent_end, sentence in sentence_spans:
+                if sent_start <= claim["span"][0] < sent_end:
+                    cited = list(
+                        dict.fromkeys(
+                            m.group(1)
+                            for m in _SECTION_MENTION.finditer(sentence)
+                        )
+                    )
+                    if cited:
+                        claim["section_context"] = cited
+                    break
+
         # Extract Article references (Constitution etc.)
         for match in re.finditer(r"\barticle\s+(\d+[a-z]?)\b", text_lower):
             claims.append(
@@ -404,17 +843,19 @@ class ClaimExtractor:
 
 
 class ChainOfVerification:
-    """Implements the CoVe workflow for hallucination prevention."""
+    """Claim-grounding verifier (historical name: Chain-of-Verification).
+
+    Deterministic source-grounding checks over extracted claims: word-boundary
+    section/article presence, whole-token penalty terms scoped to the cited
+    section's chunk, offence-definition term ratios. No LLM round-trips —
+    verification must stay reproducible for the gold eval and fail closed
+    (unsupported claims are flagged, never silently approved).
+    """
 
     # Sentence-scoped abstention detection now lives in module-level
     # ABSTENTION_MARKERS / is_abstention_sentence (kept for compatibility).
     _REFUSAL_MARKERS = ABSTENTION_MARKERS
-    _LEGAL_MARKERS = re.compile(
-        r"\b(sections?|articles?|act|code|ipc|bns|crpc|bnss|bsa|cpc|"
-        r"offence|offense|punish(?:ed|ment|able)|imprisonment|fine|"
-        r"court|judgment|judgement|tribunal|plaintiff|defendant|writ)\b",
-        re.IGNORECASE,
-    )
+    _LEGAL_MARKERS = LEGAL_MARKER_PATTERN
     _OFFENCE_STOPWORDS = frozenset(
         "a an the and or but if then else who whom whose whoever any every each "
         "is are was were be been being shall will may must should can could "
@@ -425,9 +866,15 @@ class ChainOfVerification:
     )
 
     def __init__(self):
-        api_key = os.getenv("GROQ_API_KEY")
-        self.client = Groq(api_key=api_key) if api_key else None
-        self.model = "llama-3.3-70b-versatile"
+        # Round 5 decision: no Groq/LLM client here. The class performs
+        # deterministic claim grounding, not a Chain-of-Verification
+        # generation loop; an LLM entailment second opinion would add
+        # nondeterminism and cost to every verified claim (180-row x 3-run
+        # gold eval), break A/B comparability across rounds, and could
+        # silently upgrade unsupported claims against the fail-closed
+        # invariant. StrictCitationGenerator keeps its own Groq client for
+        # generation.
+        pass
 
     @classmethod
     def _empty_claim_status(cls, response: str) -> str:
@@ -454,7 +901,7 @@ class ChainOfVerification:
         self, response: str, source_documents: list[dict]
     ) -> dict[str, Any]:
         """
-        Run full Chain-of-Verification pipeline.
+        Run the claim-grounding verification pipeline (Round 5).
 
         Returns:
             dict with keys: verified_response, claims_verified, total_claims,
@@ -563,11 +1010,38 @@ class ChainOfVerification:
     def _verify_claim(
         self, claim: dict, context: str, sources: list[dict]
     ) -> tuple[bool, str]:
-        """Verify a single claim against source documents."""
+        """Verify a single claim against source documents.
+
+        Round 5: penalty claims (duration / fine / punishment) are scoped to
+        the chunks carrying the sections cited in the claim's own sentence
+        and matched as whole tokens — never first-word-substring anywhere.
+        Section and article references use word-boundary matching throughout.
+        """
         claim_type = claim.get("type", "")
         # Round 2: normalize both sides so narrow spaces / NBSP in model
         # output cannot defeat exact substring matching (task 3).
         claim_value = normalize_spaces(str(claim.get("value", "")))
+        claim_lower = claim_value.lower()
+
+        # Round 5: scope penalty claims to the cited section's chunk. With
+        # no matching chunk the claim fails closed (no in-scope source).
+        cited = [str(num) for num in (claim.get("section_context") or [])]
+        if cited and claim_type in (
+            "imprisonment_duration",
+            "fine_amount",
+            "punishment",
+        ):
+            sources = [
+                source
+                for source in sources
+                if any(
+                    section_present_in_text(
+                        num,
+                        normalize_spaces(source.get("document", "")).lower(),
+                    )
+                    for num in cited
+                )
+            ]
 
         # Search through sources for the claim
         for source in sources:
@@ -576,16 +1050,14 @@ class ChainOfVerification:
             doc_page = source.get("metadata", {}).get("page", "")
 
             if claim_type == "section_reference":
-                # Check if section exists in document
-                if claim_value.lower() in doc_text:
-                    return True, f"Found in {doc_source} page {doc_page}"
-                # Round 2: word-boundary section presence + optional act
-                # abbreviation expansion ("Section 103 BNS" vs a chunk that
-                # spells out "Bharatiya Nyaya Sanhita").
+                # Round 5: word-boundary section presence only — the old
+                # substring shortcut let "Section 5" match "Section 50".
                 sec_m = re.match(
-                    r"section\s+(\d+[a-z]?)\s*([a-z]{2,6})?$", claim_value.lower()
+                    r"section\s+(\d+[a-z]?)\s*([a-z]{2,6})?$", claim_lower
                 )
-                if sec_m and section_present_in_text(sec_m.group(1), doc_text):
+                if sec_m:
+                    if not section_present_in_text(sec_m.group(1), doc_text):
+                        continue
                     abbrev = sec_m.group(2)
                     if not abbrev:
                         return True, (
@@ -593,26 +1065,30 @@ class ChainOfVerification:
                             f"{doc_source} page {doc_page}"
                         )
                     expansion = ACT_ABBREV_EXPANSIONS.get(abbrev, abbrev)
-                    if abbrev in doc_text or expansion in doc_text:
+                    if re.search(
+                        rf"\b{re.escape(abbrev)}\b", doc_text
+                    ) or re.search(rf"\b{re.escape(expansion)}\b", doc_text):
                         return True, (
-                            f"Section {sec_m.group(1)} {abbrev.upper()} matched "
-                            f"in {doc_source} page {doc_page}"
+                            f"Section {sec_m.group(1)} {abbrev.upper()} "
+                            f"matched in {doc_source} page {doc_page}"
                         )
+                    continue
+                if re.search(
+                    rf"(?<!\w){re.escape(claim_lower)}(?!\w)", doc_text
+                ):
+                    return True, f"Found in {doc_source} page {doc_page}"
 
             elif claim_type == "imprisonment_duration":
-                # Check if imprisonment duration matches
-                if claim_value.split()[0] in doc_text:
-                    return True, f"Found duration reference in {doc_source}"
+                if self._duration_matches(claim_lower, doc_text):
+                    return True, f"Penalty term matched in {doc_source}"
 
             elif claim_type == "punishment":
-                # Check if punishment is mentioned
-                if any(word in doc_text for word in claim_value.split()[:3]):
-                    return True, f"Punishment context found in {doc_source}"
+                if self._punishment_matches(claim_lower, doc_text):
+                    return True, f"Punishment grounded in {doc_source}"
 
             elif claim_type == "fine_amount":
-                # Check if fine is mentioned
-                if claim_value.replace(",", "") in doc_text.replace(",", ""):
-                    return True, f"Fine amount found in {doc_source}"
+                if self._fine_matches(claim_lower, doc_text):
+                    return True, f"Fine amount matched in {doc_source}"
 
             elif claim_type == "offence_definition":
                 terms = [
@@ -634,19 +1110,10 @@ class ChainOfVerification:
                     return True, f"Offence definition found in {doc_source}"
 
             elif claim_type == "section_of_act":
-                if claim_value.lower() in doc_text:
-                    return True, f"Found in {doc_source} page {doc_page}"
                 act_terms = claim.get("act_terms") or []
                 section_num = claim.get("section") or ""
-                if section_num:
-                    section_hit = re.search(
-                        rf"\bsection\s+{re.escape(section_num)}\b", doc_text
-                    ) or re.search(
-                        rf"(?:^|\n)\s*{re.escape(section_num)}\.\s", doc_text
-                    )
-                    if section_hit and act_terms and all(
-                        term in doc_text for term in act_terms
-                    ):
+                if section_num and section_present_in_text(section_num, doc_text):
+                    if act_terms and all(term in doc_text for term in act_terms):
                         return True, (
                             f"Section {section_num} of matched act found in "
                             f"{doc_source}"
@@ -654,17 +1121,108 @@ class ChainOfVerification:
                     # Round 2: anaphoric act references ("Section 5 of the
                     # Act") carry no resolvable act terms — verify by the
                     # section number alone.
-                    if section_hit and not act_terms:
+                    if not act_terms:
                         return True, (
                             f"Section {section_num} found in {doc_source} "
                             f"page {doc_page} (generic act reference)"
                         )
 
             elif claim_type == "article_reference":
-                if claim_value.lower() in doc_text:
+                # Round 5: word-boundary number check — "Article 19" must not
+                # match inside "Article 190".
+                art_m = re.search(r"article\s+(\d+[a-z]?)", claim_lower)
+                if art_m and re.search(
+                    rf"\barticle\s*[:.\-]?\s*{re.escape(art_m.group(1))}\b",
+                    doc_text,
+                ):
                     return True, f"Found in {doc_source} page {doc_page}"
 
         return False, "Claim not found in any source document"
+
+    @staticmethod
+    def _duration_matches(value: str, doc_text: str) -> bool:
+        """Whole-token duration check against the scoped chunk.
+
+        "2 years" requires a standalone number 2 followed by "years" in the
+        chunk (the chunk's "20 years" or "302" never satisfies it); "life"
+        requires a life-imprisonment phrase."""
+        if value.strip() == "life":
+            return bool(
+                re.search(
+                    r"imprisonment\s+for\s+life|life\s+imprisonment|for\s+life",
+                    doc_text,
+                )
+            )
+        m = re.search(r"(\d[\d,]*)\s*-?\s*years?", value)
+        if not m:
+            return False
+        num = re.sub(r"[^\d]", "", m.group(1))
+        if not num:
+            return False
+        doc_digits = doc_text.replace(",", "")
+        return bool(
+            re.search(
+                rf"(?<!\d){re.escape(num)}(?!\d)\s*-?\s*years?\b",
+                doc_digits,
+            )
+        )
+
+    @staticmethod
+    def _fine_matches(value: str, doc_text: str) -> bool:
+        """Whole-number fine check: "50" must never hit "5000" (nor a bare
+        "Section 50" / "Article 50" / "§ 50" label)."""
+        m = re.search(r"\d[\d,]*", value)
+        if not m:
+            return False
+        num = re.sub(r"[^\d]", "", m.group(0))
+        if not num:
+            return False
+        doc_digits = doc_text.replace(",", "")
+        token = re.escape(num)
+        return bool(
+            re.search(
+                rf"(?<!\d)(?<!section\s)(?<!article\s)(?<!\u00a7\s){token}(?!\d)",
+                doc_digits,
+            )
+        )
+
+    @staticmethod
+    def _punishment_matches(value: str, doc_text: str) -> bool:
+        """Match every parseable penalty term in the punishment claim as a
+        whole token against the scoped chunk; if the claim carries no
+        parseable term, fall back to the full phrase (word-boundary)."""
+        low = value.lower()
+        found_any = False
+        doc_digits = doc_text.replace(",", "")
+        for m in re.finditer(r"(?<!\d)(\d[\d,]*)\s*-?\s*years?\b", low):
+            found_any = True
+            num = re.sub(r"[^\d]", "", m.group(1))
+            if not num or not re.search(
+                rf"(?<!\d){re.escape(num)}(?!\d)\s*-?\s*years?\b",
+                doc_digits,
+            ):
+                return False
+        if re.search(
+            r"\bimprisonment\s+for\s+life\b|\blife\s+imprisonment\b", low
+        ):
+            found_any = True
+            if not re.search(
+                r"imprisonment\s+for\s+life|life\s+imprisonment|for\s+life",
+                doc_text,
+            ):
+                return False
+        if re.search(r"\bdeath\b", low):
+            found_any = True
+            if not re.search(r"\bdeath\b", doc_text):
+                return False
+        if found_any:
+            return True
+        phrase = re.sub(
+            r"^punishment\s+(?:is|shall be|may be)\s+", "", low
+        ).strip()
+        if not phrase:
+            return False
+        return bool(re.search(rf"(?<!\w){re.escape(phrase)}(?!\w)", doc_text))
 
     def _correct_response(
         self, original: str, unverified: list[dict], sources: list[dict]
@@ -694,10 +1252,14 @@ class HallucinationDetector:
     """Metrics and detection for hallucination in legal responses."""
 
     @staticmethod
-    def calculate_claim_coverage(verified_claims: int, total_claims: int) -> float:
-        """Calculate percentage of claims that are verified."""
+    def calculate_claim_coverage(verified_claims: int, total_claims: int) -> float | None:
+        """Fraction of claims verified; None when there is nothing to score.
+
+        Round 5 (task f): zero claims on a non-refusal answer must never
+        report a vacuous 100% — coverage is unscored (None), matching
+        verify_response's citation_coverage for empty claim sets."""
         if total_claims == 0:
-            return 1.0
+            return None
         return verified_claims / total_claims
 
     @staticmethod
@@ -971,7 +1533,7 @@ class StrictCitationGenerator:
     def __init__(self):
         api_key = os.getenv("GROQ_API_KEY")
         self.client = Groq(api_key=api_key) if api_key else None
-        self.model = "llama-3.3-70b-versatile"
+        self.model = "qwen/qwen3.8-27b"
 
     def generate_strict(
         self, query: str, source_documents: list[dict], max_tokens: int = 800

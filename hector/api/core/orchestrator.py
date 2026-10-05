@@ -191,7 +191,8 @@ class HectorOrchestrator:
         sources = []
         try:
             response, sources, sub_timing = self._generate_strategic_response(
-                route, expanded_query, intent, mappings, entity_dict, qi_analysis
+                route, expanded_query, intent, mappings, entity_dict, qi_analysis,
+                raw_query=query,
             )
         except Exception as e:
             return f"Strategic failure: {str(e)}"
@@ -260,7 +261,8 @@ class HectorOrchestrator:
         return getattr(self, "_last_timing", {})
 
     def _generate_strategic_response(
-        self, route, query, intent, mappings=None, entities=None, qi_analysis=None
+        self, route, query, intent, mappings=None, entities=None, qi_analysis=None,
+        raw_query=None,
     ):
         """Internal logic to fetch either legal data or general scaling advice.
         Returns (response, sources, sub_timing_dict)."""
@@ -322,10 +324,10 @@ class HectorOrchestrator:
             t_search = _time.perf_counter()
             if has_section or has_act:
                 results = self.retriever.search_with_metadata_filters(
-                    query, entities, top_k=10
+                    query, entities, top_k=10, raw_query=raw_query
                 )
             else:
-                results = self.retriever.search(query, top_k=10)
+                results = self.retriever.search(query, top_k=10, raw_query=raw_query)
             sub_timing["search_ms"] = round((_time.perf_counter() - t_search) * 1000, 1)
 
             # Sub-stage: Re-rank
