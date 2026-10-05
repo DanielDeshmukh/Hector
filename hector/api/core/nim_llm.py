@@ -94,6 +94,13 @@ NIM_MODELS = {
         "HECTOR_NIM_QI_MODEL",
         "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
     ),
+    # Compare synthesis: small/fast JSON-formatting only (chunk-grounded).
+    # Verified 2026-10-05: nano-omni answers JSON mode in ~1.9s for this
+    # account; lightning ignores JSON mode (thinking preamble), nano-3 404s.
+    "compare": os.getenv(
+        "HECTOR_COMPARE_MODEL",
+        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+    ),
 }
 
 

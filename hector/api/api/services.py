@@ -8,6 +8,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from core import compare_synthesis
 from utils.retry import retry
 
 from .schemas import (
@@ -310,23 +311,25 @@ class HectorApiService:
         counterpart_section = None
         note = None
 
-        if request.act == "IPC":
+        # Registry-driven counterpart resolution (core.compare_synthesis.
+        # PAIR_COUNTERPART). Only registered act pairs get a counterpart;
+        # IPC<->BNS is the only live crosswalk (core/mapping.json), the
+        # CRPC/BNSS and IEA/BSA slots activate when those books land.
+        wanted = compare_synthesis.PAIR_COUNTERPART.get(request.act)
+        if wanted == "BNS":
             matched = mapping.get(request.section)
             if matched:
                 counterpart_act = "BNS"
                 counterpart_section = str(matched.get("new"))
                 note = matched.get("note")
-        else:
-            candidates = [
-                (ipc_section, mapped)
-                for ipc_section, mapped in mapping.items()
-                if str(mapped.get("new")).upper() == request.section
-            ]
-            if candidates:
+        elif wanted == "IPC":
+            entry = self._canonical_reverse().get(
+                str(request.section).strip().upper()
+            )
+            if entry:
                 counterpart_act = "IPC"
-                counterpart_section, note = self._pick_reverse_counterpart(
-                    request.section, candidates
-                )
+                counterpart_section = entry[0]
+                note = entry[1]
 
         # panel_pool widens the candidate pool beyond page_size so the
         # panel selector has the wanted act's cards to choose from even
@@ -362,6 +365,33 @@ class HectorApiService:
             counterpart_results, counterpart_act, counterpart_section, request.page_size
         )
 
+        # Grounded synthesis: fixed-aspect table + short message from a
+        # small model fed ONLY the two fetched provisions. Any failure
+        # falls back to the plain two-panel response ("fallback").
+        synthesis = "skipped"
+        table_rows: list[dict] = []
+        grounded_message: str | None = None
+        if (
+            counterpart_act
+            and counterpart_section
+            and requested_selected
+            and counterpart_selected
+        ):
+            synthesis = "fallback"
+            out = compare_synthesis.synthesize_comparison(
+                requested_act=request.act,
+                requested_section=request.section,
+                requested_items=requested_selected,
+                counterpart_act=counterpart_act,
+                counterpart_section=counterpart_section,
+                counterpart_items=counterpart_selected,
+                note=note,
+            )
+            if out:
+                synthesis = "ok"
+                table_rows = out["rows"]
+                grounded_message = out["message"]
+
         return CompareResponse(
             requested_act=request.act,
             requested_section=request.section,
@@ -370,6 +400,9 @@ class HectorApiService:
             note=note,
             requested_results=[self._to_hit(item) for item in requested_selected],
             counterpart_results=[self._to_hit(item) for item in counterpart_selected],
+            comparison_table=table_rows,
+            grounded_message=grounded_message,
+            synthesis=synthesis,
             compared_at=datetime.now(UTC),
         )
 
@@ -479,6 +512,29 @@ class HectorApiService:
             if score > best_score:
                 best_section, best_mapped, best_score = ipc_section, mapped, score
         return best_section, best_mapped.get("note")
+
+    def _canonical_reverse(self) -> dict[str, tuple[str, str | None]]:
+        """Precomputed BNS section -> chosen IPC counterpart, O(1) lookup.
+
+        mapping.json's IPC_TO_BNS has 111 targets shared by several IPC
+        sections (genuine consolidation). Each target is resolved ONCE via
+        the title-overlap tie-break in _pick_reverse_counterpart, so every
+        BNS section gets one deterministic, data-driven IPC counterpart.
+        Built lazily (needs the corpus titles index), cached per process.
+        """
+        cached = getattr(self, "_canonical_reverse_map", None)
+        if cached is None:
+            groups: dict[str, list] = {}
+            for ipc_section, mapped in self.router.legal_map.items():
+                target = str((mapped or {}).get("new") or "").strip().upper()
+                if target:
+                    groups.setdefault(target, []).append((ipc_section, mapped))
+            built: dict[str, tuple[str, str | None]] = {}
+            for target, candidates in groups.items():
+                section, note = self._pick_reverse_counterpart(target, candidates)
+                built[target] = (section, note)
+            self._canonical_reverse_map = built
+        return self._canonical_reverse_map
 
     @staticmethod
     def _compare_hit_act(item: dict) -> str:

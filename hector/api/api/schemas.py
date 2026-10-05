@@ -104,6 +104,12 @@ class SearchResponse(BaseModel):
     stage_timings: dict | None = None  # per-stage timing in ms
 
 
+class CompareTableRow(BaseModel):
+    aspect: str
+    requested: str = ""
+    counterpart: str = ""
+
+
 class CompareResponse(BaseModel):
     requested_act: str
     requested_section: str
@@ -112,6 +118,9 @@ class CompareResponse(BaseModel):
     note: str | None = None
     requested_results: list[SearchHit] = Field(default_factory=list)
     counterpart_results: list[SearchHit] = Field(default_factory=list)
+    comparison_table: list[CompareTableRow] = Field(default_factory=list)
+    grounded_message: str | None = None
+    synthesis: Literal["ok", "fallback", "skipped"] = "skipped"
     compared_at: datetime
     cached: bool = False
     request_id: str | None = None

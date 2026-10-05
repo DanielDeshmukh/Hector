@@ -80,10 +80,11 @@ SAMPLE_RECORDS = [
         "citation": {"section": "63", "page": 30, "source": "BNS.pdf"},
         "reasons": ["citation-match:BNS-63"],
     },
-    # Counterpart sections of mapping.json: IPC 302 -> BNS 101, BNS 103 ->
-    # IPC 304. Compare panels are exact-section only (see
-    # HectorApiService._select_compare_panel), so the mapped counterpart
-    # section must exist in the sample corpus for panel assertions to pass.
+    # Counterpart sections of mapping.json: IPC 302 -> BNS 103 and
+    # BNS 103 -> IPC 302 (both records are in this corpus). Compare panels
+    # are exact-section only (see HectorApiService._select_compare_panel),
+    # so the mapped counterpart section must exist in the sample corpus for
+    # panel assertions to pass. BNS 101 below is an extra corpus record.
     {
         "id": "bns-101",
         "document": "Section 101 BNS. Culpable homicide amounting to murder.",
@@ -384,9 +385,9 @@ class TestComparePipeline:
         assert data["requested_act"] == "IPC"
         assert data["requested_section"] == "302"
         assert data["counterpart_act"] == "BNS"
-        # IPC 302 maps to BNS 101 per mapping.json
-        assert data["counterpart_section"] == "101"
-        assert data["note"] == "intentional killing"
+        # IPC 302 maps to BNS 103 per mapping.json (no sub-section note)
+        assert data["counterpart_section"] == "103"
+        assert data["note"] is None
 
     def test_compare_returns_results(self, stub_service, auth):
         from fastapi.testclient import TestClient
@@ -414,10 +415,9 @@ class TestComparePipeline:
         assert data["requested_act"] == "BNS"
         assert data["requested_section"] == "103"
         assert data["counterpart_act"] == "IPC"
-        # BNS 103 ("Punishment for murder") has duplicate mapping targets
-        # (IPC 94, IPC 304); the title-overlap tie-break picks IPC 304
-        # "Punishment for culpable homicide not amounting to murder".
-        assert data["counterpart_section"] == "304"
+        # BNS 103 ("Punishment for murder") has a single official counterpart
+        # in mapping.json: IPC 302 "Punishment for murder".
+        assert data["counterpart_section"] == "302"
         assert len(data["requested_results"]) > 0
         assert len(data["counterpart_results"]) > 0
 
@@ -441,13 +441,13 @@ class TestComparePipeline:
         requested = data["requested_results"]
         counterpart = data["counterpart_results"]
         assert requested, "requested panel must hold IPC 302"
-        assert counterpart, "counterpart panel must hold BNS 101"
+        assert counterpart, "counterpart panel must hold BNS 103"
         for hit in requested:
             assert hit["act"] == "IPC"
             assert str(hit["metadata"]["section_number"]) == "302"
         for hit in counterpart:
             assert hit["act"] == "BNS"
-            assert str(hit["metadata"]["section_number"]) == "101"
+            assert str(hit["metadata"]["section_number"]) == "103"
 
     def test_compare_absent_section_returns_empty_panel(self, stub_service, auth):
         """A section that does not exist in the act yields an empty panel,

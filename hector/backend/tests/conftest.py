@@ -19,6 +19,10 @@ os.environ.setdefault("HECTOR_BOOKS_DIR", os.path.join(PROJECT_ROOT, "data", "Bo
 # calibration artifact (api/data/relevance_threshold.json) cannot shift
 # retrieval expectations inside the unit suite.
 os.environ.setdefault("HECTOR_MIN_RELEVANCE", "0.05")
+# Compare synthesis calls a live NIM model - disabled by default so the
+# suite never depends on the network; tests that exercise the wiring
+# monkeypatch compare_synthesis.synthesize_comparison and delete this flag.
+os.environ.setdefault("HECTOR_COMPARE_DISABLED", "1")
 
 import pytest  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402

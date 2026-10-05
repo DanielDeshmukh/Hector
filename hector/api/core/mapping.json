@@ -1,525 +1,3578 @@
 {
-    "IPC_TO_BNS": {
-        "14": {"new": "2", "name": "Local Jurisdiction", "note": "definitions"},
-        "17": {"new": "2", "name": "Public Servant", "note": "definitions"},
-        "21": {"new": "2", "name": "Good Faith", "note": "definitions"},
-        "23": {"new": "2", "name": "Movable Property", "note": "definitions"},
-        "25": {"new": "2", "name": "Wrongful Gain", "note": "definitions"},
-        "26": {"new": "2", "name": "Dishonestly", "note": "definitions"},
-        "27": {"new": "2", "name": "Fraudulently", "note": "definitions"},
-        "28": {"new": "2", "name": "Reason to Believe", "note": "definitions"},
-        "29": {"new": "2", "name": "Document", "note": "definitions"},
-        "30": {"new": "2", "name": "Valuable Security", "note": "definitions"},
-        "34": {"new": "3", "name": "Acts of Several Persons", "note": "joint liability"},
-        "35": {"new": "3", "name": "Committal by Several Persons", "note": "joint liability"},
-        "36": {"new": "3", "name": "Offence by Person Bound", "note": "joint liability"},
-        "37": {"new": "3", "name": "Offence by Member of Assembly", "note": "joint liability"},
-        "38": {"new": "3", "name": "Act Done by Coercion", "note": "joint liability"},
-        "39": {"new": "3", "name": "Person Causing Effect", "note": "joint liability"},
-        "40": {"new": "4", "name": "Life and Legal Rights", "note": "definitions"},
-        "43": {"new": "5", "name": "Force and Artificial Forces", "note": "definitions"},
-        "44": {"new": "6", "name": "Injury and Harm", "note": "definitions"},
-        "45": {"new": "7", "name": "Life, Limb, Health, Discretion", "note": "definitions"},
-        "46": {"new": "8", "name": "Death and Animation", "note": "definitions"},
-        "47": {"new": "8", "name": "Woman with Child", "note": "definitions"},
-        "49": {"new": "9", "name": "Measure of Punishment", "note": "definitions"},
-        "50": {"new": "10", "name": "Expression of Term", "note": "definitions"},
-        "51": {"new": "11", "name": "Gender and Number", "note": "definitions"},
-        "52": {"new": "12", "name": "Good Faith", "note": "definitions"},
-        "52A": {"new": "12", "name": "Harvested Crops", "note": "definitions"},
-        "53": {"new": "61", "name": "Punishments", "note": "types of punishment"},
-        "53A": {"new": "62", "name": "Punishment for Attempt", "note": "attempt punishment"},
-        "54": {"new": "63", "name": "Commutation of Sentence", "note": "death to life"},
-        "55": {"new": "64", "name": "Commutation of Life Imprisonment", "note": "reduced term"},
-        "55A": {"new": "65", "name": "Calculation of Sentence", "note": "time calculation"},
-        "56": {"new": "66", "name": "Forfeiture of Property", "note": "corruption"},
-        "57": {"new": "67", "name": "Fine Payment", "note": "imprisonment in default"},
-        "58": {"new": "68", "name": "Fine Limits", "note": "default imprisonment"},
-        "59": {"new": "69", "name": "Fine Proportional", "note": "offence fine"},
-        "60": {"new": "70", "name": "Sentence Cumulative", "note": "multiple sentences"},
-        "62": {"new": "71", "name": "Security for Good Behavior", "note": "surety"},
-        "63": {"new": "72", "name": "Security Forfeiture", "note": "default"},
-        "64": {"new": "73", "name": "Acquitted Person Acquitted", "note": "surety"},
-        "65": {"new": "74", "name": "Surety Default", "note": "bond"},
-        "66": {"new": "75", "name": "Previous Conviction", "note": "enhanced punishment"},
-        "67": {"new": "76", "name": "Chapter Notes", "note": "applicability"},
-        "68": {"new": "77", "name": "Executive Functionaries", "note": "public servants"},
-        "69": {"new": "78", "name": "Offences Against State", "note": "abetment"},
-        "70": {"new": "79", "name": "Word or Sign", "note": "communication"},
-        "71": {"new": "80", "name": "Judge and Court", "note": "judicial officers"},
-        "72": {"new": "81", "name": "Everything Done in Official Capacity", "note": "official acts"},
-        "73": {"new": "82", "name": "Judge Acting Judicially", "note": "judicial immunity"},
-        "74": {"new": "83", "name": "Person Discharging Duties", "note": "official duties"},
-        "75": {"new": "84", "name": "Medical Practitioner", "note": "good faith treatment"},
-        "76": {"new": "85", "name": "Illegal Oath", "note": "voluntary consent"},
-        "77": {"new": "86", "name": "Act in Good Faith", "note": "necessity"},
-        "78": {"new": "87", "name": "Communication in Marriage", "note": "marital communications"},
-        "79": {"new": "88", "name": "Trivial Error", "note": "accidental damage"},
-        "80": {"new": "89", "name": "Accident in Exercise of Right", "note": "lawful act"},
-        "81": {"new": "90", "name": "Sleep and Intoxication", "note": "unconsciousness"},
-        "82": {"new": "91", "name": "Child Under Seven", "note": "no criminal responsibility"},
-        "83": {"new": "92", "name": "Child Between 7-12", "note": "immature understanding"},
-        "84": {"new": "93", "name": "Unsound Mind", "note": "mental illness"},
-        "85": {"new": "94", "name": "Intoxication Without Consent", "note": "involuntary"},
-        "86": {"new": "95", "name": "Act Causing Slight Harm", "note": "trivial offense"},
-        "87": {"new": "96", "name": "Right of Private Defense", "note": "self-defense"},
-        "88": {"new": "97", "name": "Right of Private Defense Body", "note": "self-defense of person"},
-        "89": {"new": "98", "name": "Right Against Animal", "note": "defense against animals"},
-        "90": {"new": "99", "name": "Right Against Illegal Assault", "note": "defense against unlawful force"},
-        "91": {"new": "100", "name": "Right to Cause Death", "note": "self-defense extend to death"},
-        "92": {"new": "101", "name": "Right Against Murder", "note": "defense against murder attempt"},
-        "93": {"new": "102", "name": "Right Against Rape", "note": "defense against sexual assault"},
-        "94": {"new": "103", "name": "Right Against Kidnapping", "note": "defense against abduction"},
-        "95": {"new": "104", "name": "Right Against Thefts", "note": "defense against theft"},
-        "96": {"new": "105", "name": "Right Limit", "note": "reasonable limits"},
-        "97": {"new": "106", "name": "Right in Case of Theft", "note": "theft defense"},
-        "98": {"new": "107", "name": "Right in Case of Criminal Trespass", "note": "trespass defense"},
-        "99": {"new": "108", "name": "Right Abates on Assistance", "note": "police assistance"},
-        "100": {"new": "109", "name": "Right When Attack on Property", "note": "property defense"},
-        "101": {"new": "110", "name": "Right Disappears When Danger Ceases", "note": "defense limits"},
-        "102": {"new": "111", "name": "Right Starts When Apprehended", "note": "immediate danger"},
-        "103": {"new": "112", "name": "Right After Attempt Ceases", "note": "after attempt ends"},
-        "104": {"new": "113", "name": "Right to Use Force", "note": "no unnecessary force"},
-        "105": {"new": "114", "name": "Right and Abettor", "note": "provocation"},
-        "106": {"new": "115", "name": "Right Against Assault", "note": "provocation excuse"},
-        "107": {"new": "116", "name": "Abetment", "note": "instigation"},
-        "108": {"new": "117", "name": "Abettor Present", "note": "presence abetment"},
-        "108A": {"new": "118", "name": "Abetment to Commit Offence", "note": "consequence abetment"},
-        "109": {"new": "119", "name": "Abetment Punishment", "note": "punishment for abetment"},
-        "110": {"new": "120", "name": "Punishment for Abetting", "note": "abettor liability"},
-        "111": {"new": "121", "name": "Abettor When Act Different", "note": "different result"},
-        "112": {"new": "122", "name": "Abetment to Wage War", "note": "war against state"},
-        "113": {"new": "123", "name": "Abettor of War", "note": "consequence of war"},
-        "114": {"new": "124", "name": "Abettor Present at Offence", "note": "presence at scene"},
-        "115": {"new": "125", "name": "Abetment of Offence Capital", "note": "punishable death"},
-        "116": {"new": "126", "name": "Abetment of Offence Imprisonment", "note": "imprisonable offence"},
-        "117": {"new": "127", "name": "Abetting Commission of Crime", "note": "repetition abetment"},
-        "118": {"new": "128", "name": "Concealing Design", "note": "concealing criminal design"},
-        "119": {"new": "129", "name": "Public Servant Concealing", "note": "official concealment"},
-        "120": {"new": "130", "name": "Concealment by Agent", "note": "agent concealment"},
-        "120A": {"new": "131", "name": "Criminal Conspiracy", "note": "conspiracy to commit crime"},
-        "120B": {"new": "132", "name": "Punishment Criminal Conspiracy", "note": "conspiracy punishment"},
-        "121": {"new": "133", "name": "Waging War Against Government", "note": "offence against state"},
-        "121A": {"new": "134", "name": "Conspiracy to Wage War", "note": "conspiracy against state"},
-        "122": {"new": "135", "name": "Collecting Arms", "note": "war preparations"},
-        "123": {"new": "136", "name": "Concealing Treasure", "note": "treasure for war"},
-        "124": {"new": "137", "name": "Assaulting President", "note": "head of state"},
-        "124A": {"new": "138", "name": "Sedition", "note": "discontent against government"},
-        "125": {"new": "139", "name": "Waging WarTribal", "note": "tribal area war"},
-        "126": {"new": "140", "name": "Piracy", "note": "sea robbery"},
-        "127": {"new": "141", "name": "Affray", "note": "public disturbance"},
-        "128": {"new": "142", "name": "Assaulting Public Servant", "note": "law enforcement"},
-        "129": {"new": "143", "name": "Violent Crime", "note": "unlawful assembly"},
-        "130": {"new": "144", "name": "Joining Unlawful Assembly", "note": "assembly with weapons"},
-        "131": {"new": "145", "name": "Being Member of Assembly", "note": "continuation of assembly"},
-        "132": {"new": "146", "name": "Knowingly Joining", "note": "after notice to disperse"},
-        "133": {"new": "147", "name": "Rioting", "note": "use of force in riot"},
-        "134": {"new": "148", "name": "Rioting with Weapon", "note": "armed rioting"},
-        "135": {"new": "149", "name": "Every Member Liable", "note": "collective liability"},
-        "136": {"new": "150", "name": "Hiring for Riot", "note": "engaging in riot"},
-        "137": {"new": "151", "name": "Affray in Public", "note": "disturbing peace"},
-        "138": {"new": "152", "name": "Assault on President", "note": "head of state assault"},
-        "139": {"new": "153", "name": "Harboring Public Servant", "note": "protecting offender"},
-        "140": {"new": "154", "name": "False Statement", "note": "public servant false statement"},
-        "141": {"new": "155", "name": "Public servant Disobeying", "note": "disrespect to official"},
-        "142": {"new": "156", "name": "Misconduct by Public Servant", "note": "official misconduct"},
-        "143": {"new": "157", "name": "Public Servant Bribery", "note": "accepting bribes"},
-        "144": {"new": "158", "name": "Criminal Intimidation", "note": "threatening harm"},
-        "145": {"new": "159", "name": "Criminal Intimidation Death", "note": "threat to kill"},
-        "146": {"new": "160", "name": "Uttering Words", "note": "insulting words"},
-        "147": {"new": "161", "name": "Defamation", "note": "false statement injuring reputation"},
-        "148": {"new": "162", "name": "Printing Defamatory Matter", "note": "publishing defamatory content"},
-        "149": {"new": "163", "name": "Sale of Defamatory Matter", "note": "circulating defamatory material"},
-        "150": {"new": "164", "name": "Importing Defamatory Matter", "note": "importing defamatory content"},
-        "151": {"new": "165", "name": "Obscene Books", "note": "obscene publications"},
-        "152": {"new": "166", "name": "Sale of Obscene Books", "note": "selling obscene material"},
-        "153": {"new": "167", "name": "Obscene Acts", "note": "obscene public acts"},
-        "154": {"new": "168", "name": "Obscene Songs", "note": "singing obscene songs"},
-        "155": {"new": "169", "name": "Causing Drunkenness", "note": "public drunkenness"},
-        "156": {"new": "170", "name": "Liquor in Public", "note": "drinking in public places"},
-        "157": {"new": "171", "name": "Gambling in Public", "note": "public gambling"},
-        "158": {"new": "172", "name": "Being Found Drunk", "note": "habitual drunkenness"},
-        "159": {"new": "173", "name": "Punishment for Gambling", "note": "gambling penalties"},
-        "160": {"new": "174", "name": "Betting and Wagering", "note": "betting on games"},
-        "161": {"new": "175", "name": "Occupying Public Way", "note": "obstructing public path"},
-        "162": {"new": "176", "name": "Animal in Public Way", "note": "dangerous animals in public"},
-        "163": {"new": "177", "name": "Negligent Conduct", "note": "negligence in public places"},
-        "164": {"new": "178", "name": "Creating Nuisance", "note": "public nuisance"},
-        "165": {"new": "179", "name": "Offensive Trades", "note": "dangerous trades"},
-        "166": {"new": "180", "name": "Annoyance by Drunken Person", "note": "causing public annoyance"},
-        "167": {"new": "181", "name": "Spitting in Public", "note": "public health offense"},
-        "168": {"new": "182", "name": "Dispute by Water", "note": "water source disputes"},
-        "169": {"new": "183", "name": "Obstructing Public Path", "note": "blocking public road"},
-        "170": {"new": "184", "name": "Neglecting Public Safety", "note": "danger to public"},
-        "171": {"new": "185", "name": "Not Providing Food", "note": "neglect of duty"},
-        "172": {"new": "186", "name": "Violent Behavior", "note": "disorderly behavior"},
-        "173": {"new": "187", "name": "Vagrancy", "note": "idle and disorderly"},
-        "174": {"new": "188", "name": "Prostitution", "note": "soliciting for prostitution"},
-        "175": {"new": "189", "name": "Indecent Exposure", "note": "obscene exposure"},
-        "176": {"new": "190", "name": "Loitering", "note": "loitering for immoral purposes"},
-        "177": {"new": "191", "name": "Strolling About", "note": "wandering for begging"},
-        "178": {"new": "192", "name": "House Breaking", "note": "entering as spy"},
-        "179": {"new": "193", "name": "Disguised Appearance", "note": "disguised with criminal intent"},
-        "180": {"new": "194", "name": "Public Servant Unlawfully", "note": "impersonating official"},
-        "181": {"new": "195", "name": "Wearing Uniform", "note": "wearing official dress"},
-        "182": {"new": "196", "name": "Holding House Without License", "note": "unlicensed premises"},
-        "183": {"new": "197", "name": "Abandoning Public Duty", "note": "leaving official post"},
-        "184": {"new": "198", "name": "Fraudulent Stay", "note": "fraudulently remaining in area"},
-        "185": {"new": "199", "name": "Vexatious Search", "note": "harassment by search"},
-        "186": {"new": "200", "name": "Disclosing Official Secret", "note": "revealing official information"},
-        "187": {"new": "201", "name": "False Evidence", "note": "perjury"},
-        "188": {"new": "202", "name": "Fabricating False Evidence", "note": "creating false proof"},
-        "189": {"new": "203", "name": "Destroying Document", "note": "destroying evidence"},
-        "190": {"new": "204", "name": "False Verification", "note": "false declaration"},
-        "191": {"new": "205", "name": "False Personation", "note": "impersonating for legal process"},
-        "192": {"new": "206", "name": "Cheating", "note": "fraudulent deception"},
-        "193": {"new": "207", "name": "Cheating by Personation", "note": "pretending to be someone"},
-        "194": {"new": "208", "name": "Fraudulent Deed", "note": "fraudulent legal document"},
-        "195": {"new": "209", "name": "Fraudulent Removal", "note": "moving property to avoid seizure"},
-        "196": {"new": "210", "name": "False Charge", "name_secondary": "Making False Charge", "note": "accusing innocent"},
-        "197": {"new": "211", "name": "False Evidence by Accused", "note": "accused giving false evidence"},
-        "198": {"new": "212", "name": "False Information", "note": "misleading investigation"},
-        "199": {"new": "213", "name": "Harboring Offender", "note": "hiding criminal"},
-        "200": {"new": "214", "name": "Taking Gratification", "note": "corrupt gratifications"},
-        "201": {"new": "215", "name": "Disobeying Law", "note": "public servant disobeying"},
-        "202": {"new": "216", "name": "Disclosing Secrets", "note": "revealing secrets"},
-        "203": {"new": "217", "name": "False Return", "note": "false official return"},
-        "204": {"new": "218", "name": "False Entry", "note": "fabricating records"},
-        "205": {"new": "219", "name": "Destroying Records", "note": "destroying official documents"},
-        "206": {"new": "220", "name": "False Certificate", "note": "false official certificate"},
-        "207": {"new": "221", "name": "False Declaration", "note": "false declaration to official"},
-        "208": {"new": "222", "name": "Fraudulent Attachment", "note": "fraudulently attaching property"},
-        "209": {"new": "223", "name": "False Claim to Court", "note": "making false claim to court"},
-        "210": {"new": "224", "name": "False Pleading", "note": "false pleading in court"},
-        "211": {"new": "225", "name": "Fabricating False Record", "note": "creating false evidence"},
-        "212": {"new": "226", "name": "False Affidavit", "note": "false sworn statement"},
-        "213": {"new": "227", "name": "Falsifying Accounts", "note": "falsifying accounts"},
-        "214": {"new": "228", "name": "False Valuation", "note": "overvaluing property"},
-        "215": {"new": "229", "name": "False Receipt", "note": "false receipt for duty"},
-        "216": {"new": "230", "name": "Evasion of Duty", "note": "evading customs duty"},
-        "217": {"new": "231", "name": "Fraudulent Delivery", "note": "fraudulently delivering goods"},
-        "218": {"new": "232", "name": "Fraudulent Possession", "note": "fraudulently possessing goods"},
-        "219": {"new": "233", "name": "False Shipping Bill", "note": "false shipping document"},
-        "220": {"new": "234", "name": "Counterfeit Coin", "note": "making fake coins"},
-        "221": {"new": "235", "name": "Counterfeit Government Stamp", "note": "making fake stamps"},
-        "222": {"new": "236", "name": "Using False Stamps", "note": "using forged stamps"},
-        "223": {"new": "237", "name": "Possessing False Stamps", "note": "having counterfeit stamps"},
-        "224": {"new": "238", "name": "Effacing Mark", "note": "removing official marks"},
-        "225": {"new": "239", "name": "Making False Mark", "note": "falsifying official marks"},
-        "226": {"new": "240", "name": "Tampering with Property", "note": "tampering with goods"},
-        "227": {"new": "241", "name": "Making Die", "note": "making coin dies"},
-        "228": {"new": "242", "name": "Possessing Die", "note": "having coin-making equipment"},
-        "229": {"new": "243", "name": "Unlawful Access", "note": "making duplicate key"},
-        "230": {"new": "244", "name": "Climbing Over Boundary", "note": "trespassing on enclosed property"},
-        "231": {"new": "245", "name": "Being in Enclosed Ground", "note": "being in private property"},
-        "232": {"new": "246", "name": "Trespassing at Night", "note": "nighttime trespass"},
-        "233": {"new": "247", "name": "Lurking House Trespass", "note": "hidden trespass"},
-        "234": {"new": "248", "name": "House Breaking by Night", "note": "burglary at night"},
-        "235": {"new": "249", "name": "Returning to House", "note": "re-entering after warning"},
-        "236": {"new": "250", "name": "Possession of Stolen Property", "note": "having stolen goods"},
-        "237": {"new": "251", "name": "Receiving Stolen Property", "note": "receiving stolen goods"},
-        "238": {"new": "252", "name": "Stolen Property Dealing", "note": "dealing in stolen property"},
-        "239": {"new": "253", "name": "Fraudulent Delivery of Property", "note": "fraudulently delivering property"},
-        "240": {"new": "254", "name": "Fraudulent Receipt of Property", "note": "fraudulently receiving property"},
-        "241": {"new": "255", "name": "Fraudulently Removing Landmark", "note": "moving boundary markers"},
-        "242": {"new": "256", "name": "Removing Landmark", "note": "altering land boundaries"},
-        "243": {"new": "257", "name": "Setting Net", "note": "setting trap for theft"},
-        "244": {"new": "258", "name": "Breaking Open Enclosure", "note": "breaking into enclosed area"},
-        "245": {"new": "259", "name": "Housebreaking by Day", "note": "daytime burglary"},
-        "246": {"new": "260", "name": "Publicly Exposing Person", "note": "undressing in public"},
-        "247": {"new": "261", "name": "molesting Woman", "note": "harassing woman"},
-        "248": {"new": "262", "name": "Disturbing Privacy", "note": "intruding on privacy"},
-        "249": {"new": "263", "name": "Peeping into House", "note": "looking into private room"},
-        "250": {"new": "264", "name": "Voyeurism", "note": "watching private acts"},
-        "251": {"new": "265", "name": "Stalking", "note": "following and contacting repeatedly"},
-        "252": {"new": "266", "name": "Criminal Force on Woman", "note": "using force on woman"},
-        "253": {"new": "267", "name": "Assault on Woman", "note": "physically attacking woman"},
-        "254": {"new": "268", "name": "Kidnapping", "note": "taking away person"},
-        "255": {"new": "269", "name": "Kidnapping from India", "note": "taking out of India"},
-        "256": {"new": "270", "name": "Kidnapping for Begging", "note": "kidnapping for begging"},
-        "257": {"new": "271", "name": "Kidnapping for Labour", "note": "kidnapping for forced labour"},
-        "258": {"new": "272", "name": "Kidnapping for Marriage", "note": "kidnapping for marriage"},
-        "259": {"new": "273", "name": "Kidnapping with Deceit", "note": "deceptive kidnapping"},
-        "260": {"new": "274", "name": "Abduction", "note": "compelling to follow"},
-        "261": {"new": "275", "name": "Trafficking Person", "note": "human trafficking"},
-        "262": {"new": "276", "name": "Importation of Person", "note": "importing kidnapped person"},
-        "263": {"new": "277", "name": "Selling Person", "note": "selling human being"},
-        "264": {"new": "278", "name": "Buying Person", "note": "buying human being"},
-        "265": {"new": "279", "name": "Unlawful Compulsion", "note": "forcing someone"},
-        "266": {"new": "280", "name": "Theft", "note": "dishonest taking"},
-        "267": {"new": "281", "name": "Extortion", "note": "obtaining by threat"},
-        "268": {"new": "282", "name": "Robbery", "note": "theft with force"},
-        "269": {"new": "283", "name": "Dacoity", "note": "robbery by five or more"},
-        "270": {"new": "284", "name": "Criminal Misappropriation", "note": "dishonest appropriation"},
-        "271": {"new": "285", "name": "Criminal Breach of Trust", "note": "breach of trust"},
-        "272": {"new": "286", "name": "Receiving Stolen Property", "note": "receiving stolen goods"},
-        "273": {"new": "287", "name": "Cheating", "note": "deception with gain"},
-        "274": {"new": "288", "name": "Cheating by Personation", "note": "pretending to be another"},
-        "275": {"new": "289", "name": "Fraudulent Execution", "note": "fraudulent deed execution"},
-        "276": {"new": "290", "name": "Fraudulent Concealment", "note": "fraudulently hiding property"},
-        "277": {"new": "291", "name": "Mischief", "note": "wrongful loss or damage"},
-        "278": {"new": "292", "name": "Mischief by Fire", "note": "arson"},
-        "279": {"new": "293", "name": "Mischief by Explosive", "note": "explosive damage"},
-        "280": {"new": "294", "name": "Mischief Causes Damage", "note": "damage to property"},
-        "281": {"new": "295", "name": "Mischief on Animals", "note": "killing or maiming animal"},
-        "282": {"new": "296", "name": "Mischief by Killing Animal", "note": "killing animal"},
-        "283": {"new": "297", "name": "Mischief by Poisoning", "note": "poisoning animal"},
-        "284": {"new": "298", "name": "Mischief by Traps", "note": "setting traps"},
-        "285": {"new": "299", "name": "Criminal Trespass", "note": "unlawful entry"},
-        "286": {"new": "300", "name": "House Trespass", "note": "entering dwelling"},
-        "287": {"new": "301", "name": "Lurking House Trespass", "note": "hidden house entry"},
-        "288": {"new": "302", "name": "House Breaking by Night", "note": "nighttime break-in"},
-        "289": {"new": "303", "name": "Return to House", "note": "returning after warning"},
-        "290": {"new": "304", "name": "Entry in Good Faith", "note": "lawful entry"},
-        "291": {"new": "305", "name": "Door Broken Open", "note": "breaking open entrance"},
-        "292": {"new": "306", "name": "Forcible Entry", "note": "entering against will"},
-        "293": {"new": "307", "name": "Disguised Entry", "note": "entering with disguise"},
-        "294": {"new": "308", "name": "Entrance with Criminal Intent", "note": "trespass with intent"},
-        "295": {"new": "309", "name": "Remaining in Enclosed Ground", "note": "staying in private property"},
-        "296": {"new": "310", "name": "Compelling Attendance", "note": "forcing attendance"},
-        "297": {"new": "311", "name": "Violation of Order", "note": "disobeying court order"},
-        "298": {"new": "312", "name": "Violation of Compromise", "note": "breaking settlement"},
-        "299": {"new": "313", "name": "Hurt", "note": "causing bodily injury"},
-        "300": {"new": "314", "name": "Grievous Hurt", "note": "serious injury"},
-        "301": {"new": "315", "name": "Unlawful Force", "note": "using force without consent"},
-        "302": {"new": "101", "name": "Murder", "note": "intentional killing"},
-        "303": {"new": "102", "name": "Culpable Homicide", "note": "causing death"},
-        "304": {"new": "103", "name": "Death by Negligence", "note": "negligent killing"},
-        "304A": {"new": "104", "name": "Causing Death by Negligence", "note": "negligent death"},
-        "304B": {"new": "105", "name": "Dowry Death", "note": "dowry related death"},
-        "305": {"new": "106", "name": "Abetment of Suicide", "note": "encouraging suicide"},
-        "306": {"new": "107", "name": "Attempt to Murder", "note": "attempted killing"},
-        "307": {"new": "109", "name": "Attempt to Murder", "note": "attempted murder"},
-        "308": {"new": "110", "name": "Attempt to Culpable Homicide", "note": "attempt to cause death"},
-        "309": {"new": "111", "name": "Attempt to Commit Suicide", "note": "attempting suicide"},
-        "310": {"new": "112", "name": "Thug", "note": "habitual member of dacoit"},
-        "311": {"new": "113", "name": "Belonging to Gang", "note": "gang membership"},
-        "312": {"new": "114", "name": "Concealing Design", "note": "hiding murder plan"},
-        "313": {"new": "115", "name": "Woman Causing Miscarriage", "note": "causing miscarriage"},
-        "314": {"new": "116", "name": "Child Not Born Alive", "note": "destroying unborn child"},
-        "315": {"new": "117", "name": "Quick with Child", "note": "quick with child injury"},
-        "316": {"new": "118", "name": "Cause Death of Quick Child", "note": "killing quick child"},
-        "317": {"new": "119", "name": "Exposing Child", "note": "abandoning child"},
-        "318": {"new": "120", "name": "Deserting Child", "note": "leaving child without care"},
-        "319": {"new": "121", "name": "Kidnapping Child", "note": "taking child away"},
-        "320": {"new": "122", "name": "Buying or Selling Child", "note": "child trafficking"},
-        "321": {"new": "123", "name": "Kidnapping for Begging", "note": "kidnapping child for begging"},
-        "322": {"new": "124", "name": "Kidnapping for Labour", "note": "kidnapping for forced labour"},
-        "323": {"new": "125", "name": "Exposing Child", "note": "leaving child in streets"},
-        "324": {"new": "126", "name": "Omission to Report", "note": "not reporting child found"},
-        "325": {"new": "127", "name": "Child Found", "note": "concealing found child"},
-        "326": {"new": "128", "name": "Procuring Child", "note": "obtaining child for begging"},
-        "327": {"new": "129", "name": "Using Child for Begging", "note": "using child to beg"},
-        "328": {"new": "130", "name": "Controlling Child Beggar", "note": "controlling child beggar"},
-        "329": {"new": "131", "name": "Habitual Offender", "note": "repeat child offender"},
-        "330": {"new": "132", "name": "Wrongful Restraint", "note": "unlawfully restricting"},
-        "331": {"new": "133", "name": "Wrongful Confinement", "note": "unlawfully confining"},
-        "332": {"new": "134", "name": "Forcible Confinement", "note": "confining against will"},
-        "333": {"new": "135", "name": "Criminal Force", "note": "using force intentionally"},
-        "334": {"new": "136", "name": "Assault", "note": "physical attack"},
-        "335": {"new": "137", "name": "Hurt by Dangerous Weapon", "note": "causing hurt with weapon"},
-        "336": {"new": "138", "name": "Grievous Hurt by Dangerous Weapon", "note": "serious injury with weapon"},
-        "337": {"new": "139", "name": "Hurt on Grave Provocation", "note": "hurt during provocation"},
-        "338": {"new": "140", "name": "Grievous Hurt on Grave Provocation", "note": "serious injury during provocation"},
-        "339": {"new": "141", "name": "Wrongful Restraint", "note": "preventing movement"},
-        "340": {"new": "142", "name": "Wrongful Confinement", "note": "illegal confinement"},
-        "341": {"new": "143", "name": "Punishment for Wrongful Restraint", "note": "restraint penalty"},
-        "342": {"new": "144", "name": "Punishment for Wrongful Confinement", "note": "confinement penalty"},
-        "343": {"new": "145", "name": "Wrongful Restriction on Movement", "note": "blocking movement"},
-        "344": {"new": "146", "name": "Wrongful Confinement of Person", "note": "confining person"},
-        "345": {"new": "147", "name": "Wrongful Confinement of Public Servant", "note": "confining official"},
-        "346": {"new": "148", "name": "Wrongful Confinement of Person in Secret", "note": "secret confinement"},
-        "347": {"new": "149", "name": "Wrongful Confinement for Extortion", "note": "confining for extortion"},
-        "348": {"new": "150", "name": "Wrongful Confinement for False Evidence", "note": "confining to get false evidence"},
-        "349": {"new": "151", "name": "Force", "note": "using physical force"},
-        "350": {"new": "152", "name": "Criminal Force", "note": "illegal force"},
-        "351": {"new": "153", "name": "Assault", "note": "physical assault"},
-        "352": {"new": "154", "name": "Punishment for Assault", "note": "assault penalty"},
-        "353": {"new": "155", "name": "Assault on Public Servant", "note": "attacking official"},
-        "354": {"new": "156", "name": "Assault to Disrobe", "note": "removing clothes forcibly"},
-        "355": {"new": "157", "name": "Assault or Criminal Force on Woman", "note": "attacking woman"},
-        "356": {"new": "158", "name": "Robbery", "note": "theft with violence"},
-        "357": {"new": "159", "name": "Attempt to Rob", "note": "attempted robbery"},
-        "358": {"new": "160", "name": "Extortion", "note": "obtaining by threat"},
-        "359": {"new": "161", "name": "Punishment for Extortion", "note": "extortion penalty"},
-        "360": {"new": "162", "name": "Extortion by Threat of Accusation", "note": "threatening to accuse"},
-        "361": {"new": "163", "name": "Extortion by Threat of Injury", "note": "threatening harm"},
-        "362": {"new": "164", "name": "Robbery or Dacoity", "note": "robbery or gang robbery"},
-        "363": {"new": "165", "name": "Robbery with Hurt", "note": "causing hurt during robbery"},
-        "364": {"new": "166", "name": "Dacoity with Murder", "note": "murder during dacoity"},
-        "365": {"new": "167", "name": "Belonging to Dacoit Gang", "note": "gang membership"},
-        "366": {"new": "168", "name": "Joining Gang of Dacoits", "note": "joining robbery gang"},
-        "367": {"new": "169", "name": "Harboring Dacoit", "note": "hiding dacoit"},
-        "368": {"new": "170", "name": "Stolen Property", "note": "having stolen property"},
-        "369": {"new": "171", "name": "Receiving Stolen Property", "note": "receiving stolen goods"},
-        "370": {"new": "172", "name": "Habitual Dealing in Stolen Property", "note": "repeat stolen property handler"},
-        "371": {"new": "173", "name": "Public Nuisance", "note": "causing public disturbance"},
-        "372": {"new": "174", "name": "Nuisance by PublicServant", "note": "official causing nuisance"},
-        "373": {"new": "175", "name": "Offensive Smell", "note": "causing foul smell"},
-        "374": {"new": "176", "name": "Offensive Trade", "note": "dangerous trade near public"},
-        "375": {"new": "177", "name": "Punishment for Public Nuisance", "note": "nuisance penalty"},
-        "376": {"new": "178", "name": "Obscene Exposure", "note": "indecent exposure"},
-        "377": {"new": "179", "name": "Obscene Act", "note": "obscene public act"},
-        "378": {"new": "303", "name": "Theft", "note": "dishonest taking of property"},
-        "379": {"new": "304", "name": "Punishment for Theft", "note": "theft penalty"},
-        "380": {"new": "305", "name": "Theft in Dwelling House", "note": "theft from house"},
-        "381": {"new": "306", "name": "Theft by Servant", "note": "employee theft"},
-        "382": {"new": "307", "name": "Theft after Preparation", "note": "theft with tools"},
-        "383": {"new": "308", "name": "Extortion", "note": "obtaining by threat"},
-        "384": {"new": "309", "name": "Punishment for Extortion", "note": "extortion penalty"},
-        "385": {"new": "310", "name": "Extortion by Threat", "note": "threatening for extortion"},
-        "386": {"new": "311", "name": "Extortion by Threat of Death", "note": "threatening to kill"},
-        "387": {"new": "312", "name": "Extortion by Threat of Injury", "note": "threatening to injure"},
-        "388": {"new": "313", "name": "Robbery", "note": "theft with violence"},
-        "389": {"new": "314", "name": "Robbery and Hurt", "note": "causing hurt during robbery"},
-        "390": {"new": "315", "name": "Dacoity", "note": "robbery by five or more"},
-        "391": {"new": "310", "name": "Dacoity", "note": "gang robbery"},
-        "392": {"new": "316", "name": "Punishment for Dacoity", "note": "dacoity penalty"},
-        "393": {"new": "317", "name": "Dacoity with Murder", "note": "murder during dacoity"},
-        "394": {"new": "318", "name": "Belonging to Dacoit Gang", "note": "gang membership"},
-        "395": {"new": "319", "name": "Joining Dacoit Gang", "note": "joining robbery gang"},
-        "396": {"new": "320", "name": "Dacoity by Arms", "note": "armed gang robbery"},
-        "397": {"new": "321", "name": "Robbery or Dacoity", "note": "robbery or gang robbery"},
-        "398": {"new": "322", "name": "Robbery in House", "note": "housebreaking robbery"},
-        "399": {"new": "323", "name": "Possession of Dacoity Property", "note": "having dacoity loot"},
-        "400": {"new": "324", "name": "Habitual Dacoit", "note": "repeat dacoit"},
-        "401": {"new": "325", "name": "Assembling for Dacoity", "note": "gathering for robbery"},
-        "402": {"new": "326", "name": "Abettor in Dacoity", "note": "helping dacoity"},
-        "403": {"new": "327", "name": "Dishonest Misappropriation", "note": "wrongful appropriation"},
-        "404": {"new": "328", "name": "Criminal Misappropriation", "note": "misappropriating property"},
-        "405": {"new": "329", "name": "Punishment for Criminal Misappropriation", "note": "misappropriation penalty"},
-        "406": {"new": "330", "name": "Criminal Breach of Trust", "note": "breach of trust"},
-        "407": {"new": "331", "name": "Punishment for Criminal Breach of Trust", "note": "breach of trust penalty"},
-        "408": {"new": "332", "name": "Breach by Clerk or Servant", "note": "employee breach"},
-        "409": {"new": "333", "name": "Public Servant Breach of Trust", "note": "official breach of trust"},
-        "410": {"new": "334", "name": "Receiving Stolen Property", "note": "receiving stolen goods"},
-        "411": {"new": "335", "name": "Habitual Receiving Stolen Property", "note": "repeat receiver"},
-        "412": {"new": "336", "name": "Stolen Property from Dacoity", "note": "dacoity stolen goods"},
-        "413": {"new": "337", "name": "Habitual Dealing in Stolen Property", "note": "repeat stolen goods dealer"},
-        "414": {"new": "338", "name": "Cheating", "note": "fraudulent deception"},
-        "415": {"new": "339", "name": "Punishment for Cheating", "note": "cheating penalty"},
-        "416": {"new": "340", "name": "Cheating by Personation", "note": "pretending to be someone"},
-        "417": {"new": "341", "name": "Cheating with Knowledge", "note": "knowing false representation"},
-        "418": {"new": "342", "name": "Cheating by False Document", "note": "using fake document"},
-        "419": {"new": "343", "name": "Cheating by Cheque", "note": "bouncing cheque"},
-        "420": {"new": "318", "name": "Cheating and Dishonesty", "note": "fraud and cheating"},
-        "421": {"new": "344", "name": "Fraudulent Deed", "note": "fraudulent document"},
-        "422": {"new": "345", "name": "Fraudulent Concealment", "note": "hiding property fraudulently"},
-        "423": {"new": "346", "name": "Breach of Contract", "note": "breaking agreement"},
-        "424": {"new": "347", "name": "Fraudulent Removal", "note": "moving property to avoid debt"},
-        "425": {"new": "348", "name": "Mischief", "note": "wrongful damage"},
-        "426": {"new": "349", "name": "Punishment for Mischief", "note": "damage penalty"},
-        "427": {"new": "350", "name": "Mischief and Damage", "note": "damage to property"},
-        "428": {"new": "351", "name": "Mischief by Killing Animal", "note": "killing animal"},
-        "429": {"new": "352", "name": "Mischief by Fire", "note": "arson"},
-        "430": {"new": "353", "name": "Mischief by Explosion", "note": "explosive damage"},
-        "431": {"new": "354", "name": "Mischief Causes Damage", "note": "damage to property value"},
-        "432": {"new": "355", "name": "Mischief by Flood", "note": "flood damage"},
-        "433": {"new": "356", "name": "Mischief by Poison", "note": "poisoning property"},
-        "434": {"new": "357", "name": "Mischief by Killing Cattle", "note": "killing cattle"},
-        "435": {"new": "358", "name": "Mischief by Destroying House", "note": "destroying building"},
-        "436": {"new": "359", "name": "Mischief by Flood or Poison", "note": "flood or poison damage"},
-        "437": {"new": "360", "name": "Mischief by Vehicle", "note": "damage by vehicle"},
-        "438": {"new": "361", "name": "Mischief in Research", "note": "damaging research"},
-        "439": {"new": "362", "name": "Mischief by Killing Animal", "note": "killing animal for trade"},
-        "440": {"new": "363", "name": "Mischief on Public Property", "note": "damaging public property"},
-        "441": {"new": "364", "name": "Criminal Trespass", "note": "unlawful entry"},
-        "442": {"new": "365", "name": "House Trespass", "note": "unlawful house entry"},
-        "443": {"new": "366", "name": "Lurking House Trespass", "note": "sneaking into house"},
-        "444": {"new": "367", "name": "House Breaking", "note": "breaking into house"},
-        "445": {"new": "368", "name": "House Breaking by Night", "note": "nighttime house entry"},
-        "446": {"new": "369", "name": "House Breaking After Warning", "note": "entering after warning"},
-        "447": {"new": "370", "name": "Criminal Trespass in Temple", "note": "trespass in place of worship"},
-        "448": {"new": "371", "name": "House Trespass in Temple", "note": "entering temple unlawfully"},
-        "449": {"new": "372", "name": "House Trespass for Offence", "note": "trespass to commit crime"},
-        "450": {"new": "373", "name": "House Trespass with Hurt", "note": "trespass causing injury"},
-        "451": {"new": "374", "name": "House Trespass After Notice", "note": "entering after notice"},
-        "452": {"new": "375", "name": "Criminal Force", "note": "using illegal force"},
-        "453": {"new": "376", "name": "Punishment for Criminal Force", "note": "force penalty"},
-        "454": {"new": "377", "name": "Assault", "note": "physical attack"},
-        "455": {"new": "378", "name": "Punishment for Assault", "note": "assault penalty"},
-        "456": {"new": "379", "name": "Assault or Criminal Force on Woman", "note": "attacking woman"},
-        "457": {"new": "380", "name": "Assault with Intent", "note": "assault for specific purpose"},
-        "458": {"new": "381", "name": "Criminal Force on Public Servant", "note": "force on official"},
-        "459": {"new": "382", "name": "Assault on Public Servant", "note": "attacking official"},
-        "460": {"new": "383", "name": "Force after Warning", "note": "force after warning"},
-        "461": {"new": "384", "name": "Wrongful Restraint", "note": "unlawful restriction"},
-        "462": {"new": "385", "name": "Punishment for Wrongful Restraint", "note": "restraint penalty"},
-        "463": {"new": "386", "name": "Wrongful Confinement", "note": "illegal confinement"},
-        "464": {"new": "387", "name": "Punishment for Wrongful Confinement", "note": "confinement penalty"},
-        "465": {"new": "388", "name": "Wrongful Confinement for Three Days", "note": "confinement over 3 days"},
-        "466": {"new": "389", "name": "Wrongful Confinement for Ten Days", "note": "confinement over 10 days"},
-        "467": {"new": "390", "name": "Wrongful Confinement for Public Servant", "note": "confining official"},
-        "468": {"new": "391", "name": "Wrongful Confinement in Secret", "note": "secret confinement"},
-        "469": {"new": "392", "name": "Wrongful Confinement for Extortion", "note": "confining for ransom"},
-        "470": {"new": "393", "name": "Forced Confinement", "note": "forcing confinement"},
-        "471": {"new": "394", "name": "Kidnapping", "note": "taking person away"},
-        "472": {"new": "395", "name": "Punishment for Kidnapping", "note": "kidnapping penalty"},
-        "473": {"new": "396", "name": "Kidnapping for Ransom", "note": "kidnapping for ransom"},
-        "474": {"new": "397", "name": "Kidnapping with Murder", "note": "kidnapping and killing"},
-        "475": {"new": "398", "name": "Kidnapping for Begging", "note": "kidnapping for begging"},
-        "476": {"new": "399", "name": "Kidnapping for Labour", "note": "kidnapping for forced labour"},
-        "477": {"new": "400", "name": "Kidnapping for Marriage", "note": "kidnapping for marriage"},
-        "478": {"new": "401", "name": "Kidnapping with Deceit", "note": "kidnapping by deception"},
-        "479": {"new": "402", "name": "Abduction", "note": "forcing to follow"},
-        "480": {"new": "403", "name": "Punishment for Abduction", "note": "abduction penalty"},
-        "481": {"new": "404", "name": "Abduction for Begging", "note": "abduction for begging"},
-        "482": {"new": "405", "name": "Abduction for Labour", "note": "abduction for forced labour"},
-        "483": {"new": "406", "name": "Abduction for Marriage", "note": "abduction for marriage"},
-        "484": {"new": "407", "name": "Abduction for Servitude", "note": "abduction for slavery"},
-        "485": {"new": "408", "name": "Trafficking Person", "note": "human trafficking"},
-        "486": {"new": "409", "name": "Importing Woman", "note": "importing woman for trafficking"},
-        "487": {"new": "410", "name": "Importing Child", "note": "importing child for trafficking"},
-        "488": {"new": "411", "name": "Selling Person", "note": "selling human being"},
-        "489": {"new": "412", "name": "Buying Person", "note": "buying human being"},
-        "490": {"new": "413", "name": "Unlawful Compulsion", "note": "forcing by threats"},
-        "491": {"new": "414", "name": "Habitual Trafficking", "note": "repeat trafficker"},
-        "492": {"new": "415", "name": "Rape", "note": "sexual assault"},
-        "493": {"new": "416", "name": "Punishment for Rape", "note": "rape penalty"},
-        "494": {"new": "417", "name": "Rape of Minor", "note": "sexual assault of child"},
-        "495": {"new": "418", "name": "Gang Rape", "note": "group sexual assault"},
-        "496": {"new": "419", "name": "Rape by Public Servant", "note": "official raping"},
-        "497": {"new": "420", "name": "Rape by Member of Armed Forces", "note": "military rape"},
-        "498": {"new": "421", "name": "Rape by Person in Authority", "note": "authority figure rape"},
-        "498A": {"new": "80", "name": "Cruelty by Husband or Relatives", "note": "dowry harassment"},
-        "499": {"new": "356", "name": "Defamation", "note": "injuring reputation"},
-        "500": {"new": "357", "name": "Punishment for Defamation", "note": "defamation penalty"},
-        "501": {"new": "358", "name": "Defamation by Publication", "note": "publishing defamatory content"},
-        "502": {"new": "359", "name": "Defamation by Imputation", "note": "false imputation"},
-        "503": {"new": "360", "name": "Criminal Intimidation", "note": "threatening harm"},
-        "504": {"new": "361", "name": "Punishment for Criminal Intimidation", "note": "threat penalty"},
-        "505": {"new": "362", "name": "Intimidation by Anonymity", "note": "anonymous threat"},
-        "506": {"new": "363", "name": "Intimidation to Cause Death", "note": "threat to kill"},
-        "507": {"new": "364", "name": "Criminal Intimidation by Letter", "note": "threatening by letter"},
-        "508": {"new": "365", "name": "Word or Gesture", "note": "insulting gesture"},
-        "509": {"new": "366", "name": "Uttering Words", "note": "offensive words"},
-        "510": {"new": "367", "name": "Stalking", "note": "repeated following"},
-        "511": {"new": "368", "name": "Voyeurism", "note": "secret watching"},
-        "512": {"new": "369", "name": "Obscene Exposure", "note": "indecent public exposure"}
+  "IPC_TO_BNS": {
+    "1": {
+      "new": "1",
+      "name": "Title and extent of operation of the Code"
     },
-    "BNS_TO_IPC_REVERSE": {
-        "101": {"old": "302", "name": "Murder"},
-        "102": {"old": "303", "name": "Culpable Homicide"},
-        "103": {"old": "304", "name": "Death by Negligence"},
-        "104": {"old": "304A", "name": "Causing Death by Negligence"},
-        "105": {"old": "304B", "name": "Dowry Death"},
-        "106": {"old": "305", "name": "Abetment of Suicide"},
-        "107": {"old": "306", "name": "Attempt to Murder"},
-        "109": {"old": "307", "name": "Attempt to Murder"},
-        "110": {"old": "308", "name": "Attempt to Culpable Homicide"},
-        "111": {"old": "309", "name": "Attempt to Commit Suicide"},
-        "112": {"old": "310", "name": "Thug"},
-        "113": {"old": "311", "name": "Belonging to Gang"},
-        "303": {"old": "378", "name": "Theft"},
-        "318": {"old": "420", "name": "Cheating"},
-        "80": {"old": "498A", "name": "Cruelty by Husband or Relatives"},
-        "356": {"old": "499", "name": "Defamation"}
+    "2": {
+      "new": "1",
+      "name": "Punishment of offences committed within India",
+      "note": "BNS 1(3)"
     },
-    "SYSTEM_NOTES": {
-        "effective_date": "July 1, 2024",
-        "description": "BNS (Bharatiya Nyaya Sanhita) 2023 replaces IPC (Indian Penal Code) 1860",
-        "total_ipc_sections": 511,
-        "total_mapped": 485,
-        "notes": "Some IPC sections are repealed, merged, or have no direct BNS equivalent. This mapping covers all major offences. Additional sections continue to be added based on BNS 2023 official text."
+    "3": {
+      "new": "1",
+      "name": "Punishment of offences committed beyond, but which by law may be tried within, India",
+      "note": "BNS 1(4)"
+    },
+    "4": {
+      "new": "1",
+      "name": "Extension of Code to extra-territorial offences",
+      "note": "BNS 1(5)"
+    },
+    "5": {
+      "new": "1",
+      "name": "Certain laws not to be affected by this Act",
+      "note": "BNS 1(6)"
+    },
+    "6": {
+      "new": "3",
+      "name": "Definitions in the Code to be understood subject to exceptions"
+    },
+    "7": {
+      "new": "3",
+      "name": "Sense of expression once explained",
+      "note": "BNS 3(2)"
+    },
+    "9": {
+      "new": "2",
+      "name": "Number",
+      "note": "BNS 2(22)"
+    },
+    "10": {
+      "new": "2",
+      "name": "“Man”.“Woman”",
+      "note": "BNS 2(35)"
+    },
+    "11": {
+      "new": "2",
+      "name": "“Person”",
+      "note": "BNS 2(26)"
+    },
+    "12": {
+      "new": "2",
+      "name": "“Public”",
+      "note": "BNS 2(27)"
+    },
+    "17": {
+      "new": "2",
+      "name": "“Government”",
+      "note": "BNS 2(12)"
+    },
+    "19": {
+      "new": "2",
+      "name": "“Judge”",
+      "note": "BNS 2(16)"
+    },
+    "20": {
+      "new": "2",
+      "name": "“Court of Justice”",
+      "note": "BNS 2(5)"
+    },
+    "21": {
+      "new": "2",
+      "name": "“Public servant”",
+      "note": "BNS 2(28)"
+    },
+    "22": {
+      "new": "2",
+      "name": "“Movable property”",
+      "note": "BNS 2(21)"
+    },
+    "23": {
+      "new": "2",
+      "name": "“Wrongful gain”",
+      "note": "BNS 2(36)"
+    },
+    "24": {
+      "new": "2",
+      "name": "“Dishonestly”",
+      "note": "BNS 2(7)"
+    },
+    "25": {
+      "new": "2",
+      "name": "“Fraudulently”",
+      "note": "BNS 2(9)"
+    },
+    "26": {
+      "new": "2",
+      "name": "“Reason to believe”",
+      "note": "BNS 2(29)"
+    },
+    "27": {
+      "new": "3",
+      "name": "“Property in possession of wife, clerk or servant”",
+      "note": "BNS 3(3)"
+    },
+    "28": {
+      "new": "2",
+      "name": "“Counterfeit”",
+      "note": "BNS 2(4)"
+    },
+    "29": {
+      "new": "2",
+      "name": "“Document”",
+      "note": "BNS 2(8)"
+    },
+    "30": {
+      "new": "2",
+      "name": "“Valuable security”",
+      "note": "BNS 2(31)"
+    },
+    "31": {
+      "new": "2",
+      "name": "“A will”",
+      "note": "BNS 2(34)"
+    },
+    "32": {
+      "new": "3",
+      "name": "Words referring to acts include illegal omissions",
+      "note": "BNS 3(4)"
+    },
+    "33": {
+      "new": "2",
+      "name": "“Act”. “Omission”",
+      "note": "BNS 2(25)"
+    },
+    "34": {
+      "new": "3",
+      "name": "Acts done by several persons in furtherance of common intention",
+      "note": "BNS 3(5)"
+    },
+    "35": {
+      "new": "3",
+      "name": "When such an act is criminal by reason of its being done with a criminal knowledge or intention",
+      "note": "BNS 3(6)"
+    },
+    "36": {
+      "new": "3",
+      "name": "Effect caused partly by act and partly by omission",
+      "note": "BNS 3(7)"
+    },
+    "37": {
+      "new": "3",
+      "name": "Co-operation by doing one of several acts constituting an offence",
+      "note": "BNS 3(8)"
+    },
+    "38": {
+      "new": "3",
+      "name": "Persons concerned in criminal act may be guilty of different offences",
+      "note": "BNS 3(9)"
+    },
+    "39": {
+      "new": "2",
+      "name": "“Voluntarily”",
+      "note": "BNS 2(33)"
+    },
+    "40": {
+      "new": "2",
+      "name": "“Offence”",
+      "note": "BNS 2(24)"
+    },
+    "42": {
+      "new": "2",
+      "name": "“Local law”",
+      "note": "BNS 2(18)"
+    },
+    "43": {
+      "new": "2",
+      "name": "“Illegal”. “Legally bound to do”",
+      "note": "BNS 2(15)"
+    },
+    "44": {
+      "new": "2",
+      "name": "“Injury”",
+      "note": "BNS 2(14)"
+    },
+    "45": {
+      "new": "2",
+      "name": "“Life”",
+      "note": "BNS 2(17)"
+    },
+    "46": {
+      "new": "2",
+      "name": "“Death”",
+      "note": "BNS 2(6)"
+    },
+    "47": {
+      "new": "2",
+      "name": "“Animal”",
+      "note": "BNS 2(2)"
+    },
+    "48": {
+      "new": "2",
+      "name": "“Vessel”",
+      "note": "BNS 2(32)"
+    },
+    "51": {
+      "new": "2",
+      "name": "“Oath”",
+      "note": "BNS 2(23)"
+    },
+    "52": {
+      "new": "2",
+      "name": "“Good faith”",
+      "note": "BNS 2(11)"
+    },
+    "52A": {
+      "new": "2",
+      "name": "“Harbour”",
+      "note": "BNS 2(13)"
+    },
+    "53": {
+      "new": "4",
+      "name": "Punishments"
+    },
+    "54": {
+      "new": "5",
+      "name": "Commutation of sentence of death"
+    },
+    "55": {
+      "new": "5",
+      "name": "Commutation of sentence of imprisonment for life"
+    },
+    "57": {
+      "new": "6",
+      "name": "Fractions of terms of punishment"
+    },
+    "60": {
+      "new": "7",
+      "name": "Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple"
+    },
+    "63": {
+      "new": "8",
+      "name": "Amount of fine"
+    },
+    "64": {
+      "new": "8",
+      "name": "Sentence of imprisonment for non-payment of fine",
+      "note": "BNS 8(2)"
+    },
+    "65": {
+      "new": "8",
+      "name": "Limit to imprisonment for non-payment of fine, when imprisonment and fine awardable",
+      "note": "BNS 8(3)"
+    },
+    "66": {
+      "new": "8",
+      "name": "Description of imprisonment for non-payment of fine",
+      "note": "BNS 8(4)"
+    },
+    "67": {
+      "new": "8",
+      "name": "Imprisonment for non-payment of fine, when offence punishable with fine only",
+      "note": "BNS 8(5)"
+    },
+    "68": {
+      "new": "8",
+      "name": "Imprisonment to terminate on payment of fine",
+      "note": "BNS 8(6)"
+    },
+    "69": {
+      "new": "8",
+      "name": "Termination of imprisonment on payment of proportional part of fine",
+      "note": "BNS 8(6)"
+    },
+    "70": {
+      "new": "8",
+      "name": "Fine leviable within six years, or during imprisonment. Death not to discharge property from liability",
+      "note": "BNS 8(7)"
+    },
+    "71": {
+      "new": "9",
+      "name": "Limit of punishment of offence made up of several offences"
+    },
+    "72": {
+      "new": "10",
+      "name": "Punishment of person guilty of one of several offences, the judgment stating that it is doubtful of which"
+    },
+    "73": {
+      "new": "11",
+      "name": "Solitary confinement"
+    },
+    "74": {
+      "new": "12",
+      "name": "Limit of solitary confinement"
+    },
+    "75": {
+      "new": "13",
+      "name": "Enhanced punishment for certain offences under Chapter XII or Chapter XVII after previous conviction"
+    },
+    "76": {
+      "new": "14",
+      "name": "Act done by a person bound, or by mistake of fact believing himself bound, by law"
+    },
+    "77": {
+      "new": "15",
+      "name": "Act of Judge when acting judicially"
+    },
+    "78": {
+      "new": "16",
+      "name": "Act done pursuant to the judgment or order of Court"
+    },
+    "79": {
+      "new": "17",
+      "name": "Act done by a person justified, or by mistake of fact believing himself justified, by law"
+    },
+    "80": {
+      "new": "18",
+      "name": "Accident in doing a lawful act"
+    },
+    "81": {
+      "new": "19",
+      "name": "Act likely to cause harm, but done without criminal intent, and to prevent other harm"
+    },
+    "82": {
+      "new": "20",
+      "name": "Act of a child under seven years of age"
+    },
+    "83": {
+      "new": "21",
+      "name": "Act of a child above seven and under twelve of immature understanding"
+    },
+    "84": {
+      "new": "22",
+      "name": "Act of a person of unsound mind"
+    },
+    "85": {
+      "new": "23",
+      "name": "Act of a person incapable of judgment by reason of intoxication caused against his will"
+    },
+    "86": {
+      "new": "24",
+      "name": "Offence requiring a particular intent or knowledge committed by one who is intoxicated"
+    },
+    "87": {
+      "new": "25",
+      "name": "Act not intended and not known to be likely to cause death or grievous hurt, done by consent"
+    },
+    "88": {
+      "new": "26",
+      "name": "Act not intended to cause death, done by consent in good faith for person's benefit"
+    },
+    "89": {
+      "new": "27",
+      "name": "Act done in good faith for benefit of child or insane person, by or by consent of guardian"
+    },
+    "90": {
+      "new": "28",
+      "name": "Consent known to be given under fear or misconception"
+    },
+    "91": {
+      "new": "29",
+      "name": "Exclusion of acts which are offences independently of harm cause"
+    },
+    "92": {
+      "new": "30",
+      "name": "Act done in good faith for benefit of a person without consent"
+    },
+    "93": {
+      "new": "31",
+      "name": "Communication made in good faith"
+    },
+    "94": {
+      "new": "32",
+      "name": "Act to which a person is compelled by threats"
+    },
+    "95": {
+      "new": "33",
+      "name": "Act causing slight harm"
+    },
+    "96": {
+      "new": "34",
+      "name": "Things done in private defence"
+    },
+    "97": {
+      "new": "35",
+      "name": "Right of private defence of the body and of property"
+    },
+    "98": {
+      "new": "36",
+      "name": "Right of private defence against the act of a person of unsound mind, etc"
+    },
+    "99": {
+      "new": "37",
+      "name": "Acts against which there is no right of private defence"
+    },
+    "100": {
+      "new": "38",
+      "name": "When the right of private defence of the body extends to causing death"
+    },
+    "101": {
+      "new": "39",
+      "name": "When such right extends to causing any harm other than death"
+    },
+    "102": {
+      "new": "40",
+      "name": "Commencement and continuance of the right of private defence of the body"
+    },
+    "103": {
+      "new": "41",
+      "name": "When the right of private defence of property extends to causing death"
+    },
+    "104": {
+      "new": "42",
+      "name": "When such right extends to causing any harm other than death"
+    },
+    "105": {
+      "new": "43",
+      "name": "Commencement and continuance of the right of private defence of property"
+    },
+    "106": {
+      "new": "44",
+      "name": "Right of private defence against deadly assault when there is risk of harm to innocent person"
+    },
+    "107": {
+      "new": "45",
+      "name": "Abetment of a thing"
+    },
+    "108": {
+      "new": "46",
+      "name": "Abettor"
+    },
+    "108A": {
+      "new": "47",
+      "name": "Abetment in India of offences outside India"
+    },
+    "109": {
+      "new": "49",
+      "name": "Punishment of abetment if the act abetted is committed in consequence and where no express provision is made for its punishment"
+    },
+    "110": {
+      "new": "50",
+      "name": "Punishment of abetment if person abetted does act with different intention from that of abettor"
+    },
+    "111": {
+      "new": "51",
+      "name": "Liability of abettor when one act abetted and different act done"
+    },
+    "112": {
+      "new": "52",
+      "name": "Abettor when liable to cumulative punishment for act abetted and for act done"
+    },
+    "113": {
+      "new": "53",
+      "name": "Liability of abettor for an effect caused by the act abetted different from that intended by the abettor"
+    },
+    "114": {
+      "new": "54",
+      "name": "Abettor present when offence is committed"
+    },
+    "115": {
+      "new": "55",
+      "name": "Abetment of offence punishable with death or imprisonment for life"
+    },
+    "116": {
+      "new": "56",
+      "name": "Abetment of offence punishable with imprisonment"
+    },
+    "117": {
+      "new": "57",
+      "name": "Abetting commission of offence by the public or by more than ten persons"
+    },
+    "118": {
+      "new": "58",
+      "name": "Concealing design to commit offence punishable with death or imprisonment for life"
+    },
+    "119": {
+      "new": "59",
+      "name": "Public servant concealing design to commit offence which it is his duty to prevent"
+    },
+    "120": {
+      "new": "60",
+      "name": "Concealing design to commit offence punishable with imprisonment"
+    },
+    "120A": {
+      "new": "61",
+      "name": "Definition of criminal conspiracy"
+    },
+    "120B": {
+      "new": "61",
+      "name": "Punishment of criminal conspiracy",
+      "note": "BNS 61(2)"
+    },
+    "121": {
+      "new": "147",
+      "name": "Waging or attempting to wage war or abetting waging of war against the Government of India"
+    },
+    "121A": {
+      "new": "148",
+      "name": "Conspiracy to commit offences punishable by section 121"
+    },
+    "122": {
+      "new": "149",
+      "name": "Collecting arms, etc., with intention of waging war against the Government of India"
+    },
+    "123": {
+      "new": "150",
+      "name": "Concealing with intent to facilitate design to wage war"
+    },
+    "124": {
+      "new": "151",
+      "name": "Assaulting President, Governor, etc., with intent to compel or restrain the exercise of any lawful power"
+    },
+    "125": {
+      "new": "153",
+      "name": "Waging war against any Asiatic Power in alliance with the Government of India"
+    },
+    "126": {
+      "new": "154",
+      "name": "Committing depredation on territories of Power at peace with the Government of India"
+    },
+    "127": {
+      "new": "155",
+      "name": "Receiving property taken by war or depredation mentioned in sections 125 and 126"
+    },
+    "128": {
+      "new": "156",
+      "name": "Public servant voluntarily allowing prisoner of State or war to escape"
+    },
+    "129": {
+      "new": "157",
+      "name": "Public servant negligently suffering such prisoner to escape"
+    },
+    "130": {
+      "new": "158",
+      "name": "Aiding escape of, rescuing or harbouring such prisoner"
+    },
+    "131": {
+      "new": "159",
+      "name": "Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty"
+    },
+    "132": {
+      "new": "160",
+      "name": "Abetment of mutiny, if mutiny is committed in consequence thereof"
+    },
+    "133": {
+      "new": "161",
+      "name": "Abetment of assault by soldier, sailor or airman on his superior officer, when in execution of his office"
+    },
+    "134": {
+      "new": "162",
+      "name": "Abetment of such assault, if the assault is committed"
+    },
+    "135": {
+      "new": "163",
+      "name": "Abetment of desertion of soldier, sailor or airman"
+    },
+    "136": {
+      "new": "164",
+      "name": "Harbouring deserter"
+    },
+    "137": {
+      "new": "165",
+      "name": "Deserter concealed on board merchant vessel through negligence of master"
+    },
+    "138": {
+      "new": "166",
+      "name": "Abetment of act of insubordination by soldier, sailor or airman"
+    },
+    "139": {
+      "new": "167",
+      "name": "Persons subject to certain Acts"
+    },
+    "140": {
+      "new": "168",
+      "name": "Wearing garb or carrying token used by soldier, sailor or airman"
+    },
+    "141": {
+      "new": "189",
+      "name": "Unlawful assembly"
+    },
+    "143": {
+      "new": "189",
+      "name": "Punishment"
+    },
+    "144": {
+      "new": "189",
+      "name": "Joining unlawful assembly armed with deadly weapon"
+    },
+    "145": {
+      "new": "189",
+      "name": "Joining or continuing in unlawful assembly, knowing it has been commanded to disperse"
+    },
+    "146": {
+      "new": "191",
+      "name": "Rioting"
+    },
+    "147": {
+      "new": "191",
+      "name": "Punishment for rioting"
+    },
+    "148": {
+      "new": "191",
+      "name": "Rioting, armed with deadly weapon"
+    },
+    "149": {
+      "new": "190",
+      "name": "Every member of unlawful assembly guilty of offence committed in prosecution of common object"
+    },
+    "150": {
+      "new": "189",
+      "name": "Hiring, or conniving at hiring, of persons to join unlawful assembly"
+    },
+    "151": {
+      "new": "189",
+      "name": "Knowingly joining or continuing in assembly of five or more persons after it has been commanded to disperse"
+    },
+    "152": {
+      "new": "195",
+      "name": "Assaulting or obstructing public servant when suppressing riot, etc"
+    },
+    "153": {
+      "new": "192",
+      "name": "Wantonly giving provocation with intent to cause riot"
+    },
+    "153A": {
+      "new": "196",
+      "name": "Promoting enmity between different groups on grounds of religion, race, place of birth, residence, language, etc., and doing acts prejudicial to maintenance of harmony"
+    },
+    "153B": {
+      "new": "197",
+      "name": "Imputations, assertions prejudicial to national integration"
+    },
+    "154": {
+      "new": "193",
+      "name": "Owner or occupier of land on which an unlawful assembly is held"
+    },
+    "155": {
+      "new": "193",
+      "name": "Liability of person for whose benefit riot is committed"
+    },
+    "156": {
+      "new": "193",
+      "name": "Liability of agent of owner or occupier for whose benefit riot is committed"
+    },
+    "157": {
+      "new": "189",
+      "name": "Harbouring persons hired for an unlawful assembly"
+    },
+    "158": {
+      "new": "189",
+      "name": "Being hired to take part in an unlawful assembly or riot"
+    },
+    "159": {
+      "new": "194",
+      "name": "Affray"
+    },
+    "160": {
+      "new": "194",
+      "name": "Punishment for committing affray"
+    },
+    "166": {
+      "new": "198",
+      "name": "Public servant disobeying law, with intent to cause injury to any person"
+    },
+    "166A": {
+      "new": "199",
+      "name": "Public servant disobeying direction under law"
+    },
+    "166B": {
+      "new": "200",
+      "name": "Punishment for non-treatment of victim"
+    },
+    "167": {
+      "new": "201",
+      "name": "Public servant framing an incorrect document with intent to cause injury"
+    },
+    "168": {
+      "new": "202",
+      "name": "Public servant unlawfully engaging in trade"
+    },
+    "169": {
+      "new": "203",
+      "name": "Public servant unlawfully buying or bidding for property"
+    },
+    "170": {
+      "new": "204",
+      "name": "Personating a public servant"
+    },
+    "171": {
+      "new": "205",
+      "name": "Wearing garb or carrying token used by public servant with fraudulent intent"
+    },
+    "171A": {
+      "new": "169",
+      "name": "“Candidate”, “Electoral right” defined"
+    },
+    "171B": {
+      "new": "170",
+      "name": "Bribery"
+    },
+    "171C": {
+      "new": "171",
+      "name": "Undue influence at elections"
+    },
+    "171D": {
+      "new": "172",
+      "name": "Personation at elections"
+    },
+    "171E": {
+      "new": "173",
+      "name": "Punishment for bribery"
+    },
+    "171F": {
+      "new": "174",
+      "name": "Punishment for undue influence or personation at an election"
+    },
+    "171G": {
+      "new": "175",
+      "name": "False statement in connection with an election"
+    },
+    "171H": {
+      "new": "176",
+      "name": "Illegal payments in connection with an election"
+    },
+    "172": {
+      "new": "206",
+      "name": "Absconding to avoid service of summons or other proceeding"
+    },
+    "173": {
+      "new": "207",
+      "name": "Preventing service of summons or other proceeding, or preventing publication thereof"
+    },
+    "174": {
+      "new": "208",
+      "name": "Non-attendance in obedience to an order from public servant"
+    },
+    "174A": {
+      "new": "209",
+      "name": "Non-appearance in response to a proclamation under section 82 of Act 2 of 1974"
+    },
+    "175": {
+      "new": "210",
+      "name": "Omission to produce document to public servant by person legally bound to produce it"
+    },
+    "176": {
+      "new": "211",
+      "name": "Omission to give notice or information to public servant by person legally bound to give it"
+    },
+    "177": {
+      "new": "212",
+      "name": "Furnishing false information"
+    },
+    "178": {
+      "new": "213",
+      "name": "Refusing oath or affirmation when duly required by public servant to make it"
+    },
+    "179": {
+      "new": "214",
+      "name": "Refusing to answer public servant authorised to question"
+    },
+    "180": {
+      "new": "215",
+      "name": "Refusing to sign statement"
+    },
+    "181": {
+      "new": "216",
+      "name": "False statement on oath or affirmation to public servant or person authorised to administer an oath or affirmation"
+    },
+    "182": {
+      "new": "217",
+      "name": "False information, with intent to cause public servant to use his lawful power to the injury of another person"
+    },
+    "183": {
+      "new": "218",
+      "name": "Resistance to the taking of property by the lawful authority of a public servant"
+    },
+    "184": {
+      "new": "219",
+      "name": "Obstructing sale of property offered for sale by authority of public servant"
+    },
+    "185": {
+      "new": "220",
+      "name": "Illegal purchase or bid for property offered for sale by authority of public servant"
+    },
+    "186": {
+      "new": "221",
+      "name": "Obstructing public servant in discharge of public functions"
+    },
+    "187": {
+      "new": "222",
+      "name": "Omission to assist public servant when bound by law to give assistance"
+    },
+    "188": {
+      "new": "223",
+      "name": "Disobedience to order duly promulgated by public servant"
+    },
+    "189": {
+      "new": "224",
+      "name": "Threat of injury to public servant"
+    },
+    "190": {
+      "new": "225",
+      "name": "Threat of injury to induce person to refrain from applying for protection to public servant"
+    },
+    "191": {
+      "new": "227",
+      "name": "Giving false evidence"
+    },
+    "192": {
+      "new": "228",
+      "name": "Fabricating false evidence"
+    },
+    "193": {
+      "new": "229",
+      "name": "Punishment for false evidence"
+    },
+    "194": {
+      "new": "230",
+      "name": "Giving or fabricating false evidence with intent to procure conviction of capital offence"
+    },
+    "195": {
+      "new": "231",
+      "name": "Giving or fabricating false evidence with intent to procure conviction of offence punishable with imprisonment for life or imprisonment"
+    },
+    "195A": {
+      "new": "232",
+      "name": "Threatening any person to give false evidence"
+    },
+    "196": {
+      "new": "233",
+      "name": "Using evidence known to be false"
+    },
+    "197": {
+      "new": "234",
+      "name": "Issuing or signing false certificate"
+    },
+    "198": {
+      "new": "235",
+      "name": "Using as true a certificate known to be false"
+    },
+    "199": {
+      "new": "236",
+      "name": "False statement made in declaration which is by law receivable as evidence"
+    },
+    "200": {
+      "new": "237",
+      "name": "Using as true such declaration knowing it to be false"
+    },
+    "201": {
+      "new": "238",
+      "name": "Causing disappearance of evidence of offence, or giving false information to screen offender"
+    },
+    "202": {
+      "new": "239",
+      "name": "Intentional omission to give information of offence by person bound to inform"
+    },
+    "203": {
+      "new": "240",
+      "name": "Giving false information respecting an offence committed"
+    },
+    "204": {
+      "new": "241",
+      "name": "Destruction of document to prevent its production as evidence"
+    },
+    "205": {
+      "new": "242",
+      "name": "False personation for purpose of act or proceeding in suit or prosecution"
+    },
+    "206": {
+      "new": "243",
+      "name": "Fraudulent removal or concealment of property to prevent its seizure as forfeited or in execution"
+    },
+    "207": {
+      "new": "244",
+      "name": "Fraudulent claim to property to prevent its seizure as forfeited or in execution"
+    },
+    "208": {
+      "new": "245",
+      "name": "Fraudulently suffering decree for sum not due"
+    },
+    "209": {
+      "new": "246",
+      "name": "Dishonesty making false claim in Court"
+    },
+    "210": {
+      "new": "247",
+      "name": "Fraudulently obtaining decree for sum not due"
+    },
+    "211": {
+      "new": "248",
+      "name": "False charge of offence made with intent to injure"
+    },
+    "212": {
+      "new": "249",
+      "name": "Harbouring offender"
+    },
+    "213": {
+      "new": "250",
+      "name": "Taking gift, etc., to screen an offender from punishment"
+    },
+    "214": {
+      "new": "251",
+      "name": "Offering gift or restoration of property in consideration of screening offender"
+    },
+    "215": {
+      "new": "252",
+      "name": "Taking gift to help to recover stolen property, etc"
+    },
+    "216": {
+      "new": "253",
+      "name": "Harbouring offender who has escaped from custody or whose apprehension has been ordered"
+    },
+    "216A": {
+      "new": "254",
+      "name": "Penalty for harbouring robbers or dacoits"
+    },
+    "217": {
+      "new": "255",
+      "name": "Public servant disobeying direction of law with intent to save person from punishment or property from forfeiture"
+    },
+    "218": {
+      "new": "256",
+      "name": "Public servant framing incorrect record or writing with intent to save person from punishment or property from forfeiture"
+    },
+    "219": {
+      "new": "257",
+      "name": "Public servant in judicial proceeding corruptly making report, etc., contrary to law"
+    },
+    "220": {
+      "new": "258",
+      "name": "Commitment for trial or confinement by person having authority who knows that he is acting contrary to law"
+    },
+    "221": {
+      "new": "259",
+      "name": "Intentional omission to apprehend on the part of public servant bound to apprehend"
+    },
+    "222": {
+      "new": "260",
+      "name": "Intentional omission to apprehend on the part of public servant bound to apprehend person under sentence or lawfully committed"
+    },
+    "223": {
+      "new": "261",
+      "name": "Escape from confinement or custody negligently suffered by public servant"
+    },
+    "224": {
+      "new": "262",
+      "name": "Resistance or obstruction by a person to his lawful apprehension"
+    },
+    "225": {
+      "new": "263",
+      "name": "Resistance or obstruction to lawful apprehension of another person"
+    },
+    "225A": {
+      "new": "264",
+      "name": "Omission to apprehend, or sufferance of escape, on part of public servant, in cases not otherwise, provided for"
+    },
+    "225B": {
+      "new": "265",
+      "name": "Resistance or obstruction to lawful apprehension, or escape or rescue in cases not otherwise provided for"
+    },
+    "227": {
+      "new": "266",
+      "name": "Violation of condition of remission of punishment"
+    },
+    "228": {
+      "new": "267",
+      "name": "Intentional insult or interruption to public servant sitting in judicial proceeding"
+    },
+    "228A": {
+      "new": "72",
+      "name": "Disclosure of identity of the victim of certain offences, etc"
+    },
+    "229": {
+      "new": "268",
+      "name": "Personation of a juror or assessor"
+    },
+    "229A": {
+      "new": "269",
+      "name": "Failure by person released on bail or bond to appear in court"
+    },
+    "230": {
+      "new": "178",
+      "name": "“Coin” defined"
+    },
+    "231": {
+      "new": "178",
+      "name": "Counterfeiting coin"
+    },
+    "233": {
+      "new": "181",
+      "name": "Making or selling instrument for counterfeiting coin"
+    },
+    "234": {
+      "new": "181",
+      "name": "Making or selling instrument for counterfeiting Indian coin"
+    },
+    "235": {
+      "new": "181",
+      "name": "Possession of instrument or material for the purpose of using the same for counterfeiting coin"
+    },
+    "237": {
+      "new": "179",
+      "name": "Import or export of counterfeit coin"
+    },
+    "238": {
+      "new": "179",
+      "name": "Import or export of counterfeits of the Indian coin"
+    },
+    "239": {
+      "new": "179",
+      "name": "Delivery of coin, possessed with knowledge that it is counterfeit"
+    },
+    "240": {
+      "new": "179",
+      "name": "Delivery of Indian coin, possessed with knowledge that it is counterfeit"
+    },
+    "241": {
+      "new": "179",
+      "name": "Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be counterfeit"
+    },
+    "242": {
+      "new": "180",
+      "name": "Possession of counterfeit coin by person who knew it to be counterfeit when he became possessed thereof"
+    },
+    "243": {
+      "new": "180",
+      "name": "Possession of Indian coin by person who knew it to be counterfeit when he became possessed thereof"
+    },
+    "244": {
+      "new": "187",
+      "name": "Person employed in mint causing coin to be of different weight or composition from that fixed by law"
+    },
+    "245": {
+      "new": "188",
+      "name": "Unlawfully taking coining instrument from mint"
+    },
+    "246": {
+      "new": "178",
+      "name": "Fraudulently or dishonestly diminishing weight or altering composition of coin"
+    },
+    "248": {
+      "new": "178",
+      "name": "Altering appearance of coin with intent that it shall pass as coin of different description"
+    },
+    "250": {
+      "new": "179",
+      "name": "Delivery of coin, possessed with knowledge that it is altered"
+    },
+    "251": {
+      "new": "179",
+      "name": "Delivery of Indian coin, possessed with knowledge that it is altered"
+    },
+    "252": {
+      "new": "180",
+      "name": "Possession of coin by person who knew it to be altered when he became possessed thereof"
+    },
+    "253": {
+      "new": "180",
+      "name": "Possession of Indian coin by person who knew it to be altered when he became possessed thereof"
+    },
+    "254": {
+      "new": "179",
+      "name": "Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be altered"
+    },
+    "255": {
+      "new": "178",
+      "name": "Counterfeiting Government stamp"
+    },
+    "256": {
+      "new": "181",
+      "name": "Having possession of instrument or material for counterfeiting Government stamp"
+    },
+    "257": {
+      "new": "181",
+      "name": "Making or selling instrument for counterfeiting Government stamp"
+    },
+    "258": {
+      "new": "179",
+      "name": "Sale of counterfeit Government stamp"
+    },
+    "259": {
+      "new": "180",
+      "name": "Having possession of counterfeit Government stamp"
+    },
+    "260": {
+      "new": "179",
+      "name": "Using as genuine a Government stamp known to be counterfeit"
+    },
+    "261": {
+      "new": "183",
+      "name": "Effacing writing from substance bearing Government stamp, or removing from document a stamp used for it, with intent to cause loss to Government"
+    },
+    "262": {
+      "new": "184",
+      "name": "Using Government stamp known to have been before used"
+    },
+    "263": {
+      "new": "185",
+      "name": "Erasure of mark denoting that stamp has been used"
+    },
+    "263A": {
+      "new": "186",
+      "name": "Prohibition of fictitious stamps"
+    },
+    "268": {
+      "new": "270",
+      "name": "Public nuisance"
+    },
+    "269": {
+      "new": "271",
+      "name": "Negligent act likely to spread infection of disease dangerous to life"
+    },
+    "270": {
+      "new": "272",
+      "name": "Malignant act likely to spread infection of disease dangerous to life"
+    },
+    "271": {
+      "new": "273",
+      "name": "Disobedience to quarantine rule"
+    },
+    "272": {
+      "new": "274",
+      "name": "Adulteration of food or drink intended for sale"
+    },
+    "273": {
+      "new": "275",
+      "name": "Sale of noxious food or drink"
+    },
+    "274": {
+      "new": "276",
+      "name": "Adulteration of drugs"
+    },
+    "275": {
+      "new": "277",
+      "name": "Sale of adulterated drugs"
+    },
+    "276": {
+      "new": "278",
+      "name": "Sale of drug as a different drug or preparation"
+    },
+    "277": {
+      "new": "279",
+      "name": "Fouling water of public spring or reservoir"
+    },
+    "278": {
+      "new": "280",
+      "name": "Making atmosphere noxious to health"
+    },
+    "279": {
+      "new": "281",
+      "name": "Rash driving or riding on a public way"
+    },
+    "280": {
+      "new": "282",
+      "name": "Rash navigation of vessel"
+    },
+    "281": {
+      "new": "283",
+      "name": "Exhibition of false light, mark or buoy"
+    },
+    "282": {
+      "new": "284",
+      "name": "Conveying person by water for hire in unsafe or overloaded vessel"
+    },
+    "283": {
+      "new": "285",
+      "name": "Danger or obstruction in public way or line of navigation"
+    },
+    "284": {
+      "new": "286",
+      "name": "Negligent conduct with respect to poisonous substance"
+    },
+    "285": {
+      "new": "287",
+      "name": "Negligent conduct with respect to fire or combustible matter"
+    },
+    "286": {
+      "new": "288",
+      "name": "Negligent conduct with respect to explosive substance"
+    },
+    "287": {
+      "new": "289",
+      "name": "Negligent conduct with respect to machinery"
+    },
+    "288": {
+      "new": "290",
+      "name": "Negligent conduct with respect to pulling down or repairing buildings"
+    },
+    "289": {
+      "new": "291",
+      "name": "Negligent conduct with respect to animal"
+    },
+    "290": {
+      "new": "292",
+      "name": "Punishment for public nuisance in cases not otherwise provided for"
+    },
+    "291": {
+      "new": "293",
+      "name": "Continuance of nuisance after injunction to discontinue"
+    },
+    "292": {
+      "new": "294",
+      "name": "Sale, etc., of obscene books, etc"
+    },
+    "293": {
+      "new": "295",
+      "name": "Sale, etc., of obscene objects to young person"
+    },
+    "294": {
+      "new": "296",
+      "name": "Obscene acts and songs"
+    },
+    "294A": {
+      "new": "297",
+      "name": "Keeping lottery office"
+    },
+    "295": {
+      "new": "298",
+      "name": "Injuring or defiling place of worship, with intent to insult the religion of any class"
+    },
+    "295A": {
+      "new": "299",
+      "name": "Deliberate and malicious acts, intended to outrage religious feelings of any class by insulting its religion or religious beliefs"
+    },
+    "296": {
+      "new": "300",
+      "name": "Disturbing religious assembly"
+    },
+    "297": {
+      "new": "301",
+      "name": "Trespassing on burial places, etc"
+    },
+    "298": {
+      "new": "302",
+      "name": "Uttering words, etc., with deliberate intent to wound religious feelings"
+    },
+    "299": {
+      "new": "100",
+      "name": "Culpable homicide"
+    },
+    "300": {
+      "new": "101",
+      "name": "Murder"
+    },
+    "301": {
+      "new": "102",
+      "name": "Culpable homicide by causing death of person other than person whose death was intended"
+    },
+    "302": {
+      "new": "103",
+      "name": "Punishment for murder"
+    },
+    "303": {
+      "new": "104",
+      "name": "Punishment for murder by life-convict"
+    },
+    "304": {
+      "new": "105",
+      "name": "Punishment for culpable homicide not amounting to murder"
+    },
+    "304A": {
+      "new": "106",
+      "name": "Causing death by negligence"
+    },
+    "304B": {
+      "new": "80",
+      "name": "Dowry death"
+    },
+    "305": {
+      "new": "107",
+      "name": "Abetment of suicide of child or insane person"
+    },
+    "306": {
+      "new": "108",
+      "name": "Abetment of suicide"
+    },
+    "307": {
+      "new": "109",
+      "name": "Attempt to murder"
+    },
+    "308": {
+      "new": "110",
+      "name": "Attempt to commit culpable homicide"
+    },
+    "312": {
+      "new": "88",
+      "name": "Causing miscarraige"
+    },
+    "313": {
+      "new": "89",
+      "name": "Causing miscarriage without woman's consent"
+    },
+    "314": {
+      "new": "90",
+      "name": "Death caused by act done with intent to cause miscarriage"
+    },
+    "315": {
+      "new": "91",
+      "name": "Act done with intent to prevent child being born alive or to cause it to die after birth"
+    },
+    "316": {
+      "new": "92",
+      "name": "Causing death of quick unborn child by act amounting to culpable homicide"
+    },
+    "317": {
+      "new": "93",
+      "name": "Exposure and abandonment of child under twelve years, by parent or person having care of it"
+    },
+    "318": {
+      "new": "94",
+      "name": "Concealment of birth by secret disposal of dead body"
+    },
+    "319": {
+      "new": "114",
+      "name": "Hurt"
+    },
+    "320": {
+      "new": "116",
+      "name": "Grievous hurt"
+    },
+    "321": {
+      "new": "115",
+      "name": "Voluntarily causing hurt"
+    },
+    "322": {
+      "new": "117",
+      "name": "Voluntarily causing grievous hurt"
+    },
+    "323": {
+      "new": "115",
+      "name": "Punishment for voluntarily causing hurt",
+      "note": "BNS 115(2)"
+    },
+    "324": {
+      "new": "118",
+      "name": "Voluntarily causing hurt by dangerous weapons or means"
+    },
+    "325": {
+      "new": "117",
+      "name": "Punishment for voluntarily causing grievous hurt",
+      "note": "BNS 117(2)"
+    },
+    "326": {
+      "new": "118",
+      "name": "Voluntarily causing grievous hurt by dangerous weapons or means",
+      "note": "BNS 118(2)"
+    },
+    "326A": {
+      "new": "124",
+      "name": "Voluntarily causing grievous hurt by use of acid, etc"
+    },
+    "326B": {
+      "new": "124",
+      "name": "Voluntarily throwing or attempting to throw acid",
+      "note": "BNS 124(2)"
+    },
+    "327": {
+      "new": "119",
+      "name": "Voluntarily causing hurt to extort property, or to constrain to an illegal to an act"
+    },
+    "328": {
+      "new": "123",
+      "name": "Causing hurt by means of poison, etc., with intent to commit and offence"
+    },
+    "329": {
+      "new": "119",
+      "name": "Voluntarily causing grievous hurt to extort property, or to constrain to an illegal act",
+      "note": "BNS 119(2)"
+    },
+    "330": {
+      "new": "120",
+      "name": "Voluntarily causing hurt to extort confession, or to compel restoration of property",
+      "note": "BNS 120(1)"
+    },
+    "331": {
+      "new": "120",
+      "name": "Voluntarily causing grievous hurt to extort confession, or to compel restoration of property",
+      "note": "BNS 120(2)"
+    },
+    "332": {
+      "new": "121",
+      "name": "Voluntarily causing hurt to deter public servant from his duty"
+    },
+    "333": {
+      "new": "121",
+      "name": "Voluntarily causing grievous hurt to deter public servant from his duty",
+      "note": "BNS 121(2)"
+    },
+    "334": {
+      "new": "122",
+      "name": "Voluntarily causing hurt on provocation"
+    },
+    "335": {
+      "new": "122",
+      "name": "Voluntarily causing grievous hurt on provocation",
+      "note": "BNS 122(2)"
+    },
+    "336": {
+      "new": "125",
+      "name": "Act endangering life or personal safety of others"
+    },
+    "337": {
+      "new": "125",
+      "name": "Causing hurt by act endangering life or personal safety of others"
+    },
+    "338": {
+      "new": "125",
+      "name": "Causing grievous hurt by act endangering life or personal safety of others"
+    },
+    "339": {
+      "new": "126",
+      "name": "Wrongful restraint"
+    },
+    "340": {
+      "new": "127",
+      "name": "Wrongful confinement"
+    },
+    "341": {
+      "new": "126",
+      "name": "Punishment for wrongful restraint",
+      "note": "BNS 126(2)"
+    },
+    "342": {
+      "new": "127",
+      "name": "Punishment for wrongful confinement",
+      "note": "BNS 127(2)"
+    },
+    "343": {
+      "new": "127",
+      "name": "Wrongful confinement for three or more days",
+      "note": "BNS 127(3)"
+    },
+    "344": {
+      "new": "127",
+      "name": "Wrongful confinement for ten or more days",
+      "note": "BNS 127(4)"
+    },
+    "345": {
+      "new": "127",
+      "name": "Wrongful confinement of person for whose liberation writ has been issued",
+      "note": "BNS 127(5)"
+    },
+    "346": {
+      "new": "127",
+      "name": "Wrongful confinement in secret",
+      "note": "BNS 127(6)"
+    },
+    "347": {
+      "new": "127",
+      "name": "Wrongful confinement to extort property, or constrain to illegal act",
+      "note": "BNS 127(7)"
+    },
+    "348": {
+      "new": "127",
+      "name": "Wrongful confinement to extort confession, or compel restoration of property",
+      "note": "BNS 127(8)"
+    },
+    "349": {
+      "new": "128",
+      "name": "Force"
+    },
+    "350": {
+      "new": "129",
+      "name": "Criminal force"
+    },
+    "351": {
+      "new": "130",
+      "name": "Assault"
+    },
+    "352": {
+      "new": "131",
+      "name": "Punishment for assault or criminal force otherwise than on grave provocation"
+    },
+    "353": {
+      "new": "132",
+      "name": "Assault or criminal force to deter public servant from discharge of his duty"
+    },
+    "354": {
+      "new": "74",
+      "name": "Assault or criminal force to woman with intent to outrage her modesty"
+    },
+    "354A": {
+      "new": "75",
+      "name": "Sexual harassment and punishment for sexual harassment"
+    },
+    "354B": {
+      "new": "76",
+      "name": "Assault or use of criminal force to woman with intent to disrobe"
+    },
+    "354C": {
+      "new": "77",
+      "name": "Voyeurism"
+    },
+    "354D": {
+      "new": "78",
+      "name": "Stalking"
+    },
+    "355": {
+      "new": "133",
+      "name": "Assault or criminal force with intent to dishonour person, otherwise than on grave provocation"
+    },
+    "356": {
+      "new": "134",
+      "name": "Assault or criminal force in attempt to commit theft of property carried by a person"
+    },
+    "357": {
+      "new": "135",
+      "name": "Assault or criminal force in attempt wrongfully to confine a person"
+    },
+    "358": {
+      "new": "136",
+      "name": "Assault or criminal force on grave provocation"
+    },
+    "359": {
+      "new": "137",
+      "name": "Kidnapping"
+    },
+    "360": {
+      "new": "137",
+      "name": "Kidnapping from India",
+      "note": "BNS 137(1)"
+    },
+    "361": {
+      "new": "137",
+      "name": "Kidnapping from lawful guardianship",
+      "note": "BNS 137(1)"
+    },
+    "362": {
+      "new": "138",
+      "name": "Abduction"
+    },
+    "363": {
+      "new": "137",
+      "name": "Punishment for kidnapping",
+      "note": "BNS 137(2)"
+    },
+    "363A": {
+      "new": "139",
+      "name": "Kidnapping or maiming a minor for purposes of begging"
+    },
+    "364": {
+      "new": "140",
+      "name": "Kidnapping or abducting in order to murder"
+    },
+    "364A": {
+      "new": "140",
+      "name": "Kidnapping for ransom, etc",
+      "note": "BNS 140(2)"
+    },
+    "365": {
+      "new": "140",
+      "name": "Kidnapping or abducting with intent secretly and wrongfully to confine person",
+      "note": "BNS 140(3)"
+    },
+    "366": {
+      "new": "87",
+      "name": "Kidnapping, abducting or inducing woman to compel her marriage, etc"
+    },
+    "366A": {
+      "new": "96",
+      "name": "Procuration of minor girl"
+    },
+    "366B": {
+      "new": "141",
+      "name": "Importation of girl from foreign country"
+    },
+    "367": {
+      "new": "140",
+      "name": "Kidnapping or abducting in order to subject person to grievous hurt, slavery, etc",
+      "note": "BNS 140(4)"
+    },
+    "368": {
+      "new": "142",
+      "name": "Wrongfully concealing or keeping in confinement, kidnapped or abducted person"
+    },
+    "369": {
+      "new": "97",
+      "name": "Kidnapping or abducting child under ten years with intent to steal from its person"
+    },
+    "370": {
+      "new": "143",
+      "name": "Trafficking of person"
+    },
+    "370A": {
+      "new": "144",
+      "name": "Exploitation of a trafficked person"
+    },
+    "371": {
+      "new": "145",
+      "name": "Habitual dealing in slaves"
+    },
+    "372": {
+      "new": "98",
+      "name": "Selling minor for purposes of prostitution, etc"
+    },
+    "373": {
+      "new": "99",
+      "name": "Buying minor for purposes of prostitution, etc"
+    },
+    "374": {
+      "new": "146",
+      "name": "Unlawful compulsory labour"
+    },
+    "375": {
+      "new": "63",
+      "name": "Rape"
+    },
+    "376": {
+      "new": "64",
+      "name": "Punishment for rape"
+    },
+    "376A": {
+      "new": "66",
+      "name": "Punishment for causing death or resulting in persistent vegetative state of victim"
+    },
+    "376B": {
+      "new": "67",
+      "name": "Sexual intercourse by husband upon his wife during separation"
+    },
+    "376C": {
+      "new": "68",
+      "name": "Sexual intercourse by a person in authority"
+    },
+    "376D": {
+      "new": "70",
+      "name": "Gang rape"
+    },
+    "376E": {
+      "new": "71",
+      "name": "Punishment for repeat offenders"
+    },
+    "378": {
+      "new": "303",
+      "name": "Theft"
+    },
+    "379": {
+      "new": "303",
+      "name": "Punishment for theft"
+    },
+    "380": {
+      "new": "305",
+      "name": "Theft in dwelling house, etc"
+    },
+    "381": {
+      "new": "306",
+      "name": "Theft by clerk or servant of property in possession of master"
+    },
+    "382": {
+      "new": "307",
+      "name": "Theft after preparation made for causing death, hurt or restraint in order to the committing of the theft"
+    },
+    "383": {
+      "new": "308",
+      "name": "Extortion"
+    },
+    "384": {
+      "new": "308",
+      "name": "Punishment for extortion"
+    },
+    "385": {
+      "new": "308",
+      "name": "Putting person in fear of injury in order to commit extortion"
+    },
+    "386": {
+      "new": "308",
+      "name": "Extortion by putting a person in fear of death or grievous hurt"
+    },
+    "387": {
+      "new": "308",
+      "name": "Putting person in fear of death or of grievous hurt, in order to commit extortion"
+    },
+    "388": {
+      "new": "308",
+      "name": "Extortion by threat of accusation of an offence punishable with death or imprisonment for life, etc"
+    },
+    "389": {
+      "new": "308",
+      "name": "Putting person in fear or accusation of offence, in order to commit extortion"
+    },
+    "390": {
+      "new": "309",
+      "name": "Robbery"
+    },
+    "391": {
+      "new": "310",
+      "name": "Dacoity"
+    },
+    "392": {
+      "new": "309",
+      "name": "Punishment for robbery"
+    },
+    "393": {
+      "new": "309",
+      "name": "Attempt to commit robbery",
+      "note": "BNS 309(5)"
+    },
+    "394": {
+      "new": "309",
+      "name": "Voluntarily causing hurt in committing robbery",
+      "note": "BNS 309(6)"
+    },
+    "395": {
+      "new": "310",
+      "name": "Punishment for dacoity"
+    },
+    "396": {
+      "new": "310",
+      "name": "Dacoity with murder"
+    },
+    "397": {
+      "new": "311",
+      "name": "Robbery, or dacoity, with attempt to cause death or grievous hurt"
+    },
+    "398": {
+      "new": "312",
+      "name": "Attempt to commit robbery or dacoity when armed with deadly weapon"
+    },
+    "399": {
+      "new": "310",
+      "name": "Making preparation to commit dacoity"
+    },
+    "400": {
+      "new": "310",
+      "name": "Punishment for belonging to gang of dacoits"
+    },
+    "401": {
+      "new": "313",
+      "name": "Punishment for belonging to gang of thieves"
+    },
+    "402": {
+      "new": "310",
+      "name": "Assembling for purpose of committing dacoity"
+    },
+    "403": {
+      "new": "314",
+      "name": "Dishonest misappropriation of property"
+    },
+    "404": {
+      "new": "315",
+      "name": "Dishonest misappropriation of property possessed by deceased person at the time of his death"
+    },
+    "405": {
+      "new": "316",
+      "name": "Criminal breach of trust"
+    },
+    "406": {
+      "new": "316",
+      "name": "Punishment for criminal breach of trust"
+    },
+    "407": {
+      "new": "316",
+      "name": "Criminal breach of trust by carrier, etc"
+    },
+    "408": {
+      "new": "316",
+      "name": "Criminal breach of trust by clerk or servant"
+    },
+    "409": {
+      "new": "316",
+      "name": "Criminal breach of trust by public servant, or by banker, merchant or agent"
+    },
+    "410": {
+      "new": "317",
+      "name": "Stolen property"
+    },
+    "411": {
+      "new": "317",
+      "name": "Dishonestly receiving stolen property"
+    },
+    "412": {
+      "new": "317",
+      "name": "Dishonestly receiving property stolen in the commission of a dacoity"
+    },
+    "413": {
+      "new": "317",
+      "name": "Habitually dealing in stolen property"
+    },
+    "414": {
+      "new": "317",
+      "name": "Assisting in concealment of stolen property"
+    },
+    "415": {
+      "new": "318",
+      "name": "Cheating"
+    },
+    "417": {
+      "new": "318",
+      "name": "Punishment for cheating"
+    },
+    "418": {
+      "new": "318",
+      "name": "Cheating with knowledge that wrongful loss may ensue to person whose interest offender is bound to protect"
+    },
+    "419": {
+      "new": "319",
+      "name": "Punishment for cheating by personation",
+      "note": "BNS 319(2)"
+    },
+    "420": {
+      "new": "318",
+      "name": "Cheating and dishonestly inducing delivery of property"
+    },
+    "421": {
+      "new": "320",
+      "name": "Dishonest or fraudulent removal or concealment of property to prevent distribution among creditors"
+    },
+    "422": {
+      "new": "321",
+      "name": "Dishonestly or fraudulently preventing debt being available for creditors"
+    },
+    "423": {
+      "new": "322",
+      "name": "Dishonest or fraudulent execution of deed of transfer containing false statement of consideration"
+    },
+    "424": {
+      "new": "323",
+      "name": "Dishonest or fraudulent removal or concealment of property"
+    },
+    "425": {
+      "new": "324",
+      "name": "Mischief"
+    },
+    "426": {
+      "new": "324",
+      "name": "Punishment for mischief"
+    },
+    "427": {
+      "new": "324",
+      "name": "Mischief causing damage to the amount of fifty rupees"
+    },
+    "428": {
+      "new": "325",
+      "name": "Mischief by killing or maiming animal of the value of ten rupees"
+    },
+    "429": {
+      "new": "325",
+      "name": "Mischief by killing or maiming cattle, etc., of any value or any animal of the value of fifty rupees"
+    },
+    "430": {
+      "new": "326",
+      "name": "Mischief by injury to works of irrigation or by wrongfully diverting water"
+    },
+    "431": {
+      "new": "326",
+      "name": "Mischief by injury to public road, bridge, river or channel"
+    },
+    "432": {
+      "new": "326",
+      "name": "Mischief by causing inundation or obstruction to public drainage attended with damage"
+    },
+    "433": {
+      "new": "326",
+      "name": "Mischief by destroying, moving or rendering less useful a light-house or sea-mark"
+    },
+    "434": {
+      "new": "326",
+      "name": "Mischief by destroying or moving, etc., a land-mark fixed by public authority"
+    },
+    "435": {
+      "new": "326",
+      "name": "Mischief by fire or explosive substance with intent to cause damage to amount of one hundred or (in case of agricultural produce) ten rupees"
+    },
+    "436": {
+      "new": "326",
+      "name": "Mischief by fire or explosive substance with intent to destroy house, etc"
+    },
+    "437": {
+      "new": "327",
+      "name": "Mischief with intent to destroy or make unsafe a decked vessel or one of twenty tons burden"
+    },
+    "438": {
+      "new": "327",
+      "name": "Punishment for the mischief described in section 437 committed by fire or explosive substance"
+    },
+    "439": {
+      "new": "328",
+      "name": "Punishment for intentionally running vessel aground or ashore with intent to commit theft, etc"
+    },
+    "440": {
+      "new": "324",
+      "name": "Mischief committed after preparation made for causing death or hurt"
+    },
+    "441": {
+      "new": "329",
+      "name": "Criminal trespass"
+    },
+    "442": {
+      "new": "329",
+      "name": "House-trespass"
+    },
+    "443": {
+      "new": "330",
+      "name": "Lurking house-trespass"
+    },
+    "445": {
+      "new": "330",
+      "name": "House-breaking"
+    },
+    "447": {
+      "new": "329",
+      "name": "Punishment for criminal trespass"
+    },
+    "448": {
+      "new": "329",
+      "name": "Punishment for house-trespass"
+    },
+    "449": {
+      "new": "332",
+      "name": "House-trespass in order to commit offence punishable with death"
+    },
+    "450": {
+      "new": "332",
+      "name": "House-trespass in order to commit offence punishable with imprisonment for life"
+    },
+    "451": {
+      "new": "332",
+      "name": "House-trespass in order to commit offence punishable with imprisonment"
+    },
+    "452": {
+      "new": "333",
+      "name": "House-trespass alter preparation for hurt, assault or wrongful restraint"
+    },
+    "453": {
+      "new": "331",
+      "name": "Punishment for lurking house-trespass or house-breaking"
+    },
+    "454": {
+      "new": "331",
+      "name": "Lurking house-trespass or house-breaking in order to commit offence punishable with imprisonment"
+    },
+    "455": {
+      "new": "331",
+      "name": "Lurking house-trespass or house-breaking after preparation for hurt, assault or wrongful restraint"
+    },
+    "456": {
+      "new": "331",
+      "name": "Punishment for lurking house-trespass or house-breaking by night"
+    },
+    "457": {
+      "new": "331",
+      "name": "Lurking house-trespass or house-breaking by night in order to commit offence punishable with imprisonment"
+    },
+    "458": {
+      "new": "331",
+      "name": "Lurking house-trespass or house-breaking by night after preparation for hurt, assault, or wrongful restraint"
+    },
+    "459": {
+      "new": "331",
+      "name": "Grievous hurt caused whilst committing lurking house-trespass or house-breaking"
+    },
+    "460": {
+      "new": "331",
+      "name": "All persons jointly concerned in lurking house-trespass or house-breaking by night punishable where death or grievous hurt caused by one of them"
+    },
+    "461": {
+      "new": "334",
+      "name": "Dishonestly breaking open receptacle containing property"
+    },
+    "462": {
+      "new": "334",
+      "name": "Punishment for same offence when committed by person entrusted with custody",
+      "note": "BNS 334(2)"
+    },
+    "463": {
+      "new": "336",
+      "name": "Forgery"
+    },
+    "464": {
+      "new": "335",
+      "name": "Making a false document"
+    },
+    "465": {
+      "new": "336",
+      "name": "Punishment for forgery"
+    },
+    "466": {
+      "new": "337",
+      "name": "Forgery of record of Court or of public register, etc"
+    },
+    "467": {
+      "new": "338",
+      "name": "Forgery of valuable security, will, etc"
+    },
+    "468": {
+      "new": "336",
+      "name": "Forgery for purpose of cheating"
+    },
+    "469": {
+      "new": "336",
+      "name": "Forgery for purpose of harming reputation"
+    },
+    "470": {
+      "new": "340",
+      "name": "Forged document"
+    },
+    "471": {
+      "new": "340",
+      "name": "Using as genuine a forged document or electronic record"
+    },
+    "472": {
+      "new": "341",
+      "name": "Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under section"
+    },
+    "473": {
+      "new": "341",
+      "name": "Making or possessing counterfeit seal, etc., with intent to commit forgery punishable otherwise"
+    },
+    "474": {
+      "new": "339",
+      "name": "Having possession of document described in section 466 or 467, knowing it to be forged and intending to use it genuine"
+    },
+    "475": {
+      "new": "342",
+      "name": "Counterfeiting device or mark used for authenticating documents described in section 467, or possessing counterfeit marked material"
+    },
+    "476": {
+      "new": "342",
+      "name": "Counterfeiting device or mark used for authenticating documents other than those described in section 467, or possessing counterfeit marked material",
+      "note": "BNS 342(2)"
+    },
+    "477": {
+      "new": "343",
+      "name": "Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable security"
+    },
+    "477A": {
+      "new": "344",
+      "name": "Falsification of accounts"
+    },
+    "479": {
+      "new": "345",
+      "name": "Property mark"
+    },
+    "481": {
+      "new": "345",
+      "name": "Using a false property mark"
+    },
+    "482": {
+      "new": "345",
+      "name": "Punishment for using a false property mark"
+    },
+    "483": {
+      "new": "347",
+      "name": "Counterfeiting a property mark used by another"
+    },
+    "484": {
+      "new": "347",
+      "name": "Counterfeiting a mark used by a public servant"
+    },
+    "485": {
+      "new": "348",
+      "name": "Making or possession of any instrument for counterfeiting a property mark"
+    },
+    "486": {
+      "new": "349",
+      "name": "Selling goods marked with a counterfeit property mark"
+    },
+    "487": {
+      "new": "350",
+      "name": "Making a false mark upon any receptacle containing goods"
+    },
+    "488": {
+      "new": "350",
+      "name": "Punishment for making use of any such false mark"
+    },
+    "489": {
+      "new": "346",
+      "name": "Tampering with property mark with intent to cause injury"
+    },
+    "489A": {
+      "new": "178",
+      "name": "Counterfeiting currency-notes or bank-notes"
+    },
+    "489B": {
+      "new": "179",
+      "name": "Using as genuine, forged or counterfeit currency-notes or bank-notes"
+    },
+    "489C": {
+      "new": "180",
+      "name": "Possession of forged or counterfeit currency-notes or bank-notes"
+    },
+    "489D": {
+      "new": "181",
+      "name": "Making or possessing instruments or materials for forging or counterfeiting currency notes or bank-notes"
+    },
+    "489E": {
+      "new": "182",
+      "name": "Making or using documents resembling currency-notes or bank-notes"
+    },
+    "491": {
+      "new": "357",
+      "name": "Breach of contract to attend on and supply wants of helpless person"
+    },
+    "493": {
+      "new": "81",
+      "name": "Cohabitation caused by a man deceitfully inducing a belief of lawful marriage"
+    },
+    "494": {
+      "new": "82",
+      "name": "Marrying again during lifetime of husband or wife"
+    },
+    "495": {
+      "new": "82",
+      "name": "Same offence with concealment of former marriage from person with whom subsequent marriage is contracted",
+      "note": "BNS 82(2)"
+    },
+    "496": {
+      "new": "83",
+      "name": "Marriage ceremony fraudulently gone through without lawful marriage"
+    },
+    "498": {
+      "new": "84",
+      "name": "Enticing or taking away or detaining with criminal intent a married woman"
+    },
+    "498A": {
+      "new": "85",
+      "name": "Husband or relative of husband of a woman subjecting her to cruelty"
+    },
+    "499": {
+      "new": "356",
+      "name": "Defamation"
+    },
+    "500": {
+      "new": "356",
+      "name": "Punishment for defamation"
+    },
+    "501": {
+      "new": "356",
+      "name": "Printing or engraving matter known to be defamatory"
+    },
+    "502": {
+      "new": "356",
+      "name": "Sale of printed or engraved substance containing defamatory matter"
+    },
+    "503": {
+      "new": "351",
+      "name": "Criminal intimidation"
+    },
+    "504": {
+      "new": "352",
+      "name": "Intentional insult with intent to provoke breach of the peace"
+    },
+    "505": {
+      "new": "353",
+      "name": "Statements conducing to public mischief"
+    },
+    "506": {
+      "new": "351",
+      "name": "Punishment for criminal intimidation"
+    },
+    "507": {
+      "new": "351",
+      "name": "Criminal intimidation by an anonymous communication"
+    },
+    "508": {
+      "new": "354",
+      "name": "Act caused by inducing person to believe that he will be rendered an object of the Divine displeasure"
+    },
+    "509": {
+      "new": "79",
+      "name": "Word, gesture or act intended to insult the modesty of a woman"
+    },
+    "510": {
+      "new": "355",
+      "name": "Misconduct in public by a drunken person"
+    },
+    "511": {
+      "new": "62",
+      "name": "Punishment for attempting to commit offences punishable with imprisonment for life or other imprisonment"
     }
+  },
+  "BNS_TO_IPC_REVERSE": {
+    "1": {
+      "old": "1",
+      "name": "Short title, commencement and application"
+    },
+    "2": {
+      "old": "24",
+      "name": "Definitions"
+    },
+    "3": {
+      "old": "7",
+      "name": "General explanations"
+    },
+    "4": {
+      "old": "53",
+      "name": "Punishments"
+    },
+    "5": {
+      "old": "54",
+      "name": "Commutation of sentence"
+    },
+    "6": {
+      "old": "57",
+      "name": "Fractions of terms of punishment"
+    },
+    "7": {
+      "old": "60",
+      "name": "Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple"
+    },
+    "8": {
+      "old": "68",
+      "name": "Amount of fine, liability in default of payment of fine, etc"
+    },
+    "9": {
+      "old": "71",
+      "name": "Limit of punishment of offence made up of several offences"
+    },
+    "10": {
+      "old": "72",
+      "name": "Punishment of person guilty of one of several offences, judgment stating that it is doubtful of which"
+    },
+    "11": {
+      "old": "73",
+      "name": "Solitary confinement"
+    },
+    "12": {
+      "old": "74",
+      "name": "Limit of solitary confinement"
+    },
+    "13": {
+      "old": "75",
+      "name": "Enhanced punishment for certain offences after previous conviction"
+    },
+    "14": {
+      "old": "76",
+      "name": "Act done by a person bound, or by mistake of fact believing himself bound, by law"
+    },
+    "15": {
+      "old": "77",
+      "name": "Act of Judge when acting judicially"
+    },
+    "16": {
+      "old": "78",
+      "name": "Act done pursuant to judgment or order of Court"
+    },
+    "17": {
+      "old": "79",
+      "name": "Act done by a person justified, or by mistake of fact believing himself justified, by law"
+    },
+    "18": {
+      "old": "80",
+      "name": "Accident in doing a lawful act"
+    },
+    "19": {
+      "old": "81",
+      "name": "Act likely to cause harm, but done without criminal intent, and to prevent other harm"
+    },
+    "20": {
+      "old": "82",
+      "name": "Act of a child under seven years of age"
+    },
+    "21": {
+      "old": "83",
+      "name": "Act of a child above seven and under twelve years of age of immature understanding"
+    },
+    "22": {
+      "old": "84",
+      "name": "Act of a person of unsound mind"
+    },
+    "23": {
+      "old": "85",
+      "name": "Act of a person incapable of judgment by reason of intoxication caused against his will"
+    },
+    "24": {
+      "old": "86",
+      "name": "Offence requiring a particular intent or knowledge committed by one who is intoxicated"
+    },
+    "25": {
+      "old": "87",
+      "name": "Act not intended and not known to be likely to cause death or grievous hurt, done by consent"
+    },
+    "26": {
+      "old": "88",
+      "name": "Act not intended to cause death, done by consent in good faith for person’s benefit"
+    },
+    "27": {
+      "old": "89",
+      "name": "Act done in good faith for benefit of child or person of unsound mind, by, or by consent of guardian"
+    },
+    "28": {
+      "old": "90",
+      "name": "Consent known to be given under fear or misconception"
+    },
+    "29": {
+      "old": "91",
+      "name": "Exclusion of acts which are offences independently of harm caused"
+    },
+    "30": {
+      "old": "92",
+      "name": "Act done in good faith for benefit of a person without consent"
+    },
+    "31": {
+      "old": "93",
+      "name": "Communication made in good faith"
+    },
+    "32": {
+      "old": "94",
+      "name": "Act to which a person is compelled by threats"
+    },
+    "33": {
+      "old": "95",
+      "name": "Act causing slight harm"
+    },
+    "34": {
+      "old": "96",
+      "name": "Things done in private defence"
+    },
+    "35": {
+      "old": "97",
+      "name": "Right of private defence of body and of property"
+    },
+    "36": {
+      "old": "98",
+      "name": "Right of private defence against act of a person of unsound mind, etc"
+    },
+    "37": {
+      "old": "99",
+      "name": "Acts against which there is no right of private defence"
+    },
+    "38": {
+      "old": "100",
+      "name": "When right of private defence of body extends to causing death"
+    },
+    "39": {
+      "old": "101",
+      "name": "When such right extends to causing any harm other than death"
+    },
+    "40": {
+      "old": "102",
+      "name": "Commencement and continuance of right of private defence of body"
+    },
+    "41": {
+      "old": "103",
+      "name": "When right of private defence of property extends to causing death"
+    },
+    "42": {
+      "old": "104",
+      "name": "When such right extends to causing any harm other than death"
+    },
+    "43": {
+      "old": "105",
+      "name": "Commencement and continuance of right of private defence of property"
+    },
+    "44": {
+      "old": "106",
+      "name": "Right of private defence against deadly assault when there is risk of harm to innocent person"
+    },
+    "45": {
+      "old": "107",
+      "name": "Abetment of a thing"
+    },
+    "46": {
+      "old": "108",
+      "name": "Abettor"
+    },
+    "47": {
+      "old": "108A",
+      "name": "Abetment in India of offences outside India"
+    },
+    "49": {
+      "old": "109",
+      "name": "Punishment of abetment if act abetted is committed in consequence and where no express provision is made for its punishment"
+    },
+    "50": {
+      "old": "110",
+      "name": "Punishment of abetment if person abetted does act with different intention from that of abettor"
+    },
+    "51": {
+      "old": "111",
+      "name": "Liability of abettor when one act abetted and different act done"
+    },
+    "52": {
+      "old": "112",
+      "name": "Abettor when liable to cumulative punishment for act abetted and for act done"
+    },
+    "53": {
+      "old": "113",
+      "name": "Liability of abettor for an effect caused by act abetted different from that intended by abettor"
+    },
+    "54": {
+      "old": "114",
+      "name": "Abettor present when offence is committed"
+    },
+    "55": {
+      "old": "115",
+      "name": "Abetment of offence punishable with death or imprisonment for life"
+    },
+    "56": {
+      "old": "116",
+      "name": "Abetment of offence punishable with imprisonment"
+    },
+    "57": {
+      "old": "117",
+      "name": "Abetting commission of offence by public or by more than ten persons"
+    },
+    "58": {
+      "old": "118",
+      "name": "Concealing design to commit offence punishable with death or imprisonment for life"
+    },
+    "59": {
+      "old": "119",
+      "name": "Public servant concealing design to commit offence which it is his duty to prevent"
+    },
+    "60": {
+      "old": "120",
+      "name": "Concealing design to commit offence punishable with imprisonment"
+    },
+    "61": {
+      "old": "120A",
+      "name": "Criminal conspiracy"
+    },
+    "62": {
+      "old": "511",
+      "name": "Punishment for attempting to commit offences punishable with imprisonment for life or other imprisonment"
+    },
+    "63": {
+      "old": "375",
+      "name": "Rape"
+    },
+    "64": {
+      "old": "376",
+      "name": "Punishment for rape"
+    },
+    "66": {
+      "old": "376A",
+      "name": "Punishment for causing death or resulting in persistent vegetative state of victim"
+    },
+    "67": {
+      "old": "376B",
+      "name": "Sexual intercourse by husband upon his wife during separation"
+    },
+    "68": {
+      "old": "376C",
+      "name": "Sexual intercourse by a person in authority"
+    },
+    "70": {
+      "old": "376D",
+      "name": "Gang rape"
+    },
+    "71": {
+      "old": "376E",
+      "name": "Punishment for repeat offenders"
+    },
+    "72": {
+      "old": "228A",
+      "name": "Disclosure of identity of victim of certain offences, etc"
+    },
+    "74": {
+      "old": "354",
+      "name": "Assault or use of criminal force to woman with intent to outrage her modesty"
+    },
+    "75": {
+      "old": "354A",
+      "name": "Sexual harassment"
+    },
+    "76": {
+      "old": "354B",
+      "name": "Assault or use of criminal force to woman with intent to disrobe"
+    },
+    "77": {
+      "old": "354C",
+      "name": "Voyeurism"
+    },
+    "78": {
+      "old": "354D",
+      "name": "Stalking"
+    },
+    "79": {
+      "old": "509",
+      "name": "Word, gesture or act intended to insult modesty of a woman"
+    },
+    "80": {
+      "old": "304B",
+      "name": "Dowry death"
+    },
+    "81": {
+      "old": "493",
+      "name": "Cohabitation caused by man deceitfully inducing belief of lawful marriage"
+    },
+    "82": {
+      "old": "494",
+      "name": "Marrying again during lifetime of husband or wife"
+    },
+    "83": {
+      "old": "496",
+      "name": "Marriage ceremony fraudulently gone through without lawful marriage"
+    },
+    "84": {
+      "old": "498",
+      "name": "Enticing or taking away or detaining with criminal intent a married woman"
+    },
+    "85": {
+      "old": "498A",
+      "name": "Husband or relative of husband of a woman subjecting her to cruelty"
+    },
+    "87": {
+      "old": "366",
+      "name": "Kidnapping, abducting or inducing woman to compel her marriage, etc"
+    },
+    "88": {
+      "old": "312",
+      "name": "Causing miscarriage"
+    },
+    "89": {
+      "old": "313",
+      "name": "Causing miscarriage without woman’s consent"
+    },
+    "90": {
+      "old": "314",
+      "name": "Death caused by act done with intent to cause miscarriage"
+    },
+    "91": {
+      "old": "315",
+      "name": "Act done with intent to prevent child being born alive or to cause to die after birth"
+    },
+    "92": {
+      "old": "316",
+      "name": "Causing death of quick unborn child by act amounting to culpable homicide"
+    },
+    "93": {
+      "old": "317",
+      "name": "Exposure and abandonment of child under twelve years of age, by parent or person having care of it"
+    },
+    "94": {
+      "old": "318",
+      "name": "Concealment of birth by secret disposal of dead body"
+    },
+    "96": {
+      "old": "366A",
+      "name": "Procuration of child"
+    },
+    "97": {
+      "old": "369",
+      "name": "Kidnapping or abducting child under ten years of age with intent to steal from its person"
+    },
+    "98": {
+      "old": "372",
+      "name": "Selling child for purposes of prostitution, etc"
+    },
+    "99": {
+      "old": "373",
+      "name": "Buying child for purposes of prostitution, etc"
+    },
+    "100": {
+      "old": "299",
+      "name": "Culpable homicide"
+    },
+    "101": {
+      "old": "300",
+      "name": "Murder"
+    },
+    "102": {
+      "old": "301",
+      "name": "Culpable homicide by causing death of person other than person whose death was intended"
+    },
+    "103": {
+      "old": "302",
+      "name": "Punishment for murder"
+    },
+    "104": {
+      "old": "303",
+      "name": "Punishment for murder by life-convict"
+    },
+    "105": {
+      "old": "304",
+      "name": "Punishment for culpable homicide not amounting to murder"
+    },
+    "106": {
+      "old": "304A",
+      "name": "Causing death by negligence"
+    },
+    "107": {
+      "old": "305",
+      "name": "Abetment of suicide of child or person of unsound mind"
+    },
+    "108": {
+      "old": "306",
+      "name": "Abetment of suicide"
+    },
+    "109": {
+      "old": "307",
+      "name": "Attempt to murder"
+    },
+    "110": {
+      "old": "308",
+      "name": "Attempt to commit culpable homicide"
+    },
+    "114": {
+      "old": "319",
+      "name": "Hurt"
+    },
+    "115": {
+      "old": "321",
+      "name": "Voluntarily causing hurt"
+    },
+    "116": {
+      "old": "320",
+      "name": "Grievous hurt"
+    },
+    "117": {
+      "old": "322",
+      "name": "Voluntarily causing grievous hurt"
+    },
+    "118": {
+      "old": "326",
+      "name": "Voluntarily causing hurt or grievous hurt by dangerous weapons or means"
+    },
+    "119": {
+      "old": "329",
+      "name": "Voluntarily causing hurt or grievous hurt to extort property, or to constrain to an illegal act"
+    },
+    "120": {
+      "old": "331",
+      "name": "Voluntarily causing hurt or grievous hurt to extort confession, or to compel restoration of property"
+    },
+    "121": {
+      "old": "333",
+      "name": "Voluntarily causing hurt or grievous hurt to deter public servant from his duty"
+    },
+    "122": {
+      "old": "335",
+      "name": "Voluntarily causing hurt or grievous hurt on provocation"
+    },
+    "123": {
+      "old": "328",
+      "name": "Causing hurt by means of poison, etc., with intent to commit an offence"
+    },
+    "124": {
+      "old": "326A",
+      "name": "Voluntarily causing grievous hurt by use of acid, etc"
+    },
+    "125": {
+      "old": "336",
+      "name": "Act endangering life or personal safety of others"
+    },
+    "126": {
+      "old": "339",
+      "name": "Wrongful restraint"
+    },
+    "127": {
+      "old": "340",
+      "name": "Wrongful confinement"
+    },
+    "128": {
+      "old": "349",
+      "name": "Force"
+    },
+    "129": {
+      "old": "350",
+      "name": "Criminal force"
+    },
+    "130": {
+      "old": "351",
+      "name": "Assault"
+    },
+    "131": {
+      "old": "352",
+      "name": "Punishment for assault or criminal force otherwise than on grave provocation"
+    },
+    "132": {
+      "old": "353",
+      "name": "Assault or criminal force to deter public servant from discharge of his duty"
+    },
+    "133": {
+      "old": "355",
+      "name": "Assault or criminal force with intent to dishonour person, otherwise than on grave provocation"
+    },
+    "134": {
+      "old": "356",
+      "name": "Assault or criminal force in attempt to commit theft of property carried by a person"
+    },
+    "135": {
+      "old": "357",
+      "name": "Assault or criminal force in attempt to wrongfully confine a person"
+    },
+    "136": {
+      "old": "358",
+      "name": "Assault or criminal force on grave provocation"
+    },
+    "137": {
+      "old": "359",
+      "name": "Kidnapping"
+    },
+    "138": {
+      "old": "362",
+      "name": "Abduction"
+    },
+    "139": {
+      "old": "363A",
+      "name": "Kidnapping or maiming a child for purposes of begging"
+    },
+    "140": {
+      "old": "364",
+      "name": "Kidnapping or abducting in order to murder or for ransom, etc"
+    },
+    "141": {
+      "old": "366B",
+      "name": "Importation of girl or boy from foreign country"
+    },
+    "142": {
+      "old": "368",
+      "name": "Wrongfully concealing or keeping in confinement, kidnapped or abducted person"
+    },
+    "143": {
+      "old": "370",
+      "name": "Trafficking of person"
+    },
+    "144": {
+      "old": "370A",
+      "name": "Exploitation of a trafficked person"
+    },
+    "145": {
+      "old": "371",
+      "name": "Habitual dealing in slaves"
+    },
+    "146": {
+      "old": "374",
+      "name": "Unlawful compulsory labour"
+    },
+    "147": {
+      "old": "121",
+      "name": "Waging, or attempting to wage war, or abetting waging of war, against Government of India"
+    },
+    "148": {
+      "old": "121A",
+      "name": "Conspiracy to commit offences punishable by section 147"
+    },
+    "149": {
+      "old": "122",
+      "name": "Collecting arms, etc., with intention of waging war against Government of India"
+    },
+    "150": {
+      "old": "123",
+      "name": "Concealing with intent to facilitate design to wage war"
+    },
+    "151": {
+      "old": "124",
+      "name": "Assaulting President, Governor, etc., with intent to compel or restrain exercise of any lawful power"
+    },
+    "153": {
+      "old": "125",
+      "name": "Waging war against Government of any foreign State at peace with Government of India"
+    },
+    "154": {
+      "old": "126",
+      "name": "Committing depredation on territories of foreign State at peace with Government of India"
+    },
+    "155": {
+      "old": "127",
+      "name": "Receiving property taken by war or depredation mentioned in sections 153 and 154"
+    },
+    "156": {
+      "old": "128",
+      "name": "Public servant voluntarily allowing prisoner of State or war to escape"
+    },
+    "157": {
+      "old": "129",
+      "name": "Public servant negligently suffering such prisoner to escape"
+    },
+    "158": {
+      "old": "130",
+      "name": "Aiding escape of, rescuing or harbouring such prisoner"
+    },
+    "159": {
+      "old": "131",
+      "name": "Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty"
+    },
+    "160": {
+      "old": "132",
+      "name": "Abetment of mutiny, if mutiny is committed in consequence thereof"
+    },
+    "161": {
+      "old": "133",
+      "name": "Abetment of assault by soldier, sailor or airman on his superior officer, when in execution of his office"
+    },
+    "162": {
+      "old": "134",
+      "name": "Abetment of such assault, if assault committed"
+    },
+    "163": {
+      "old": "135",
+      "name": "Abetment of desertion of soldier, sailor or airman"
+    },
+    "164": {
+      "old": "136",
+      "name": "Harbouring deserter"
+    },
+    "165": {
+      "old": "137",
+      "name": "Deserter concealed on board merchant vessel through negligence of master"
+    },
+    "166": {
+      "old": "138",
+      "name": "Abetment of act of insubordination by soldier, sailor or airman"
+    },
+    "167": {
+      "old": "139",
+      "name": "Persons subject to certain Acts"
+    },
+    "168": {
+      "old": "140",
+      "name": "Wearing garb or carrying token used by soldier, sailor or airman"
+    },
+    "169": {
+      "old": "171A",
+      "name": "Candidate, electoral right defined"
+    },
+    "170": {
+      "old": "171B",
+      "name": "Bribery"
+    },
+    "171": {
+      "old": "171C",
+      "name": "Undue influence at elections"
+    },
+    "172": {
+      "old": "171D",
+      "name": "Personation at elections"
+    },
+    "173": {
+      "old": "171E",
+      "name": "Punishment for bribery"
+    },
+    "174": {
+      "old": "171F",
+      "name": "Punishment for undue influence or personation at an election"
+    },
+    "175": {
+      "old": "171G",
+      "name": "False statement in connection with an election"
+    },
+    "176": {
+      "old": "171H",
+      "name": "Illegal payments in connection with an election"
+    },
+    "178": {
+      "old": "489A",
+      "name": "Counterfeiting coin, Government stamps, currency-notes or bank-notes"
+    },
+    "179": {
+      "old": "489B",
+      "name": "Using as genuine, forged or counterfeit coin, Government stamp, currency-notes or bank-notes"
+    },
+    "180": {
+      "old": "489C",
+      "name": "Possession of forged or counterfeit coin, Government stamp, currency-notes or bank-notes"
+    },
+    "181": {
+      "old": "489D",
+      "name": "Making or possessing instruments or materials for forging or counterfeiting coin, Government stamp, currency-notes or bank-notes"
+    },
+    "182": {
+      "old": "489E",
+      "name": "Making or using documents resembling currency-notes or bank-notes"
+    },
+    "183": {
+      "old": "261",
+      "name": "Effacing writing from substance bearing Government stamp, or removing from document a stamp used for it, with intent to cause loss to Government"
+    },
+    "184": {
+      "old": "262",
+      "name": "Using Government stamp known to have been before used"
+    },
+    "185": {
+      "old": "263",
+      "name": "Erasure of mark denoting that stamp has been used"
+    },
+    "186": {
+      "old": "263A",
+      "name": "Prohibition of fictitious stamps"
+    },
+    "187": {
+      "old": "244",
+      "name": "Person employed in mint causing coin to be of different weight or composition from that fixed by law"
+    },
+    "188": {
+      "old": "245",
+      "name": "Unlawfully taking coining instrument from mint"
+    },
+    "189": {
+      "old": "141",
+      "name": "Unlawful assembly"
+    },
+    "190": {
+      "old": "149",
+      "name": "Every member of unlawful assembly guilty of offence committed in prosecution of common object"
+    },
+    "191": {
+      "old": "146",
+      "name": "Rioting"
+    },
+    "192": {
+      "old": "153",
+      "name": "Wantonly giving provocation with intent to cause riot-if rioting be committed; if not committed"
+    },
+    "193": {
+      "old": "154",
+      "name": "Liability of owner, occupier, etc., of land on which an unlawful assembly or riot takes place"
+    },
+    "194": {
+      "old": "159",
+      "name": "Affray"
+    },
+    "195": {
+      "old": "152",
+      "name": "Assaulting or obstructing public servant when suppressing riot, etc"
+    },
+    "196": {
+      "old": "153A",
+      "name": "Promoting enmity between different groups on grounds of religion, race, place of birth, residence, language, etc., and doing acts prejudicial to maintenance of harmony"
+    },
+    "197": {
+      "old": "153B",
+      "name": "Imputations, assertions prejudicial to national integration"
+    },
+    "198": {
+      "old": "166",
+      "name": "Public servant disobeying law, with intent to cause injury to any person"
+    },
+    "199": {
+      "old": "166A",
+      "name": "Public servant disobeying direction under law"
+    },
+    "200": {
+      "old": "166B",
+      "name": "Punishment for non-treatment of victim"
+    },
+    "201": {
+      "old": "167",
+      "name": "Public servant framing an incorrect document with intent to cause injury"
+    },
+    "202": {
+      "old": "168",
+      "name": "Public servant unlawfully engaging in trade"
+    },
+    "203": {
+      "old": "169",
+      "name": "Public servant unlawfully buying or bidding for property"
+    },
+    "204": {
+      "old": "170",
+      "name": "Personating a public servant"
+    },
+    "205": {
+      "old": "171",
+      "name": "Wearing garb or carrying token used by public servant with fraudulent intent"
+    },
+    "206": {
+      "old": "172",
+      "name": "Absconding to avoid service of summons or other proceeding"
+    },
+    "207": {
+      "old": "173",
+      "name": "Preventing service of summons or other proceeding, or preventing publication thereof"
+    },
+    "208": {
+      "old": "174",
+      "name": "Non-attendance in obedience to an order from public servant"
+    },
+    "209": {
+      "old": "174A",
+      "name": "Non-appearance in response to a proclamation under section 84 of Bharatiya Nagarik Suraksha Sanhita, 2023"
+    },
+    "210": {
+      "old": "175",
+      "name": "Omission to produce document or electronic record to public servant by person legally bound to produce it"
+    },
+    "211": {
+      "old": "176",
+      "name": "Omission to give notice or information to public servant by person legally bound to give it"
+    },
+    "212": {
+      "old": "177",
+      "name": "Furnishing false information"
+    },
+    "213": {
+      "old": "178",
+      "name": "Refusing oath or affirmation when duly required by public servant to make it"
+    },
+    "214": {
+      "old": "179",
+      "name": "Refusing to answer public servant authorised to question"
+    },
+    "215": {
+      "old": "180",
+      "name": "Refusing to sign statement"
+    },
+    "216": {
+      "old": "181",
+      "name": "False statement on oath or affirmation to public servant or person authorised to administer an oath or affirmation"
+    },
+    "217": {
+      "old": "182",
+      "name": "False information, with intent to cause public servant to use his lawful power to injury of another person"
+    },
+    "218": {
+      "old": "183",
+      "name": "Resistance to taking of property by lawful authority of a public servant"
+    },
+    "219": {
+      "old": "184",
+      "name": "Obstructing sale of property offered for sale by authority of public servant"
+    },
+    "220": {
+      "old": "185",
+      "name": "Illegal purchase or bid for property offered for sale by authority of public servant"
+    },
+    "221": {
+      "old": "186",
+      "name": "Obstructing public servant in discharge of public functions"
+    },
+    "222": {
+      "old": "187",
+      "name": "Omission to assist public servant when bound by law to give assistance"
+    },
+    "223": {
+      "old": "188",
+      "name": "Disobedience to order duly promulgated by public servant"
+    },
+    "224": {
+      "old": "189",
+      "name": "Threat of injury to public servant"
+    },
+    "225": {
+      "old": "190",
+      "name": "Threat of injury to induce person to refrain from applying for protection to public servant"
+    },
+    "227": {
+      "old": "191",
+      "name": "Giving false evidence"
+    },
+    "228": {
+      "old": "192",
+      "name": "Fabricating false evidence"
+    },
+    "229": {
+      "old": "193",
+      "name": "Punishment for false evidence"
+    },
+    "230": {
+      "old": "194",
+      "name": "Giving or fabricating false evidence with intent to procure conviction of capital offence"
+    },
+    "231": {
+      "old": "195",
+      "name": "Giving or fabricating false evidence with intent to procure conviction of offence punishable with imprisonment for life or imprisonment"
+    },
+    "232": {
+      "old": "195A",
+      "name": "Threatening any person to give false evidence"
+    },
+    "233": {
+      "old": "196",
+      "name": "Using evidence known to be false"
+    },
+    "234": {
+      "old": "197",
+      "name": "Issuing or signing false certificate"
+    },
+    "235": {
+      "old": "198",
+      "name": "Using as true a certificate known to be false"
+    },
+    "236": {
+      "old": "199",
+      "name": "False statement made in declaration which is by law receivable as evidence"
+    },
+    "237": {
+      "old": "200",
+      "name": "Using as true such declaration knowing it to be false"
+    },
+    "238": {
+      "old": "201",
+      "name": "Causing disappearance of evidence of offence, or giving false information to screen offender"
+    },
+    "239": {
+      "old": "202",
+      "name": "Intentional omission to give information of offence by person bound to inform"
+    },
+    "240": {
+      "old": "203",
+      "name": "Giving false information respecting an offence committed"
+    },
+    "241": {
+      "old": "204",
+      "name": "Destruction of document or electronic record to prevent its production as evidence"
+    },
+    "242": {
+      "old": "205",
+      "name": "False personation for purpose of act or proceeding in suit or prosecution"
+    },
+    "243": {
+      "old": "206",
+      "name": "Fraudulent removal or concealment of property to prevent its seizure as forfeited or in execution"
+    },
+    "244": {
+      "old": "207",
+      "name": "Fraudulent claim to property to prevent its seizure as forfeited or in execution"
+    },
+    "245": {
+      "old": "208",
+      "name": "Fraudulently suffering decree for sum not due"
+    },
+    "246": {
+      "old": "209",
+      "name": "Dishonestly making false claim in Court"
+    },
+    "247": {
+      "old": "210",
+      "name": "Fraudulently obtaining decree for sum not due"
+    },
+    "248": {
+      "old": "211",
+      "name": "False charge of offence made with intent to injure"
+    },
+    "249": {
+      "old": "212",
+      "name": "Harbouring offender"
+    },
+    "250": {
+      "old": "213",
+      "name": "Taking gift, etc., to screen an offender from punishment"
+    },
+    "251": {
+      "old": "214",
+      "name": "Offering gift or restoration of property in consideration of screening offender"
+    },
+    "252": {
+      "old": "215",
+      "name": "Taking gift to help to recover stolen property, etc"
+    },
+    "253": {
+      "old": "216",
+      "name": "Harbouring offender who has escaped from custody or whose apprehension has been ordered"
+    },
+    "254": {
+      "old": "216A",
+      "name": "Penalty for harbouring robbers or dacoits"
+    },
+    "255": {
+      "old": "217",
+      "name": "255"
+    },
+    "256": {
+      "old": "218",
+      "name": "Public servant framing incorrect record or writing with intent to save person from punishment or property from forfeiture"
+    },
+    "257": {
+      "old": "219",
+      "name": "Public servant in judicial proceeding corruptly making report, etc., contrary to law"
+    },
+    "258": {
+      "old": "220",
+      "name": "Commitment for trial or confinement by person having authority who knows that he is acting contrary to law"
+    },
+    "259": {
+      "old": "221",
+      "name": "Intentional omission to apprehend on part of public servant bound to apprehend"
+    },
+    "260": {
+      "old": "222",
+      "name": "Intentional omission to apprehend on part of public servant bound to apprehend person under sentence or lawfully committed"
+    },
+    "261": {
+      "old": "223",
+      "name": "Escape from confinement or custody negligently suffered by public servant"
+    },
+    "262": {
+      "old": "224",
+      "name": "Resistance or obstruction by a person to his lawful apprehension"
+    },
+    "263": {
+      "old": "225",
+      "name": "Resistance or obstruction to lawful apprehension of another person"
+    },
+    "264": {
+      "old": "225A",
+      "name": "Omission to apprehend, or sufferance of escape, on part of public servant, in cases not otherwise provided for"
+    },
+    "265": {
+      "old": "225B",
+      "name": "Resistance or obstruction to lawful apprehension or escape or rescue in cases not otherwise provided for"
+    },
+    "266": {
+      "old": "227",
+      "name": "Violation of condition of remission of punishment"
+    },
+    "267": {
+      "old": "228",
+      "name": "Intentional insult or interruption to public servant sitting in judicial proceeding"
+    },
+    "268": {
+      "old": "229",
+      "name": "Personation of assessor"
+    },
+    "269": {
+      "old": "229A",
+      "name": "Failure by person released on bail bond or bond to appear in Court"
+    },
+    "270": {
+      "old": "268",
+      "name": "Public nuisance"
+    },
+    "271": {
+      "old": "269",
+      "name": "Negligent act likely to spread infection of disease dangerous to life"
+    },
+    "272": {
+      "old": "270",
+      "name": "Malignant act likely to spread infection of disease dangerous to life"
+    },
+    "273": {
+      "old": "271",
+      "name": "Disobedience to quarantine rule"
+    },
+    "274": {
+      "old": "272",
+      "name": "Adulteration of food or drink intended for sale"
+    },
+    "275": {
+      "old": "273",
+      "name": "Sale of noxious food or drink"
+    },
+    "276": {
+      "old": "274",
+      "name": "Adulteration of drugs"
+    },
+    "277": {
+      "old": "275",
+      "name": "Sale of adulterated drugs"
+    },
+    "278": {
+      "old": "276",
+      "name": "Sale of drug as a different drug or preparation"
+    },
+    "279": {
+      "old": "277",
+      "name": "Fouling water of public spring or reservoir"
+    },
+    "280": {
+      "old": "278",
+      "name": "Making atmosphere noxious to health"
+    },
+    "281": {
+      "old": "279",
+      "name": "Rash driving or riding on a public way"
+    },
+    "282": {
+      "old": "280",
+      "name": "Rash navigation of vessel"
+    },
+    "283": {
+      "old": "281",
+      "name": "Exhibition of false light, mark or buoy"
+    },
+    "284": {
+      "old": "282",
+      "name": "Conveying person by water for hire in unsafe or overloaded vessel"
+    },
+    "285": {
+      "old": "283",
+      "name": "Danger or obstruction in public way or line of navigation"
+    },
+    "286": {
+      "old": "284",
+      "name": "Negligent conduct with respect to poisonous substance"
+    },
+    "287": {
+      "old": "285",
+      "name": "Negligent conduct with respect to fire or combustible matter"
+    },
+    "288": {
+      "old": "286",
+      "name": "Negligent conduct with respect to explosive substance"
+    },
+    "289": {
+      "old": "287",
+      "name": "Negligent conduct with respect to machinery"
+    },
+    "290": {
+      "old": "288",
+      "name": "Negligent conduct with respect to pulling down, repairing or constructing buildings, etc"
+    },
+    "291": {
+      "old": "289",
+      "name": "Negligent conduct with respect to animal"
+    },
+    "292": {
+      "old": "290",
+      "name": "Punishment for public nuisance in cases not otherwise provided for"
+    },
+    "293": {
+      "old": "291",
+      "name": "Continuance of nuisance after injunction to discontinue"
+    },
+    "294": {
+      "old": "292",
+      "name": "Sale, etc., of obscene books, etc"
+    },
+    "295": {
+      "old": "293",
+      "name": "Sale, etc., of obscene objects to child"
+    },
+    "296": {
+      "old": "294",
+      "name": "Obscene acts and songs"
+    },
+    "297": {
+      "old": "294A",
+      "name": "Keeping lottery office"
+    },
+    "298": {
+      "old": "295",
+      "name": "Injuring or defiling place of worship with intent to insult religion of any class"
+    },
+    "299": {
+      "old": "295A",
+      "name": "Deliberate and malicious acts, intended to outrage religious feelings of any class by insulting its religion or religious beliefs"
+    },
+    "300": {
+      "old": "296",
+      "name": "Disturbing religious assembly"
+    },
+    "301": {
+      "old": "297",
+      "name": "Trespassing on burial places, etc"
+    },
+    "302": {
+      "old": "298",
+      "name": "Uttering words, etc., with deliberate intent to wound religious feelings of any person"
+    },
+    "303": {
+      "old": "378",
+      "name": "Theft"
+    },
+    "305": {
+      "old": "380",
+      "name": "Theft in a dwelling house, or means of transportation or place of worship, etc"
+    },
+    "306": {
+      "old": "381",
+      "name": "Theft by clerk or servant of property in possession of master"
+    },
+    "307": {
+      "old": "382",
+      "name": "Theft after preparation made for causing death, hurt or restraint in order to committing of theft"
+    },
+    "308": {
+      "old": "383",
+      "name": "Extortion"
+    },
+    "309": {
+      "old": "390",
+      "name": "Robbery"
+    },
+    "310": {
+      "old": "391",
+      "name": "Dacoity"
+    },
+    "311": {
+      "old": "397",
+      "name": "Robbery, or dacoity, with attempt to cause death or grievous hurt"
+    },
+    "312": {
+      "old": "398",
+      "name": "Attempt to commit robbery or dacoity when armed with deadly weapon"
+    },
+    "313": {
+      "old": "401",
+      "name": "Punishment for belonging to gang of robbers, etc"
+    },
+    "314": {
+      "old": "403",
+      "name": "Dishonest misappropriation of property"
+    },
+    "315": {
+      "old": "404",
+      "name": "Dishonest misappropriation of property possessed by deceased person at the time of his death"
+    },
+    "316": {
+      "old": "405",
+      "name": "Criminal breach of trust"
+    },
+    "317": {
+      "old": "410",
+      "name": "Stolen property"
+    },
+    "318": {
+      "old": "415",
+      "name": "Cheating"
+    },
+    "319": {
+      "old": "419",
+      "name": "Cheating by personation"
+    },
+    "320": {
+      "old": "421",
+      "name": "Dishonest or fraudulent removal or concealment of property to prevent distribution among creditors"
+    },
+    "321": {
+      "old": "422",
+      "name": "Dishonestly or fraudulently preventing debt being available for creditors"
+    },
+    "322": {
+      "old": "423",
+      "name": "Dishonest or fraudulent execution of deed of transfer containing false statement of consideration"
+    },
+    "323": {
+      "old": "424",
+      "name": "Dishonest or fraudulent removal or concealment of property"
+    },
+    "324": {
+      "old": "425",
+      "name": "Mischief"
+    },
+    "325": {
+      "old": "428",
+      "name": "Mischief by killing or maiming animal"
+    },
+    "326": {
+      "old": "436",
+      "name": "Mischief by injury, inundation, fire or explosive substance, etc"
+    },
+    "327": {
+      "old": "437",
+      "name": "Mischief with intent to destroy or make unsafe a rail, aircraft, decked vessel or one of twenty tons burden"
+    },
+    "328": {
+      "old": "439",
+      "name": "Punishment for intentionally running vessel aground or ashore with intent to commit theft, etc"
+    },
+    "329": {
+      "old": "441",
+      "name": "Criminal trespass and house-trespass"
+    },
+    "330": {
+      "old": "445",
+      "name": "House-trespass and house-breaking"
+    },
+    "331": {
+      "old": "453",
+      "name": "Punishment for house-trespass or house-breaking"
+    },
+    "332": {
+      "old": "449",
+      "name": "House-trespass in order to commit offence"
+    },
+    "333": {
+      "old": "452",
+      "name": "House-trespass after preparation for hurt, assault or wrongful restraint"
+    },
+    "334": {
+      "old": "461",
+      "name": "Dishonestly breaking open receptacle containing property"
+    },
+    "335": {
+      "old": "464",
+      "name": "Making a false document"
+    },
+    "336": {
+      "old": "463",
+      "name": "Forgery"
+    },
+    "337": {
+      "old": "466",
+      "name": "Forgery of record of Court or of public register, etc"
+    },
+    "338": {
+      "old": "467",
+      "name": "Forgery of valuable security, will, etc"
+    },
+    "339": {
+      "old": "474",
+      "name": "Having possession of document described in section 337 or section 338, knowing it to be forged and intending to use it as genuine"
+    },
+    "340": {
+      "old": "471",
+      "name": "Forged document or electronic record and using it as genuine"
+    },
+    "341": {
+      "old": "472",
+      "name": "Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under section 338"
+    },
+    "342": {
+      "old": "475",
+      "name": "Counterfeiting device or mark used for authenticating documents described in section 338, or possessing counterfeit marked material"
+    },
+    "343": {
+      "old": "477",
+      "name": "Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable security"
+    },
+    "344": {
+      "old": "477A",
+      "name": "Falsification of accounts"
+    },
+    "345": {
+      "old": "479",
+      "name": "Property mark"
+    },
+    "346": {
+      "old": "489",
+      "name": "Tampering with property mark with intent to cause injury"
+    },
+    "347": {
+      "old": "483",
+      "name": "Counterfeiting a property mark"
+    },
+    "348": {
+      "old": "485",
+      "name": "Making or possession of any instrument for counterfeiting a property mark"
+    },
+    "349": {
+      "old": "486",
+      "name": "Selling goods marked with a counterfeit property mark"
+    },
+    "350": {
+      "old": "487",
+      "name": "Making a false mark upon any receptacle containing goods"
+    },
+    "351": {
+      "old": "503",
+      "name": "Criminal intimidation"
+    },
+    "352": {
+      "old": "504",
+      "name": "Intentional insult with intent to provoke breach of peace"
+    },
+    "353": {
+      "old": "505",
+      "name": "Statements conducing to public mischief"
+    },
+    "354": {
+      "old": "508",
+      "name": "Act caused by inducing person to believe that he will be rendered an object of Divine displeasure"
+    },
+    "355": {
+      "old": "510",
+      "name": "Misconduct in public by a drunken person"
+    },
+    "356": {
+      "old": "499",
+      "name": "Defamation"
+    },
+    "357": {
+      "old": "491",
+      "name": "Breach of contract to attend on and supply wants of helpless person"
+    }
+  },
+  "SYSTEM_NOTES": {
+    "effective_date": "July 2024",
+    "total_mapped": 522,
+    "description": "IPC to BNS section crosswalk: official counterparts of the Indian Penal Code (IPC) sections under the Bharatiya Nyaya Sanhita (BNS), built from the NCRB comparative section table and validated against the ingested act texts.",
+    "source": "NCRB comparative IPC-BNS section table (official)",
+    "deleted_ipc_sections": [
+      "14",
+      "18",
+      "29A",
+      "50",
+      "53A",
+      "124A",
+      "153A",
+      "236",
+      "264",
+      "265",
+      "266",
+      "267",
+      "309",
+      "310",
+      "311",
+      "377",
+      "444",
+      "446",
+      "497"
+    ],
+    "rejected_unverified_pairs": 5,
+    "note_field": "BNS <sub-section> when the official table maps to a sub-section"
+  }
 }
