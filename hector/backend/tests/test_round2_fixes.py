@@ -7,8 +7,16 @@ import re
 import sys
 from pathlib import Path
 
-import chromadb
 import pytest
+
+try:
+    import chromadb
+except ImportError:  # CI installs only hector/api/requirements.txt (no chromadb)
+    chromadb = None
+
+requires_chroma = pytest.mark.skipif(
+    chromadb is None, reason="chromadb not installed in this environment"
+)
 
 _PROJECT = Path(__file__).resolve().parents[1]
 if str(_PROJECT) not in sys.path:
@@ -231,7 +239,9 @@ def test_choose_threshold_requires_both_groups():
         choose_threshold([], [0.1])
 
 
-class _ToyEmbeddingFunction(chromadb.EmbeddingFunction):
+class _ToyEmbeddingFunction(
+    chromadb.EmbeddingFunction if chromadb is not None else object
+):
     def __call__(self, input):
         vectors = []
         for text in input:
@@ -263,6 +273,7 @@ _LEGAL_DOCS = [
 ]
 
 
+@requires_chroma
 def test_local_dense_search_returns_ranked_items(tmp_path):
     collection = _make_collection(tmp_path, "dense", _LEGAL_DOCS)
     retriever = _new_retriever()
@@ -273,6 +284,7 @@ def test_local_dense_search_returns_ranked_items(tmp_path):
     assert hits[0]["rank"] == 1
 
 
+@requires_chroma
 def test_search_uses_local_dense_and_reports_hybrid(tmp_path):
     records = [
         {"id": f"r{i}", "document": doc, "metadata": {"chunk": i}}
@@ -286,6 +298,7 @@ def test_search_uses_local_dense_and_reports_hybrid(tmp_path):
     assert results
 
 
+@requires_chroma
 def test_refresh_index_falls_back_to_local_records(tmp_path):
     collection = _make_collection(tmp_path, "refresh", _LEGAL_DOCS)
     retriever = HectorHybridRetriever.from_records(
