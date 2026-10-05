@@ -3,6 +3,9 @@ import os, sys
 
 env_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", ".env")
 env_path = os.path.abspath(env_path)
+import pytest
+if not os.path.exists(env_path):
+    pytest.skip("requires local .env with live credentials", allow_module_level=True)
 for line in open(env_path):
     line = line.strip()
     if line and not line.startswith("#") and "=" in line:
