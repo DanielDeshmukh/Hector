@@ -196,7 +196,8 @@ def embed_batch(texts):
                 time.sleep(wait)
                 continue
             if resp.status_code == 503:
-                time.sleep(20); continue
+                time.sleep(20)
+                continue
             resp.raise_for_status()
             data = resp.json()
             return [item["embedding"] for item in sorted(data.get("data", []), key=lambda x: x["index"])]
@@ -260,9 +261,11 @@ def upsert_pdf_chunks(records, pdf_name):
 
 def main():
     if not NIM_API_KEY:
-        print("ERROR: NIM_API_KEY"); return
+        print("ERROR: NIM_API_KEY")
+        return
     if not PINECONE_API_KEY:
-        print("ERROR: PINECONE_API_KEY"); return
+        print("ERROR: PINECONE_API_KEY")
+        return
 
     print("=" * 70, flush=True)
     print("HECTOR RE-INGESTION v3 (per-PDF embedding)", flush=True)
@@ -295,7 +298,7 @@ def main():
         print(f"\n  Processing: {pdf.name}", flush=True)
         records = process_pdf(pdf)
         if not records:
-            print(f"    No chunks extracted", flush=True)
+            print("    No chunks extracted", flush=True)
             done_pdfs.add(pdf.name)
             progress["completed_pdfs"] = list(done_pdfs)
             save_progress(progress)

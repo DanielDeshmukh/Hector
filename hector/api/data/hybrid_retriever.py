@@ -1753,9 +1753,10 @@ class HectorHybridRetriever:
         if not phrases:
             return 0.0
         metadata = item.get("metadata") or {}
-        normalize = lambda text: re.sub(
-            r"[-–—/]+", " ", str(text or "").lower()
-        )
+
+        def normalize(text):
+            return re.sub(r"[-–—/]+", " ", str(text or "").lower())
+
         title = normalize(metadata.get("section_title"))
         haystack = normalize(self._candidate_haystack(item))
         for phrase in phrases:
