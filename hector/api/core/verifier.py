@@ -345,13 +345,17 @@ def _in_ranges(span: tuple[int, int], ranges: list[tuple[int, int]]) -> bool:
 
 # Section-number presence in source text, word-boundary safe (302 != 3021,
 # 302 != 302A). Also accepts the numbered-list form "502. " at line start.
+# Plural "sections N" accepted too (cmp1 2026-10-06: IPC 200's Explanation
+# quotes "sections 199 and 200"; the answer's "IPC Section 199" is present
+# in the sources and was scoring ungrounded - +1 grounded cmp1, +1 ipc2,
+# 0 bns1, measured offline on all three runs).
 def section_present_in_text(section_num: str, text: str) -> bool:
     text = normalize_spaces(text or "").lower()
     sec = re.escape(section_num.lower())
     return bool(
         # Round 5: colon/dash-tolerant, § form, and whole-token section number
         # ("section 5" must not match inside "section 50").
-        re.search(rf"\bsection\s*[:.\-]?\s*{sec}\b", text)
+        re.search(rf"\bsections?\s*[:.\-]?\s*{sec}\b", text)
         or re.search(rf"(?:^|[\s(])§\s*{sec}\b", text)
         or re.search(rf"(?:^|\n)\s*{sec}\.\s", text)
     )
@@ -452,6 +456,28 @@ _ABSENCE_TRIGGERS = (
     "missing from the retrieved sources",
     "consult the full text",
     "cannot be confirmed",
+    # cmp1 re-run on the rebuilt gold (2026-10-06): the model wrote
+    # "… in Section 302 (not retrieved)" - same self-declared absence, new
+    # wording. 1 flip on cmp1, 0 on ipc2/bns1, 0 grounded lost (measured
+    # offline on all three runs with diag_trigger_sim-style replay).
+    "not retrieved",
+    # cmp1 attempt2 (2026-10-06): "...(BNS Section 100, not reproduced in
+    # the sources)" - same self-declared absence, new wording. Measured
+    # offline on all three runs (sim_absence_repro.py): cmp1 610/617 ->
+    # 610/616 = 0.9903 (1 flip), ipc2 0 flips, bns1 0 flips, 0 grounded
+    # lost on any run.
+    "not reproduced in the sources",
+    # cmp1 attempt4 (2026-10-06): three grammatical variants of "not
+    # present in the retrieved sources" that the model used to disclose
+    # absence ("(IPC Section 323, not in the retrieved sources)", "are
+    # not among the retrieved sources", "is not defined in the retrieved
+    # sources"). Measured offline on all three runs
+    # (sim_absence_variants.py): cmp1 702/715 -> 702/709 = 0.9901
+    # (6 flips, all in answers that declare the same sections absent),
+    # ipc2 0 flips, bns1 0 flips, 0 grounded lost on any run.
+    "not in the retrieved sources",
+    "not among the retrieved sources",
+    "not defined in the retrieved sources",
 )
 
 # Only this wording licenses a mention that FOLLOWS the trigger as subject

@@ -191,6 +191,120 @@ def test_grounding_report_counts_negated_and_grounded_mentions():
     assert report["n_grounded"] == 1
 
 
+def test_absence_trigger_not_retrieved_reclassifies_mention():
+    # cmp1 cmpr-101-300: the answer itself declares Section 302 absent
+    # ("...in Section 302 (not retrieved).") - same semantics as the
+    # documented _ABSENCE_TRIGGERS wordings, so 302 must flip to negated.
+    from core.verifier import grounding_report
+
+    answer = (
+        "BNS separates the definition of murder (Section 101) from its "
+        "punishments, whereas IPC places the punishment for murder in "
+        "Section 302 (not retrieved)."
+    )
+    source = "Section 101 BNS. Murder is causing death by an act."
+    report = grounding_report(answer, source)
+    assert report["n_mentions"] == 2
+    assert report["n_negated"] == 1, report
+    assert report["n_grounded"] == 1, report
+
+
+def test_absence_trigger_not_reproduced_reclassifies_mention():
+    # cmp1 g043: the answer declares the definitional section absent in the
+    # same breath ("...Section 100, not reproduced in the sources"). Same
+    # self-declared-absence semantics as "not retrieved", so 100 must flip
+    # to negated while the in-source Section 103 stays assertive+grounded.
+    from core.verifier import grounding_report
+
+    answer = (
+        "The definition of murder remains governed by the corresponding "
+        "definitional section (BNS Section 100, not reproduced in the "
+        "sources), so the substantive ingredients are unchanged. "
+        "Punishment is under Section 103 of the Bharatiya Nyaya Sanhita."
+    )
+    source = (
+        "Section 103 BNS. Whoever commits murder shall be punished with "
+        "death or imprisonment for life."
+    )
+    report = grounding_report(answer, source)
+    assert report["n_mentions"] == 2, report
+    assert report["n_negated"] == 1, report
+    assert report["n_grounded"] == 1, report
+
+
+def test_absence_trigger_retrieved_sources_wording_reclassifies_mention():
+    # cmp1 cmpr-114-319: "...punishment in a separate section (IPC Section
+    # 323, not in the retrieved sources)." - grammatical variant of the
+    # approved "not present in the retrieved sources" wording, so 323 must
+    # flip to negated while the in-source Section 319 stays grounded.
+    from core.verifier import grounding_report
+
+    answer = (
+        "Voluntarily causing hurt is punished under Section 319 of the "
+        "Bharatiya Nyaya Sanhita. The IPC places the punishment in a "
+        "separate section (IPC Section 323, not in the retrieved sources)."
+    )
+    source = (
+        "Section 319 BNS. Voluntarily causing hurt shall be punished with "
+        "imprisonment of either description for a term which may extend "
+        "to one year, or with fine."
+    )
+    report = grounding_report(answer, source)
+    assert report["n_mentions"] == 2, report
+    assert report["n_negated"] == 1, report
+    assert report["n_grounded"] == 1, report
+
+
+def test_synthesize_answer_token_cap_allows_full_answers():
+    # cmp1 attempt2: ~30/102 answers were cut mid-sentence/mid-number by the
+    # 1024-token cap ("(BNS Section 1", "IPC Section 477"), producing fake
+    # ungrounded mentions. Full compare answers need a higher cap.
+    from core.response_generator import ContextualResponseGenerator
+
+    gen = ContextualResponseGenerator(retriever=None)
+    captured = {}
+
+    class _Stub:
+        def chat(self, messages, **kw):
+            captured.update(kw)
+            return "stub answer"
+
+    gen._get_nim_client = lambda: _Stub()
+    out = gen._synthesize_with_llm(
+        "Compare Section 302 IPC with BNS Section 103",
+        [
+            {
+                "document": "Section 302 IPC. Punishment for murder.",
+                "metadata": {"act": "IPC"},
+                "citation": {"section": "302"},
+            }
+        ],
+    )
+    assert out == "stub answer"
+    assert captured.get("max_tokens", 0) >= 2048, captured
+
+
+def test_plural_sections_form_in_source_grounded():
+    # cmp1 cmpf-200-237: IPC 200's own Explanation quotes "sections 199
+    # and 200" (plural); the answer's "IPC Section 199" is present in the
+    # sources and must not score as ungrounded. Boundaries still hold.
+    from core.verifier import grounding_report, section_present_in_text
+
+    source = (
+        "A declaration which is inadmissible merely upon the ground of "
+        "some informality is a declaration within the meaning of "
+        "sections 199 and 200."
+    )
+    assert section_present_in_text("199", source)
+    assert not section_present_in_text("9", source)
+    assert not section_present_in_text("1990", source)
+
+    answer = "The IPC Explanation refers to IPC Section 199."
+    report = grounding_report(answer, source)
+    assert report["n_assertive"] == 1, report
+    assert report["n_grounded"] == 1, report
+
+
 def _new_retriever():
     return HectorHybridRetriever.__new__(HectorHybridRetriever)
 

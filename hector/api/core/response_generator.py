@@ -156,10 +156,28 @@ RULES:
    Hedged guesses are still section numbers and are equally forbidden:
    "likely Section N", "possibly Section N", "probably Section N",
    "Section N or a subsequent provision" - only when that text is present.
-2. Answer ONLY from the provided source documents. Never invent legal provisions.
-3. Cite every claim with [Source N] where N matches the source number.
-4. Use precise legal terminology (section, clause, proviso, explanation).
-5. If comparing IPC and BNS, compare ONLY sections whose text is in the retrieved sources.
+    When the retrieved text leaves a cross-reference generic ("the last
+    preceding section", "the section above"), keep the generic wording -
+    never resolve it to a section number that is absent from the sources.
+    MEASURED FAILURES - each was written despite this rule; use the DO rewrite:
+      BAD: "the corresponding offence in IPC would be under Section 472."
+      DO:  "the corresponding offence in IPC appears in a neighbouring provision
+            whose text is not among the sources."
+      BAD: "IPC Section 143 assumes the definition from Section 142."
+      DO:  "IPC Section 143 takes its definition from a preceding provision whose
+            text is not among the sources."
+      BAD: "grievous hurt in separate sections (Section 337 and Section 338)"
+      DO:  "grievous hurt in a separate provision beside Section 337"
+      BAD: "replacing IPC §302" / "e.g., BNS §2(3)" / "death under BNS Section 103"
+      DO:  "replacing the earlier IPC murder provision" / "e.g., a general
+            definitional provision" / "death under the corresponding BNS provision"
+ 2. Answer ONLY from the provided source documents. Never invent legal provisions.
+ 3. Cite every claim with [Source N] where N matches the source number.
+ 4. Use precise legal terminology (section, clause, proviso, explanation).
+ 5. If comparing IPC and BNS, compare ONLY sections whose text is in the retrieved sources.
+   Never cite a neighbouring or example provision ("e.g. Section N", "cf. Section N",
+   "covered elsewhere under Section N") unless that section's own text is in the
+   sources - omit the number entirely instead.
 6. If the sources don't contain enough information, say so explicitly.
 7. Keep answers concise and direct — no filler phrases.
 
@@ -188,7 +206,20 @@ RULES:
    Hedged guesses are still section numbers and are equally forbidden:
    "likely Section N", "possibly Section N", "probably Section N",
    "Section N or a subsequent provision" - only when that text is present.
-2. Answer ONLY from the provided source documents. Never invent legal provisions.
+    When the retrieved text leaves a cross-reference generic ("the last
+    preceding section", "the section above"), keep the generic wording -
+    never resolve it to a section number that is absent from the sources.
+    MEASURED FAILURES - each was written despite this rule; use the DO rewrite:
+      BAD: "the corresponding offence would be under Section 472."
+      DO:  "the corresponding offence appears in a neighbouring provision whose
+            text is not among the sources."
+      BAD: "IPC Section 143 assumes the definition from Section 142."
+      DO:  "IPC Section 143 takes its definition from a preceding provision whose
+            text is not among the sources."
+      BAD: "...and Section 338" / "replacing IPC §302" / "e.g., §2(3)"
+      DO:  "...and the grievous-hurt provision beside it" / "replacing the earlier
+            murder provision" / "e.g., a general definitional provision"
+ 2. Answer ONLY from the provided source documents. Never invent legal provisions.
 3. Cite every claim with [Source N] where N matches the source number.
 4. Use precise legal terminology (section, clause, proviso, explanation).
 5. If the sources don't contain enough information, say so explicitly.
@@ -322,7 +353,10 @@ OUTPUT FORMAT:
             return nim.chat(
                 messages,
                 temperature=0.0,
-                max_tokens=1024,
+                # 1024 cut ~30/102 cmp1 answers mid-sentence/mid-number
+                # ("(BNS Section 1", "IPC Section 477") - fake ungrounded
+                # mentions; full compare answers need more room.
+                max_tokens=2048,
                 model=getattr(self, "_generation_model", None),
             )
         except Exception as e:

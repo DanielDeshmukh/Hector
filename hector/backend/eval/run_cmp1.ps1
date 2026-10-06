@@ -5,12 +5,17 @@
 # --sample 200 draws the WHOLE set (load_gold only samples when
 # GOLD_SAMPLE < len(gold)); results go to results\cmp1.
 #
+# Phase param (2026-10-06): "run" stops after generation (gates only:
+# report_gates.py needs raw_runs only); default "all" also judges + metrics.
+#
 # Why run C exists: the compare retrieval sweep (sweep_cmp4.log) measured
 # 162/162 = 1.0000 on today's fixed code, but the judged gates (generation +
 # grounded + fabricated) have not been measured on this code since the fix.
 #
 # Gold: gold_compare_iteration1.jsonl (102 rows, seed 20261013).
 # Thresholds unchanged (0.98 / 0.99 / 0.991), live in report_gates.py only.
+
+param([string]$Phase = "all")
 
 try { $Host.UI.RawUI.WindowTitle = "GOLD EVAL run C (compare judged, 102q)" } catch { }
 
@@ -49,6 +54,8 @@ Write-Host "results=$($env:HECTOR_EVAL_RESULTS) seeds=$($env:HECTOR_EVAL_SEEDS)"
 Set-Location $eval
 $runLog = Join-Path $results "run.log"
 $sw = [Diagnostics.Stopwatch]::StartNew()
-& $python -u run_gold_eval.py all --sample 200 --sample-seed 20261013 2>&1 |
-    Tee-Object -FilePath $runLog
+# No PS-side Tee here: run_gold_eval's setup_phase_log already tees stdout+stderr
+# into run.log itself, and a second writer on the same file races its handle
+# (fails intermittently with "being used by another process" under WMI).
+& $python -u run_gold_eval.py $Phase --sample 200 --sample-seed 20261013
 Write-Host "python exit=$LASTEXITCODE after $([math]::Round($sw.Elapsed.TotalSeconds))s"
