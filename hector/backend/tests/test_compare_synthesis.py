@@ -1,5 +1,7 @@
-"""Compare synthesis tests: chunk builder, offline groundedness validation,
+﻿"""Compare synthesis tests: chunk builder, offline groundedness validation,
 canonical reverse determinism, and services wiring with a mocked model."""
+
+import time
 
 import pytest
 
@@ -334,3 +336,107 @@ def test_compare_without_counterpart_is_skipped(service, monkeypatch):
         assert resp.comparison_table == []
     else:  # pragma: no cover - mapping unexpectedly provides one
         pytest.skip("mapping.json resolved a counterpart for BNS 1")
+
+
+# ---------------------------------------------------------------------------
+# Candidate race (parallel chain) â€” no network
+# ---------------------------------------------------------------------------
+
+
+def _ok_payload():
+    return {
+        "rows": [
+            {"aspect": a, "requested": "r", "counterpart": "c"}
+            for a in ASPECTS_SUBSTANTIVE
+        ],
+        "message": "Both texts describe the same offence.",
+    }
+
+
+class _FakeClient:
+    """chat_json behavior per model id: Exception -> raise, "hang" -> sleep,
+    dict -> return."""
+
+    def __init__(self, behavior):
+        self.behavior = behavior
+        self.calls = []
+
+    def chat_json(self, messages, max_tokens=0, model=None, **kwargs):
+        self.calls.append(model)
+        act = self.behavior.get(model)
+        if isinstance(act, Exception):
+            raise act
+        if act == "hang":
+            time.sleep(60)
+        return act
+
+
+def _synthesize():
+    return synthesize_comparison(
+        requested_act="IPC",
+        requested_section="302",
+        requested_items=[],
+        counterpart_act="BNS",
+        counterpart_section="101",
+        counterpart_items=[],
+    )
+
+
+def _wait_for_calls(client, expected, timeout=2.0):
+    end = time.monotonic() + timeout
+    while time.monotonic() < end and set(client.calls) != set(expected):
+        time.sleep(0.02)
+
+
+def test_synthesize_races_candidates_second_answers(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "model-a,model-b")
+    client = _FakeClient(
+        {
+            "model-a": RuntimeError("503 worker limit reached"),
+            "model-b": _ok_payload(),
+        }
+    )
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    out = _synthesize()
+    assert out is not None
+    assert out["message"] == "Both texts describe the same offence."
+    # both candidates were raced concurrently, not tried one after another
+    _wait_for_calls(client, {"model-a", "model-b"})
+    assert set(client.calls) == {"model-a", "model-b"}
+
+
+def test_synthesize_returns_none_when_all_candidates_fail(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "model-a,model-b")
+    client = _FakeClient(
+        {
+            "model-a": RuntimeError("503"),
+            "model-b": RuntimeError("503"),
+        }
+    )
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    assert _synthesize() is None
+    _wait_for_calls(client, {"model-a", "model-b"})
+    assert set(client.calls) == {"model-a", "model-b"}
+
+
+def test_synthesize_bounds_total_wait_on_hangs(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    monkeypatch.setenv("HECTOR_COMPARE_DEADLINE_S", "0.5")
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "hang-a,hang-b")
+    client = _FakeClient({"hang-a": "hang", "hang-b": "hang"})
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    start = time.monotonic()
+    assert _synthesize() is None
+    # parallel race: bounded by ~one deadline, never deadline x candidates
+    assert time.monotonic() - start < 4.0

@@ -89,6 +89,58 @@ export default function ComparisonView({
             <p className="mb-4 text-[12px] text-silver/50 italic">{compareData.note}</p>
           )}
 
+          {compareData.groundedMessage && (
+            <p className="mb-3 text-[13px] leading-relaxed text-silver/70">
+              {compareData.groundedMessage}
+            </p>
+          )}
+
+          {compareData.comparisonTable.length > 0 && (
+            <div className="mb-4 overflow-x-auto rounded-lg border border-gold/20 bg-charcoal/50">
+              <table className="w-full text-left text-[12.5px]">
+                <thead>
+                  <tr className="border-b border-slate-custom/30">
+                    <th className="px-3 py-2 text-[10.5px] font-semibold uppercase tracking-wider text-silver/50">
+                      Aspect
+                    </th>
+                    <th className="px-3 py-2 text-[10.5px] font-semibold uppercase tracking-wider text-gold-light">
+                      {compareData.requestedAct} &sect;{compareData.requestedSection}
+                    </th>
+                    <th className="px-3 py-2 text-[10.5px] font-semibold uppercase tracking-wider text-info">
+                      {compareData.counterpartAct || "Counterpart"} &sect;
+                      {compareData.counterpartSection || ""}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareData.comparisonTable.map((row) => (
+                    <tr
+                      key={row.aspect}
+                      className="border-b border-slate-custom/20 align-top last:border-b-0"
+                    >
+                      <td className="px-3 py-2.5 font-medium text-silver/70">
+                        {row.aspect}
+                      </td>
+                      <td className="px-3 py-2.5 leading-relaxed text-silver/60">
+                        {row.requested || "\u2014"}
+                      </td>
+                      <td className="px-3 py-2.5 leading-relaxed text-silver/60">
+                        {row.counterpart || "\u2014"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {compareData.synthesis !== "ok" && (
+            <p className="mb-4 text-[11.5px] italic text-silver/40">
+              AI comparison unavailable &mdash; showing the retrieved source
+              texts below.
+            </p>
+          )}
+
           <div className="grid gap-4 sm:grid-cols-2">
             {/* Requested Results */}
             <div className="rounded-lg border border-slate-custom/30 bg-charcoal/40 p-4">

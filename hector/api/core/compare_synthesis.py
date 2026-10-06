@@ -16,9 +16,12 @@ from __future__ import annotations
 
 import logging
 import os
+import queue
 import re
+import threading
+import time
 
-from core.nim_llm import NIM_MODELS, call_with_deadline, get_nim_llm
+from core.nim_llm import NIM_MODELS, _split_models, call_with_deadline, get_nim_llm
 
 logger = logging.getLogger("hector.compare_synthesis")
 
@@ -214,26 +217,88 @@ def synthesize_comparison(
         aspects=", ".join(f'"{a}"' for a in aspects)
     )
     model = NIM_MODELS.get("compare")
-    deadline_s = float(os.getenv("HECTOR_COMPARE_DEADLINE_S", "3") or 3)
+    # Wall-clock budget for the WHOLE synthesis (was 3s for one call —
+    # way too tight). 18s measured basis (2026-10-06): these are REASONING
+    # models, so a compare-shaped JSON call runs ~10-12s under load (a
+    # sequential nano call blew a 12s budget at exactly 12.0s), and the
+    # 503-retry storms make it worse. Candidates race in parallel (below),
+    # so this is never multiplied by the number of candidates; the common
+    # success path returns as soon as the first candidate answers.
+    deadline_s = float(os.getenv("HECTOR_COMPARE_DEADLINE_S", "18") or 18)
+    candidates = [m for m in _split_models(model) if m]
+    if not candidates:
+        logger.warning("compare synthesis: no model candidates configured")
+        return None
     try:
         client = get_nim_llm()
-        data = call_with_deadline(
-            lambda: client.chat_json(
-                [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": chunk},
-                ],
-                max_tokens=900,
-                model=model,
-            ),
-            deadline_s,
-        )
     except Exception as exc:
         logger.warning("compare synthesis unavailable (%s)", exc)
         return None
 
-    ok, reason = validate_synthesis(data, aspects, allowed)
-    if not ok:
-        logger.warning("compare synthesis rejected (%s)", reason)
-        return None
-    return {"rows": data["rows"], "message": data["message"]}
+    # The model pools congest independently (measured 2026-10-06: nano
+    # returns 503 "worker limit reached" while ultra hangs >20s, and the
+    # other way around), so candidates are RACED on daemon threads and the
+    # first output passing validate_synthesis wins. Losers are abandoned:
+    # each inner call_with_deadline stops its own worker, and daemon
+    # threads can never block the response or interpreter shutdown.
+    results: queue.Queue = queue.Queue()
+
+    def _attempt(candidate: str) -> None:
+        try:
+            # max_attempts=1: this call is abandoned at deadline_s by the
+            # outer call_with_deadline — with the default retry chain the
+            # abandoned thread would keep firing NEW NIM requests for
+            # minutes (observed 2026-10-06), piling load onto the already
+            # congested worker pool. The parallel race below IS the
+            # redundancy; SDK-level fast-503 retries still apply.
+            payload = call_with_deadline(
+                lambda: client.chat_json(
+                    [
+                        {"role": "system", "content": system},
+                        {"role": "user", "content": chunk},
+                    ],
+                    max_tokens=900,
+                    model=candidate,
+                    max_attempts=1,
+                ),
+                deadline_s,
+            )
+            results.put((candidate, payload, None))
+        except Exception as exc:  # noqa: BLE001 - reported as a candidate failure
+            results.put((candidate, None, exc))
+
+    for candidate in candidates:
+        threading.Thread(
+            target=_attempt,
+            args=(candidate,),
+            daemon=True,
+            name="compare-synthesis",
+        ).start()
+
+    # One overall bound: results arrive in parallel, so the slowest
+    # possible outcome is ~one deadline (+ small grace), not deadline x N.
+    give_up = time.monotonic() + deadline_s + 2.0
+    pending = len(candidates)
+    while pending > 0:
+        remaining = give_up - time.monotonic()
+        if remaining <= 0:
+            break
+        try:
+            candidate, data, exc = results.get(timeout=remaining)
+        except queue.Empty:
+            break
+        pending -= 1
+        if exc is not None:
+            logger.warning(
+                "compare synthesis: %s unavailable (%s)", candidate, exc
+            )
+            continue
+        ok, reason = validate_synthesis(data, aspects, allowed)
+        if ok:
+            return {"rows": data["rows"], "message": data["message"]}
+        logger.warning("compare synthesis: %s rejected (%s)", candidate, reason)
+    if pending > 0:
+        logger.warning(
+            "compare synthesis: no candidate answered within %.0fs", deadline_s
+        )
+    return None

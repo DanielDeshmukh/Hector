@@ -255,6 +255,9 @@ export async function compareHector(section, act = "IPC") {
     note: data.note,
     requestedResults: (data.requested_results || []).map(toSourceReference),
     counterpartResults: (data.counterpart_results || []).map(toSourceReference),
+    comparisonTable: data.comparison_table || [],
+    groundedMessage: data.grounded_message || null,
+    synthesis: data.synthesis || "skipped",
     comparedAt: data.compared_at,
   };
 }

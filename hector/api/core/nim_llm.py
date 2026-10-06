@@ -94,12 +94,19 @@ NIM_MODELS = {
         "HECTOR_NIM_QI_MODEL",
         "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
     ),
-    # Compare synthesis: small/fast JSON-formatting only (chunk-grounded).
-    # Verified 2026-10-05: nano-omni answers JSON mode in ~1.9s for this
-    # account; lightning ignores JSON mode (thinking preamble), nano-3 404s.
+    # Compare synthesis: small/fast JSON formatting only (chunk-grounded).
+    # 2026-10-06 measurements on this account: nano-omni answers JSON mode
+    # in ~2.9s when admitted, but its worker pool is often at 16/16
+    # (503 ResourceExhausted -> in-call retries, ~10s end-to-end); ultra
+    # has its own congestion (one measured >20s hang on an idle prompt).
+    # compare_synthesis walks this comma-separated chain candidate by
+    # candidate with its own deadline, so both pools are usable.
+    # lightning ignores JSON mode (thinking preamble), nano-3 404s.
+    # Override: HECTOR_COMPARE_MODEL (comma-separated).
     "compare": os.getenv(
         "HECTOR_COMPARE_MODEL",
-        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning,"
+        "nvidia/nemotron-3-ultra-550b-a55b",
     ),
 }
 
@@ -170,6 +177,7 @@ class NimLLMClient:
         max_tokens: int = 1024,
         response_format: dict | None = None,
         model: str | None = None,
+        max_attempts: int | None = None,
     ) -> str:
         """
         Send a chat completion request to NIM.
@@ -181,6 +189,10 @@ class NimLLMClient:
             response_format: Optional JSON mode dict, e.g. {"type": "json_object"}.
             model: Override model for this call. May be a comma-separated
                 fallback chain of model ids, tried in order.
+            max_attempts: Outer retry count (default 3). Callers that
+                abandon via their own deadline must pass 1 — otherwise the
+                abandoned thread keeps firing NEW requests for minutes
+                (retry chains), piling load onto an already congested NIM.
 
         Returns:
             The assistant message content string.
@@ -216,9 +228,9 @@ class NimLLMClient:
                     lambda **req: call_with_deadline(
                         client.chat.completions.create, CALL_DEADLINE_S, **req
                     ),
-                    max_attempts=3,
+                    max_attempts=max_attempts,
                     operation_name=f"nim_chat[{candidate}]",
-                    **kwargs,
+                    **kwargs
                 )
                 return response.choices[0].message.content
             except Exception as exc:
@@ -248,6 +260,7 @@ class NimLLMClient:
         temperature: float = 0.0,
         max_tokens: int = 1024,
         model: str | None = None,
+        max_attempts: int | None = None,
     ) -> dict:
         """Chat and parse the response as JSON."""
         raw = self.chat(
@@ -256,6 +269,7 @@ class NimLLMClient:
             max_tokens=max_tokens,
             response_format={"type": "json_object"},
             model=model,
+            max_attempts=max_attempts,
         )
         return json.loads(raw)
 
