@@ -1,0 +1,32 @@
+{
+  "query": "What is the BNS equivalent of IPC Section 302?",
+  "route": "LEGAL_RESEARCH",
+  "confidence": 92.0,
+  "generated": "2026-10-05 16:26 UTC",
+  "direct_answer": "IPC Section 302 prescribes the punishment for murder. The retrieved sources do not establish a BNS equivalent: no BNS punishment-for-murder section appears in the retrieved material, so the BNS section number corresponding to IPC Section 302 is not included in the retrieved sources.",
+  "statutory_rows": [
+    {
+      "provision": "IPC Section 302",
+      "source": 2,
+      "text": "302. Punishment for murder.—Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine."
+    }
+  ],
+  "key_differences": [
+    "Section numbers do not correspond: the retrieved sources provide no mapping from IPC Section 302 to a BNS section number.",
+    "IPC 302 is a pure punishment clause; the retrieved BNS Section 101 material is a definitional clause covering murder.",
+    "No BNS punishment-for-murder section appears in the sources, so the equivalence cannot be verified from this retrieval."
+  ],
+  "comparison_rows": [
+    {
+      "point": "Section reference",
+      "ipc": "Section 302 IPC",
+      "ipc_source": 2,
+      "bns": "Section 101 BNS",
+      "bns_source": 1
+    }
+  ],
+  "sources": [
+    { "n": 1, "name": "BNS Section 101", "note": "definition of murder" },
+    { "n": 2, "name": "IPC Section 302", "note": "punishment for murder" }
+  ]
+}
