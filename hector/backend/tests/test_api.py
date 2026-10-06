@@ -165,6 +165,29 @@ def test_compare_endpoint_returns_counterpart_mapping(client, auth):
     assert payload["note"] == "homicide mapping"
 
 
+def test_compare_fallback_pinned_briefly_not_full_ttl(client, auth):
+    # A fallback is a transient provider failure: it must not occupy the
+    # 60s response cache, or users keep the degraded answer long after the
+    # providers recovered. Healthy payloads keep the default TTL.
+    import time as _time
+
+    from api.services import build_cache_key
+
+    request = {"section": "302", "act": "IPC", "page_size": 2}
+    cache_key = build_cache_key("compare", request)
+    cache._data.pop(cache_key, None)  # don't inherit an earlier entry
+    response = client.post("/compare", headers=auth, json=request)
+    assert response.status_code == 200
+    assert response.json()["synthesis"] == "fallback"  # conftest disables LLM
+
+    entry = cache._data.get(cache_key)
+    assert entry is not None, "fallback payload must still be cached"
+    expires_at, payload = entry
+    assert payload["synthesis"] == "fallback"
+    remaining = expires_at - _time.time()
+    assert 0 < remaining <= 10
+
+
 def test_token_auth_and_websocket_streaming_work(client, auth):
     token_response = client.post(
         f"/auth/token?api_key={auth_manager.api_key}",

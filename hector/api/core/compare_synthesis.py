@@ -14,6 +14,7 @@ Groundedness contract:
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import queue
@@ -171,6 +172,48 @@ def validate_synthesis(
     return True, "ok"
 
 
+def _groq_chat_json(model: str, system: str, chunk: str) -> dict:
+    """Groq-backed candidate (raced alongside the NIM ones).
+
+    Added 2026-10-06 after measuring NIM failing compare-shaped calls 100%
+    of the time (503 "Service temporarily overloaded" / 18s hangs) while a
+    plain Groq call answered the same schema in 1.5s. Different provider,
+    independently congested pool. Same JSON-mode request shape and the
+    same offline validate_synthesis() gate as the NIM candidates.
+    """
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise RuntimeError("GROQ_API_KEY not set")
+    from groq import Groq
+
+    from utils.retry import retry
+
+    response = retry(
+        Groq(api_key=api_key).chat.completions.create,
+        model=model,
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": chunk},
+        ],
+        temperature=0.0,
+        max_tokens=900,
+        response_format={"type": "json_object"},
+        max_attempts=1,
+        operation_name=f"groq_compare[{model}]",
+    )
+    return json.loads(response.choices[0].message.content)
+
+
+def _groq_candidates() -> list[str]:
+    """groq: candidates for the race. Set HECTOR_COMPARE_GROQ_MODEL="" to
+    disable (empty/0/false -> no Groq candidate)."""
+    model = os.getenv("HECTOR_COMPARE_GROQ_MODEL", "qwen/qwen3.8-27b")
+    model = (model or "").strip()
+    if not model or model.lower() in ("0", "false", "no"):
+        return []
+    return [f"groq:{model}"]
+
+
 def synthesize_comparison(
     *,
     requested_act: str,
@@ -225,44 +268,61 @@ def synthesize_comparison(
     # so this is never multiplied by the number of candidates; the common
     # success path returns as soon as the first candidate answers.
     deadline_s = float(os.getenv("HECTOR_COMPARE_DEADLINE_S", "18") or 18)
-    candidates = [m for m in _split_models(model) if m]
+    nim_candidates = [m for m in _split_models(model) if m]
+    groq_candidates = _groq_candidates()
+    candidates = nim_candidates + groq_candidates
     if not candidates:
         logger.warning("compare synthesis: no model candidates configured")
         return None
-    try:
-        client = get_nim_llm()
-    except Exception as exc:
-        logger.warning("compare synthesis unavailable (%s)", exc)
+    client = None
+    if nim_candidates:
+        try:
+            client = get_nim_llm()
+        except Exception as exc:
+            logger.warning("compare synthesis: NIM client unavailable (%s)", exc)
+    if client is None and not groq_candidates:
         return None
 
     # The model pools congest independently (measured 2026-10-06: nano
     # returns 503 "worker limit reached" while ultra hangs >20s, and the
-    # other way around), so candidates are RACED on daemon threads and the
-    # first output passing validate_synthesis wins. Losers are abandoned:
-    # each inner call_with_deadline stops its own worker, and daemon
-    # threads can never block the response or interpreter shutdown.
+    # other way around; that same day both NIM candidates failed 100% of
+    # compare-shaped calls while Groq answered the schema in 1.5s), so
+    # candidates — NIM chain plus the groq:-prefixed one — are RACED on
+    # daemon threads and the first output passing validate_synthesis wins.
+    # Losers are abandoned: each inner call_with_deadline stops its own
+    # worker, and daemon threads can never block the response or shutdown.
     results: queue.Queue = queue.Queue()
 
     def _attempt(candidate: str) -> None:
         try:
-            # max_attempts=1: this call is abandoned at deadline_s by the
-            # outer call_with_deadline — with the default retry chain the
-            # abandoned thread would keep firing NEW NIM requests for
-            # minutes (observed 2026-10-06), piling load onto the already
-            # congested worker pool. The parallel race below IS the
-            # redundancy; SDK-level fast-503 retries still apply.
-            payload = call_with_deadline(
-                lambda: client.chat_json(
-                    [
-                        {"role": "system", "content": system},
-                        {"role": "user", "content": chunk},
-                    ],
-                    max_tokens=900,
-                    model=candidate,
-                    max_attempts=1,
-                ),
-                deadline_s,
-            )
+            if candidate.startswith("groq:"):
+                # Groq candidate: max_attempts=1 as well — same abandon-by-
+                # deadline contract as the NIM path below.
+                payload = call_with_deadline(
+                    lambda: _groq_chat_json(candidate[5:], system, chunk),
+                    deadline_s,
+                )
+            else:
+                if client is None:
+                    raise RuntimeError("NIM client unavailable")
+                # max_attempts=1: this call is abandoned at deadline_s by the
+                # outer call_with_deadline — with the default retry chain the
+                # abandoned thread would keep firing NEW NIM requests for
+                # minutes (observed 2026-10-06), piling load onto the already
+                # congested worker pool. The parallel race below IS the
+                # redundancy; SDK-level fast-503 retries still apply.
+                payload = call_with_deadline(
+                    lambda: client.chat_json(
+                        [
+                            {"role": "system", "content": system},
+                            {"role": "user", "content": chunk},
+                        ],
+                        max_tokens=900,
+                        model=candidate,
+                        max_attempts=1,
+                    ),
+                    deadline_s,
+                )
             results.put((candidate, payload, None))
         except Exception as exc:  # noqa: BLE001 - reported as a candidate failure
             results.put((candidate, None, exc))

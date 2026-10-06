@@ -102,6 +102,9 @@ NIM_MODELS = {
     # compare_synthesis walks this comma-separated chain candidate by
     # candidate with its own deadline, so both pools are usable.
     # lightning ignores JSON mode (thinking preamble), nano-3 404s.
+    # A groq:-prefixed candidate is appended by compare_synthesis itself
+    # (HECTOR_COMPARE_GROQ_MODEL, default qwen/qwen3.8-27b) and raced
+    # alongside these — see _groq_candidates().
     # Override: HECTOR_COMPARE_MODEL (comma-separated).
     "compare": os.getenv(
         "HECTOR_COMPARE_MODEL",

@@ -388,6 +388,14 @@ def _wait_for_calls(client, expected, timeout=2.0):
         time.sleep(0.02)
 
 
+# The groq: candidate is appended by default (prod wants it on). Keep it
+# OFF unless a test opts in, so NIM-only race tests stay deterministic and
+# never touch the network even when GROQ_API_KEY is present locally.
+@pytest.fixture(autouse=True)
+def _groq_off_by_default(monkeypatch):
+    monkeypatch.setenv("HECTOR_COMPARE_GROQ_MODEL", "")
+
+
 def test_synthesize_races_candidates_second_answers(monkeypatch):
     monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
     from core.compare_synthesis import NIM_MODELS
@@ -440,3 +448,99 @@ def test_synthesize_bounds_total_wait_on_hangs(monkeypatch):
     assert _synthesize() is None
     # parallel race: bounded by ~one deadline, never deadline x candidates
     assert time.monotonic() - start < 4.0
+
+
+# ---------------------------------------------------------------------------
+# Groq candidate (raced alongside the NIM chain) â€” no network
+# ---------------------------------------------------------------------------
+
+
+def _recording_groq(calls, result):
+    def _fake(model, system, chunk):
+        calls.append(model)
+        if isinstance(result, Exception):
+            raise result
+        return result
+
+    return _fake
+
+
+def test_groq_candidate_raced_alongside_nim(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    monkeypatch.setenv("HECTOR_COMPARE_GROQ_MODEL", "qwen/test-model")
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "model-a")
+    client = _FakeClient({"model-a": RuntimeError("503 worker limit reached")})
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    groq_calls = []
+    monkeypatch.setattr(
+        "core.compare_synthesis._groq_chat_json",
+        _recording_groq(groq_calls, _ok_payload()),
+    )
+    out = _synthesize()
+    assert out is not None
+    assert out["message"] == "Both texts describe the same offence."
+    _wait_for_calls(client, {"model-a"})
+    assert client.calls == ["model-a"]  # NIM candidate also raced
+    assert groq_calls == ["qwen/test-model"]  # prefix stripped for the SDK
+
+
+def test_groq_wins_while_nim_candidate_hangs(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    monkeypatch.setenv("HECTOR_COMPARE_DEADLINE_S", "0.5")
+    monkeypatch.setenv("HECTOR_COMPARE_GROQ_MODEL", "qwen/test-model")
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "hang-nim")
+    client = _FakeClient({"hang-nim": "hang"})
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    monkeypatch.setattr(
+        "core.compare_synthesis._groq_chat_json",
+        _recording_groq([], _ok_payload()),
+    )
+    start = time.monotonic()
+    out = _synthesize()
+    assert out is not None
+    # groq answered immediately; the hung NIM thread is abandoned at the
+    # deadline, so the total wait is ~one deadline, not blocked by it.
+    assert time.monotonic() - start < 3.0
+
+
+def test_groq_failure_falls_back_to_none(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    monkeypatch.setenv("HECTOR_COMPARE_GROQ_MODEL", "qwen/test-model")
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "model-a")
+    client = _FakeClient({"model-a": RuntimeError("503")})
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    monkeypatch.setattr(
+        "core.compare_synthesis._groq_chat_json",
+        _recording_groq([], RuntimeError("groq 503")),
+    )
+    assert _synthesize() is None
+
+
+def test_empty_groq_env_disables_the_candidate(monkeypatch):
+    monkeypatch.delenv("HECTOR_COMPARE_DISABLED", raising=False)
+    monkeypatch.setenv("HECTOR_COMPARE_GROQ_MODEL", "")
+    from core.compare_synthesis import NIM_MODELS
+    monkeypatch.setitem(NIM_MODELS, "compare", "model-a")
+    client = _FakeClient({"model-a": _ok_payload()})
+    monkeypatch.setattr(
+        "core.compare_synthesis.get_nim_llm", lambda **kwargs: client
+    )
+    groq_calls = []
+    monkeypatch.setattr(
+        "core.compare_synthesis._groq_chat_json",
+        _recording_groq(groq_calls, _ok_payload()),
+    )
+    out = _synthesize()
+    assert out is not None
+    _wait_for_calls(client, {"model-a"})
+    assert client.calls == ["model-a"]
+    assert groq_calls == []

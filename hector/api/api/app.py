@@ -566,7 +566,15 @@ def compare_endpoint(
         return cached
 
     payload = svc.compare(request).model_dump(mode="json")
-    cache.set(cache_key, payload)
+    if payload.get("synthesis") == "fallback":
+        # A fallback is a transient provider failure (NIM 503/hang), not a
+        # stable answer: observed 2026-10-06 serving the degraded payload
+        # for the full 60s TTL after providers had already recovered. Keep
+        # a short pin so retries re-attempt synthesis almost immediately,
+        # while still absorbing bursts of identical failing requests.
+        cache.set(cache_key, payload, ttl_seconds=8)
+    else:
+        cache.set(cache_key, payload)
     return payload
 
 

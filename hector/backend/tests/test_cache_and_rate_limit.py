@@ -32,6 +32,16 @@ class TestTTLCache:
         time.sleep(0.1)
         assert cache.get("key1") is None
 
+    def test_per_item_ttl_override(self):
+        # compare endpoint pins degraded (fallback) answers with a short
+        # per-item TTL while healthy answers keep the default TTL.
+        cache = TTLCache(ttl_seconds=60)
+        cache.set("default", "v1")
+        cache.set("short", "v2", ttl_seconds=0)
+        time.sleep(0.1)
+        assert cache.get("default") == "v1"
+        assert cache.get("short") is None
+
     def test_clear(self):
         cache = TTLCache(ttl_seconds=60)
         cache.set("key1", "value1")

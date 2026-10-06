@@ -31,7 +31,9 @@ class TTLCache:
             self._hits += 1
             return value
 
-    def set(self, key: str, value: Any):
+    def set(self, key: str, value: Any, ttl_seconds: float | None = None):
+        """Store value. ttl_seconds overrides the default TTL for this item
+        (used e.g. to expire degraded/failed answers sooner)."""
         with self._lock:
             self._prune_expired()
             if len(self._data) >= self.max_items:
@@ -40,7 +42,8 @@ class TTLCache:
                 )
                 self._data.pop(oldest_key, None)
                 self._evictions += 1
-            self._data[key] = (time.time() + self.ttl_seconds, value)
+            ttl = self.ttl_seconds if ttl_seconds is None else ttl_seconds
+            self._data[key] = (time.time() + ttl, value)
 
     def clear(self):
         with self._lock:
