@@ -272,13 +272,20 @@ export default function ResponseDisplay({
         ) : (
         <div className="grid gap-2" role="list" aria-label="Source documents">
           {response.sources.map((source, index) => (
-            <button
+            <div
               key={source.id}
+              role="listitem"
+              tabIndex={0}
               onClick={() => onSourceClick(source.id)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onSourceClick(source.id);
+                }
+              }}
               aria-label={`Source ${index + 1}: ${source.bookTitle}, ${source.section}, ${Math.round(source.relevanceScore * 100)}% match`}
               aria-current={activeSourceId === source.id ? "true" : undefined}
-              role="listitem"
-              className={`group flex items-start gap-3 rounded-lg border p-3.5 text-left transition-all ${
+              className={`group flex cursor-pointer items-start gap-3 rounded-lg border p-3.5 text-left transition-all focus-visible:outline focus-visible:outline-gold/50 ${
                 activeSourceId === source.id
                   ? "border-gold/40 bg-gold/5"
                   : "border-slate-custom/30 bg-cream/50 hover:border-slate-custom/60 hover:bg-cream/80"
@@ -384,7 +391,7 @@ export default function ResponseDisplay({
                   </div>
                 )}
               </div>
-            </button>
+            </div>
           ))}
         </div>
         )}
