@@ -274,20 +274,35 @@ def readyz(svc: HectorApiService = Depends(get_service)):
     checks = {}
     healthy = True
 
-    # Pinecone check
+    # Pinecone check (local-corpus fallback counts as ready)
     try:
         pinecone_idx = getattr(svc.retriever, "_pinecone", None)
-        if pinecone_idx is not None:
+        local_records = len(getattr(svc.retriever, "records", []))
+        pinecone_dead = bool(getattr(svc.retriever, "_pinecone_dead", False))
+        if pinecone_idx is not None and not pinecone_dead:
             stats = pinecone_idx.describe_index_stats()
             count = stats.get("total_vector_count", 0)
             checks["pinecone"] = {"status": "ok", "records": count}
             metrics.set("pinecone_records", count)
+        elif local_records > 0:
+            checks["pinecone"] = {
+                "status": "degraded",
+                "reason": "local_records",
+                "records": local_records,
+            }
+            metrics.set("pinecone_records", 0)
         else:
             checks["pinecone"] = {"status": "unavailable"}
             healthy = False
     except Exception as exc:
-        checks["pinecone"] = {"status": "error", "detail": str(type(exc).__name__)}
-        healthy = False
+        if len(getattr(svc.retriever, "records", [])) > 0:
+            checks["pinecone"] = {
+                "status": "degraded",
+                "reason": type(exc).__name__,
+            }
+        else:
+            checks["pinecone"] = {"status": "error", "detail": str(type(exc).__name__)}
+            healthy = False
 
     # Groq API check
     try:

@@ -30,6 +30,7 @@ DEFAULT_INDEX_NAME = os.getenv("HECTOR_EVAL_INDEX", "hector")
 DEFAULT_COLLECTION = "indian_law_bns"
 EMBEDDING_MODEL = "multilingual-e5-large"
 EMBEDDING_DIM = 2048
+EMBED_NIM_MODEL = "nvidia/nemotron-3-embed-1b"
 # Share of the returned slots a single-act query gets to reserve for its own
 # act (see _apply_same_act_floor). 0.5 -> 5 of the default top-10.
 SAME_ACT_FLOOR_RATIO = 0.5
@@ -232,6 +233,7 @@ class HectorHybridRetriever:
         self.semantic_disabled = False
         self._pc = None
         self._index = None
+        self._records_path = None
 
         if collection is not None:
             self.collection = collection
@@ -239,11 +241,13 @@ class HectorHybridRetriever:
         else:
             self.collection = None
             self._init_pinecone()
-            # Round 2 (task 5): attach the local Chroma store as the dense
-            # leg + record fallback. The Pinecone data plane is unusable
-            # (monthly egress quota -> HTTP 429), so without this the dense
-            # leg never runs and refresh_index leaves the BM25 corpus empty.
-            self._attach_local_collection()
+            records_path = self._resolve_records_path()
+            if records_path:
+                self._records_path = records_path
+            else:
+                # No local eval corpus on disk: attach the 13k chroma store
+                # as dense leg + record fallback (ingest/dev layout).
+                self._attach_local_collection()
 
         self.records = []
         self.corpus = []
@@ -251,9 +255,11 @@ class HectorHybridRetriever:
         self.bm25 = None
         self.last_search_mode = None
         self.last_stage_info = None
-        if self.collection is not None:
-            self.refresh_index()
-        elif self.pinecone_index is not None:
+        if (
+            self.collection is not None
+            or self.pinecone_index is not None
+            or self._records_path is not None
+        ):
             self.refresh_index()
 
     def _init_pinecone(self):
@@ -367,6 +373,124 @@ class HectorHybridRetriever:
             return []
         return records
 
+    def _resolve_records_path(self) -> str | None:
+        """Locate the 945-record eval corpus. Empty env value disables it."""
+        env = os.getenv("HECTOR_LOCAL_RECORDS_PATH")
+        if env is not None:
+            return env.strip() or None
+        here = Path(__file__).resolve()
+        candidates = [
+            here.parents[3]
+            / "hector"
+            / "backend"
+            / "ingest_v2"
+            / "output"
+            / "eval_corpus.jsonl",
+            here.parents[2]
+            / "backend"
+            / "ingest_v2"
+            / "output"
+            / "eval_corpus.jsonl",
+        ]
+        for path in candidates:
+            if path.is_file():
+                return str(path)
+        return None
+
+    @staticmethod
+    def _load_jsonl_records(path: str) -> list[dict]:
+        rows: list[dict] = []
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                row = json.loads(line)
+                rows.append(
+                    {
+                        "id": row.get("id", ""),
+                        "document": row.get("document", ""),
+                        "metadata": row.get("metadata") or {},
+                    }
+                )
+        if not rows:
+            raise ValueError(f"no records in {path}")
+        return rows
+
+    def _dense_matrix(self):
+        """Precomputed NIM embeddings for the local corpus (ids, unit matrix)."""
+        if hasattr(self, "_dense_matrix_cache"):
+            return self._dense_matrix_cache
+        store = None
+        env = os.getenv("HECTOR_LOCAL_EMB_PATH")
+        records_path = getattr(self, "_records_path", None) or self._resolve_records_path()
+        candidates: list[Path] = []
+        if env:
+            candidates.append(Path(env))
+        elif records_path:
+            candidates.append(Path(records_path).with_name("eval_corpus_embs.npz"))
+        for path in candidates:
+            if not path.is_file():
+                continue
+            try:
+                import numpy as np
+
+                data = np.load(str(path), allow_pickle=False)
+                model = ""
+                if "model" in data.files:
+                    model = str(data["model"])
+                if model and model != EMBED_NIM_MODEL:
+                    logger.warning(
+                        "dense matrix %s built with %s (want %s) — skipping",
+                        path,
+                        model,
+                        EMBED_NIM_MODEL,
+                    )
+                    continue
+                ids = [str(v) for v in data["ids"].tolist()]
+                matrix = np.asarray(data["matrix"], dtype=np.float32)
+                if matrix.ndim != 2 or matrix.shape[0] != len(ids) or not ids:
+                    raise ValueError(f"shape {tuple(matrix.shape)} vs {len(ids)} ids")
+                norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+                norms[norms == 0] = 1.0
+                store = (ids, matrix / norms)
+                logger.info(
+                    "loaded local dense matrix %s (%d x %d)", path, *matrix.shape
+                )
+                break
+            except Exception as exc:
+                logger.warning("dense matrix load failed (%s): %s", path, exc)
+        self._dense_matrix_cache = store
+        return store
+
+    @property
+    def db_source(self) -> str:
+        if (
+            getattr(self, "pinecone_index", None) is not None
+            and not self._pinecone_unusable()
+        ):
+            return "production"
+        return "local"
+
+    @property
+    def dense_source(self) -> str:
+        if self.db_source == "production" and not getattr(
+            self, "semantic_disabled", False
+        ):
+            return "production"
+        if getattr(self, "_local_records_loaded", False) and self._dense_matrix():
+            return "local"
+        if getattr(self, "collection", None) is not None:
+            return "local"
+        return "none"
+
+    @property
+    def records_source(self) -> str:
+        source = getattr(self, "_records_source", None)
+        if source:
+            return source
+        return "local" if getattr(self, "records", None) else "none"
+
     @classmethod
     def from_records(cls, records):
         instance = cls.__new__(cls)
@@ -431,6 +555,8 @@ class HectorHybridRetriever:
     def refresh_index(self):
         idx = self._pinecone
         all_records = []
+        self._records_source = "none"
+        self._local_records_loaded = False
 
         if idx is not None and not self._pinecone_unusable():
             # Round 2: one cheap fetch probes the data plane. Under the
@@ -451,7 +577,22 @@ class HectorHybridRetriever:
                     exc,
                 )
 
-        if idx is not None and not self._pinecone_unusable():
+        records_path = getattr(self, "_records_path", None)
+        if records_path:
+            try:
+                all_records = self._load_jsonl_records(records_path)
+                self._records_source = "local"
+                self._local_records_loaded = True
+                logger.info(
+                    "loaded %d records from local corpus %s",
+                    len(all_records),
+                    records_path,
+                )
+            except Exception as exc:
+                logger.warning("local corpus load failed: %s", exc)
+                all_records = []
+
+        if not all_records and idx is not None and not self._pinecone_unusable():
             try:
                 for vector_list in idx.list():
                     # Pinecone SDK v7 returns string IDs; older versions return objects with .id
@@ -473,12 +614,16 @@ class HectorHybridRetriever:
                             "document": (vec.metadata or {}).get("document", ""),
                             "metadata": {k: v for k, v in (vec.metadata or {}).items() if k != "document"},
                         })
+                if all_records:
+                    self._records_source = "production"
             except Exception as exc:
                 logger.error("refresh_index failed: %s", exc, exc_info=True)
                 self._pinecone_dead = True
 
         if not all_records:
             all_records = self._load_local_records()
+            if all_records:
+                self._records_source = "local"
 
         self._load_records(all_records)
 
@@ -1370,13 +1515,17 @@ class HectorHybridRetriever:
         return self._local_dense_search(query, top_k)
 
     def _local_dense_search(self, query, top_k):
-        """Dense search against the local Chroma collection (Round 2, task 5).
+        """Local dense search with the same item shape as the Pinecone leg.
 
-        Returns the same item shape as the Pinecone leg (id/document/metadata/
-        distance/rank) so fusion, scoring, and dedup are unchanged. Chroma
-        default distance is L2 (lower = better), which the existing
-        _normalize_semantic_score already expects.
+        Preference order: precomputed NIM matrix for the eval corpus (works
+        without chromadb — serverless), then the legacy Chroma collection
+        (dev/ingest layout). Callers expect id/document/metadata/distance/rank
+        with distance lower-is-better, which matches both branches.
         """
+        if getattr(self, "_local_records_loaded", False):
+            store = self._dense_matrix()
+            if store is not None:
+                return self._matrix_dense_search(query, top_k, store)
         coll = self.collection
         if coll is None:
             return []
@@ -1400,6 +1549,46 @@ class HectorHybridRetriever:
                 "document": docs[i] if i < len(docs) else "",
                 "metadata": (metas[i] if i < len(metas) else None) or {},
                 "distance": dists[i] if i < len(dists) else 0.0,
+                "rank": len(ranked) + 1,
+            })
+        return ranked
+
+    def _matrix_dense_search(self, query, top_k, store):
+        embedding = self._embed_text(query)
+        if embedding is None:
+            logger.warning("local dense: query embed unavailable — BM25 only")
+            return []
+        try:
+            import numpy as np
+
+            ids, matrix = store
+            vec = np.asarray(embedding, dtype=np.float32)
+            if vec.shape[0] != matrix.shape[1]:
+                raise ValueError(f"dim {vec.shape[0]} != {matrix.shape[1]}")
+            norm = float(np.linalg.norm(vec))
+            if norm == 0.0:
+                return []
+            sims = matrix @ (vec / norm)
+            count = min(max(int(top_k), 1), len(ids))
+            if count < len(ids):
+                idxs = np.argpartition(-sims, count - 1)[:count]
+                idxs = idxs[np.argsort(-sims[idxs])]
+            else:
+                idxs = np.argsort(-sims)
+        except Exception as exc:
+            logger.warning("local dense search failed: %s", exc)
+            return []
+        records_by_id = {r["id"]: r for r in self.records}
+        ranked = []
+        for i in idxs:
+            record = records_by_id.get(ids[int(i)])
+            if record is None:
+                continue
+            ranked.append({
+                "id": ids[int(i)],
+                "document": record["document"],
+                "metadata": record["metadata"],
+                "distance": max(0.0, 1.0 - float(sims[int(i)])),
                 "rank": len(ranked) + 1,
             })
         return ranked
@@ -2089,9 +2278,10 @@ class HectorHybridRetriever:
                 },
                 json={
                     "input": [text],
-                    "model": "nvidia/nemotron-3-embed-1b",
+                    "model": EMBED_NIM_MODEL,
                     "encoding_format": "float",
                     "input_type": "query",
+                    "truncate": "END",
                 },
                 timeout=15,
             )

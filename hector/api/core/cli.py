@@ -154,97 +154,144 @@ def get_indexed_books() -> list[str]:
         return []
 
 
-@app.command()
-def init(
-    port: int = typer.Option(8000, "--port", "-p", help="API server port"),
-    frontend_port: int = typer.Option(
-        3000, "--frontend-port", "-fp", help="Frontend dev server port"
-    ),
-    no_frontend: bool = typer.Option(
-        False, "--no-frontend", help="Start only the backend API"
-    ),
+def _pump_log(stream, prefix: str):
+    try:
+        while True:
+            raw = stream.readline()
+            if not raw:
+                break
+            if isinstance(raw, bytes):
+                raw = raw.decode("utf-8", errors="replace")
+            sys.stdout.write(f"{prefix}{raw}")
+            sys.stdout.flush()
+    except Exception:
+        pass
+    finally:
+        try:
+            stream.close()
+        except Exception:
+            pass
+
+
+def _http_ok(url: str, timeout: float = 2.0) -> bool:
+    try:
+        import httpx
+
+        resp = httpx.get(url, timeout=timeout, follow_redirects=True)
+        return resp.status_code in (200, 304)
+    except Exception:
+        return False
+
+
+def _wait_http(url: str, attempts: int, timeout: float = 5.0) -> bool:
+    for _ in range(attempts):
+        if _http_ok(url, timeout=timeout):
+            return True
+        time.sleep(1)
+    return False
+
+
+def _stop_process(process):
+    if process is None or process.poll() is not None:
+        return
+    try:
+        process.terminate()
+        process.wait(timeout=5)
+    except Exception:
+        if sys.platform == "win32":
+            subprocess.run(
+                ["taskkill", "/F", "/T", "/PID", str(process.pid)],
+                capture_output=True,
+            )
+        else:
+            try:
+                process.kill()
+            except Exception:
+                pass
+
+
+def _run_services(
+    port: int,
+    frontend_port: int,
+    no_frontend: bool,
+    reload: bool,
+    open_ui: bool,
+    title: str,
 ):
-    """
-    Initialize and start HECTOR (Backend API + Frontend).
-    """
     if not typer:
         print_error("Typer not installed. Run: pip install typer rich")
         raise typer.Exit(1)
 
     console.print(
         Panel.fit(
-            "[bold gold1]H.E.C.T.O.R. INITIALIZATION[/bold gold1]\n"
+            f"[bold gold1]{title}[/bold gold1]\n"
             "[dim]Starting Backend and Frontend services...[/dim]",
             border_style="gold1",
             padding=(1, 2),
         )
     )
 
-    # Start API server in background
+    import threading
+
+    hector_dir = Path(__file__).resolve().parents[2]
+    api_dir = Path(__file__).resolve().parents[1]
     api_process = None
     frontend_process = None
 
     try:
-        # Start FastAPI backend
-        console.print("\n[bold cyan]Starting API Server...[/bold cyan]")
-        api_process = subprocess.Popen(
-            [
+        api_url = f"http://127.0.0.1:{port}/healthz"
+        if _http_ok(api_url):
+            print_success(f"API Server already running on http://localhost:{port}")
+        else:
+            console.print("\n[bold cyan]Starting API Server...[/bold cyan]")
+            cmd = [
+                sys.executable,
+                "-m",
                 "uvicorn",
                 "api.app:app",
                 "--host",
                 "0.0.0.0",
                 "--port",
                 str(port),
-                "--reload",
-            ],
-            cwd=Path(__file__).parent.parent,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
-            if sys.platform == "win32"
-            else 0,
-        )
-
-        # Wait for API to be ready
-        import requests
-
-        api_key = os.getenv("HECTOR_API_KEY", "")
-        max_retries = 30
-        for i in range(max_retries):
-            try:
-                response = requests.get(
-                    f"http://localhost:{port}/status",
-                    timeout=1,
-                    headers={"X-API-Key": api_key},
-                )
-                if response.status_code == 200:
-                    print_success(f"API Server running on http://localhost:{port}")
-                    break
-            except Exception:
-                logging.debug(
-                    "API server not ready yet (attempt %d/%d)", i + 1, max_retries
-                )
-            time.sleep(1)
-            if i == max_retries - 1:
-                print_warning("API server might not be ready yet")
-
-        # Start Frontend (unless disabled)
-        if not no_frontend:
-            console.print("\n[bold cyan]Starting Frontend Dev Server...[/bold cyan]")
-            frontend_dir = Path(__file__).parent.parent / "frontend"
-
-            # Check if frontend exists
-            if not frontend_dir.exists():
-                print_warning("Frontend directory not found")
+            ]
+            if reload:
+                cmd.append("--reload")
+            api_process = subprocess.Popen(
+                cmd,
+                cwd=str(api_dir),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+                if sys.platform == "win32"
+                else 0,
+            )
+            threading.Thread(
+                target=_pump_log, args=(api_process.stdout, "[api] "), daemon=True
+            ).start()
+            threading.Thread(
+                target=_pump_log, args=(api_process.stderr, "[api:err] "), daemon=True
+            ).start()
+            if _wait_http(api_url, attempts=90, timeout=5.0):
+                print_success(f"API Server running on http://localhost:{port}")
             else:
-                # Set PORT environment variable for Vite
+                print_warning("API server might not be ready yet (see [api] logs)")
+
+        if not no_frontend:
+            if not (hector_dir / "package.json").is_file():
+                print_warning(f"Frontend not found (no package.json in {hector_dir})")
+            elif _http_ok(f"http://127.0.0.1:{frontend_port}", timeout=2.0):
+                print_success(
+                    f"Frontend already running on http://localhost:{frontend_port}"
+                )
+            else:
+                console.print("\n[bold cyan]Starting Frontend Dev Server...[/bold cyan]")
                 env = os.environ.copy()
                 env["PORT"] = str(frontend_port)
+                env["NEXT_PUBLIC_HECTOR_API_URL"] = f"http://localhost:{port}"
                 env["NODE_OPTIONS"] = "--max-old-space-size=4096"
-
                 frontend_process = subprocess.Popen(
                     ["npm", "run", "dev"],
-                    cwd=str(frontend_dir),
+                    cwd=str(hector_dir),
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     env=env,
@@ -253,27 +300,27 @@ def init(
                     else 0,
                     shell=True,
                 )
+                threading.Thread(
+                    target=_pump_log,
+                    args=(frontend_process.stdout, "[web] "),
+                    daemon=True,
+                ).start()
+                threading.Thread(
+                    target=_pump_log,
+                    args=(frontend_process.stderr, "[web:err] "),
+                    daemon=True,
+                ).start()
+                if _wait_http(
+                    f"http://127.0.0.1:{frontend_port}", attempts=120, timeout=30.0
+                ):
+                    print_success(
+                        f"Frontend running on http://localhost:{frontend_port}"
+                    )
+                else:
+                    print_warning(
+                        "Frontend might not be ready yet (see [web] logs)"
+                    )
 
-                # Wait for frontend to be ready
-                for i in range(30):
-                    try:
-                        response = requests.get(
-                            f"http://localhost:{frontend_port}", timeout=1
-                        )
-                        if response.status_code in [200, 304]:
-                            print_success(
-                                f"Frontend running on http://localhost:{frontend_port}"
-                            )
-                            break
-                    except Exception:
-                        logging.debug(
-                            "Frontend server not ready yet (attempt %d/30)", i + 1
-                        )
-                    time.sleep(1)
-                    if i == 29:
-                        print_warning("Frontend server might not be ready yet")
-
-        # Print final status
         console.print("\n")
         console.print(
             Panel.fit(
@@ -286,12 +333,15 @@ def init(
             )
         )
 
-        # Keep running
+        if open_ui and not no_frontend:
+            import webbrowser
+
+            webbrowser.open(f"http://localhost:{frontend_port}")
+
         console.print("\n[dim]Services are running. Press Ctrl+C to stop...[/dim]")
         try:
             while True:
                 time.sleep(1)
-                # Check if processes are still running
                 if api_process and api_process.poll() is not None:
                     print_error("API server stopped unexpectedly")
                     break
@@ -310,21 +360,57 @@ def init(
     except Exception as e:
         print_error("Failed to start services", str(e))
     finally:
-        # Cleanup
         console.print("\n[dim]Shutting down services...[/dim]")
-        if api_process:
-            api_process.terminate()
-            try:
-                api_process.wait(timeout=5)
-            except subprocess.TimeoutExpired:
-                api_process.kill()
-        if frontend_process:
-            frontend_process.terminate()
-            try:
-                frontend_process.wait(timeout=5)
-            except subprocess.TimeoutExpired:
-                frontend_process.kill()
+        _stop_process(frontend_process)
+        _stop_process(api_process)
         print_success("All services stopped")
+
+
+@app.command()
+def init(
+    port: int = typer.Option(8000, "--port", "-p", help="API server port"),
+    frontend_port: int = typer.Option(
+        3000, "--frontend-port", "-fp", help="Frontend dev server port"
+    ),
+    no_frontend: bool = typer.Option(
+        False, "--no-frontend", help="Start only the backend API"
+    ),
+):
+    """
+    Initialize and start HECTOR (Backend API + Frontend).
+    """
+    _run_services(
+        port,
+        frontend_port,
+        no_frontend,
+        reload=True,
+        open_ui=False,
+        title="H.E.C.T.O.R. INITIALIZATION",
+    )
+
+
+@app.command()
+def run(
+    port: int = typer.Option(8000, "--port", "-p", help="API server port"),
+    frontend_port: int = typer.Option(
+        3000, "--frontend-port", "-fp", help="Frontend dev server port"
+    ),
+    no_frontend: bool = typer.Option(
+        False, "--no-frontend", help="Start only the backend API"
+    ),
+    open_ui: bool = typer.Option(False, "--open", help="Open the UI in a browser"),
+):
+    """
+    Start HECTOR for the demo (Backend API + Frontend) with one command.
+    """
+    _run_services(
+        port,
+        frontend_port,
+        no_frontend,
+        reload=False,
+        open_ui=open_ui,
+        title="H.E.C.T.O.R. RUN",
+    )
 
 
 @app.command()
@@ -748,7 +834,8 @@ def help():
     """
     if not typer:
         print("HECTOR CLI Help:")
-        print("  hector init     - Start HECTOR (backend + frontend)")
+        print("  hector run      - Start HECTOR (backend + frontend)")
+        print("  hector init     - Start HECTOR in dev mode (with auto-reload)")
         print("  hector ingest   - Ingest books from data/Books")
         print("  hector status  - Show system status")
         print("  hector --help   - Show this help")
@@ -761,7 +848,13 @@ def help():
 
 [bold cyan]Commands:[/bold cyan]
 
-  [bold]init[/bold]               Start HECTOR (API + Frontend)
+  [bold]run[/bold]               Start HECTOR (API + Frontend) for the demo
+    --port, -p           API server port (default: 8000)
+    --frontend-port, -fp Frontend port (default: 3000)
+    --no-frontend        Start only backend API
+    --open               Open the UI in a browser
+
+  [bold]init[/bold]               Start HECTOR (API + Frontend) with auto-reload
     --port, -p           API server port (default: 8000)
     --frontend-port, -fp Frontend port (default: 3000)
     --no-frontend        Start only backend API
@@ -788,9 +881,11 @@ def help():
 
 [bold cyan]Examples:[/bold cyan]
 
-  hector init                    # Start both API and frontend
-  hector init --port 9000        # Custom API port
-  hector init --no-frontend      # API only
+  hector run                     # Start both API and frontend
+  hector run --open              # Start and open the browser
+  hector run --port 9000         # Custom API port
+  hector run --no-frontend       # API only
+  hector init                    # Start in dev mode (auto-reload)
   hector ingest                 # Ingest new books
   hector ingest --force         # Re-ingest all books
   hector search "IPC Section 302" # Search for legal provisions
@@ -800,7 +895,7 @@ def help():
 
 [bold cyan]Quick Start:[/bold cyan]
 
-  1. hector init                # Start the application
+  1. hector run                 # Start the application
   2. Open http://localhost:3000  # Access the UI
   3. hector ingest              # Add your legal books
 

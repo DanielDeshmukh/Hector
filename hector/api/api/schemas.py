@@ -157,6 +157,9 @@ class StatusResponse(BaseModel):
     cached: bool = False
     request_id: str | None = None
     pinecone_connected: bool = True
+    db_source: str = "production"
+    dense_source: str | None = None
+    records_source: str | None = None
 
 
 class ErrorResponse(BaseModel):

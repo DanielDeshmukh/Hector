@@ -614,11 +614,13 @@ class HectorApiService:
 
     def status(self) -> StatusResponse:
         document_count = len(getattr(self.retriever, "records", []))
-        # Also check Pinecone directly for accurate count
+        # Also check Pinecone directly for accurate count (skip when the data
+        # plane is already marked dead — saves a control-plane round trip)
         pinecone_records = 0
         try:
             idx = getattr(self.retriever, "_pinecone", None)
-            if idx is not None:
+            unusable = bool(getattr(self.retriever, "_pinecone_dead", False))
+            if idx is not None and not unusable:
                 stats = idx.describe_index_stats()
                 pinecone_records = stats.get("total_vector_count", 0) if isinstance(stats, dict) else getattr(stats, "total_vector_count", 0)
         except Exception:
@@ -636,6 +638,12 @@ class HectorApiService:
             ),
             router_model=getattr(self.router, "model", "unknown"),
             uptime_seconds=int(time.time() - self.started_at),
+            pinecone_connected=not bool(
+                getattr(self.retriever, "_pinecone_dead", False)
+            ),
+            db_source=getattr(self.retriever, "db_source", "production"),
+            dense_source=getattr(self.retriever, "dense_source", "production"),
+            records_source=getattr(self.retriever, "records_source", "unknown"),
         )
 
     def ingest(self, request: IngestRequest) -> IngestResponse:

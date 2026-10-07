@@ -257,11 +257,23 @@ export default function App() {
     setCompareError("");
   }, []);
 
-  // Fetch system status on mount
+  // Fetch system status on mount, then keep it fresh (db_source indicator)
   useEffect(() => {
-    getStatusHector()
-      .then(setSystemStatus)
-      .catch(() => setSystemStatus(null));
+    let cancelled = false;
+    const fetchStatus = () =>
+      getStatusHector()
+        .then((s) => {
+          if (!cancelled) setSystemStatus(s);
+        })
+        .catch(() => {
+          if (!cancelled) setSystemStatus(null);
+        });
+    fetchStatus();
+    const timer = setInterval(fetchStatus, 30000);
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+    };
   }, []);
 
   // Auto-scroll response into view

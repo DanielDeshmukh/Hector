@@ -235,8 +235,16 @@ export default function Sidebar({
           <div className="flex items-center justify-between text-[10px] text-silver/40">
             <span>{systemStatus?.document_count ?? "\u2014"} documents indexed</span>
             <span className="flex items-center gap-1">
-              <span className={`h-1.5 w-1.5 rounded-full ${systemStatus?.status === "ok" ? "bg-success" : "bg-warning"}`}></span>
-              {systemStatus?.status === "ok" ? "Online" : "Checking..."}
+              <span className={`h-1.5 w-1.5 rounded-full ${!systemStatus || systemStatus.status !== "ok" || systemStatus.db_source === "local" ? "bg-warning" : "bg-success"}`}></span>
+              {!systemStatus
+                ? "Checking..."
+                : systemStatus.db_source === "production"
+                  ? "Production DB"
+                  : systemStatus.db_source === "local"
+                    ? "Local DB"
+                    : systemStatus.status === "ok"
+                      ? "Online"
+                      : "Checking..."}
             </span>
           </div>
         </div>
