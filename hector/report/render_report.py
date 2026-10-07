@@ -7,7 +7,10 @@ import time
 
 from docxtpl import DocxTemplate
 
-sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, ValueError):
+    pass
 
 REPORT_DIR = os.path.dirname(os.path.abspath(__file__))
 if REPORT_DIR not in sys.path:

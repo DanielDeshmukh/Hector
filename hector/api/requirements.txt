@@ -38,6 +38,7 @@ pyyaml~=6.0.0
 # --- Export ---
 fpdf2~=2.8.3
 python-docx~=1.1.2
+docxtpl~=0.20.0
 
 # --- Testing ---
 pytest~=8.3.0

@@ -21,40 +21,123 @@ function formatLocation(source) {
   return parts.join(", ");
 }
 
+const TABLE_ROW_RE = /^\s*\|.*\|\s*$/;
+const TABLE_SEP_CELL_RE = /^:?-+:?$/;
+
+function renderInlineHtml(text) {
+  let processed = String(text || "").replace(
+    /\*\*(.+?)\*\*/g,
+    '<strong class="text-gold-light font-semibold">$1</strong>'
+  );
+  processed = processed.replace(
+    /\*(.+?)\*/g,
+    '<em class="text-silver italic">$1</em>'
+  );
+  return sanitizeHtml(processed);
+}
+
+function parseTableRow(line) {
+  return line
+    .trim()
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
+}
+
+function renderMarkdownTable(run, key) {
+  const rows = run.map(parseTableRow).filter((cells) => cells.some((c) => c));
+  const isSeparator = (cells) => cells.every((cell) => TABLE_SEP_CELL_RE.test(cell));
+  if (!rows.length) return null;
+  const header = isSeparator(rows[0]) ? null : rows[0];
+  const body = rows.slice(header ? 1 : 0).filter((cells) => !isSeparator(cells));
+  if (!header && body.length === 0) return null;
+
+  return (
+    <div key={key} className="my-2.5 overflow-x-auto">
+      <table className="w-full border-collapse text-[12.5px]">
+        {header && (
+          <thead>
+            <tr>
+              {header.map((cell, ci) => (
+                <th
+                  key={`h${ci}`}
+                  className="border border-slate-custom/30 bg-gold/10 px-2.5 py-1.5 text-left font-semibold text-gold-light"
+                  dangerouslySetInnerHTML={{ __html: renderInlineHtml(cell) }}
+                />
+              ))}
+            </tr>
+          </thead>
+        )}
+        <tbody>
+          {body.map((cells, ri) => (
+            <tr key={`r${ri}`} className={ri % 2 ? "bg-cream/40" : ""}>
+              {cells.map((cell, ci) => (
+                <td
+                  key={`c${ci}`}
+                  className="border border-slate-custom/25 px-2.5 py-1.5 align-top leading-relaxed text-silver/90"
+                  dangerouslySetInnerHTML={{ __html: renderInlineHtml(cell) }}
+                />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function renderFormattedText(text) {
   const lines = String(text || "").split("\n");
-  return lines.map((line, i) => {
-    let processed = line.replace(
-      /\*\*(.+?)\*\*/g,
-      '<strong class="text-gold-light font-semibold">$1</strong>'
-    );
-    processed = processed.replace(
-      /\*(.+?)\*/g,
-      '<em class="text-silver italic">$1</em>'
-    );
+  const out = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
 
-    if (line.startsWith("- ")) {
-      return (
-        <li
-          key={i}
-          className="ml-4 list-disc py-0.5 text-[13.5px] leading-relaxed text-silver/90 marker:text-gold/40"
-          dangerouslySetInnerHTML={{ __html: sanitizeHtml(processed.substring(2)) }}
-        />
-      );
+    if (TABLE_ROW_RE.test(line)) {
+      const start = i;
+      const run = [];
+      while (i < lines.length && TABLE_ROW_RE.test(lines[i])) {
+        run.push(lines[i]);
+        i++;
+      }
+      const table = renderMarkdownTable(run, `tbl-${start}`);
+      if (table) out.push(table);
+      continue;
+    }
+
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+      out.push(<hr key={`hr${i}`} className="my-3 border-0 border-t border-slate-custom/40" />);
+      i++;
+      continue;
     }
 
     if (line.trim() === "") {
-      return <div key={i} className="h-2.5" />;
+      out.push(<div key={`s${i}`} className="h-2.5" />);
+      i++;
+      continue;
     }
 
-    return (
-      <p
-        key={i}
-        className="text-[13.5px] leading-[1.75] text-silver/90"
-        dangerouslySetInnerHTML={{ __html: sanitizeHtml(processed) }}
-      />
+    const isBullet = line.startsWith("- ");
+    const html = renderInlineHtml(isBullet ? line.substring(2) : line);
+    out.push(
+      isBullet ? (
+        <li
+          key={i}
+          className="ml-4 list-disc py-0.5 text-[13.5px] leading-relaxed text-silver/90 marker:text-gold/40"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      ) : (
+        <p
+          key={i}
+          className="text-[13.5px] leading-[1.75] text-silver/90"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      )
     );
-  });
+    i++;
+  }
+  return out;
 }
 
 function renderBodyLines(body) {
