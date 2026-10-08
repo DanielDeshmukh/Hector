@@ -71,13 +71,13 @@ function FilePreviewModal({ file, previewUrl, textPreview, onClose }) {
             <span className="text-[13px] font-medium text-gold-light truncate">
               {file.name}
             </span>
-            <span className="text-[11px] text-silver/30 shrink-0">
+            <span className="text-[11px] text-silver/45 shrink-0">
               {formatFileSize(file.size)}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="flex h-7 w-7 items-center justify-center rounded-md text-silver/40 hover:bg-slate-custom/30 hover:text-silver shrink-0"
+            className="flex h-7 w-7 items-center justify-center rounded-md text-silver/55 hover:bg-slate-custom/30 hover:text-silver shrink-0"
           >
             <X size={14} />
           </button>
@@ -98,7 +98,7 @@ function FilePreviewModal({ file, previewUrl, textPreview, onClose }) {
             <div className="flex flex-col items-center justify-center py-16 text-center">
               <Icon size={48} className={`${getFileColor(file.type)} mb-4 opacity-40`} />
               <p className="text-[13px] text-silver/50">{file.name}</p>
-              <p className="text-[11px] text-silver/30 mt-1">
+              <p className="text-[11px] text-silver/45 mt-1">
                 {formatFileSize(file.size)} &middot; {file.type || "Unknown type"}
               </p>
             </div>
@@ -318,18 +318,18 @@ export default function QueryInput({
               <p className="text-[11px] font-medium text-silver/70 truncate max-w-[200px]">
                 {attachedFile.name}
               </p>
-              <p className="text-[9px] text-silver/30">
+              <p className="text-[9px] text-silver/45">
                 {formatFileSize(attachedFile.size)}
               </p>
             </div>
             <ExternalLink
               size={10}
-              className="text-silver/20 group-hover:text-gold/40 shrink-0"
+              className="text-silver/55 group-hover:text-gold/40 shrink-0"
             />
           </button>
           <button
             onClick={removeFile}
-            className="flex h-6 w-6 items-center justify-center rounded-md text-silver/30 transition-colors hover:bg-error/10 hover:text-error shrink-0"
+            className="flex h-6 w-6 items-center justify-center rounded-md text-silver/45 transition-colors hover:bg-error/10 hover:text-error shrink-0"
             aria-label="Remove attached file"
           >
             <X size={12} />
@@ -342,7 +342,7 @@ export default function QueryInput({
           {fileError}
           <button
             onClick={() => setFileError(null)}
-            className="ml-auto text-silver/30 hover:text-error"
+            className="ml-auto text-silver/45 hover:text-error"
           >
             <X size={10} />
           </button>
@@ -380,7 +380,7 @@ export default function QueryInput({
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={isLoading}
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver disabled:opacity-30"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-silver/55 transition-colors hover:bg-slate-custom/30 hover:text-silver disabled:opacity-30"
               aria-label="Attach file"
               title="Attach file (PDF, image, text, code)"
             >
@@ -395,7 +395,7 @@ export default function QueryInput({
                 className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
                   isListening
                     ? "bg-error/15 text-error animate-pulse"
-                    : "text-silver/40 hover:bg-slate-custom/30 hover:text-silver"
+                    : "text-silver/55 hover:bg-slate-custom/30 hover:text-silver"
                 } disabled:opacity-30`}
                 title={isListening ? "Stop listening" : "Start voice input"}
               >
@@ -405,7 +405,7 @@ export default function QueryInput({
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="hidden sm:flex items-center gap-1.5 text-[11px] text-silver/30">
+            <span className="hidden sm:flex items-center gap-1.5 text-[11px] text-silver/45">
               <CornerDownLeft size={11} />
               to submit
             </span>
@@ -413,7 +413,7 @@ export default function QueryInput({
               onClick={handleSubmit}
               disabled={!query.trim() || isLoading}
               aria-label="Send search query"
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold/90 text-charcoal transition-all hover:bg-gold disabled:opacity-30 disabled:cursor-not-allowed"
+              className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold text-charcoal transition-all hover:bg-gold disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <Send size={14} />
             </button>

@@ -68,11 +68,11 @@ export default function BatchQueryPanel({ onClose }) {
           <div className="flex items-center gap-2">
             <FileText size={16} className="text-gold" />
             <h2 className="font-serif text-lg font-semibold text-gold-light">Batch Query</h2>
-            <span className="text-[11px] text-silver/40">({queries.length} queries)</span>
+            <span className="text-[11px] text-silver/55">({queries.length} queries)</span>
           </div>
           <button
             onClick={onClose}
-            className="flex h-7 w-7 items-center justify-center rounded-md text-silver/40 hover:bg-slate-custom/30 hover:text-silver"
+            className="flex h-7 w-7 items-center justify-center rounded-md text-silver/55 hover:bg-slate-custom/30 hover:text-silver"
           >
             <X size={14} />
           </button>
@@ -100,7 +100,7 @@ export default function BatchQueryPanel({ onClose }) {
                   <div className="space-y-1 max-h-32 overflow-y-auto">
                     {queries.map((q, i) => (
                       <div key={i} className="flex items-center gap-2 text-[12px] text-silver/60">
-                        <span className="text-silver/30 font-mono">{i + 1}.</span>
+                        <span className="text-silver/45 font-mono">{i + 1}.</span>
                         {q}
                       </div>
                     ))}
@@ -122,12 +122,12 @@ export default function BatchQueryPanel({ onClose }) {
                 {[
                   { label: "Total", value: results.total },
                   { label: "Completed", value: results.completed, color: "text-success" },
-                  { label: "Failed", value: results.failed, color: results.failed > 0 ? "text-error" : "text-silver/40" },
+                  { label: "Failed", value: results.failed, color: results.failed > 0 ? "text-error" : "text-silver/55" },
                   { label: "Duration", value: `${(results.duration_ms / 1000).toFixed(1)}s` },
                 ].map(({ label, value, color }) => (
                   <div key={label} className="text-center rounded-lg border border-slate-custom/20 bg-charcoal/20 p-3">
                     <p className={`text-lg font-serif font-semibold ${color || "text-gold-light"}`}>{value}</p>
-                    <p className="text-[10px] text-silver/40">{label}</p>
+                    <p className="text-[10px] text-silver/55">{label}</p>
                   </div>
                 ))}
               </div>
@@ -148,11 +148,11 @@ export default function BatchQueryPanel({ onClose }) {
                   <tbody>
                     {results.results.map((r) => (
                       <tr key={r.index} className="border-t border-slate-custom/20">
-                        <td className="px-3 py-2 text-silver/30 font-mono">{r.index + 1}</td>
+                        <td className="px-3 py-2 text-silver/45 font-mono">{r.index + 1}</td>
                         <td className="px-3 py-2 text-silver/60 max-w-xs truncate" title={r.query}>{r.query}</td>
-                        <td className="px-3 py-2 text-silver/40">{r.route?.replace(/_/g, " ") || "-"}</td>
-                        <td className="px-3 py-2 text-silver/40">{r.confidence ? `${r.confidence}%` : "-"}</td>
-                        <td className="px-3 py-2 text-silver/40 font-mono">{r.response_ms ? `${Math.round(r.response_ms)}ms` : "-"}</td>
+                        <td className="px-3 py-2 text-silver/55">{r.route?.replace(/_/g, " ") || "-"}</td>
+                        <td className="px-3 py-2 text-silver/55">{r.confidence ? `${r.confidence}%` : "-"}</td>
+                        <td className="px-3 py-2 text-silver/55 font-mono">{r.response_ms ? `${Math.round(r.response_ms)}ms` : "-"}</td>
                         <td className="px-3 py-2">
                           {r.error ? (
                             <span className="text-error text-[10px]">Failed</span>
@@ -184,7 +184,7 @@ export default function BatchQueryPanel({ onClose }) {
 
         {/* Footer */}
         <div className="flex items-center justify-between border-t border-slate-custom/30 px-5 py-3">
-          <div className="text-[11px] text-silver/30">
+          <div className="text-[11px] text-silver/45">
             {mode === "input"
               ? `${queries.length} queries parsed`
               : `${results?.completed}/${results?.total} succeeded`}
@@ -221,7 +221,7 @@ export default function BatchQueryPanel({ onClose }) {
               <button
                 onClick={handleRun}
                 disabled={loading}
-                className="flex items-center gap-1.5 rounded-lg bg-gold/90 px-4 py-2 text-[11px] font-medium text-charcoal hover:bg-gold disabled:opacity-40"
+                className="flex items-center gap-1.5 rounded-lg bg-gold px-4 py-2 text-[11px] font-medium text-charcoal hover:bg-gold disabled:opacity-40"
               >
                 {loading ? <Loader2 size={11} className="animate-spin" /> : <Play size={11} />}
                 {loading ? "Running..." : `Run ${queries.length} Queries`}

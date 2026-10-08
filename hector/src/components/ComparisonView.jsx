@@ -54,7 +54,7 @@ export default function ComparisonView({
             type="submit"
             disabled={!section.trim() || compareLoading}
             aria-label="Compare sections"
-            className="flex h-10 w-10 items-center justify-center rounded-lg bg-gold/90 text-charcoal transition-all hover:bg-gold disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-gold text-charcoal transition-all hover:bg-gold disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <Search size={16} />
           </button>
@@ -79,7 +79,7 @@ export default function ComparisonView({
             <span className="rounded-md border border-gold/20 bg-gold/5 px-2.5 py-1 font-medium text-gold">
               {compareData.requestedAct} &sect;{compareData.requestedSection}
             </span>
-            <ArrowRight size={14} className="text-silver/40" />
+            <ArrowRight size={14} className="text-silver/55" />
             <span className="rounded-md border border-info/20 bg-info/5 px-2.5 py-1 font-medium text-info">
               {compareData.counterpartAct || "\u2014"} &sect;{compareData.counterpartSection || "\u2014"}
             </span>
@@ -135,7 +135,7 @@ export default function ComparisonView({
           )}
 
           {compareData.synthesis !== "ok" && (
-            <p className="mb-4 text-[11.5px] italic text-silver/40">
+            <p className="mb-4 text-[11.5px] italic text-silver/55">
               AI comparison unavailable &mdash; showing the retrieved source
               texts below.
             </p>
@@ -149,7 +149,7 @@ export default function ComparisonView({
                 {compareData.requestedAct} Results
               </h3>
               {compareData.requestedResults.length === 0 ? (
-                <p className="text-[12px] text-silver/40">No results found</p>
+                <p className="text-[12px] text-silver/55">No results found</p>
               ) : (
                 <div className="space-y-2">
                   {compareData.requestedResults.map((source) => (
@@ -163,7 +163,7 @@ export default function ComparisonView({
                       <p className="mt-1 line-clamp-3 text-[11.5px] leading-relaxed text-silver/50">
                         &ldquo;{source.matchedText}&rdquo;
                       </p>
-                      <div className="mt-1.5 flex items-center gap-2 text-[10px] text-silver/35">
+                      <div className="mt-1.5 flex items-center gap-2 text-[10px] text-silver/50">
                         <span>{source.section}</span>
                         {source.page && <span>Page {source.page}</span>}
                         <span className="rounded bg-success/8 px-1 py-0.5 text-success">
@@ -183,7 +183,7 @@ export default function ComparisonView({
                 {compareData.counterpartAct || "Counterpart"} Results
               </h3>
               {compareData.counterpartResults.length === 0 ? (
-                <p className="text-[12px] text-silver/40">No results found</p>
+                <p className="text-[12px] text-silver/55">No results found</p>
               ) : (
                 <div className="space-y-2">
                   {compareData.counterpartResults.map((source) => (
@@ -197,7 +197,7 @@ export default function ComparisonView({
                       <p className="mt-1 line-clamp-3 text-[11.5px] leading-relaxed text-silver/50">
                         &ldquo;{source.matchedText}&rdquo;
                       </p>
-                      <div className="mt-1.5 flex items-center gap-2 text-[10px] text-silver/35">
+                      <div className="mt-1.5 flex items-center gap-2 text-[10px] text-silver/50">
                         <span>{source.section}</span>
                         {source.page && <span>Page {source.page}</span>}
                         <span className="rounded bg-success/8 px-1 py-0.5 text-success">

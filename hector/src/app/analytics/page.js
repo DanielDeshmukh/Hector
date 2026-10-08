@@ -12,7 +12,7 @@ export default function AnalyticsPage() {
             <h1 className="font-serif text-2xl font-semibold text-gold-light">
               Search Analytics
             </h1>
-            <p className="text-[12px] text-silver/40 mt-1">
+            <p className="text-[12px] text-silver/55 mt-1">
               Usage patterns, response times, and query insights
             </p>
           </div>

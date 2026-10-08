@@ -10,7 +10,7 @@ export default function EmptyState({
   return (
     <div className="flex flex-col items-center justify-center py-12 px-6 text-center animate-fade-in">
       {Icon && (
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-custom/20 text-silver/40">
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-custom/20 text-silver/55">
           <Icon size={22} />
         </div>
       )}
@@ -20,7 +20,7 @@ export default function EmptyState({
         </h3>
       )}
       {description && (
-        <p className="max-w-xs text-[12px] leading-relaxed text-silver/40">
+        <p className="max-w-xs text-[12px] leading-relaxed text-silver/55">
           {description}
         </p>
       )}

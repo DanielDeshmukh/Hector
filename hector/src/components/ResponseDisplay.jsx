@@ -204,7 +204,7 @@ function CitationGrounding({ sources, onSourceClick, activeSourceId }) {
                 : "border-slate-custom/25 bg-cream/45 hover:border-slate-custom/50"
             } disabled:cursor-default`}
           >
-            <div className="flex flex-wrap items-center gap-2 text-[10px] text-silver/40">
+            <div className="flex flex-wrap items-center gap-2 text-[10px] text-silver/55">
               <span className="font-mono text-gold">[S{source.number}]</span>
               <span>{source.title}</span>
               <span>-</span>
@@ -294,7 +294,7 @@ export default function ResponseDisplay({
               : "Low Confidence"}
           </span>
         )}
-        <span className="text-[11px] text-silver/30">
+        <span className="text-[11px] text-silver/45">
           {new Date(response.timestamp).toLocaleString("en-IN", {
             day: "numeric",
             month: "short",
@@ -396,7 +396,7 @@ export default function ResponseDisplay({
                     >
                       {source.bookTitle}
                     </p>
-                    <p className="mt-0.5 text-[11px] text-silver/40">
+                    <p className="mt-0.5 text-[11px] text-silver/55">
                       {source.author}
                     </p>
                   </div>
@@ -410,7 +410,7 @@ export default function ResponseDisplay({
                         className={`rounded p-1 transition-colors ${
                           isBookmarked(source.id)
                             ? "text-gold bg-gold/10"
-                            : "text-silver/20 hover:text-gold/60"
+                            : "text-silver/55 hover:text-gold/60"
                         }`}
                         title={isBookmarked(source.id) ? "Remove bookmark" : "Bookmark this source"}
                       >
@@ -426,7 +426,7 @@ export default function ResponseDisplay({
                       className={`mt-0.5 shrink-0 ${
                         activeSourceId === source.id
                           ? "text-gold/60"
-                          : "text-silver/20 group-hover:text-silver/40"
+                          : "text-silver/55 group-hover:text-silver/55"
                       }`}
                     />
                   </div>
@@ -437,14 +437,14 @@ export default function ResponseDisplay({
                 </p>
 
                 <div className="mt-2 flex flex-wrap items-center gap-2 text-[10px]">
-                  <span className="flex items-center gap-1 text-silver/35">
+                  <span className="flex items-center gap-1 text-silver/50">
                     <BookOpen size={10} />
                     {source.section}
                   </span>
                   {formatLocation(source) && (
                     <>
                       <span className="text-slate-custom">-</span>
-                      <span className="text-silver/35">{formatLocation(source)}</span>
+                      <span className="text-silver/50">{formatLocation(source)}</span>
                     </>
                   )}
                   <span className="text-slate-custom">-</span>
@@ -466,7 +466,7 @@ export default function ResponseDisplay({
                     {source.reasons.slice(0, 3).map((reason) => (
                       <span
                         key={reason}
-                        className="rounded border border-slate-custom/30 bg-charcoal/40 px-1.5 py-0.5 text-[9.5px] text-silver/35"
+                        className="rounded border border-slate-custom/30 bg-charcoal/40 px-1.5 py-0.5 text-[9.5px] text-silver/50"
                       >
                         {reason}
                       </span>

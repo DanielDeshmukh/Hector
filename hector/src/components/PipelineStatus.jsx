@@ -35,7 +35,7 @@ export default function PipelineStatus({ stages, cacheHit }) {
                   ? "bg-success/8 text-success border border-success/15"
                   : stage.status === "active"
                   ? "bg-gold/8 text-gold border border-gold/20"
-                  : "bg-slate-custom/20 text-silver/40 border border-transparent"
+                  : "bg-slate-custom/20 text-silver/55 border border-transparent"
               }`}
             >
               {stage.status === "completed" ? (

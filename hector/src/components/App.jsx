@@ -335,12 +335,12 @@ export default function App() {
                 </div>
               )}
               {appState === "idle" && (
-                <span className="text-[11px] text-silver/30">
+                <span className="text-[11px] text-silver/45">
                   Ready for queries
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-2 text-[10px] text-silver/25">
+            <div className="flex items-center gap-2 text-[10px] text-silver/45">
               <button
                 onClick={() => setBatchPanelOpen(true)}
                 className="hidden md:flex items-center gap-1 rounded-md px-2 py-1 transition-colors hover:bg-slate-custom/30 hover:text-silver font-medium"
@@ -420,7 +420,7 @@ export default function App() {
                 <div className="py-8">
                   {/* Show the query */}
                   <div className="mb-6 animate-fade-in">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/40 mb-2">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/55 mb-2">
                       Your Query
                     </p>
                     <div className="rounded-lg border border-slate-custom/30 bg-charcoal/30 px-4 py-3">
@@ -441,7 +441,7 @@ export default function App() {
                 <div className="py-4">
                   {/* Query echo */}
                   <div className="mb-5 animate-fade-in">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/40 mb-2">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/55 mb-2">
                       Query
                     </p>
                     <div className="rounded-lg border border-slate-custom/30 bg-charcoal/30 px-4 py-3">
@@ -453,7 +453,7 @@ export default function App() {
 
                   {/* Response */}
                   <div ref={responseRef}>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/40 mb-3">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-silver/55 mb-3">
                       Response
                     </p>
                     <ResponseDisplay

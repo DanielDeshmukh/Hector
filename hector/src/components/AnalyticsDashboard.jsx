@@ -13,7 +13,7 @@ function StatCard({ icon, label, value, sub }) {
         <span className="text-[11px] font-medium uppercase tracking-wider text-silver/50">{label}</span>
       </div>
       <p className="text-2xl font-serif font-semibold text-gold-light">{value}</p>
-      {sub && <p className="text-[11px] text-silver/40 mt-1">{sub}</p>}
+      {sub && <p className="text-[11px] text-silver/55 mt-1">{sub}</p>}
     </div>
   );
 }
@@ -26,7 +26,7 @@ function BarRow({ label, count, total, color = "bg-gold" }) {
       <div className="flex-1 h-2 rounded-full bg-slate-custom/20 overflow-hidden">
         <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
       </div>
-      <span className="w-12 text-right text-[11px] font-mono text-silver/40">{count}</span>
+      <span className="w-12 text-right text-[11px] font-mono text-silver/55">{count}</span>
     </div>
   );
 }
@@ -66,7 +66,7 @@ export default function AnalyticsDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="text-sm text-silver/40">Loading analytics...</div>
+        <div className="text-sm text-silver/55">Loading analytics...</div>
       </div>
     );
   }
@@ -110,7 +110,7 @@ export default function AnalyticsDashboard() {
             Popular Queries
           </h3>
           {popular.length === 0 ? (
-            <p className="text-[12px] text-silver/30">No queries recorded yet.</p>
+            <p className="text-[12px] text-silver/45">No queries recorded yet.</p>
           ) : (
             <div className="space-y-0.5">
               {popular.map((q, i) => (
@@ -126,7 +126,7 @@ export default function AnalyticsDashboard() {
             Domain Breakdown
           </h3>
           {domains.length === 0 ? (
-            <p className="text-[12px] text-silver/30">No domain data yet.</p>
+            <p className="text-[12px] text-silver/45">No domain data yet.</p>
           ) : (
             <div className="space-y-0.5">
               {domains.map((d, i) => (
@@ -152,13 +152,13 @@ export default function AnalyticsDashboard() {
               { key: "high", label: "High", color: "text-success" },
               { key: "medium", label: "Medium", color: "text-gold" },
               { key: "low", label: "Low", color: "text-error" },
-              { key: "very_low", label: "Very Low", color: "text-silver/40" },
+              { key: "very_low", label: "Very Low", color: "text-silver/55" },
             ].map(({ key, label, color }) => (
               <div key={key} className="text-center">
                 <p className={`text-xl font-serif font-semibold ${color}`}>
                   {confidence[key] || 0}
                 </p>
-                <p className="text-[10px] text-silver/40 mt-1">{label}</p>
+                <p className="text-[10px] text-silver/55 mt-1">{label}</p>
               </div>
             ))}
           </div>
@@ -170,7 +170,7 @@ export default function AnalyticsDashboard() {
             Recent Queries
           </h3>
           {recent.length === 0 ? (
-            <p className="text-[12px] text-silver/30">No recent queries.</p>
+            <p className="text-[12px] text-silver/45">No recent queries.</p>
           ) : (
             <div className="space-y-2 max-h-64 overflow-y-auto">
               {recent.map((q, i) => (
@@ -179,7 +179,7 @@ export default function AnalyticsDashboard() {
                   <span className="flex-1 text-[11px] text-silver/60 truncate" title={q.query}>
                     {q.query}
                   </span>
-                  <span className="text-[10px] text-silver/30 font-mono">
+                  <span className="text-[10px] text-silver/45 font-mono">
                     {q.response_ms ? `${Math.round(q.response_ms)}ms` : "cached"}
                   </span>
                 </div>

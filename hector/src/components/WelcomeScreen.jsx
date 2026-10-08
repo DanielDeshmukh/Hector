@@ -47,12 +47,12 @@ export default function WelcomeScreen() {
             className="rounded-xl border border-slate-custom/30 bg-charcoal/30 p-4 transition-colors hover:border-slate-custom/50"
           >
             <div className="flex items-start gap-3">
-              <span className="mt-0.5 text-gold/60">{feature.icon}</span>
+              <span className="mt-0.5 text-gold/80">{feature.icon}</span>
               <div>
                 <p className="text-[13px] font-medium text-silver/80">
                   {feature.title}
                 </p>
-                <p className="mt-1 text-[11.5px] leading-relaxed text-silver/40">
+                <p className="mt-1 text-[11.5px] leading-relaxed text-silver/55">
                   {feature.desc}
                 </p>
               </div>
@@ -63,7 +63,7 @@ export default function WelcomeScreen() {
 
       {/* Disclaimer */}
       <div className="mt-10 max-w-lg text-center animate-fade-in-delay-3">
-        <p className="text-[10.5px] leading-relaxed text-silver/25">
+        <p className="text-[10.5px] leading-relaxed text-silver/45">
           HECTOR retrieves information exclusively from its curated library of legal
           commentaries and Bare Acts. Responses are not legal advice. Always verify
           with authorised legal counsel.

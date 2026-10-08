@@ -94,11 +94,11 @@ export default function DocumentPanel({ source, onClose }) {
           <h3 className="font-serif text-[15px] font-semibold leading-snug text-gold-light">
             {source.bookTitle}
           </h3>
-          <p className="mt-0.5 text-[11px] text-silver/40">{source.author}</p>
+          <p className="mt-0.5 text-[11px] text-silver/55">{source.author}</p>
         </div>
         <button
           onClick={onClose}
-          className="mt-0.5 flex items-center gap-1.5 h-8 w-8 md:h-7 md:w-auto md:px-2 shrink-0 justify-center rounded-md text-silver/40 transition-colors hover:bg-slate-custom/30 hover:text-silver"
+          className="mt-0.5 flex items-center gap-1.5 h-8 w-8 md:h-7 md:w-auto md:px-2 shrink-0 justify-center rounded-md text-silver/55 transition-colors hover:bg-slate-custom/30 hover:text-silver"
         >
           <X size={16} />
           <span className="hidden md:inline text-[11px]">Close</span>
@@ -109,7 +109,7 @@ export default function DocumentPanel({ source, onClose }) {
         <span className="rounded border border-slate-custom/40 bg-cream/50 px-2 py-0.5 text-[10px] font-medium text-silver/60">
           {source.act}
         </span>
-        <span className="truncate text-[10px] text-silver/30">
+        <span className="truncate text-[10px] text-silver/45">
           {source.chapter}
         </span>
         {source.metadata?.structure_type && (
@@ -130,24 +130,24 @@ export default function DocumentPanel({ source, onClose }) {
           <span className="truncate text-[11px] font-medium text-silver/60">
             {source.section}
           </span>
-          {location && <span className="text-[11px] text-silver/40">- {location}</span>}
+          {location && <span className="text-[11px] text-silver/55">- {location}</span>}
         </div>
 
         <div className="flex items-center gap-1.5">
-          <span className="text-[10px] text-silver/35">
+          <span className="text-[10px] text-silver/50">
             {highlightCount ? `${activeHighlight + 1}/${highlightCount} matches` : "0 matches"}
           </span>
           <button
             onClick={() => navigateHighlight("up")}
             disabled={!highlightCount}
-            className="flex h-5 w-5 items-center justify-center rounded text-silver/30 hover:bg-slate-custom/30 hover:text-silver disabled:opacity-30"
+            className="flex h-5 w-5 items-center justify-center rounded text-silver/45 hover:bg-slate-custom/30 hover:text-silver disabled:opacity-30"
           >
             <ChevronUp size={12} />
           </button>
           <button
             onClick={() => navigateHighlight("down")}
             disabled={!highlightCount}
-            className="flex h-5 w-5 items-center justify-center rounded text-silver/30 hover:bg-slate-custom/30 hover:text-silver disabled:opacity-30"
+            className="flex h-5 w-5 items-center justify-center rounded text-silver/45 hover:bg-slate-custom/30 hover:text-silver disabled:opacity-30"
           >
             <ChevronDown size={12} />
           </button>
@@ -157,7 +157,7 @@ export default function DocumentPanel({ source, onClose }) {
       <div ref={containerRef} className="flex-1 overflow-y-auto px-5 py-5">
         <div className="mb-4 flex items-center gap-3">
           <div className="h-px flex-1 bg-slate-custom/20"></div>
-          <span className="text-[10px] font-medium tracking-wider text-silver/25 uppercase">
+          <span className="text-[10px] font-medium tracking-wider text-silver/45 uppercase">
             RAG Retrieval Text
           </span>
           <div className="h-px flex-1 bg-slate-custom/20"></div>
@@ -169,7 +169,7 @@ export default function DocumentPanel({ source, onClose }) {
 
         {source.reasons?.length > 0 && (
           <div className="mt-6">
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver/35">
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver/50">
               Retrieval Reasons
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -189,13 +189,13 @@ export default function DocumentPanel({ source, onClose }) {
           <div className="mt-6 grid gap-4">
             {citationEntries.length > 0 && (
               <div>
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver/35">
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver/50">
                   Citation
                 </p>
                 <dl className="grid gap-1.5 rounded-lg border border-slate-custom/25 bg-charcoal/20 p-3">
                   {citationEntries.map(([key, value]) => (
                     <div key={key} className="grid grid-cols-[92px_minmax(0,1fr)] gap-2 text-[11px]">
-                      <dt className="text-silver/35">{key}</dt>
+                      <dt className="text-silver/50">{key}</dt>
                       <dd className="break-words text-silver/60">{String(value)}</dd>
                     </div>
                   ))}
@@ -205,13 +205,13 @@ export default function DocumentPanel({ source, onClose }) {
 
             {metadataEntries.length > 0 && (
               <div>
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver/35">
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-silver/50">
                   Metadata
                 </p>
                 <dl className="grid gap-1.5 rounded-lg border border-slate-custom/25 bg-charcoal/20 p-3">
                   {metadataEntries.map(([key, value]) => (
                     <div key={key} className="grid grid-cols-[92px_minmax(0,1fr)] gap-2 text-[11px]">
-                      <dt className="text-silver/35">{key}</dt>
+                      <dt className="text-silver/50">{key}</dt>
                       <dd className="break-words text-silver/60">{String(value)}</dd>
                     </div>
                   ))}
@@ -223,7 +223,7 @@ export default function DocumentPanel({ source, onClose }) {
       </div>
 
       <div className="border-t border-slate-custom/40 px-4 py-2.5 flex items-center justify-between">
-        <span className="text-[10px] text-silver/30">
+        <span className="text-[10px] text-silver/45">
           RAG score: {Math.round(source.relevanceScore * 100)}%
         </span>
         <span

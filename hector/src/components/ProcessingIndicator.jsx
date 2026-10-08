@@ -52,7 +52,7 @@ export default function ProcessingIndicator({
                     ? "text-gold"
                     : isCompleted
                     ? "text-success"
-                    : "text-silver/30"
+                    : "text-silver/45"
                 }`}
               >
                 {stage.icon}
@@ -64,13 +64,13 @@ export default function ProcessingIndicator({
                       ? "text-gold-light"
                       : isCompleted
                       ? "text-silver/50"
-                      : "text-silver/25"
+                      : "text-silver/45"
                   }`}
                 >
                   {stage.name}
                 </p>
                 {isActive && (
-                  <p className="text-[11px] text-silver/40 mt-0.5 animate-fade-in">
+                  <p className="text-[11px] text-silver/55 mt-0.5 animate-fade-in">
                     {stage.description}
                   </p>
                 )}

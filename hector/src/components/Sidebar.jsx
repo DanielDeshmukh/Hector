@@ -142,8 +142,8 @@ export default function Sidebar({
             <div className="space-y-0.5">
               {history.length === 0 && (
                 <div className="flex flex-col items-center rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-5 text-center">
-                  <Clock size={16} className="mb-2 text-silver/25" />
-                  <p className="text-[11px] leading-relaxed text-silver/35">
+                  <Clock size={16} className="mb-2 text-silver/45" />
+                  <p className="text-[11px] leading-relaxed text-silver/50">
                     Your live HECTOR searches will appear here.
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export default function Sidebar({
                     <p className="truncate text-[13px] leading-snug">
                       {item.query}
                     </p>
-                    <div className="mt-1 flex items-center gap-2 text-[10px] text-silver/40">
+                    <div className="mt-1 flex items-center gap-2 text-[10px] text-silver/55">
                       <Clock size={10} />
                       <span>
                         {new Date(item.timestamp).toLocaleDateString("en-IN", {
@@ -189,8 +189,8 @@ export default function Sidebar({
             <div className="space-y-0.5">
               {bookmarks.length === 0 && (
                 <div className="flex flex-col items-center rounded-lg border border-slate-custom/30 bg-charcoal/20 px-3 py-5 text-center">
-                  <Bookmark size={16} className="mb-2 text-silver/25" />
-                  <p className="text-[11px] leading-relaxed text-silver/35">
+                  <Bookmark size={16} className="mb-2 text-silver/45" />
+                  <p className="text-[11px] leading-relaxed text-silver/50">
                     Bookmark sources from search results to save them here.
                   </p>
                 </div>
@@ -205,10 +205,10 @@ export default function Sidebar({
                       <p className="truncate text-[12px] font-medium text-silver/80">
                         {item.bookTitle}
                       </p>
-                      <p className="mt-0.5 text-[11px] text-silver/40">
+                      <p className="mt-0.5 text-[11px] text-silver/55">
                         {item.act} &mdash; {item.section}
                       </p>
-                      <p className="mt-0.5 truncate text-[11px] text-silver/30">
+                      <p className="mt-0.5 truncate text-[11px] text-silver/45">
                         {item.query}
                       </p>
                     </div>
@@ -216,7 +216,7 @@ export default function Sidebar({
                       <button
                         onClick={() => onRemoveBookmark(item.id)}
                         aria-label={`Remove bookmark for ${item.act} Section ${item.section}`}
-                        className="shrink-0 rounded p-1 text-silver/20 opacity-0 transition-all group-hover:opacity-100 hover:text-error"
+                        className="shrink-0 rounded p-1 text-silver/55 opacity-0 transition-all group-hover:opacity-100 hover:text-error"
                       >
                         <BookmarkX size={12} />
                       </button>
@@ -232,7 +232,7 @@ export default function Sidebar({
       {/* Footer Stats */}
       {!collapsed && (
         <div className="border-t border-slate-custom/40 px-4 py-3">
-          <div className="flex items-center justify-between text-[10px] text-silver/40">
+          <div className="flex items-center justify-between text-[10px] text-silver/55">
             <span>{systemStatus?.document_count ?? "\u2014"} documents indexed</span>
             <span className="flex items-center gap-1">
               <span className={`h-1.5 w-1.5 rounded-full ${!systemStatus || systemStatus.status !== "ok" || systemStatus.db_source === "local" ? "bg-warning" : "bg-success"}`}></span>
