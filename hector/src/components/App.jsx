@@ -376,7 +376,7 @@ export default function App() {
 
           {/* Content Area */}
           <div className="flex-1 overflow-y-auto">
-            <div className="mx-auto max-w-3xl px-4 md:px-6 py-4 md:py-6">
+            <div className="mx-auto flex min-h-full max-w-3xl flex-col px-4 md:px-6 py-4 md:py-6">
               {/* Idle State */}
               {appState === "idle" && !compareMode && (
                 <>
@@ -467,9 +467,6 @@ export default function App() {
                 </div>
               )}
             </div>
-
-            {/* Bottom spacer for input */}
-            <div className="h-32" />
           </div>
 
           {/* Fixed Input at Bottom */}

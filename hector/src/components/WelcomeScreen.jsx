@@ -27,7 +27,7 @@ export default function WelcomeScreen() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-4 py-8">
+    <div className="flex flex-1 flex-col items-center justify-center px-4 py-4">
       {/* Logo & Title */}
       <div className="mb-10 text-center animate-fade-in">
         <img src="/tab-icon.png" alt="HECTOR" className="mx-auto mb-5 h-16 w-16 rounded-xl" />
