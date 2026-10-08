@@ -19,7 +19,7 @@ if REPORT_DIR not in sys.path:
 TEMPLATE_PATH = os.path.join(REPORT_DIR, "templates", "hector_report_template.docx")
 
 NBSP = "\u00A0"
-NOT_FOUND = "Not found in retrieved sources"
+DASH = "—"
 LDQUO = "\u201c"
 RDQUO = "\u201d"
 
@@ -97,14 +97,14 @@ def _apply_rule5(raw_rows, key, src_key):
         text = texts[i].strip()
         dup = False
         if text:
-            for j, other in enumerate(raw_rows):
-                if i == j or other["point"] == r["point"]:
+            for j in range(i):
+                if raw_rows[j]["point"] == r["point"]:
                     continue
                 if texts[j].strip() == text:
                     dup = True
                     break
         if not text or dup:
-            cells.append([{"text": NOT_FOUND, "tag": ""}])
+            cells.append([{"text": DASH, "tag": ""}])
             continue
         paras = [{"text": p, "tag": ""} for p in r[key]]
         paras[-1]["tag"] = _tag(r[src_key])

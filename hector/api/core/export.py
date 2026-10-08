@@ -48,7 +48,7 @@ SANS = "Helvetica"
 def _sanitize_for_pdf(text: str) -> str:
     replacements = {
         "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
-        "\u2014": " - ", "\u2013": "-", "\u2026": "...",
+        "\u2014": "-", "\u2013": "-", "\u2026": "...",
         "\u00a0": " ", "\u2022": "*", "\u00b6": "",
         "\u2192": "->", "\u2194": "<->", "\u20b9": "Rs. ",
     }
@@ -77,16 +77,11 @@ def _spaced(text: str) -> str:
 
 
 class _ReportPdf(FPDF):
-    total_pages: int | None = None
-    pages_counted = 0
-
     def footer(self):
-        self.pages_counted += 1
         self.set_y(-14)
         self.set_font(SANS, "", 7)
         self.set_text_color(*LIGHT)
-        total = f" / {self.total_pages}" if self.total_pages else ""
-        label = f"{FOOTER_TEXT}{self.page_no()}{total}"
+        label = f"{FOOTER_TEXT}{self.page_no()} / {{nb}}"
         self.cell(0, 5, _sanitize_for_pdf(label), align="C")
 
 
@@ -177,18 +172,28 @@ def _layout_rich(segments, pdf, x0, start_offset, width):
     tokens = []
     for text, family, style, size, color in segments:
         pdf.set_font(family, style, size)
-        for tok in re.findall(r"\S+\s*", str(text)):
+        s = str(text)
+        parts = re.findall(r"\S+\s*", s)
+        lead = re.match(r"\s+", s)
+        if lead:
+            if parts:
+                parts[0] = lead.group(0) + parts[0]
+            else:
+                parts = [lead.group(0)]
+        for tok in parts:
             tokens.append((tok, family, style, size, color))
     placed = []
-    x = x0 + start_offset
+    line_start = x0 + start_offset
+    x = line_start
     line = 0
     for tok, family, style, size, color in tokens:
+        if tok.isspace() and x == line_start:
+            continue
         pdf.set_font(family, style, size)
         w = pdf.get_string_width(tok)
-        line_start = x0 + (start_offset if line == 0 else 0.0)
         if x + w > x0 + width + 0.5 and x > line_start:
             line += 1
-            x = x0
+            x = line_start
             tok = tok.lstrip()
             if not tok:
                 continue
@@ -237,9 +242,8 @@ def _draw_source_item(pdf: _ReportPdf, source: dict, width: float) -> None:
     pdf.ln(1.5)
 
 
-def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
+def _build_pdf(ctx: dict) -> _ReportPdf:
     pdf = _ReportPdf()
-    pdf.total_pages = total_pages
     _register_fonts(pdf)
     pdf.set_auto_page_break(auto=True, margin=20)
     pdf.set_margins(left=18, top=16, right=18)
@@ -378,11 +382,7 @@ def export_pdf(response_data: dict) -> bytes:
         PDF file bytes.
     """
     ctx = _report_context(response_data)
-    first = _build_pdf(ctx)
-    buf = io.BytesIO()
-    first.output(buf)
-    total = first.pages_counted or None
-    pdf = _build_pdf(ctx, total_pages=total)
+    pdf = _build_pdf(ctx)
     out = io.BytesIO()
     pdf.output(out)
     return out.getvalue()

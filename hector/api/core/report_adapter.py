@@ -9,6 +9,7 @@ _SOURCE_MARK_RE = re.compile(r"\s*\[(?:Source\s*|S\s*|§\s*)(\d+)\]\s*")
 _DIRECT_LABEL_RE = re.compile(r"^\s*\*\*\s*Direct\s*Answer\s*:?\s*\*\*\s*:?", re.IGNORECASE)
 _BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 _HEADING_RE = re.compile(r"^\s*#{1,6}\s*")
+_SOURCES_TAG_RE = re.compile(r"\s*\[Sources?[\s\d,]*\]")
 _HECTOR_HEADER_RE = re.compile(r"^\s*\[HECTOR\s+Intelligence\s+Report\]", re.IGNORECASE)
 
 
@@ -213,6 +214,12 @@ def _direct_answer(sections: list[dict], full_answer: str) -> str:
     return _strip_inline(full_answer)
 
 
+def _clean_difference(text: str) -> str:
+    text = _SOURCE_MARK_RE.sub("", text)
+    text = _SOURCES_TAG_RE.sub(" ", text)
+    return text.strip(" :-–—*")
+
+
 def _key_differences(sections: list[dict]) -> list[str]:
     differences: list[str] = []
     for section in sections:
@@ -229,16 +236,20 @@ def _key_differences(sections: list[dict]) -> list[str]:
         if harvest:
             for bullet in bullets:
                 cleaned = _strip_inline(bullet.strip()[2:])
-                cleaned = _SOURCE_MARK_RE.sub("", cleaned).strip()
+                cleaned = _clean_difference(cleaned)
                 if cleaned and cleaned not in differences:
                     differences.append(cleaned)
         for line in body.split("\n"):
             probe = line.strip().lstrip("*").strip()
             if probe.lower().startswith("key difference"):
                 cleaned = _strip_inline(probe)
-                cleaned = re.sub(r"^key\s+difference:?\s*", "", cleaned, flags=re.IGNORECASE)
-                cleaned = _SOURCE_MARK_RE.sub("", cleaned).strip()
-                if cleaned and cleaned not in differences:
+                cleaned = re.sub(
+                    r"^key\s+differences?:?\s*", "", cleaned, flags=re.IGNORECASE
+                )
+                cleaned = _clean_difference(cleaned)
+                if not cleaned or cleaned.startswith(("(", "[")):
+                    continue
+                if cleaned not in differences:
                     differences.append(cleaned)
     return differences
 
