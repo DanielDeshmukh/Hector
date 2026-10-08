@@ -9,6 +9,7 @@ that maps a search response onto the template payload.
 import io
 import logging
 import os
+import re
 import sys
 import tempfile
 import unicodedata
@@ -39,6 +40,9 @@ FOOTER_TEXT = (
 )
 
 _HECTOR_DIR = Path(__file__).resolve().parents[2]
+FONT_DIR = _HECTOR_DIR / "report" / "fonts"
+SERIF = "Gelasio"
+SANS = "Helvetica"
 
 
 def _sanitize_for_pdf(text: str) -> str:
@@ -79,7 +83,7 @@ class _ReportPdf(FPDF):
     def footer(self):
         self.pages_counted += 1
         self.set_y(-14)
-        self.set_font("Helvetica", "", 7)
+        self.set_font(SANS, "", 7)
         self.set_text_color(*LIGHT)
         total = f" / {self.total_pages}" if self.total_pages else ""
         label = f"{FOOTER_TEXT}{self.page_no()}{total}"
@@ -91,10 +95,17 @@ def _ensure_space(pdf: _ReportPdf, height: float) -> None:
         pdf.add_page()
 
 
+def _register_fonts(pdf: _ReportPdf) -> None:
+    pdf.add_font(SERIF, "", str(FONT_DIR / "Gelasio-Regular.ttf"))
+    pdf.add_font(SERIF, "B", str(FONT_DIR / "Gelasio-Bold.ttf"))
+    pdf.add_font(SERIF, "I", str(FONT_DIR / "Gelasio-Italic.ttf"))
+    pdf.add_font(SERIF, "BI", str(FONT_DIR / "Gelasio-BoldItalic.ttf"))
+
+
 def _section_heading(pdf: _ReportPdf, text: str) -> None:
     _ensure_space(pdf, 14)
     pdf.set_x(pdf.l_margin)
-    pdf.set_font("Helvetica", "B", 8.5)
+    pdf.set_font(SANS, "B", 8.5)
     pdf.set_text_color(*GOLD)
     pdf.cell(0, 7.5, _sanitize_for_pdf(_spaced(text)), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
@@ -102,19 +113,27 @@ def _section_heading(pdf: _ReportPdf, text: str) -> None:
 def _sub_heading(pdf: _ReportPdf, text: str) -> None:
     _ensure_space(pdf, 10)
     pdf.set_x(pdf.l_margin)
-    pdf.set_font("Helvetica", "", 9.5)
+    pdf.set_font(SERIF, "I", 9.5)
     pdf.set_text_color(*GREY)
     pdf.cell(0, 6, _sanitize_for_pdf(text), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
 
-def _draw_table(pdf: _ReportPdf, headers: list[str], widths: list[float], rows: list[list[str]]) -> None:
+def _draw_table(
+    pdf: _ReportPdf,
+    headers: list[str],
+    widths: list[float],
+    rows: list[list[str]],
+    col_fmts: list[tuple],
+) -> None:
     x_start = pdf.l_margin
+    line_height = 4.6
+    pad = 2.0
 
     def header_row():
         _ensure_space(pdf, 16)
         y = pdf.get_y()
-        pdf.set_font("Helvetica", "B", 7.5)
-        pdf.set_text_color(*GREY)
+        pdf.set_font(SANS, "B", 7)
+        pdf.set_text_color(*GOLD)
         x = x_start
         for label, width in zip(headers, widths):
             pdf.set_xy(x, y)
@@ -128,20 +147,23 @@ def _draw_table(pdf: _ReportPdf, headers: list[str], widths: list[float], rows: 
     header_row()
     for row in rows:
         cells = [_sanitize_for_pdf(str(cell)) for cell in row]
-        pdf.set_font("Helvetica", "", 9)
-        line_height = 4.6
-        pad = 2.0
-        heights = [
-            pdf.multi_cell(width - pad, line_height, cell, dry_run=True, output="HEIGHT")
-            for cell, width in zip(cells, widths)
-        ]
+        heights = []
+        for cell, width, fmt in zip(cells, widths, col_fmts):
+            pdf.set_font(*fmt[:3])
+            heights.append(
+                pdf.multi_cell(
+                    width - pad, line_height, cell, dry_run=True, output="HEIGHT"
+                )
+            )
         row_height = max(heights) + 3
         if pdf.get_y() + row_height > pdf.page_break_trigger:
             pdf.add_page()
             header_row()
         y = pdf.get_y()
         x = x_start
-        for cell, width in zip(cells, widths):
+        for cell, width, fmt in zip(cells, widths, col_fmts):
+            pdf.set_font(*fmt[:3])
+            pdf.set_text_color(*fmt[3])
             pdf.set_xy(x + pad, y + 1.4)
             pdf.multi_cell(width - pad, line_height, cell, align="L")
             x += width
@@ -151,25 +173,90 @@ def _draw_table(pdf: _ReportPdf, headers: list[str], widths: list[float], rows: 
         pdf.line(x_start, y + row_height - 0.2, x_start + sum(widths), y + row_height - 0.2)
 
 
+def _layout_rich(segments, pdf, x0, start_offset, width):
+    tokens = []
+    for text, family, style, size, color in segments:
+        pdf.set_font(family, style, size)
+        for tok in re.findall(r"\S+\s*", str(text)):
+            tokens.append((tok, family, style, size, color))
+    placed = []
+    x = x0 + start_offset
+    line = 0
+    for tok, family, style, size, color in tokens:
+        pdf.set_font(family, style, size)
+        w = pdf.get_string_width(tok)
+        line_start = x0 + (start_offset if line == 0 else 0.0)
+        if x + w > x0 + width + 0.5 and x > line_start:
+            line += 1
+            x = x0
+            tok = tok.lstrip()
+            if not tok:
+                continue
+            pdf.set_font(family, style, size)
+            w = pdf.get_string_width(tok)
+        placed.append((x, line, tok, family, style, size, color, w))
+        x += w
+    return placed
+
+
+def _draw_source_item(pdf: _ReportPdf, source: dict, width: float) -> None:
+    number = _sanitize_for_pdf(str(source.get("number") or "")).strip()
+    name = _sanitize_for_pdf(str(source.get("name") or ""))
+    sep = _sanitize_for_pdf(str(source.get("sep") or ""))
+    note = _sanitize_for_pdf(str(source.get("note_text") or ""))
+    line_h = 5.4
+    x0 = pdf.l_margin
+    number_w = 0.0
+    if number:
+        pdf.set_font(SANS, "B", 8)
+        number_w = pdf.get_string_width(number)
+    start = 55.0 if number else 0.0
+    if number and number_w + 2 > start:
+        start = number_w + 2
+    segments = [(name, SERIF, "", 10, INK)]
+    if sep:
+        segments.append((sep, SERIF, "", 10, INK))
+    if note:
+        segments.append((note, SERIF, "I", 9.5, GREY))
+    placed = _layout_rich(segments, pdf, x0, start, width)
+    lines = max((p[1] for p in placed), default=0) + 1
+    height = lines * line_h
+    _ensure_space(pdf, height + 2)
+    y = pdf.get_y()
+    if number:
+        pdf.set_font(SANS, "B", 8)
+        pdf.set_text_color(*GOLD)
+        pdf.set_xy(x0, y)
+        pdf.cell(number_w + 1, line_h, number, new_x=XPos.END, new_y=YPos.TOP)
+    for px, pline, tok, family, style, size, color, w in placed:
+        pdf.set_font(family, style, size)
+        pdf.set_text_color(*color)
+        pdf.set_xy(px, y + pline * line_h)
+        pdf.cell(w, line_h, tok, new_x=XPos.RIGHT, new_y=YPos.TOP)
+    pdf.set_y(y + height)
+    pdf.ln(1.5)
+
+
 def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
     pdf = _ReportPdf()
     pdf.total_pages = total_pages
+    _register_fonts(pdf)
     pdf.set_auto_page_break(auto=True, margin=20)
     pdf.set_margins(left=18, top=16, right=18)
     pdf.add_page()
     width = pdf.w - pdf.l_margin - pdf.r_margin
 
-    pdf.set_font("Helvetica", "B", 26)
+    pdf.set_font(SERIF, "B", 26)
     pdf.set_text_color(*INK)
     pdf.cell(width, 14, "H.E.C.T.O.R.", align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-    pdf.set_font("Helvetica", "B", 11)
-    pdf.set_text_color(*INK)
+    pdf.set_font(SANS, "B", 7.5)
+    pdf.set_text_color(*GOLD)
     pdf.cell(width, 7, _sanitize_for_pdf(_spaced("LEGAL RESEARCH REPORT")), align="C",
              new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-    pdf.set_font("Helvetica", "", 8)
-    pdf.set_text_color(*GREY)
+    pdf.set_font(SERIF, "I", 8.5)
+    pdf.set_text_color(*LIGHT)
     pdf.cell(width, 5, "Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval",
              align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(6)
@@ -178,15 +265,15 @@ def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
     meta_headers = ["ROUTE", "CONFIDENCE", "GENERATED"]
     meta_values = [ctx.get("route") or "-", ctx.get("confidence_text") or "", str(ctx.get("generated") or "")]
     y0 = pdf.get_y()
-    pdf.set_font("Helvetica", "B", 7)
-    pdf.set_text_color(*GREY)
+    pdf.set_font(SANS, "B", 6.5)
+    pdf.set_text_color(*LIGHT)
     for i, label in enumerate(meta_headers):
         pdf.set_xy(pdf.l_margin + i * col_w, y0)
         pdf.cell(col_w, 5, _sanitize_for_pdf(label), align="L")
     pdf.set_draw_color(*GOLD)
     pdf.set_line_width(0.35)
     pdf.line(pdf.l_margin, y0 + 5.4, pdf.l_margin + width, y0 + 5.4)
-    pdf.set_font("Helvetica", "", 10.5)
+    pdf.set_font(SANS, "", 9)
     pdf.set_text_color(*INK)
     y1 = y0 + 6.8
     for i, value in enumerate(meta_values):
@@ -195,7 +282,7 @@ def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
     pdf.set_y(y1 + 8)
 
     _section_heading(pdf, "QUERY")
-    pdf.set_font("Helvetica", "", 12)
+    pdf.set_font(SERIF, "I", 12)
     pdf.set_text_color(*INK)
     pdf.set_x(pdf.l_margin)
     pdf.multi_cell(width, 6, _sanitize_for_pdf(str(ctx.get("query") or "")))
@@ -203,7 +290,7 @@ def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
 
     _section_heading(pdf, "RESPONSE")
     _sub_heading(pdf, "Direct answer")
-    pdf.set_font("Helvetica", "", 10.5)
+    pdf.set_font(SERIF, "", 10.5)
     pdf.set_text_color(*INK)
     pdf.set_x(pdf.l_margin)
     pdf.multi_cell(width, 5.4, _sanitize_for_pdf(str(ctx.get("direct_answer") or "")))
@@ -218,15 +305,21 @@ def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
         ]
         for row in ctx.get("statutory_rows") or []
     ]
-    _draw_table(pdf, ["PROVISION", "SOURCE", "TEXT"], [46, 26, 102], statutory_rows)
+    _draw_table(
+        pdf,
+        ["PROVISION", "SOURCE", "TEXT"],
+        [46, 26, 102],
+        statutory_rows,
+        [(SANS, "B", 8, INK), (SANS, "", 7.5, GOLD), (SERIF, "I", 9, INK)],
+    )
     pdf.ln(3)
 
     _sub_heading(pdf, "Key differences")
-    pdf.set_font("Helvetica", "", 10.5)
+    pdf.set_font(SERIF, "", 10.5)
     pdf.set_text_color(*INK)
     for i, item in enumerate(ctx.get("key_differences") or [], start=1):
         text = _sanitize_for_pdf(str(item))
-        pdf.set_font("Helvetica", "", 10.5)
+        pdf.set_font(SERIF, "", 10.5)
         text_height = pdf.multi_cell(width - 9, 5.4, text, dry_run=True, output="HEIGHT")
         _ensure_space(pdf, text_height + 2)
         y = pdf.get_y()
@@ -246,31 +339,27 @@ def _build_pdf(ctx: dict, total_pages: int | None = None) -> _ReportPdf:
         ]
         for row in ctx.get("comparison_rows") or []
     ]
-    _draw_table(pdf, ["POINT", "IPC", "BNS"], [50, 62, 62], comparison_rows)
+    _draw_table(
+        pdf,
+        ["POINT", "IPC", "BNS"],
+        [50, 62, 62],
+        comparison_rows,
+        [(SANS, "B", 8, INK), (SERIF, "", 9, INK), (SERIF, "", 9, INK)],
+    )
     pdf.ln(3)
 
     _section_heading(pdf, "SOURCE SECTIONS")
     for source in ctx.get("sources") or []:
-        label = _sanitize_for_pdf(
-            f"{source.get('number', '')}    {source.get('name', '')}"
-            f"{source.get('sep', '')}{source.get('note_text', '')}"
-        )
-        pdf.set_font("Helvetica", "", 10)
-        label_height = pdf.multi_cell(width, 5.4, label, dry_run=True, output="HEIGHT")
-        _ensure_space(pdf, label_height + 2)
-        pdf.set_x(pdf.l_margin)
-        pdf.set_text_color(*INK)
-        pdf.multi_cell(width, 5.4, label, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-        pdf.ln(1.5)
+        _draw_source_item(pdf, source, width)
 
     pdf.ln(4)
     _ensure_space(pdf, 24)
-    pdf.set_font("Helvetica", "", 10)
+    pdf.set_font(SERIF, "I", 10)
     pdf.set_text_color(*GOLD)
     pdf.set_x(pdf.l_margin)
     pdf.cell(width, 6, _sanitize_for_pdf(TAGLINE), align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(1)
-    pdf.set_font("Helvetica", "", 7)
+    pdf.set_font(SERIF, "I", 7)
     pdf.set_text_color(*LIGHT)
     pdf.set_x(pdf.l_margin)
     pdf.multi_cell(width, 4, _sanitize_for_pdf(DISCLAIMER), align="C")
