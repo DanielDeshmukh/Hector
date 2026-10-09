@@ -29,6 +29,11 @@ NEMOTRON_RERANK_MODEL = "nvidia/nemotron-rerank-v1"
 # reuses an already-loaded model instead of reloading from disk per query.
 _shared_cross_encoders: dict[str, Any] = {}
 
+# Logit bias that maps NIM rerank logits onto the calibrated 0-1 scale the
+# relevance floor (relevance_threshold.json, 0.059991) was fitted against.
+# See NimReranker.rerank for the measured logit ranges behind this default.
+NIM_LOGIT_BIAS_DEFAULT = 2.5
+
 
 def _sigmoid(value: float) -> float:
     """Sigmoid normalization for raw scores."""
@@ -417,25 +422,33 @@ class NimReranker:
                     raw = rank.get("relevance_score", rank.get("score", 0.0))
                 raw_scores[int(rank["index"])] = float(raw)
 
-        # NIM logits are uncalibrated and often deeply negative (-4 to -10)
-        # even for perfect matches; a plain sigmoid then lands at ~0.009 and
-        # the relevance floor (0.06) drops the entire result set. Min-max
-        # normalize within the batch (monotonic => order preserved) and sqrt
-        # squash so runner-ups stay above downstream similarity cutoffs,
-        # matching the cross-encoder's calibrated 0-1 range.
-        values = list(raw_scores.values())
-        lo = min(values) if values else 0.0
-        hi = max(values) if values else 0.0
-        span = hi - lo
-
-        def _norm(logit: float) -> float:
-            if span < 1e-9:
-                return _sigmoid(logit)
-            return max(0.0, min(1.0, math.sqrt((logit - lo) / span)))
+        # NIM logits are uncalibrated and sit far below zero: measured on this
+        # corpus (2026-10-09), irrelevant passages cluster between -8.6 and
+        # -5.1 and the best passage of an off-topic query never rises above
+        # -6.57, while a genuinely matching passage scores between -4.18 and
+        # +9.70. Two mappings were rejected against those measurements:
+        #   * plain sigmoid puts strict matches at 0.015-0.032, under the
+        #     0.059991 floor, so real answers were dropped;
+        #   * batch min-max forced the top document of every batch to exactly
+        #     1.0 - the UI rendered that as "100% match" even for nonsense
+        #     queries, and the floor could never fire because the top score
+        #     was always 1.0.
+        # A fixed logit bias instead anchors every batch to the same absolute
+        # scale, so scores stay comparable across queries and monotonic in the
+        # logit. With the default bias of 2.5, the worst observed junk top
+        # (-6.57 -> 0.017) sits 3.6x below the floor and the weakest observed
+        # match (-4.18 -> 0.157) clears it by 2.6x.
+        bias = NIM_LOGIT_BIAS_DEFAULT
+        raw_bias = os.getenv("HECTOR_RERANK_LOGIT_BIAS")
+        if raw_bias:
+            try:
+                bias = float(raw_bias)
+            except ValueError:
+                logger.warning("Invalid HECTOR_RERANK_LOGIT_BIAS=%r", raw_bias)
 
         for i, doc in enumerate(documents):
             if i in raw_scores:
-                score = _norm(raw_scores[i])
+                score = _sigmoid(raw_scores[i] + bias)
             else:
                 # Unparsed entries keep their retrieval-derived score
                 # instead of collapsing to 0.0.

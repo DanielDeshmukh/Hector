@@ -92,6 +92,55 @@ class TestHectorRouter:
         with pytest.raises(ValueError):
             router._validate_payload(payload)
 
+    def test_validate_payload_drops_answers_longer_than_a_status(self, router):
+        """The routing model sometimes replies instead of classifying.
+
+        This is the real reply HECTOR returned for a LeetCode question on
+        2026-10-09. Anything past a status line is an answer in disguise and
+        must not travel as a HECTOR response; the services layer separately
+        refuses to show this field for a non-legal route, which is what
+        catches short answers.
+        """
+        payload = {
+            "route": "GENERAL",
+            "hector_response": (
+                "Enqueue and Dequeue are fundamental operations in a Queue "
+                "data structure, which follows the FIFO (First-In, First-Out) "
+                "principle. Enqueue adds an element to the rear of the queue, "
+                "while Dequeue removes an element from the front. A classic "
+                "LeetCode problem demonstrating this is 'Implement Queue using "
+                "Stacks' (Problem 232), where you must implement a queue using "
+                "two stacks to handle the FIFO behavior with LIFO primitives."
+            ),
+            "confidence": 0.98,
+        }
+        result = router._validate_payload(payload)
+        assert result["route"] == "GENERAL"
+        assert result["hector_response"] == router.ROUTING_STATUS_FALLBACK
+        assert len(result["hector_response"]) <= router.MAX_ROUTING_STATUS_CHARS
+
+    def test_cap_is_above_every_rule_based_status(self, router):
+        """The length cap must never discard a deterministic status message."""
+        import inspect
+        import re
+
+        source = inspect.getsource(type(router))
+        statuses = re.findall(r'message="([^"]+)"', source)
+        statuses.append(router.ROUTING_STATUS_FALLBACK)
+        assert statuses, "expected rule-based status messages in the router"
+        for status in statuses:
+            assert len(status) <= type(router).MAX_ROUTING_STATUS_CHARS, status
+
+    def test_validate_payload_keeps_short_status(self, router):
+        """A real routing status survives validation untouched."""
+        payload = {
+            "route": "LEGAL_RESEARCH",
+            "hector_response": "Legal research route selected.",
+            "confidence": 0.9,
+        }
+        result = router._validate_payload(payload)
+        assert result["hector_response"] == "Legal research route selected."
+
     def test_coerce_confidence(self, router):
         """Test confidence value coercion."""
         assert router._coerce_confidence(0.5) == 0.5

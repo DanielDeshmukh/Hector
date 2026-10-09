@@ -30,6 +30,16 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
+# Shown instead of an answer whenever the router sends the query somewhere
+# other than LEGAL_RESEARCH. The router's own `hector_response` is a routing
+# status (and, when the routing model overreaches, an ungrounded answer to
+# whatever the user asked) - never something to present as a HECTOR result.
+NON_GROUNDED_RESPONSE = (
+    "HECTOR indexes Indian statutory text (the IPC and the BNS) only, so this "
+    "query cannot be answered from the corpus. Ask about a provision, an "
+    "offence, or an IPC-to-BNS mapping to get a grounded answer with citations."
+)
+
 
 class HectorApiService:
     def __init__(
@@ -95,25 +105,35 @@ class HectorApiService:
 
         t0 = time.perf_counter()
         intent = self.router.get_route(request.query)
+        route = str(intent.get("route") or "GENERAL")
+        # Only a legal-research route, or a request carrying an uploaded
+        # document, is grounded in the corpus. Any other route must neither
+        # retrieve - the corpus is Indian statute, so an unrelated query would
+        # surface unrelated provisions that the UI then presents as matches -
+        # nor surface the router's free text as though HECTOR had answered.
+        grounded = route == "LEGAL_RESEARCH" or bool(request.file_context)
         normalized_query = request.query
         mappings: list[str] = []
 
-        if intent.get("route") == "LEGAL_RESEARCH":
+        if route == "LEGAL_RESEARCH":
             normalized_query, mappings = self.router.normalize_query(request.query)
         t_route = time.perf_counter()
         timings["route_ms"] = round((t_route - t0) * 1000, 1)
 
         total_needed = max(request.page * request.page_size, request.page_size)
         retrieval_window = max(25, total_needed)
-        results = retry(
-            self.retriever.search,
-            normalized_query,
-            top_k=retrieval_window,
-            candidate_pool=max(40, retrieval_window * 2),
-            max_attempts=3,
-            retryable_exceptions=(Exception,),
-            operation_name="pinecone_search",
-        )
+        if grounded:
+            results = retry(
+                self.retriever.search,
+                normalized_query,
+                top_k=retrieval_window,
+                candidate_pool=max(40, retrieval_window * 2),
+                max_attempts=3,
+                retryable_exceptions=(Exception,),
+                operation_name="pinecone_search",
+            )
+        else:
+            results = []
         t_retrieve = time.perf_counter()
         timings["retrieve_ms"] = round((t_retrieve - t_route) * 1000, 1)
 
@@ -151,7 +171,7 @@ class HectorApiService:
                 f"--- End Document Context ---"
             )
 
-        if intent.get("route") == "LEGAL_RESEARCH" or request.file_context:
+        if grounded:
             response_data = self.response_generator.generate(
                 query=effective_query,
                 results=paginated,
@@ -161,7 +181,7 @@ class HectorApiService:
             )
             generated_response = response_data["generated_response"]
         else:
-            generated_response = intent.get("hector_response", "")
+            generated_response = NON_GROUNDED_RESPONSE
         t_generate = time.perf_counter()
         timings["generate_ms"] = round((t_generate - t_retrieve) * 1000, 1)
         timings["total_ms"] = round((t_generate - t0) * 1000, 1)
@@ -174,12 +194,12 @@ class HectorApiService:
         # Compute confidence level and warning
         raw_confidence = float(response_data.get("answer_confidence", 0.0) or 0.0)
         confidence_level, confidence_warning = self._assess_confidence(
-            raw_confidence, intent.get("route", "GENERAL"), len(paginated)
+            raw_confidence, route, len(paginated)
         )
 
         # Run hallucination check on generated response
         hallucination_check = None
-        if generated_response and (intent.get("route") == "LEGAL_RESEARCH" or request.file_context):
+        if generated_response and grounded:
             from core.verifier import ClaimExtractor, HallucinationDetector
 
             actual_claims = ClaimExtractor.extract_claims(generated_response)
@@ -197,7 +217,7 @@ class HectorApiService:
             )
 
         response = SearchResponse(
-            route=intent.get("route", "GENERAL"),
+            route=route,
             query=request.query,
             normalized_query=normalized_query,
             verification_enabled=bool(
@@ -224,13 +244,13 @@ class HectorApiService:
         )
 
         # Store in persistent cache (only for successful legal research queries)
-        if intent.get("route") == "LEGAL_RESEARCH" and generated_response:
+        if route == "LEGAL_RESEARCH" and generated_response:
             try:
                 self._query_cache.set(
                     request.query,
                     response.model_dump_json(),
                     timing=timings,
-                    route=intent.get("route"),
+                    route=route,
                 )
             except Exception as exc:
                 logger.warning("Failed to cache query response: %s", exc)
@@ -239,7 +259,7 @@ class HectorApiService:
         try:
             self._analytics.record_search(
                 query=request.query,
-                route=intent.get("route"),
+                route=route,
                 confidence=raw_confidence,
                 result_count=total_results,
                 response_ms=timings.get("total_ms"),
