@@ -130,6 +130,17 @@ class HectorHybridRetriever:
         r"\[s\s*(\d{1,4}[a-z]?)(?:\.\d+)?\]|\b(?:section|sec\.?|s\.)\s*(\d{1,4}[a-z]?)\b|^\s*(\d{1,4}[a-z]?)\.\s",
         re.IGNORECASE | re.MULTILINE,
     )
+    # ACT + bare number ("BNS 318", "IPC 420") with no "section" keyword.
+    # SECTION_PATTERN alone misses this form, so a query like "IPC equivalent
+    # of BNS 318" parsed no section number, never reached counterpart
+    # injection, and the correct IPC section never entered the pool (the
+    # relevance floor then dropped all 76 candidates and the API abstained).
+    # Capped at 3 digits so act-name years ("Indian Penal Code 1860",
+    # "Bharatiya Nyaya Sanhita 2023") never parse as sections.
+    ACT_SECTION_PATTERN = re.compile(
+        r"\b(?:ipc|bns|crpc|bnss|bsa|cpc|bharatiya nyaya sanhita|bharatiya nagarik suraksha sanhita|bharatiya sakshya adhiniyam|indian penal code|code of criminal procedure|evidence act|indian evidence act)\s+(\d{1,3}[a-z]?)\b",
+        re.IGNORECASE,
+    )
 
     ACT_ALIASES = {
         "ipc": "IPC",
@@ -1203,6 +1214,16 @@ class HectorHybridRetriever:
                 continue
             seen.add(key)
             out.append((num, acts))
+        # "BNS 318" / "IPC 420" — act-tagged mentions carry their act in the
+        # match itself, so no window search is needed.
+        for match in self.ACT_SECTION_PATTERN.finditer(query or ""):
+            num = match.group(1).upper()
+            acts = _acts_in(match.group(0)) or list(named)
+            key = (num, tuple(acts))
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append((num, acts))
         return out
 
     def _citation_injection_rows(self, query, legal_query):
@@ -1456,6 +1477,10 @@ class HectorHybridRetriever:
         sections = [
             match.lower().rstrip(".")
             for match in self.SECTION_PATTERN.findall(query or "")
+        ]
+        sections += [
+            match.lower().rstrip(".")
+            for match in self.ACT_SECTION_PATTERN.findall(query or "")
         ]
         raw_acts = [
             match.group(0).lower() for match in self.ACT_PATTERN.finditer(query or "")

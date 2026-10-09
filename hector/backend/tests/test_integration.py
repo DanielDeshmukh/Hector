@@ -286,6 +286,52 @@ class TestSearchPipeline:
         data = resp.json()
         assert data["route"] == "GENERAL"
 
+    def test_general_route_serves_no_sources_and_no_router_answer(
+        self, stub_service, auth, monkeypatch
+    ):
+        """A non-legal query must not retrieve, and must not be answered.
+
+        The routing model is only asked to classify, but it sometimes replies
+        to the user's question instead; that free text used to be rendered as
+        the HECTOR answer while retrieval still returned unrelated provisions
+        labelled as matches. Both halves of that are wrong.
+        """
+        from api.services import NON_GROUNDED_RESPONSE
+        from fastapi.testclient import TestClient
+
+        retriever = stub_service.retriever
+        searches = {"count": 0}
+        original_search = retriever.search
+
+        def spy_search(*args, **kwargs):
+            searches["count"] += 1
+            return original_search(*args, **kwargs)
+
+        monkeypatch.setattr(stub_service.router, "get_route", lambda query: {
+            "route": "GENERAL",
+            "hector_response": "General route selected.",
+            "confidence": 0.7,
+        })
+        monkeypatch.setattr(retriever, "search", spy_search)
+
+        client = TestClient(app)
+        resp = client.post(
+            "/search",
+            headers=auth,
+            json={
+                "query": "what is the height of mount everest",
+                "page": 1,
+                "page_size": 5,
+            },
+        )
+        data = resp.json()
+        assert data["route"] == "GENERAL"
+        assert searches["count"] == 0, "non-legal routes must not hit retrieval"
+        assert data["total_results"] == 0
+        assert data["items"] == []
+        assert data["generated_response"] == NON_GROUNDED_RESPONSE
+        assert "General route selected." not in data["generated_response"]
+
     def test_search_empty_results(self, stub_service, auth):
         from fastapi.testclient import TestClient
 
@@ -704,6 +750,79 @@ class TestCitationInjectionAndBlend:
         r.search(expanded, top_k=3, candidate_pool=4)
         detail = r.last_stage_info.get("detail") or {}
         assert detail.get("injected"), "raw-query fallback must still inject"
+
+    # ------------------------------------------------------------------
+    # Regression: bare "ACT + number" citations ("BNS 318", "IPC 420").
+    # SECTION_PATTERN needs the literal word "section", so "what is IPC
+    # equivalent of BNS 318" parsed no section number, never reached
+    # counterpart injection, and the relevance floor dropped all 76
+    # candidates -> the API abstained on a question whose answer
+    # (IPC 415/417/418/420) is sitting in mapping.json.
+    # ------------------------------------------------------------------
+    BARE_ACT_RECORDS = [
+        {
+            "id": "bns-318",
+            "document": "Section 318 BNS. Cheating. Whoever deceives any "
+                        "person in order to induce delivery of property.",
+            "metadata": {"source": "BNS.pdf", "page": 1,
+                         "section_number": "318"},
+        },
+        {
+            "id": "ipc-420",
+            "document": "Section 420 IPC. Punishment for cheating and "
+                        "dishonestly inducing delivery of property.",
+            "metadata": {"source": "IPC.pdf", "page": 1,
+                         "section_number": "420"},
+        },
+    ]
+    BARE_MAPPING = ({"420": ["318"]}, {"318": ["420"]})
+    BARE_Q = "what is IPC equivalent of BNS 318"
+
+    @staticmethod
+    def _make_bare_retriever():
+        return HectorHybridRetriever.from_records(
+            TestCitationInjectionAndBlend.BARE_ACT_RECORDS
+        )
+
+    def test_bare_act_number_parses_as_section(self):
+        r = self._make_bare_retriever()
+        parsed = r._parse_query(self.BARE_Q)
+        assert parsed["section_numbers"] == ["318"]
+        assert parsed["acts"] == ["IPC", "BNS"]
+        assert parsed["has_legal_citation"]
+
+    def test_act_name_year_is_not_a_section_number(self):
+        """1860/2023 are act-name years, never section numbers."""
+        r = self._make_bare_retriever()
+        for query in (
+            "Bharatiya Nyaya Sanhita 2023",
+            "Indian Penal Code 1860",
+        ):
+            assert r._parse_query(query)["section_numbers"] == [], query
+            assert r.ACT_SECTION_PATTERN.search(query) is None, query
+
+    def test_bare_act_counterpart_injection_fires(self, monkeypatch):
+        import data.hybrid_retriever as hr_mod
+
+        monkeypatch.setattr(hr_mod, "_mapping_cache", self.BARE_MAPPING)
+        r = self._make_bare_retriever()
+        rows = r._citation_injection_rows(self.BARE_Q, r._parse_query(self.BARE_Q))
+        kinds = {row["id"]: row["reasons"][0] for row in rows}
+        assert kinds == {
+            "bns-318": "citation-injection",
+            "ipc-420": "counterpart-injection",
+        }, kinds
+
+    def test_bare_act_counterpart_reaches_results(self, monkeypatch):
+        import data.hybrid_retriever as hr_mod
+
+        monkeypatch.setattr(hr_mod, "_mapping_cache", self.BARE_MAPPING)
+        r = self._make_bare_retriever()
+        results = r.search(self.BARE_Q, top_k=3, candidate_pool=2)
+        assert "ipc-420" in {row["id"] for row in results}, (
+            "the counterpart IPC section must survive the relevance floor "
+            "for a bare 'BNS 318' query"
+        )
 
     def test_act_attribution_prefers_following_act(self, monkeypatch):
         """'...predecessor of Section 193 of the Bharatiya Nyaya Sanhita'
