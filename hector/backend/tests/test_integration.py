@@ -169,7 +169,7 @@ def stub_service(service):
     previous = app.dependency_overrides.get(get_service)
     app.dependency_overrides[get_service] = lambda: service
     get_query_cache().clear()
-    yield
+    yield service
     if previous is not None:
         app.dependency_overrides[get_service] = previous
     else:
