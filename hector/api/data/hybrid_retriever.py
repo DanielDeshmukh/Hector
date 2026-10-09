@@ -121,9 +121,35 @@ class HectorHybridRetriever:
     SECTION_PATTERN = re.compile(
         r"\b(?:section|sec\.?|s\.)\s*(\d{1,4}[a-z]?)\b", re.IGNORECASE
     )
+    # Single source for every act surface form: the 2023 family (BNS/BNSS/
+    # BSA), their repealed counterparts (IPC/CrPC/Indian Evidence Act) and
+    # CPC. Longest surface first so "B.N.S.S." is never swallowed by "B.N.S."
+    # and "Code of Criminal Procedure" is never reduced to a shorter alias
+    # inside the same string. Both compiled patterns below are built from it,
+    # so a new act name can never be added to one and forgotten in the other.
+    _ACT_NAME_ALTERNATION = (
+        "bharatiya nagarik suraksha sanhita"
+        "|bharatiya nyaya sanhita"
+        "|bharatiya sakshya adhiniyam"
+        "|code of criminal procedure"
+        "|code of civil procedure"
+        "|indian penal code"
+        "|indian evidence act"
+        "|evidence act"
+        "|b\\.n\\.s\\.s\\.?"
+        # CrPC is written "Cr.P.C." (Cr compressed); "C.R.P.C." kept as well
+        # since both spellings appear in practice.
+        "|cr\\.p\\.c\\.?"
+        "|c\\.r\\.p\\.c\\.?"
+        "|i\\.p\\.c\\.?"
+        "|b\\.n\\.s\\.?"
+        "|b\\.s\\.a\\.?"
+        "|c\\.p\\.c\\.?"
+        "|i\\.e\\.a\\.?"
+        "|bnss|crpc|ipc|bsa|cpc|iea|bns"
+    )
     ACT_PATTERN = re.compile(
-        r"\b(ipc|bns|crpc|bnss|bsa|cpc|bharatiya nyaya sanhita|bharatiya nagarik suraksha sanhita|bharatiya sakshya adhiniyam|indian penal code|code of criminal procedure|evidence act|indian evidence act)\b",
-        re.IGNORECASE,
+        rf"\b(?:{_ACT_NAME_ALTERNATION})\b", re.IGNORECASE
     )
     TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
     SECTION_IN_TEXT_PATTERN = re.compile(
@@ -138,7 +164,7 @@ class HectorHybridRetriever:
     # Capped at 3 digits so act-name years ("Indian Penal Code 1860",
     # "Bharatiya Nyaya Sanhita 2023") never parse as sections.
     ACT_SECTION_PATTERN = re.compile(
-        r"\b(?:ipc|bns|crpc|bnss|bsa|cpc|bharatiya nyaya sanhita|bharatiya nagarik suraksha sanhita|bharatiya sakshya adhiniyam|indian penal code|code of criminal procedure|evidence act|indian evidence act)\s+(\d{1,3}[a-z]?)\b",
+        rf"\b(?:{_ACT_NAME_ALTERNATION})\s+(\d{{1,3}}[a-z]?)\b",
         re.IGNORECASE,
     )
 
@@ -155,7 +181,9 @@ class HectorHybridRetriever:
         "bharatiya sakshya adhiniyam": "BSA",
         "evidence act": "BSA",
         "indian evidence act": "BSA",
+        "iea": "BSA",
         "cpc": "CPC",
+        "code of civil procedure": "CPC",
     }
     LEGAL_INTENT_KEYWORDS = frozenset(
         (
@@ -208,6 +236,7 @@ class HectorHybridRetriever:
         "bharatiya sakshya adhiniyam": ["Bharatiya Sakshya Adhiniyam, 2023"],
         "evidence act": ["Bharatiya Sakshya Adhiniyam, 2023", "erstwhile Indian Evidence Act, 1872", "Indian Evidence Act, 1872"],
         "indian evidence act": ["erstwhile Indian Evidence Act, 1872", "Indian Evidence Act, 1872"],
+        "iea": ["erstwhile Indian Evidence Act, 1872", "Indian Evidence Act, 1872"],
         "cpc": ["Code of Civil Procedure, 1908"],
         "code of civil procedure": ["Code of Civil Procedure, 1908"],
         "transfer of property": ["Transfer of Property Act, 1882"],
@@ -1193,7 +1222,10 @@ class HectorHybridRetriever:
         }
 
         def _acts_in(text):
-            lowered = text.lower()
+            # Dots stripped so "I.P.C. 420" attributes the section to IPC the
+            # same way "IPC 420" does; otherwise the surface search missed
+            # and every named act was injected as a fallback.
+            lowered = re.sub(r"\.", "", text.lower())
             return [
                 act
                 for act in named
@@ -1482,8 +1514,11 @@ class HectorHybridRetriever:
             match.lower().rstrip(".")
             for match in self.ACT_SECTION_PATTERN.findall(query or "")
         ]
+        # Brief-style citations carry dots ("I.P.C.", "B.N.S.S."); strip them
+        # so the match resolves through the same alias keys as the flat form.
         raw_acts = [
-            match.group(0).lower() for match in self.ACT_PATTERN.finditer(query or "")
+            re.sub(r"\.", "", match.group(0).lower())
+            for match in self.ACT_PATTERN.finditer(query or "")
         ]
         acts = [self.ACT_ALIASES.get(act, act.upper()) for act in raw_acts]
 
@@ -2222,7 +2257,7 @@ class HectorHybridRetriever:
             metadata.get("act_name") or metadata.get("act") or ""
         ).strip()
         if explicit_act:
-            key = explicit_act.lower()
+            key = re.sub(r"\.", "", explicit_act.lower())
             canonical = self.ACT_ALIASES.get(key)
             if canonical:
                 return canonical
@@ -2239,7 +2274,9 @@ class HectorHybridRetriever:
 
         source = (metadata.get("source") or "").lower()
         text = (document or "").lower()
-        combined = f"{source} {text[:300]}"
+        # Dots stripped so brief-style act names in corpus rows ("I.P.C.")
+        # still resolve through the alias table below.
+        combined = re.sub(r"\.", "", f"{source} {text[:300]}")
 
         for alias, canonical in self.ACT_ALIASES.items():
             if alias in combined:

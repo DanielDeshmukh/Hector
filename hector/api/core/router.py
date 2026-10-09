@@ -42,6 +42,8 @@ class HectorRouter:
         "crpc",
         "bnss",
         "evidence act",
+        "indian penal code",
+        "indian evidence act",
         "bharatiya nyaya sanhita",
         "bharatiya nagarik suraksha sanhita",
         "bharatiya sakshya",
@@ -372,10 +374,14 @@ class HectorRouter:
             )
 
         # --- LEGAL CHECKS FIRST (before document keywords) ---
-        # Direct act/section references get highest priority
-        if re.search(r"\b(ipc|bns|crpc|bnss)\b", lowered) or re.search(
-            r"\bsection\s+\d+\b", lowered
-        ):
+        # Direct act/section references get highest priority. Dots stripped
+        # so brief-style citations ("I.P.C. 420") hit the same gate, and the
+        # whole BNS family (BSA/CPC/IEA included) counts alongside its
+        # repealed counterparts - "BSA 22" used to fall through to GENERAL.
+        probe = re.sub(r"\.", "", lowered)
+        if re.search(
+            r"\b(ipc|bns|crpc|bnss|bsa|cpc|iea)\b", probe
+        ) or re.search(r"\bsection\s+\d+\b", lowered):
             return self._fallback_intent(
                 route="LEGAL_RESEARCH",
                 message="Legal research sequence initiated. Grounding response in statutory provisions.",
