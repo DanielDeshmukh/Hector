@@ -57,6 +57,55 @@ class TestNoExpansion(unittest.TestCase):
         self.assertIn(original, result)
 
 
+class TestActNameReverseMatch(unittest.TestCase):
+    """Naming an act must not fire every synonym group citing that act.
+
+    Regression: _find_matching_terms reverse-matched values, and act titles
+    are values shared by many groups ("Indian Penal Code" is a value in 24
+    of the 81 auto-synonym groups). Any question naming an act but no crime
+    keyword therefore appended ~50 tokens of foreign section numbers, which
+    pushed the expected section out of the fusion pool (8 of the 9 residual
+    misses in the 4-act retrieval gate, 2026-10-10).
+    """
+
+    def setUp(self):
+        self.expander = QueryExpander()
+
+    def test_act_name_alone_does_not_expand(self):
+        q = "What are the provisions of the Indian Penal Code regarding number?"
+        self.assertEqual(self.expander.expand(q), q)
+
+    def test_act_name_reverse_match_fires_nothing(self):
+        q = "What does the Bharatiya Nyaya Sanhita say about 255?"
+        self.assertEqual(self.expander._find_matching_terms(q), [])
+
+    def test_act_name_query_has_no_section_tail(self):
+        q = "What treatment does the Indian Penal Code provide for person?"
+        out = self.expander.expand(q)
+        self.assertNotIn("section 113A", out)
+        self.assertNotIn("section 107", out)
+        self.assertNotIn("section 44", out)
+
+    def test_bnss_act_name_query_stays_raw(self):
+        q = ("Under the Bharatiya Nagarik Suraksha Sanhita, what applies to "
+             "application of this chapter?")
+        self.assertEqual(self.expander.expand(q), q)
+
+    def test_statute_value_skip_keeps_topic_reverse_match(self):
+        # "first information report" is a VALUE of key "fir"; forward matching
+        # finds no key, so this only works through reverse value->key matching.
+        self.assertIn("fir", self.expander._find_matching_terms(
+            "first information report"))
+
+    def test_topic_keyword_still_expands_in_act_query(self):
+        out = self.expander.expand("murder under the Indian Penal Code")
+        self.assertIn("culpable homicide", out)
+
+    def test_explicit_section_query_still_untouched(self):
+        q = "Section 302 IPC murder punishment"
+        self.assertEqual(self.expander.expand(q), q)
+
+
 class TestDeduplication(unittest.TestCase):
     def setUp(self):
         self.expander = QueryExpander()

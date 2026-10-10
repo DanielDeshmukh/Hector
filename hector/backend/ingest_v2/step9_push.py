@@ -97,7 +97,7 @@ def embed_batch(texts: list[str], nim_url: str, nim_key: str) -> list[list[float
     raise RuntimeError("unreachable")
 
 
-def read_corpus(path: str, limit: int) -> list[dict]:
+def read_corpus(path: str, limit: int, acts: set[str] | None = None) -> list[dict]:
     if not os.path.isfile(path):
         raise SystemExit(f"missing corpus: {path} (run step8_corpus.py first)")
     rows = []
@@ -105,7 +105,10 @@ def read_corpus(path: str, limit: int) -> list[dict]:
         for line in fh:
             if not line.strip():
                 continue
-            rows.append(json.loads(line))
+            row = json.loads(line)
+            if acts and row.get("metadata", {}).get("act_id") not in acts:
+                continue
+            rows.append(row)
             if limit and len(rows) >= limit:
                 break
     return rows
@@ -139,13 +142,16 @@ def sanitize_metadata(meta: dict) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0, help="only push first N (smoke test)")
+    ap.add_argument("--acts", type=str, default="", help="comma-separated act_ids to push (e.g. bnss-2023,bsa-2023); empty = all")
     ap.add_argument("--reset", action="store_true", help="delete all vectors first")
     ap.add_argument("--workers", type=int, default=WORKERS)
     args = ap.parse_args()
 
     api_key, nim_url, nim_key = load_env()
-    rows = read_corpus(CORPUS_PATH, args.limit)
-    log(f"seed={SEED} corpus={CORPUS_PATH} rows={len(rows)}")
+    act_filter = {a.strip() for a in args.acts.split(",") if a.strip()} or None
+    rows = read_corpus(CORPUS_PATH, args.limit, act_filter)
+    log(f"seed={SEED} corpus={CORPUS_PATH} rows={len(rows)}"
+        + (f" acts={sorted(act_filter)}" if act_filter else ""))
     log(f"index={INDEX_NAME} model={EMBED_MODEL} dim={DIM}")
 
     from pinecone import Pinecone
@@ -175,7 +181,16 @@ def main() -> int:
         upserts = []
         for r, v in zip(chunk, vecs):
             meta = sanitize_metadata(r["metadata"])
-            meta["document"] = r["document"]  # dense leg reads this
+            doc = r["document"]
+            # Pinecone caps metadata at 40960 bytes/vector; BNSS s531
+            # (repeal+savings) alone is 195KB. Truncate at the storage
+            # boundary like sanitize_metadata does for nulls - the jsonl
+            # keeps the full text for BM25/eval.
+            if len(doc.encode("utf-8")) > 36000:
+                cut = doc[:30000]
+                doc = cut + "\n…[truncated for index metadata]"
+                log(f"truncated {r['id']} document to {len(doc)} chars")
+            meta["document"] = doc  # dense leg reads this
             upserts.append({"id": r["id"], "values": v, "metadata": meta})
         ix.upsert(vectors=upserts, namespace="")
         return len(upserts)

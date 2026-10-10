@@ -354,6 +354,17 @@ class QueryExpander:
             for key, values in self._synonyms.items():
                 for val in values:
                     val_lower = val.lower()
+                    # Act titles are context, not synonyms: they are values
+                    # shared by many groups ("Indian Penal Code" is a value in
+                    # 24 of the 81 auto-synonym groups), so reverse-matching
+                    # one pulls in every group that merely cites the act and
+                    # appends up to 50 tokens of foreign section numbers.
+                    # Measured on the 4-act gate (2026-10-10): 1,104 of 3,280
+                    # questions expanded this way, and the injected numbers
+                    # pushed the true target out of the fusion pool for 8 of
+                    # the 9 residual misses while the raw question hit top-10.
+                    if self._STATUTE_NAME.search(val_lower):
+                        continue
                     if val_lower in query_lower and key not in matched:
                         matched.append(key)
                         break
@@ -388,6 +399,14 @@ class QueryExpander:
     # numbers are BNS sections that previously matched nothing.
     _EXPLICIT_SECTION = re.compile(
         r"\bsection\s*[:.\-]?\s*\d+[a-z]?\b|\b§\s*\d+[a-z]?",
+        re.IGNORECASE,
+    )
+
+    # Act titles. Used to keep act names out of reverse value->key matching
+    # (see _find_matching_terms); forward matching is unaffected because no
+    # synonym KEY is an act title.
+    _STATUTE_NAME = re.compile(
+        r"\bact\b|\bcode\b|sanhita|adhiniyam|constitution of india",
         re.IGNORECASE,
     )
 
