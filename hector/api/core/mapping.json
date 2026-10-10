@@ -3574,5 +3574,795 @@
     ],
     "rejected_unverified_pairs": 5,
     "note_field": "BNS <sub-section> when the official table maps to a sub-section"
+  },
+  "IEA_TO_BSA": {
+    "1": {
+      "new": "1",
+      "name": "Short title",
+      "note": "expanded in BSA as Short title, application and commencement"
+    },
+    "2": {
+      "new": "170",
+      "name": "Repeal of enactments",
+      "note": "IEA-wide repeal carried by BSA 170 Repeal and savings"
+    },
+    "3": {
+      "new": "2",
+      "name": "Interpretation-clause",
+      "note": "renamed Definitions in BSA"
+    },
+    "4": {
+      "new": "2",
+      "name": "“May presume.”",
+      "note": "May presume/Shall presume directives folded into BSA 2"
+    },
+    "5": {
+      "new": "3",
+      "name": "Evidence may be given of facts in issue and relevant facts"
+    },
+    "6": {
+      "new": "4",
+      "name": "Relevancy of facts forming part of same transaction"
+    },
+    "7": {
+      "new": "5",
+      "name": "Facts which are the occasion, cause or effect of facts in issue",
+      "note": "title modernized in BSA (sim=0.84)"
+    },
+    "8": {
+      "new": "6",
+      "name": "Motive, preparation and previous or subsequent conduct"
+    },
+    "9": {
+      "new": "7",
+      "name": "Facts necessary to explain or introduce relevant facts",
+      "note": "title modernized in BSA (sim=0.86)"
+    },
+    "10": {
+      "new": "8",
+      "name": "Things said or done by conspirator in reference to common design"
+    },
+    "11": {
+      "new": "9",
+      "name": "When facts not otherwise relevant become relevant"
+    },
+    "12": {
+      "new": "10",
+      "name": "In suits for damages, facts tending to enable Court to determine amount are relevant",
+      "note": "title modernized in BSA (sim=0.75)"
+    },
+    "13": {
+      "new": "11",
+      "name": "Facts relevant when right or custom is in question"
+    },
+    "14": {
+      "new": "12",
+      "name": "Facts showing existence of state of mind, or of body of bodily feeling",
+      "note": "title modernized in BSA (sim=0.99)"
+    },
+    "15": {
+      "new": "13",
+      "name": "Facts bearing on question whether act was accidental or intentional"
+    },
+    "16": {
+      "new": "14",
+      "name": "Existence of course of business when relevant"
+    },
+    "17": {
+      "new": "15",
+      "name": "Admission defined"
+    },
+    "18": {
+      "new": "16",
+      "name": "Admission by party to proceeding or his agent;"
+    },
+    "19": {
+      "new": "17",
+      "name": "Admissions by persons whose position must be proved as against party to suit"
+    },
+    "20": {
+      "new": "18",
+      "name": "Admissions by persons expressly referred to by party to suit"
+    },
+    "21": {
+      "new": "19",
+      "name": "Proof of admissions against persons making them, and by or on their behalf"
+    },
+    "22": {
+      "new": "20",
+      "name": "When oral admissions as to contents of documents are relevant"
+    },
+    "22A": {
+      "new": "20",
+      "name": "When oral admission as to contents of electronic records are relevant",
+      "note": "title modernized in BSA (sim=0.83)"
+    },
+    "23": {
+      "new": "21",
+      "name": "Admissions in civil cases when relevant"
+    },
+    "24": {
+      "new": "22",
+      "name": "Confession caused by inducement, threat or promise, when irrelevant in criminal proceeding",
+      "note": "title modernized in BSA (sim=0.95)"
+    },
+    "25": {
+      "new": "23",
+      "name": "Confession to police-officer not to be proved",
+      "note": "title modernized in BSA (sim=0.77)"
+    },
+    "26": {
+      "new": "23",
+      "name": "Confession by accused while in custody of police not to be proved against him",
+      "note": "custody-of-police rule absorbed into BSA 23"
+    },
+    "27": {
+      "new": null,
+      "name": "How much of information received from accused may be proved",
+      "note": "repealed without direct replacement (BSA dropped the rule)"
+    },
+    "28": {
+      "new": null,
+      "name": "Confession made after removal of impression caused by inducement, threat or promise, relevant",
+      "note": "repealed without direct replacement (BSA dropped the rule)"
+    },
+    "29": {
+      "new": null,
+      "name": "Confession otherwise relevant not to become irrelevant because of promise of secrecy, etc",
+      "note": "repealed without direct replacement (BSA dropped the rule)"
+    },
+    "30": {
+      "new": "24",
+      "name": "Consideration of proved confession affecting person making it and others jointly under trial for same offence"
+    },
+    "31": {
+      "new": "25",
+      "name": "Admissions not conclusive proof, but may estop"
+    },
+    "32": {
+      "new": "26",
+      "name": "Cases in which statement of relevant fact by person who is dead or cannot be found, etc., is relevant"
+    },
+    "33": {
+      "new": "27",
+      "name": "Relevancy of certain evidence for proving, in subsequent proceeding, the truth of facts therein stated",
+      "note": "title modernized in BSA (sim=0.98)"
+    },
+    "34": {
+      "new": "28",
+      "name": "Entries in books of account when relevant"
+    },
+    "35": {
+      "new": "29",
+      "name": "Relevancy of entry in public record made in performance of duty",
+      "note": "title modernized in BSA (sim=0.84)"
+    },
+    "36": {
+      "new": "30",
+      "name": "Relevancy of statements in maps, charts and plans"
+    },
+    "37": {
+      "new": "31",
+      "name": "Relevancy of statement as to fact of public nature contained in certain Acts or notifications"
+    },
+    "38": {
+      "new": "32",
+      "name": "Relevancy of statements as to any law contained in law-books",
+      "note": "title modernized in BSA (sim=0.76)"
+    },
+    "39": {
+      "new": "33",
+      "name": "What evidence to be given when statement forms part of a conversation, document, electronic record, book or series of letters or papers"
+    },
+    "40": {
+      "new": "34",
+      "name": "Previous judgments relevant to bar a second suit or trial"
+    },
+    "41": {
+      "new": "35",
+      "name": "Relevancy of certain judgments in probate, etc., jurisdiction"
+    },
+    "42": {
+      "new": "36",
+      "name": "Relevancy and effect of judgments, orders or decrees, other than those mentioned in section 41",
+      "note": "title modernized in BSA (sim=0.98)"
+    },
+    "43": {
+      "new": "37",
+      "name": "Judgments, etc., other than those mentioned in sections 40 to 42, when relevant",
+      "note": "title modernized in BSA (sim=0.91)"
+    },
+    "44": {
+      "new": "38",
+      "name": "Fraud or collusion in obtaining judgment, or incompetency of Court, may be proved"
+    },
+    "45": {
+      "new": "39",
+      "name": "Opinions of experts"
+    },
+    "45A": {
+      "new": "39",
+      "name": "Opinion of Examiner of Electronic Evidence",
+      "note": "Examiner of Electronic Evidence carried by BSA 39"
+    },
+    "46": {
+      "new": "40",
+      "name": "Facts bearing upon opinions of experts"
+    },
+    "47": {
+      "new": "41",
+      "name": "Opinion as to hand-writing, when relevant",
+      "note": "title modernized in BSA (sim=0.84)"
+    },
+    "47A": {
+      "new": "41",
+      "name": "Opinion as to 2[electronic signature], when relevant",
+      "note": "title modernized in BSA (sim=0.78)"
+    },
+    "48": {
+      "new": "42",
+      "name": "Opinion as to existence of right or custom, when relevant",
+      "note": "title modernized in BSA (sim=0.82)"
+    },
+    "49": {
+      "new": "43",
+      "name": "Opinion as to usages, tenets, etc., when relevant"
+    },
+    "50": {
+      "new": "44",
+      "name": "Opinion on relationship, when relevant"
+    },
+    "51": {
+      "new": "45",
+      "name": "Grounds of opinion, when relevant"
+    },
+    "52": {
+      "new": "46",
+      "name": "In civil cases character to prove conduct imputed, irrelevant"
+    },
+    "53": {
+      "new": "47",
+      "name": "In criminal cases previous good character relevant"
+    },
+    "53A": {
+      "new": "48",
+      "name": "Evidence of character or previous sexual experience not relevant in certain cases"
+    },
+    "54": {
+      "new": "49",
+      "name": "Previous bad character not relevant, except in reply"
+    },
+    "55": {
+      "new": "50",
+      "name": "Character as affecting damages"
+    },
+    "56": {
+      "new": "51",
+      "name": "Fact judicially noticeable need not be proved"
+    },
+    "57": {
+      "new": "52",
+      "name": "Facts of which Court must take judicial notice",
+      "note": "title modernized in BSA (sim=0.92)"
+    },
+    "58": {
+      "new": "53",
+      "name": "Facts admitted need not be proved"
+    },
+    "59": {
+      "new": "54",
+      "name": "Proof of facts by oral evidence"
+    },
+    "60": {
+      "new": "55",
+      "name": "Oral evidence must be direct",
+      "note": "title modernized in BSA (sim=0.93)"
+    },
+    "61": {
+      "new": "56",
+      "name": "Proof of contents of documents"
+    },
+    "62": {
+      "new": "57",
+      "name": "Primary evidence"
+    },
+    "63": {
+      "new": "58",
+      "name": "Secondary evidence"
+    },
+    "64": {
+      "new": "59",
+      "name": "Proof of documents by primary evidence"
+    },
+    "65": {
+      "new": "60",
+      "name": "Cases in which secondary evidence relating to documents may be given"
+    },
+    "65A": {
+      "new": "62",
+      "name": "Special provisions as to evidence relating to electronic record"
+    },
+    "65B": {
+      "new": "63",
+      "name": "Admissibility of electronic records"
+    },
+    "66": {
+      "new": "64",
+      "name": "Rules as to notice to produce"
+    },
+    "67": {
+      "new": "65",
+      "name": "Proof of signature and handwriting of person alleged to have signed or written document produced"
+    },
+    "67A": {
+      "new": "66",
+      "name": "Proof as to 2[electronic signature",
+      "note": "title modernized in BSA (sim=0.98)"
+    },
+    "68": {
+      "new": "67",
+      "name": "Proof of execution of document required by law to be attested"
+    },
+    "69": {
+      "new": "68",
+      "name": "Proof where no attesting witness found"
+    },
+    "70": {
+      "new": "69",
+      "name": "Admission of execution by party to attested document"
+    },
+    "71": {
+      "new": "70",
+      "name": "Proof when attesting witness denies the execution",
+      "note": "title modernized in BSA (sim=0.96)"
+    },
+    "72": {
+      "new": "71",
+      "name": "Proof of document not required by law to be attested"
+    },
+    "73": {
+      "new": "72",
+      "name": "Comparison of signature, writing or seal with others admitted or proved"
+    },
+    "73A": {
+      "new": "73",
+      "name": "Proof as to verification of digital signature"
+    },
+    "74": {
+      "new": "74",
+      "name": "Public documents",
+      "note": "title modernized in BSA (sim=0.73)"
+    },
+    "75": {
+      "new": "74",
+      "name": "Private documents",
+      "note": "title modernized in BSA (sim=0.76)"
+    },
+    "76": {
+      "new": "75",
+      "name": "Certified copies of public documents"
+    },
+    "77": {
+      "new": "76",
+      "name": "Proof of documents by production of certified copies"
+    },
+    "78": {
+      "new": "77",
+      "name": "Proof of other official documents"
+    },
+    "79": {
+      "new": "78",
+      "name": "Presumption as to genuineness of certified copies"
+    },
+    "80": {
+      "new": "79",
+      "name": "Presumption as to documents produced as record of evidence",
+      "note": "title modernized in BSA (sim=0.97)"
+    },
+    "81": {
+      "new": "80",
+      "name": "Presumption as to Gazettes, newspapers, private Acts of Parliament and other documents",
+      "note": "title modernized in BSA (sim=0.81)"
+    },
+    "81A": {
+      "new": "81",
+      "name": "Presumption as to Gazettes in electronic forms",
+      "note": "title modernized in BSA (sim=0.83)"
+    },
+    "82": {
+      "new": null,
+      "name": "Presumption as to document admissible in England without proof of seal or signature",
+      "note": "repealed without direct replacement (colonial-era provision dropped)"
+    },
+    "83": {
+      "new": "82",
+      "name": "Presumption as to maps or plans made by authority of Government"
+    },
+    "84": {
+      "new": "83",
+      "name": "Presumption as to collections of laws and reports of decisions"
+    },
+    "85": {
+      "new": "84",
+      "name": "Presumption as to powers-of-attorney"
+    },
+    "85A": {
+      "new": "85",
+      "name": "Presumption as to electronic agreements"
+    },
+    "85B": {
+      "new": "86",
+      "name": "Presumption as to electronic records and 6[electronic signatures",
+      "note": "title modernized in BSA (sim=0.99)"
+    },
+    "85C": {
+      "new": "87",
+      "name": "Presumption as to 6[Electronic Signature Certificates",
+      "note": "title modernized in BSA (sim=0.99)"
+    },
+    "86": {
+      "new": "88",
+      "name": "Presumption as to certified copies of foreign judicial records"
+    },
+    "87": {
+      "new": "89",
+      "name": "Presumption as to books, maps and charts"
+    },
+    "88": {
+      "new": "90",
+      "name": "Presumption as to telegraphic messages",
+      "note": "title modernized in BSA (sim=0.88)"
+    },
+    "88A": {
+      "new": "90",
+      "name": "Presumption as to electronic messages"
+    },
+    "89": {
+      "new": "91",
+      "name": "Presumption as to due execution, etc., of documents not produced"
+    },
+    "90": {
+      "new": "92",
+      "name": "Presumption as to documents thirty years old"
+    },
+    "90A": {
+      "new": "93",
+      "name": "Presumption as to electronic records five years old"
+    },
+    "91": {
+      "new": "94",
+      "name": "Evidence of terms of contracts, grants and other dispositions of property reduced to form of document"
+    },
+    "92": {
+      "new": "95",
+      "name": "Exclusion of evidence of oral agreement"
+    },
+    "93": {
+      "new": "96",
+      "name": "Exclusion of evidence to explain or amend ambiguous document"
+    },
+    "94": {
+      "new": "97",
+      "name": "Exclusion of evidence against application of document to existing facts"
+    },
+    "95": {
+      "new": "98",
+      "name": "Evidence as to document unmeaning reference to existing facts",
+      "note": "title modernized in BSA (sim=0.98)"
+    },
+    "96": {
+      "new": "99",
+      "name": "Evidence as to application of language which can apply to one only of several persons"
+    },
+    "97": {
+      "new": "100",
+      "name": "Evidence as to application of language to one of two sets of facts, to neither of which the whole correctly applies"
+    },
+    "98": {
+      "new": "101",
+      "name": "Evidence as to meaning of illegible characters, etc"
+    },
+    "99": {
+      "new": "102",
+      "name": "Who may give evidence of agreement varying terms of document"
+    },
+    "100": {
+      "new": "103",
+      "name": "Saving of provisions of Indian Succession Act relating to wills"
+    },
+    "101": {
+      "new": "104",
+      "name": "Burden of proof"
+    },
+    "102": {
+      "new": "105",
+      "name": "On whom burden of proof lies"
+    },
+    "103": {
+      "new": "106",
+      "name": "Burden of proof as to particular fact"
+    },
+    "104": {
+      "new": "107",
+      "name": "Burden of proving fact to be proved to make evidence admissible"
+    },
+    "105": {
+      "new": "108",
+      "name": "Burden of proving that case of accused comes within exceptions"
+    },
+    "106": {
+      "new": "109",
+      "name": "Burden of proving fact especially within knowledge"
+    },
+    "107": {
+      "new": "110",
+      "name": "Burden of proving death of person known to have been alive within thirty years"
+    },
+    "108": {
+      "new": "111",
+      "name": "Burden of proving that person is alive who has not been heard of for seven years"
+    },
+    "109": {
+      "new": "112",
+      "name": "Burden of proof as to relationship in the cases of partners, landlord and tenant, principal and agent"
+    },
+    "110": {
+      "new": "113",
+      "name": "Burden of proof as to ownership"
+    },
+    "111": {
+      "new": "114",
+      "name": "Proof of good faith in transactions where one party is in relation of active confidence"
+    },
+    "111A": {
+      "new": "115",
+      "name": "Presumption as to certain offences"
+    },
+    "112": {
+      "new": "116",
+      "name": "Birth during marriage, conclusive proof of legitimacy"
+    },
+    "113": {
+      "new": null,
+      "name": "Proof of cession of territory",
+      "note": "repealed without direct replacement (proof of cession of territory dropped)"
+    },
+    "113A": {
+      "new": "117",
+      "name": "Presumption as to abetment of suicide by a married woman"
+    },
+    "113B": {
+      "new": "118",
+      "name": "Presumption as to dowry death"
+    },
+    "114": {
+      "new": "119",
+      "name": "Court may presume existence of certain facts"
+    },
+    "114A": {
+      "new": "120",
+      "name": "Presumption as to absence of consent in certain prosecution for rape"
+    },
+    "115": {
+      "new": "121",
+      "name": "Estoppel"
+    },
+    "116": {
+      "new": "122",
+      "name": "Estoppel of tenant; and of licensee of person in possession"
+    },
+    "117": {
+      "new": "123",
+      "name": "Estoppel of acceptor of bill of exchange, bailee or licensee"
+    },
+    "118": {
+      "new": "124",
+      "name": "Who may testify"
+    },
+    "119": {
+      "new": "125",
+      "name": "Witness unable to communicate verbally"
+    },
+    "120": {
+      "new": "126",
+      "name": "Parties to civil suit, and their wives or husbands. Husband or wife of person under criminal trial",
+      "note": "renamed Competency of husband and wife as witnesses"
+    },
+    "121": {
+      "new": "127",
+      "name": "Judges and Magistrates"
+    },
+    "122": {
+      "new": "128",
+      "name": "Communications during marriage"
+    },
+    "123": {
+      "new": "129",
+      "name": "Evidence as to affairs of State"
+    },
+    "124": {
+      "new": "130",
+      "name": "Official communications"
+    },
+    "125": {
+      "new": "131",
+      "name": "Information as to commission of offences"
+    },
+    "126": {
+      "new": "132",
+      "name": "Professional communications"
+    },
+    "127": {
+      "new": "132",
+      "name": "Section 126 to apply to interpreters, etc",
+      "note": "interpreters extension absorbed into BSA 132"
+    },
+    "128": {
+      "new": "133",
+      "name": "Privilege not waived by volunteering evidence"
+    },
+    "129": {
+      "new": "134",
+      "name": "Confidential communications with legal advisers",
+      "note": "title modernized in BSA (sim=0.99)"
+    },
+    "130": {
+      "new": "135",
+      "name": "Production of title-deeds of witness not a party"
+    },
+    "131": {
+      "new": "136",
+      "name": "Production of documents or electronic records which another person, having possession, could refuse to produce"
+    },
+    "132": {
+      "new": "137",
+      "name": "Witness not excused from answering on ground that answer will criminate"
+    },
+    "133": {
+      "new": "138",
+      "name": "Accomplice"
+    },
+    "134": {
+      "new": "139",
+      "name": "Number of witnesses"
+    },
+    "135": {
+      "new": "140",
+      "name": "Order of production and examination of witnesses"
+    },
+    "136": {
+      "new": "141",
+      "name": "Judge to decide as to admissibility of evidence"
+    },
+    "137": {
+      "new": "142",
+      "name": "Examination-in-chief",
+      "note": "carried by BSA 142 Examination of witnesses"
+    },
+    "138": {
+      "new": "143",
+      "name": "Order of examinations"
+    },
+    "139": {
+      "new": "144",
+      "name": "Cross-examination of person called to produce a document"
+    },
+    "140": {
+      "new": "145",
+      "name": "Witnesses to character"
+    },
+    "141": {
+      "new": "146",
+      "name": "Leading questions"
+    },
+    "142": {
+      "new": "146",
+      "name": "When they must not be asked",
+      "note": "leading-questions sub-rule absorbed into BSA 146"
+    },
+    "143": {
+      "new": "146",
+      "name": "When they may be asked",
+      "note": "leading-questions sub-rule absorbed into BSA 146"
+    },
+    "144": {
+      "new": "147",
+      "name": "Evidence as to matters in writing"
+    },
+    "145": {
+      "new": "148",
+      "name": "Cross-examination as to previous statements in writing"
+    },
+    "146": {
+      "new": "149",
+      "name": "Questions lawful in cross-examination"
+    },
+    "147": {
+      "new": "150",
+      "name": "When witness to be compelled to answer"
+    },
+    "148": {
+      "new": "151",
+      "name": "Court to decide when question shall be asked and when witness compelled to answer"
+    },
+    "149": {
+      "new": "152",
+      "name": "Question not to be asked without reasonable grounds"
+    },
+    "150": {
+      "new": "153",
+      "name": "Procedure of Court in case of question being asked without reasonable grounds"
+    },
+    "151": {
+      "new": "154",
+      "name": "Indecent and scandalous questions"
+    },
+    "152": {
+      "new": "155",
+      "name": "Questions intended to insult or annoy"
+    },
+    "153": {
+      "new": "156",
+      "name": "Exclusion of evidence to contradict answers to questions testing veracity"
+    },
+    "154": {
+      "new": "157",
+      "name": "Question by party to his own witness"
+    },
+    "155": {
+      "new": "158",
+      "name": "Impeaching credit of witness"
+    },
+    "156": {
+      "new": "159",
+      "name": "Questions tending to corroborate evidence of relevant fact, admissible"
+    },
+    "157": {
+      "new": "160",
+      "name": "Former statements of witness may be proved to corroborate later testimony as to same fact"
+    },
+    "158": {
+      "new": "161",
+      "name": "What matters may be proved in connection with proved statement relevant under section 32 or 33",
+      "note": "title modernized in BSA (sim=0.97)"
+    },
+    "159": {
+      "new": "162",
+      "name": "Refreshing memory"
+    },
+    "160": {
+      "new": "163",
+      "name": "Testimony to facts stated in document mentioned in section 159",
+      "note": "title modernized in BSA (sim=0.97)"
+    },
+    "161": {
+      "new": "164",
+      "name": "Right of adverse party as to writing used to refresh memory"
+    },
+    "162": {
+      "new": "165",
+      "name": "Production of documents"
+    },
+    "163": {
+      "new": "166",
+      "name": "Giving, as evidence, of document called for and produced on notice"
+    },
+    "164": {
+      "new": "167",
+      "name": "Using, as evidence, of document production of which was refused on notice"
+    },
+    "165": {
+      "new": "168",
+      "name": "Judge’s power to put questions or order production"
+    },
+    "166": {
+      "new": null,
+      "name": "Power of jury or assessors to put questions",
+      "note": "repealed without direct replacement (jury/assessors provision dropped)"
+    },
+    "167": {
+      "new": "169",
+      "name": "No new trial for improper admission or rejection of evidence"
+    }
   }
 }

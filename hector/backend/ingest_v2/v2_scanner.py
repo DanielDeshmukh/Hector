@@ -36,6 +36,20 @@ CHAP_HEAD_RE = re.compile(
     r"(?i:CHAPTER)\s+(?i:[IVXLCDM]){1,8}[A-Z]?"
     r"(?=\s*$|\s*[-.:]|\s*\[|\s+(?![a-z]))")
 FOOT_HEAD_RE = re.compile(r"^\s*(\d{1,3})\.(?:\s|$)")
+# Page-bottom amendment footnotes in some editions (IEA 1872) are plain
+# "N. Cf. the General Clauses Act..." / "N. See now the Code..." lines
+# with no marker glyph; by shape they are indistinguishable from section
+# heads, and try_direct would accept them whenever their number is not
+# yet taken (one such steal poisons last_base and the increasing rule
+# then rejects every real section until the next accepted number).
+# Real section titles never open with these citation verbs.
+FOOTNOTE_CITE_RE = re.compile(
+    r"^\s*\d{1,4}[A-Za-z]{0,2}\.\s+(?:Cf\.|See\s|The\s+Act\s+has\s+been"
+    r"|Extended\s+to|The\s+words\b)", re.I)
+# Title period + 2+ spaces + capital = title ends, body starts on the SAME
+# line with no dash (IEA s86 prints "records.  The Court may presume...").
+# Single-space periods stay out so the 4 indexed books are untouched.
+SELF_BODY_RE = re.compile(r"\.\s{2,}(?=[A-Z\"'\u2018\u201c])")
 INLINE_REF_RES = [
     re.compile(r"(?<!\d)(\d{1,3})\s*\*\["),
     re.compile(r"(?<!\d)(\d{1,3})\s*\*{1,4}(?!\*)"),
@@ -161,6 +175,25 @@ def _increasing(num, last_base):
     if b > last_base:
         return True, b
     return None, last_base
+
+
+def _strip_glue(num, last_base):
+    """Undo a bare footnote-marker digit glued onto a section number.
+
+    Some extractions lose the bracket marker entirely ("1145." for
+    "1[145."). No bare act in scope reaches 1000 sections, so a 4+ digit
+    head whose remaining tail continues the current run is a footnote
+    marker digit, not a section number. Returns the original num when
+    no strip candidate continues the run.
+    """
+    if not num.isdigit() or len(num) < 4:
+        return num
+    for cut in (1, 2):
+        cand = num[cut:]
+        if len(cand) >= 2 and cand.isdigit() \
+                and last_base < int(cand) <= last_base + 10:
+            return cand
+    return num
 
 
 def _title_from(first, start_j, lines):
@@ -293,7 +326,7 @@ def scan_document(doc, start_page=0):
     def try_margin(i):
         """Forward window from a NUMHEAD margin line. Returns marker dict or None."""
         nonlocal max_lookahead
-        num = NUMHEAD_RE.match(lines[i]["text"]).group(1)
+        num = _strip_glue(NUMHEAD_RE.match(lines[i]["text"]).group(1), last_base)
         if num in accepted_nums:
             rejected.append((lines[i]["page"] + 1, lines[i]["text"][:90],
                              f"duplicate number {num} rejected (margin)"))
@@ -368,6 +401,27 @@ def scan_document(doc, start_page=0):
             if not np:
                 return None, 0
             num = np[0]
+        if FOOTNOTE_CITE_RE.match(t):
+            rejected.append((lines[i]["page"] + 1, t[:90],
+                             f"citation-verb footnote {num} rejected (direct)"))
+            return None, 0
+        if V.FOOT_RE.match(t):
+            # amendment footnote (N. Subs./Ins./Rep. ...) - a free number +
+            # dash would otherwise let try_direct steal it as a real section
+            # (IEA's page-bottom "4. Subs. by Act 21 of 2000..." shadowed the
+            # real s4 on the next page).
+            rejected.append((lines[i]["page"] + 1, t[:90],
+                             f"amendment footnote {num} rejected (direct)"))
+            return None, 0
+        num = _strip_glue(num, last_base)
+        if m is not None and num != m.group(1) \
+                and lines[i]["text"].lstrip().startswith(m.group(1) + "."):
+            # normalize the glued marker digit in the LINE TEXT too, so the
+            # record text (and G3's starts-with-own-number) sees the
+            # canonical number ("1145. Cross-..." -> "145. Cross-...")
+            lt = lines[i]["text"]
+            k = lt.index(m.group(1) + ".")
+            lines[i]["text"] = lt[:k] + num + lt[k + len(m.group(1)):]
         if num in accepted_nums:
             rejected.append((lines[i]["page"] + 1, t[:90],
                              f"duplicate number {num} rejected (direct)"))
@@ -392,6 +446,11 @@ def scan_document(doc, start_page=0):
             if DASH_RE.search(ln["text"]):
                 dash_j = j
                 break
+            if j == i and SELF_BODY_RE.search(ln["text"]):
+                # no dash, but the title sentence ends and body starts on
+                # the marker line itself - accept as a self-contained head
+                dash_j = j
+                break
             if REP_RE.search(ln["text"]):
                 rep_j = j
                 break
@@ -406,6 +465,9 @@ def scan_document(doc, start_page=0):
             return None, used
         if dash_j is not None:
             title, _ = _title_from(t, i + 1, lines)
+            mb = SELF_BODY_RE.search(title)
+            if mb:
+                title = title[: mb.start()].strip()
             return accept(i, num, title, "D", i, "normal"), used
         joined = " ".join(lines[k]["text"] for k in range(i, rep_j + 1))
         title = _clean_title(joined)
@@ -522,7 +584,8 @@ def scan_document(doc, start_page=0):
                 # after its own marker) and must stay in the record text.
                 m1 = NUMDOT_RE.match(st2)
                 if (m1 and m1.group(1) == "1") or V.FOOT_RE.match(s) \
-                        or FREF_RE.match(s.lstrip()) or REP_RE.search(s):
+                        or FREF_RE.match(s.lstrip()) or REP_RE.search(s) \
+                        or FOOTNOTE_CITE_RE.match(st2):
                     start_group(i)
                     ln["cls"] = "footnote"
                 else:

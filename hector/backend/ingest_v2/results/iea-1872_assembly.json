@@ -1,0 +1,127 @@
+{
+  "act_id": "iea-1872",
+  "page_spanning_total": 35,
+  "shown": [
+    {
+      "number": "3",
+      "page_start": 9,
+      "page_end": 11,
+      "joins": [
+        {
+          "from_page": 9,
+          "to_page": 10,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " sense, or is or was at a specified time conscious of a particular sensation, is a fact.\n(e) That a man has a certain reputation, is a fact.",
+          "after_head": "“Relevant.” ––One fact is said to be relevant to another when the one is connected with the other in\nany of the ways referred to in the prov"
+        },
+        {
+          "from_page": 10,
+          "to_page": 10,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "cts may be in issue:––\nthat A caused B’s death;\nthat A intended to cause B’s death;\nthat A had received grave and sudden provocation from B;",
+          "after_head": "that A, at the time of doing the act which caused B’s death, was, by reason of unsoundness of mind,\nincapable of knowing its nature.\n“Docume"
+        },
+        {
+          "from_page": 10,
+          "to_page": 11,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ce so probable that a prudent man\nought, under the circumstances of the particular case, to act upon the supposition that it does not exist.",
+          "after_head": "“Not proved.”––A fact is said not to be proved when it is neither proved nor disproved.\n1[“India.”––“India” means the territory of India exc"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "page_start": 11,
+      "page_end": 12,
+      "joins": [
+        {
+          "from_page": 11,
+          "to_page": 12,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "r done by A or B or the by-standers\nat the beating, or so shortly before or after it as to form part of the transaction, is a relevant fact.",
+          "after_head": "(b) A is accused of waging war against the 1[Government of India] by taking part in an armed insurrection in\nwhich property is destroyed, tr"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "page_start": 12,
+      "page_end": 14,
+      "joins": [
+        {
+          "from_page": 12,
+          "to_page": 13,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " threatening to make his knowledge public, are relevant.\n(b) A sues B upon a bond for the payment of money, B denies the making of the bond.",
+          "after_head": "The fact that, at the time when the bond was alleged to be made, B required money for a particular\npurpose, is relevant.\n (c) A is tried for"
+        },
+        {
+          "from_page": 13,
+          "to_page": 13,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "ce or procured the absence of persons who might have been\nwitnesses, or suborned persons to give false evidence respecting it, are relevant.",
+          "after_head": "(f) The question is, whether A robbed B.\nThe facts that, after B was robbed, C said in A’s presence––“the police are coming to look for the "
+        },
+        {
+          "from_page": 13,
+          "to_page": 14,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "y, he made a complaint relating to the offence, the\ncircumstances under which, and the terms in which, the complaint was made, are relevant.",
+          "after_head": "The fact that he said he had been robbed, without making any complaint, is not relevant, as conduct\nunder this section, though it may be rel"
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "page_start": 14,
+      "page_end": 15,
+      "joins": [
+        {
+          "from_page": 14,
+          "to_page": 15,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "ng, as well for the purpose of\nproving the existence of the conspiracy as for the purpose of showing that any such person was a party to\nit.",
+          "after_head": "Illustrations\nReasonable ground exists for believing that A has joined in a conspiracy to wage war against the\n1[Government of India].\nThe f"
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "page_start": 15,
+      "page_end": 16,
+      "joins": [
+        {
+          "from_page": 15,
+          "to_page": 16,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "stances in which the right or custom was claimed, recognised or exercised, or in\nwhich its exercise was disputed, asserted or departed from.",
+          "after_head": "Illustrations\nThe question is, whether A has a right to a fishery.\nA deed conferring the fishery on A’s ancestors, a mortgage of the fishery"
+        }
+      ]
+    }
+  ]
+}

@@ -62,3 +62,27 @@ acts:
     language: en
     status: in_force
     status_note: "replaces the Indian Evidence Act, 1872. Corpus triage 2026-10-03: 170 markers, span 1..170, density 1.000, 0 order violations at best_start=0 - that 0 is a triage sweep artifact (ToC starts on page 3), so step2's own body start must be verified against 170 markers."
+
+  - act_id: iea-1872
+    act_name: "The Indian Evidence Act, 1872"
+    act_short: "Indian Evidence Act"
+    year: 1872
+    source_file: sources/iea-1872.pdf
+    source_type: bare_act
+    language: en
+    status: repealed
+    repealed_on: "2024-07-01"
+    replaced_by: bsa-2023
+    status_note: "repealed by bsa-2023 (BSA s.170). Digital-text PDF (api/data/Books/THE INDIAN EVIDENCE ACT-1872.pdf); ToC on page 1, body starts page 9. Scanner patch 2026-10-10 (FOOTNOTE_CITE_RE + FOOT_RE-in-try_direct + SELF_BODY_RE + bare-glue digit strip): 185 markers = 167 base (1..167, density 1.000) + 18 lettered, 0 order violations at start_page=8. IEA_TO_BSA crosswalk (185 entries) added to api/core/mapping.json."
+
+  - act_id: crpc-1973
+    act_name: "The Code of Criminal Procedure, 1973"
+    act_short: "Code of Criminal Procedure"
+    year: 1973
+    source_file: sources/crpc-1973.pdf
+    source_type: bare_act
+    language: en
+    status: repealed
+    repealed_on: "2024-07-01"
+    replaced_by: bnss-2023
+    status_note: "repealed by bnss-2023 (BNSS repeal and savings). 261-page PDF; ToC (ARRANGEMENT OF SECTIONS) spans pages 1-17, body starts page 18 (0-based). Triage 2026-10-10: 532 markers = 484 base (1..484, density 1.000) + 48 lettered, 0 order violations at start_page=18."

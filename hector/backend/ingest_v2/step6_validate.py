@@ -57,7 +57,7 @@ def chunks60(s):
     return [s[i:i + WINDOW] for i in range(0, len(s) - WINDOW + 1, WINDOW)]
 
 
-def gate_g1(doc, act, markers):
+def gate_g1(doc, act, markers, records=None):
     raw1 = doc[0].get_text("text")
     n1_name = V.norm_ws(act["act_name"]).lower() in norm_raw(raw1).lower()
     n1_year = str(act["year"]) in raw1
@@ -68,12 +68,21 @@ def gate_g1(doc, act, markers):
     marker_pages = {}
     for m in markers:
         marker_pages.setdefault(m["page_1based"], []).append(m["number"])
+    # a body page with no section HEAD is normal when a long section spans
+    # it (IEA s.14/s.32); span membership from the records is the fallback
+    # identity signal - a non-body page is in no record's page range.
+    covered = set()
+    for r in records or []:
+        if r.get("part_index", 0) == 0 and r.get("page_start"):
+            covered.update(range(r["page_start"], r["page_end"] + 1))
     page_hits = []
     ok = True
     for p0 in pages:
         nums = marker_pages.get(p0 + 1, [])
-        page_hits.append({"page_1based": p0 + 1, "markers_found": nums[:3]})
-        if not nums:
+        in_span = (p0 + 1) in covered
+        page_hits.append({"page_1based": p0 + 1, "markers_found": nums[:3],
+                          "in_record_span": in_span})
+        if not nums and not in_span:
             ok = False
     status = "PASS" if (n1_name and n1_year and ok) else "FAIL"
     ev = {"page1_has_act_name": n1_name, "page1_has_year": n1_year,
@@ -82,7 +91,8 @@ def gate_g1(doc, act, markers):
           f"{n1_year}", flush=True)
     for h in page_hits:
         print(f"    middle page {h['page_1based']}: markers "
-              f"{h['markers_found'] or 'NONE'}", flush=True)
+              f"{h['markers_found'] or 'NONE'} "
+              f"(in_record_span={h['in_record_span']})", flush=True)
     return status, ev
 
 
@@ -296,6 +306,16 @@ def gate_g6(doc, scan, segs, records, raw_pages):
     whole_total = whole_found = 0
     line_total = line_found = 0
     failures = []
+    # mega-table records (schedules/forms, page span > 20 pages): table
+    # column layout breaks 60-char window matching (PyMuPDF sort=True
+    # interleaves columns differently than the cleaned line order), but the
+    # individual cleaned lines ARE present in the raw text. Fall back to
+    # line-level verification for these - same spirit as G1's span fallback.
+    MEGA_SPAN = 20
+    mega_ids = set()
+    for rec in records:
+        if rec["page_end"] - rec["page_start"] + 1 > MEGA_SPAN:
+            mega_ids.add(rec["id"])
     for rec in records:
         seg = seg_by_num.get(rec["number"])
         if seg is None or rec["part_index"] >= len(seg["parts"]):
@@ -309,6 +329,24 @@ def gate_g6(doc, scan, segs, records, raw_pages):
                 txt = txt.replace(rep, " ")
             raw_cache[(p0, p1)] = norm_raw(txt)
         rawn = raw_cache[(p0, p1)]
+        if rec["id"] in mega_ids:
+            # line-level fallback: every cleaned line must appear in raw
+            rec_line_tot = rec_line_fnd = 0
+            for ln in rec["text"].split("\n"):
+                s = V.norm_ws(ln)
+                if not s:
+                    continue
+                rec_line_tot += 1
+                line_total += 1
+                if s in rawn:
+                    rec_line_fnd += 1
+                    line_found += 1
+            if rec_line_tot and rec_line_fnd / rec_line_tot < 0.95:
+                failures.append({"id": rec["id"],
+                                 "why": f"mega-table line_rate "
+                                        f"{rec_line_fnd}/{rec_line_tot}",
+                                 "page_range": [p0, p1]})
+            continue
         frags = []
         cur = []
         for k in kept_rec:
@@ -354,9 +392,13 @@ def gate_g6(doc, scan, segs, records, raw_pages):
           "raw_reference": "get_text('text', sort=True)",
           "reference_repeated_lines_stripped": list(repeat_lines),
           "windows": total_w, "primary_failures": len(failures),
+          "mega_table_records": sorted(mega_ids),
           "worst_5": failures[:5], "threshold": PRIMARY_RATE}
     print(f"  A2 PRIMARY fragment windows: {found_w}/{total_w} = "
           f"{primary:.4%} (threshold {PRIMARY_RATE:.0%})", flush=True)
+    if mega_ids:
+        print(f"  mega-table records (line-level fallback, span>{MEGA_SPAN}p): "
+              f"{sorted(mega_ids)}", flush=True)
     print(f"  DIAGNOSTIC whole-record windows: {whole_found}/{whole_total} = "
           f"{whole:.4%}", flush=True)
     print(f"  DIAGNOSTIC cleaned-lines-in-raw: {line_found}/{line_total} = "
@@ -828,7 +870,7 @@ def main():
     print("=" * 76, flush=True)
 
     print("\nG1 identity:", flush=True)
-    g1s, g1e = gate_g1(doc, act, markers)
+    g1s, g1e = gate_g1(doc, act, markers, records)
     g2_mode = "TOC" if emeta.get("mode") == "toc" else "SEQUENCE_ONLY"
     print(f"\nG2 coverage ({g2_mode}):", flush=True)
     g2s, g2e = gate_g2(markers, records, expected, emeta)

@@ -1,0 +1,2130 @@
+[
+  {
+    "number": "1",
+    "title": "Short title, extent and commencement."
+  },
+  {
+    "number": "2",
+    "title": "Definitions."
+  },
+  {
+    "number": "3",
+    "title": "Construction of references."
+  },
+  {
+    "number": "4",
+    "title": "Trial of offences under the Indian Penal Code and other laws."
+  },
+  {
+    "number": "5",
+    "title": "Saving."
+  },
+  {
+    "number": "6",
+    "title": "Classes of Criminal Courts."
+  },
+  {
+    "number": "7",
+    "title": "Territorial divisions."
+  },
+  {
+    "number": "8",
+    "title": "Metropolitan areas."
+  },
+  {
+    "number": "9",
+    "title": "Court of Session."
+  },
+  {
+    "number": "10",
+    "title": "Subordination of Assistant Sessions Judges."
+  },
+  {
+    "number": "11",
+    "title": "Courts of Judicial Magistrates."
+  },
+  {
+    "number": "12",
+    "title": "Chief Judicial Magistrate and Additional Chief Judicial Magistrate, etc."
+  },
+  {
+    "number": "13",
+    "title": "Special Judicial Magistrates."
+  },
+  {
+    "number": "14",
+    "title": "Local jurisdiction of Judicial Magistrates."
+  },
+  {
+    "number": "15",
+    "title": "Subordination of Judicial Magistrates."
+  },
+  {
+    "number": "16",
+    "title": "Courts of Metropolitan Magistrates."
+  },
+  {
+    "number": "17",
+    "title": "Chief Metropolitan Magistrate and Additional Chief Metropolitan Magistrate."
+  },
+  {
+    "number": "18",
+    "title": "Special Metropolitan Magistrates."
+  },
+  {
+    "number": "19",
+    "title": "Subordination of Metropolitan Magistrates."
+  },
+  {
+    "number": "20",
+    "title": "Executive Magistrates."
+  },
+  {
+    "number": "21",
+    "title": "Special Executive Magistrates."
+  },
+  {
+    "number": "22",
+    "title": "Local Jurisdiction of Executive Magistrates."
+  },
+  {
+    "number": "23",
+    "title": "Subordination of Executive Magistrates."
+  },
+  {
+    "number": "24",
+    "title": "Public Prosecutors."
+  },
+  {
+    "number": "25",
+    "title": "Assistant Public Prosecutors."
+  },
+  {
+    "number": "25A",
+    "title": "Directorate of Prosecution."
+  },
+  {
+    "number": "26",
+    "title": "Courts by which offences are triable."
+  },
+  {
+    "number": "27",
+    "title": "Jurisdiction in the case of juveniles."
+  },
+  {
+    "number": "28",
+    "title": "Sentences which High Courts and Sessions Judges may pass."
+  },
+  {
+    "number": "29",
+    "title": "Sentences which Magistrates may pass."
+  },
+  {
+    "number": "30",
+    "title": "Sentence of imprisonment in default of fine."
+  },
+  {
+    "number": "31",
+    "title": "Sentence in cases of conviction of several offences at one trial."
+  },
+  {
+    "number": "32",
+    "title": "Mode of conferring powers."
+  },
+  {
+    "number": "33",
+    "title": "Powers of officers appointed."
+  },
+  {
+    "number": "34",
+    "title": "Withdrawal of powers."
+  },
+  {
+    "number": "35",
+    "title": "Powers of Judges and Magistrates exercisable by their successors-in-office."
+  },
+  {
+    "number": "36",
+    "title": "Powers of superior officers of police."
+  },
+  {
+    "number": "37",
+    "title": "Public when to assist Magistrates and police."
+  },
+  {
+    "number": "38",
+    "title": "Aid to person, other than police officer, executing warrant."
+  },
+  {
+    "number": "39",
+    "title": "Public to give information of certain offences."
+  },
+  {
+    "number": "40",
+    "title": "Duty of officers employed, in connection with the affairs of a village to make certain report."
+  },
+  {
+    "number": "41",
+    "title": "When police may arrest without warrant."
+  },
+  {
+    "number": "41A",
+    "title": "Notice of appearance before police officer."
+  },
+  {
+    "number": "41B",
+    "title": "Procedure of arrest and duties of officer making arrest."
+  },
+  {
+    "number": "41C",
+    "title": "Control room at districts."
+  },
+  {
+    "number": "41D",
+    "title": "Right of arrested person to meet an advocate of his choice during interrogation."
+  },
+  {
+    "number": "42",
+    "title": "Arrest on refusal to give name and residence."
+  },
+  {
+    "number": "43",
+    "title": "Arrest by private person and procedure on such arrest."
+  },
+  {
+    "number": "44",
+    "title": "Arrest by Magistrate."
+  },
+  {
+    "number": "45",
+    "title": "Protection of members of the Armed Forces from arrest."
+  },
+  {
+    "number": "46",
+    "title": "Arrest how made."
+  },
+  {
+    "number": "47",
+    "title": "Search of place entered by person sought to be arrested."
+  },
+  {
+    "number": "48",
+    "title": "Pursuit of offenders into other jurisdictions."
+  },
+  {
+    "number": "49",
+    "title": "No unnecessary restraint."
+  },
+  {
+    "number": "50",
+    "title": "Person arrested to be informed of grounds of arrest and of right to bail."
+  },
+  {
+    "number": "50A",
+    "title": "Obligation of person making arrest to inform about the arrest, etc., to a nominated person."
+  },
+  {
+    "number": "51",
+    "title": "Search of arrested person."
+  },
+  {
+    "number": "52",
+    "title": "Power to seize offensive weapons."
+  },
+  {
+    "number": "53",
+    "title": "Examination of accused by medical practitioner at the request of police officer."
+  },
+  {
+    "number": "53A",
+    "title": "Examination of person accused of rape by medical practitioner."
+  },
+  {
+    "number": "54",
+    "title": "Examination of arrested person by medical officer."
+  },
+  {
+    "number": "54A",
+    "title": "Identification of person arrested."
+  },
+  {
+    "number": "55",
+    "title": "Procedure when police officer deputes subordinate to arrest without warrant."
+  },
+  {
+    "number": "55A",
+    "title": "Health and safety of arrested person."
+  },
+  {
+    "number": "56",
+    "title": "Person arrested to be taken before Magistrate or officer in charge of police station."
+  },
+  {
+    "number": "57",
+    "title": "Person arrested not to be detained more than twenty-four hours."
+  },
+  {
+    "number": "58",
+    "title": "Police to report apprehensions."
+  },
+  {
+    "number": "59",
+    "title": "Discharge of person apprehended."
+  },
+  {
+    "number": "60",
+    "title": "Power, on escape, to pursue and retake."
+  },
+  {
+    "number": "60A",
+    "title": "Arrest to be made strictly according to the Code."
+  },
+  {
+    "number": "61",
+    "title": "Form of summons."
+  },
+  {
+    "number": "62",
+    "title": "Summons how served."
+  },
+  {
+    "number": "63",
+    "title": "Service of summons on corporate bodies and societies."
+  },
+  {
+    "number": "64",
+    "title": "Service when persons summoned cannot be found."
+  },
+  {
+    "number": "65",
+    "title": "Procedure when service cannot be effected as before provided."
+  },
+  {
+    "number": "66",
+    "title": "Service on Government servant."
+  },
+  {
+    "number": "67",
+    "title": "Service of summons outside local limits."
+  },
+  {
+    "number": "68",
+    "title": "Proof of service in such cases and when serving officer not present."
+  },
+  {
+    "number": "69",
+    "title": "Service of summons on witness by post. B.–Warrant of arrest"
+  },
+  {
+    "number": "70",
+    "title": "Form of warrant of arrest and duration."
+  },
+  {
+    "number": "71",
+    "title": "Power to direct security to be taken."
+  },
+  {
+    "number": "72",
+    "title": "Warrants to whom directed."
+  },
+  {
+    "number": "73",
+    "title": "Warrant may be directed to any person."
+  },
+  {
+    "number": "74",
+    "title": "Warrant directed to police officer."
+  },
+  {
+    "number": "75",
+    "title": "Notification of substance of warrant."
+  },
+  {
+    "number": "76",
+    "title": "Person arrested to be brought before Court without delay."
+  },
+  {
+    "number": "77",
+    "title": "Where warrant may be executed."
+  },
+  {
+    "number": "78",
+    "title": "Warrant forwarded for execution outside jurisdiction."
+  },
+  {
+    "number": "79",
+    "title": "Warrant directed to police officer for execution outside jurisdiction."
+  },
+  {
+    "number": "80",
+    "title": "Procedure on arrest of person against whom warrant issued."
+  },
+  {
+    "number": "81",
+    "title": "Procedure by Magistrate before whom such person arrested is brought. C.–Proclamation and attachment"
+  },
+  {
+    "number": "82",
+    "title": "Proclamation for person absconding."
+  },
+  {
+    "number": "83",
+    "title": "Attachment of property of person absconding."
+  },
+  {
+    "number": "84",
+    "title": "Claims and objections to attachment."
+  },
+  {
+    "number": "85",
+    "title": "Release, sale and restoration of attached property."
+  },
+  {
+    "number": "86",
+    "title": "Appeal from order rejecting application for restoration of attached property. D.–Other rules regarding processes"
+  },
+  {
+    "number": "87",
+    "title": "Issue of warrant in lieu of, or in addition to, summons."
+  },
+  {
+    "number": "88",
+    "title": "Power to take bond for appearance."
+  },
+  {
+    "number": "89",
+    "title": "Arrest on breach of bond for appearance."
+  },
+  {
+    "number": "90",
+    "title": "Provisions of this Chapter generally applicable to summonses and warrants of arrest."
+  },
+  {
+    "number": "91",
+    "title": "Summons to produce document or other thing."
+  },
+  {
+    "number": "92",
+    "title": "Procedure as to letters and telegrams. B.–Search-warrants"
+  },
+  {
+    "number": "93",
+    "title": "When search-warrant may be issued."
+  },
+  {
+    "number": "94",
+    "title": "Search of place suspected to contain stolen property, forged documents, etc."
+  },
+  {
+    "number": "95",
+    "title": "Power to declare certain publications forfeited and to issue search-warrants for the same."
+  },
+  {
+    "number": "96",
+    "title": "Application to High Court to set aside declaration of forfeiture."
+  },
+  {
+    "number": "97",
+    "title": "Search for persons wrongfully confined."
+  },
+  {
+    "number": "98",
+    "title": "Power to compel restoration of abducted females. C.–General provisions relating to searches"
+  },
+  {
+    "number": "99",
+    "title": "Direction, etc., of search-warrants."
+  },
+  {
+    "number": "100",
+    "title": "Persons in charge of closed place to allow search."
+  },
+  {
+    "number": "101",
+    "title": "Disposal of things found in search beyond jurisdiction. D.–Miscellaneous"
+  },
+  {
+    "number": "102",
+    "title": "Power of police officer to seize certain property."
+  },
+  {
+    "number": "103",
+    "title": "Magistrate may direct search in his presence."
+  },
+  {
+    "number": "104",
+    "title": "Power to impound document, etc., produced."
+  },
+  {
+    "number": "105",
+    "title": "Reciprocal arrangements regarding processes."
+  },
+  {
+    "number": "105A",
+    "title": "Definitions."
+  },
+  {
+    "number": "105B",
+    "title": "Assistance in securing transfer of persons."
+  },
+  {
+    "number": "105C",
+    "title": "Assistance in relation to orders of attachment or forfeiture of property."
+  },
+  {
+    "number": "105D",
+    "title": "Identifying unlawfully acquired property."
+  },
+  {
+    "number": "105E",
+    "title": "Seizure or attachment of property."
+  },
+  {
+    "number": "105F",
+    "title": "Management of properties seized or forfeited under this Chapter."
+  },
+  {
+    "number": "105G",
+    "title": "Notice of forfeiture of property."
+  },
+  {
+    "number": "105H",
+    "title": "Forfeiture of property in certain cases. 105-I. Fine in lieu of forfeiture."
+  },
+  {
+    "number": "105J",
+    "title": "Certain transfers to be null and void."
+  },
+  {
+    "number": "105K",
+    "title": "Procedure in respect of letter of request."
+  },
+  {
+    "number": "105L",
+    "title": "Application of this Chapter."
+  },
+  {
+    "number": "106",
+    "title": "Security for keeping the peace on conviction."
+  },
+  {
+    "number": "107",
+    "title": "Security for keeping the peace in other cases."
+  },
+  {
+    "number": "108",
+    "title": "Security for good behaviour from persons disseminating seditious matters."
+  },
+  {
+    "number": "109",
+    "title": "Security for good behaviour from suspected persons."
+  },
+  {
+    "number": "110",
+    "title": "Security for good behaviour from habitual offenders."
+  },
+  {
+    "number": "111",
+    "title": "Order to be made."
+  },
+  {
+    "number": "112",
+    "title": "Procedure in respect of person present in Court."
+  },
+  {
+    "number": "113",
+    "title": "Summons or warrant in case of person not so present."
+  },
+  {
+    "number": "114",
+    "title": "Copy of order to accompany summons or warrant."
+  },
+  {
+    "number": "115",
+    "title": "Power to dispense with personal attendance."
+  },
+  {
+    "number": "116",
+    "title": "Inquiry as to truth of information."
+  },
+  {
+    "number": "117",
+    "title": "Order to give security."
+  },
+  {
+    "number": "118",
+    "title": "Discharge of person informed against."
+  },
+  {
+    "number": "119",
+    "title": "Commencement of period for which security is required."
+  },
+  {
+    "number": "120",
+    "title": "Contents of bond."
+  },
+  {
+    "number": "121",
+    "title": "Power to reject sureties."
+  },
+  {
+    "number": "122",
+    "title": "Imprisonment in default of security."
+  },
+  {
+    "number": "123",
+    "title": "Power to release persons imprisoned for failing to give security."
+  },
+  {
+    "number": "124",
+    "title": "Security for unexpired period of bond."
+  },
+  {
+    "number": "125",
+    "title": "Order for maintenance of wives, children and parents."
+  },
+  {
+    "number": "126",
+    "title": "Procedure."
+  },
+  {
+    "number": "127",
+    "title": "Alteration in allowance."
+  },
+  {
+    "number": "128",
+    "title": "Enforcement of order of maintenance."
+  },
+  {
+    "number": "129",
+    "title": "Dispersal of assembly by use of civil force."
+  },
+  {
+    "number": "130",
+    "title": "Use of armed forces to disperse assembly."
+  },
+  {
+    "number": "131",
+    "title": "Power of certain armed force officers to disperse assembly."
+  },
+  {
+    "number": "132",
+    "title": "Protection against prosecution for acts done under preceding sections. B.–Public nuisances"
+  },
+  {
+    "number": "133",
+    "title": "Conditional order for removal of nuisance."
+  },
+  {
+    "number": "134",
+    "title": "Service or notification of order."
+  },
+  {
+    "number": "135",
+    "title": "Person to whom order is addressed to obey or show cause."
+  },
+  {
+    "number": "136",
+    "title": "Consequences of his failing to do so."
+  },
+  {
+    "number": "137",
+    "title": "Procedure where existence of public right is denied."
+  },
+  {
+    "number": "138",
+    "title": "Procedure where he appears to show cause."
+  },
+  {
+    "number": "139",
+    "title": "Power of Magistrate to direct local investigation and examination of an expert."
+  },
+  {
+    "number": "140",
+    "title": "Power of Magistrate to furnish written instructions, etc."
+  },
+  {
+    "number": "141",
+    "title": "Procedure on order being made absolute and consequences of disobedience."
+  },
+  {
+    "number": "142",
+    "title": "Injunction pending inquiry."
+  },
+  {
+    "number": "143",
+    "title": "Magistrate may prohibit repetition or continuance of public nuisance. C.–Urgent cases of nuisance or apprehended danger"
+  },
+  {
+    "number": "144",
+    "title": "Power to issue order in urgent cases of nuisance or apprehended danger. D.–Disputes as to immovable property"
+  },
+  {
+    "number": "145",
+    "title": "Procedure where dispute concerning land or water is likely to cause breach of peace."
+  },
+  {
+    "number": "146",
+    "title": "Power to attach subject of dispute and to appoint receiver."
+  },
+  {
+    "number": "147",
+    "title": "Dispute concerning right of use of land or water."
+  },
+  {
+    "number": "148",
+    "title": "Local inquiry."
+  },
+  {
+    "number": "149",
+    "title": "Police to prevent cognizable offences."
+  },
+  {
+    "number": "150",
+    "title": "Information of design to commit cognizable offences."
+  },
+  {
+    "number": "151",
+    "title": "Arrest to prevent the commission of cognizable offences."
+  },
+  {
+    "number": "152",
+    "title": "Prevention of injury to public property."
+  },
+  {
+    "number": "153",
+    "title": "Inspection of weights and measures."
+  },
+  {
+    "number": "154",
+    "title": "Information in cognizable cases."
+  },
+  {
+    "number": "155",
+    "title": "Information as to non-cognizable cases and investigation of such cases."
+  },
+  {
+    "number": "156",
+    "title": "Police officer’s power to investigate cognizable case."
+  },
+  {
+    "number": "157",
+    "title": "Procedure for investigation."
+  },
+  {
+    "number": "158",
+    "title": "Report how submitted."
+  },
+  {
+    "number": "159",
+    "title": "Power to hold investigation or preliminary inquiry."
+  },
+  {
+    "number": "160",
+    "title": "Police officer’s power to require attendance of witnesses."
+  },
+  {
+    "number": "161",
+    "title": "Examination of witnesses by police."
+  },
+  {
+    "number": "162",
+    "title": "Statements to police not to be signed: Use of statements in evidence."
+  },
+  {
+    "number": "163",
+    "title": "No inducement to be offered."
+  },
+  {
+    "number": "164",
+    "title": "Recording of confessions and statements."
+  },
+  {
+    "number": "164A",
+    "title": "Medical examination of the victim of rape."
+  },
+  {
+    "number": "165",
+    "title": "Search by police officer."
+  },
+  {
+    "number": "166",
+    "title": "When officer in charge of police station may require another to issue search-warrant."
+  },
+  {
+    "number": "166A",
+    "title": "Letter of request to competent authority for investigation in a country or place outside India."
+  },
+  {
+    "number": "166B",
+    "title": "Letter of request from a country or place outside India to a Court or an authority for investigation in India."
+  },
+  {
+    "number": "167",
+    "title": "Procedure when  investigation cannot be completed in twenty-four hours."
+  },
+  {
+    "number": "168",
+    "title": "Report of investigation by subordinate police officer."
+  },
+  {
+    "number": "169",
+    "title": "Release of accused when evidence deficient."
+  },
+  {
+    "number": "170",
+    "title": "Cases to be sent to Magistrate, when evidence is sufficient."
+  },
+  {
+    "number": "171",
+    "title": "Complainant and witnesses not to be required to accompany police officer and not to be subjected to restraint."
+  },
+  {
+    "number": "172",
+    "title": "Diary of proceedings in investigation."
+  },
+  {
+    "number": "173",
+    "title": "Report of police officer on completion of investigation."
+  },
+  {
+    "number": "174",
+    "title": "Police to enquire and report on suicide, etc."
+  },
+  {
+    "number": "175",
+    "title": "Power to summon persons."
+  },
+  {
+    "number": "176",
+    "title": "Inquiry by Magistrate into cause of death."
+  },
+  {
+    "number": "177",
+    "title": "Ordinary place of inquiry and trial."
+  },
+  {
+    "number": "178",
+    "title": "Place of inquiry or trial."
+  },
+  {
+    "number": "179",
+    "title": "Offence triable where act is done or consequence ensues."
+  },
+  {
+    "number": "180",
+    "title": "Place of trial where act is an offence by reason of relation to other offence."
+  },
+  {
+    "number": "181",
+    "title": "Place of trial in case of certain offences."
+  },
+  {
+    "number": "182",
+    "title": "Offences committed by letters, etc."
+  },
+  {
+    "number": "183",
+    "title": "Offence committed on journey or voyage."
+  },
+  {
+    "number": "184",
+    "title": "Place of trial for offences triable together."
+  },
+  {
+    "number": "185",
+    "title": "Power to order cases to be tried in different sessions divisions."
+  },
+  {
+    "number": "186",
+    "title": "High Court to decide, in case of doubt, district where inquiry or trial shall take place."
+  },
+  {
+    "number": "187",
+    "title": "Power to issue summons or warrant for offence committed beyond local jurisdiction."
+  },
+  {
+    "number": "188",
+    "title": "Offence committed outside India."
+  },
+  {
+    "number": "189",
+    "title": "Receipt of evidence relating to offences committed outside India."
+  },
+  {
+    "number": "190",
+    "title": "Cognizance of offences by Magistrates."
+  },
+  {
+    "number": "191",
+    "title": "Transfer on application of the accused."
+  },
+  {
+    "number": "192",
+    "title": "Making over of cases to Magistrates."
+  },
+  {
+    "number": "193",
+    "title": "Cognizance of offences by Courts of Session."
+  },
+  {
+    "number": "194",
+    "title": "Additional and Assistant Sessions Judges to try cases made over to them."
+  },
+  {
+    "number": "195",
+    "title": "Prosecution for contempt of lawful authority of public servants, for offences against public justice and for offences relating to documents given in evidence."
+  },
+  {
+    "number": "195A",
+    "title": "Procedure for witnesses in case of threatening, etc."
+  },
+  {
+    "number": "196",
+    "title": "Prosecution for offences against the State and for criminal conspiracy to commit such offence."
+  },
+  {
+    "number": "197",
+    "title": "Prosecution of Judges and public servants."
+  },
+  {
+    "number": "198",
+    "title": "Prosecution for offences against marriage."
+  },
+  {
+    "number": "198A",
+    "title": "Prosecution of offences under section 498A of the Indian Penal Code."
+  },
+  {
+    "number": "198B",
+    "title": "Cognizance of offence."
+  },
+  {
+    "number": "199",
+    "title": "Prosecution for defamation."
+  },
+  {
+    "number": "200",
+    "title": "Examination of complainant."
+  },
+  {
+    "number": "201",
+    "title": "Procedure by Magistrate not competent to take cognizance of the case."
+  },
+  {
+    "number": "202",
+    "title": "Postponement of issue of process."
+  },
+  {
+    "number": "203",
+    "title": "Dismissal of complaint."
+  },
+  {
+    "number": "204",
+    "title": "Issue of process."
+  },
+  {
+    "number": "205",
+    "title": "Magistrate may dispense with personal attendance of accused."
+  },
+  {
+    "number": "206",
+    "title": "Special summons in cases of petty offence."
+  },
+  {
+    "number": "207",
+    "title": "Supply to the accused of copy of police report and other documents."
+  },
+  {
+    "number": "208",
+    "title": "Supply of copies of statements and documents to accused in other cases triable by Court of Session."
+  },
+  {
+    "number": "209",
+    "title": "Commitment of case to Court of Session when offence is triable exclusively by it."
+  },
+  {
+    "number": "210",
+    "title": "Procedure to be followed when there is a complaint case and police investigation in respect of the same offence."
+  },
+  {
+    "number": "211",
+    "title": "Contents of charge."
+  },
+  {
+    "number": "212",
+    "title": "Particulars as to time, place and person."
+  },
+  {
+    "number": "213",
+    "title": "When manner of committing offence must be stated."
+  },
+  {
+    "number": "214",
+    "title": "Words in charge taken in sense of law under which offence is punishable."
+  },
+  {
+    "number": "215",
+    "title": "Effect of errors."
+  },
+  {
+    "number": "216",
+    "title": "Court may alter charge."
+  },
+  {
+    "number": "217",
+    "title": "Recall of witnesses when charge altered. B.–Joinder of charges"
+  },
+  {
+    "number": "218",
+    "title": "Separate charges for distinct offences."
+  },
+  {
+    "number": "219",
+    "title": "Three offences of same kind within year may be charged together."
+  },
+  {
+    "number": "220",
+    "title": "Trial for more than one offence."
+  },
+  {
+    "number": "221",
+    "title": "Where it is doubtful what offence has been committed."
+  },
+  {
+    "number": "222",
+    "title": "When offence proved included in offence charged."
+  },
+  {
+    "number": "223",
+    "title": "What persons may be charged jointly."
+  },
+  {
+    "number": "224",
+    "title": "Withdrawal of remaining charges on conviction on one of several charges."
+  },
+  {
+    "number": "225",
+    "title": "Trial to be conducted by Public Prosecutor."
+  },
+  {
+    "number": "226",
+    "title": "Opening case for prosecution."
+  },
+  {
+    "number": "227",
+    "title": "Discharge."
+  },
+  {
+    "number": "228",
+    "title": "Framing of charge."
+  },
+  {
+    "number": "229",
+    "title": "Conviction on plea of guilty."
+  },
+  {
+    "number": "230",
+    "title": "Date for prosecution evidence."
+  },
+  {
+    "number": "231",
+    "title": "Evidence for prosecution."
+  },
+  {
+    "number": "232",
+    "title": "Acquittal."
+  },
+  {
+    "number": "233",
+    "title": "Entering upon defence."
+  },
+  {
+    "number": "234",
+    "title": "Arguments."
+  },
+  {
+    "number": "235",
+    "title": "Judgment of acquittal or conviction."
+  },
+  {
+    "number": "236",
+    "title": "Previous conviction."
+  },
+  {
+    "number": "237",
+    "title": "Procedure in cases instituted under section 199(2)."
+  },
+  {
+    "number": "238",
+    "title": "Compliance with section 207."
+  },
+  {
+    "number": "239",
+    "title": "When accused shall be discharged."
+  },
+  {
+    "number": "240",
+    "title": "Framing of charge."
+  },
+  {
+    "number": "241",
+    "title": "Conviction on plea of guilty."
+  },
+  {
+    "number": "242",
+    "title": "Evidence for prosecution."
+  },
+  {
+    "number": "243",
+    "title": "Evidence for defence."
+  },
+  {
+    "number": "244",
+    "title": "Evidence for prosecution."
+  },
+  {
+    "number": "245",
+    "title": "When accused shall be discharged."
+  },
+  {
+    "number": "246",
+    "title": "Procedure where accused is not discharged."
+  },
+  {
+    "number": "247",
+    "title": "Evidence for defence. C.–Conclusion of trial"
+  },
+  {
+    "number": "248",
+    "title": "Acquittal or conviction."
+  },
+  {
+    "number": "249",
+    "title": "Absence of complainant."
+  },
+  {
+    "number": "250",
+    "title": "Compensation for accusation without reasonable cause."
+  },
+  {
+    "number": "251",
+    "title": "Substance of accusation to be stated."
+  },
+  {
+    "number": "252",
+    "title": "Conviction on plea of guilty."
+  },
+  {
+    "number": "253",
+    "title": "Conviction on plea of guilty in absence of accused in petty cases."
+  },
+  {
+    "number": "254",
+    "title": "Procedure when not convicted."
+  },
+  {
+    "number": "255",
+    "title": "Acquittal or conviction."
+  },
+  {
+    "number": "256",
+    "title": "Non-appearance or death of complainant."
+  },
+  {
+    "number": "257",
+    "title": "Withdrawal of complaint."
+  },
+  {
+    "number": "258",
+    "title": "Power to stop proceedings in certain cases."
+  },
+  {
+    "number": "259",
+    "title": "Power of Court to convert summons-cases into warrant-cases."
+  },
+  {
+    "number": "260",
+    "title": "Power to try summarily."
+  },
+  {
+    "number": "261",
+    "title": "Summary trial by Magistrate of the second class."
+  },
+  {
+    "number": "262",
+    "title": "Procedure for summary trials."
+  },
+  {
+    "number": "263",
+    "title": "Record in summary trials."
+  },
+  {
+    "number": "264",
+    "title": "Judgment in cases tried summarily."
+  },
+  {
+    "number": "265",
+    "title": "Language of record and judgment."
+  },
+  {
+    "number": "265A",
+    "title": "Application of the Chapter."
+  },
+  {
+    "number": "265B",
+    "title": "Application for plea bargaining."
+  },
+  {
+    "number": "265C",
+    "title": "Guidelines for mutually satisfactory disposition."
+  },
+  {
+    "number": "265D",
+    "title": "Report of the mutually satisfactory disposition to be submitted before the Court."
+  },
+  {
+    "number": "265E",
+    "title": "Disposal of the case."
+  },
+  {
+    "number": "265F",
+    "title": "Judgment of the Court."
+  },
+  {
+    "number": "265G",
+    "title": "Finality of the judgment."
+  },
+  {
+    "number": "265H",
+    "title": "Power of the Court in plea bargaining."
+  },
+  {
+    "number": "265J",
+    "title": "Savings."
+  },
+  {
+    "number": "265K",
+    "title": "Statements of accused not to be used."
+  },
+  {
+    "number": "265L",
+    "title": "Non-application of the Chapter."
+  },
+  {
+    "number": "266",
+    "title": "Definitions."
+  },
+  {
+    "number": "267",
+    "title": "Power to require attendance of prisoners."
+  },
+  {
+    "number": "268",
+    "title": "Power of State Government to exclude certain persons from operation of section 267."
+  },
+  {
+    "number": "269",
+    "title": "Officer in charge of prison to abstain from carrying out order in certain contingencies."
+  },
+  {
+    "number": "270",
+    "title": "Prisoner to be brought to Court in custody."
+  },
+  {
+    "number": "271",
+    "title": "Power to issue commission for examination of witness in prison."
+  },
+  {
+    "number": "272",
+    "title": "Language of Courts."
+  },
+  {
+    "number": "273",
+    "title": "Evidence to be taken in presence of accused."
+  },
+  {
+    "number": "274",
+    "title": "Record in summons-cases and inquiries."
+  },
+  {
+    "number": "275",
+    "title": "Record in warrant-cases."
+  },
+  {
+    "number": "276",
+    "title": "Record in trial before Court of Session."
+  },
+  {
+    "number": "277",
+    "title": "Language of record of evidence."
+  },
+  {
+    "number": "278",
+    "title": "Procedure in regard to such evidence when completed."
+  },
+  {
+    "number": "279",
+    "title": "Interpretation of evidence to accused or his pleader."
+  },
+  {
+    "number": "280",
+    "title": "Remarks respecting demeanour of witness."
+  },
+  {
+    "number": "281",
+    "title": "Record of examination of accused."
+  },
+  {
+    "number": "282",
+    "title": "Interpreter to be bound to interpret truthfully."
+  },
+  {
+    "number": "283",
+    "title": "Record in High Court. B.–Commissions for the examination of witnesses"
+  },
+  {
+    "number": "284",
+    "title": "When attendance of witness may be dispensed with and commission issued."
+  },
+  {
+    "number": "285",
+    "title": "Commission to whom to be issued."
+  },
+  {
+    "number": "286",
+    "title": "Execution of commissions."
+  },
+  {
+    "number": "287",
+    "title": "Parties may examine witnesses."
+  },
+  {
+    "number": "288",
+    "title": "Return of commission."
+  },
+  {
+    "number": "289",
+    "title": "Adjournment of proceeding."
+  },
+  {
+    "number": "290",
+    "title": "Execution of foreign commissions."
+  },
+  {
+    "number": "291",
+    "title": "Deposition of medical witness."
+  },
+  {
+    "number": "291A",
+    "title": "Identification report of Magistrate."
+  },
+  {
+    "number": "292",
+    "title": "Evidence of officers of the Mint."
+  },
+  {
+    "number": "293",
+    "title": "Reports of certain Government scientific experts."
+  },
+  {
+    "number": "294",
+    "title": "No formal proof of certain documents."
+  },
+  {
+    "number": "295",
+    "title": "Affidavit in proof of conduct of public servants."
+  },
+  {
+    "number": "296",
+    "title": "Evidence of formal character on affidavit."
+  },
+  {
+    "number": "297",
+    "title": "Authorities before whom affidavits may be sworn."
+  },
+  {
+    "number": "298",
+    "title": "Previous conviction or acquittal how proved."
+  },
+  {
+    "number": "299",
+    "title": "Record of evidence in absence of accused."
+  },
+  {
+    "number": "300",
+    "title": "Person once convicted or acquitted not to be tried for same offence."
+  },
+  {
+    "number": "301",
+    "title": "Appearance by Public Prosecutors."
+  },
+  {
+    "number": "302",
+    "title": "Permission to conduct prosecution."
+  },
+  {
+    "number": "303",
+    "title": "Right of person against whom proceedings are instituted to be defended."
+  },
+  {
+    "number": "304",
+    "title": "Legal aid to accused at State expense in certain cases."
+  },
+  {
+    "number": "305",
+    "title": "Procedure when corporation or registered society is an accused."
+  },
+  {
+    "number": "306",
+    "title": "Tender of pardon to accomplice."
+  },
+  {
+    "number": "307",
+    "title": "Power to direct tender of pardon."
+  },
+  {
+    "number": "308",
+    "title": "Trial of person not complying with conditions of pardon."
+  },
+  {
+    "number": "309",
+    "title": "Power to postpone or adjourn proceedings."
+  },
+  {
+    "number": "310",
+    "title": "Local inspection."
+  },
+  {
+    "number": "311",
+    "title": "Power to summon material witness, or examine person present."
+  },
+  {
+    "number": "311A",
+    "title": "Power of Magistrate to order person to give specimen signatures or handwriting."
+  },
+  {
+    "number": "312",
+    "title": "Expenses of complainants and witnesses."
+  },
+  {
+    "number": "313",
+    "title": "Power to examine the accused."
+  },
+  {
+    "number": "314",
+    "title": "Oral arguments and memorandum of arguments."
+  },
+  {
+    "number": "315",
+    "title": "Accused person to be competent witness."
+  },
+  {
+    "number": "316",
+    "title": "No influence to be used to induce disclosure."
+  },
+  {
+    "number": "317",
+    "title": "Provision for inquiries and trial being held in the absence of accused in certain cases."
+  },
+  {
+    "number": "318",
+    "title": "Procedure where accused does not understand proceedings."
+  },
+  {
+    "number": "319",
+    "title": "Power to proceed against other persons appearing to be guilty of offence."
+  },
+  {
+    "number": "320",
+    "title": "Compounding of offences."
+  },
+  {
+    "number": "321",
+    "title": "Withdrawal from prosecution."
+  },
+  {
+    "number": "322",
+    "title": "Procedure in cases which Magistrate cannot dispose of."
+  },
+  {
+    "number": "323",
+    "title": "Procedure when, after commencement of inquiry or trial, Magistrate finds case should be committed."
+  },
+  {
+    "number": "324",
+    "title": "Trial of persons previously convicted of offences against coinage, stamp-law or property."
+  },
+  {
+    "number": "325",
+    "title": "Procedure when Magistrate cannot pass sentence sufficiently severe."
+  },
+  {
+    "number": "326",
+    "title": "Conviction or commitment on evidence partly recorded by one Magistrate and partly by another."
+  },
+  {
+    "number": "327",
+    "title": "Court to be open."
+  },
+  {
+    "number": "328",
+    "title": "Procedure in case of accused being lunatic."
+  },
+  {
+    "number": "329",
+    "title": "Procedure in case of person of unsound mind tried before Court."
+  },
+  {
+    "number": "330",
+    "title": "Release of person of unsound mind pending investigation or trial."
+  },
+  {
+    "number": "331",
+    "title": "Resumption of inquiry or trial."
+  },
+  {
+    "number": "332",
+    "title": "Procedure on accused appearing before Magistrate or Court."
+  },
+  {
+    "number": "333",
+    "title": "When accused appears to have been of sound mind."
+  },
+  {
+    "number": "334",
+    "title": "Judgment of acquittal on ground of unsoundness of mind."
+  },
+  {
+    "number": "335",
+    "title": "Person acquitted on such ground to be detained in safe custody."
+  },
+  {
+    "number": "336",
+    "title": "Power of State Government to empower officer-in-charge to discharge."
+  },
+  {
+    "number": "337",
+    "title": "Procedure where lunatic prisoner is reported capable of making his defence."
+  },
+  {
+    "number": "338",
+    "title": "Procedure where lunatic detained is declared fit to be released."
+  },
+  {
+    "number": "339",
+    "title": "Delivery of lunatic to care of relative or friend."
+  },
+  {
+    "number": "340",
+    "title": "Procedure in cases mentioned in section 195."
+  },
+  {
+    "number": "341",
+    "title": "Appeal."
+  },
+  {
+    "number": "342",
+    "title": "Power to order costs."
+  },
+  {
+    "number": "343",
+    "title": "Procedure of Magistrate taking cognizance."
+  },
+  {
+    "number": "344",
+    "title": "Summary procedure for trial for giving false evidence."
+  },
+  {
+    "number": "345",
+    "title": "Procedure in certain cases of contempt."
+  },
+  {
+    "number": "346",
+    "title": "Procedure where Court  considers that case should not be dealt with under section 345."
+  },
+  {
+    "number": "347",
+    "title": "When Registrar or Sub-Registrar to be deemed a Civil Court."
+  },
+  {
+    "number": "348",
+    "title": "Discharge of offender on submission of apology."
+  },
+  {
+    "number": "349",
+    "title": "Imprisonment or committal of person refusing to answer or produce document."
+  },
+  {
+    "number": "350",
+    "title": "Summary procedure for punishment for non-attendance by a witness in obedience to summons."
+  },
+  {
+    "number": "351",
+    "title": "Appeals from convictions under sections 344, 345, 349 and 350."
+  },
+  {
+    "number": "352",
+    "title": "Certain Judges and Magistrates not to try certain offences when committed before themselves."
+  },
+  {
+    "number": "353",
+    "title": "Judgment."
+  },
+  {
+    "number": "354",
+    "title": "Language and contents of judgment."
+  },
+  {
+    "number": "355",
+    "title": "Metropolitan Magistrate's judgment."
+  },
+  {
+    "number": "356",
+    "title": "Order for notifying address of previously convicted offender."
+  },
+  {
+    "number": "357",
+    "title": "Order to pay compensation."
+  },
+  {
+    "number": "357A",
+    "title": "Victim compensation scheme."
+  },
+  {
+    "number": "357B",
+    "title": "Compensation to be in addition to fine under section 326A or section 376D of Indian Penal Code."
+  },
+  {
+    "number": "357C",
+    "title": "Treatment of victims."
+  },
+  {
+    "number": "358",
+    "title": "Compensation to persons groundlessly arrested."
+  },
+  {
+    "number": "359",
+    "title": "Order to pay costs in non-cognizable cases."
+  },
+  {
+    "number": "360",
+    "title": "Order to release on probation of good conduct or after admonition."
+  },
+  {
+    "number": "361",
+    "title": "Special reasons to be recorded in certain cases."
+  },
+  {
+    "number": "362",
+    "title": "Court not to alter judgment."
+  },
+  {
+    "number": "363",
+    "title": "Copy of judgment to be given to the accused and other persons."
+  },
+  {
+    "number": "364",
+    "title": "Judgment when to be translated."
+  },
+  {
+    "number": "365",
+    "title": "Court of Session to send copy of finding and sentence to District Magistrate."
+  },
+  {
+    "number": "366",
+    "title": "Sentence of death to be submitted by Court of Session for confirmation."
+  },
+  {
+    "number": "367",
+    "title": "Power to direct further inquiry to be made or additional evidence to be taken."
+  },
+  {
+    "number": "368",
+    "title": "Power of High Court to confirm sentence or annul conviction."
+  },
+  {
+    "number": "369",
+    "title": "Confirmation or new sentence to be signed by two Judges."
+  },
+  {
+    "number": "370",
+    "title": "Procedure in case of difference of opinion."
+  },
+  {
+    "number": "371",
+    "title": "Procedure in cases submitted to High Court for confirmation."
+  },
+  {
+    "number": "372",
+    "title": "No appeal to lie unless otherwise provided."
+  },
+  {
+    "number": "373",
+    "title": "Appeal from orders requiring security or refusal to accept or rejecting surety for keeping peace or good behaviour."
+  },
+  {
+    "number": "374",
+    "title": "Appeals from convictions."
+  },
+  {
+    "number": "375",
+    "title": "No appeal in certain cases when accused pleads guilty."
+  },
+  {
+    "number": "376",
+    "title": "No appeal in petty cases."
+  },
+  {
+    "number": "377",
+    "title": "Appeal by the State Government against sentence."
+  },
+  {
+    "number": "378",
+    "title": "Appeal in case of acquittal."
+  },
+  {
+    "number": "379",
+    "title": "Appeal against conviction by High Court in certain cases."
+  },
+  {
+    "number": "380",
+    "title": "Special right of appeal in certain cases."
+  },
+  {
+    "number": "381",
+    "title": "Appeal to Court of Session how heard."
+  },
+  {
+    "number": "382",
+    "title": "Petition of appeal."
+  },
+  {
+    "number": "383",
+    "title": "Procedure when appellant in jail."
+  },
+  {
+    "number": "384",
+    "title": "Summary dismissal of appeal."
+  },
+  {
+    "number": "385",
+    "title": "Procedure for hearing appeals not dismissed summarily."
+  },
+  {
+    "number": "386",
+    "title": "Powers of the Appellate Court."
+  },
+  {
+    "number": "387",
+    "title": "Judgments of Subordinate Appellate Court."
+  },
+  {
+    "number": "388",
+    "title": "Order of High Court on appeal to be certified to lower Court."
+  },
+  {
+    "number": "389",
+    "title": "Suspension of sentence pending the appeal; release of appellant on bail."
+  },
+  {
+    "number": "390",
+    "title": "Arrest of accused in appeal from acquittal."
+  },
+  {
+    "number": "391",
+    "title": "Appellate Court may take further evidence or direct it to be taken."
+  },
+  {
+    "number": "392",
+    "title": "Procedure where Judges of Court of Appeal are equally divided."
+  },
+  {
+    "number": "393",
+    "title": "Finality of judgments and orders on appeal."
+  },
+  {
+    "number": "394",
+    "title": "Abatement of appeals."
+  },
+  {
+    "number": "395",
+    "title": "Reference to High Court."
+  },
+  {
+    "number": "396",
+    "title": "Disposal of case according to decision of High Court."
+  },
+  {
+    "number": "397",
+    "title": "Calling for records to exercise powers of revision."
+  },
+  {
+    "number": "398",
+    "title": "Power to order inquiry."
+  },
+  {
+    "number": "399",
+    "title": "Sessions Judge's powers of revision."
+  },
+  {
+    "number": "400",
+    "title": "Power of Additional Sessions Judge."
+  },
+  {
+    "number": "401",
+    "title": "High Court's powers of revision."
+  },
+  {
+    "number": "402",
+    "title": "Power of High Court to withdraw or transfer revision cases."
+  },
+  {
+    "number": "403",
+    "title": "Option of Court to hear parties."
+  },
+  {
+    "number": "404",
+    "title": "Statement by Metropolitan Magistrate of ground of his decision to be considered by High Court."
+  },
+  {
+    "number": "405",
+    "title": "High Court's order to be certified to lower Court."
+  },
+  {
+    "number": "406",
+    "title": "Power of Supreme Court to transfer cases and appeals."
+  },
+  {
+    "number": "407",
+    "title": "Power of High Court to transfer cases and appeals."
+  },
+  {
+    "number": "408",
+    "title": "Power of Sessions Judge to transfer cases and appeals."
+  },
+  {
+    "number": "409",
+    "title": "Withdrawal of cases and appeals by Sessions Judges."
+  },
+  {
+    "number": "410",
+    "title": "Withdrawal of cases by Judicial Magistrate."
+  },
+  {
+    "number": "411",
+    "title": "Making over or withdrawal of cases by Executive Magistrates."
+  },
+  {
+    "number": "412",
+    "title": "Reasons to be recorded."
+  },
+  {
+    "number": "413",
+    "title": "Execution of order passed under section 368."
+  },
+  {
+    "number": "414",
+    "title": "Execution of sentence of death passed by High Court."
+  },
+  {
+    "number": "415",
+    "title": "Postponement of execution of sentence of death in case of appeal to Supreme Court."
+  },
+  {
+    "number": "416",
+    "title": "Postponement of capital sentence on pregnant woman."
+  },
+  {
+    "number": "417",
+    "title": "Power to appoint place of imprisonment."
+  },
+  {
+    "number": "418",
+    "title": "Execution of sentence of imprisonment."
+  },
+  {
+    "number": "419",
+    "title": "Direction of warrant for execution."
+  },
+  {
+    "number": "420",
+    "title": "Warrant with whom to be lodged. C.–Levy of fine"
+  },
+  {
+    "number": "421",
+    "title": "Warrant for levy of fine."
+  },
+  {
+    "number": "422",
+    "title": "Effect of such warrant."
+  },
+  {
+    "number": "423",
+    "title": "Warrant for levy of fine issued by a Court in any territory to which this Code does not extend."
+  },
+  {
+    "number": "424",
+    "title": "Suspension of execution of sentence of imprisonment. D.–General provisions regarding execution"
+  },
+  {
+    "number": "425",
+    "title": "Who may issue warrant."
+  },
+  {
+    "number": "426",
+    "title": "Sentence on escaped convict when to take effect."
+  },
+  {
+    "number": "427",
+    "title": "Sentence on offender already sentenced for another offence."
+  },
+  {
+    "number": "428",
+    "title": "Period of detention undergone by the accused to be set off against the sentence of imprisonment."
+  },
+  {
+    "number": "429",
+    "title": "Saving."
+  },
+  {
+    "number": "430",
+    "title": "Return of warrant on execution of sentence."
+  },
+  {
+    "number": "431",
+    "title": "Money ordered to be paid recoverable as a fine. E.–Suspension, remission and commutation of sentences"
+  },
+  {
+    "number": "432",
+    "title": "Power to suspend or remit sentences."
+  },
+  {
+    "number": "433",
+    "title": "Power to commute sentence."
+  },
+  {
+    "number": "433A",
+    "title": "Restriction on powers of remission or commutation in certain cases."
+  },
+  {
+    "number": "434",
+    "title": "Concurrent power of Central Government in case of death sentences."
+  },
+  {
+    "number": "435",
+    "title": "State Government to act after consultation with Central Government in certain cases."
+  },
+  {
+    "number": "436",
+    "title": "In what cases bail to be taken."
+  },
+  {
+    "number": "436A",
+    "title": "Maximum period for which an undertrial prisoner can be detained."
+  },
+  {
+    "number": "437",
+    "title": "When bail may be taken in case of non-bailable offence."
+  },
+  {
+    "number": "437A",
+    "title": "Bail to require accused to appear before next appellate Court."
+  },
+  {
+    "number": "438",
+    "title": "Direction for grant of bail to person apprehending arrest."
+  },
+  {
+    "number": "439",
+    "title": "Special powers of High Court or Court of Session regarding bail."
+  },
+  {
+    "number": "440",
+    "title": "Amount of bond and reduction thereof."
+  },
+  {
+    "number": "441",
+    "title": "Bond of accused and sureties."
+  },
+  {
+    "number": "441A",
+    "title": "Declaration by sureties."
+  },
+  {
+    "number": "442",
+    "title": "Discharge from custody."
+  },
+  {
+    "number": "443",
+    "title": "Power to order sufficient bail when that first taken is insufficient."
+  },
+  {
+    "number": "444",
+    "title": "Discharge of sureties."
+  },
+  {
+    "number": "445",
+    "title": "Deposit instead of recognizance."
+  },
+  {
+    "number": "446",
+    "title": "Procedure when bond has been forfeited."
+  },
+  {
+    "number": "446A",
+    "title": "Cancellation of bond and bail bond."
+  },
+  {
+    "number": "447",
+    "title": "Procedure in case of insolvency of death of surety or when a bond is forfeited."
+  },
+  {
+    "number": "448",
+    "title": "Bond required from minor."
+  },
+  {
+    "number": "449",
+    "title": "Appeal from orders under section 446."
+  },
+  {
+    "number": "450",
+    "title": "Power to direct levy of amount due on certain recognizances."
+  },
+  {
+    "number": "451",
+    "title": "Order for custody and disposal of property pending trial in certain cases."
+  },
+  {
+    "number": "452",
+    "title": "Order for disposal of property at conclusion of trial."
+  },
+  {
+    "number": "453",
+    "title": "Payment to innocent purchaser of money found on accused."
+  },
+  {
+    "number": "454",
+    "title": "Appeal against orders under section 452 or section 453."
+  },
+  {
+    "number": "455",
+    "title": "Destruction of libellous and other matter."
+  },
+  {
+    "number": "456",
+    "title": "Power to restore possession of immovable property."
+  },
+  {
+    "number": "457",
+    "title": "Procedure by police upon seizure of property."
+  },
+  {
+    "number": "458",
+    "title": "Procedure where no claimant appears within six months."
+  },
+  {
+    "number": "459",
+    "title": "Power to sell perishable property."
+  },
+  {
+    "number": "460",
+    "title": "Irregularities which do not vitiate proceedings."
+  },
+  {
+    "number": "461",
+    "title": "Irregularities which vitiate proceedings."
+  },
+  {
+    "number": "462",
+    "title": "Proceedings in wrong place."
+  },
+  {
+    "number": "463",
+    "title": "Non-compliance with provisions of section 164 or section 281."
+  },
+  {
+    "number": "464",
+    "title": "Effect of omission to frame, or absence of, or error in, charge."
+  },
+  {
+    "number": "465",
+    "title": "Finding or sentence when reversible by reason of error, omission or irregularity."
+  },
+  {
+    "number": "466",
+    "title": "Defect or error not to make attachment unlawful."
+  },
+  {
+    "number": "467",
+    "title": "Definitions."
+  },
+  {
+    "number": "468",
+    "title": "Bar to taking cognizance after lapse of the period of limitation."
+  },
+  {
+    "number": "469",
+    "title": "Commencement of the period of limitation."
+  },
+  {
+    "number": "470",
+    "title": "Exclusion of time in certain cases."
+  },
+  {
+    "number": "471",
+    "title": "Exclusion of date on which Court is closed."
+  },
+  {
+    "number": "472",
+    "title": "Continuing offence."
+  },
+  {
+    "number": "473",
+    "title": "Extension of period of limitation in certain cases."
+  },
+  {
+    "number": "474",
+    "title": "Trials before High Courts."
+  },
+  {
+    "number": "475",
+    "title": "Delivery to commanding officers of persons liable to be tried by Court-martial."
+  },
+  {
+    "number": "476",
+    "title": "Forms."
+  },
+  {
+    "number": "477",
+    "title": "Power of High Court to make rules."
+  },
+  {
+    "number": "478",
+    "title": "Power to alter functions allocated to Executive Magistrate in certain cases."
+  },
+  {
+    "number": "479",
+    "title": "Case in which Judge or Magistrate is personally interested."
+  },
+  {
+    "number": "480",
+    "title": "Practising pleader not to sit as Magistrate in certain Courts."
+  },
+  {
+    "number": "481",
+    "title": "Public servant concerned in sale not to purchase or bid for property."
+  },
+  {
+    "number": "482",
+    "title": "Saving of inherent power of High Court."
+  },
+  {
+    "number": "483",
+    "title": "Duty of High Court to exercise continuous superintendence over Courts of Judicial Magistrates."
+  },
+  {
+    "number": "484",
+    "title": "Repeal and savings."
+  }
+]

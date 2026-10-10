@@ -77,6 +77,8 @@ GOLD = {
     "bns": os.path.join(SCRIPT_DIR, "gold_bns.jsonl"),
     "bnss": os.path.join(SCRIPT_DIR, "gold_bnss.jsonl"),
     "bsa": os.path.join(SCRIPT_DIR, "gold_bsa.jsonl"),
+    "iea": os.path.join(SCRIPT_DIR, "gold_iea.jsonl"),
+    "crpc": os.path.join(SCRIPT_DIR, "gold_crpc.jsonl"),
 }
 
 _write_lock = threading.Lock()

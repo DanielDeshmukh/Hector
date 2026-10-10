@@ -1,0 +1,29 @@
+{
+  "act_id": "iea-1872",
+  "steps": {
+    "step2_inspect": {
+      "exit": 0,
+      "seconds": 2.17
+    },
+    "step3_clean": {
+      "exit": 0,
+      "seconds": 1.1
+    },
+    "step4_segment": {
+      "exit": 0,
+      "seconds": 1.06
+    },
+    "step5_records": {
+      "exit": 0,
+      "seconds": 0.6
+    },
+    "step6_validate": {
+      "exit": 0,
+      "seconds": 4.76
+    },
+    "step7_report": {
+      "exit": 0,
+      "seconds": 0.58
+    }
+  }
+}

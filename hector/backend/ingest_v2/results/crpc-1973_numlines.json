@@ -1,0 +1,5484 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 532,
+    "footnote": 240,
+    "UNKNOWN": 10
+  },
+  "labels": {
+    "header": 289,
+    "page_number": 866,
+    "footnote": 272,
+    "separator": 66
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 6788,
+      "page": 173,
+      "text": "409. Appeals to Court of Section how heard.—An appeal to the Court of Session or Sessions Judge shall",
+      "context": [
+        "Substitution of new section for section 409. —For section 409 of the principal Act, the following se",
+        "be substituted, namely:—",
+        "409. Appeals to Court of Section how heard.—An appeal to the Court of Session or Sessions Judge shal",
+        "be heard by the Sessions Judge or by an Additional Sessions Judge:",
+        "Provided that an Additional Sessions Judge shall hear only such appeals as the State Government may,"
+      ]
+    },
+    {
+      "line": 14388,
+      "page": 259,
+      "text": "16. Insertion of new section 144A.—In Chapter X of the principal Act, under sub-heading",
+      "context": [
+        "provisions of this Act.]",
+        "*                                    *                                    *                         ",
+        "16. Insertion of new section 144A.—In Chapter X of the principal Act, under sub-heading",
+        "“C.—Urgent cases of nuisance or apprehended danger”, after section 144, the following section",
+        "shall be inserted, namely:—"
+      ]
+    },
+    {
+      "line": 14431,
+      "page": 260,
+      "text": "28. Amendment of section 320.—In section 320 of the principal Act, in the Table under sub-section",
+      "context": [
+        "*",
+        "*",
+        "28. Amendment of section 320.—In section 320 of the principal Act, in the Table under sub-section",
+        "(2),—",
+        "(a) the words “Voluntarily causing hurt by dangerous weapons or means” in column 1 and the"
+      ]
+    },
+    {
+      "line": 14438,
+      "page": 260,
+      "text": "38. Amendment of section 438.—In section 438 of the principal Act, for sub-section (1), the",
+      "context": [
+        "person to whom the hurt is caused” shall be substituted.",
+        "*                                    *                                    *                         ",
+        "38. Amendment of section 438.—In section 438 of the principal Act, for sub-section (1), the",
+        "following sub-sections shall be substituted, namely:—",
+        "“(1) Where any person has reason to believe that he may be arrested on accusation of having"
+      ]
+    },
+    {
+      "line": 14465,
+      "page": 261,
+      "text": "42. Amendment of the First Schedule.—In the First Schedule to the principal Act, under the",
+      "context": [
+        "the Public Prosecutor, the Court considers such presence necessary in the interest of justice.”.",
+        "*                                    *                                    *                         ",
+        "42. Amendment of the First Schedule.—In the First Schedule to the principal Act, under the",
+        "heading “I.—OFFENCES UNDER THE INDIAN PENAL CODE”,—",
+        "(a) after the entries relating to section 153A, the following entries shall be inserted, namely:—"
+      ]
+    },
+    {
+      "line": 14492,
+      "page": 261,
+      "text": "44. Amendment of Act 45 of 1860.—In the Indian Penal Code,—",
+      "context": [
+        "(iv) section 325, for the word “Ditto”, the word “Bailable” shall be substituted.",
+        "*                                    *                                    *                         ",
+        "44. Amendment of Act 45 of 1860.—In the Indian Penal Code,—",
+        "(a) after section 153A, the following section shall be inserted, namely:—",
+        "‘153AA. Punishment for knowingly carrying arms in any procession or organising, or"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 3484,
+      "page": 98,
+      "text": "6. Added by Act 43 of 1991, s. 2 (w.e.f. 2-5-1991).",
+      "cls": "footnote"
+    },
+    {
+      "line": 185,
+      "page": 23,
+      "text": "1. Ins. by Act 5 of 2009, s. 2 (w.e.f. 31-12-2009).",
+      "cls": "footnote"
+    },
+    {
+      "line": 7644,
+      "page": 193,
+      "text": "1. Subs. by Act 63 of 1980, s. 8, for s. 478 (w.e.f. 23-9-1980).",
+      "cls": "footnote"
+    },
+    {
+      "line": 507,
+      "page": 30,
+      "text": "1. Ins. by Act 25 of 2005, s. 2 (w.e.f. 23-6-2006).",
+      "cls": "footnote"
+    },
+    {
+      "line": 99,
+      "page": 21,
+      "text": "1. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule (w.e.f. 31-",
+      "cls": "footnote"
+    },
+    {
+      "line": 459,
+      "page": 29,
+      "text": "4. Ins. by s. 7, ibid. (w.e.f. 18-12-1978).",
+      "cls": "footnote"
+    },
+    {
+      "line": 5264,
+      "page": 139,
+      "text": "1. Subs. by Act 5 of 2009, s. 23, for  the TABLE (w.e.f. 31-12-2009).",
+      "cls": "footnote"
+    },
+    {
+      "line": 9540,
+      "page": 205,
+      "text": "1.  Ins. by Act 43 of 1983, s. 5 (w.e.f. 25.12.1983).",
+      "cls": "footnote"
+    },
+    {
+      "line": 7234,
+      "page": 183,
+      "text": "1. Ins. by Act 22 of 2018,  s. 23 (w.e.f. 21-4-2018).",
+      "cls": "footnote"
+    },
+    {
+      "line": 4859,
+      "page": 130,
+      "text": "4. Subs.  by Act 45 of 1978, s. 22,  for cl. (a)  (w.e.f. 18-12-1978).",
+      "cls": "footnote"
+    },
+    {
+      "line": 6391,
+      "page": 163,
+      "text": "3. Subs. by s. 31, ibid., for “the High Court” (w.e.f. 23-6-2006).",
+      "cls": "footnote"
+    },
+    {
+      "line": 627,
+      "page": 33,
+      "text": "2. Ins. by Act 25 of 2005, s.  4 (w.e.f. 23-6-2006).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2041,
+      "page": 64,
+      "text": "1. Subs. by Act 45 of 1978, s. 12, for “Chief Judicial Magistrate”   (w.e.f. 18-12-1978).",
+      "cls": "footnote"
+    },
+    {
+      "line": 3480,
+      "page": 98,
+      "text": "2. Ins. by s. 3, ibid. (w.e.f. 23-9-1980).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1599,
+      "page": 54,
+      "text": "3. Added by s. 13, ibid., (w.e.f. 23-6-2006).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2081,
+      "page": 65,
+      "text": "2. Ins. by s. 2, ibid. (w.e.f. 24-9-2001).",
+      "cls": "footnote"
+    },
+    {
+      "line": 5147,
+      "page": 137,
+      "text": "1. Ins. by Act 5 of 2009, s. 22 (w.e.f. 31-12-2009).",
+      "cls": "footnote"
+    },
+    {
+      "line": 12919,
+      "page": 226,
+      "text": "1.",
+      "cls": "footnote"
+    },
+    {
+      "line": 12431,
+      "page": 221,
+      "text": "1.  Ins. by Act 46 of 1983, s. 6 (w.e.f. 25-12-1983).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2082,
+      "page": 65,
+      "text": "3. Subs. by s. 2, ibid., for sub-section (2) (w.e.f. 24-9-2001).",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 70,
+      "page": 21,
+      "text": "1. Short title, extent and commencement.—(1) This Act may be called the Code of Criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 89,
+      "page": 21,
+      "text": "2. Definitions.—In this Code, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 99,
+      "page": 21,
+      "text": "1. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule (w.e.f. 31-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 144,
+      "page": 22,
+      "text": "1. Ins. by Act 45 of 1978, s. 2 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 163,
+      "page": 23,
+      "text": "3. Construction of references.—(1) In this Code,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 185,
+      "page": 23,
+      "text": "1. Ins. by Act 5 of 2009, s. 2 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 222,
+      "page": 24,
+      "text": "4. Trial of offences under the Indian Penal Code and other laws.—(1) All offences under the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 228,
+      "page": 24,
+      "text": "5. Saving.—Nothing contained in this Code shall, in the absence of a specific provision to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 234,
+      "page": 25,
+      "text": "6. Classes of Criminal Courts.—Besides the High Courts and the Courts constituted under any law,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 240,
+      "page": 25,
+      "text": "7. Territorial divisions.—(1) Every State shall be a sessions division or shall consist of sessions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 250,
+      "page": 25,
+      "text": "8. Metropolitan areas.—(1) The State Government may, by notification, declare that, as from such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 290,
+      "page": 26,
+      "text": "9. Court of Session.—(1) The State Government shall establish a Court of Session for every sessions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 325,
+      "page": 27,
+      "text": "10. Subordination of Assistant Sessions Judges.—(1) All Assistant Sessions Judges shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 333,
+      "page": 27,
+      "text": "11. Courts of Judicial Magistrates.—(1) In every district (not being a metropolitan area) there shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 351,
+      "page": 27,
+      "text": "12. Chief Judicial Magistrate and Additional Chief Judicial Magistrate, etc.—(1) In every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 361,
+      "page": 27,
+      "text": "1. Added by Act 45 of 1978, s. 3 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 366,
+      "page": 28,
+      "text": "13. Special Judicial Magistrates.—(1) The High Court may, if requested by the Central or State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 390,
+      "page": 28,
+      "text": "14. Local jurisdiction of Judicial Magistrates.—(1) Subject to the control of the High Court, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 405,
+      "page": 28,
+      "text": "1.  Subs. Act 45 of 1978, s. 4, for certain words (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 406,
+      "page": 28,
+      "text": "2.  Ins. by  s. 4, ibid. (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 407,
+      "page": 28,
+      "text": "3.  Added by  s. 5, ibid, (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 408,
+      "page": 28,
+      "text": "4.  Ins. by s. 5, ibid. (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 410,
+      "page": 29,
+      "text": "15. Subordination of Judicial Magistrates.—(1) Every Chief Judicial Magistrate shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 415,
+      "page": 29,
+      "text": "16. Courts of Metropolitan Magistrates.—(1) In every metropolitan area, there shall be established",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 421,
+      "page": 29,
+      "text": "17. Chief Metropolitan Magistrate and Additional Chief Metropolitan Magistrate.—(1) The High",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 427,
+      "page": 29,
+      "text": "18. Special Metropolitan Magistrates.—(1) The High Court may, if requested by the Central or State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 439,
+      "page": 29,
+      "text": "19. Subordination of Metropolitan Magistrates.—(1) The Chief Metropolitan Magistrate and every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 448,
+      "page": 29,
+      "text": "20. Executive Magistrates.—(1) In every district and in every metropolitan area, the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 456,
+      "page": 29,
+      "text": "1. The words “or to cases generally” omitted by Act 45 of 1978, s. 6 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 457,
+      "page": 29,
+      "text": "2. Subs. by s. 6, ibid., for sub-section (3) (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 458,
+      "page": 29,
+      "text": "3. Subs. by s. 7, ibid.,  for “all or any” (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 459,
+      "page": 29,
+      "text": "4. Ins. by s. 7, ibid. (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 472,
+      "page": 30,
+      "text": "21. Special Executive Magistrates.—The State Government may appoint, for such term as it may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 476,
+      "page": 30,
+      "text": "22. Local Jurisdiction of Executive Magistrates.—(1) Subject to the control of the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 482,
+      "page": 30,
+      "text": "23. Subordination of Executive Magistrates.—(1) All Executive Magistrates, other than the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 507,
+      "page": 30,
+      "text": "1. Ins. by Act 25 of 2005, s. 2 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 508,
+      "page": 30,
+      "text": "2. Subs. by Act 45 of 1978, s. 8, for section 24 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 550,
+      "page": 31,
+      "text": "1. Ins. by Act 25 of 2005, s. 3 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 551,
+      "page": 31,
+      "text": "2. Ins. by Act 5 of 2009, s. 3 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 587,
+      "page": 32,
+      "text": "25. Assistant Public prosecutors.—(1) The State Government shall appoint in every district one or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 626,
+      "page": 33,
+      "text": "1. Ins. by Act 45 of 1978, s.  9 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 627,
+      "page": 33,
+      "text": "2. Ins. by Act 25 of 2005, s.  4 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 669,
+      "page": 34,
+      "text": "26. Courts by which offences are triable.—Subject to the other provisions of this Code,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 682,
+      "page": 35,
+      "text": "27. Jurisdiction in the case of juveniles.—Any offence not punishable with death or imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 687,
+      "page": 35,
+      "text": "28. Sentences which High Courts and Sessions Judges may pass.—(1) A High Court may pass any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 693,
+      "page": 35,
+      "text": "29. Sentences which Magistrates may  pass.—(1) The Court of a Chief Judicial Magistrate may pass",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 703,
+      "page": 35,
+      "text": "30. Sentence of imprisonment in default of fine.—(1) The Court of a Magistrate may award such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 712,
+      "page": 35,
+      "text": "31. Sentence in cases of conviction of several offences at one trial.—(1) When a person is convicted at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 716,
+      "page": 35,
+      "text": "1. Ins. by Act 5 of 2009, s. 4 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 717,
+      "page": 35,
+      "text": "2. Subs. by Act 13 of 2013, s. 11, for “offence under section 376 and sections 376A to 376D of the Indian Penal",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 719,
+      "page": 35,
+      "text": "3. Subs. by Act 22 of 2019, s. 10, for “section 376A,  section 376B, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 720,
+      "page": 35,
+      "text": "4. Subs. by Act 25 of 2005, s. 5, for “five thousand rupees” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 721,
+      "page": 35,
+      "text": "5. Subs. by s. 5, ibid., for “one thousand rupees” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 735,
+      "page": 36,
+      "text": "32. Mode of conferring powers.—(1) In conferring powers under this Code, the High Court or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 740,
+      "page": 36,
+      "text": "33. Powers of officers appointed.—Whenever any person holding an office in the service of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 746,
+      "page": 36,
+      "text": "34. Withdrawal of powers.—(1) The High Court or the State Government, as the case may be, may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 751,
+      "page": 36,
+      "text": "35. Powers of Judges and Magistrates exercisable by their successors-in-office.—(1) Subject to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 764,
+      "page": 36,
+      "text": "36. Powers of superior officers of police.—Police officers superior in rank to an officer in charge of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 769,
+      "page": 37,
+      "text": "37. Public when to assist Magistrates and police.—Every person is bound to assist a Magistrate or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 776,
+      "page": 37,
+      "text": "38. Aid to person, other than police officer, executing warrant.—When a warrant is directed to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 779,
+      "page": 37,
+      "text": "39. Public to give information of certain offences.—(1) Every person, aware of the commission of,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 808,
+      "page": 37,
+      "text": "40. Duty of officers employed in connection with the affairs of a village to make certain",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 812,
+      "page": 37,
+      "text": "1. Ins. by Act 42 of 1993, s. 3 (w.e.f. 22-05-1993).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 845,
+      "page": 38,
+      "text": "41. When police may arrest without warrant.—(1) Any police officer may without an order from a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 860,
+      "page": 38,
+      "text": "1. Subs. by Act 5 of 2009, s. 5, for cls. (a) and (b) (w.e.f. 1-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 906,
+      "page": 39,
+      "text": "1. Ins. by Act 41 of 2010, s. 2 (w.e.f. 2-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 907,
+      "page": 39,
+      "text": "2. Subs. by Act 5 of 2009, s. 5, for sub-section (2) (w.e.f. 1-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 908,
+      "page": 39,
+      "text": "3. Ins. by s. 6, ibid. (w.e.f. 1-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 909,
+      "page": 39,
+      "text": "4. Subs. by Act 41 of 2010, s. 3, for “The police officer may” (w.e.f. 2-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 914,
+      "page": 40,
+      "text": "41B. Procedure of arrest and duties of officer making arrest.—Every police officer while making",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 924,
+      "page": 40,
+      "text": "41C. Control room at districts.—(1) The State Government shall establish a police control room—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 933,
+      "page": 40,
+      "text": "41D. Right of arrested person to meet an advocate of his choice during interrogation.—When any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 936,
+      "page": 40,
+      "text": "42. Arrest on refusal to give name and residence.—(1) When any person who, in the presence of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 947,
+      "page": 40,
+      "text": "43. Arrest by private person and procedure on such arrest.—(1) Any private person may arrest or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 957,
+      "page": 40,
+      "text": "1. Subs. by Act 41 of 2010, s. 3 (w.e.f. 2-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 960,
+      "page": 41,
+      "text": "44. Arrest by Magistrate.—(1) When any offence is committed in the presence of a Magistrate, whether",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 967,
+      "page": 41,
+      "text": "45. Protection of members of the Armed Forces from arrest.—(1) Notwithstanding anything contained",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 975,
+      "page": 41,
+      "text": "46. Arrest how made.—(1) In making an arrest the police officer or other person making the same shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 990,
+      "page": 41,
+      "text": "47. Search of place entered by person sought to be arrested.—(1) If any person acting under warrant of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1005,
+      "page": 41,
+      "text": "1. Ins. by Act 5 of 2009, s. 7 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1006,
+      "page": 41,
+      "text": "2. Ins. by Act 25 of 2005, s. 6 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1011,
+      "page": 42,
+      "text": "48. Pursuit of offenders into other jurisdictions.—A police officer may, for the purpose of arresting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1013,
+      "page": 42,
+      "text": "49. No unnecessary restraint.—The person arrested shall not be subjected to more restraint than is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1015,
+      "page": 42,
+      "text": "50. Person arrested to be informed of grounds of arrest and of right to bail.—(1) Every police officer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1032,
+      "page": 42,
+      "text": "51. Search of arrested person.—(1) Whenever a person is arrested by a police officer under a warrant which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1043,
+      "page": 42,
+      "text": "52. Power to seize offensive weapons.—The officer or other person making any arrest under this Code may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1047,
+      "page": 42,
+      "text": "53. Examination of accused by medical practitioner at the request of police officer.—(1) When a person is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1055,
+      "page": 42,
+      "text": "1. Ins. by 25 of 2005, s. 7 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1098,
+      "page": 43,
+      "text": "1. Subs. by Act 25 of 2005, s. 8, for the Explanation (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1099,
+      "page": 43,
+      "text": "2. Ins. by s. 9, ibid. (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1100,
+      "page": 43,
+      "text": "3. Subs. by Act 5 of 2009, s. 8, for section 54  (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1112,
+      "page": 44,
+      "text": "55. Procedure when police officer deputes subordinate to arrest without warrant.—(1) When any officer in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1122,
+      "page": 44,
+      "text": "56. Person arrested to be taken before Magistrate or officer in charge of police station.—A",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1126,
+      "page": 44,
+      "text": "57. Person arrested not to be detained more than twenty-four hours.—No police officer shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1131,
+      "page": 44,
+      "text": "58. Police to report apprehensions.—Officers in charge of police stations shall report to the District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1135,
+      "page": 44,
+      "text": "59. Discharge of person apprehended.—No person who has been arrested by a police officer shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1137,
+      "page": 44,
+      "text": "60. Power, on escape, to pursue and retake.—(1) If a person in lawful custody escapes or is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1145,
+      "page": 44,
+      "text": "1. Ins. by Act 25 of 2005, s. 11 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1146,
+      "page": 44,
+      "text": "2. Ins. by Act 13 of 2013, s. 12 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1147,
+      "page": 44,
+      "text": "3. Ins. by Act 5 of 2009, s. 9 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1148,
+      "page": 44,
+      "text": "4. Ins. by s.10, ibid. (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1153,
+      "page": 45,
+      "text": "61. Form of summons.—Every summons issued by a Court under this Code shall be in writing, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1156,
+      "page": 45,
+      "text": "62. Summons how served.—(1) Every summons shall be served by a police officer, or subject to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1163,
+      "page": 45,
+      "text": "63. Service of summons on corporate bodies and societies.—Service of a summons on a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1170,
+      "page": 45,
+      "text": "64. Service when persons summoned cannot be found.—Where the person summoned cannot, by the exercise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1175,
+      "page": 45,
+      "text": "65. Procedure when service cannot be effected as before provided.—If service cannot by the exercise of due",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1180,
+      "page": 45,
+      "text": "66. Service on Government servant.—(1) Where the person summoned is in the active service of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1185,
+      "page": 45,
+      "text": "67. Service of summons outside local limits.—When a Court desires that a summons issued by it shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1188,
+      "page": 45,
+      "text": "68. Proof of service in such cases and when serving officer not present.—(1) When a summons issued by a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1197,
+      "page": 46,
+      "text": "69. Service of summons on witness by post.—(1) Notwithstanding anything contained in the preceding",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1215,
+      "page": 46,
+      "text": "70. Form of warrant of arrest and duration.—(1) Every warrant of arrest issued by a Court under this Code",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1219,
+      "page": 46,
+      "text": "71. Power to direct security to be taken.—(1) Any Court issuing a warrant for the arrest of any person may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1230,
+      "page": 46,
+      "text": "72. Warrants to whom directed.—(1) A warrant of arrest shall ordinarily be directed to one or more police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1235,
+      "page": 46,
+      "text": "73. Warrant may be directed to any person.—(1) The Chief Judicial Magistrate or a Magistrate of the first",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1244,
+      "page": 47,
+      "text": "74. Warrant directed to police officer.—A warrant directed to any police officer may also be executed by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1246,
+      "page": 47,
+      "text": "75. Notification of substance of warrant.—The police officer or other person executing a warrant of arrest",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1248,
+      "page": 47,
+      "text": "76. Person arrested to be brought before Court without delay.—The police officer or other person executing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1253,
+      "page": 47,
+      "text": "77. Where warrant may be executed.—A warrant of arrest may be executed at any place in India.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1254,
+      "page": 47,
+      "text": "78. Warrant forwarded for execution outside jurisdiction.—(1) When a warrant is to be executed outside the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1263,
+      "page": 47,
+      "text": "79. Warrant directed to police officer for execution outside jurisdiction.—(1) When a warrant directed to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1274,
+      "page": 47,
+      "text": "80. Procedure on arrest of person against whom warrant issued.—When a warrant of arrest is executed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1279,
+      "page": 47,
+      "text": "81. Procedure by Magistrate before whom such person arrested is brought.—(1) The Executive Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1294,
+      "page": 48,
+      "text": "82. Proclamation for person absconding.—(1) If any Court has reason to believe (whether after taking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1317,
+      "page": 48,
+      "text": "83.  Attachment of property of person absconding.—(1) The Court issuing a proclamation under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1326,
+      "page": 48,
+      "text": "1. Ins. by Act 25 of 2005, s. 12 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1352,
+      "page": 49,
+      "text": "84. Claims and objections to attachment.—(1) If any claim is preferred to, or objection made to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1370,
+      "page": 49,
+      "text": "85. Release, sale and restoration of attached property.—(1) If the proclaimed person appears",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1389,
+      "page": 50,
+      "text": "86. Appeal from order rejecting application for restoration of attached property.—Any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1394,
+      "page": 50,
+      "text": "87. Issue of warrant in lieu of, or in addition to, summons.—A Court may, in any case in which it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1402,
+      "page": 50,
+      "text": "88. Power to take bond for appearance.—When any person for whose appearance or arrest the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1406,
+      "page": 50,
+      "text": "89. Arrest on breach of bond for appearance.—When any person who is bound by any bond taken",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1409,
+      "page": 50,
+      "text": "90. Provisions of this Chapter generally applicable to summonses and warrants of arrest.—The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1416,
+      "page": 50,
+      "text": "91. Summons to produce document or other thing.—(1) Whenever any Court or any officer in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1431,
+      "page": 51,
+      "text": "92. Procedure as to letters and telegrams.—(1) If any document, parcel or thing in the custody of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1442,
+      "page": 51,
+      "text": "93. When search-warrant may be issued.—(1) (a) Where any Court has reason to believe that a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1457,
+      "page": 51,
+      "text": "94. Search of place suspected to contain stolen property, forged documents, etc.—(1) If a District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1485,
+      "page": 52,
+      "text": "95. Power to declare certain publications forfeited and to issue search-warrants for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1504,
+      "page": 52,
+      "text": "96. Application to High Court to set aside declaration of forfeiture.—(1) Any person having any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1524,
+      "page": 53,
+      "text": "97. Search for persons wrongfully confined.—If any District Magistrate, Sub-divisional Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1530,
+      "page": 53,
+      "text": "98. Power to compel restoration of abducted females.—Upon complaint made on oath of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1537,
+      "page": 53,
+      "text": "99. Direction, etc., of search-warrants.—The provisions of sections 38, 70, 72, 74, 77, 78 and 79",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1540,
+      "page": 53,
+      "text": "100. Persons in charge of closed place to allow search.—(1) Whenever any place liable to search or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1567,
+      "page": 54,
+      "text": "101. Disposal of things found in search beyond jurisdiction.—When, in the execution of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1575,
+      "page": 54,
+      "text": "102. Power of police officer to seize certain property.—(1) Any police officer may seize any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1592,
+      "page": 54,
+      "text": "103. Magistrate may direct search in his presence.—Any Magistrate may direct a search to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1594,
+      "page": 54,
+      "text": "104. Power to impound document, etc., produced.—Any Court may, if it thinks fit, impound any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1596,
+      "page": 54,
+      "text": "105. Reciprocal arrangements regarding processes.—(1) Where a Court in the territories to which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1597,
+      "page": 54,
+      "text": "1. Ins. by Act 45 of 1978, s. 10  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1598,
+      "page": 54,
+      "text": "2. Ins. by Act 25 of 2005, s. 13 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1599,
+      "page": 54,
+      "text": "3. Added by s. 13, ibid., (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1641,
+      "page": 55,
+      "text": "105A. Definitions.—In this Chapter, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1642,
+      "page": 55,
+      "text": "1. Subs. by Act 32 of 1988, s. 2, for certain words (w.e.f. 25-5-1988).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1643,
+      "page": 55,
+      "text": "2. Ins. by s. 2, ibid., (w.e.f. 25-5-1988).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1644,
+      "page": 55,
+      "text": "3. Ins. by Act 40 of 1993, s. 2 (w.e.f. 20-7-1994).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1657,
+      "page": 56,
+      "text": "105B. Assistance in securing transfer of persons.—(1) Where a Court in India, in relation to a criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1678,
+      "page": 56,
+      "text": "105C. Assistance in relation to orders of attachment or forfeiture of property.—(1) Where a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1693,
+      "page": 57,
+      "text": "105D. Identifying unlawfully acquired property.—(1) The Court shall, under sub-section (1), or on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1701,
+      "page": 57,
+      "text": "105E. Seizure or attachment of property.—(1) Where any officer conducting an inquiry or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1710,
+      "page": 57,
+      "text": "105F. Management of properties seized or forfeited under this Chapter.—(1) The Court may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1718,
+      "page": 57,
+      "text": "105G. Notice of forfeiture of property.—(1) If as a result of the inquiry, investigation or survey",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1727,
+      "page": 57,
+      "text": "105H. Forfeiture of property in certain cases.—(1) The Court may, after considering the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1760,
+      "page": 58,
+      "text": "105J. Certain transfers to be null and void.—Where after the making of an order under sub-section (1) of section 105E or the issue of a notice under section 105",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1765,
+      "page": 58,
+      "text": "105K. Procedure in respect of letter of request.—Every letter of request, summons or warrant,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1770,
+      "page": 58,
+      "text": "105L. Application of this Chapter.—The Central Government may, by notification in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1776,
+      "page": 58,
+      "text": "106. Security for keeping the peace on conviction.—(1) When a Court of Session or Court of a Magistrate of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1791,
+      "page": 59,
+      "text": "107. Security for keeping the peace in other cases.—(1) When an Executive Magistrate receives information",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1801,
+      "page": 59,
+      "text": "108. Security for good behaviour from persons disseminating seditious matters.—(1) When 2[an Executive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1819,
+      "page": 59,
+      "text": "1. Ins. by Act 45 of 1978, s. 11 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1820,
+      "page": 59,
+      "text": "2. Subs. by Act 63 of 1980, s. 2, for “a Judicial Magistrate  of the first class” (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1824,
+      "page": 60,
+      "text": "109. Security for good behaviour from suspected persons.—When 1[an Executive Magistrate]  receives",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1829,
+      "page": 60,
+      "text": "110. Security for good behaviour from habitual offenders.—When 1[an Executive Magistrate]  receives",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1855,
+      "page": 60,
+      "text": "1. Subs. by Act 63 of 1980, s. 2, for “a Judicial Magistrate of the first class” (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1856,
+      "page": 60,
+      "text": "2. Subs. by Act 56 of 1974, s. 3 and the Second Sch., for item (b) (w.e.f. 10-1-1975).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1857,
+      "page": 60,
+      "text": "3. Ins. by s. 3 and the Second Sch., ibid. (w.e.f. 10-1-1975).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1858,
+      "page": 60,
+      "text": "4. The word “or” omitted by Act 25 of 2005, s. 14 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1859,
+      "page": 60,
+      "text": "5. Ins. by s. 14, ibid. (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1861,
+      "page": 61,
+      "text": "111. Order to be made.—When a Magistrate acting under section 107, section 108, section 109 or section 110,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1865,
+      "page": 61,
+      "text": "112. Procedure in respect of person present in Court.—If the person in respect of whom such order is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1867,
+      "page": 61,
+      "text": "113. Summons or warrant in case of person not so present.—If such person is not present in Court, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1874,
+      "page": 61,
+      "text": "114. Copy of order to accompany summons or warrant.—Every summons or warrant issued under section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1877,
+      "page": 61,
+      "text": "115. Power to dispense with personal attendance.—The Magistrate may, if he sees sufficient cause, dispense",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1880,
+      "page": 61,
+      "text": "116. Inquiry as to truth of information.—(1) When an order under section 111 has been read or explained",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1915,
+      "page": 62,
+      "text": "117. Order to give security.—If, upon such inquiry, it is proved that it is necessary for keeping the peace or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1925,
+      "page": 62,
+      "text": "118. Discharge of person informed against.—If, on an inquiry under section 116, it is not proved that it is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1930,
+      "page": 62,
+      "text": "119. Commencement of period for which security is required.—(1) If any person, in respect of whom an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1936,
+      "page": 62,
+      "text": "120. Contents of bond.—The bond to be executed by any such person shall bind him to keep the peace or to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1939,
+      "page": 62,
+      "text": "121. Power to reject sureties.—(1) A Magistrate may refuse to accept any surety offered, or may reject any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1956,
+      "page": 63,
+      "text": "122. Imprisonment in default of security.—(1) (a) If any person ordered to give security under section 106 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1991,
+      "page": 63,
+      "text": "123. Power to release persons imprisoned for failing to give security.—(1) Whenever 2[the District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1996,
+      "page": 63,
+      "text": "1. Subs. by Act 25 of 2005, s. 15, for “bond without sureties” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1997,
+      "page": 63,
+      "text": "2. Subs. by Act 45 of 1978, s. 12, for “the Chief Judicial Magistrate”  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2034,
+      "page": 64,
+      "text": "124. Security for unexpired period of bond.—(1) When a person for whose appearance a summons or warrant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2041,
+      "page": 64,
+      "text": "1. Subs. by Act 45 of 1978, s. 12, for “Chief Judicial Magistrate”   (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2045,
+      "page": 65,
+      "text": "125. Order for maintenance of wives, children and parents.—(1) If any person having sufficient means",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2080,
+      "page": 65,
+      "text": "1. Certain words omitted by Act 50 of  2001, s. 2  (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2081,
+      "page": 65,
+      "text": "2. Ins. by s. 2, ibid. (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2082,
+      "page": 65,
+      "text": "3. Subs. by s. 2, ibid., for sub-section (2) (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2083,
+      "page": 65,
+      "text": "4. Subs. by s. 2, ibid., for “allowance” (w.e.f. 24-9-2001)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2121,
+      "page": 66,
+      "text": "1. Subs. by Act 50 of 2001, s. 2, for “allowance” (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2143,
+      "page": 67,
+      "text": "126.  Procedure.—(1) Proceedings under section 125 may be taken against any person in any district—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2157,
+      "page": 67,
+      "text": "127. Alteration in allowance.—1[(1) On proof of a change in the circumstances of any person, receiving, under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2160,
+      "page": 67,
+      "text": "1. Subs. by Act 50 of 2001, s. 3, for sub-section (1) (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2198,
+      "page": 68,
+      "text": "1. Subs. by Act 50 of 2001, s. 3, for “maintenance”  (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2199,
+      "page": 68,
+      "text": "2. Subs. by s. 3, ibid., for “monthly allowance has been ordered” (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2200,
+      "page": 68,
+      "text": "3. Subs. by s. 3, ibid., for “monthly allowance in pursuance of” (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2202,
+      "page": 69,
+      "text": "128. Enforcement of order of maintenance.—A copy of the order of 1[maintenance or interim maintenance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2212,
+      "page": 69,
+      "text": "129. Dispersal of assembly by use of civil force.—(1) Any Executive Magistrate or officer in charge of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2223,
+      "page": 69,
+      "text": "130. Use of armed forces to disperse assembly.—(1) If any such assembly cannot be otherwise dispersed, and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2233,
+      "page": 69,
+      "text": "131. Power of certain armed force officers to disperse assembly.—When the public security is manifestly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2240,
+      "page": 69,
+      "text": "1. Subs. by Act 50 of 2001, s. 4, for “maintenance”  (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2241,
+      "page": 69,
+      "text": "2. Subs. by s. 4, ibid., for “whom the allowance”  (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2242,
+      "page": 69,
+      "text": "3. Subs. by s. 4, ibid.,  for “allowance due”  (w.e.f. 24-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2244,
+      "page": 70,
+      "text": "132. Protection against prosecution for acts done under preceding sections.—(1) No prosecution against",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2262,
+      "page": 70,
+      "text": "133. Conditional order for removal of nuisance.—(1) Whenever a District Magistrate or a Sub-divisional",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2299,
+      "page": 71,
+      "text": "134. Service or notification of order.—(1) The order shall, if practicable, be served on the person against",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2304,
+      "page": 71,
+      "text": "135. Person to whom order is addressed to obey or show cause.—The person against whom such order is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2308,
+      "page": 71,
+      "text": "136. Consequences of his failing to do so.—If such person does not perform such act or appear and show",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2311,
+      "page": 71,
+      "text": "137. Procedure where existence of public right is denied.—(1) Where an order is made under section 133 for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2323,
+      "page": 72,
+      "text": "138. Procedure where he appears to show cause.—(1) If the person against whom an order under section 133",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2330,
+      "page": 72,
+      "text": "139. Power of Magistrate to direct local investigation and examination of an expert.—The Magistrate may,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2334,
+      "page": 72,
+      "text": "140. Power of Magistrate to furnish written instructions, etc.—(1) Where the Magistrate directs a local",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2341,
+      "page": 72,
+      "text": "141. Procedure on order being made absolute and consequences of disobedience.—(1) When an order has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2352,
+      "page": 72,
+      "text": "142. Injunction pending inquiry.—(1) If a Magistrate making an order under section 133 considers that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2359,
+      "page": 72,
+      "text": "143. Magistrate may prohibit repetition or continuance of public nuisance.—A District Magistrate or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2365,
+      "page": 73,
+      "text": "144. Power to issue order in urgent cases of nuisance or apprehended danger.—(1) In cases where, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2396,
+      "page": 73,
+      "text": "145. Procedure where dispute concerning land or water is likely to cause breach of peace.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2444,
+      "page": 74,
+      "text": "146. Power to attach subject of dispute and to appoint receiver.—(1) If the Magistrate at any time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2464,
+      "page": 75,
+      "text": "147. Dispute concerning right of use of land or water.—(1) Whenever an Executive Magistrate is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2492,
+      "page": 76,
+      "text": "148. Local inquiry.—(1) Whenever a local inquiry is necessary for the purposes of section 145, section 146 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2503,
+      "page": 76,
+      "text": "149. Police to prevent cognizable offences.—Every police officer may interpose for the purpose of preventing,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2505,
+      "page": 76,
+      "text": "150. Information of design to commit cognizable offences.—Every police officer receiving information of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2509,
+      "page": 76,
+      "text": "151. Arrest to prevent the commission of cognizable offences.—(1) A police officer knowing of a design to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2515,
+      "page": 76,
+      "text": "152. Prevention of injury to public property.—A police officer may of his own authority interpose to prevent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2518,
+      "page": 76,
+      "text": "153. Inspection of weights and measures.—(1) Any officer in charge of a police station may, without a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2526,
+      "page": 76,
+      "text": "154. Information in cognizable cases.—(1) Every information relating to the commission of a cognizable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2532,
+      "page": 76,
+      "text": "1. Ins. by Act 13 of 2013, s. 13 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2562,
+      "page": 77,
+      "text": "155.  Information as to non-cognizable cases and investigation of such cases.—(1) When information is given to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2573,
+      "page": 77,
+      "text": "1. Subs. by Act 22 of 2018, s. 11, for “section 376A, section 376B, section 376C, section 376D” (w.e.f. 21-4-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2575,
+      "page": 78,
+      "text": "156.  Police officer’s power to investigate cognizable case.—(1) Any officer in charge of a police station may,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2595,
+      "page": 78,
+      "text": "157. Procedure for investigation.—(1) If, from information received or otherwise, an officer in charge of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2614,
+      "page": 78,
+      "text": "1. Ins. by Act 5 of 2009, s.11 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2617,
+      "page": 79,
+      "text": "158. Report how submitted.—(1) Every report sent to a Magistrate under section 157 shall, if the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2622,
+      "page": 79,
+      "text": "159. Power to hold investigation or preliminary inquiry.—Such Magistrate, on receiving such report, may direct",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2625,
+      "page": 79,
+      "text": "160. Police officer’s power to require attendance of witnesses.—(1) Any police officer making an investigation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2634,
+      "page": 79,
+      "text": "161. Examination of witnesses by police.—(1) Any police officer making an investigation under this Chapter,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2655,
+      "page": 79,
+      "text": "1. Subs. by Act 13 of 2013, s. 14, for “under the age of fifteen years or woman” (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2656,
+      "page": 79,
+      "text": "2. Ins. by Act 5 of 2009, s. 12 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2657,
+      "page": 79,
+      "text": "3. Ins. by Act 13 of 2013, s. 15 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2658,
+      "page": 79,
+      "text": "4. Subs. by Act 22 of 2018, s. 12, for “section 376A section 376B, section 376C, section 376D” (w.e.f. 22-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2665,
+      "page": 80,
+      "text": "162. Statements to police not to be signed: Use of statements in evidence.—(1) No statement made by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2681,
+      "page": 80,
+      "text": "163. No inducement to be offered.—(1) No police officer or other person in authority shall offer or make, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2688,
+      "page": 80,
+      "text": "164. Recording of confessions and statements.—(1) Any Metropolitan Magistrate or Judicial Magistrate may,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2707,
+      "page": 80,
+      "text": "1. Subs. by Act 5 of 2009, s.13 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2748,
+      "page": 81,
+      "text": "1. Ins. by Act 13 of 2013, s. 16 (w.e.f. 13-3-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2749,
+      "page": 81,
+      "text": "2. Subs. by Act 22 of 2018, s. 13, for “section 376A, section 376B, section 376C, section 376D” (w.e.f. 22-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2783,
+      "page": 82,
+      "text": "165. Search by police officer.—(1) Whenever an officer in charge of a police station or a police officer making",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2791,
+      "page": 82,
+      "text": "1. Ins. by Act 25 of 2005, s. 17 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2803,
+      "page": 83,
+      "text": "166. When officer in charge of police station may require another to issue search-warrant.—(1) An officer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2835,
+      "page": 83,
+      "text": "166B. Letter of request from a country or place outside India to a Court or an authority for investigation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2841,
+      "page": 83,
+      "text": " 1. Ins. by Act 10 of 1990, s. 2 (w.e.f. 19-12-1990).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2852,
+      "page": 84,
+      "text": "167. Procedure when  investigation cannot be completed in twenty-four hours.—(1) Whenever any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2886,
+      "page": 84,
+      "text": "1. Subs. by Act 45 of 1978, s. 13, for paragraph (a)  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2887,
+      "page": 84,
+      "text": "2. Subs. by Act 5 of 2009, s. 14,  for cl. (b) (w.e.f. 31-12-2009)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2888,
+      "page": 84,
+      "text": "3. Ins. by Act 45 of 1978, s. 13  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2889,
+      "page": 84,
+      "text": "4. Subs. by Act 5 of 2009, s.14, for Explanation II (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2890,
+      "page": 84,
+      "text": "5. Ins. by s.14, ibid., (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2933,
+      "page": 85,
+      "text": "1. Ins. by Act 45 of 1978, s.13 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3075,
+      "page": 89,
+      "text": "168. Report of investigation by subordinate police officer.—When any subordinate police officer has made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3078,
+      "page": 89,
+      "text": "169. Release of accused when evidence deficient.—If, upon an  investigation under this Chapter, it  appears to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3084,
+      "page": 89,
+      "text": "170. Cases to be sent to Magistrate, when evidence is sufficient.—(1) If, upon an investigation under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3102,
+      "page": 90,
+      "text": "171. Complainant and witnesses not to be required to accompany police officer and not to be subjected to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3109,
+      "page": 90,
+      "text": "172. Diary of proceedings in investigation.—(1) Every police officer making an investigation under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3122,
+      "page": 90,
+      "text": "173. Report of police officer on completion of investigation.—(1) Every investigation under this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3136,
+      "page": 90,
+      "text": "1. Ins. by Act 5 of 2009, s. 15 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3137,
+      "page": 90,
+      "text": "2. Ins. by  s. 16, ibid., (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3138,
+      "page": 90,
+      "text": "3. Subs. by Act 22 of  2018, s. 14, for “rape of a child may be completed within three months” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3169,
+      "page": 91,
+      "text": "174. Police to enquire and report on suicide, etc.—(1) When the officer in charge of a police station or some",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3183,
+      "page": 91,
+      "text": "1. Ins. by Act 5 of 2009, s. 16 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3184,
+      "page": 91,
+      "text": "5. Subs. by Act 22 of 2018, s. 14, for “section 376, 376A, 376B, 376C, 387D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3202,
+      "page": 92,
+      "text": "175. Power to summon persons.—(1) A police officer proceeding under section 174 may, by order",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3209,
+      "page": 92,
+      "text": "176. Inquiry by Magistrate into cause of death.—(1) 2[3*** when the case is of the nature referred",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3221,
+      "page": 92,
+      "text": "1. Subs. by Act 46 of 1983, s. 3, for certain words (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3222,
+      "page": 92,
+      "text": "2. Subs. by,  s. 4, ibid., for certain words (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3223,
+      "page": 92,
+      "text": "3. Certain words omitted by Act 25 of 2005, s. 18 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3224,
+      "page": 92,
+      "text": "4. Ins. by s. 18, ibid. (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3244,
+      "page": 93,
+      "text": "177. Ordinary place of inquiry and trial.—Every offence shall ordinarily be inquired into and tried",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3246,
+      "page": 93,
+      "text": "178. Place of inquiry or trial.—(a) When it is uncertain in which of several local areas an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3253,
+      "page": 93,
+      "text": "179. Offence triable where act is done or consequence ensues.—When an act is an offence by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3256,
+      "page": 93,
+      "text": "180. Place of trial where act is an offence by reason of relation to other offence.—When an act is an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3260,
+      "page": 93,
+      "text": "181. Place of trial in case of certain offences.—(1) Any offence of being a thug, or murder committed by a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3277,
+      "page": 94,
+      "text": "182. Offences committed by letters, etc.—(1) Any offence which includes cheating may, if the deception is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3286,
+      "page": 94,
+      "text": "183. Offence committed on journey or voyage.—When an offence is committed whilst the person by or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3290,
+      "page": 94,
+      "text": "184. Place of trial for offences triable together.—Where—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3296,
+      "page": 94,
+      "text": "185. Power to order cases to be tried in different sessions divisions.—Notwithstanding anything contained in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3301,
+      "page": 94,
+      "text": "186. High Court to decide, in case of doubt, district where inquiry or trial shall take place.—Where two or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3308,
+      "page": 94,
+      "text": "187. Power to issue summons or warrant for offence committed beyond local jurisdiction.—(1) When a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3310,
+      "page": 94,
+      "text": "1.Ins. by Act 45 of 1978, s. 15  (w.e.f. 18.12.1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3323,
+      "page": 95,
+      "text": "188. Offence committed outside India.—When an offence is committed outside India—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3330,
+      "page": 95,
+      "text": "189. Receipt of evidence relating to offences committed outside India.—When any offence alleged to have",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3338,
+      "page": 95,
+      "text": "190. Cognizance of offences by Magistrates.—(1) Subject to the provisions of this Chapter, any Magistrate of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3365,
+      "page": 96,
+      "text": "191. Transfer on application of the accused.—When a Magistrate takes cognizance of an offence under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3375,
+      "page": 96,
+      "text": "192. Making over of cases to Magistrates.—(1) Any Chief Judicial Magistrate may, after taking cognizance of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3392,
+      "page": 96,
+      "text": "193. Cognizance of offences by Courts of Session.—Except as otherwise expressly provided by this Code or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3395,
+      "page": 96,
+      "text": "194. Additional and Assistant Sessions Judges to try cases made over to them.—As Additional Sessions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3399,
+      "page": 97,
+      "text": "195. Prosecution for contempt of lawful authority of public servants, for offences against public justice",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3436,
+      "page": 97,
+      "text": "196. Prosecution for offences against the State and for criminal conspiracy to commit such offence.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3438,
+      "page": 97,
+      "text": "1. Subs. by Act 2 of 2006, s. 3, for certain words (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3439,
+      "page": 97,
+      "text": "2. Ins. by Act 5 of 2009, s.17 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3463,
+      "page": 98,
+      "text": "197. Prosecution of Judges and public servants.—(1) When any person who is or was a Judge or Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3479,
+      "page": 98,
+      "text": "1. Subs. by Act 63 of 1980, s. 3, for “section 153B, section 295A or section 505” (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3480,
+      "page": 98,
+      "text": "2. Ins. by s. 3, ibid. (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3481,
+      "page": 98,
+      "text": "3. Subs. by Act 45 of 1978, s. 16, for “a cognizable offence”  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3482,
+      "page": 98,
+      "text": "4.  Subs. by Act 63 of 1980, s. 3, for “under sub-section (1)” (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3483,
+      "page": 98,
+      "text": "5. Ins. by Act 1 of 2014, s. 58 and the Schedule (w.e.f. 16-1-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3484,
+      "page": 98,
+      "text": "6. Added by Act 43 of 1991, s. 2 (w.e.f. 2-5-1991).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3485,
+      "page": 98,
+      "text": "7. Explanation ins. by Act 13 of 2013, s. 18 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3486,
+      "page": 98,
+      "text": "8. Subs. by Act 22 of 2018, s. 15, for “section 376A, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3531,
+      "page": 99,
+      "text": "1. Ins. by Act 43 of 1991, s. 2 (w.e.f. 2-5-1991).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3560,
+      "page": 100,
+      "text": "198. Prosecution for offences against marriage.—(1) No Court shall take cognizance of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3577,
+      "page": 100,
+      "text": "1. Subs. by Act 45 of 1978, s. 17, for “section 494” (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3578,
+      "page": 100,
+      "text": "2. Ins. by s. 17,  ibid. (w.e.f.  18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3612,
+      "page": 101,
+      "text": "199. Prosecution for defamation.—(1) No Court shall take cognizance of an offence punishable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3624,
+      "page": 101,
+      "text": "1. Subs. by Act 5 of 2009, s. 18, for “fifteen years of age”  (w.e.f. 31-12-2009)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3625,
+      "page": 101,
+      "text": "2. Ins. by Act 46 of 1983, s. 5 (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3626,
+      "page": 101,
+      "text": "3. Ins. by Act 13 of 2013, s. 19 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3648,
+      "page": 102,
+      "text": "200. Examination of complainant.—A Magistrate taking cognizance of an offence on complaint",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3660,
+      "page": 102,
+      "text": "201. Procedure by Magistrate not competent to take cognizance of the case.—If the complaint is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3665,
+      "page": 102,
+      "text": "202. Postponement of issue of process.—(1) Any Magistrate, on receipt of a complaint of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3668,
+      "page": 102,
+      "text": "1. Ins. by Act 25 of 2005, s. 19 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3686,
+      "page": 103,
+      "text": "203. Dismissal of complaint.—If, after considering the statements on oath (if any) of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3692,
+      "page": 103,
+      "text": "204. Issue of process.—(1) If in the opinion of a Magistrate taking cognizance of an offence there is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3706,
+      "page": 103,
+      "text": "205. Magistrate may dispense with personal attendance of accused.—(1) Whenever a Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3712,
+      "page": 103,
+      "text": "206. Special summons in cases of petty offence.—(1) If, in the opinion of a Magistrate taking",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3714,
+      "page": 103,
+      "text": "1. Ins. by Act 25 of 2005, s. 20 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3734,
+      "page": 104,
+      "text": "207. Supply to the accused of copy of police report and other documents.—In any case where",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3753,
+      "page": 104,
+      "text": "208. Supply of copies of statements and documents to accused in other cases triable by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3758,
+      "page": 104,
+      "text": "1. Subs. by Act 25 of 2005,  s. 20,  for “one hundred rupees” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3759,
+      "page": 104,
+      "text": "2. Now the Motor Vehicles Act, 1988 (59 of 1988).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3760,
+      "page": 104,
+      "text": "3. Ins. by Act 45 of 1978, s. 18 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3770,
+      "page": 105,
+      "text": "209. Commitment of case to Court of Session when offence is triable exclusively by it.—When in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3789,
+      "page": 105,
+      "text": "210. Procedure to be followed when there is a complaint case and police investigation in respect",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3802,
+      "page": 105,
+      "text": "1. Subs. by Act 45 of 1978, s. 19, for clause (a) (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 3807,
+      "page": 106,
+      "text": "211. Contents of charge.—(1) Every charge under this Code shall state the offence with which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3838,
+      "page": 106,
+      "text": "212. Particulars as to time, place and person.—(1) The charge shall contain such particulars as to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3850,
+      "page": 107,
+      "text": "213. When manner of committing offence must be stated.—When the nature of the case is such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3866,
+      "page": 107,
+      "text": "214. Words in charge taken in sense of law under which offence is punishable.—In every charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3869,
+      "page": 107,
+      "text": "215. Effect of errors.— No error in stating either the offence or the particulars required to be stated",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3894,
+      "page": 108,
+      "text": "216. Court may alter charge.—(1) Any Court may alter or add to any charge at any time before",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3908,
+      "page": 108,
+      "text": "217. Recall of witnesses when charge altered.—Whenever a charge is altered or added to by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3916,
+      "page": 108,
+      "text": "218. Separate charges for distinct offences.—(1) For every distinct offence of which any person is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3926,
+      "page": 108,
+      "text": "219. Three offences of same kind within year may be charged together.—(1) When a person is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3938,
+      "page": 109,
+      "text": "220. Trial for more than one offence.—(1) If, in one series of acts so connected together as to form",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 3998,
+      "page": 110,
+      "text": "221. Where it is doubtful what offence has been committed.—(1) If a single act or series of acts is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4018,
+      "page": 111,
+      "text": "222. When offence proved included in offence charged.—(1) When a person is charged with an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4036,
+      "page": 111,
+      "text": "223. What persons may be charged jointly.—The following persons may be charged and tried",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4060,
+      "page": 112,
+      "text": "224. Withdrawal of remaining charges on conviction on one of several charges.—When a charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4070,
+      "page": 112,
+      "text": "225. Trial to be conducted by Public Prosecutor.—In every trial before a Court of Session, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4072,
+      "page": 112,
+      "text": "226. Opening case for prosecution.—When the accused appears or is brought before the Court in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4076,
+      "page": 112,
+      "text": "227. Discharge.—If, upon consideration of the record of the case and the documents submitted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4080,
+      "page": 112,
+      "text": "228. Framing of charge.—(1) If, after such consideration and hearing as aforesaid, the Judge is of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4092,
+      "page": 112,
+      "text": "1. Subs. by Act 25 of 2005, s. 21, for “Magistrate” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4093,
+      "page": 112,
+      "text": "2. Subs. by s. 21, ibid., for certain words (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4094,
+      "page": 112,
+      "text": "3. Subs. by s. 22, ibid., for certain words (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4117,
+      "page": 113,
+      "text": "229. Conviction on plea of guilty.—If the accused pleads guilty, the Judge shall record the plea and may, in his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4119,
+      "page": 113,
+      "text": "230. Date for prosecution evidence.—If the accused refuses to plead, or does not plead, or claims to be tried or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4123,
+      "page": 113,
+      "text": "231. Evidence for prosecution.—(1) On the date so fixed, the Judge shall proceed to take all such evidence as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4127,
+      "page": 113,
+      "text": "232. Acquittal.—If, after taking the evidence for the prosecution, examining the accused and hearing the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4130,
+      "page": 113,
+      "text": "233. Entering upon defence.—(1) Where the accused is not acquitted under section 232, he shall be called",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4138,
+      "page": 114,
+      "text": "234. Arguments.—When the examination of the witnesses (if any) for the defence is complete, the prosecutor",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4142,
+      "page": 114,
+      "text": "235. Judgment of acquittal or conviction.—(1) After hearing arguments and points of law (if any), the Judge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4146,
+      "page": 114,
+      "text": "236. Previous conviction.—In a case where a previous conviction is charged under the provisions of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4153,
+      "page": 114,
+      "text": "237. Procedure in cases instituted under section 199(2).—(1) A Court of Session taking cognizance of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4183,
+      "page": 115,
+      "text": "238. Compliance with section 207.—When, in any warrant-case instituted on a police report, the accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4186,
+      "page": 115,
+      "text": "239. When accused shall be discharged.—If, upon considering the police report and the documents sent with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4190,
+      "page": 115,
+      "text": "240. Framing of charge.—(1) If, upon such consideration, examination, if any, and hearing, the Magistrate is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4203,
+      "page": 115,
+      "text": "241. Conviction on plea of guilty.—If the accused pleads guilty, the Magistrate shall record the plea and may,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4205,
+      "page": 115,
+      "text": "242. Evidence for prosecution.—(1) If the accused refuses to plead or does not plead, or claims to be tried or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4216,
+      "page": 115,
+      "text": "243. Evidence for defence.—(1) The accused shall then be called upon to enter upon his defence and produce",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4226,
+      "page": 115,
+      "text": "1. Ins. by Act 5 of 2009, s.19 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4231,
+      "page": 116,
+      "text": "244. Evidence for prosecution.—(1) When, in any warrant-case instituted otherwise than on a police report,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4236,
+      "page": 116,
+      "text": "245. When accused shall be discharged.—(1) If, upon taking all the evidence referred to in section 244, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4250,
+      "page": 116,
+      "text": "246. Procedure where accused is not discharged.—(1) If, when such evidence has been taken, or at any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4266,
+      "page": 116,
+      "text": "247. Evidence for defence.—The accused shall then be called upon to enter upon his defence and produce his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4270,
+      "page": 117,
+      "text": "248. Acquittal or conviction.—(1) If, in any case under this Chapter in which a charge has been framed, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4282,
+      "page": 117,
+      "text": "249. Absence of complainant.—When the proceedings have been instituted upon complaint, and on any day",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4286,
+      "page": 117,
+      "text": "250. Compensation for accusation without reasonable cause.—(1) If, in any case instituted upon complaint",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4319,
+      "page": 118,
+      "text": "251. Substance of accusation to be stated.—When in a summons-case the accused appears or is brought",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4328,
+      "page": 118,
+      "text": "252. Conviction on plea of guilty.—If the accused pleads guilty, the Magistrate shall record the plea as nearly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4330,
+      "page": 118,
+      "text": "253. Conviction on plea of guilty in absence of accused in petty cases.—(1) Where a summons has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4339,
+      "page": 118,
+      "text": "254. Procedure when not convicted.—(1) If the Magistrate does not convict the accused under section 252 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4346,
+      "page": 118,
+      "text": "255. Acquittal or conviction.—(1) If the Magistrate, upon taking the evidence referred to in section 254 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4355,
+      "page": 119,
+      "text": "256. Non-appearance or death of complainant.—(1) If the summons has been issued on complaint, and on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4364,
+      "page": 119,
+      "text": "257. Withdrawal of complaint.—If a complainant, at any time before a final order is passed in any case under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4368,
+      "page": 119,
+      "text": "258. Power to stop proceedings in certain cases.—In any summons-case instituted otherwise than upon",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4374,
+      "page": 119,
+      "text": "259. Power of Court to convert summons-cases into warrant-cases.—When in the course of the trial of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4381,
+      "page": 119,
+      "text": "260. Power to try summarily.—(1) Notwithstanding anything contained in this Code—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4395,
+      "page": 119,
+      "text": "1. Subs. by Act 25 of 2005, s. 23, for “two hundred rupees” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4407,
+      "page": 120,
+      "text": "261. Summary trial by Magistrate of the second class.—The High Court may confer on any Magistrate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4411,
+      "page": 120,
+      "text": "262. Procedure for summary trials.—(1) In trials under this Chapter, the procedure specified in this Code for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4415,
+      "page": 120,
+      "text": "263. Record in summary trials.—In every case tried summarily, the Magistrate shall enter, in such form as the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4429,
+      "page": 120,
+      "text": "264. Judgment in cases tried summarily.—In every case tried summarily in which the accused does not plead",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4432,
+      "page": 120,
+      "text": "265. Language of record and judgment.—(1) Every such record and judgment shall be written in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4435,
+      "page": 120,
+      "text": "1. Subs. by Act 25 of 2005, s. 23, for “criminal intimidation” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4441,
+      "page": 121,
+      "text": "265A. Application of the Chapter.—(1) This Chapter shall apply in respect of an accused against whom—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4455,
+      "page": 121,
+      "text": "265B. Application for plea bargaining.—(1) A person accused of an offence may file an application for plea",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4475,
+      "page": 121,
+      "text": "265C. Guidelines for mutually satisfactory disposition.—In working out a mutually satisfactory disposition",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4477,
+      "page": 121,
+      "text": "1. Ins. by Act 2 of 2006, s. 4 (w.e.f. 5-7-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4493,
+      "page": 122,
+      "text": "265D. Report of the mutually satisfactory disposition to be submitted before the Court.—Where in a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4499,
+      "page": 122,
+      "text": "265E. Disposal of the case.—Where a satisfactory disposition of the case has been worked out under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4516,
+      "page": 122,
+      "text": "265F. Judgment of the Court.—The Court shall deliver its judgment in terms of section 265E in the open",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4518,
+      "page": 122,
+      "text": "265G. Finality of the judgment.—The judgment delivered by the Court under section 265G shall be final and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4521,
+      "page": 122,
+      "text": "265H. Power of the Court in plea bargaining.—A Court shall have, for the purposes of discharging its",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4529,
+      "page": 123,
+      "text": "265J. Savings.—The provisions of this Chapter shall have effect notwithstanding anything inconsistent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4534,
+      "page": 123,
+      "text": "265K. Statements of accused not to be used.—Notwithstanding anything contained in any law for the time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4537,
+      "page": 123,
+      "text": "265L. Non-application of the Chapter.—Nothing in this Chapter shall apply to any juvenile or child as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4541,
+      "page": 123,
+      "text": "266. Definitions.—In this Chapter,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4547,
+      "page": 123,
+      "text": "267. Power to require attendance of prisoners.—(1) Whenever, in the course of an inquiry, trial or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4560,
+      "page": 123,
+      "text": "268. Power of State Government to exclude certain persons from operation of section 267.—(1) The State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4573,
+      "page": 124,
+      "text": "269. Officer in charge of prison to abstain from carrying out order in certain contingencies.—Where the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4585,
+      "page": 124,
+      "text": "270. Prisoner to be brought to Court in custody.—Subject to the provisions of section 269, the officer in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4591,
+      "page": 124,
+      "text": "271. Power to issue commission for examination of witness in prison.—The provisions of this Chapter shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4599,
+      "page": 124,
+      "text": "272. Language of Courts.—The State Government may determine what shall be, for purposes of this Code, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4601,
+      "page": 124,
+      "text": "273. Evidence to be taken in presence of accused.—Except as otherwise expressly provided, all evidence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4617,
+      "page": 125,
+      "text": "274. Record in summons-cases and inquiries.—(1) In all summons-cases tried before a Magistrate, in all",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4624,
+      "page": 125,
+      "text": "275. Record in warrant-cases.—(1) In all warrant-cases tried before a Magistrate, the evidence of each witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4635,
+      "page": 125,
+      "text": "276. Record in trial before Court of Session.—(1) In all trials before a Court of Session, the evidence of each",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4642,
+      "page": 125,
+      "text": "277. Language of record of evidence.—In every case where evidence is taken down under section 275 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4645,
+      "page": 125,
+      "text": "1. Proviso ins. by Act 13 of 2013, s. 20 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4646,
+      "page": 125,
+      "text": "2. Ins. by Act 5 of 2009, s. 20 (w.e.f. 31-12-2009)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4647,
+      "page": 125,
+      "text": "3. Subs. by Act 45 of 1978, s. 20, for sub-section (2) (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4658,
+      "page": 126,
+      "text": "278. Procedure in regard to such evidence when completed.—(1) As the evidence of each witness taken",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4676,
+      "page": 126,
+      "text": "279. Interpretation of evidence to accused or his pleader.—(1) Whenever any evidence is given in a language",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4683,
+      "page": 126,
+      "text": "280. Remarks respecting demeanour of witness.—When a presiding Judge or Magistrate has recorded the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4686,
+      "page": 126,
+      "text": "281. Record of examination of accused.—(1) Whenever the accused is examined by a Metropolitan",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4711,
+      "page": 127,
+      "text": "282. Interpreter to be bound to interpret truthfully.—When the services of an interpreter are required",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4714,
+      "page": 127,
+      "text": "283. Record in High Court.—Every High Court may, by general rule, prescribe the manner in which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4718,
+      "page": 127,
+      "text": "284. When attendance of witness may be dispensed with and commission issued.—(1) Whenever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4730,
+      "page": 127,
+      "text": "285. Commission to whom to be issued.—(1) If the witness is within the territories to which this Code",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4740,
+      "page": 128,
+      "text": "286. Execution of commissions.—Upon receipt of the commission, the Chief Metropolitan Magistrate, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4744,
+      "page": 128,
+      "text": "287. Parties may examine witnesses.—(1) The parties to any proceeding under this Code in which a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4751,
+      "page": 128,
+      "text": "288. Return of commission.—(1) After any commission issued under section 284 has been duly executed, it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4758,
+      "page": 128,
+      "text": "289. Adjournment of proceeding.—In every case in which a commission is issued under section 284, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4761,
+      "page": 128,
+      "text": "290. Execution of foreign commissions.—(1) The provisions of section 286 and so much of section 287 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4764,
+      "page": 128,
+      "text": "284.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4771,
+      "page": 128,
+      "text": "291. Deposition of medical witness.—(1) The deposition of civil surgeon or other medical witness, taken and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4791,
+      "page": 129,
+      "text": "292. Evidence of officers of the Mint.—(1) Any document purporting to be a report under the hand of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4808,
+      "page": 129,
+      "text": "293. Reports of certain Government scientific experts.—(1) Any document purporting to be a report under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4815,
+      "page": 129,
+      "text": "1. Ins. by Act 25 of 2005, s. 24 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4816,
+      "page": 129,
+      "text": "2. Subs. by Act 2 of 2006, s. 5, for certain words (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4829,
+      "page": 130,
+      "text": "294. No formal proof of certain documents.—(1) Where any document is filed before any Court by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4838,
+      "page": 130,
+      "text": "295. Affidavit in proof of conduct of public servants.—When any application is made to any Court in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4842,
+      "page": 130,
+      "text": "296. Evidence of formal character on affidavit.—(1) The evidence of any person whose evidence is of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4847,
+      "page": 130,
+      "text": "297. Authorities before whom affidavits may be sworn.—(1) Affidavits to be used before any Court under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4856,
+      "page": 130,
+      "text": "1. Subs. by Act 25 of 2005, s. 26, for cl. (b) (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4857,
+      "page": 130,
+      "text": "2. Ins. by Act 45 of 1978, s. 21 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4858,
+      "page": 130,
+      "text": "3. Ins. by Act 25 of 2005, s. 26 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4859,
+      "page": 130,
+      "text": "4. Subs.  by Act 45 of 1978, s. 22,  for cl. (a)  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4861,
+      "page": 131,
+      "text": "298. Previous conviction or acquittal how proved.—In any inquiry, trial or other proceeding under this Code,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4871,
+      "page": 131,
+      "text": "299. Record of evidence in absence of accused.—(1) If it is proved that an accused person has absconded, and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4885,
+      "page": 131,
+      "text": "300. Person once convicted or acquitted not to be tried for same offence.—(1) A person who has once been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4902,
+      "page": 131,
+      "text": "1. Ins. by Act 45 of 1978, s. 23 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 4923,
+      "page": 132,
+      "text": "301. Appearance by Public Prosecutors.—(1) The Public Prosecutor or Assistant Public Prosecutor in charge",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4939,
+      "page": 132,
+      "text": "302. Permission to conduct prosecution.—(1) Any Magistrate inquiring into or trying a case may permit the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4947,
+      "page": 133,
+      "text": "303. Right of person against whom proceedings are instituted to be defended.—Any person accused of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4950,
+      "page": 133,
+      "text": "304. Legal aid to accused at State expense in certain cases.—(1) Where, in a trial before the Court of Session,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4961,
+      "page": 133,
+      "text": "305. Procedure when corporation or registered society is an accused.—(1) In this section, “corporation”",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 4981,
+      "page": 133,
+      "text": "306. Tender of pardon to accomplice.—(1) With a view to obtaining the evidence of any person supposed to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5011,
+      "page": 134,
+      "text": "307. Power to direct tender of pardon.—At any time after commitment of a case but before judgment is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5015,
+      "page": 134,
+      "text": "308. Trial of person not complying with conditions of pardon.—(1) Where, in regard to a person who has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5039,
+      "page": 135,
+      "text": "309. Power to postpone or adjourn proceedings.—1[(1) In every inquiry or trial the proceedings shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5061,
+      "page": 135,
+      "text": "1. Subs. by Act 13 of 2013, s. 21, for sub-section (1) (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5062,
+      "page": 135,
+      "text": "2. Subs. by Act 22 of 2018, s. 16, for “section 376A, section 376B, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5063,
+      "page": 135,
+      "text": "3. Ins. by Act 45 of 1978, s. 24 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5064,
+      "page": 135,
+      "text": "4. Ins. by Act 5 of 2009, s. 21 (w.e.f. 1-11-2010).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5088,
+      "page": 136,
+      "text": "310. Local inspection.—(1) Any Judge or Magistrate may, at any stage of any inquiry, trial or other proceeding,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5095,
+      "page": 136,
+      "text": "311. Power to summon material witness, or examine person present.—Any Court may, at any stage of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5104,
+      "page": 136,
+      "text": "1. Ins. by Act 25 of 2005, s. 27 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5109,
+      "page": 137,
+      "text": "312. Expenses of complainants and witnesses.—Subject to any rules made by the State Government, any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5113,
+      "page": 137,
+      "text": "313. Power to examine the accused.—(1) In every inquiry or trial, for the purpose of enabling the accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5130,
+      "page": 137,
+      "text": "314. Oral arguments and memorandum of arguments.—(1) Any party to a proceeding may, as soon as may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5139,
+      "page": 137,
+      "text": "315. Accused person to be competent witness.—(1) Any person accused of an offence before a Criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5147,
+      "page": 137,
+      "text": "1. Ins. by Act 5 of 2009, s. 22 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5155,
+      "page": 138,
+      "text": "316. No influence to be used to induce disclosure.—Except as provided in sections 306 and 307, no influence,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5158,
+      "page": 138,
+      "text": "317. Provision for inquiries and trial being held in the absence of accused in certain cases.—(1) At any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5173,
+      "page": 138,
+      "text": "318. Procedure where accused does not understand proceedings.—If the accused, though not of unsound",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5178,
+      "page": 138,
+      "text": "319. Power to proceed against other persons appearing to be guilty of offence.—(1) Where, in the course of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5191,
+      "page": 139,
+      "text": "320. Compounding of offences.—(1) The offences punishable under the sections of the Indian Penal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5264,
+      "page": 139,
+      "text": "1. Subs. by Act 5 of 2009, s. 23, for  the TABLE (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5464,
+      "page": 142,
+      "text": "1. Subs. by Act 5 of 2009, s. 23, for TABLE (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5508,
+      "page": 143,
+      "text": "1. Subs. by Act 5 of 2009, s. 23, for sub-section (3) (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5550,
+      "page": 144,
+      "text": " 321. Withdrawal from prosecution.—The Public Prosecutor or Assistant Public Prosecutor in charge of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5571,
+      "page": 145,
+      "text": "322. Procedure in cases which Magistrate cannot dispose of.—(1) If, in the course of any inquiry into an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5581,
+      "page": 145,
+      "text": "323. Procedure when, after commencement of inquiry or trial, Magistrate finds case should be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5586,
+      "page": 145,
+      "text": "324. Trial of persons previously convicted of offences against coinage, stamp-law or property.— (1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5597,
+      "page": 145,
+      "text": "325. Procedure when Magistrate cannot pass sentence sufficiently severe.—(1) Whenever a Magistrate is of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5606,
+      "page": 145,
+      "text": "1. Ins. by Act 45 of 1978, s. 26 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5611,
+      "page": 146,
+      "text": "326. Conviction or commitment on evidence partly recorded by one Magistrate and partly by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5625,
+      "page": 146,
+      "text": "327. Court to be open.—3[(1)] The place in which any Criminal Court is held for the purpose of inquiring into",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5641,
+      "page": 146,
+      "text": "1. Subs. by Act 45 of 1978, s. 27, for “Magistrate”  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5642,
+      "page": 146,
+      "text": "2. Subs. by s. 27, ibid., for “from one Magistrate to another Magistrate”(w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5643,
+      "page": 146,
+      "text": "3. S. 327 renumbered as sub-section (1) thereof by Act 43 of 1983, s. 4 (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5644,
+      "page": 146,
+      "text": "4. Ins. by Act 43 of 1983, s. 4 (w.e.f. 25-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5645,
+      "page": 146,
+      "text": "5. Subs. by Act 22 of 2018, s. 17, for “section 376A, section 376B, section 376C section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5646,
+      "page": 146,
+      "text": "6. Ins. by Act 5 of 2009, s. 24 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5659,
+      "page": 147,
+      "text": "328. Procedure in case of accused being lunatic.—(1) When a Magistrate holding an inquiry has reason to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5687,
+      "page": 147,
+      "text": "1. Ins. by Act 5 of 2009,  s. 25,  (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5688,
+      "page": 147,
+      "text": "2. Subs. by s. 25, ibid., for sub-section (3)  (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5693,
+      "page": 148,
+      "text": "329. Procedure in case of person of unsound mind tried before Court.—(1) If at the trial of any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5737,
+      "page": 148,
+      "text": "1. Ins. by Act 5 of 2009, s. 26 (w.e.f. 31-12-2009)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5738,
+      "page": 148,
+      "text": "2. Subs. by s. 26, ibid., for sub-section (2), (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5739,
+      "page": 148,
+      "text": "3. Subs. by s. 27, ibid., for section 330 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5749,
+      "page": 149,
+      "text": "331. Resumption of inquiry or trial.—(1) Whenever an inquiry or a trial is postponed under section 328 or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5756,
+      "page": 149,
+      "text": "332. Procedure on accused appearing before Magistrate or Court.—(1) If, when the accused appears or is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5763,
+      "page": 149,
+      "text": "333. When accused appears to have been of sound mind.—When the accused appears to be of sound mind at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5769,
+      "page": 149,
+      "text": "334. Judgment of acquittal on ground of unsoundness of mind.—Whenever any person is acquitted upon the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5773,
+      "page": 149,
+      "text": "335. Person acquitted on such ground to be detained in safe custody.—(1) Whenever the finding states that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5790,
+      "page": 150,
+      "text": "336. Power of State Government to empower officer-in-charge to discharge.—The State Government may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5793,
+      "page": 150,
+      "text": "337. Procedure where lunatic prisoner is reported capable of making his defence.—If such person is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5800,
+      "page": 150,
+      "text": "338. Procedure where lunatic detained is declared fit to be released.—(1) If such person is detained under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5808,
+      "page": 150,
+      "text": "339. Delivery of lunatic to care of relative or friend.—(1) Whenever any relative or friend of any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5826,
+      "page": 150,
+      "text": "340. Procedure in cases mentioned in section 195.—(1) When, upon an application made to it in this behalf or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5849,
+      "page": 151,
+      "text": "341. Appeal.—(1) Any person on whose application any Court other than a High Court has refused to make a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5857,
+      "page": 151,
+      "text": "342. Power to order costs.—Any Court dealing with an application made to it for filing a complaint under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5859,
+      "page": 151,
+      "text": "343. Procedure of Magistrate taking cognizance.—(1) A Magistrate to whom a complaint is made under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5865,
+      "page": 151,
+      "text": "344. Summary procedure for trial for giving false evidence.—(1) If, at the time of delivery of any judgment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5871,
+      "page": 151,
+      "text": "1. Subs. by Act 2 of 2006, s. 6, for clause (b) (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5885,
+      "page": 152,
+      "text": "345. Procedure in certain cases of contempt.—(1) When any such offence as is described in section 175,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5897,
+      "page": 152,
+      "text": "346.  Procedure where Court  considers that case should not be dealt with under section 345.—(1) If the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5907,
+      "page": 152,
+      "text": "347. When Registrar or Sub-Registrar to be deemed a Civil Court.—When the State Government so directs,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5910,
+      "page": 152,
+      "text": "348. Discharge of offender on submission of apology.—When any Court has under section 345 adjudged an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5915,
+      "page": 152,
+      "text": "349. Imprisonment or committal of person refusing to answer or produce document.—If any witness or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5918,
+      "page": 152,
+      "text": "1. The word “Indian” omitted by Act 56 of 1974, s. 3 and the Second Schedule (w.e.f. 20-12-1974).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 5926,
+      "page": 153,
+      "text": "350. Summary procedure for punishment for non-attendance by a witness in obedience to summons.—(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5936,
+      "page": 153,
+      "text": "351. Appeals from convictions under sections 344, 345, 349 and 350.—(1) Any person sentenced by any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5947,
+      "page": 153,
+      "text": "352. Certain Judges and Magistrates not to try certain offences when committed before themselves.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5954,
+      "page": 153,
+      "text": "353. Judgment.—(1) The judgment in every trial in any Criminal Court or original jurisdiction shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 5982,
+      "page": 154,
+      "text": "354. Language and contents of judgment.—(1) Except as otherwise expressly provided by this Code, every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6006,
+      "page": 155,
+      "text": "355. Metropolitan Magistrate's judgment.—Instead of recording a judgment in the manner hereinbefore",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6018,
+      "page": 155,
+      "text": "356. Order for notifying address of previously convicted offender.—(1) When any person, having been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6038,
+      "page": 155,
+      "text": "357. Order to pay compensation.—(1) When a Court imposes a sentence of fine or a sentence (including a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6042,
+      "page": 155,
+      "text": "1. Ins. by Act 25 of 2005, s. 29 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6154,
+      "page": 158,
+      "text": "357C. Treatment of victims.—All hospitals, public or private, whether run by the Central Government, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6159,
+      "page": 158,
+      "text": "358. Compensation to persons groundlessly arrested.—(1) Whenever any person causes a police officer to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6169,
+      "page": 158,
+      "text": "359. Order to pay costs in non-cognizable cases.—(1) Whenever any complaint of a non-cognizable offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6177,
+      "page": 158,
+      "text": "360. Order to release on probation of good conduct or after admonition.—(1) When any person not under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6178,
+      "page": 158,
+      "text": "1. Ins. by Act 5 of 2009, s. 28 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6179,
+      "page": 158,
+      "text": "2. Ins. by Act 13 of 2013, s. 23 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6180,
+      "page": 158,
+      "text": "3. Subs. by Act 22 of 2018, s. 18, for “under section 326A or section 376D of the Indian Penal Code (45 of 1860)” (w.e.f. 21-4-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6182,
+      "page": 158,
+      "text": "4. Subs. by s. 19, ibid., for “376A, 376B, 376C, 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6183,
+      "page": 158,
+      "text": "5. Subs. by Act 25 of 2005, s. 30, for “one hundred rupees” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6232,
+      "page": 160,
+      "text": "361. Special reasons to be recorded in certain cases.—Where in any case the Court could have dealt with,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6238,
+      "page": 160,
+      "text": "362. Court not to alter judgment.—Save as otherwise provided by this Code or by any other law for the time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6241,
+      "page": 160,
+      "text": "363. Copy of judgment to be given to the accused and other persons.—(1) When the accused is sentenced to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6268,
+      "page": 160,
+      "text": "364. Judgment when to be translated.—The original judgment shall be filed with the record of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6271,
+      "page": 160,
+      "text": "365. Court of Session to send copy of finding and sentence to District Magistrate.—In cases tried by the Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6277,
+      "page": 161,
+      "text": "366. Sentence of death to be submitted by Court of Session for confirmation.—(1) When the Court of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6281,
+      "page": 161,
+      "text": "367. Power to direct further inquiry to be made or additional evidence to be taken.—(1) If, when such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6289,
+      "page": 161,
+      "text": "368. Power of High Court to confirm sentence or annul conviction.—In any case submitted under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6297,
+      "page": 161,
+      "text": "369. Confirmation or new sentence to be signed by two Judges.—In every case so submitted, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6300,
+      "page": 161,
+      "text": "370. Procedure in case of difference of opinion.—Where any such case is heard before a Bench of Judges and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6302,
+      "page": 161,
+      "text": "371. Procedure in cases submitted to High Court for confirmation.—In cases submitted by the Court of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6308,
+      "page": 161,
+      "text": "372. No appeal to lie unless otherwise provided.—No appeal shall lie from any judgment or order of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6314,
+      "page": 162,
+      "text": "373. Appeal from orders requiring security or refusal to accept or rejecting surety for keeping peace or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6321,
+      "page": 162,
+      "text": "374. Appeals from convictions.—(1) Any person convicted on a trial held by a High Court in its extraordinary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6342,
+      "page": 162,
+      "text": "375. No appeal in certain cases when accused pleads guilty.—Notwithstanding anything contained in section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6347,
+      "page": 162,
+      "text": "1. Ins. by Act 5 of 2009, s. 29 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6348,
+      "page": 162,
+      "text": "2. Subs. by Act 45 of 1978, s. 28, for “has been passed”  (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6349,
+      "page": 162,
+      "text": "3. Ins. by Act 22 of 2018, s. 20 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6351,
+      "page": 163,
+      "text": "376. No appeal in petty cases.—Notwithstanding anything contained in section 374, there shall be no appeal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6367,
+      "page": 163,
+      "text": "377. Appeal by the State Government against sentence.—(1) Save as otherwise provided in sub-section (2),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6386,
+      "page": 163,
+      "text": "378. Appeal in case of acquittal.—5[(1) Save as otherwise provided in sub-section (2), and subject to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6389,
+      "page": 163,
+      "text": "1. Subs. by Act 25 of 2005, s. 31, for certain words (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6390,
+      "page": 163,
+      "text": "2. Subs. by Act 45 of 1978, s. 29, for certain words (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6391,
+      "page": 163,
+      "text": "3. Subs. by s. 31, ibid., for “the High Court” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6392,
+      "page": 163,
+      "text": "4. Subs. by Act 22 of 2018, s. 21 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6393,
+      "page": 163,
+      "text": "5. Subs. by Act 25 of 2005, s. 32, for sub-section (1) (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6419,
+      "page": 164,
+      "text": "379. Appeal against conviction by High Court in certain cases.—Where the High Court has, on appeal,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6422,
+      "page": 164,
+      "text": "380. Special right of appeal in certain cases.—Notwithstanding anything contained in this Chapter, when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6425,
+      "page": 164,
+      "text": "381. Appeal to Court of Session how heard.—(1) Subject to the provisions of sub-section (2), an appeal to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6432,
+      "page": 164,
+      "text": "382. Petition of appeal.—Every appeal shall be made in the form of a petition in writing presented by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6435,
+      "page": 164,
+      "text": "1. Subs. by Act 25 of 2005, s. 32, for certain words (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6436,
+      "page": 164,
+      "text": "2. Subs. by s. 32, ibid., for “No appeal” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6462,
+      "page": 165,
+      "text": "383. Procedure when appellant in jail.—If the appellant is in jail, he may present his petition of appeal and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6473,
+      "page": 165,
+      "text": "384. Summary dismissal of appeal.—(1) If upon examining the petition of appeal and copy of the judgment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6494,
+      "page": 166,
+      "text": "385. Procedure for hearing appeals not dismissed summarily.—(1) If the Appellate Court does not dismiss",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6507,
+      "page": 166,
+      "text": "386. Powers of the Appellate Court.—After perusing such record and hearing the appellant or his pleader, if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6534,
+      "page": 167,
+      "text": "387. Judgments of Subordinate Appellate Court.—The rules contained in Chapter XXVII as to the judgment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6539,
+      "page": 167,
+      "text": "388. Order of High Court on appeal to be certified to lower Court.—(1) Whenever a case is decided on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6548,
+      "page": 167,
+      "text": "389. Suspension of sentence pending the appeal; release of appellant on bail.—(1) Pending any appeal by a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6561,
+      "page": 167,
+      "text": "1. Ins. by Act 25 of 2005, s. 33 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6570,
+      "page": 168,
+      "text": "390. Arrest of accused in appeal from acquittal.—When an appeal is presented under section 378, the High",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6574,
+      "page": 168,
+      "text": "391. Appellate Court may take further evidence or direct it to be taken.—(1) In dealing with any appeal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6583,
+      "page": 168,
+      "text": "392. Procedure where Judges of Court of Appeal are equally divided.—When an appeal under this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6589,
+      "page": 168,
+      "text": "393. Finality of judgments and orders on appeal.—Judgments and orders passed by an Appellate Court upon",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6596,
+      "page": 168,
+      "text": "394. Abatement of appeals.—(1) Every other appeal under section 377 or section 378 shall finally abate on the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6608,
+      "page": 169,
+      "text": "395. Reference to High Court.—(1) Where any Court is satisfied that a case pending before it involves a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6622,
+      "page": 169,
+      "text": "396. Disposal of case according to decision of High Court.—(1) When a question has been so referred, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6626,
+      "page": 169,
+      "text": "397. Calling for records to exercise powers of revision.—(1) The High Court or any Sessions Judge may call",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6639,
+      "page": 169,
+      "text": "398. Power to order inquiry.—On examining any record under section 397 or otherwise, the High Court or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6647,
+      "page": 169,
+      "text": "399. Sessions Judge's powers of revision.—(1) In the case of any proceeding the record of which has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6657,
+      "page": 170,
+      "text": "400. Power of Additional Sessions Judge.—An Additional Sessions Judge shall have and may exercise all the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6660,
+      "page": 170,
+      "text": "401. High Court's powers of revision.—(1) In the case of any proceeding the record of which has been called",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6675,
+      "page": 170,
+      "text": "402. Power of High Court to withdraw or transfer revision cases.—(1) Whenever one or more persons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6690,
+      "page": 170,
+      "text": "403. Option of Court to hear parties.—Save as otherwise expressly provided by this Code, no party has any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6694,
+      "page": 171,
+      "text": "404. Statement by Metropolitan Magistrate of grounds of his decision to be considered by High Court.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6699,
+      "page": 171,
+      "text": "405. High Court's order to be certified to lower Court.—When a case is revised under this Chapter by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6706,
+      "page": 171,
+      "text": "406. Power of Supreme Court to transfer cases and appeals.—(1) Whenever it is made to appear to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6717,
+      "page": 171,
+      "text": "407. Power of High Court to transfer cases and appeals.—(1) Whenever it is made to appear to the High",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6758,
+      "page": 172,
+      "text": "408. Power of Sessions Judge to transfer cases and appeals.—(1) Whenever it is made to appear to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6775,
+      "page": 173,
+      "text": "409. Withdrawal of cases and appeals by Session Judge.—(1) A Sessions Judge may withdraw any case or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6788,
+      "page": 173,
+      "text": "409. Appeals to Court of Section how heard.—An appeal to the Court of Session or Sessions Judge shall",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 6793,
+      "page": 173,
+      "text": "410. Withdrawal of cases by Judicial Magistrate.—(1) Any Chief Judicial Magistrate may withdraw any case",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6799,
+      "page": 173,
+      "text": "411. Making over or withdrawal of cases by Executive Magistrates.—Any District Magistrate or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6805,
+      "page": 173,
+      "text": "412. Reasons to be recorded.—A Sessions Judge or Magistrate making an order under section 408, section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6810,
+      "page": 173,
+      "text": "413. Execution of order passed under section 368.—When in a case submitted to the High Court for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6814,
+      "page": 173,
+      "text": "414. Execution of sentence of death passed by High Court.—When a sentence of death is passed by the High",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6818,
+      "page": 174,
+      "text": "415. Postponement of execution of sentence of death in case of appeal to Supreme Court.—(1) Where a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6832,
+      "page": 174,
+      "text": "416. Postponement of capital sentence on pregnant woman.—If a woman sentenced to death is found to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6835,
+      "page": 174,
+      "text": "417. Power to appoint place of imprisonment.—(1) Except when otherwise provided by any law for the time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6849,
+      "page": 174,
+      "text": "418. Execution of sentence of imprisonment.—(1) Where the accused is sentenced to imprisonment for life or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6858,
+      "page": 174,
+      "text": "1. Certain words omitted by Act 5 of 2009, s. 30 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6861,
+      "page": 175,
+      "text": "419. Direction of warrant for execution.—Every warrant for the execution of a sentence of imprisonment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6863,
+      "page": 175,
+      "text": "420. Warrant with whom to be lodged.—When the prisoner is to be confined in a jail, the warrant shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6866,
+      "page": 175,
+      "text": "421. Warrant for levy of fine.—(1) When an offender has been sentenced to pay a fine, the Court passing the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6883,
+      "page": 175,
+      "text": "422. Effect of such warrant.—A warrant issued under clause (a) of sub-section (1) of section 421 by any Court",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6887,
+      "page": 175,
+      "text": "423. Warrant for levy of fine issued by a Court in any territory to which this Code does not extend.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6895,
+      "page": 175,
+      "text": "424. Suspension of execution of sentence of imprisonment.—(1) When an offender has been sentenced to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6913,
+      "page": 176,
+      "text": "425. Who may issue warrant.—Every warrant for the execution of a sentence may be issued either by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6915,
+      "page": 176,
+      "text": "426. Sentence on escaped convict when to take effect.—(1) When a sentence of death, imprisonment for life",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6926,
+      "page": 176,
+      "text": "427. Sentence on offender already sentenced for another offence.—(1) When a person already undergoing a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6937,
+      "page": 176,
+      "text": "428. Period of detention undergone by the accused to be set off against the sentence of imprisonment.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6945,
+      "page": 176,
+      "text": "1. Ins. by Act 45 of 1978, s. 31  (w.e.f.18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6946,
+      "page": 176,
+      "text": "2. Ins. by Act 25 of 2005, s. 34 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 6948,
+      "page": 177,
+      "text": "429. Saving.—(1) Nothing in section 426 or section 427 shall be held to excuse any person from any part of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6954,
+      "page": 177,
+      "text": "430. Return of warrant on execution of sentence.—When a sentence has been fully executed, the officer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6957,
+      "page": 177,
+      "text": "431. Money ordered to be paid recoverable as a fine.—Any money (other than a fine) payable by virtue of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6964,
+      "page": 177,
+      "text": "432. Power to suspend or remit sentences.—(1) When any person has been sentenced to punishment for an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 6997,
+      "page": 178,
+      "text": "433. Power to commute sentence.—The appropriate Government may, without the consent of the person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7010,
+      "page": 178,
+      "text": "434. Concurrent power of Central Government in case of death sentences.—The powers conferred by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7013,
+      "page": 178,
+      "text": "435. State Government to act after consultation with Central Government in certain cases.—(1) The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7030,
+      "page": 178,
+      "text": "1. Ins. by Act 45 of 1978, s. 32   (w.e.f.18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7034,
+      "page": 179,
+      "text": "436. In what cases bail to be taken.—(1) When any person other than a person accused of a non-bailable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7063,
+      "page": 179,
+      "text": "437. When bail may be taken in case of non-bailable offence.—5[(1) When any person accused of, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7071,
+      "page": 179,
+      "text": "1. Subs. by Act 25 of 2005, s. 35, for certain words (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7072,
+      "page": 179,
+      "text": "2. Ins. by s. 35, ibid. (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7073,
+      "page": 179,
+      "text": "3. Ins. by Act 63 of 1980, s. 4 (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7074,
+      "page": 179,
+      "text": "4. Ins. by Act 25 of 2005, s. 36 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7075,
+      "page": 179,
+      "text": "5. Subs. by Act 63 of 1980, s. 5, for sub-section (1) (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7113,
+      "page": 180,
+      "text": "1. Subs. by Act 25 of 2005, s. 37, for “a non-bailable and cognizable offence” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7114,
+      "page": 180,
+      "text": "2. Ins. by s. 37, ibid. (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7115,
+      "page": 180,
+      "text": "3. Subs. by Act 63 of 1980, s. 5, for certain words (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7116,
+      "page": 180,
+      "text": "4.  Subs. by Act 25 of 2005, s. 37, for certain words (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7117,
+      "page": 180,
+      "text": "5. Subs. by Act  63 of 1980, s. 5,  for “reasons”  (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7129,
+      "page": 181,
+      "text": "438. Direction for grant of bail to person apprehending arrest.—(1) When any person has reason to believe",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7155,
+      "page": 181,
+      "text": "1. Ins. by Act 5 of 2009, s. 31 (w.e.f. 31-12-2009)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7156,
+      "page": 181,
+      "text": "2. Ins. by Act 22 of 2018, s. 22 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7181,
+      "page": 182,
+      "text": "439. Special powers of High Court or Court of Session regarding bail.—(1) A High Court or Court of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7196,
+      "page": 182,
+      "text": "1.  Ins. by Act 22 of 2018,  s. 23 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7223,
+      "page": 183,
+      "text": "440. Amount of bond and reduction thereof.—(1) The amount of every bond executed under this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7227,
+      "page": 183,
+      "text": "441. Bond of accused and sureties.—(1) Before any person is released on bail or released on his own bond, a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7234,
+      "page": 183,
+      "text": "1. Ins. by Act 22 of 2018,  s. 23 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7253,
+      "page": 184,
+      "text": "442. Discharge from custody.—(1) As soon as the bond has been executed, the person for whose appearance it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7258,
+      "page": 184,
+      "text": "443. Power to order sufficient bail when that first taken is insufficient.—If, through mistake, fraud or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7262,
+      "page": 184,
+      "text": "444. Discharge of sureties.—(1) All or any sureties for the attendance and appearance of a person released on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7273,
+      "page": 184,
+      "text": "1. Ins. by Act 25 of 2005, s. 39 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7285,
+      "page": 185,
+      "text": "445. Deposit instead of recognizance.—When any person is required by any Court or officer to execute a bond",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7295,
+      "page": 185,
+      "text": "446. Procedure when bond has been forfeited.—(1) Where a bond under this Code is for appearance, or for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7312,
+      "page": 185,
+      "text": "1. Added by Act 63 of 1980, s. 6 (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7313,
+      "page": 185,
+      "text": "2. Subs. by Act 25 of 2005, s. 40, for “at its discretion” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7334,
+      "page": 186,
+      "text": "447. Procedure in case of insolvency of death of surety or when a bond is forfeited.—When any surety to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7340,
+      "page": 186,
+      "text": "448. Bond required from minor.—When the person required by any Court, or officer to execute a bond is a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7342,
+      "page": 186,
+      "text": "449. Appeal from orders under section 446.—All orders passed under section 446 shall be appealable,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7346,
+      "page": 186,
+      "text": "450. Power to direct levy of amount due on certain recognizances.—The High Court or Court of Sessions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7351,
+      "page": 186,
+      "text": "451. Order for custody and disposal of property pending trial in certain cases.—When any property is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7356,
+      "page": 186,
+      "text": "1. Ins. by Act 63 of 1980, s. 7 (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7362,
+      "page": 187,
+      "text": "452. Order for disposal of property at conclusion of trial.—(1) When an inquiry or trial in any Criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7381,
+      "page": 187,
+      "text": "453. Payment to innocent purchaser of money found on accused.—When any person is convicted of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7387,
+      "page": 187,
+      "text": "454. Appeal against orders under section 452 or section 453.—(1) Any person aggrieved by an order made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7394,
+      "page": 187,
+      "text": "455. Destruction of libellous and other matter.—(1) On a conviction under section 292, section 293, section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7401,
+      "page": 187,
+      "text": "456. Power to restore possession of immovable property.—(1) When a person is convicted of an offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7415,
+      "page": 188,
+      "text": "457. Procedure by police upon seizure of property.—(1) Whenever the seizure of property by any police",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7425,
+      "page": 188,
+      "text": "458. Procedure where no claimant appears within six months.—(1) If no person within such period",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7432,
+      "page": 188,
+      "text": "459. Power to sell perishable property.—If the person entitled to the possession of such property is unknown",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7439,
+      "page": 188,
+      "text": "460. Irregularities which do not vitiate proceedings.—If any Magistrate not empowered by law to do any of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7448,
+      "page": 188,
+      "text": "1. Subs. by Act 25 of 2005, s. 41, for “less than ten rupees” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7455,
+      "page": 189,
+      "text": "461. Irregularities which vitiate proceedings.—If any Magistrate, not being empowered by law in this behalf,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7476,
+      "page": 189,
+      "text": "462. Proceedings in wrong place.—No finding, sentence or order of any Criminal Court shall be set aside",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7480,
+      "page": 189,
+      "text": "463. Non-compliance with provisions of section 164 or section 281.—(1) If any Court before which a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7489,
+      "page": 190,
+      "text": "464. Effect of omission to frame, or absence of, or error in, charge.—(1) No finding, sentence or order by a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7501,
+      "page": 190,
+      "text": "465. Finding or sentence when reversible by reason of error, omission or irregularity.—(1) Subject to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7510,
+      "page": 190,
+      "text": "466. Defect or error not to make attachment unlawful.—No attachment made under this Code shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7515,
+      "page": 190,
+      "text": "467. Definitions.—For the purposes of this Chapter, unless the context otherwise requires, “period of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7517,
+      "page": 190,
+      "text": "468. Bar to taking cognizance after lapse of the period of limitation.—(1) Except as otherwise provided",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7527,
+      "page": 190,
+      "text": "1. Provisions of this Chapter shall not apply to certain economic offences, see the Economic Offences (Inapplicability of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7529,
+      "page": 190,
+      "text": "2. Ins. by Act 45 of 1978, s. 33  (w.e.f. 18.12.1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7532,
+      "page": 191,
+      "text": "469. Commencement of the period of limitation.—(1) The period of limitation, in relation to an offender,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7542,
+      "page": 191,
+      "text": "470. Exclusion of time in certain cases.—(1) In computing the period of limitation, the time during",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7563,
+      "page": 191,
+      "text": "471. Exclusion of date on which Court is closed.—Where the period of limitation expires on a day when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7567,
+      "page": 191,
+      "text": "472. Continuing offence.—In the case of a continuing offence, a fresh period of limitation shall begin to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7570,
+      "page": 192,
+      "text": "473. Extension of period of limitation in certain cases.—Notwithstanding anything contained in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7576,
+      "page": 192,
+      "text": " 474. Trials before High Courts.—When an offence is tried by the High Court otherwise than under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7579,
+      "page": 192,
+      "text": "475. Delivery to commanding officers of persons liable to be tried by Court-martial.—(1) The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7598,
+      "page": 192,
+      "text": "476. Forms.—Subject to the power conferred by article 227 of the Constitution, the forms set forth in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7601,
+      "page": 192,
+      "text": "477. Power of High Court to make rules.—(1) Every High Court may, with the previous approval of the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7621,
+      "page": 193,
+      "text": "479. Case in which Judge or Magistrate is personally interested.—No Judge or Magistrate shall, except with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7629,
+      "page": 193,
+      "text": "480. Practising pleader not to sit as Magistrate in certain Courts.—No pleader who practises in the Court of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7640,
+      "page": 193,
+      "text": "481. Public servant concerned in sale not to purchase or bid for property.—A public servant having any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7643,
+      "page": 193,
+      "text": "482. Saving of inherent powers of High Court.—Nothing in this Code shall be deemed to limit or affect the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7644,
+      "page": 193,
+      "text": "1. Subs. by Act 63 of 1980, s. 8, for s. 478 (w.e.f. 23-9-1980).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 7648,
+      "page": 194,
+      "text": "483. Duty of High Court to exercise continuous superintendence over Courts of Judicial Magistrates.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 7651,
+      "page": 194,
+      "text": "484. Repeal and savings.—(1) The Code of Criminal Procedure, 1898 (5 of 1898), is hereby repealed.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 8011,
+      "page": 197,
+      "text": "126.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8513,
+      "page": 199,
+      "text": "1. Ins. by Act 13 of 2013, s. 24 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8672,
+      "page": 200,
+      "text": "1.  Ins. by Act 25 of 2005, s. 42 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 8673,
+      "page": 200,
+      "text": "2.  Subs. by s. 42, ibid., for the word “Ditto”, for the respective entries in column 4 and 5 relating to s.175  (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9013,
+      "page": 202,
+      "text": "1.  Ins. by Act 2 of 2006, s. 7 (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9014,
+      "page": 202,
+      "text": "2.  Subs. by s. 7, ibid. for the word “Ditto”, occurring in column 4 relating to s.196  (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9540,
+      "page": 205,
+      "text": "1.  Ins. by Act 43 of 1983, s. 5 (w.e.f. 25.12.1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9541,
+      "page": 205,
+      "text": "2.  Ins. by Act 25 of 2005, s. 42 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 9919,
+      "page": 207,
+      "text": "1.  Subs. by Act 25 of 2005, s. 42(f)(i),  for the word “Ditto”, occurring  in column 5 relating to s. 274  (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10253,
+      "page": 209,
+      "text": "1.  Ins. by Act 43 of 1986, s. 11 (w.e.f. 19.11.1986).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10486,
+      "page": 210,
+      "text": "1. Ins. by Act 13 of 2013, s. 24 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10487,
+      "page": 210,
+      "text": "2. Subs. by Act 25 of 2005, s. 42(f)(v), occurring in column 5, relating to s. 332, for  “Bailable” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10488,
+      "page": 210,
+      "text": "3. Subs. by  s. 42(f)(vi), ibid., occurring in column 5, relating to s. 333, for “Non-bailable”, (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10751,
+      "page": 211,
+      "text": "1. Subs. by Act 25 of 2005, s. 42 (f) (vii), occurring in column 5, relating to s. 353, for “Ditto” (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10752,
+      "page": 211,
+      "text": "2. Subs. by Act 13 of 2013, s. 24, for entry relating to s. 354 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10927,
+      "page": 212,
+      "text": "1. Ins. by Act 42 of 1993, s. 4, (w.e.f. 22-5-1993).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 10928,
+      "page": 212,
+      "text": "2. Subs. by Act 13 of 2013, s. 24, for entries relating to s. 370 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 11056,
+      "page": 213,
+      "text": "1. Subs. by Act 13 of 2013, s. 24, for entries relating to ss. 376, 376A, 376B, 376C and 376D (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 11057,
+      "page": 213,
+      "text": "2. Subs. by Act 22 of 2018, s. 24, for entry 376 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 11058,
+      "page": 213,
+      "text": "3. Ins. by s. 24, ibid.  (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 11189,
+      "page": 214,
+      "text": "1. Ins. by Act 22 of 2018, s. 24 (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 11190,
+      "page": 214,
+      "text": "2.  Subs. by Act 30 of 2001, s. 3 and the Second Sch., for  the entries relating to s. 377 (w.e.f. 3-9-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 12431,
+      "page": 221,
+      "text": "1.  Ins. by Act 46 of 1983, s. 6 (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 12582,
+      "page": 222,
+      "text": "1. Subs. by Act 13 of 2013, s. 24, for the word “Simple imprisonment for 1 year, or fine, or both,” occurring made in column 3,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 12919,
+      "page": 226,
+      "text": "1.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 12927,
+      "page": 226,
+      "text": "2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 13871,
+      "page": 246,
+      "text": "1. Subs. by Act 45 of 1978, s. 35, for “MAGISTRATE”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 13872,
+      "page": 246,
+      "text": "2. Subs. by s. 35, ibid, for “(See sections 248 and 355)” (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14053,
+      "page": 250,
+      "text": "1. Subs. by Act 45 of 1978, s. 35 for “(See section 386)” (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14054,
+      "page": 250,
+      "text": "2. Subs. by s. 35, ibid., for “(See section 414)” (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14143,
+      "page": 252,
+      "text": "1. Ins. by Act 45 of 1978, s. 35 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14144,
+      "page": 252,
+      "text": "2. Ins. by Act 25 of 2005, s. 43 (w.e.f. 23-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14145,
+      "page": 252,
+      "text": "3. Ins. by Act 5 of 2009, s. 32 (w.e.f. 31-12-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14183,
+      "page": 253,
+      "text": "1. Ins. by Act 45 of 1978, s. 35 (w.e.f. 18-12-1978).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14382,
+      "page": 259,
+      "text": "1. Short title and commencement.—(1) This Act may be called the Code of Criminal Procedure",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14388,
+      "page": 259,
+      "text": "16. Insertion of new section 144A.—In Chapter X of the principal Act, under sub-heading",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 14410,
+      "page": 259,
+      "text": "1. Ins. by Act 25 of 2006, s. 2 (w.e.f. 2-6-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14431,
+      "page": 260,
+      "text": "28. Amendment of section 320.—In section 320 of the principal Act, in the Table under sub-section",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 14438,
+      "page": 260,
+      "text": "38. Amendment of section 438.—In section 438 of the principal Act, for sub-section (1), the",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 14459,
+      "page": 260,
+      "text": "1. S. 25 omitted by Act 2 of 2006, s. 8 (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 14465,
+      "page": 261,
+      "text": "42. Amendment of the First Schedule.—In the First Schedule to the principal Act, under the",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 14492,
+      "page": 261,
+      "text": "44. Amendment of Act 45 of 1860.—In the Indian Penal Code,—",
+      "cls": "UNKNOWN",
+      "label": null
+    }
+  ]
+}

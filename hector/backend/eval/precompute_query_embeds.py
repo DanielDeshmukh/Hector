@@ -46,6 +46,8 @@ GOLD = {
     "bns": os.path.join(SCRIPT_DIR, "gold_bns.jsonl"),
     "bnss": os.path.join(SCRIPT_DIR, "gold_bnss.jsonl"),
     "bsa": os.path.join(SCRIPT_DIR, "gold_bsa.jsonl"),
+    "iea": os.path.join(SCRIPT_DIR, "gold_iea.jsonl"),
+    "crpc": os.path.join(SCRIPT_DIR, "gold_crpc.jsonl"),
 }
 EMBED_CACHE = os.path.join(SCRIPT_DIR, "query_embeds.npz")
 EMBED_MODEL = "nvidia/nemotron-3-embed-1b"  # hybrid_retriever.EMBED_NIM_MODEL

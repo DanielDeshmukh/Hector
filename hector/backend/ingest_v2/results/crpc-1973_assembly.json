@@ -1,0 +1,127 @@
+{
+  "act_id": "crpc-1973",
+  "page_spanning_total": 132,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 21,
+      "page_end": 23,
+      "joins": [
+        {
+          "from_page": 21,
+          "to_page": 22,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "r in writing to a Magistrate, with a view to his\ntaking action under this Code, that some person, whether known or unknown, has committed an",
+          "after_head": "offence, but does not include a police report.\nExplanation.—A report made by a police officer in a case which discloses, after investigation"
+        },
+        {
+          "from_page": 22,
+          "to_page": 23,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " or specially by the State\nGovernment, to be a police station, and includes any local area specified by the State Government in\nthis behalf;",
+          "after_head": "(t) “prescribed” means prescribed by rules made under this Code;\n(u) “Public Prosecutor” means any person appointed under section 24, and in"
+        },
+        {
+          "from_page": 23,
+          "to_page": 23,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": " used herein and not defined but defined in the Indian Penal Code\n(45 of 1860) have the meanings respectively assigned to them in that Code.",
+          "after_head": "Haryana\nIn section 2, for the words “State of Haryana”, the words “Union territory of Chandigarh” shall be\nsubstituted.\n[Vide Notification N"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "page_start": 23,
+      "page_end": 24,
+      "joins": [
+        {
+          "from_page": 23,
+          "to_page": 24,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "cement of this Code,—\n(a) to a Magistrate of the first class, shall be construed as a reference to a Judicial Magistrate of\nthe first class;",
+          "after_head": "(b) to a Magistrate of the second class or of the third class, shall be construed as a reference to a\nJudicial Magistrate of the second clas"
+        },
+        {
+          "from_page": 24,
+          "to_page": 24,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "e, sanctioning a prosecution or withdrawing from a prosecution,\nthey shall, subject as aforesaid, be exercisable by an Executive Magistrate.",
+          "after_head": "Andaman and Nicobar Islands (U.T.).\nInsertion of New section 3A. —In the Code, as it applies to the Union territory of Andaman and\nNicobar I"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "page_start": 25,
+      "page_end": 26,
+      "joins": [
+        {
+          "from_page": 25,
+          "to_page": 26,
+          "removed_labels": [
+            "header",
+            "page_number"
+          ],
+          "before_tail": " expression “population” means the population as\nascertained at the last preceding census of which the relevant figures have been published.",
+          "after_head": "Delhi\nIn its application to the National Capital Territory of Delhi, in section 8,—\n(a) in sub-section (1), for the words “a city or town”, "
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "page_start": 26,
+      "page_end": 27,
+      "joins": [
+        {
+          "from_page": 26,
+          "to_page": 26,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "th the affairs of\nthe Union or of a State, where under any law, such appointment, posting or promotion is required to be\nmade by Government.",
+          "after_head": "West Bengal.—\nTo sub-section (3) of section 9 of the principal Act, the following provisos shall be added:—\nProvided that notwithstanding an"
+        },
+        {
+          "from_page": 26,
+          "to_page": 27,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "d, wherein the headquarters of\nthe Sessions Judges are situated, exercising jurisdiction in a Court of Session, shall have all the powers of",
+          "after_head": "the Sessions Judge under this Code, in respect of the cases and proceedings in the Criminal Courts in that\nsub-division, for the purposes of"
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "page_start": 27,
+      "page_end": 28,
+      "joins": [
+        {
+          "from_page": 27,
+          "to_page": 28,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ied in this section as\noccasion requires.\n(b) Subject to the general control of the Chief Judicial Magistrate, every Sub-divisional Judicial",
+          "after_head": "Magistrate shall also have and exercise, such powers of supervision and control over the work of the\nJudicial Magistrates (other than Additi"
+        }
+      ]
+    }
+  ]
+}

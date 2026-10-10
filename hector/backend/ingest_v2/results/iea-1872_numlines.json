@@ -1,0 +1,2316 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 185,
+    "UNKNOWN": 2,
+    "footnote": 144
+  },
+  "labels": {
+    "header": 34,
+    "boilerplate": 53,
+    "footnote": 166,
+    "page_number": 53
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 1777,
+      "page": 50,
+      "text": "114B. Presumption as to offences committed under section 354, section 354A, section 354B, section",
+      "context": [
+        "Insertion of new Section 114B.––After section 114A of the Indian Evidence Act, the following",
+        "shall be inserted, namely:––",
+        "114B. Presumption as to offences committed under section 354, section 354A, section 354B, section",
+        "354C, section 354D, section 509, section 509A or section 509B of the Indian Penal Code, 1860. When t",
+        "question is whether a person has committed an offence under Section 354, section 354A, section 354B,"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 1368,
+      "page": 40,
+      "text": "9. The words “Her Majesty or of” omitted by A.O. 1950.",
+      "cls": "footnote"
+    },
+    {
+      "line": 37,
+      "page": 9,
+      "text": "3. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule (w.e.f. 31-10-",
+      "cls": "footnote"
+    },
+    {
+      "line": 92,
+      "page": 10,
+      "text": "3. Cf. definition of “writing” in the General Clauses Act, 1897 (10 of 1897), s. 3(65) (w.e.f 11-3-1897).",
+      "cls": "footnote"
+    },
+    {
+      "line": 31,
+      "page": 9,
+      "text": "1.  The Act has been extended to Goa, Daman and Diu by Reg. 11 of 1963, s. 3 and Schedule (w.e.f. 1-6-1964), extended to and",
+      "cls": "footnote"
+    },
+    {
+      "line": 90,
+      "page": 10,
+      "text": "2. Cf. the Indian Penal Code (Act 45 of 1860), s. 29 (w.e.f. 1-5-1861) and the General Clauses Act, 1897 (10 of 1897), s. 3 (18)",
+      "cls": "footnote"
+    },
+    {
+      "line": 2021,
+      "page": 55,
+      "text": "1. As to the Application of s. 145 to police-diaries, see the Code of Criminal Procedure, 1973 (2 of 1974), s. 172.",
+      "cls": "footnote"
+    },
+    {
+      "line": 137,
+      "page": 11,
+      "text": "4. Subs. by s. 52, ibid., for “Digital Signature Certificate” (w.e.f. 27-10-2009).",
+      "cls": "footnote"
+    },
+    {
+      "line": 934,
+      "page": 30,
+      "text": "5. Subs. by the A. O. 1950, for clause (1).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1364,
+      "page": 40,
+      "text": "5. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote"
+    },
+    {
+      "line": 718,
+      "page": 25,
+      "text": "8. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for “s. 39” (w.e.f. 17-10-2000).",
+      "cls": "footnote"
+    },
+    {
+      "line": 970,
+      "page": 31,
+      "text": "2. Subs. ibid., for “her Majesty’s”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2200,
+      "page": 59,
+      "text": "1. As to the application of s. 161 to police diaries, see the Code of Criminal Procedure, 1973 (Act 2 of 1974), s. 172.",
+      "cls": "footnote"
+    },
+    {
+      "line": 971,
+      "page": 31,
+      "text": "3. Subs. by Act 10 of 1927, s. 2 and the First Schedule, for “or Navy” (w.e.f. 4-4-1927).",
+      "cls": "footnote"
+    },
+    {
+      "line": 179,
+      "page": 12,
+      "text": "1. Subs. by the A.O. 1950, for “Queen”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2114,
+      "page": 57,
+      "text": "2. Ins. by s. 9, ibid. (w.e.f. 16-4-2006.)",
+      "cls": "footnote"
+    },
+    {
+      "line": 1233,
+      "page": 37,
+      "text": "4. Subs. by the A.O. 1950, for “in any province”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1375,
+      "page": 40,
+      "text": "16. Subs., ibid., for clause (40).",
+      "cls": "footnote"
+    },
+    {
+      "line": 535,
+      "page": 21,
+      "text": "4. A coroner has been declared to be a Magistrate for the purposes of this section, see the Coroners Act, 1871 (4 of 1871),",
+      "cls": "footnote"
+    },
+    {
+      "line": 2113,
+      "page": 57,
+      "text": "1. Section 154 renumbered as sub-section (1) thereof by Act 2 of 2006, s. 9 (w.e.f. 16-4-2006).",
+      "cls": "footnote"
+    },
+    {
+      "line": 539,
+      "page": 21,
+      "text": "7. See now the Code of Criminal Procedure, 1973 (2 of 1974) (w.e.f. 1-4-1974).",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 8,
+      "page": 9,
+      "text": "1. Short title.––This Act may be called the Indian Evidence Act, 1872.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 16,
+      "page": 9,
+      "text": "2.  [Repeal of enactments.].––Rep. by the Repealing Act, 1938 (1 of 1938), s. 2 and Schedule.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 17,
+      "page": 9,
+      "text": "3. Interpretation-clause.––In this Act the following words and expressions are used in the following",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 31,
+      "page": 9,
+      "text": "1.  The Act has been extended to Goa, Daman and Diu by Reg. 11 of 1963, s. 3 and Schedule (w.e.f. 1-6-1964), extended to and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 36,
+      "page": 9,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “except Part B States” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 37,
+      "page": 9,
+      "text": "3. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule (w.e.f. 31-10-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 39,
+      "page": 9,
+      "text": "4. Ins. by Act 18 of 1919, s. 2 and the First Schedule (w.e.f. 17-9-1919) .",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 40,
+      "page": 9,
+      "text": "5. Ins. by Act 35 of 1934, s. 2 and the Schedule (w.e.f 8-9-1934).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 41,
+      "page": 9,
+      "text": "6. The words “that Act as modified by” Omitted by the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 42,
+      "page": 9,
+      "text": "7. Ins. by Act 10 of 1927, s. 2 and the First Schedule (w.e.f 4-4-1927).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 43,
+      "page": 9,
+      "text": "8. As to practice relating to affidavits, See the Code of Civil Procedure, 1908 (Act 5 of 1908), s. 30 (c) and the First Schedule,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 45,
+      "page": 9,
+      "text": "9. Cf. the Code of Civil Procedure, 1908 (5 of 1908), s. 2, the Indian Penal Code (45 of 1860), s. 19; and for a definition of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 47,
+      "page": 9,
+      "text": "10. Cf. the General Clauses Act, 1897 (10 of 1897), s. 3(32) and the Code of Criminal Procedure, 1973 (2 of 1974).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 88,
+      "page": 10,
+      "text": "1. See now the Code of Civil Procedure, 1908 (5 of 1908); as to the settlement of issues, see Schedule I, order XIV",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 90,
+      "page": 10,
+      "text": "2. Cf. the Indian Penal Code (Act 45 of 1860), s. 29 (w.e.f. 1-5-1861) and the General Clauses Act, 1897 (10 of 1897), s. 3 (18)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 92,
+      "page": 10,
+      "text": "3. Cf. definition of “writing” in the General Clauses Act, 1897 (10 of 1897), s. 3(65) (w.e.f 11-3-1897).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 93,
+      "page": 10,
+      "text": "4. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for the words “all documents produced for the inspection of the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 103,
+      "page": 11,
+      "text": "4. “May presume.”––Whenever it is provided by this Act that the Court may presume a fact, it may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 112,
+      "page": 11,
+      "text": "5. Evidence may be given of facts in issue and relevant facts.––Evidence may be given in any suit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 127,
+      "page": 11,
+      "text": "6. Relevancy of facts forming part of same transaction.––Facts which, though not in issue, are so",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 133,
+      "page": 11,
+      "text": "1. Subs. by Act 3 of 1951, s. 3 and the Schedule, for the definitions of “State” and “States” which were ins. by the A.O. 1950",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 135,
+      "page": 11,
+      "text": "2. Ins. by Act 21 of 2000, s. 92 and the Second Schedule, (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 136,
+      "page": 11,
+      "text": "3. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 137,
+      "page": 11,
+      "text": "4. Subs. by s. 52, ibid., for “Digital Signature Certificate” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 138,
+      "page": 11,
+      "text": "5. See now the Code of Civil Procedure, 1908 (Act 5 of 1908).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 148,
+      "page": 12,
+      "text": "7. Facts which are the occasion, cause or effect of facts in issue.––Facts which are the occasion,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 163,
+      "page": 12,
+      "text": "8. Motive, preparation and previous or subsequent conduct.––Any fact is relevant which shows or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 179,
+      "page": 12,
+      "text": "1. Subs. by the A.O. 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 223,
+      "page": 14,
+      "text": "9. Facts necessary to explain or introduce relevant facts.––Facts necessary to explain or introduce",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 254,
+      "page": 14,
+      "text": "10. Things said or done by conspirator in reference to common design.––Where there is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 272,
+      "page": 15,
+      "text": "11. When facts not otherwise relevant become relevant.––Facts not otherwise relevant are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 288,
+      "page": 15,
+      "text": "12. In suits for damages, facts tending to enable Court to determine amount are relevant.––In",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 291,
+      "page": 15,
+      "text": "13. Facts relevant when right or custom is in question.––Where the question is as to the existence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 297,
+      "page": 15,
+      "text": "1. Subs. by the A.O. 1950, for “Queen”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 305,
+      "page": 16,
+      "text": "14. Facts showing existence of state of mind, or of body of bodily feeling.––Facts showing the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 337,
+      "page": 16,
+      "text": "1. Subs. by Act 3 of 1891, s. 1(I), for the Explanation (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 338,
+      "page": 16,
+      "text": "2. See the Code of Criminal Procedure, 1898 (5 of 1898), s. 311 (w.e.f. 1-7-1898).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 339,
+      "page": 16,
+      "text": "3. Subs. by Act 3 of 1891, s. 1 for Illustration (b) (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 383,
+      "page": 18,
+      "text": "15. Facts bearing on question whether act was accidental or intentional.––When there is a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 403,
+      "page": 18,
+      "text": "16. Existence of course of business when relevant.––When there is a question whether a particular",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 412,
+      "page": 18,
+      "text": "1. Ins. by Act 3 of 1891, s. 2 (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 415,
+      "page": 19,
+      "text": "17. Admission defined.––An admission is a statement, 1[oral or documentary or contained in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 418,
+      "page": 19,
+      "text": "18. Admission by party to proceeding or his agent;––Statements made by a party to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 433,
+      "page": 19,
+      "text": "19. Admissions by persons whose position must be proved as against party to suit.––Statements",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 444,
+      "page": 19,
+      "text": "20. Admissions by persons expressly referred to by party to suit.––Statements made by persons to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 450,
+      "page": 19,
+      "text": "21. Proof of admissions against persons making them, and by or on their behalf.––Admissions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 452,
+      "page": 19,
+      "text": "1. Subs. by Act 21 of 2000, s. 92 and Second Schedule, for “oral or documentary,” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 490,
+      "page": 20,
+      "text": "22. When oral admissions as to contents of documents are relevant.––Oral admissions as to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 498,
+      "page": 21,
+      "text": "23. Admissions in civil cases when relevant.––In civil cases no admission is relevant, if it is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 504,
+      "page": 21,
+      "text": "24. Confession caused by inducement, threat or promise, when irrelevant in criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 512,
+      "page": 21,
+      "text": "25. Confession to police-officer not to be proved.––No confession made to a police-officer3, shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 514,
+      "page": 21,
+      "text": "26. Confession by accused while in custody of police not to be proved against him.––No",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 521,
+      "page": 21,
+      "text": "27. How much of information received from accused may be proved.––Provided that, when any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 525,
+      "page": 21,
+      "text": "28. Confession made after removal of impression caused by inducement, threat or promise,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 528,
+      "page": 21,
+      "text": "29. Confession otherwise relevant not to become irrelevant because of promise of secrecy,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 532,
+      "page": 21,
+      "text": "1. Ins. by Act 21 of 2000, s. 92 and Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 533,
+      "page": 21,
+      "text": "2. For prohibition of such inducements, etc., see the Code of Criminal Procedure, 1973 (2 of 1974), s. 316 (w.e.f. 1-4-1974).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 534,
+      "page": 21,
+      "text": "3. As to statements made to police-officer investigating a case, see s. 162, ibid (w.e.f. 1-4-1974).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 535,
+      "page": 21,
+      "text": "4. A coroner has been declared to be a Magistrate for the purposes of this section, see the Coroners Act, 1871 (4 of 1871),",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 537,
+      "page": 21,
+      "text": "5. Ins. by Act 3 of 1891, s. 3 (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 538,
+      "page": 21,
+      "text": "6. The words “on in Burma” omitted by the A.O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 539,
+      "page": 21,
+      "text": "7. See now the Code of Criminal Procedure, 1973 (2 of 1974) (w.e.f. 1-4-1974).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 544,
+      "page": 22,
+      "text": "30. Consideration of proved confession affecting person making it and others jointly under trial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 559,
+      "page": 22,
+      "text": "31. Admissions not conclusive proof, but may estop.––Admissions are not conclusive proof of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 562,
+      "page": 22,
+      "text": "32. Cases in which statement of relevant fact by person who is dead or cannot be found, etc., is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 582,
+      "page": 22,
+      "text": "1. Ins. by Act 3 of 1891, s. 4 (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 583,
+      "page": 22,
+      "text": "2. Cf. the Indian Penal Code (45 of 1860), Explanation 4 to s. 108.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 626,
+      "page": 23,
+      "text": "1. Ins. by Act 18 of 1872, s. 2 (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 653,
+      "page": 24,
+      "text": "33. Relevancy of certain evidence for proving, in subsequent proceeding, the truth of facts",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 668,
+      "page": 25,
+      "text": "34. Entries in books of account when relevant.––1[Entries in the books of account, including those",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 675,
+      "page": 25,
+      "text": "35. Relevancy of entry in public record made in performance of duty.––An entry in any public or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 680,
+      "page": 25,
+      "text": "36. Relevancy of statements in maps, charts and plans.––Statements of facts in issue or relevant",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 685,
+      "page": 25,
+      "text": "37. Relevancy of statement as to fact of public nature contained in certain Acts or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 697,
+      "page": 25,
+      "text": "38. Relevancy of statements as to any law contained in law-books.––When the Court has to form",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 706,
+      "page": 25,
+      "text": "1. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for “entries in the books of account” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 707,
+      "page": 25,
+      "text": "2. Subs. by s. 92 and the Second Schedule, ibid., for “record” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 708,
+      "page": 25,
+      "text": "3. Subs. by the A.O. 1948, for “any Government in British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 709,
+      "page": 25,
+      "text": "4. Ins. by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 710,
+      "page": 25,
+      "text": "5. The original words were “Act of the Governor General of India in Council or of the Governors in Council of Madras or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 715,
+      "page": 25,
+      "text": "6. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “an Act of the Legislature of a Part A State or a Part C State” (w.e.f. 1-4-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 717,
+      "page": 25,
+      "text": "7. The “last paragraph” omitted by Act 10 of 1914, s. 3 and the Second Schedule (w.e.f. 17-3-1914).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 718,
+      "page": 25,
+      "text": "8. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for “s. 39” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 726,
+      "page": 26,
+      "text": "40. Previous judgments relevant to bar a second suit or trial.––The existence of any judgment,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 730,
+      "page": 26,
+      "text": "41. Relevancy of certain judgments in probate, etc., jurisdiction.––A final judgment, order or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 747,
+      "page": 26,
+      "text": "42. Relevancy and effect of judgments, orders or decrees, other than those mentioned in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 756,
+      "page": 26,
+      "text": "43. Judgments, etc., other than those mentioned in sections 40 to 42, when relevant.––",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 761,
+      "page": 26,
+      "text": "1. Ins. by Act 18 of 1872, s. 3 (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 784,
+      "page": 27,
+      "text": "44. Fraud or collusion in obtaining judgment, or incompetency of Court, may be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 789,
+      "page": 27,
+      "text": "45. Opinions of experts.––When the Court has to form an opinion upon a point of foreign law or of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 798,
+      "page": 27,
+      "text": "1. Ins. by Act 3 of 1891, s. 5 (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 799,
+      "page": 27,
+      "text": "2. Ins. by Act 5 of 1899, s. 3 for discussion in Council as to whether “finger impressions” include “thumb",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 801,
+      "page": 27,
+      "text": "3. Ins. by Act 18 of 1872, s. 4 (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 821,
+      "page": 28,
+      "text": "46. Facts bearing upon opinions of experts.––Facts, not otherwise relevant, are relevant if they",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 830,
+      "page": 28,
+      "text": "47. Opinion as to hand-writing, when relevant.––When the Court has to form an opinion as to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 839,
+      "page": 28,
+      "text": "1. Ins. by Act 10 of 2009, s. 52 (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 852,
+      "page": 29,
+      "text": "48. Opinion as to existence of right or custom, when relevant.––When the Court has to form an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 861,
+      "page": 29,
+      "text": "49. Opinion as to usages, tenets, etc., when relevant.–– When the Court has to form an opinion as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 867,
+      "page": 29,
+      "text": "50. Opinion on relationship, when relevant.––When the Court has to form an opinion as to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 877,
+      "page": 29,
+      "text": "1. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 878,
+      "page": 29,
+      "text": "2. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 879,
+      "page": 29,
+      "text": "3. Subs. by s 52, ibid., for “Digital Signature Certificate” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 883,
+      "page": 30,
+      "text": "51. Grounds of opinion, when relevant.––Whenever the opinion of any living person is relevant, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 889,
+      "page": 30,
+      "text": "52. In civil cases character to prove conduct imputed, irrelevant.––In civil cases, the fact that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 892,
+      "page": 30,
+      "text": "53. In criminal cases previous good character relevant.––In criminal proceedings, the fact that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 917,
+      "page": 30,
+      "text": "55. Character as affecting damages.––In civil cases, the fact that the character of any person is such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 925,
+      "page": 30,
+      "text": "56. Fact judicially noticeable need not be proved.––No fact of which the Court will take judicial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 927,
+      "page": 30,
+      "text": "57. Facts of which Court must take judicial notice.––The Court shall take judicial notice of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 930,
+      "page": 30,
+      "text": "1. Ins. by Act 13 of 2013, s. 25 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 931,
+      "page": 30,
+      "text": "2. Subs. by Act 22 of 2018, s. 8, for “section 376A, section 376B, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 932,
+      "page": 30,
+      "text": "3. Subs. by Act 3 of 1891, s. 6 for s. 54 (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 933,
+      "page": 30,
+      "text": "4. Ins. by s. 7, ibid (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 934,
+      "page": 30,
+      "text": "5. Subs. by the A. O. 1950, for clause (1).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 969,
+      "page": 31,
+      "text": "1. Ins. by the A.O. 1950, for “the clause (2)”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 970,
+      "page": 31,
+      "text": "2. Subs. ibid., for “her Majesty’s”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 971,
+      "page": 31,
+      "text": "3. Subs. by Act 10 of 1927, s. 2 and the First Schedule, for “or Navy” (w.e.f. 4-4-1927).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 972,
+      "page": 31,
+      "text": "4. Subs. by the A.O. 1950, for the Former para. (4).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 973,
+      "page": 31,
+      "text": "5. Subs. by the A.O. 1948, for “Courts of British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 974,
+      "page": 31,
+      "text": "6. Subs. by Act 3 of 1951, s. 3 for “the States” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 975,
+      "page": 31,
+      "text": "7. Subs. by the A.O. 1937 for “the G.G. or any L.G. in Council”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 976,
+      "page": 31,
+      "text": "8. Subs. by the A.O. 1950, for “any Act of Parliament or other”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 977,
+      "page": 31,
+      "text": "9. Subs. by the A.O. 1937 for “the Gazette of India or in the Official Gazette of any L.G.”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 978,
+      "page": 31,
+      "text": "10. Subs. by the A.O. 1950, for “the British Crown”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 979,
+      "page": 31,
+      "text": "11. Ins. by Act 18 of 1872, s. 5 (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 981,
+      "page": 32,
+      "text": "58. Facts admitted need not be proved.––No fact need be proved in any proceeding which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 988,
+      "page": 32,
+      "text": "59. Proof of facts by oral evidence.––All facts, except the 1[contents of documents or electronic",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 990,
+      "page": 32,
+      "text": "60. Oral evidence must be direct.––Oral evidence must, in all cases whatever, be direct; that is to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1008,
+      "page": 32,
+      "text": "61. Proof of contents of documents.––The contents of documents may be proved either by primary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1010,
+      "page": 32,
+      "text": "62. Primary evidence.––Primary evidence means the document itself produced for the inspection of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1019,
+      "page": 32,
+      "text": "1. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for “contents of documents” (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1025,
+      "page": 33,
+      "text": "63. Secondary evidence.––Secondary evidence means and includes––",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1044,
+      "page": 33,
+      "text": "64. Proof of documents by primary evidence.––Documents must be proved by primary evidence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1046,
+      "page": 33,
+      "text": "65. Cases in which secondary evidence relating to documents may be given.––Secondary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1060,
+      "page": 33,
+      "text": " 1. see s. 76, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1075,
+      "page": 34,
+      "text": "65B. Admissibility of electronic records.––(1) Notwithstanding anything contained in this Act, any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1102,
+      "page": 34,
+      "text": "1. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “the States” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1103,
+      "page": 34,
+      "text": "2. Cf. has Bankers’ Books Evidence Act, 1891 (18 of 1891), s. 4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1104,
+      "page": 34,
+      "text": "3. Subs. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1142,
+      "page": 35,
+      "text": "66. Rules as to notice to produce.—Secondary evidence of the contents of the documents referred to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1145,
+      "page": 35,
+      "text": "1. Ins. by Act 18 of 1872, s. 6 (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1161,
+      "page": 36,
+      "text": "67. Proof of signature and handwriting of person alleged to have signed or written document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1168,
+      "page": 36,
+      "text": "68. Proof of execution of document required by law to be attested.––If a document is required by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1176,
+      "page": 36,
+      "text": "69. Proof where no attesting witness found.––If no such attesting witness can be found, or if the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1180,
+      "page": 36,
+      "text": "70. Admission of execution by party to attested document.––The admission of a party to an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1183,
+      "page": 36,
+      "text": "71. Proof when attesting witness denies the execution.––If the attesting witness denies or does not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1185,
+      "page": 36,
+      "text": "72. Proof of document not required by law to be attested.––An attested document not required by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1187,
+      "page": 36,
+      "text": "1. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1188,
+      "page": 36,
+      "text": "2. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1189,
+      "page": 36,
+      "text": "3. Ins. by Act 31 of 1926, s. 2 (w.e.f. 9-9-1926).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1191,
+      "page": 37,
+      "text": "73. Comparison of signature, writing or seal with others admitted or proved.––In order to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1210,
+      "page": 37,
+      "text": "74. Public documents.––The following documents are public documents:––",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1217,
+      "page": 37,
+      "text": "75. Private documents.––All other documents are private.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1218,
+      "page": 37,
+      "text": "76. Certified copies of public documents.––Every5 public officer having the custody of a public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1226,
+      "page": 37,
+      "text": "77. Proof of documents by production of certified copies.––Such certified copies may be produced",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1229,
+      "page": 37,
+      "text": "1. Ins. by Act 5 of 1899, s. 3 (w.e.f. 10-2-1899).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1230,
+      "page": 37,
+      "text": "2. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1231,
+      "page": 37,
+      "text": "3. The original words “whether of British India, or of any other part of Her Majesty’s Dominios” have successively  been",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1233,
+      "page": 37,
+      "text": "4. Subs. by the A.O. 1950, for “in any province”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1234,
+      "page": 37,
+      "text": "5. A village-officer in the Punjab has been declared for the purposes of this Act to be a public officer having the custody of a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1237,
+      "page": 38,
+      "text": "78. Proof of other official documents.––The following public documents may be proved as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1265,
+      "page": 38,
+      "text": "79. Presumption as to genuineness of certified copies.––The Court shall presume 8[to be genuine]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1270,
+      "page": 38,
+      "text": "1. Subs. by the A.O. 1937, for “the Executive Government of British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1271,
+      "page": 38,
+      "text": "2. Ins.by ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1272,
+      "page": 38,
+      "text": "3. Subs. by ibid., for “by order of Government.”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1273,
+      "page": 38,
+      "text": "4. The words “her Majesty” shall stand unmodified, vide the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1274,
+      "page": 38,
+      "text": "5. Subs. by the A.O. 1937, for “public Act of the Governor General of India in Council”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1275,
+      "page": 38,
+      "text": "6. Subs. by the A.O. 1950, for “a Province”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1276,
+      "page": 38,
+      "text": "7. Subs. by ibid., for “a British Consul”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1277,
+      "page": 38,
+      "text": "8. Ins. by the A.O. 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1278,
+      "page": 38,
+      "text": "9. The original words beginning from “in British India” and ending with the words “to be genuine” have been successively",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1280,
+      "page": 38,
+      "text": "10. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “in a Part B State” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1286,
+      "page": 39,
+      "text": "80. Presumption as to documents produced as record of evidence.––Whenever any document is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1295,
+      "page": 39,
+      "text": "81. Presumption as to Gazettes, newspapers, private Acts of Parliament and other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1307,
+      "page": 39,
+      "text": "82. Presumption as to document admissible in England without proof of seal or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1316,
+      "page": 39,
+      "text": "83. Presumption as to maps or plans made by authority of Government.––The Court shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1320,
+      "page": 39,
+      "text": "84. Presumption as to collections of laws and reports of decisions.––The Court shall presume the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1324,
+      "page": 39,
+      "text": "1. Subs by the A.O. 1937, for “the Gazette of India, or the Government Gazette of any L.G., or”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1325,
+      "page": 39,
+      "text": "2. Ins. by the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1326,
+      "page": 39,
+      "text": "3. Ins. by Act 21 of 2000, s. 92, and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1327,
+      "page": 39,
+      "text": "4. The original word “Government” has successively been amended by the A.O. 1937, the A.O. 1948, Act 40 of 1949 and the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1330,
+      "page": 40,
+      "text": "85. Presumption as to powers-of-attorney.––The Court shall presume that every document",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1337,
+      "page": 40,
+      "text": " 85B. Presumption as to electronic records and 6[electronic signatures]. –– (1) In any proceedings",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1348,
+      "page": 40,
+      "text": " 85C. Presumption as to 6[Electronic Signature Certificates].––The Court shall presume, unless",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1352,
+      "page": 40,
+      "text": "86. Presumption as to certified copies of foreign judicial records.  The Court may presume that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1360,
+      "page": 40,
+      "text": "1. Subs. by the A.O. 1950, for “British”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1361,
+      "page": 40,
+      "text": "2. The Words “of Her Majesty, or” Rep. by ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1362,
+      "page": 40,
+      "text": "3. Subs. by the A.O. 1937, for “Government of India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1363,
+      "page": 40,
+      "text": "4. Ins. by Act 21 of 2000, s. 92, and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1364,
+      "page": 40,
+      "text": "5. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1365,
+      "page": 40,
+      "text": "6. Subs. by ibid., s. 52, for “Digital Signature Certificate” (w.e.f. 27.10.2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1366,
+      "page": 40,
+      "text": "7. Subs. by the A.O. 1950, for “any country not forming part”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1367,
+      "page": 40,
+      "text": "8. The words “a Part B State or of” omitted by Act 3 of 1951, s. 3 and the Schedule (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1368,
+      "page": 40,
+      "text": "9. The words “Her Majesty or of” omitted by A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1369,
+      "page": 40,
+      "text": "10.Subs. by Act 3 of 1891, s. 8, for “resident in” (w.e.f. 13-2-1891).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1370,
+      "page": 40,
+      "text": "11. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “such Part B State or Country” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1371,
+      "page": 40,
+      "text": "12. Subs. by s. 3 and the Schedule, ibid., for “that State or Country” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1372,
+      "page": 40,
+      "text": "13.  Subs. by Act 5 of 1899, s. 4, for the para added by Act 3 of 1891, s. 3 (w.e.f. 10-2-1899).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1373,
+      "page": 40,
+      "text": "14. The words “a Part B State or” ins. by the A.O. 1950, omitted by Act 3 of 1951, s. 3 and the Schedule (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1374,
+      "page": 40,
+      "text": "15. Ins. by the A.O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1375,
+      "page": 40,
+      "text": "16. Subs., ibid., for clause (40).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1379,
+      "page": 41,
+      "text": "87. Presumption as to books, maps and charts.––The Court may presume that any book to which it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1384,
+      "page": 41,
+      "text": "88. Presumption as to telegraphic messages.––The Court may presume that a message, forwarded",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1397,
+      "page": 41,
+      "text": "89. Presumption as to due execution, etc., of documents not produced.––The Court shall presume",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1400,
+      "page": 41,
+      "text": "90. Presumption as to documents thirty years old.––Where any document, purporting or proved to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1416,
+      "page": 41,
+      "text": "1. Subs. by the A.O. 1937, for “Government of India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1417,
+      "page": 41,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “in and for that Part B State or country” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1418,
+      "page": 41,
+      "text": "3. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1434,
+      "page": 42,
+      "text": "91. Evidence of terms of contracts, grants and other dispositions of property reduced to form of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1457,
+      "page": 42,
+      "text": "1.  Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1458,
+      "page": 42,
+      "text": "2. Subs. by Act 10 of 2009, s. 52, for “Digital Signature” (w.e.f. 27-10-2009).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1459,
+      "page": 42,
+      "text": "3. Subs. by Act 18 of 1872, s. 7, for “under the Indian Succession Act” (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1460,
+      "page": 42,
+      "text": "4. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “the States” (w.e.f. 1-4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1467,
+      "page": 43,
+      "text": "92. Exclusion of evidence of oral agreement.––When the terms of any such contract, grant or other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1502,
+      "page": 43,
+      "text": "1. Subs. by Act 18 of 1872, s. 8, for “want of failure” (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1525,
+      "page": 44,
+      "text": "93. Exclusion of evidence to explain or amend ambiguous document.––When the language used",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1533,
+      "page": 44,
+      "text": "94. Exclusion of evidence against application of document to existing facts.––When language",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1540,
+      "page": 44,
+      "text": "95. Evidence as to document unmeaning reference to existing facts.––When language used in a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1549,
+      "page": 45,
+      "text": "96. Evidence as to application of language which can apply to one only of several",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1558,
+      "page": 45,
+      "text": "97. Evidence as to application of language to one of two sets of facts, to neither of which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1566,
+      "page": 45,
+      "text": "98. Evidence as to meaning of illegible characters, etc.––Evidence may be given to show the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1572,
+      "page": 45,
+      "text": "99. Who may give evidence of agreement varying terms of document.––Persons who are not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1579,
+      "page": 45,
+      "text": "100. Saving of provisions of Indian Succession Act relating to wills.––Nothing in this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1585,
+      "page": 45,
+      "text": "101. Burden of proof.––Whoever desires any Court to give judgment as to any legal right or liability",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1591,
+      "page": 45,
+      "text": "1. See now the Indian Succession Act, 1925 (39 of 1925), Pt. VI, Ch. VI.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1596,
+      "page": 46,
+      "text": "102. On whom burden of proof lies.––The burden of proof in a suit or proceeding lies on that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1609,
+      "page": 46,
+      "text": "103. Burden of proof as to particular fact.––The burden of proof as to any particular fact lies on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1616,
+      "page": 46,
+      "text": "104. Burden of proving fact to be proved to make evidence admissible.––The burden of proving",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1623,
+      "page": 46,
+      "text": "105. Burden of proving that case of accused comes within exceptions.––When a person is accused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1633,
+      "page": 46,
+      "text": "1. See, in the Act as published in Gazette of India, 1872, Pt. IV, p. 1 there is no illustration (b).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1640,
+      "page": 47,
+      "text": "106. Burden of proving fact especially within knowledge.––When any fact is especially within the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1647,
+      "page": 47,
+      "text": "107. Burden of proving death of person known to have been alive within thirty years.––When",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1651,
+      "page": 47,
+      "text": "108. Burden of proving that person is alive who has not been heard of for seven",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1655,
+      "page": 47,
+      "text": "109. Burden of proof as to relationship in the cases of partners, landlord and tenant, principal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1660,
+      "page": 47,
+      "text": "110. Burden of proof as to ownership.––When the question is whether any person is owner of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1663,
+      "page": 47,
+      "text": "111. Proof of good faith in transactions where one party is in relation of active",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1674,
+      "page": 47,
+      "text": "1. Subs. by Act 18 of 1872, s. 9, for “when” (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1675,
+      "page": 47,
+      "text": "2. Subs. by s. 9, ibid., for “on” (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1676,
+      "page": 47,
+      "text": "3. Ins. by Act 61 of 1984, s. 20 (w.e.f. 14-7-1984).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1692,
+      "page": 48,
+      "text": "112. Birth during marriage, conclusive proof of legitimacy.––The fact that any person was born",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1697,
+      "page": 48,
+      "text": "113. Proof of cession of territory.––A notification in the official Gazette that any portion of British",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1715,
+      "page": 48,
+      "text": "114. Court may presume existence of certain facts. –– The Court may presume the existence of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1718,
+      "page": 48,
+      "text": "1. Ins. by the A.O. 1937, Part III of the Government of India Act 1935, came into force on the 1st April, 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1719,
+      "page": 48,
+      "text": "2. Ins. by Act 46 of 1983, s. 7 (w.e.f. 25-12-1983).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1720,
+      "page": 48,
+      "text": "3. Ins. by Act 43 of 1986, s. 12 (w.e.f. 5-1-1986).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1777,
+      "page": 50,
+      "text": "114B. Presumption as to offences committed under section 354, section 354A, section 354B, section",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1788,
+      "page": 50,
+      "text": "115. Estoppel.––When one person has, by his declaration, act or omission, intentionally caused or permitted",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1797,
+      "page": 50,
+      "text": "116. Estoppel of tenant; and of licensee of person in possession.––No tenant of immovable property, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1802,
+      "page": 50,
+      "text": "117. Estoppel of acceptor of bill of exchange, bailee or licensee.––No acceptor of a bill of exchange shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1810,
+      "page": 50,
+      "text": "1. Subs. by Act 13 of 2013, s. 26 (w.e.f. 3-2-2013). Earlier it was inserted by Act 43 of 1983, s. 6,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1814,
+      "page": 51,
+      "text": "118. Who may testify.––All persons shall be competent to testify unless the Court considers that they",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1826,
+      "page": 51,
+      "text": "120. Parties to civil suit, and their wives or husbands. Husband or wife of person under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1831,
+      "page": 51,
+      "text": "121. Judges and Magistrates.––No Judge or Magistrate shall, except upon the special order of some",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1844,
+      "page": 51,
+      "text": "122. Communications during marriage.––No person who is or has been married, shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1849,
+      "page": 51,
+      "text": "123. Evidence as to affairs of State.––No one shall be permitted to give any evidence derived from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1852,
+      "page": 51,
+      "text": "124. Official communications.––No public officer shall be compelled to disclose communications",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1855,
+      "page": 51,
+      "text": " 1. Subs. by Act 13 of 2013, s. 27 for s. 119 (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1862,
+      "page": 52,
+      "text": "126. Professional communications.––No barrister, attorney, pleader or vakil, shall at any time be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1890,
+      "page": 52,
+      "text": "127. Section 126 to apply to interpreters, etc.––The provisions of section 126 shall apply to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1892,
+      "page": 52,
+      "text": "128. Privilege not waived by volunteering evidence.––If any party to a suit gives evidence therein",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1895,
+      "page": 52,
+      "text": "1. Subs. by Act 3 of 1887, s. 1, for the original s. 125 (w.e.f. 14-1-1887).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1896,
+      "page": 52,
+      "text": "2. Subs. by Act 18 of 1872, s. 10, for “criminal” (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1897,
+      "page": 52,
+      "text": "3. Ins. by s. 10, ibid. (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1902,
+      "page": 53,
+      "text": "129. Confidential communications with legal advisers.––No one shall be compelled to disclose to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1907,
+      "page": 53,
+      "text": "130. Production of title-deeds of witness not a party.––No witness who is not a party to a suit shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1917,
+      "page": 53,
+      "text": "132. Witness not excused from answering on ground that answer will criminate.––A witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1925,
+      "page": 53,
+      "text": "133. Accomplice.––An accomplice shall be a competent witness against an accused person; and a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1927,
+      "page": 53,
+      "text": "134. Number of witnesses.––No particular number of witnesses shall in any case be required for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1930,
+      "page": 53,
+      "text": "135. Order of production and examination of witnesses.––The order in which witnesses are",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1933,
+      "page": 53,
+      "text": "136. Judge to decide as to admissibility of evidence.––When either party proposes to give evidence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1940,
+      "page": 53,
+      "text": "1. Ins. by Act 18 of 1872, s. 10 (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1941,
+      "page": 53,
+      "text": "2. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for Section 131 (w.e.f. 17-10-2000).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1964,
+      "page": 54,
+      "text": "137. Examination-in-chief.––The examination of witness by the party who calls him shall be called",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1969,
+      "page": 54,
+      "text": "138. Order of examinations.––Witnesses shall be first examined-in-chief, then (if the adverse party",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1976,
+      "page": 54,
+      "text": "139. Cross-examination of person called to produce a document.––A person summoned to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1979,
+      "page": 54,
+      "text": "140. Witnesses to character.––Witnesses to character may be cross-examined and re-examined.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1980,
+      "page": 54,
+      "text": "141. Leading questions.––Any question suggesting the answer which the person putting it wishes or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1983,
+      "page": 55,
+      "text": "142. When they must not be asked.––Leading questions must not, if objected to by the adverse",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1988,
+      "page": 55,
+      "text": "143. When they may be asked.––Leading questions may be asked in cross-examination.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1989,
+      "page": 55,
+      "text": "144. Evidence as to matters in writing.––Any witness may be asked, whilst under examination,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2003,
+      "page": 55,
+      "text": "145. Cross-examination as to previous statements in writing.––A witness may be cross-examined",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2008,
+      "page": 55,
+      "text": "146. Questions lawful in cross-examination.––When a witness is cross-examined, he may, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2021,
+      "page": 55,
+      "text": "1. As to the Application of s. 145 to police-diaries, see the Code of Criminal Procedure, 1973 (2 of 1974), s. 172.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2022,
+      "page": 55,
+      "text": "2. Subs. by Act 13 of 2013, s. 28, for the proviso (w.e.f. 3-2-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2023,
+      "page": 55,
+      "text": "3. Subs. by Act 22 of 2018, s. 9, for “section 376A, section 376B, section 376C, section 376D” (w.e.f. 21-4-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2033,
+      "page": 56,
+      "text": "147. When witness to be compelled to answer.––If any such question relates to a matter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2035,
+      "page": 56,
+      "text": "148. Court to decide when question shall be asked and when witness compelled to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2052,
+      "page": 56,
+      "text": "149. Question not to be asked without reasonable grounds.–– No such question as is referred to in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2067,
+      "page": 57,
+      "text": "150. Procedure of Court in case of question being asked without reasonable grounds.––If the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2071,
+      "page": 57,
+      "text": "151. Indecent and scandalous questions.––The Court may forbid any questions or inquiries which it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2075,
+      "page": 57,
+      "text": "152. Questions intended to insult or annoy.––The Court shall forbid any question which appears to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2078,
+      "page": 57,
+      "text": "153. Exclusion of evidence to contradict answers to questions testing veracity.––When a witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2108,
+      "page": 57,
+      "text": "154. Question by party to his own witness.––1[(1)] The Court may, in its discretion, permit the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2113,
+      "page": 57,
+      "text": "1. Section 154 renumbered as sub-section (1) thereof by Act 2 of 2006, s. 9 (w.e.f. 16-4-2006).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2114,
+      "page": 57,
+      "text": "2. Ins. by s. 9, ibid. (w.e.f. 16-4-2006.)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2116,
+      "page": 58,
+      "text": "155. Impeaching credit of witness.––The credit of a witness may be impeached in the following",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2144,
+      "page": 58,
+      "text": "156. Questions tending to corroborate evidence of relevant fact, admissible.––When a witness",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2155,
+      "page": 58,
+      "text": "157. Former statements of witness may be proved to corroborate later testimony as to same",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2157,
+      "page": 58,
+      "text": " 1. Subs. by Act 18 of 1872, s. 11, for “had” (w.e.f. 29-8-1872).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2158,
+      "page": 58,
+      "text": " 2. Clause (4) omitted by Act 4 of 2003, s. 3 (w.e.f. 31-12-2002).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2162,
+      "page": 59,
+      "text": "158. What matters may be proved in connection with proved statement relevant under section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2167,
+      "page": 59,
+      "text": "159. Refreshing memory.––A witness may, while under examination, refresh his memory by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2179,
+      "page": 59,
+      "text": "160. Testimony to facts stated in document mentioned in section 159.––A witness may also testify",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2186,
+      "page": 59,
+      "text": "161. Right of adverse party as to writing used to refresh memory.––Any writing referred to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2189,
+      "page": 59,
+      "text": "162. Production of documents.––A witness summoned to produce a document shall, if it is in his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2198,
+      "page": 59,
+      "text": "163. Giving, as evidence, of document called for and produced on notice.––When a party calls for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2200,
+      "page": 59,
+      "text": "1. As to the application of s. 161 to police diaries, see the Code of Criminal Procedure, 1973 (Act 2 of 1974), s. 172.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2204,
+      "page": 60,
+      "text": "164. Using, as evidence, of document production of which was refused on notice.––When a party",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2212,
+      "page": 60,
+      "text": "165. Judge’s power to put questions or order production.––The Judge may, in order to discover or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2227,
+      "page": 60,
+      "text": "166. Power of jury or assessors to put questions.––In cases tried by jury or with assessors, the jury",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2231,
+      "page": 60,
+      "text": "167.  No new trial for improper admission or rejection of evidence.––The improper admission or",
+      "cls": "restated",
+      "label": null
+    }
+  ]
+}
