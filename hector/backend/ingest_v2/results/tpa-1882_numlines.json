@@ -1,0 +1,2158 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 148,
+    "footnote": 164,
+    "margin": 1,
+    "UNKNOWN": 1
+  },
+  "labels": {
+    "header": 23,
+    "boilerplate": 40,
+    "footnote": 234,
+    "page_number": 44,
+    "separator": 1
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [],
+  "footnote_sample": [
+    {
+      "line": 1294,
+      "page": 31,
+      "text": "1. The words “for a term of years” omitted by Act 20 of 1929, s. 36.",
+      "cls": "footnote"
+    },
+    {
+      "line": 33,
+      "page": 7,
+      "text": "3. Subs. by the Adaptation of Laws (No. 2) Order, 1956, for “Part B States”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 105,
+      "page": 8,
+      "text": "5. Ins. by Act 27 of 1926, s. 2, as amended by Act 10 of 1927, s. 2 and Sch. I.",
+      "cls": "footnote"
+    },
+    {
+      "line": 22,
+      "page": 7,
+      "text": "1. Subs. by the A.O. 1950, for the third paragraph.",
+      "cls": "footnote"
+    },
+    {
+      "line": 104,
+      "page": 8,
+      "text": "4. The words “or Buddhist” omitted by s. 3, ibid.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1655,
+      "page": 38,
+      "text": "4. The words “with the previous sanction of the Governor General in Council” omitted by A. O. 1937.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1598,
+      "page": 37,
+      "text": "2. Ins. by s. 52, ibid.",
+      "cls": "footnote"
+    },
+    {
+      "line": 147,
+      "page": 9,
+      "text": "1. Subs. by Act 20 of 1929, s. 4, for certain words.",
+      "cls": "footnote"
+    },
+    {
+      "line": 878,
+      "page": 23,
+      "text": "3. Subs. by s. 19, ibid., for “and”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1195,
+      "page": 29,
+      "text": "13. Fourth paragraph numbered as sub-section (4) by Act 20 of 1929, s. 34.",
+      "cls": "footnote"
+    },
+    {
+      "line": 669,
+      "page": 19,
+      "text": "4. Subs. by A.O. 1937, for “the Governor General in Council”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 925,
+      "page": 24,
+      "text": "2. Subs. by A.O. 1948, for “Bombay and Karachi”. The word “and” had been ins. by A.O. 1937.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1654,
+      "page": 38,
+      "text": "3. Ins. by Act 20 of 1929, s. 55.",
+      "cls": "footnote"
+    },
+    {
+      "line": 926,
+      "page": 24,
+      "text": "3. The words “Rangoon, Moulmein, Bassein and Akyab” omitted by A.O. 1937.",
+      "cls": "footnote"
+    },
+    {
+      "line": 149,
+      "page": 9,
+      "text": "3. Ins. by s. 2, ibid.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1946,
+      "page": 44,
+      "text": "2. The words and figures “or, save as provided by s. 123, any rule of Hindu or Buddhist law” omitted by Act 20 of 1929,",
+      "cls": "footnote"
+    },
+    {
+      "line": 1602,
+      "page": 37,
+      "text": "6. Subs. by s. 53, ibid., for “Chapter XXXI of the Code of Civil Procedure”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1089,
+      "page": 27,
+      "text": "3. Subs. by s. 31, ibid., for “payable”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1349,
+      "page": 32,
+      "text": "4. Ins. by s. 40, ibid.",
+      "cls": "footnote"
+    },
+    {
+      "line": 199,
+      "page": 10,
+      "text": "8. The word “Government” successively adapted by the A.O. 1937 and A.O. 1950 to read as above.",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 8,
+      "page": 7,
+      "text": "1. Short title.—This Act may be called the Transfer of Property Act, 1882.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 22,
+      "page": 7,
+      "text": "1. Subs. by the A.O. 1950, for the third paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 23,
+      "page": 7,
+      "text": "2. The application of this Act was barred in the Naga Hills District, including the Mokokchung Sub -division, the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 33,
+      "page": 7,
+      "text": "3. Subs. by the Adaptation of Laws (No. 2) Order, 1956, for “Part B States”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 34,
+      "page": 7,
+      "text": "4. Subs. by the A.O. 1937, for the original paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 35,
+      "page": 7,
+      "text": "5. The Act has been extended to—",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 57,
+      "page": 7,
+      "text": "6. Subs. by the Adaptation of Laws (No. 2) Order, 1956, for “said States”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 58,
+      "page": 7,
+      "text": "7. Subs. by Act 3 of 1885, s. 1, for the original paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 59,
+      "page": 7,
+      "text": "8. The words “with the previous sanction of the Governor General in Council” omitted by Act 38 of 1920, s. 2 and the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 66,
+      "page": 8,
+      "text": "2. Repeal of Acts. Saving of certain enactments, incidents, rights, liabilities, etc.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 80,
+      "page": 8,
+      "text": "3. Interpretation-clause.—In this Act, unless there is something repugnant in the subject or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 101,
+      "page": 8,
+      "text": "1. Added by Act 3 of 1885, s. 2 (w.e.f. 1-7-1882).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 102,
+      "page": 8,
+      "text": "2. Subs. by Act 20 of 1929, s. 2, for “1877”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 103,
+      "page": 8,
+      "text": "3. The word “Hindu” omitted by s. 3, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 104,
+      "page": 8,
+      "text": "4. The words “or Buddhist” omitted by s. 3, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 105,
+      "page": 8,
+      "text": "5. Ins. by Act 27 of 1926, s. 2, as amended by Act 10 of 1927, s. 2 and Sch. I.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 106,
+      "page": 8,
+      "text": "6. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “a Part A State or a Part C State” (w.e.f. 1 -4-1951).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 107,
+      "page": 8,
+      "text": "7. Subs. by the Adaptation of Laws (No. 2) Order 1956, for “any State”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 108,
+      "page": 8,
+      "text": "8. See the Indian Registration Act, 1908 (16 of 1908).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 109,
+      "page": 8,
+      "text": "9. Ins. by Act 2 of 1900, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 142,
+      "page": 9,
+      "text": "4. Enactments relating to contracts to be taken as part of Contract Act and supplemental to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 147,
+      "page": 9,
+      "text": "1. Subs. by Act 20 of 1929, s. 4, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 148,
+      "page": 9,
+      "text": "2. Subs. by Act 5 of 1930, s. 2, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 149,
+      "page": 9,
+      "text": "3. Ins. by s. 2, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 150,
+      "page": 9,
+      "text": "4. Added by Act 3 of 1885, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 151,
+      "page": 9,
+      "text": "5. Subs. by Act 20 of 1929, s. 5, for “1877”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 156,
+      "page": 10,
+      "text": "5. “Transfer of property” defined.—In the following sections “transfer of property” means an act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 163,
+      "page": 10,
+      "text": "6. What may be transferred.—Property of any kind may be transferred, except as otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 188,
+      "page": 10,
+      "text": "7. Persons competent to transfer.—Every person competent to contract and entitled to transferable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 192,
+      "page": 10,
+      "text": "1. Nothing in Chapter II is to be deemed to affect any rule of Muhammadan Law—see s. 2, supra",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 193,
+      "page": 10,
+      "text": "2. Ins. by Act 20 of 1929, s. 6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 194,
+      "page": 10,
+      "text": "3. Added by s. 6, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 195,
+      "page": 10,
+      "text": "4. Ins. by s. 7, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 196,
+      "page": 10,
+      "text": "5. The words “for compensation for a fraud or for harm illegally caused” omitted by Act 2 of 1900, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 197,
+      "page": 10,
+      "text": "6. Ins. by Act 35 of 1934, s. 2 and the Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 198,
+      "page": 10,
+      "text": "7. Ins. by Act 10 of 1927, s. 2 and the First Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 199,
+      "page": 10,
+      "text": "8. The word “Government” successively adapted by the A.O. 1937 and A.O. 1950 to read as above.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 200,
+      "page": 10,
+      "text": "9. Subs. by Act 2 of 1900, s. 3, for “for an illegal purpose”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 201,
+      "page": 10,
+      "text": "10. Added by Act 3 of 1885, s. 4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 203,
+      "page": 11,
+      "text": "8. Operation of transfer.—Unless a different intention is expressed or necessarily",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 219,
+      "page": 11,
+      "text": "9. Oral transfer.—A transfer of property may be made without writing in every case",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 221,
+      "page": 11,
+      "text": "10. Condition restraining alienation.—Where property is transferred subject to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 228,
+      "page": 11,
+      "text": "11. Restriction repugnant to interest created.—Where, on a transfer of property, an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 236,
+      "page": 11,
+      "text": "12. Condition making interest determinable on insolvency or attempted alienation.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 242,
+      "page": 11,
+      "text": "13. Transfer for benefit of unborn person.—Where, on a transfer of property, an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 247,
+      "page": 11,
+      "text": "1. Subs. by Act 20 of 1929, s. 8, for the second paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 254,
+      "page": 12,
+      "text": "14. Rule against perpetuity.—No transfer of property can operate to create an interest which is to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 258,
+      "page": 12,
+      "text": "15. Transfer to class some of whom come under sections 13 and 14.—If, on a transfer of property,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 267,
+      "page": 12,
+      "text": "17. Direction for accumulation.—(1) Where the terms of a transfer of property direct that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 283,
+      "page": 12,
+      "text": "18. Transfer in perpetuity for benefit of public.—The restrictions in sections 14, 16 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 287,
+      "page": 12,
+      "text": "19. Vested interest.—Where, on a transfer of property, an interest therein is created in favour",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 295,
+      "page": 12,
+      "text": "1. Subs. by Act 20 of 1929, s. 9, for “as regards the whole class”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 296,
+      "page": 12,
+      "text": "2. Subs. by s. 10, ibid., for s. 16, 17 and 18.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 300,
+      "page": 13,
+      "text": "20. When unborn person acquires vested interest on transfer for his benefit.—Where, on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 304,
+      "page": 13,
+      "text": "21. Contingent interest.—Where, on a transfer of property, an interest therein is created in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 313,
+      "page": 13,
+      "text": "22. Transfer to members of a class who attain a particular age.—Where, on a transfer of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 317,
+      "page": 13,
+      "text": "23. Transfer contingent on happening of specified uncertain event.—Where, on a transfer of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 321,
+      "page": 13,
+      "text": "24. Transfer to such of certain persons as survive at some period not specified.—Where, on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 329,
+      "page": 13,
+      "text": "25. Conditional transfer.—An interest created on a transfer of property and dependent upon a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 340,
+      "page": 13,
+      "text": "26. Fulfilment of condition precedent.—Where the terms of a transfer of property impose a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 349,
+      "page": 14,
+      "text": "27. Conditional transfer to one person coupled with transfer to another on failure of prior",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 364,
+      "page": 14,
+      "text": "28. Ulterior transfer conditional on happening or not happening of specified event.—On a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 370,
+      "page": 14,
+      "text": "29. Fulfilment of condition subsequent.—An ulterior disposition of the kind contemplated by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 376,
+      "page": 14,
+      "text": "30. Prior disposition not affected by invalidity of ulterior disposition.—If the ulterior disposition",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 381,
+      "page": 14,
+      "text": "31. Condition that transfer shall cease to have effect in case specified uncertain event happens",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 390,
+      "page": 14,
+      "text": "32. Such condition must not be invalid.—In order that a condition that an interest shall cease to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 393,
+      "page": 14,
+      "text": "33.",
+      "cls": "margin",
+      "label": null
+    },
+    {
+      "line": 409,
+      "page": 14,
+      "text": "34. Transfer conditional on performance of act, time being specified.—Where an act is to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 421,
+      "page": 15,
+      "text": "35. Election when necessary.—Where a person professes to transfer property which he has no right",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 468,
+      "page": 16,
+      "text": "36. Apportionment of periodical payments determination of interest of person entitled.—In the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 474,
+      "page": 16,
+      "text": "37. Apportionment of benefit of obligation on severance.—When, in consequence of a transfer,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 498,
+      "page": 16,
+      "text": "38. Transfer by person authorised only under certain circumstances to transfer.—Where any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 510,
+      "page": 16,
+      "text": "39. Transfer where third person is entitled to maintenance.—Where a third person has a right to receive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 513,
+      "page": 16,
+      "text": "1. The words “with the intention of defeating such right” omitted by Act 20 of 1929, s. 11.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 514,
+      "page": 16,
+      "text": "2. Subs. by s. 11, ibid., for “of such intention”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 523,
+      "page": 17,
+      "text": "40. Burden of obligation imposing restriction on use of land.—Where, for the more beneficial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 537,
+      "page": 17,
+      "text": "41. Transfer by ostensible owner.—Where, with the consent, express or implied, of the persons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 543,
+      "page": 17,
+      "text": "42. Transfer by person having authority to revoke former transfer.—Where a person transfers",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 552,
+      "page": 17,
+      "text": "43. Transfer by unauthorised person who subsequently acquires interest in property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 563,
+      "page": 17,
+      "text": "44. Transfer by one co-owner.—Where one of two or more co-owners of immoveable property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 566,
+      "page": 17,
+      "text": "1. The Illustrations omitted by Act 20 of 1929, s. 11.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 567,
+      "page": 17,
+      "text": "2. Subs. by s. 12, ibid., for “of the latter property or to compel its enjoyment in a particular manner”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 568,
+      "page": 17,
+      "text": "3. Ins. by s. 13, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 576,
+      "page": 18,
+      "text": "45. Joint transfer for consideration.—Where immoveable property is transferred for consideration",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 586,
+      "page": 18,
+      "text": "46. Transfer for consideration by persons having distinct interests.—Where immoveable property",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 599,
+      "page": 18,
+      "text": "47. Transfer by co-owners of share in common property.—Where several co-owners of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 609,
+      "page": 18,
+      "text": "48. Priority of rights created by transfer.—Where a person purports to create by transfer at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 613,
+      "page": 18,
+      "text": "49. Transferee’s right under policy.—Where immoveable property is transferred for consideration,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 618,
+      "page": 18,
+      "text": "50. Rent bona fide paid to holder under defective title.—No person shall be chargeable with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 626,
+      "page": 19,
+      "text": "51. Improvements made by bona fide holders under defective titles.—When the transferee of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 637,
+      "page": 19,
+      "text": "52. Transfer of property pending suit relating thereto.—During the 1[pendency] in any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 665,
+      "page": 19,
+      "text": "1. Subs. by Act 20 of 1929, s.14, for “active prosecution”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 666,
+      "page": 19,
+      "text": "2. Subs. by A.O. 1950, for “in the Provinces or established beyond the limits of the Provinces”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 667,
+      "page": 19,
+      "text": "3. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “within the limits of Part A States and Part C States”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 669,
+      "page": 19,
+      "text": "4. Subs. by A.O. 1937, for “the Governor General in Council”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 670,
+      "page": 19,
+      "text": "5. The words “or the Crown Representative” Rep. by the A.O. 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 671,
+      "page": 19,
+      "text": "6. Subs. by Act 20 of 1929, s. 14, for “a contentious”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 672,
+      "page": 19,
+      "text": "7. Ins. by s. 14, ibid",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 673,
+      "page": 19,
+      "text": "8. Subs. by s. 15, ibid., for s. 53.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 693,
+      "page": 20,
+      "text": "54. “Sale” defined.—“Sale” is a transfer of ownership in exchange for a price paid or promised",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 714,
+      "page": 20,
+      "text": "55. Rights and liabilities of buyer and seller.—In the absence of a contract to the contrary,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 721,
+      "page": 20,
+      "text": "1. Ins. by Act 20 of 1929, s. 16.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 722,
+      "page": 20,
+      "text": "2. The words “the contract though required to be registered, has not been registered, or” omitted by Act 48 of 2001, s. 10 (w.e.f.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 724,
+      "page": 20,
+      "text": "3. Ins. by Act 20 of 1929, s. 17.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 774,
+      "page": 21,
+      "text": "1. Ins. by Act 20 of 1929, s. 17.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 807,
+      "page": 22,
+      "text": "57. Provision by Court for incumbrances and sale freed therefrom.—(a) Where immoveable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 825,
+      "page": 22,
+      "text": "1. The words “with notice of the payment” omitted by Act 20 of 1929, s. 17.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 826,
+      "page": 22,
+      "text": "2. Subs. by s. 18, ibid., for s. 56.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 843,
+      "page": 23,
+      "text": "58. “Mortgage”, “mortgagor”, “mortgagee”, “mortgage-money” and “mortgage-deed”",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 876,
+      "page": 23,
+      "text": "1. Added by Act 20 o f 192 9 , s. 19.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 877,
+      "page": 23,
+      "text": "2. Subs. by s. 19, ibid., for “and to appropriate them”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 878,
+      "page": 23,
+      "text": "3. Subs. by s. 19, ibid., for “and”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 892,
+      "page": 24,
+      "text": "59. Mortgage when to be by assurance.—Where the principal money secured is one hundred",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 908,
+      "page": 24,
+      "text": "60. Right of mortgagor to redeem.—At any time after the principal money has become 9[due],",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 924,
+      "page": 24,
+      "text": "1. Added by Act 20 of 1929, s. 19.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 925,
+      "page": 24,
+      "text": "2. Subs. by A.O. 1948, for “Bombay and Karachi”. The word “and” had been ins. by A.O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 926,
+      "page": 24,
+      "text": "3. The words “Rangoon, Moulmein, Bassein and Akyab” omitted by A.O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 927,
+      "page": 24,
+      "text": "4. The words “Governor General in Council” successively amended by A.O. 1937 and the A.O. 1950 to read as",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 929,
+      "page": 24,
+      "text": "5. Ins. by Act 20 of 1929, s. 20.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 930,
+      "page": 24,
+      "text": "6. Subs. by Act 6 of 1904, s. 3, for “an instrument”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 931,
+      "page": 24,
+      "text": "7. Third paragraph omitted by Act 20 of 1929, s. 20.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 932,
+      "page": 24,
+      "text": "8. Ins. by s. 21, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 933,
+      "page": 24,
+      "text": "9. Subs. by s. 22, ibid., for “payable”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 934,
+      "page": 24,
+      "text": "10. Subs. by s. 22, ibid., for “the mortgage-deed, if any, to the mortgagor”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 935,
+      "page": 24,
+      "text": "11. Subs. by Act 20 of 1929, s. 22, for “order”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 955,
+      "page": 25,
+      "text": "60B. Right to inspection and production of documents.—A mortgagor, as long as his right",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 965,
+      "page": 25,
+      "text": "62. Right of usufructuary mortgagor to recover possession.—In the case of a usufructuary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 975,
+      "page": 25,
+      "text": "63. Accession to mortgaged property.—Where mortgaged property in possession of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 979,
+      "page": 25,
+      "text": "1. Ins. by Act 20 of 1929, s. 22.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 980,
+      "page": 25,
+      "text": "2. S. 60A and 60B ins. by s. 23, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 981,
+      "page": 25,
+      "text": "3. Subs. by s. 24, ibid., for s. 61.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 982,
+      "page": 25,
+      "text": "4. Ins. by s. 25, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 983,
+      "page": 25,
+      "text": "5. Subs. by s. 25, ibid., for “the interest of the principal money”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 984,
+      "page": 25,
+      "text": "6. Subs. by s. 25, ibid., for “the principal money”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1015,
+      "page": 26,
+      "text": "64. Renewal of mortgaged lease.—Where the mortgaged property is a lease 3***, and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1018,
+      "page": 26,
+      "text": "65. Implied contracts by mortgagor.—In the absence of a contract to the contrary, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1032,
+      "page": 26,
+      "text": "1. Subs. by Act 20 of 1929, s. 26, for “at the same rate of interest”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1033,
+      "page": 26,
+      "text": "2. Ins. by s. 27, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1034,
+      "page": 26,
+      "text": "3. The words “for a term of years” omitted by s. 28, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1035,
+      "page": 26,
+      "text": "4. The words “for a term of years” omitted by s. 29, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1071,
+      "page": 27,
+      "text": "66. Waste by mortgagor in possession.—A mortgagor in possession of the mortgaged",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1079,
+      "page": 27,
+      "text": "67. Right to foreclosure or sale.—In the absence of a contract to the contrary, the mortgagee",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1087,
+      "page": 27,
+      "text": "1. Certain words omitted by Act 20 of 1929, s. 29.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1088,
+      "page": 27,
+      "text": "2. Ins. by s. 30, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1089,
+      "page": 27,
+      "text": "3. Subs. by s. 31, ibid., for “payable”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1090,
+      "page": 27,
+      "text": "4. Subs. by s. 31, ibid., for “an order”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1130,
+      "page": 28,
+      "text": "69. Power of sale when valid.— 4[(1)] 5[6*** A mortgagee, or any person acting on his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1134,
+      "page": 28,
+      "text": "1. Subs. by Act 20 of 1929, s. 31, for clause (a).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1135,
+      "page": 28,
+      "text": "2. Ins. by s. 32, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1136,
+      "page": 28,
+      "text": "3. Subs. by s. 33, ibid., for s. 68.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1137,
+      "page": 28,
+      "text": "4. Section 69 re-numbered as sub-section (1) of that section by Act 20 of 1929, s. 34.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1138,
+      "page": 28,
+      "text": "5. Subs. by s. 34, ibid., for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1139,
+      "page": 28,
+      "text": "6. The words and figures “Notwithstanding anything contained in the Trustees’ and Mortgagees’ Powers Act, 1866 (28 of 1866)”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1180,
+      "page": 29,
+      "text": "1. Ins. by Act 3 of 1885, s. 5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1181,
+      "page": 29,
+      "text": "2. The words “the L.G., with the previous sanction of the G. G. in C.” successively amended by A.O. 1937 and A.O. 1950 to read",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1183,
+      "page": 29,
+      "text": "3. Ins. by Act 20 of 1929, s. 34.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1184,
+      "page": 29,
+      "text": "4. The words “the Secretary of State for India in Council” successively amended by A.O. 1937 and A.O. 1950 to read",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1186,
+      "page": 29,
+      "text": "5. Subs. by Act 20 of 1929, s. 34, for “is”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1187,
+      "page": 29,
+      "text": "6. The word “Karachi” omitted by A.O. 1948.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1188,
+      "page": 29,
+      "text": "7. The words “or Rangoon” have been successively amended by Acts 6 of 1904, 11 of 1915, 20 of 1929, the A.O. 1937 and the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1190,
+      "page": 29,
+      "text": "8. Second paragraph numbered as sub-section (2) by Act 20 of 1929, s. 34.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1191,
+      "page": 29,
+      "text": "9. The word “'But” omitted by s. 34, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1192,
+      "page": 29,
+      "text": "10. Clause (1) was lettered (a) by s. 34, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1193,
+      "page": 29,
+      "text": "11. Clause (2) was lettered (b) by s. 34, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1194,
+      "page": 29,
+      "text": "12. Third paragraph numbered as sub-section (3) by s. 34, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1195,
+      "page": 29,
+      "text": "13. Fourth paragraph numbered as sub-section (4) by Act 20 of 1929, s. 34.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1196,
+      "page": 29,
+      "text": "14. Subs. by s. 34, ibid., for fifth paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1197,
+      "page": 29,
+      "text": "15. The last paragraph of this section omitted by s. 34, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1246,
+      "page": 30,
+      "text": "1. Ins. by Act 20 of 1929, s. 35.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1268,
+      "page": 31,
+      "text": "70. Accession to mortgaged property.—If, after the date of a mortgage, any accession is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1276,
+      "page": 31,
+      "text": "71. Renewal of mortgaged lease.—When the mortgaged property is a lease 1***, and the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1279,
+      "page": 31,
+      "text": "72. Rights of mortgagee in possession.—2[A mortgagee] may spend such money as is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1294,
+      "page": 31,
+      "text": "1. The words “for a term of years” omitted by Act 20 of 1929, s. 36.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1295,
+      "page": 31,
+      "text": "2. Subs. by s. 37, ibid., for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1296,
+      "page": 31,
+      "text": "3. Clause (a) omitted by s. 37, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1297,
+      "page": 31,
+      "text": "4. Subs. by s. 37, ibid., for “its preservation”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1329,
+      "page": 32,
+      "text": "74. [Right of subsequent mortgagee to pay off prior mortgagee.] Rep. by the Transfer of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1331,
+      "page": 32,
+      "text": "75. [Rights of mesne mortgagee against and subsequent mortgagees.] Rep. by s. 39,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1333,
+      "page": 32,
+      "text": "76. Liabilities of mortgagee in possession.—When, during the continuance of the mortgage, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1346,
+      "page": 32,
+      "text": "1. Ins. by Act 20 of 1929, s. 37.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1347,
+      "page": 32,
+      "text": "2. Subs. by s. 37, ibid., for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1348,
+      "page": 32,
+      "text": "3. Subs. by s. 38, ibid., for s. 73.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1349,
+      "page": 32,
+      "text": "4. Ins. by s. 40, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1376,
+      "page": 33,
+      "text": "77. Receipts in lieu of interest.—Nothing in section 76, clauses (b), (d), (g) and (h), applies",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1382,
+      "page": 33,
+      "text": "78. Postponement of prior mortgagee.—Where, through the fraud, misrepresentation or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1386,
+      "page": 33,
+      "text": "79. Mortgage to secure uncertain amount when maximum is expressed.—If a mortgage",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1398,
+      "page": 33,
+      "text": "80. [Tacking abolished.] Rep. by the Transfer of Property (Amendment) Act, 1929 (20 of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1400,
+      "page": 33,
+      "text": "1. Ins. by Act 20 of 1929, s. 40.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1401,
+      "page": 33,
+      "text": "2. The words “on the mortgage-money” omitted by s. 40, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1402,
+      "page": 33,
+      "text": "3. The word “gross” omitted by s. 40, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1410,
+      "page": 34,
+      "text": "82. Contribution to mortgage-debt.—2[Where property subject to a mortgage belongs to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1426,
+      "page": 34,
+      "text": "83. Power to deposit in Court money due on mortgage.—At any time after the principal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1446,
+      "page": 34,
+      "text": "1. Subs. by Act 20 of 1929, s. 42, for s. 81.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1447,
+      "page": 34,
+      "text": "2. Subs by s. 43, ibid., for the first paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1448,
+      "page": 34,
+      "text": "3. Subs. by s. 43, ibid., for “second”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1449,
+      "page": 34,
+      "text": "4. Subs. by s. 44, ibid., for “has become payable”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1450,
+      "page": 34,
+      "text": "5. See the Code of Civil Procedure, 1908 (5 of 1908), Sch. I, Order VI, rule 15.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1451,
+      "page": 34,
+      "text": "6. Subs. by Act 20 of 1929, s. 44, for “if then in his possession or power”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1452,
+      "page": 34,
+      "text": "7. Ins. by s. 44, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1454,
+      "page": 35,
+      "text": "84. Cessation of interest.—When the mortgagor or such other person as aforesaid has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1469,
+      "page": 35,
+      "text": "85.[Parties to suits for foreclosure, sale and redemption.] Rep. by the Code of Civil Procedure, 1908",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1473,
+      "page": 35,
+      "text": "86. [Decree of foreclosure suit.] Rep. by the Code of Civil Procedure, 1908 (5 of 1908),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1475,
+      "page": 35,
+      "text": "87. [Procedure in case of payment of amount due.] Rep. by s. 156 and the fifth Schedule,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1477,
+      "page": 35,
+      "text": "88. [Decree of sale.] Rep. by s. 156 and V Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1478,
+      "page": 35,
+      "text": "89. [Procedure when defendant pay amount due.] Rep. by s. 156 and V Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1479,
+      "page": 35,
+      "text": "90. [Recovery of balance due on mortgage.] Rep. by s. 156 and V Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1494,
+      "page": 35,
+      "text": "1. Ins. by Act 20 of 1929, s. 45.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1495,
+      "page": 35,
+      "text": "2. Subs. by s. 45, ibid., for “as the case may be”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1496,
+      "page": 35,
+      "text": "3. Added by s. 45, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1497,
+      "page": 35,
+      "text": "4. For the repealed provisions, as re-enacted, see (Act 5 of 1908), Sch. I, Order XXXIV.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1498,
+      "page": 35,
+      "text": "5. Subs. by Act 20 of 1929, s. 46, for s. 91.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1499,
+      "page": 35,
+      "text": "6. Ins. by s. 47, ibid. Original ss. 92 to 94 were rep. by Act 5 of 1908, s. 156 and the fifth Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1506,
+      "page": 36,
+      "text": "93. Prohibition of tacking.—No mortgagee paying off a prior mortgage, whether with or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1511,
+      "page": 36,
+      "text": "94. Rights of mesne mortgagee.—Where a property is mortgaged for successive debts to successive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1520,
+      "page": 36,
+      "text": "96. Mortgage by deposit of title-deeds.—The provisions hereinbefore contained which apply to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1522,
+      "page": 36,
+      "text": "97. [Application of proceeds.] Rep. by the Code of Civil Procedure, 1908 (5 of 1908), s. 156 and V",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1525,
+      "page": 36,
+      "text": "98. Rights and liabilities of parties to anomalous mortgages.—In the case of 3[an anomalous",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1528,
+      "page": 36,
+      "text": "99. [Attachment of mortgaged property.] Rep. by the Code of Civil Procedure, 1908 (5 of 1908), s.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1531,
+      "page": 36,
+      "text": "100. Charges.—Where immoveable property of one person is by act of parties or operation of law",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1545,
+      "page": 36,
+      "text": "1. Subs. by Act 20 of 1929, s. 48, for s. 95. Original s. 96 was rep. by Act 5 of 1908, s. 156 and Sch. V.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1546,
+      "page": 36,
+      "text": "2. For the repealed provisions, as re-enacted, see (Act 5 of 1908), Sch. I, Order XXXIV, rules 12 and 13.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1547,
+      "page": 36,
+      "text": "3. Subs. by Act 20 of 1929, s. 49, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1548,
+      "page": 36,
+      "text": "5. Subs. by Act 20 of 1929, s. 50, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1549,
+      "page": 36,
+      "text": "6. Added by s. 50, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1550,
+      "page": 36,
+      "text": "7. Subs. by s. 51, ibid., for s. 101.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1555,
+      "page": 37,
+      "text": "102. Service or tender on or to agent.—Where the person on or to whom any notice or tender",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1572,
+      "page": 37,
+      "text": "103. Notice, etc., to or by person incompetent to contract.—Where, under the provisions of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1585,
+      "page": 37,
+      "text": "104. Power to make rules.—The High Court may, from time to time, make rules consistent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1590,
+      "page": 37,
+      "text": "105. Lease defined.—A lease of immoveable property is a transfer of a right to enjoy such property,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1597,
+      "page": 37,
+      "text": "1. Subs. by Act 20 of 1929, s. 52, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1598,
+      "page": 37,
+      "text": "2. Ins. by s. 52, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1599,
+      "page": 37,
+      "text": "3. Subs. by Act 20 of 1929, s. 52, for certain words.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1600,
+      "page": 37,
+      "text": "4. Subs. by s. 52, ibid., for “in such Court as last aforesaid”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1601,
+      "page": 37,
+      "text": "5. Ins. by s. 53, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1602,
+      "page": 37,
+      "text": "6. Subs. by s. 53, ibid., for “Chapter XXXI of the Code of Civil Procedure”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1619,
+      "page": 38,
+      "text": "107. Leases how made.—A lease of immoveable property from year to year, or for any term",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1631,
+      "page": 38,
+      "text": "108. Rights and liabilities of lessor and lessee.— In the absence of a contract or local",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1652,
+      "page": 38,
+      "text": "1. Subs. by Act 3 of 2003, s. 2, for s. 106 (w.e.f. 31-12-2002).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1653,
+      "page": 38,
+      "text": "2. Subs. by Act 6 of 1904, s. 5, for the Second paragraph.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1654,
+      "page": 38,
+      "text": "3. Ins. by Act 20 of 1929, s. 55.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1655,
+      "page": 38,
+      "text": "4. The words “with the previous sanction of the Governor General in Council” omitted by A. O. 1937.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1704,
+      "page": 39,
+      "text": "1. Ins. by Act 20 of 1929, s. 56.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1705,
+      "page": 39,
+      "text": "2. Subs. by s. 56, ibid., for “during the continuance of the lease”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1711,
+      "page": 40,
+      "text": "109. Rights of lessor’s transferee.—If the lessor transfers the property leased, or any part thereof, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1725,
+      "page": 40,
+      "text": "110. Exclusion of day on which term commences.—Where the time limited by a lease of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1735,
+      "page": 40,
+      "text": "111. Determination of lease.—A lease of immoveable property determines—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1750,
+      "page": 40,
+      "text": "1. The words “or the lease shall become void” omitted by Act 20 of 1929, s. 57.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1751,
+      "page": 40,
+      "text": "2. Ins. by s. 57, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1761,
+      "page": 41,
+      "text": "112. Waiver of forfeiture.—A forfeiture under section 111, clause (g) is waived by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1767,
+      "page": 41,
+      "text": "113. Waiver of notice to quit.—A notice given under section 111, clause (h), is waived, with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1777,
+      "page": 41,
+      "text": "114. Relief against forfeiture for non-payment of rent.—Where a lease of immoveable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1794,
+      "page": 41,
+      "text": "115. Effect of surrender and forfeiture on under-leases.—The surrender, express or implied,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1800,
+      "page": 41,
+      "text": "1. Subs. by Act 20 of 1929, s. 57, for “either case”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1801,
+      "page": 41,
+      "text": "2. Subs. by s. 57, ibid., for “does some act showing”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1802,
+      "page": 41,
+      "text": "3. Ins. by s. 58, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1807,
+      "page": 42,
+      "text": "116. Effect of holding over.—If a lessee or under-lessee of property remains in possession",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1819,
+      "page": 42,
+      "text": "117. Exemption of leases for agricultural purposes.—None of the provisions of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1829,
+      "page": 42,
+      "text": "118. “Exchange” defined.—When two persons mutually transfer the ownership of one",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1842,
+      "page": 42,
+      "text": "120. Rights and liabilities of parties.—Save as otherwise provided in this Chapter,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1846,
+      "page": 42,
+      "text": "121. Exchange of money.—On an exchange of money, each party thereby warrants",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1848,
+      "page": 42,
+      "text": "1. The words “with the previous sanction of the Governor General in Council” omitted by Act 38 of 1920, s. 2 and I",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1850,
+      "page": 42,
+      "text": "2. Ins. by Act 6 of 1904, s. 6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1851,
+      "page": 42,
+      "text": "3. Subs. by Act 20 of 1929, s. 59, for s. 119.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1855,
+      "page": 43,
+      "text": "122. “Gift” defined.—“Gift” is the transfer of certain existing moveable or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1861,
+      "page": 43,
+      "text": "123. Transfer how effected.—For the purpose of making a gift of immoveable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1868,
+      "page": 43,
+      "text": "124. Gift of existing and future property.—A gift comprising both existing and future",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1870,
+      "page": 43,
+      "text": "125. Gift to several, of whom one does not accept.—A gift of a thing to two or more",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1873,
+      "page": 43,
+      "text": "126. When gift may be suspended or revoked.—The donor and donee may agree that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1889,
+      "page": 43,
+      "text": "127. Onerous gifts.—Where a gift is in the form of a single transfer to the same person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1908,
+      "page": 44,
+      "text": "128. Universal donee.—Subject to the provisions of section 127, where a gift consists",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1912,
+      "page": 44,
+      "text": "129. Saving of donations mortis causa and Muhammadan law.—Nothing in this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1918,
+      "page": 44,
+      "text": "130. Transfer of actionable claim.—(1) The transfer of an actionable claim 4[whether with",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1945,
+      "page": 44,
+      "text": "1. Ins. by Act 20 of 1929, s. 60.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1946,
+      "page": 44,
+      "text": "2. The words and figures “or, save as provided by s. 123, any rule of Hindu or Buddhist law” omitted by Act 20 of 1929,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1948,
+      "page": 44,
+      "text": "3. Subs. by Act 2 of 1900, s. 4, for the original Chapter VIII.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1949,
+      "page": 44,
+      "text": "4. Ins. by Act 20 of 1929, s. 62.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1950,
+      "page": 44,
+      "text": "5. The words and figures “and notwithstanding anything contained in section 123” ins. by Act 38 of 1925, s. 2, omitted",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1952,
+      "page": 44,
+      "text": "6. Added by Act 4 of 1938, s. 121 (w.e.f. 1-7-1939).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1953,
+      "page": 44,
+      "text": "7. Ins. by Act 6 of 1944, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1955,
+      "page": 45,
+      "text": "131. Notice to be in writing, signed.—Every notice of transfer of an actionable claim shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1959,
+      "page": 45,
+      "text": "132. Liability of transferee of actionable claim.—The transferee of an actionable claim shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1969,
+      "page": 45,
+      "text": "133. Warranty of solvency of debtor.—Where the transferor of a debt warrants the solvency of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1974,
+      "page": 45,
+      "text": "134. Mortgaged debt.—Where a debt is transferred for the purpose of securing an existing or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1985,
+      "page": 45,
+      "text": "136. Incapacity of officers connected with Courts of Justice.—No Judge, legal practitioner or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1990,
+      "page": 45,
+      "text": "137. Saving of negotiable instruments, etc.—Nothing in the foregoing sections of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1998,
+      "page": 45,
+      "text": "1. Subs. by Act 6 of 1944, s. 3, for s. 135.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1999,
+      "page": 45,
+      "text": "2. Ins. by s. 4, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2050,
+      "page": 46,
+      "text": "1806.",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

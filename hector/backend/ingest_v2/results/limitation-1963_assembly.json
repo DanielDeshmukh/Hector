@@ -1,0 +1,106 @@
+{
+  "act_id": "limitation-1963",
+  "page_spanning_total": 8,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 3,
+      "page_end": 4,
+      "joins": [
+        {
+          "from_page": 3,
+          "to_page": 3,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "2. Definitions.—In this Act, unless the context otherwise requires,—\n(a) “applicant” includes—",
+          "after_head": "(i) a petitioner;\n(ii) any person from or through whom an applicant derives his right to apply;\n(iii) any person whose estate is represented"
+        },
+        {
+          "from_page": 3,
+          "to_page": 4,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "f derives his right to sue;\n(ii) any person whose estate is represented by the plaintiff as executor, administrator or other\nrepresentative;",
+          "after_head": "(j) “period of limitation” means the period of limitation prescribed for any suit, appeal or\napplication by the Schedule, and “prescribed pe"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "page_start": 4,
+      "page_end": 5,
+      "joins": [
+        {
+          "from_page": 4,
+          "to_page": 5,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "after the disability has\nceased, as would otherwise have been allowed from the time specified there for in the third column of the\nSchedule.",
+          "after_head": "(2) Where such person is, at the time from which the prescribed period is to be reckoned, affected by\ntwo such disabilities, or where, befor"
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "page_start": 5,
+      "page_end": 6,
+      "joins": [
+        {
+          "from_page": 5,
+          "to_page": 6,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "try shall be a\ndefence to a suit instituted in the said territories on a contract entered into in that State on in a foreign\ncountry unless—",
+          "after_head": "(a) the rule has extinguished the contract; and\n(b) the parties were domiciled in that State or in the foreign country during the period pre"
+        }
+      ]
+    },
+    {
+      "number": "14",
+      "page_start": 6,
+      "page_end": 7,
+      "joins": [
+        {
+          "from_page": 6,
+          "to_page": 7,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " a former civil proceeding was pending, the day on which\nthat proceeding was instituted and the day on which it ended shall both be counted;",
+          "after_head": "(b) a plaintiff or an applicant resisting an appeal shall be deemed to be prosecuting a proceeding;\n(c) misjoinder of parties or of causes o"
+        }
+      ]
+    },
+    {
+      "number": "17",
+      "page_start": 7,
+      "page_end": 8,
+      "joins": [
+        {
+          "from_page": 7,
+          "to_page": 8,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": " mistake; or\n(d) where any document necessary to establish the right of the plaintiff or applicant has been\nfraudulently concealed from him,",
+          "after_head": "the period of limitation shall not begin to run until the plaintiff or applicant has discovered the fraud or\nthe mistake or could, with reas"
+        },
+        {
+          "from_page": 8,
+          "to_page": 8,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "s not a party to the concealment and, did not at the time of purchase know, or have\nreason to believe, that the document had been concealed.",
+          "after_head": "(2) Where a judgment-debtor has, by fraud or force, prevented the execution of a decree or order\nwithin the period of limitation, the court "
+        }
+      ]
+    }
+  ]
+}

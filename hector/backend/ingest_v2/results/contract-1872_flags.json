@@ -1,0 +1,46 @@
+{
+  "long_unsplit": [
+    {
+      "number": "23",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3263
+    },
+    {
+      "number": "28",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3013
+    },
+    {
+      "number": "73",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 9601
+    },
+    {
+      "number": "74",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3193
+    }
+  ],
+  "null_titles": [],
+  "split_sections": [],
+  "page_spanning_records": 27,
+  "a1_shown": [
+    "2",
+    "15",
+    "17",
+    "19A",
+    "23"
+  ]
+}

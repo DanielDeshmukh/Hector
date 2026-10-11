@@ -21,15 +21,17 @@
               "110",
               "111",
               "112"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 44,
             "markers_found": [
               "162",
-              "163",
-              "164"
-            ]
+              "164",
+              "165"
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 52,
@@ -37,7 +39,8 @@
               "194",
               "195",
               "195A"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 72,
@@ -45,7 +48,8 @@
               "295A",
               "296",
               "297"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 81,
@@ -53,7 +57,8 @@
               "340",
               "341",
               "342"
-            ]
+            ],
+            "in_record_span": true
           }
         ]
       }
@@ -63,17 +68,23 @@
       "evidence": {
         "mode": "toc",
         "expected_count": 574,
-        "records": 581,
-        "missing": [],
-        "extra": [
-          "354E",
-          "376F",
-          "379A",
-          "379B",
-          "382C",
-          "509A",
-          "509B"
+        "records": 568,
+        "missing": [
+          "13",
+          "15",
+          "16",
+          "58",
+          "59",
+          "61",
+          "138A",
+          "163",
+          "165A",
+          "226",
+          "478",
+          "480",
+          "490"
         ],
+        "extra": [],
         "anchor_max_plain_seen": 511,
         "anchor_ok": true
       }
@@ -81,7 +92,7 @@
     "G3": {
       "status": "PASS",
       "evidence": {
-        "part0_records": 581,
+        "part0_records": 568,
         "needed_prefix_stripping": 53,
         "failures": []
       }
@@ -102,7 +113,7 @@
     "G5": {
       "status": "PASS",
       "evidence": {
-        "records": 581,
+        "records": 568,
         "duplicate_ids": [],
         "malformed_ids": [],
         "empty_texts": [],
@@ -112,15 +123,16 @@
     "G6": {
       "status": "PASS",
       "evidence": {
-        "primary_fragment_rate": 0.997528,
-        "diagnostic_whole_record_rate": 0.984564,
+        "primary_fragment_rate": 0.997521,
+        "diagnostic_whole_record_rate": 0.984519,
         "diagnostic_line_rate": 1.0,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [
           "IndiaCode"
         ],
-        "windows": 6473,
+        "windows": 6454,
         "primary_failures": 16,
+        "mega_table_records": [],
         "worst_5": [
           {
             "id": "ipc-1860:s:21:0",
@@ -169,8 +181,8 @@
     "G7": {
       "status": "PASS",
       "evidence": {
-        "parents": 581,
-        "markers": 581,
+        "parents": 568,
+        "markers": 568,
         "problems": []
       }
     },
@@ -235,17 +247,17 @@
     "G9": {
       "status": "PASS",
       "evidence": {
-        "footnotes_total": 329,
+        "footnotes_total": 342,
         "footnotes_attached": 327,
-        "footnotes_unattached": 2,
-        "footnotes_ambiguous": 0,
-        "footnote_lines_detected": 380,
-        "labelled_footnote_lines": 380,
+        "footnotes_unattached": 13,
+        "footnotes_ambiguous": 2,
+        "footnote_lines_detected": 400,
+        "labelled_footnote_lines": 400,
         "attached_lines": 363,
-        "unattached_lines": 17,
+        "unattached_lines": 37,
         "scope_boundaries": 106,
         "chapter_notes": 3,
-        "groups": 83,
+        "groups": 93,
         "accounting_ok": true,
         "records_containing_footnote_lines": []
       }

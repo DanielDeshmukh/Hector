@@ -2,83 +2,51 @@
   "seed": 20261012,
   "counts": {
     "restated": 170,
-    "footnote": 1,
-    "UNKNOWN": 5
+    "footnote": 6
   },
   "labels": {
     "header": 42,
     "boilerplate": 104,
-    "footnote": 2,
+    "footnote": 30,
     "page_number": 45
   },
   "unlabeled_removed": 0,
-  "unknowns": [
-    {
-      "line": 2011,
-      "page": 54,
-      "text": "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
-      "context": [
-        "relating to evidence on which the Court could come to the conclusion about the facts of the case and",
-        "then pronounce judgment thereupon and it came into force on 1st September, 1872.",
-        "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
-        "criminal laws including the Indian Evidence Act, 1872 and adopt them in accordance with the",
-        "contemporary needs and aspirations of the people. The law of evidence (not being substantive or"
-      ]
-    },
-    {
-      "line": 2017,
-      "page": 54,
-      "text": "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
-      "context": [
-        "which the substantive or procedural laws are operationalised. The existing law does not address the",
-        "technological advancement undergone in the country during the last few decades.",
-        "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
-        "11th August, 2023. The Bill was referred to the Department-related Parliamentary Standing Committee",
-        "on Home Affairs for its consideration and report. The Committee after deliberations made its"
-      ]
-    },
+  "unknowns": [],
+  "footnote_sample": [
     {
       "line": 2025,
       "page": 54,
       "text": "4. The proposed legislation, inter alia, provides as under:-",
-      "context": [
-        "the Committee that have been accepted by the Government.",
-        "IndiaCode",
-        "4. The proposed legislation, inter alia, provides as under:-",
-        "(i) it provides that \"evidence\" includes any information given electronically, which would permit",
-        "appearance of witnesses, accused, experts and victims through electronic means;"
-      ]
+      "cls": "footnote"
+    },
+    {
+      "line": 39,
+      "page": 10,
+      "text": "1. 1st day of July, 2024, vide notification No. S.O. 849(E), dated, 23rd February, 2024, see Gazette of India, Extraordinary, Part",
+      "cls": "footnote"
     },
     {
       "line": 2038,
       "page": 54,
       "text": "5. The Notes on Clauses explain the various provisions of the Bill.",
-      "context": [
-        "courts. The proposed Bill introduces more precise and uniform rules of practice of courts in dealing",
-        "with facts and circumstances of the case by means of evidence.",
-        "5. The Notes on Clauses explain the various provisions of the Bill.",
-        "6. The Bill seeks to achieve the above objectives.",
-        "AMIT SHAH."
-      ]
+      "cls": "footnote"
     },
     {
       "line": 2039,
       "page": 54,
       "text": "6. The Bill seeks to achieve the above objectives.",
-      "context": [
-        "with facts and circumstances of the case by means of evidence.",
-        "5. The Notes on Clauses explain the various provisions of the Bill.",
-        "6. The Bill seeks to achieve the above objectives.",
-        "AMIT SHAH.",
-        "       NEW DELHI;"
-      ]
-    }
-  ],
-  "footnote_sample": [
+      "cls": "footnote"
+    },
     {
-      "line": 39,
-      "page": 10,
-      "text": "1. 1st day of July, 2024, vide notification No. S.O. 849(E), dated, 23rd February, 2024, see Gazette of India, Extraordinary, Part",
+      "line": 2017,
+      "page": 54,
+      "text": "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
+      "cls": "footnote"
+    },
+    {
+      "line": 2011,
+      "page": 54,
+      "text": "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
       "cls": "footnote"
     }
   ],
@@ -1284,36 +1252,36 @@
       "line": 2011,
       "page": 54,
       "text": "2. The experience of seven decades of Indian democracy calls for comprehensive review of our",
-      "cls": "UNKNOWN",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 2017,
       "page": 54,
       "text": "3. Accordingly, a Bill, namely, the Bharatiya Sakshya Bill, 2023 was introduced in Lok Sabha on",
-      "cls": "UNKNOWN",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 2025,
       "page": 54,
       "text": "4. The proposed legislation, inter alia, provides as under:-",
-      "cls": "UNKNOWN",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 2038,
       "page": 54,
       "text": "5. The Notes on Clauses explain the various provisions of the Bill.",
-      "cls": "UNKNOWN",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 2039,
       "page": 54,
       "text": "6. The Bill seeks to achieve the above objectives.",
-      "cls": "UNKNOWN",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     }
   ]
 }

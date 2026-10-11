@@ -12,8 +12,7 @@ acts:
     source_type: bare_act
     language: en
     status: in_force
-    status_pending: source_pending_toc
-    status_note: "paused by user decision (checkpoint 1): source PDF has no Arrangement of Sections/CONTENTS in any of its 40 pages (evidence: results/step2_inspect.log). Files kept. Await replacement PDF with a ToC; no section list will be guessed."
+    status_note: "Unblocked 2026-10-10: replacement PDF has a CONTENTS/ToC region on pages 2-3 (0-based), body best_start=10, 112 markers, 107 base sections (1..107, density 1.000), 2 order violations. Previously paused (no ToC in the 40-page source); re-triage confirms a real ToC now exists."
 
   - act_id: ipc-1860
     act_name: "The Indian Penal Code, 1860"
@@ -86,3 +85,92 @@ acts:
     repealed_on: "2024-07-01"
     replaced_by: bnss-2023
     status_note: "repealed by bnss-2023 (BNSS repeal and savings). 261-page PDF; ToC (ARRANGEMENT OF SECTIONS) spans pages 1-17, body starts page 18 (0-based). Triage 2026-10-10: 532 markers = 484 base (1..484, density 1.000) + 48 lettered, 0 order violations at start_page=18."
+
+  # --- Wave 1: core civil / commercial acts (2026-10-10) ---
+  # Source PDFs copied from api/data/Books/ into ingest_v2/sources/.
+  # Triage numbers below are from the naive _triage_one.py sweep (start_page
+  # heuristic only); each still needs the authoritative run_pilot.py pass
+  # (ToC-driven body start + G1-G9 gates) before it counts as ingested.
+
+  - act_id: cpc-1908
+    act_name: "The Code of Civil Procedure, 1908"
+    act_short: "Code of Civil Procedure"
+    year: 1908
+    source_file: sources/cpc-1908.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "347-page PDF; ToC region pages 3+. Schedule-heavy; naive triage max=1871 is Schedule-table noise (real base ~187). Civil counterpart to crpc-1973. Needs own triage pass before pilot."
+
+  - act_id: contract-1872
+    act_name: "The Indian Contract Act, 1872"
+    act_short: "Indian Contract Act"
+    year: 1872
+    source_file: sources/contract-1872.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    sequence_only_fallback: true
+    status_note: "53-page PDF; no ARRANGEMENT OF SECTIONS found (ToC page 0 is a title page). Naive triage density 0.231 is Schedule-I table noise (real base ~267). sequence_only_fallback=true: if no ToC found in step2, use SEQUENCE_ONLY mode."
+
+  - act_id: tpa-1882
+    act_name: "The Transfer of Property Act, 1882"
+    act_short: "Transfer of Property Act"
+    year: 1882
+    source_file: sources/tpa-1882.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    sequence_only_fallback: true
+    status_note: "46-page PDF; no ToC found. Naive triage density 0.465 is Schedule noise (real base ~138). sequence_only_fallback=true."
+
+  - act_id: limitation-1963
+    act_name: "The Limitation Act, 1963"
+    act_short: "Limitation Act"
+    year: 1963
+    source_file: sources/limitation-1963.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "24-page PDF; ARRANGEMENT OF SECTIONS on page 0. Naive triage 157 markers, base 130, max 137, density 0.949, 6 order violations."
+
+  - act_id: ni-1881
+    act_name: "The Negotiable Instruments Act, 1881"
+    act_short: "Negotiable Instruments Act"
+    year: 1881
+    source_file: sources/ni-1881.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "32-page PDF; ToC header misspelled 'ARRENGMENT OF SECTIONS' (pages 4+). Naive triage density 0.449, real base ~147."
+
+  - act_id: ndps-1985
+    act_name: "The Narcotic Drugs and Psychotropic Substances Act, 1985"
+    act_short: "NDPS Act"
+    year: 1985
+    source_file: sources/ndps-1985.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "54-page PDF; ToC page 0. Naive triage density 0.41, real base ~83."
+
+  - act_id: rti-2005
+    act_name: "The Right to Information Act, 2005"
+    act_short: "Right to Information Act"
+    year: 2005
+    source_file: sources/rti-2005.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "25-page PDF; ToC page 2. Naive triage 49 markers, base 31, density 1.000, 5 order violations."
+
+  - act_id: arbitration-1996
+    act_name: "The Arbitration and Conciliation Act, 1996"
+    act_short: "Arbitration and Conciliation Act"
+    year: 1996
+    source_file: sources/arbitration-1996.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    sequence_only_fallback: true
+    status_note: "53-page PDF; no ToC found by naive sweep (page1 blank). Naive triage 169 markers, base 85, density 0.988, 23 order violations. sequence_only_fallback=true."

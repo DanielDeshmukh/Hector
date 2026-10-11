@@ -1,0 +1,203 @@
+{
+  "act_id": "arbitration-1996",
+  "gates": {
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "page1_has_act_name": true,
+        "page1_has_year": true,
+        "seed": 20261010,
+        "middle_pages_0based": [
+          14,
+          20,
+          24,
+          34,
+          38
+        ],
+        "page_hits": [
+          {
+            "page_1based": 15,
+            "markers_found": [
+              "13",
+              "14",
+              "15"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 21,
+            "markers_found": [
+              "30",
+              "31"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 25,
+            "markers_found": [
+              "35",
+              "36"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 35,
+            "markers_found": [
+              "58",
+              "59",
+              "60"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 39,
+            "markers_found": [
+              "85",
+              "86",
+              "87"
+            ],
+            "in_record_span": true
+          }
+        ]
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "mode": "toc",
+        "expected_count": 105,
+        "records": 109,
+        "missing": [],
+        "extra": [],
+        "anchor_max_plain_seen": 87,
+        "anchor_ok": false
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "part0_records": 106,
+        "needed_prefix_stripping": 8,
+        "failures": []
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "page_number_lines": 0,
+        "hyphen_breaks": 0,
+        "boilerplate": 0,
+        "repeated_30pct_lines": 0,
+        "examples_page_number": [],
+        "examples_hyphen": [],
+        "examples_boiler": [],
+        "examples_repeats": []
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "records": 109,
+        "duplicate_ids": [],
+        "malformed_ids": [],
+        "empty_texts": [],
+        "missing_or_null_nonnullable": []
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "primary_fragment_rate": 0.99824,
+        "diagnostic_whole_record_rate": 0.980858,
+        "diagnostic_line_rate": 1.0,
+        "raw_reference": "get_text('text', sort=True)",
+        "reference_repeated_lines_stripped": [
+          "IndiaCode"
+        ],
+        "windows": 1705,
+        "primary_failures": 3,
+        "mega_table_records": [],
+        "table_content_records": [
+          "arbitration-1996:s:27:0",
+          "arbitration-1996:s:64:0"
+        ],
+        "worst_5": [
+          {
+            "id": "arbitration-1996:s:4:0",
+            "missing_windows": 1,
+            "page_range": [
+              9,
+              9
+            ]
+          },
+          {
+            "id": "arbitration-1996:s:11a:0",
+            "missing_windows": 1,
+            "page_range": [
+              14,
+              14
+            ]
+          },
+          {
+            "id": "arbitration-1996:s:16:0",
+            "missing_windows": 1,
+            "page_range": [
+              16,
+              16
+            ]
+          }
+        ],
+        "threshold": 0.99
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "parents": 106,
+        "markers": 106,
+        "problems": []
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "limit": 3000,
+        "flagged_long_unsplit": [
+          [
+            "29A",
+            0
+          ],
+          [
+            "34",
+            0
+          ],
+          [
+            "8",
+            0
+          ]
+        ],
+        "unflagged_over_limit": [],
+        "longest_text": 5151
+      }
+    },
+    "G9": {
+      "status": "PASS",
+      "evidence": {
+        "footnotes_total": 145,
+        "footnotes_attached": 53,
+        "footnotes_unattached": 91,
+        "footnotes_ambiguous": 1,
+        "footnote_lines_detected": 360,
+        "labelled_footnote_lines": 360,
+        "attached_lines": 57,
+        "unattached_lines": 303,
+        "scope_boundaries": 47,
+        "chapter_notes": 0,
+        "groups": 46,
+        "accounting_ok": true,
+        "records_containing_footnote_lines": []
+      }
+    }
+  },
+  "summary": "OK"
+}

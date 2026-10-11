@@ -1,14 +1,14 @@
 {
   "seed": 20261012,
   "counts": {
-    "restated": 581,
-    "footnote": 329,
-    "UNKNOWN": 9
+    "restated": 568,
+    "footnote": 343,
+    "UNKNOWN": 8
   },
   "labels": {
     "header": 76,
     "boilerplate": 106,
-    "footnote": 380,
+    "footnote": 400,
     "page_number": 106
   },
   "unlabeled_removed": 0,
@@ -88,9 +88,9 @@
   ],
   "footnote_sample": [
     {
-      "line": 2683,
-      "page": 65,
-      "text": "2. Subs. by Act 42 of 1953, s. 4 and the Third Sch., for “may be seized and”.",
+      "line": 2468,
+      "page": 61,
+      "text": "6. Subs. by the A. O. 1950, for “Queen’s coin”",
       "cls": "footnote"
     },
     {
@@ -100,9 +100,9 @@
       "cls": "footnote"
     },
     {
-      "line": 160,
+      "line": 157,
       "page": 16,
-      "text": "6. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or Naval”.",
+      "text": "3. Subs. by s. 3 and the Sch., ibid., for s. 18 which was ins. by the A.O. 1950. The Original s. 18 was rep. by the A.O. 1937.",
       "cls": "footnote"
     },
     {
@@ -112,27 +112,63 @@
       "cls": "footnote"
     },
     {
-      "line": 157,
-      "page": 16,
-      "text": "3. Subs. by s. 3 and the Sch., ibid., for s. 18 which was ins. by the A.O. 1950. The Original s. 18 was rep. by the A.O. 1937.",
+      "line": 109,
+      "page": 15,
+      "text": "8. Subs., ibid., for section 14.",
       "cls": "footnote"
     },
     {
-      "line": 4736,
-      "page": 105,
-      "text": "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation forlife” (w.e.f. 1-1-1956).",
+      "line": 4471,
+      "page": 100,
+      "text": "2. Explanation numbered as Explanation 1 by Act 38 of 1975, s. 9 (w.e.f. 1-9-1975).",
       "cls": "footnote"
     },
     {
-      "line": 4154,
-      "page": 94,
-      "text": "1. Subs. by Act 22 of 2018, s. 7, for “section 376D” (w.e.f. 21-4-2018).",
+      "line": 3908,
+      "page": 89,
+      "text": "5. Ins. by s. 4, ibid.",
       "cls": "footnote"
     },
     {
-      "line": 273,
-      "page": 18,
-      "text": "1. Subs. by Act 1 of 1889, s. 9, for the Explanation.",
+      "line": 216,
+      "page": 17,
+      "text": "3. Ins. by Act 39 of 1920, s. 2.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1250,
+      "page": 37,
+      "text": "5. Subs. by s. 2 and the First Sch., ibid., for “or sailor”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2413,
+      "page": 60,
+      "text": "3. Subs. by Act 13 of 2013, s. 4, for “offence under section 376, section 376A, section 376B, section 376C or section 376D”",
+      "cls": "footnote"
+    },
+    {
+      "line": 1147,
+      "page": 35,
+      "text": "8. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "cls": "footnote"
+    },
+    {
+      "line": 1254,
+      "page": 37,
+      "text": "9. Ins. by Act 35 of 1934, s. 2 and Sch.",
+      "cls": "footnote"
+    },
+    {
+      "line": 4365,
+      "page": 98,
+      "text": "1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
+      "cls": "footnote"
+    },
+    {
+      "line": 4470,
+      "page": 100,
+      "text": "1. Ins. by Act 40 of 1973, s. 9 (w.e.f. 1-11-1973).",
       "cls": "footnote"
     },
     {
@@ -142,69 +178,33 @@
       "cls": "footnote"
     },
     {
-      "line": 2524,
-      "page": 62,
-      "text": "3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "line": 273,
+      "page": 18,
+      "text": "1. Subs. by Act 1 of 1889, s. 9, for the Explanation.",
       "cls": "footnote"
     },
     {
-      "line": 1154,
-      "page": 35,
-      "text": "14. Ins. by Act 16 of 1921, s. 3.",
+      "line": 5031,
+      "page": 110,
+      "text": "5. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
       "cls": "footnote"
     },
     {
-      "line": 1303,
-      "page": 38,
-      "text": "6. Subs. by Act 14 of 1932, s. 130 and the Sch., for “or the Air Force Act”.",
+      "line": 4104,
+      "page": 93,
+      "text": "1. Subs. by Act 13 of 2013, s. 9, for sections 375, 376, 376A, 376B, 376C and 376D (w.e.f. 03-02-2013).",
       "cls": "footnote"
     },
     {
-      "line": 4527,
-      "page": 101,
-      "text": "5. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,",
+      "line": 5391,
+      "page": 117,
+      "text": "5. Subs. by the A. O. 1950, for “of Her Majesty or in the Imperial Service Troops” The words “or in the Royal Indian Marine”",
       "cls": "footnote"
     },
     {
-      "line": 4735,
-      "page": 105,
-      "text": "1. Ins. by Act 8 of 1882, s. 10",
-      "cls": "footnote"
-    },
-    {
-      "line": 1305,
-      "page": 38,
-      "text": "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
-      "cls": "footnote"
-    },
-    {
-      "line": 371,
-      "page": 20,
-      "text": "1. Subs. by Act 27 of 1870, s. 2, for section 40.",
-      "cls": "footnote"
-    },
-    {
-      "line": 5134,
-      "page": 112,
-      "text": "1. Subs. by Act 43 of 1958, s. 135 and the Sch., for s. 485 (w.e.f. 25-11-1959).",
-      "cls": "footnote"
-    },
-    {
-      "line": 4473,
-      "page": 100,
-      "text": "4. Ins. by Act 38 of 1975, s. 9 (w.e.f. 1-9-1975).",
-      "cls": "footnote"
-    },
-    {
-      "line": 2012,
-      "page": 52,
-      "text": "4. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).",
-      "cls": "footnote"
-    },
-    {
-      "line": 2987,
-      "page": 71,
-      "text": "6. Subs. by Act 3 of 1951, s. 3 and the Sch., for “a lottery organized by the Central Government or the Government of a Part A",
+      "line": 1813,
+      "page": 48,
+      "text": "3. Added by Act 3 of 1894, s. 5.",
       "cls": "footnote"
     }
   ],
@@ -367,22 +367,22 @@
       "line": 96,
       "page": 15,
       "text": "13. [Definition of “Queen”.] Omitted by the A. O. 1950.",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 99,
       "page": 15,
       "text": "15. [Definition of “British India”.] Rep. by the A. O. 1937.",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 100,
       "page": 15,
       "text": "16. [Definition of “Government of India”.] Rep., ibid.",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 101,
@@ -948,15 +948,15 @@
       "line": 447,
       "page": 22,
       "text": "58. [Offenders sentenced to transportation how dealt with until transported.] Rep. by the Code of",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 449,
       "page": 22,
       "text": "59. [Transportation instead of imprisonment.] Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956).",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 451,
@@ -969,8 +969,8 @@
       "line": 456,
       "page": 22,
       "text": "61. [Sentence of forfeiture of property.] Rep. by the Indian Penal Code (Amendment) Act, 1921",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 458,
@@ -1998,8 +1998,8 @@
       "line": 1310,
       "page": 39,
       "text": "138A. [Application of foregoing sections to the Indian Marine Service.] Rep. by the Amending Act,",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 1312,
@@ -2271,8 +2271,8 @@
       "line": 1555,
       "page": 44,
       "text": "163. [Taking gratification, for the exercise personal influence with public servant.] Rep. by s. 31, ibid.",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 1556,
@@ -2292,8 +2292,8 @@
       "line": 1560,
       "page": 44,
       "text": "165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid.",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 1561,
@@ -3146,8 +3146,8 @@
       "line": 2383,
       "page": 60,
       "text": "226. [Unlawful return from transportation.] Rep. by the Code of Criminal Procedure (Amendment)",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 2386,
@@ -5799,8 +5799,8 @@
       "line": 5056,
       "page": 111,
       "text": "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 andSch.",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 5058,
@@ -5813,8 +5813,8 @@
       "line": 5060,
       "page": 111,
       "text": "480. [Using a false trade mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 5062,
@@ -5988,8 +5988,8 @@
       "line": 5166,
       "page": 113,
       "text": "490. [Breach of contract of service during voyage or journey.] Rep. by the Workmen's Breach of",
-      "cls": "restated",
-      "label": null
+      "cls": "footnote",
+      "label": "footnote"
     },
     {
       "line": 5168,

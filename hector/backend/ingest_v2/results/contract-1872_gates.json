@@ -1,0 +1,221 @@
+{
+  "act_id": "contract-1872",
+  "gates": {
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "page1_has_act_name": true,
+        "page1_has_year": true,
+        "seed": 20261010,
+        "middle_pages_0based": [
+          14,
+          20,
+          24,
+          34,
+          38
+        ],
+        "page_hits": [
+          {
+            "page_1based": 15,
+            "markers_found": [
+              "18",
+              "19",
+              "19A"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 21,
+            "markers_found": [
+              "36",
+              "37",
+              "38"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 25,
+            "markers_found": [
+              "53",
+              "54",
+              "55"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 35,
+            "markers_found": [
+              "128",
+              "129",
+              "130"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 39,
+            "markers_found": [
+              "148",
+              "149",
+              "150"
+            ],
+            "in_record_span": true
+          }
+        ]
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "mode": "toc",
+        "expected_count": 268,
+        "records": 268,
+        "missing": [],
+        "extra": [],
+        "anchor_max_plain_seen": 266,
+        "anchor_ok": false
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "part0_records": 268,
+        "needed_prefix_stripping": 3,
+        "failures": []
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "page_number_lines": 0,
+        "hyphen_breaks": 0,
+        "boilerplate": 0,
+        "repeated_30pct_lines": 0,
+        "examples_page_number": [],
+        "examples_hyphen": [],
+        "examples_boiler": [],
+        "examples_repeats": []
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "records": 268,
+        "duplicate_ids": [],
+        "malformed_ids": [],
+        "empty_texts": [],
+        "missing_or_null_nonnullable": []
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "primary_fragment_rate": 0.993232,
+        "diagnostic_whole_record_rate": 0.981195,
+        "diagnostic_line_rate": 1.0,
+        "raw_reference": "get_text('text', sort=True)",
+        "reference_repeated_lines_stripped": [
+          "IndiaCode"
+        ],
+        "windows": 2364,
+        "primary_failures": 16,
+        "mega_table_records": [],
+        "worst_5": [
+          {
+            "id": "contract-1872:s:3:0",
+            "missing_windows": 1,
+            "page_range": [
+              11,
+              11
+            ]
+          },
+          {
+            "id": "contract-1872:s:27:0",
+            "missing_windows": 1,
+            "page_range": [
+              18,
+              18
+            ]
+          },
+          {
+            "id": "contract-1872:s:37:0",
+            "missing_windows": 1,
+            "page_range": [
+              21,
+              21
+            ]
+          },
+          {
+            "id": "contract-1872:s:45:0",
+            "missing_windows": 1,
+            "page_range": [
+              23,
+              23
+            ]
+          },
+          {
+            "id": "contract-1872:s:54:0",
+            "missing_windows": 1,
+            "page_range": [
+              25,
+              25
+            ]
+          }
+        ],
+        "threshold": 0.99
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "parents": 268,
+        "markers": 268,
+        "problems": []
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "limit": 3000,
+        "flagged_long_unsplit": [
+          [
+            "23",
+            0
+          ],
+          [
+            "28",
+            0
+          ],
+          [
+            "73",
+            0
+          ],
+          [
+            "74",
+            0
+          ]
+        ],
+        "unflagged_over_limit": [],
+        "longest_text": 9601
+      }
+    },
+    "G9": {
+      "status": "PASS",
+      "evidence": {
+        "footnotes_total": 53,
+        "footnotes_attached": 21,
+        "footnotes_unattached": 32,
+        "footnotes_ambiguous": 0,
+        "footnote_lines_detected": 86,
+        "labelled_footnote_lines": 86,
+        "attached_lines": 24,
+        "unattached_lines": 62,
+        "scope_boundaries": 44,
+        "chapter_notes": 0,
+        "groups": 26,
+        "accounting_ok": true,
+        "records_containing_footnote_lines": []
+      }
+    }
+  },
+  "summary": "OK"
+}

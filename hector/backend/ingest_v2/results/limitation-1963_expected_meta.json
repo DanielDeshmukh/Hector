@@ -1,0 +1,21 @@
+{
+  "expected_source": "toc",
+  "mode": "toc",
+  "header_page_1based": 1,
+  "toc_pages_1based": [
+    1,
+    2
+  ],
+  "expected_count": 32,
+  "gaps": [],
+  "duplicates": [],
+  "deduped_dropped": 0,
+  "anchor_value": 511,
+  "anchor_max_plain_seen": 32,
+  "anchor_ok": false,
+  "lettered": [],
+  "rejected_count": 150,
+  "body_markers": 32,
+  "body_max_plain": 32,
+  "body_gaps": []
+}

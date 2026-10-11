@@ -211,27 +211,11 @@
     "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
     "covers": [],
     "start": 95,
-    "end": 96,
-    "footnote_texts": []
-  },
-  {
-    "id": 12,
-    "number": "13",
-    "title": "Definition of “Queen”",
-    "base": 13,
-    "page_1based": 15,
-    "line": 96,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
-    "covers": [],
-    "start": 96,
     "end": 97,
     "footnote_texts": []
   },
   {
-    "id": 13,
+    "id": 12,
     "number": "14",
     "title": "“Servant of Government”",
     "base": 14,
@@ -243,45 +227,13 @@
     "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
     "covers": [],
     "start": 97,
-    "end": 99,
+    "end": 111,
     "footnote_texts": [
       "8. Subs., ibid., for section 14."
     ]
   },
   {
-    "id": 14,
-    "number": "15",
-    "title": "Definition of “British India”",
-    "base": 15,
-    "page_1based": 15,
-    "line": 99,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
-    "covers": [],
-    "start": 99,
-    "end": 100,
-    "footnote_texts": []
-  },
-  {
-    "id": 15,
-    "number": "16",
-    "title": "Definition of “Government of India”",
-    "base": 16,
-    "page_1based": 15,
-    "line": 100,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
-    "covers": [],
-    "start": 100,
-    "end": 111,
-    "footnote_texts": []
-  },
-  {
-    "id": 16,
+    "id": 13,
     "number": "17",
     "title": "“Government”",
     "base": 17,
@@ -300,7 +252,7 @@
     ]
   },
   {
-    "id": 17,
+    "id": 14,
     "number": "18",
     "title": "“India”",
     "base": 18,
@@ -318,7 +270,7 @@
     ]
   },
   {
-    "id": 18,
+    "id": 15,
     "number": "19",
     "title": "“Judge”",
     "base": 19,
@@ -336,7 +288,7 @@
     ]
   },
   {
-    "id": 19,
+    "id": 16,
     "number": "20",
     "title": "“Court of Justice”",
     "base": 20,
@@ -354,7 +306,7 @@
     ]
   },
   {
-    "id": 20,
+    "id": 17,
     "number": "21",
     "title": "“Public servant”",
     "base": 21,
@@ -382,7 +334,7 @@
     ]
   },
   {
-    "id": 21,
+    "id": 18,
     "number": "22",
     "title": "“Movable property”",
     "base": 22,
@@ -398,7 +350,7 @@
     "footnote_texts": []
   },
   {
-    "id": 22,
+    "id": 19,
     "number": "23",
     "title": "“Wrongful gain”",
     "base": 23,
@@ -414,7 +366,7 @@
     "footnote_texts": []
   },
   {
-    "id": 23,
+    "id": 20,
     "number": "24",
     "title": "“Dishonestly”",
     "base": 24,
@@ -430,7 +382,7 @@
     "footnote_texts": []
   },
   {
-    "id": 24,
+    "id": 21,
     "number": "25",
     "title": "“Fraudulently”",
     "base": 25,
@@ -446,7 +398,7 @@
     "footnote_texts": []
   },
   {
-    "id": 25,
+    "id": 22,
     "number": "26",
     "title": "“Reason to believe”",
     "base": 26,
@@ -462,7 +414,7 @@
     "footnote_texts": []
   },
   {
-    "id": 26,
+    "id": 23,
     "number": "27",
     "title": "“Property in possession of wife, clerk or servant”",
     "base": 27,
@@ -478,7 +430,7 @@
     "footnote_texts": []
   },
   {
-    "id": 27,
+    "id": 24,
     "number": "28",
     "title": "“Counterfeit”",
     "base": 28,
@@ -496,7 +448,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 25,
     "number": "29",
     "title": "“Document”",
     "base": 29,
@@ -512,7 +464,7 @@
     "footnote_texts": []
   },
   {
-    "id": 29,
+    "id": 26,
     "number": "29A",
     "title": "“Electronic record”",
     "base": 29,
@@ -530,7 +482,7 @@
     ]
   },
   {
-    "id": 30,
+    "id": 27,
     "number": "30",
     "title": "“Valuable security”",
     "base": 30,
@@ -546,7 +498,7 @@
     "footnote_texts": []
   },
   {
-    "id": 31,
+    "id": 28,
     "number": "31",
     "title": "“A will”",
     "base": 31,
@@ -562,7 +514,7 @@
     "footnote_texts": []
   },
   {
-    "id": 32,
+    "id": 29,
     "number": "32",
     "title": "Words referring to acts include illegal omissions",
     "base": 32,
@@ -578,7 +530,7 @@
     "footnote_texts": []
   },
   {
-    "id": 33,
+    "id": 30,
     "number": "33",
     "title": "“Act”. “Omission”",
     "base": 33,
@@ -594,7 +546,7 @@
     "footnote_texts": []
   },
   {
-    "id": 34,
+    "id": 31,
     "number": "34",
     "title": "Acts done by several persons in furtherance of common intention",
     "base": 34,
@@ -612,7 +564,7 @@
     ]
   },
   {
-    "id": 35,
+    "id": 32,
     "number": "35",
     "title": "When such an act is criminal by reason of its being done with a criminal knowledge or intention",
     "base": 35,
@@ -628,7 +580,7 @@
     "footnote_texts": []
   },
   {
-    "id": 36,
+    "id": 33,
     "number": "36",
     "title": "Effect caused partly by act and partly by omission",
     "base": 36,
@@ -644,7 +596,7 @@
     "footnote_texts": []
   },
   {
-    "id": 37,
+    "id": 34,
     "number": "37",
     "title": "Co-operation by doing one of several acts constituting an offence",
     "base": 37,
@@ -660,7 +612,7 @@
     "footnote_texts": []
   },
   {
-    "id": 38,
+    "id": 35,
     "number": "38",
     "title": "Persons concerned in criminal act may be guilty of different offences",
     "base": 38,
@@ -676,7 +628,7 @@
     "footnote_texts": []
   },
   {
-    "id": 39,
+    "id": 36,
     "number": "39",
     "title": "“Voluntarily”",
     "base": 39,
@@ -692,7 +644,7 @@
     "footnote_texts": []
   },
   {
-    "id": 40,
+    "id": 37,
     "number": "40",
     "title": "“Offence”",
     "base": 40,
@@ -715,7 +667,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 38,
     "number": "41",
     "title": "“Special law”",
     "base": 41,
@@ -731,7 +683,7 @@
     "footnote_texts": []
   },
   {
-    "id": 42,
+    "id": 39,
     "number": "42",
     "title": "“Local law”",
     "base": 42,
@@ -751,7 +703,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 40,
     "number": "43",
     "title": "“Illegal”. “Legally bound to do”",
     "base": 43,
@@ -767,7 +719,7 @@
     "footnote_texts": []
   },
   {
-    "id": 44,
+    "id": 41,
     "number": "44",
     "title": "“Injury”",
     "base": 44,
@@ -783,7 +735,7 @@
     "footnote_texts": []
   },
   {
-    "id": 45,
+    "id": 42,
     "number": "45",
     "title": "“Life”",
     "base": 45,
@@ -799,7 +751,7 @@
     "footnote_texts": []
   },
   {
-    "id": 46,
+    "id": 43,
     "number": "46",
     "title": "“Death”",
     "base": 46,
@@ -815,7 +767,7 @@
     "footnote_texts": []
   },
   {
-    "id": 47,
+    "id": 44,
     "number": "47",
     "title": "“Animal”",
     "base": 47,
@@ -831,7 +783,7 @@
     "footnote_texts": []
   },
   {
-    "id": 48,
+    "id": 45,
     "number": "48",
     "title": "“Vessel”",
     "base": 48,
@@ -847,7 +799,7 @@
     "footnote_texts": []
   },
   {
-    "id": 49,
+    "id": 46,
     "number": "49",
     "title": "“Year”. “Month”",
     "base": 49,
@@ -863,7 +815,7 @@
     "footnote_texts": []
   },
   {
-    "id": 50,
+    "id": 47,
     "number": "50",
     "title": "“Section”",
     "base": 50,
@@ -879,7 +831,7 @@
     "footnote_texts": []
   },
   {
-    "id": 51,
+    "id": 48,
     "number": "51",
     "title": "“Oath”",
     "base": 51,
@@ -895,7 +847,7 @@
     "footnote_texts": []
   },
   {
-    "id": 52,
+    "id": 49,
     "number": "52",
     "title": "“Good faith”",
     "base": 52,
@@ -911,7 +863,7 @@
     "footnote_texts": []
   },
   {
-    "id": 53,
+    "id": 50,
     "number": "52A",
     "title": "“Harbour”",
     "base": 52,
@@ -929,7 +881,7 @@
     ]
   },
   {
-    "id": 54,
+    "id": 51,
     "number": "53",
     "title": "Punishments",
     "base": 53,
@@ -948,7 +900,7 @@
     ]
   },
   {
-    "id": 55,
+    "id": 52,
     "number": "53A",
     "title": "Construction of reference to transportation",
     "base": 53,
@@ -967,7 +919,7 @@
     ]
   },
   {
-    "id": 56,
+    "id": 53,
     "number": "54",
     "title": "Commutation of sentence of death",
     "base": 54,
@@ -985,7 +937,7 @@
     ]
   },
   {
-    "id": 57,
+    "id": 54,
     "number": "55",
     "title": "Commutation of sentence of imprisonment for life",
     "base": 55,
@@ -1004,7 +956,7 @@
     ]
   },
   {
-    "id": 58,
+    "id": 55,
     "number": "55A",
     "title": "Definition of “appropriate Government”",
     "base": 55,
@@ -1022,7 +974,7 @@
     ]
   },
   {
-    "id": 59,
+    "id": 56,
     "number": "56",
     "title": "Sentence of Europeans and Americans to penal servitude. Proviso as to sentence for term exceeding ten years but not for life",
     "base": 56,
@@ -1038,7 +990,7 @@
     "footnote_texts": []
   },
   {
-    "id": 60,
+    "id": 57,
     "number": "57",
     "title": "Fractions of terms of punishment",
     "base": 57,
@@ -1050,45 +1002,13 @@
     "chapter": "CHAPTER III - OF PUNISHMENTS",
     "covers": [],
     "start": 445,
-    "end": 447,
+    "end": 451,
     "footnote_texts": [
       "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation” (w.e.f. 1-1-1956)."
     ]
   },
   {
-    "id": 61,
-    "number": "58",
-    "title": "Offenders sentenced to transportation how dealt with until transported",
-    "base": 58,
-    "page_1based": 22,
-    "line": 447,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER III - OF PUNISHMENTS",
-    "covers": [],
-    "start": 447,
-    "end": 449,
-    "footnote_texts": []
-  },
-  {
-    "id": 62,
-    "number": "59",
-    "title": "Transportation instead of imprisonment",
-    "base": 59,
-    "page_1based": 22,
-    "line": 449,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER III - OF PUNISHMENTS",
-    "covers": [],
-    "start": 449,
-    "end": 451,
-    "footnote_texts": []
-  },
-  {
-    "id": 63,
+    "id": 58,
     "number": "60",
     "title": "Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple",
     "base": 60,
@@ -1100,27 +1020,11 @@
     "chapter": "CHAPTER III - OF PUNISHMENTS",
     "covers": [],
     "start": 451,
-    "end": 456,
-    "footnote_texts": []
-  },
-  {
-    "id": 64,
-    "number": "61",
-    "title": "Sentence of forfeiture of property",
-    "base": 61,
-    "page_1based": 22,
-    "line": 456,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER III - OF PUNISHMENTS",
-    "covers": [],
-    "start": 456,
     "end": 458,
     "footnote_texts": []
   },
   {
-    "id": 65,
+    "id": 59,
     "number": "62",
     "title": "Forfeiture of property, in respect of offenders punishable with death, transportation or imprisonment",
     "base": 62,
@@ -1136,7 +1040,7 @@
     "footnote_texts": []
   },
   {
-    "id": 66,
+    "id": 60,
     "number": "63",
     "title": "Amount of fine",
     "base": 63,
@@ -1152,7 +1056,7 @@
     "footnote_texts": []
   },
   {
-    "id": 67,
+    "id": 61,
     "number": "64",
     "title": "Sentence of imprisonment for non-payment of fine",
     "base": 64,
@@ -1171,7 +1075,7 @@
     ]
   },
   {
-    "id": 68,
+    "id": 62,
     "number": "65",
     "title": "Limit to imprisonment for non-payment of fine, when imprisonment and fine awardable",
     "base": 65,
@@ -1187,7 +1091,7 @@
     "footnote_texts": []
   },
   {
-    "id": 69,
+    "id": 63,
     "number": "66",
     "title": "Description of imprisonment for non-payment of fine",
     "base": 66,
@@ -1203,7 +1107,7 @@
     "footnote_texts": []
   },
   {
-    "id": 70,
+    "id": 64,
     "number": "67",
     "title": "Imprisonment for non-payment of fine, when offence punishable with fine only",
     "base": 67,
@@ -1221,7 +1125,7 @@
     ]
   },
   {
-    "id": 71,
+    "id": 65,
     "number": "68",
     "title": "Imprisonment to terminate on payment of fine",
     "base": 68,
@@ -1237,7 +1141,7 @@
     "footnote_texts": []
   },
   {
-    "id": 72,
+    "id": 66,
     "number": "69",
     "title": "Termination of imprisonment on payment of proportional part of fine",
     "base": 69,
@@ -1253,7 +1157,7 @@
     "footnote_texts": []
   },
   {
-    "id": 73,
+    "id": 67,
     "number": "70",
     "title": "Fine leviable within six years, or during imprisonment. Death not to discharge property from liability",
     "base": 70,
@@ -1269,7 +1173,7 @@
     "footnote_texts": []
   },
   {
-    "id": 74,
+    "id": 68,
     "number": "71",
     "title": "Limit of punishment of offence made up of several offences",
     "base": 71,
@@ -1287,7 +1191,7 @@
     ]
   },
   {
-    "id": 75,
+    "id": 69,
     "number": "72",
     "title": "Punishment of person guilty of one of several offences, the judgment stating that it is doubtful of which",
     "base": 72,
@@ -1303,7 +1207,7 @@
     "footnote_texts": []
   },
   {
-    "id": 76,
+    "id": 70,
     "number": "73",
     "title": "Solitary confinement",
     "base": 73,
@@ -1321,7 +1225,7 @@
     ]
   },
   {
-    "id": 77,
+    "id": 71,
     "number": "74",
     "title": "Limit of solitary confinement",
     "base": 74,
@@ -1337,7 +1241,7 @@
     "footnote_texts": []
   },
   {
-    "id": 78,
+    "id": 72,
     "number": "75",
     "title": "Enhanced punishment for certain offences under Chapter XII or Chapter XVII after previous conviction",
     "base": 75,
@@ -1359,7 +1263,7 @@
     ]
   },
   {
-    "id": 79,
+    "id": 73,
     "number": "76",
     "title": "Act done by a person bound, or by mistake of fact believing himself bound, by law",
     "base": 76,
@@ -1375,7 +1279,7 @@
     "footnote_texts": []
   },
   {
-    "id": 80,
+    "id": 74,
     "number": "77",
     "title": "Act of Judge when acting judicially",
     "base": 77,
@@ -1391,7 +1295,7 @@
     "footnote_texts": []
   },
   {
-    "id": 81,
+    "id": 75,
     "number": "78",
     "title": "Act done pursuant to the judgment or order of Court",
     "base": 78,
@@ -1407,7 +1311,7 @@
     "footnote_texts": []
   },
   {
-    "id": 82,
+    "id": 76,
     "number": "79",
     "title": "Act done by a person justified, or by mistake of fact believing himself justified, by law",
     "base": 79,
@@ -1423,7 +1327,7 @@
     "footnote_texts": []
   },
   {
-    "id": 83,
+    "id": 77,
     "number": "80",
     "title": "Accident in doing a lawful act",
     "base": 80,
@@ -1439,7 +1343,7 @@
     "footnote_texts": []
   },
   {
-    "id": 84,
+    "id": 78,
     "number": "81",
     "title": "Act likely to cause harm, but done without criminal intent, and to prevent other harm",
     "base": 81,
@@ -1455,7 +1359,7 @@
     "footnote_texts": []
   },
   {
-    "id": 85,
+    "id": 79,
     "number": "82",
     "title": "Act of a child under seven years of age",
     "base": 82,
@@ -1471,7 +1375,7 @@
     "footnote_texts": []
   },
   {
-    "id": 86,
+    "id": 80,
     "number": "83",
     "title": "Act of a child above seven and under twelve of immature understanding",
     "base": 83,
@@ -1487,7 +1391,7 @@
     "footnote_texts": []
   },
   {
-    "id": 87,
+    "id": 81,
     "number": "84",
     "title": "Act of a person of unsound mind",
     "base": 84,
@@ -1503,7 +1407,7 @@
     "footnote_texts": []
   },
   {
-    "id": 88,
+    "id": 82,
     "number": "85",
     "title": "Act of a person incapable of judgment by reason of intoxication caused against his will",
     "base": 85,
@@ -1519,7 +1423,7 @@
     "footnote_texts": []
   },
   {
-    "id": 89,
+    "id": 83,
     "number": "86",
     "title": "Offence requiring a particular intent or knowledge committed by one who is intoxicated",
     "base": 86,
@@ -1535,7 +1439,7 @@
     "footnote_texts": []
   },
   {
-    "id": 90,
+    "id": 84,
     "number": "87",
     "title": "Act not intended and not known to be likely to cause death or grievous hurt, done by consent",
     "base": 87,
@@ -1551,7 +1455,7 @@
     "footnote_texts": []
   },
   {
-    "id": 91,
+    "id": 85,
     "number": "88",
     "title": "Act not intended to cause death, done by consent in good faith for person's benefit",
     "base": 88,
@@ -1567,7 +1471,7 @@
     "footnote_texts": []
   },
   {
-    "id": 92,
+    "id": 86,
     "number": "89",
     "title": "Act done in good faith for benefit of child or insane person, by or by consent of guardian",
     "base": 89,
@@ -1583,7 +1487,7 @@
     "footnote_texts": []
   },
   {
-    "id": 93,
+    "id": 87,
     "number": "90",
     "title": "Consent known to be given under fear or misconception",
     "base": 90,
@@ -1599,7 +1503,7 @@
     "footnote_texts": []
   },
   {
-    "id": 94,
+    "id": 88,
     "number": "91",
     "title": "Exclusion of acts which are offences independently of harm cause",
     "base": 91,
@@ -1615,7 +1519,7 @@
     "footnote_texts": []
   },
   {
-    "id": 95,
+    "id": 89,
     "number": "92",
     "title": "Act done in good faith for benefit of a person without consent",
     "base": 92,
@@ -1631,7 +1535,7 @@
     "footnote_texts": []
   },
   {
-    "id": 96,
+    "id": 90,
     "number": "93",
     "title": "Communication made in good faith",
     "base": 93,
@@ -1647,7 +1551,7 @@
     "footnote_texts": []
   },
   {
-    "id": 97,
+    "id": 91,
     "number": "94",
     "title": "Act to which a person is compelled by threats",
     "base": 94,
@@ -1663,7 +1567,7 @@
     "footnote_texts": []
   },
   {
-    "id": 98,
+    "id": 92,
     "number": "95",
     "title": "Act causing slight harm",
     "base": 95,
@@ -1679,7 +1583,7 @@
     "footnote_texts": []
   },
   {
-    "id": 99,
+    "id": 93,
     "number": "96",
     "title": "Things done in private defence",
     "base": 96,
@@ -1695,7 +1599,7 @@
     "footnote_texts": []
   },
   {
-    "id": 100,
+    "id": 94,
     "number": "97",
     "title": "Right of private defence of the body and of property",
     "base": 97,
@@ -1711,7 +1615,7 @@
     "footnote_texts": []
   },
   {
-    "id": 101,
+    "id": 95,
     "number": "98",
     "title": "Right of private defence against the act of a person of unsound mind, etc",
     "base": 98,
@@ -1727,7 +1631,7 @@
     "footnote_texts": []
   },
   {
-    "id": 102,
+    "id": 96,
     "number": "99",
     "title": "Acts against which there is no right of private defence",
     "base": 99,
@@ -1743,7 +1647,7 @@
     "footnote_texts": []
   },
   {
-    "id": 103,
+    "id": 97,
     "number": "100",
     "title": "When the right of private defence of the body extends to causing death",
     "base": 100,
@@ -1761,7 +1665,7 @@
     ]
   },
   {
-    "id": 104,
+    "id": 98,
     "number": "101",
     "title": "When such right extends to causing any harm other than death",
     "base": 101,
@@ -1777,7 +1681,7 @@
     "footnote_texts": []
   },
   {
-    "id": 105,
+    "id": 99,
     "number": "102",
     "title": "Commencement and continuance of the right of private defence of the body",
     "base": 102,
@@ -1793,7 +1697,7 @@
     "footnote_texts": []
   },
   {
-    "id": 106,
+    "id": 100,
     "number": "103",
     "title": "When the right of private defence of property extends to causing death",
     "base": 103,
@@ -1809,7 +1713,7 @@
     "footnote_texts": []
   },
   {
-    "id": 107,
+    "id": 101,
     "number": "104",
     "title": "When such right extends to causing any harm other than death",
     "base": 104,
@@ -1825,7 +1729,7 @@
     "footnote_texts": []
   },
   {
-    "id": 108,
+    "id": 102,
     "number": "105",
     "title": "Commencement and continuance of the right of private defence of property",
     "base": 105,
@@ -1841,7 +1745,7 @@
     "footnote_texts": []
   },
   {
-    "id": 109,
+    "id": 103,
     "number": "106",
     "title": "Right of private defence against deadly assault when there is risk of harm to innocent person",
     "base": 106,
@@ -1857,7 +1761,7 @@
     "footnote_texts": []
   },
   {
-    "id": 110,
+    "id": 104,
     "number": "107",
     "title": "Abetment of a thing",
     "base": 107,
@@ -1873,7 +1777,7 @@
     "footnote_texts": []
   },
   {
-    "id": 111,
+    "id": 105,
     "number": "108",
     "title": "Abettor",
     "base": 108,
@@ -1889,7 +1793,7 @@
     "footnote_texts": []
   },
   {
-    "id": 112,
+    "id": 106,
     "number": "108A",
     "title": "Abetment in India of offences outside India",
     "base": 108,
@@ -1908,7 +1812,7 @@
     ]
   },
   {
-    "id": 113,
+    "id": 107,
     "number": "109",
     "title": "Punishment of abetment if the act abetted is committed in consequence and where no express provision is made for its punishment",
     "base": 109,
@@ -1924,7 +1828,7 @@
     "footnote_texts": []
   },
   {
-    "id": 114,
+    "id": 108,
     "number": "110",
     "title": "Punishment of abetment if person abetted does act with different intention from that of abettor",
     "base": 110,
@@ -1940,7 +1844,7 @@
     "footnote_texts": []
   },
   {
-    "id": 115,
+    "id": 109,
     "number": "111",
     "title": "Liability of abettor when one act abetted and different act done",
     "base": 111,
@@ -1956,7 +1860,7 @@
     "footnote_texts": []
   },
   {
-    "id": 116,
+    "id": 110,
     "number": "112",
     "title": "Abettor when liable to cumulative punishment for act abetted and for act done",
     "base": 112,
@@ -1972,7 +1876,7 @@
     "footnote_texts": []
   },
   {
-    "id": 117,
+    "id": 111,
     "number": "113",
     "title": "Liability of abettor for an effect caused by the act abetted different from that intended by the abettor",
     "base": 113,
@@ -1988,7 +1892,7 @@
     "footnote_texts": []
   },
   {
-    "id": 118,
+    "id": 112,
     "number": "114",
     "title": "Abettor present when offence is committed",
     "base": 114,
@@ -2004,7 +1908,7 @@
     "footnote_texts": []
   },
   {
-    "id": 119,
+    "id": 113,
     "number": "115",
     "title": "Abetment of offence punishable with death or imprisonment for life",
     "base": 115,
@@ -2022,7 +1926,7 @@
     ]
   },
   {
-    "id": 120,
+    "id": 114,
     "number": "116",
     "title": "Abetment of offence punishable with imprisonment",
     "base": 116,
@@ -2038,7 +1942,7 @@
     "footnote_texts": []
   },
   {
-    "id": 121,
+    "id": 115,
     "number": "117",
     "title": "Abetting commission of offence by the public or by more than ten persons",
     "base": 117,
@@ -2054,7 +1958,7 @@
     "footnote_texts": []
   },
   {
-    "id": 122,
+    "id": 116,
     "number": "118",
     "title": "Concealing design to commit offence punishable with death or imprisonment for life",
     "base": 118,
@@ -2073,7 +1977,7 @@
     ]
   },
   {
-    "id": 123,
+    "id": 117,
     "number": "119",
     "title": "Public servant concealing design to commit offence which it is his duty to prevent",
     "base": 119,
@@ -2092,7 +1996,7 @@
     ]
   },
   {
-    "id": 124,
+    "id": 118,
     "number": "120",
     "title": "Concealing design to commit offence punishable with imprisonment",
     "base": 120,
@@ -2108,7 +2012,7 @@
     "footnote_texts": []
   },
   {
-    "id": 125,
+    "id": 119,
     "number": "120A",
     "title": "Definition of criminal conspiracy",
     "base": 120,
@@ -2126,7 +2030,7 @@
     ]
   },
   {
-    "id": 126,
+    "id": 120,
     "number": "120B",
     "title": "Punishment of criminal conspiracy",
     "base": 120,
@@ -2144,7 +2048,7 @@
     ]
   },
   {
-    "id": 127,
+    "id": 121,
     "number": "121",
     "title": "Waging or attempting to wage war or abetting waging of war against the Government of India",
     "base": 121,
@@ -2167,7 +2071,7 @@
     ]
   },
   {
-    "id": 128,
+    "id": 122,
     "number": "121A",
     "title": "Conspiracy to commit offences punishable by section 121",
     "base": 121,
@@ -2192,7 +2096,7 @@
     ]
   },
   {
-    "id": 129,
+    "id": 123,
     "number": "122",
     "title": "Collecting arms, etc., with intention of waging war against the Government of India",
     "base": 122,
@@ -2212,7 +2116,7 @@
     ]
   },
   {
-    "id": 130,
+    "id": 124,
     "number": "123",
     "title": "Concealing with intent to facilitate design to wage war",
     "base": 123,
@@ -2230,7 +2134,7 @@
     ]
   },
   {
-    "id": 131,
+    "id": 125,
     "number": "124",
     "title": "Assaulting President, Governor, etc., with intent to compel or restrain the exercise of any lawful power",
     "base": 124,
@@ -2256,7 +2160,7 @@
     ]
   },
   {
-    "id": 132,
+    "id": 126,
     "number": "124A",
     "title": "Sedition",
     "base": 124,
@@ -2278,7 +2182,7 @@
     ]
   },
   {
-    "id": 133,
+    "id": 127,
     "number": "125",
     "title": "Waging war against any Asiatic Power in alliance with the Government of India",
     "base": 125,
@@ -2297,7 +2201,7 @@
     ]
   },
   {
-    "id": 134,
+    "id": 128,
     "number": "126",
     "title": "Committing depredation on territories of Power at peace with the Government of India",
     "base": 126,
@@ -2315,7 +2219,7 @@
     ]
   },
   {
-    "id": 135,
+    "id": 129,
     "number": "127",
     "title": "Receiving property taken by war or depredation mentioned in sections 125 and 126",
     "base": 127,
@@ -2331,7 +2235,7 @@
     "footnote_texts": []
   },
   {
-    "id": 136,
+    "id": 130,
     "number": "128",
     "title": "Public servant voluntarily allowing prisoner of State or war to escape",
     "base": 128,
@@ -2349,7 +2253,7 @@
     ]
   },
   {
-    "id": 137,
+    "id": 131,
     "number": "129",
     "title": "Public servant negligently suffering such prisoner to escape",
     "base": 129,
@@ -2365,7 +2269,7 @@
     "footnote_texts": []
   },
   {
-    "id": 138,
+    "id": 132,
     "number": "130",
     "title": "Aiding escape of, rescuing or harbouring such prisoner",
     "base": 130,
@@ -2385,7 +2289,7 @@
     ]
   },
   {
-    "id": 139,
+    "id": 133,
     "number": "131",
     "title": "Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty",
     "base": 131,
@@ -2416,7 +2320,7 @@
     ]
   },
   {
-    "id": 140,
+    "id": 134,
     "number": "132",
     "title": "Abetment of mutiny, if mutiny is committed in consequence thereof",
     "base": 132,
@@ -2437,7 +2341,7 @@
     ]
   },
   {
-    "id": 141,
+    "id": 135,
     "number": "133",
     "title": "Abetment of assault by soldier, sailor or airman on his superior officer, when in execution of his office",
     "base": 133,
@@ -2457,7 +2361,7 @@
     ]
   },
   {
-    "id": 142,
+    "id": 136,
     "number": "134",
     "title": "Abetment of such assault, if the assault is committed",
     "base": 134,
@@ -2477,7 +2381,7 @@
     ]
   },
   {
-    "id": 143,
+    "id": 137,
     "number": "135",
     "title": "Abetment of desertion of soldier, sailor or airman",
     "base": 135,
@@ -2497,7 +2401,7 @@
     ]
   },
   {
-    "id": 144,
+    "id": 138,
     "number": "136",
     "title": "Harbouring deserter",
     "base": 136,
@@ -2517,7 +2421,7 @@
     ]
   },
   {
-    "id": 145,
+    "id": 139,
     "number": "137",
     "title": "Deserter concealed on board merchant vessel through negligence of master",
     "base": 137,
@@ -2536,7 +2440,7 @@
     ]
   },
   {
-    "id": 146,
+    "id": 140,
     "number": "138",
     "title": "Abetment of act of insubordination by soldier, sailor or airman",
     "base": 138,
@@ -2548,7 +2452,7 @@
     "chapter": "CHAPTER VII",
     "covers": [],
     "start": 1292,
-    "end": 1310,
+    "end": 1312,
     "footnote_texts": [
       "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
       "9. Subs. by s. 2 and the First Sch., ibid., for “or Navy”.",
@@ -2556,23 +2460,7 @@
     ]
   },
   {
-    "id": 147,
-    "number": "138A",
-    "title": "Application of foregoing sections to the Indian Marine Service",
-    "base": 138,
-    "page_1based": 39,
-    "line": 1310,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER VII",
-    "covers": [],
-    "start": 1310,
-    "end": 1312,
-    "footnote_texts": []
-  },
-  {
-    "id": 148,
+    "id": 141,
     "number": "139",
     "title": "Persons subject to certain Acts",
     "base": 139,
@@ -2596,7 +2484,7 @@
     ]
   },
   {
-    "id": 149,
+    "id": 142,
     "number": "140",
     "title": "Wearing garb or carrying token used by soldier, sailor or airman",
     "base": 140,
@@ -2616,7 +2504,7 @@
     ]
   },
   {
-    "id": 150,
+    "id": 143,
     "number": "141",
     "title": "Unlawful assembly",
     "base": 141,
@@ -2634,7 +2522,7 @@
     ]
   },
   {
-    "id": 151,
+    "id": 144,
     "number": "142",
     "title": "Being member of unlawful assembly",
     "base": 142,
@@ -2650,7 +2538,7 @@
     "footnote_texts": []
   },
   {
-    "id": 152,
+    "id": 145,
     "number": "143",
     "title": "Punishment",
     "base": 143,
@@ -2666,7 +2554,7 @@
     "footnote_texts": []
   },
   {
-    "id": 153,
+    "id": 146,
     "number": "144",
     "title": "Joining unlawful assembly armed with deadly weapon",
     "base": 144,
@@ -2682,7 +2570,7 @@
     "footnote_texts": []
   },
   {
-    "id": 154,
+    "id": 147,
     "number": "145",
     "title": "Joining or continuing in unlawful assembly, knowing it has been commanded to disperse",
     "base": 145,
@@ -2698,7 +2586,7 @@
     "footnote_texts": []
   },
   {
-    "id": 155,
+    "id": 148,
     "number": "146",
     "title": "Rioting",
     "base": 146,
@@ -2714,7 +2602,7 @@
     "footnote_texts": []
   },
   {
-    "id": 156,
+    "id": 149,
     "number": "147",
     "title": "Punishment for rioting",
     "base": 147,
@@ -2730,7 +2618,7 @@
     "footnote_texts": []
   },
   {
-    "id": 157,
+    "id": 150,
     "number": "148",
     "title": "Rioting, armed with deadly weapon",
     "base": 148,
@@ -2746,7 +2634,7 @@
     "footnote_texts": []
   },
   {
-    "id": 158,
+    "id": 151,
     "number": "149",
     "title": "Every member of unlawful assembly guilty of offence committed in prosecution of common object",
     "base": 149,
@@ -2762,7 +2650,7 @@
     "footnote_texts": []
   },
   {
-    "id": 159,
+    "id": 152,
     "number": "150",
     "title": "Hiring, or conniving at hiring, of persons to join unlawful assembly",
     "base": 150,
@@ -2778,7 +2666,7 @@
     "footnote_texts": []
   },
   {
-    "id": 160,
+    "id": 153,
     "number": "151",
     "title": "Knowingly joining or continuing in assembly of five or more persons after it has been commanded to disperse",
     "base": 151,
@@ -2794,7 +2682,7 @@
     "footnote_texts": []
   },
   {
-    "id": 161,
+    "id": 154,
     "number": "152",
     "title": "Assaulting or obstructing public servant when suppressing riot, etc",
     "base": 152,
@@ -2810,7 +2698,7 @@
     "footnote_texts": []
   },
   {
-    "id": 162,
+    "id": 155,
     "number": "153",
     "title": "Wantonly giving provocation with intent to cause riot",
     "base": 153,
@@ -2826,7 +2714,7 @@
     "footnote_texts": []
   },
   {
-    "id": 163,
+    "id": 156,
     "number": "153A",
     "title": "Promoting enmity between different groups on grounds of religion, race, place of birth, residence, language, etc., and doing acts prejudicial to maintenance of harmony",
     "base": 153,
@@ -2845,7 +2733,7 @@
     ]
   },
   {
-    "id": 164,
+    "id": 157,
     "number": "153AA",
     "title": "Punishment for knowingly carrying arms in any procession or organising, or holding or taking part in any mass drill or mass training with arms",
     "base": 153,
@@ -2863,7 +2751,7 @@
     ]
   },
   {
-    "id": 165,
+    "id": 158,
     "number": "153B",
     "title": "Imputations, assertions prejudicial to national integration",
     "base": 153,
@@ -2881,7 +2769,7 @@
     ]
   },
   {
-    "id": 166,
+    "id": 159,
     "number": "154",
     "title": "Owner or occupier of land on which an unlawful assembly is held",
     "base": 154,
@@ -2897,7 +2785,7 @@
     "footnote_texts": []
   },
   {
-    "id": 167,
+    "id": 160,
     "number": "155",
     "title": "Liability of person for whose benefit riot is committed",
     "base": 155,
@@ -2913,7 +2801,7 @@
     "footnote_texts": []
   },
   {
-    "id": 168,
+    "id": 161,
     "number": "156",
     "title": "Liability of agent of owner or occupier for whose benefit riot is committed",
     "base": 156,
@@ -2929,7 +2817,7 @@
     "footnote_texts": []
   },
   {
-    "id": 169,
+    "id": 162,
     "number": "157",
     "title": "Harbouring persons hired for an unlawful assembly",
     "base": 157,
@@ -2945,7 +2833,7 @@
     "footnote_texts": []
   },
   {
-    "id": 170,
+    "id": 163,
     "number": "158",
     "title": "Being hired to take part in an unlawful assembly or riot",
     "base": 158,
@@ -2961,7 +2849,7 @@
     "footnote_texts": []
   },
   {
-    "id": 171,
+    "id": 164,
     "number": "159",
     "title": "Affray",
     "base": 159,
@@ -2977,7 +2865,7 @@
     "footnote_texts": []
   },
   {
-    "id": 172,
+    "id": 165,
     "number": "160",
     "title": "Punishment for committing affray",
     "base": 160,
@@ -2993,7 +2881,7 @@
     "footnote_texts": []
   },
   {
-    "id": 173,
+    "id": 166,
     "number": "161",
     "title": "Public servant taking gratification other than legal remuneration in respect of an official act",
     "base": 161,
@@ -3009,7 +2897,7 @@
     "footnote_texts": []
   },
   {
-    "id": 174,
+    "id": 167,
     "number": "162",
     "title": "Taking  gratification, in order, by corrupt or illegal means, to influence public servant",
     "base": 162,
@@ -3021,27 +2909,11 @@
     "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
     "covers": [],
     "start": 1553,
-    "end": 1555,
-    "footnote_texts": []
-  },
-  {
-    "id": 175,
-    "number": "163",
-    "title": "Taking gratification, for the exercise personal influence with public servant",
-    "base": 163,
-    "page_1based": 44,
-    "line": 1555,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
-    "covers": [],
-    "start": 1555,
     "end": 1556,
     "footnote_texts": []
   },
   {
-    "id": 176,
+    "id": 168,
     "number": "164",
     "title": "Punishment for abetment by public servant of offences defined in sections 162 or 163",
     "base": 164,
@@ -3057,7 +2929,7 @@
     "footnote_texts": []
   },
   {
-    "id": 177,
+    "id": 169,
     "number": "165",
     "title": "Public servant obtaining valuable thing, without consideration, from person concerned in proceeding or business transacted by such public servant",
     "base": 165,
@@ -3069,27 +2941,11 @@
     "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
     "covers": [],
     "start": 1558,
-    "end": 1560,
-    "footnote_texts": []
-  },
-  {
-    "id": 178,
-    "number": "165A",
-    "title": "Punishment for abetment of offences defined in section 161 or section 165",
-    "base": 165,
-    "page_1based": 44,
-    "line": 1560,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
-    "covers": [],
-    "start": 1560,
     "end": 1561,
     "footnote_texts": []
   },
   {
-    "id": 179,
+    "id": 170,
     "number": "166",
     "title": "Public servant disobeying law, with intent to cause injury to any person",
     "base": 166,
@@ -3105,7 +2961,7 @@
     "footnote_texts": []
   },
   {
-    "id": 180,
+    "id": 171,
     "number": "166A",
     "title": "Public servant disobeying direction under law",
     "base": 166,
@@ -3124,7 +2980,7 @@
     ]
   },
   {
-    "id": 181,
+    "id": 172,
     "number": "166B",
     "title": "Punishment for non-treatment of victim",
     "base": 166,
@@ -3140,7 +2996,7 @@
     "footnote_texts": []
   },
   {
-    "id": 182,
+    "id": 173,
     "number": "167",
     "title": "Public servant framing an incorrect document with intent to cause injury",
     "base": 167,
@@ -3158,7 +3014,7 @@
     ]
   },
   {
-    "id": 183,
+    "id": 174,
     "number": "168",
     "title": "Public servant unlawfully engaging in trade",
     "base": 168,
@@ -3174,7 +3030,7 @@
     "footnote_texts": []
   },
   {
-    "id": 184,
+    "id": 175,
     "number": "169",
     "title": "Public servant unlawfully buying or bidding for property",
     "base": 169,
@@ -3190,7 +3046,7 @@
     "footnote_texts": []
   },
   {
-    "id": 185,
+    "id": 176,
     "number": "170",
     "title": "Personating a public servant",
     "base": 170,
@@ -3206,7 +3062,7 @@
     "footnote_texts": []
   },
   {
-    "id": 186,
+    "id": 177,
     "number": "171",
     "title": "Wearing garb or carrying token used by public servant with fraudulent intent",
     "base": 171,
@@ -3222,7 +3078,7 @@
     "footnote_texts": []
   },
   {
-    "id": 187,
+    "id": 178,
     "number": "171A",
     "title": "“Candidate”, “Electoral right” defined",
     "base": 171,
@@ -3241,7 +3097,7 @@
     ]
   },
   {
-    "id": 188,
+    "id": 179,
     "number": "171B",
     "title": "Bribery",
     "base": 171,
@@ -3257,7 +3113,7 @@
     "footnote_texts": []
   },
   {
-    "id": 189,
+    "id": 180,
     "number": "171C",
     "title": "Undue influence at elections",
     "base": 171,
@@ -3273,7 +3129,7 @@
     "footnote_texts": []
   },
   {
-    "id": 190,
+    "id": 181,
     "number": "171D",
     "title": "Personation at elections",
     "base": 171,
@@ -3291,7 +3147,7 @@
     ]
   },
   {
-    "id": 191,
+    "id": 182,
     "number": "171E",
     "title": "Punishment for bribery",
     "base": 171,
@@ -3307,7 +3163,7 @@
     "footnote_texts": []
   },
   {
-    "id": 192,
+    "id": 183,
     "number": "171F",
     "title": "Punishment for undue influence or personation at an election",
     "base": 171,
@@ -3323,7 +3179,7 @@
     "footnote_texts": []
   },
   {
-    "id": 193,
+    "id": 184,
     "number": "171G",
     "title": "False statement in connection with an election",
     "base": 171,
@@ -3339,7 +3195,7 @@
     "footnote_texts": []
   },
   {
-    "id": 194,
+    "id": 185,
     "number": "171H",
     "title": "Illegal payments in connection with an election",
     "base": 171,
@@ -3355,7 +3211,7 @@
     "footnote_texts": []
   },
   {
-    "id": 195,
+    "id": 186,
     "number": "172",
     "title": "Absconding to avoid service of summons or other proceeding",
     "base": 172,
@@ -3373,7 +3229,7 @@
     ]
   },
   {
-    "id": 196,
+    "id": 187,
     "number": "173",
     "title": "Preventing service of summons or other proceeding, or preventing publication thereof",
     "base": 173,
@@ -3391,7 +3247,7 @@
     ]
   },
   {
-    "id": 197,
+    "id": 188,
     "number": "174",
     "title": "Non-attendance in obedience to an order from public servant",
     "base": 174,
@@ -3410,7 +3266,7 @@
     ]
   },
   {
-    "id": 198,
+    "id": 189,
     "number": "174A",
     "title": "Non-appearance in response to a proclamation under section 82 of Act 2 of 1974",
     "base": 174,
@@ -3428,7 +3284,7 @@
     ]
   },
   {
-    "id": 199,
+    "id": 190,
     "number": "175",
     "title": "Omission to produce document to public servant by person legally bound to produce it",
     "base": 175,
@@ -3447,7 +3303,7 @@
     ]
   },
   {
-    "id": 200,
+    "id": 191,
     "number": "176",
     "title": "Omission to give notice or information to public servant by person legally bound to give it",
     "base": 176,
@@ -3465,7 +3321,7 @@
     ]
   },
   {
-    "id": 201,
+    "id": 192,
     "number": "177",
     "title": "Furnishing false information",
     "base": 177,
@@ -3485,7 +3341,7 @@
     ]
   },
   {
-    "id": 202,
+    "id": 193,
     "number": "178",
     "title": "Refusing oath or affirmation when duly required by public servant to make it",
     "base": 178,
@@ -3503,7 +3359,7 @@
     ]
   },
   {
-    "id": 203,
+    "id": 194,
     "number": "179",
     "title": "Refusing to answer public servant authorised to question",
     "base": 179,
@@ -3519,7 +3375,7 @@
     "footnote_texts": []
   },
   {
-    "id": 204,
+    "id": 195,
     "number": "180",
     "title": "Refusing to sign statement",
     "base": 180,
@@ -3535,7 +3391,7 @@
     "footnote_texts": []
   },
   {
-    "id": 205,
+    "id": 196,
     "number": "181",
     "title": "False statement on oath or affirmation to public servant or person authorised to administer an oath or affirmation",
     "base": 181,
@@ -3553,7 +3409,7 @@
     ]
   },
   {
-    "id": 206,
+    "id": 197,
     "number": "182",
     "title": "False information, with intent to cause public servant to use his lawful power to the injury of another person",
     "base": 182,
@@ -3571,7 +3427,7 @@
     ]
   },
   {
-    "id": 207,
+    "id": 198,
     "number": "183",
     "title": "Resistance to the taking of property by the lawful authority of a public servant",
     "base": 183,
@@ -3587,7 +3443,7 @@
     "footnote_texts": []
   },
   {
-    "id": 208,
+    "id": 199,
     "number": "184",
     "title": "Obstructing sale of property offered for sale by authority of public servant",
     "base": 184,
@@ -3603,7 +3459,7 @@
     "footnote_texts": []
   },
   {
-    "id": 209,
+    "id": 200,
     "number": "185",
     "title": "Illegal purchase or bid for property offered for sale by authority of public servant",
     "base": 185,
@@ -3619,7 +3475,7 @@
     "footnote_texts": []
   },
   {
-    "id": 210,
+    "id": 201,
     "number": "186",
     "title": "Obstructing public servant in discharge of public functions",
     "base": 186,
@@ -3635,7 +3491,7 @@
     "footnote_texts": []
   },
   {
-    "id": 211,
+    "id": 202,
     "number": "187",
     "title": "Omission to assist public servant when bound by law to give assistance",
     "base": 187,
@@ -3651,7 +3507,7 @@
     "footnote_texts": []
   },
   {
-    "id": 212,
+    "id": 203,
     "number": "188",
     "title": "Disobedience to order duly promulgated by public servant",
     "base": 188,
@@ -3667,7 +3523,7 @@
     "footnote_texts": []
   },
   {
-    "id": 213,
+    "id": 204,
     "number": "189",
     "title": "Threat of injury to public servant",
     "base": 189,
@@ -3683,7 +3539,7 @@
     "footnote_texts": []
   },
   {
-    "id": 214,
+    "id": 205,
     "number": "190",
     "title": "Threat of injury to induce person to refrain from applying for protection to public servant",
     "base": 190,
@@ -3699,7 +3555,7 @@
     "footnote_texts": []
   },
   {
-    "id": 215,
+    "id": 206,
     "number": "191",
     "title": "Giving false evidence",
     "base": 191,
@@ -3715,7 +3571,7 @@
     "footnote_texts": []
   },
   {
-    "id": 216,
+    "id": 207,
     "number": "192",
     "title": "Fabricating false evidence",
     "base": 192,
@@ -3733,7 +3589,7 @@
     ]
   },
   {
-    "id": 217,
+    "id": 208,
     "number": "193",
     "title": "Punishment for false evidence",
     "base": 193,
@@ -3751,7 +3607,7 @@
     ]
   },
   {
-    "id": 218,
+    "id": 209,
     "number": "194",
     "title": "Giving or fabricating false evidence with intent to procure conviction of capital offence",
     "base": 194,
@@ -3771,7 +3627,7 @@
     ]
   },
   {
-    "id": 219,
+    "id": 210,
     "number": "195",
     "title": "Giving or fabricating false evidence with intent to procure conviction of offence punishable with imprisonment for life or imprisonment",
     "base": 195,
@@ -3792,7 +3648,7 @@
     ]
   },
   {
-    "id": 220,
+    "id": 211,
     "number": "195A",
     "title": "Threatening any person to give false evidence",
     "base": 195,
@@ -3810,7 +3666,7 @@
     ]
   },
   {
-    "id": 221,
+    "id": 212,
     "number": "196",
     "title": "Using evidence known to be false",
     "base": 196,
@@ -3826,7 +3682,7 @@
     "footnote_texts": []
   },
   {
-    "id": 222,
+    "id": 213,
     "number": "197",
     "title": "Issuing or signing false certificate",
     "base": 197,
@@ -3842,7 +3698,7 @@
     "footnote_texts": []
   },
   {
-    "id": 223,
+    "id": 214,
     "number": "198",
     "title": "Using as true a certificate known to be false",
     "base": 198,
@@ -3858,7 +3714,7 @@
     "footnote_texts": []
   },
   {
-    "id": 224,
+    "id": 215,
     "number": "199",
     "title": "False statement made in declaration which is by law receivable as evidence",
     "base": 199,
@@ -3874,7 +3730,7 @@
     "footnote_texts": []
   },
   {
-    "id": 225,
+    "id": 216,
     "number": "200",
     "title": "Using as true such declaration knowing it to be false",
     "base": 200,
@@ -3890,7 +3746,7 @@
     "footnote_texts": []
   },
   {
-    "id": 226,
+    "id": 217,
     "number": "201",
     "title": "Causing disappearance of evidence of offence, or giving false information to screen offender",
     "base": 201,
@@ -3908,7 +3764,7 @@
     ]
   },
   {
-    "id": 227,
+    "id": 218,
     "number": "202",
     "title": "Intentional omission to give information of offence by person bound to inform",
     "base": 202,
@@ -3924,7 +3780,7 @@
     "footnote_texts": []
   },
   {
-    "id": 228,
+    "id": 219,
     "number": "203",
     "title": "Giving false information respecting an offence committed",
     "base": 203,
@@ -3943,7 +3799,7 @@
     ]
   },
   {
-    "id": 229,
+    "id": 220,
     "number": "204",
     "title": "Destruction of document to prevent its production as evidence",
     "base": 204,
@@ -3961,7 +3817,7 @@
     ]
   },
   {
-    "id": 230,
+    "id": 221,
     "number": "205",
     "title": "False personation for purpose of act or proceeding in suit or prosecution",
     "base": 205,
@@ -3977,7 +3833,7 @@
     "footnote_texts": []
   },
   {
-    "id": 231,
+    "id": 222,
     "number": "206",
     "title": "Fraudulent removal or concealment of property to prevent its seizure as forfeited or in execution",
     "base": 206,
@@ -3993,7 +3849,7 @@
     "footnote_texts": []
   },
   {
-    "id": 232,
+    "id": 223,
     "number": "207",
     "title": "Fraudulent claim to property to prevent its seizure as forfeited or in execution",
     "base": 207,
@@ -4009,7 +3865,7 @@
     "footnote_texts": []
   },
   {
-    "id": 233,
+    "id": 224,
     "number": "208",
     "title": "Fraudulently suffering decree for sum not due",
     "base": 208,
@@ -4025,7 +3881,7 @@
     "footnote_texts": []
   },
   {
-    "id": 234,
+    "id": 225,
     "number": "209",
     "title": "Dishonesty making false claim in Court",
     "base": 209,
@@ -4041,7 +3897,7 @@
     "footnote_texts": []
   },
   {
-    "id": 235,
+    "id": 226,
     "number": "210",
     "title": "Fraudulently obtaining decree for sum not due",
     "base": 210,
@@ -4057,7 +3913,7 @@
     "footnote_texts": []
   },
   {
-    "id": 236,
+    "id": 227,
     "number": "211",
     "title": "False charge of offence made with intent to injure",
     "base": 211,
@@ -4075,7 +3931,7 @@
     ]
   },
   {
-    "id": 237,
+    "id": 228,
     "number": "212",
     "title": "Harbouring offender",
     "base": 212,
@@ -4096,7 +3952,7 @@
     ]
   },
   {
-    "id": 238,
+    "id": 229,
     "number": "213",
     "title": "Taking gift, etc., to screen an offender from punishment",
     "base": 213,
@@ -4114,7 +3970,7 @@
     ]
   },
   {
-    "id": 239,
+    "id": 230,
     "number": "214",
     "title": "Offering gift or restoration of property in consideration of screening offender",
     "base": 214,
@@ -4135,7 +3991,7 @@
     ]
   },
   {
-    "id": 240,
+    "id": 231,
     "number": "215",
     "title": "Taking gift to help to recover stolen property, etc",
     "base": 215,
@@ -4151,7 +4007,7 @@
     "footnote_texts": []
   },
   {
-    "id": 241,
+    "id": 232,
     "number": "216",
     "title": "Harbouring offender who has escaped from custody or whose apprehension has been ordered",
     "base": 216,
@@ -4172,7 +4028,7 @@
     ]
   },
   {
-    "id": 242,
+    "id": 233,
     "number": "216A",
     "title": "Penalty for harbouring robbers or dacoits",
     "base": 216,
@@ -4191,7 +4047,7 @@
     ]
   },
   {
-    "id": 243,
+    "id": 234,
     "number": "216B",
     "title": "Definition of “harbour” in sections 212, 216 and 216A",
     "base": 216,
@@ -4209,7 +4065,7 @@
     ]
   },
   {
-    "id": 244,
+    "id": 235,
     "number": "217",
     "title": "Public servant disobeying direction of law with intent to save person from punishment or property from forfeiture",
     "base": 217,
@@ -4225,7 +4081,7 @@
     "footnote_texts": []
   },
   {
-    "id": 245,
+    "id": 236,
     "number": "218",
     "title": "Public servant framing incorrect record or writing with intent to save person from punishment or property from forfeiture",
     "base": 218,
@@ -4241,7 +4097,7 @@
     "footnote_texts": []
   },
   {
-    "id": 246,
+    "id": 237,
     "number": "219",
     "title": "Public servant in judicial proceeding corruptly making report, etc., contrary to law",
     "base": 219,
@@ -4257,7 +4113,7 @@
     "footnote_texts": []
   },
   {
-    "id": 247,
+    "id": 238,
     "number": "220",
     "title": "Commitment for trial or confinement by person having authority who knows that he is acting contrary to law",
     "base": 220,
@@ -4273,7 +4129,7 @@
     "footnote_texts": []
   },
   {
-    "id": 248,
+    "id": 239,
     "number": "221",
     "title": "Intentional omission to apprehend on the part of public servant bound to apprehend",
     "base": 221,
@@ -4291,7 +4147,7 @@
     ]
   },
   {
-    "id": 249,
+    "id": 240,
     "number": "222",
     "title": "Intentional omission to apprehend on the part of public servant bound to apprehend person under sentence or lawfully committed",
     "base": 222,
@@ -4315,7 +4171,7 @@
     ]
   },
   {
-    "id": 250,
+    "id": 241,
     "number": "223",
     "title": "Escape from confinement or custody negligently suffered by public servant",
     "base": 223,
@@ -4333,7 +4189,7 @@
     ]
   },
   {
-    "id": 251,
+    "id": 242,
     "number": "224",
     "title": "Resistance or obstruction by a person to his lawful apprehension",
     "base": 224,
@@ -4349,7 +4205,7 @@
     "footnote_texts": []
   },
   {
-    "id": 252,
+    "id": 243,
     "number": "225",
     "title": "Resistance or obstruction to lawful apprehension of another person",
     "base": 225,
@@ -4370,7 +4226,7 @@
     ]
   },
   {
-    "id": 253,
+    "id": 244,
     "number": "225A",
     "title": "Omission to apprehend, or sufferance of escape, on part of public servant, in cases not otherwise, provided for",
     "base": 225,
@@ -4388,7 +4244,7 @@
     ]
   },
   {
-    "id": 254,
+    "id": 245,
     "number": "225B",
     "title": "Resistance or obstruction to lawful apprehension, or escape or rescue in cases not otherwise provided for",
     "base": 225,
@@ -4400,27 +4256,11 @@
     "chapter": "CHAPTER XI - OF FALSE EVIDENCE AND OFFENCES AGAINST PUBLIC JUSTICE",
     "covers": [],
     "start": 2376,
-    "end": 2383,
-    "footnote_texts": []
-  },
-  {
-    "id": 255,
-    "number": "226",
-    "title": "Unlawful return from transportation",
-    "base": 226,
-    "page_1based": 60,
-    "line": 2383,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER XI - OF FALSE EVIDENCE AND OFFENCES AGAINST PUBLIC JUSTICE",
-    "covers": [],
-    "start": 2383,
     "end": 2386,
     "footnote_texts": []
   },
   {
-    "id": 256,
+    "id": 246,
     "number": "227",
     "title": "Violation of condition of remission of punishment",
     "base": 227,
@@ -4436,7 +4276,7 @@
     "footnote_texts": []
   },
   {
-    "id": 257,
+    "id": 247,
     "number": "228",
     "title": "Intentional insult or interruption to public servant sitting in judicial proceeding",
     "base": 228,
@@ -4452,7 +4292,7 @@
     "footnote_texts": []
   },
   {
-    "id": 258,
+    "id": 248,
     "number": "228A",
     "title": "Disclosure of identity of the victim of certain offences, etc",
     "base": 228,
@@ -4472,7 +4312,7 @@
     ]
   },
   {
-    "id": 259,
+    "id": 249,
     "number": "229",
     "title": "Personation of a juror or assessor",
     "base": 229,
@@ -4488,7 +4328,7 @@
     "footnote_texts": []
   },
   {
-    "id": 260,
+    "id": 250,
     "number": "229A",
     "title": "Failure by person released on bail or bond to appear in court",
     "base": 229,
@@ -4506,7 +4346,7 @@
     ]
   },
   {
-    "id": 261,
+    "id": 251,
     "number": "230",
     "title": "“Coin” defined",
     "base": 230,
@@ -4528,7 +4368,7 @@
     ]
   },
   {
-    "id": 262,
+    "id": 252,
     "number": "231",
     "title": "Counterfeiting coin",
     "base": 231,
@@ -4544,7 +4384,7 @@
     "footnote_texts": []
   },
   {
-    "id": 263,
+    "id": 253,
     "number": "232",
     "title": "Counterfeiting Indian coin",
     "base": 232,
@@ -4563,7 +4403,7 @@
     ]
   },
   {
-    "id": 264,
+    "id": 254,
     "number": "233",
     "title": "Making or selling instrument for counterfeiting coin",
     "base": 233,
@@ -4579,7 +4419,7 @@
     "footnote_texts": []
   },
   {
-    "id": 265,
+    "id": 255,
     "number": "234",
     "title": "Making or selling instrument for counterfeiting Indian coin",
     "base": 234,
@@ -4597,7 +4437,7 @@
     ]
   },
   {
-    "id": 266,
+    "id": 256,
     "number": "235",
     "title": "Possession of instrument or material for the purpose of using the same for counterfeiting coin",
     "base": 235,
@@ -4615,7 +4455,7 @@
     ]
   },
   {
-    "id": 267,
+    "id": 257,
     "number": "236",
     "title": "Abetting in India the counterfeiting out of India of coin",
     "base": 236,
@@ -4633,7 +4473,7 @@
     ]
   },
   {
-    "id": 268,
+    "id": 258,
     "number": "237",
     "title": "Import or export of counterfeit coin",
     "base": 237,
@@ -4651,7 +4491,7 @@
     ]
   },
   {
-    "id": 269,
+    "id": 259,
     "number": "238",
     "title": "Import or export of counterfeits of the Indian coin",
     "base": 238,
@@ -4671,7 +4511,7 @@
     ]
   },
   {
-    "id": 270,
+    "id": 260,
     "number": "239",
     "title": "Delivery of coin, possessed with knowledge that it is counterfeit",
     "base": 239,
@@ -4687,7 +4527,7 @@
     "footnote_texts": []
   },
   {
-    "id": 271,
+    "id": 261,
     "number": "240",
     "title": "Delivery of Indian coin, possessed with knowledge that it is counterfeit",
     "base": 240,
@@ -4705,7 +4545,7 @@
     ]
   },
   {
-    "id": 272,
+    "id": 262,
     "number": "241",
     "title": "Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be counterfeit",
     "base": 241,
@@ -4721,7 +4561,7 @@
     "footnote_texts": []
   },
   {
-    "id": 273,
+    "id": 263,
     "number": "242",
     "title": "Possession of counterfeit coin by person who knew it to be counterfeit when he became possessed thereof",
     "base": 242,
@@ -4737,7 +4577,7 @@
     "footnote_texts": []
   },
   {
-    "id": 274,
+    "id": 264,
     "number": "243",
     "title": "Possession of Indian coin by person who knew it to be counterfeit when he became possessed thereof",
     "base": 243,
@@ -4755,7 +4595,7 @@
     ]
   },
   {
-    "id": 275,
+    "id": 265,
     "number": "244",
     "title": "Person employed in mint causing coin to be of different weight or composition from that fixed by law",
     "base": 244,
@@ -4773,7 +4613,7 @@
     ]
   },
   {
-    "id": 276,
+    "id": 266,
     "number": "245",
     "title": "Unlawfully taking coining instrument from mint",
     "base": 245,
@@ -4791,7 +4631,7 @@
     ]
   },
   {
-    "id": 277,
+    "id": 267,
     "number": "246",
     "title": "Fraudulently or dishonestly diminishing weight or altering composition of coin",
     "base": 246,
@@ -4807,7 +4647,7 @@
     "footnote_texts": []
   },
   {
-    "id": 278,
+    "id": 268,
     "number": "247",
     "title": "Fraudulently or dishonestly diminishing weight or altering composition of Indian coin",
     "base": 247,
@@ -4825,7 +4665,7 @@
     ]
   },
   {
-    "id": 279,
+    "id": 269,
     "number": "248",
     "title": "Altering appearance of coin with intent that it shall pass as coin of different description",
     "base": 248,
@@ -4841,7 +4681,7 @@
     "footnote_texts": []
   },
   {
-    "id": 280,
+    "id": 270,
     "number": "249",
     "title": "Altering appearance of Indian coin with intent that it shall pass as coin of different description",
     "base": 249,
@@ -4859,7 +4699,7 @@
     ]
   },
   {
-    "id": 281,
+    "id": 271,
     "number": "250",
     "title": "Delivery of coin, possessed with knowledge that it is altered",
     "base": 250,
@@ -4875,7 +4715,7 @@
     "footnote_texts": []
   },
   {
-    "id": 282,
+    "id": 272,
     "number": "251",
     "title": "Delivery of Indian coin, possessed with knowledge that it is altered",
     "base": 251,
@@ -4891,7 +4731,7 @@
     "footnote_texts": []
   },
   {
-    "id": 283,
+    "id": 273,
     "number": "252",
     "title": "Possession of coin by person who knew it to be altered when he became possessed thereof",
     "base": 252,
@@ -4907,7 +4747,7 @@
     "footnote_texts": []
   },
   {
-    "id": 284,
+    "id": 274,
     "number": "253",
     "title": "Possession of Indian coin by person who knew it to be altered when he became possessed thereof",
     "base": 253,
@@ -4923,7 +4763,7 @@
     "footnote_texts": []
   },
   {
-    "id": 285,
+    "id": 275,
     "number": "254",
     "title": "Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be altered",
     "base": 254,
@@ -4939,7 +4779,7 @@
     "footnote_texts": []
   },
   {
-    "id": 286,
+    "id": 276,
     "number": "255",
     "title": "Counterfeiting Government stamp",
     "base": 255,
@@ -4957,7 +4797,7 @@
     ]
   },
   {
-    "id": 287,
+    "id": 277,
     "number": "256",
     "title": "Having possession of instrument or material for counterfeiting Government stamp",
     "base": 256,
@@ -4973,7 +4813,7 @@
     "footnote_texts": []
   },
   {
-    "id": 288,
+    "id": 278,
     "number": "257",
     "title": "Making or selling instrument for counterfeiting Government stamp",
     "base": 257,
@@ -4989,7 +4829,7 @@
     "footnote_texts": []
   },
   {
-    "id": 289,
+    "id": 279,
     "number": "258",
     "title": "Sale of counterfeit Government stamp",
     "base": 258,
@@ -5005,7 +4845,7 @@
     "footnote_texts": []
   },
   {
-    "id": 290,
+    "id": 280,
     "number": "259",
     "title": "Having possession of counterfeit Government stamp",
     "base": 259,
@@ -5021,7 +4861,7 @@
     "footnote_texts": []
   },
   {
-    "id": 291,
+    "id": 281,
     "number": "260",
     "title": "Using as genuine a Government stamp known to be counterfeit",
     "base": 260,
@@ -5037,7 +4877,7 @@
     "footnote_texts": []
   },
   {
-    "id": 292,
+    "id": 282,
     "number": "261",
     "title": "Effacing writing from substance bearing Government stamp, or removing from document a stamp used for it, with intent to cause loss to Government",
     "base": 261,
@@ -5053,7 +4893,7 @@
     "footnote_texts": []
   },
   {
-    "id": 293,
+    "id": 283,
     "number": "262",
     "title": "Using Government stamp known to have been before used",
     "base": 262,
@@ -5069,7 +4909,7 @@
     "footnote_texts": []
   },
   {
-    "id": 294,
+    "id": 284,
     "number": "263",
     "title": "Erasure of mark denoting that stamp has been used",
     "base": 263,
@@ -5085,7 +4925,7 @@
     "footnote_texts": []
   },
   {
-    "id": 295,
+    "id": 285,
     "number": "263A",
     "title": "Prohibition of fictitious stamps",
     "base": 263,
@@ -5104,7 +4944,7 @@
     ]
   },
   {
-    "id": 296,
+    "id": 286,
     "number": "264",
     "title": "Fraudulent use of false instrument for weighing",
     "base": 264,
@@ -5120,7 +4960,7 @@
     "footnote_texts": []
   },
   {
-    "id": 297,
+    "id": 287,
     "number": "265",
     "title": "Fraudulent use of false weight or measure",
     "base": 265,
@@ -5136,7 +4976,7 @@
     "footnote_texts": []
   },
   {
-    "id": 298,
+    "id": 288,
     "number": "266",
     "title": "Being in possession of false weight or measure",
     "base": 266,
@@ -5154,7 +4994,7 @@
     ]
   },
   {
-    "id": 299,
+    "id": 289,
     "number": "267",
     "title": "Making or selling false weight or measure",
     "base": 267,
@@ -5170,7 +5010,7 @@
     "footnote_texts": []
   },
   {
-    "id": 300,
+    "id": 290,
     "number": "268",
     "title": "Public nuisance",
     "base": 268,
@@ -5186,7 +5026,7 @@
     "footnote_texts": []
   },
   {
-    "id": 301,
+    "id": 291,
     "number": "269",
     "title": "Negligent act likely to spread infection of disease dangerous to life",
     "base": 269,
@@ -5202,7 +5042,7 @@
     "footnote_texts": []
   },
   {
-    "id": 302,
+    "id": 292,
     "number": "270",
     "title": "Malignant act likely to spread infection of disease dangerous to life",
     "base": 270,
@@ -5218,7 +5058,7 @@
     "footnote_texts": []
   },
   {
-    "id": 303,
+    "id": 293,
     "number": "271",
     "title": "Disobedience to quarantine rule",
     "base": 271,
@@ -5238,7 +5078,7 @@
     ]
   },
   {
-    "id": 304,
+    "id": 294,
     "number": "272",
     "title": "Adulteration of food or drink intended for sale",
     "base": 272,
@@ -5254,7 +5094,7 @@
     "footnote_texts": []
   },
   {
-    "id": 305,
+    "id": 295,
     "number": "273",
     "title": "Sale of noxious food or drink",
     "base": 273,
@@ -5270,7 +5110,7 @@
     "footnote_texts": []
   },
   {
-    "id": 306,
+    "id": 296,
     "number": "274",
     "title": "Adulteration of drugs",
     "base": 274,
@@ -5286,7 +5126,7 @@
     "footnote_texts": []
   },
   {
-    "id": 307,
+    "id": 297,
     "number": "275",
     "title": "Sale of adulterated drugs",
     "base": 275,
@@ -5302,7 +5142,7 @@
     "footnote_texts": []
   },
   {
-    "id": 308,
+    "id": 298,
     "number": "276",
     "title": "Sale of drug as a different drug or preparation",
     "base": 276,
@@ -5318,7 +5158,7 @@
     "footnote_texts": []
   },
   {
-    "id": 309,
+    "id": 299,
     "number": "277",
     "title": "Fouling water of public spring or reservoir",
     "base": 277,
@@ -5334,7 +5174,7 @@
     "footnote_texts": []
   },
   {
-    "id": 310,
+    "id": 300,
     "number": "278",
     "title": "Making atmosphere noxious to health",
     "base": 278,
@@ -5350,7 +5190,7 @@
     "footnote_texts": []
   },
   {
-    "id": 311,
+    "id": 301,
     "number": "279",
     "title": "Rash driving or riding on a public way",
     "base": 279,
@@ -5366,7 +5206,7 @@
     "footnote_texts": []
   },
   {
-    "id": 312,
+    "id": 302,
     "number": "280",
     "title": "Rash navigation of vessel",
     "base": 280,
@@ -5382,7 +5222,7 @@
     "footnote_texts": []
   },
   {
-    "id": 313,
+    "id": 303,
     "number": "281",
     "title": "Exhibition of false light, mark or buoy",
     "base": 281,
@@ -5398,7 +5238,7 @@
     "footnote_texts": []
   },
   {
-    "id": 314,
+    "id": 304,
     "number": "282",
     "title": "Conveying person by water for hire in unsafe or overloaded vessel",
     "base": 282,
@@ -5414,7 +5254,7 @@
     "footnote_texts": []
   },
   {
-    "id": 315,
+    "id": 305,
     "number": "283",
     "title": "Danger or obstruction in public way or line of navigation",
     "base": 283,
@@ -5430,7 +5270,7 @@
     "footnote_texts": []
   },
   {
-    "id": 316,
+    "id": 306,
     "number": "284",
     "title": "Negligent conduct with respect to poisonous substance",
     "base": 284,
@@ -5446,7 +5286,7 @@
     "footnote_texts": []
   },
   {
-    "id": 317,
+    "id": 307,
     "number": "285",
     "title": "Negligent conduct with respect to fire or combustible matter",
     "base": 285,
@@ -5462,7 +5302,7 @@
     "footnote_texts": []
   },
   {
-    "id": 318,
+    "id": 308,
     "number": "286",
     "title": "Negligent conduct with respect to explosive substance",
     "base": 286,
@@ -5478,7 +5318,7 @@
     "footnote_texts": []
   },
   {
-    "id": 319,
+    "id": 309,
     "number": "287",
     "title": "Negligent conduct with respect to machinery",
     "base": 287,
@@ -5494,7 +5334,7 @@
     "footnote_texts": []
   },
   {
-    "id": 320,
+    "id": 310,
     "number": "288",
     "title": "Negligent conduct with respect to pulling down or repairing buildings",
     "base": 288,
@@ -5510,7 +5350,7 @@
     "footnote_texts": []
   },
   {
-    "id": 321,
+    "id": 311,
     "number": "289",
     "title": "Negligent conduct with respect to animal",
     "base": 289,
@@ -5526,7 +5366,7 @@
     "footnote_texts": []
   },
   {
-    "id": 322,
+    "id": 312,
     "number": "290",
     "title": "Punishment for public nuisance in cases not otherwise provided for",
     "base": 290,
@@ -5542,7 +5382,7 @@
     "footnote_texts": []
   },
   {
-    "id": 323,
+    "id": 313,
     "number": "291",
     "title": "Continuance of nuisance after injunction to discontinue",
     "base": 291,
@@ -5558,7 +5398,7 @@
     "footnote_texts": []
   },
   {
-    "id": 324,
+    "id": 314,
     "number": "292",
     "title": "Sale, etc., of obscene books, etc",
     "base": 292,
@@ -5580,7 +5420,7 @@
     ]
   },
   {
-    "id": 325,
+    "id": 315,
     "number": "293",
     "title": "Sale, etc., of obscene objects to young person",
     "base": 293,
@@ -5599,7 +5439,7 @@
     ]
   },
   {
-    "id": 326,
+    "id": 316,
     "number": "294",
     "title": "Obscene acts and songs",
     "base": 294,
@@ -5617,7 +5457,7 @@
     ]
   },
   {
-    "id": 327,
+    "id": 317,
     "number": "294A",
     "title": "Keeping lottery office",
     "base": 294,
@@ -5638,7 +5478,7 @@
     ]
   },
   {
-    "id": 328,
+    "id": 318,
     "number": "295",
     "title": "Injuring or defiling place of worship, with intent to insult the religion of any class",
     "base": 295,
@@ -5654,7 +5494,7 @@
     "footnote_texts": []
   },
   {
-    "id": 329,
+    "id": 319,
     "number": "295A",
     "title": "Deliberate and malicious acts, intended to outrage religious feelings of any class by insulting its religion or religious beliefs",
     "base": 295,
@@ -5675,7 +5515,7 @@
     ]
   },
   {
-    "id": 330,
+    "id": 320,
     "number": "296",
     "title": "Disturbing religious assembly",
     "base": 296,
@@ -5691,7 +5531,7 @@
     "footnote_texts": []
   },
   {
-    "id": 331,
+    "id": 321,
     "number": "297",
     "title": "Trespassing on burial places, etc",
     "base": 297,
@@ -5707,7 +5547,7 @@
     "footnote_texts": []
   },
   {
-    "id": 332,
+    "id": 322,
     "number": "298",
     "title": "Uttering words, etc., with deliberate intent to wound religious feelings",
     "base": 298,
@@ -5723,7 +5563,7 @@
     "footnote_texts": []
   },
   {
-    "id": 333,
+    "id": 323,
     "number": "299",
     "title": "Culpable homicide",
     "base": 299,
@@ -5739,7 +5579,7 @@
     "footnote_texts": []
   },
   {
-    "id": 334,
+    "id": 324,
     "number": "300",
     "title": "Murder",
     "base": 300,
@@ -5755,7 +5595,7 @@
     "footnote_texts": []
   },
   {
-    "id": 335,
+    "id": 325,
     "number": "301",
     "title": "Culpable homicide by causing death of person other than person whose death was intended",
     "base": 301,
@@ -5771,7 +5611,7 @@
     "footnote_texts": []
   },
   {
-    "id": 336,
+    "id": 326,
     "number": "302",
     "title": "Punishment for murder",
     "base": 302,
@@ -5789,7 +5629,7 @@
     ]
   },
   {
-    "id": 337,
+    "id": 327,
     "number": "303",
     "title": "Punishment for murder by life-convict",
     "base": 303,
@@ -5807,7 +5647,7 @@
     ]
   },
   {
-    "id": 338,
+    "id": 328,
     "number": "304",
     "title": "Punishment for culpable homicide not amounting to murder",
     "base": 304,
@@ -5825,7 +5665,7 @@
     ]
   },
   {
-    "id": 339,
+    "id": 329,
     "number": "304A",
     "title": "Causing death by negligence",
     "base": 304,
@@ -5843,7 +5683,7 @@
     ]
   },
   {
-    "id": 340,
+    "id": 330,
     "number": "304B",
     "title": "Dowry death",
     "base": 304,
@@ -5861,7 +5701,7 @@
     ]
   },
   {
-    "id": 341,
+    "id": 331,
     "number": "305",
     "title": "Abetment of suicide of child or insane person",
     "base": 305,
@@ -5879,7 +5719,7 @@
     ]
   },
   {
-    "id": 342,
+    "id": 332,
     "number": "306",
     "title": "Abetment of suicide",
     "base": 306,
@@ -5895,7 +5735,7 @@
     "footnote_texts": []
   },
   {
-    "id": 343,
+    "id": 333,
     "number": "307",
     "title": "Attempt to murder",
     "base": 307,
@@ -5915,7 +5755,7 @@
     ]
   },
   {
-    "id": 344,
+    "id": 334,
     "number": "308",
     "title": "Attempt to commit culpable homicide",
     "base": 308,
@@ -5931,7 +5771,7 @@
     "footnote_texts": []
   },
   {
-    "id": 345,
+    "id": 335,
     "number": "309",
     "title": "Attempt to commit suicide",
     "base": 309,
@@ -5949,7 +5789,7 @@
     ]
   },
   {
-    "id": 346,
+    "id": 336,
     "number": "310",
     "title": "Thug",
     "base": 310,
@@ -5965,7 +5805,7 @@
     "footnote_texts": []
   },
   {
-    "id": 347,
+    "id": 337,
     "number": "311",
     "title": "Punishment",
     "base": 311,
@@ -5983,7 +5823,7 @@
     ]
   },
   {
-    "id": 348,
+    "id": 338,
     "number": "312",
     "title": "Causing miscarraige",
     "base": 312,
@@ -5999,7 +5839,7 @@
     "footnote_texts": []
   },
   {
-    "id": 349,
+    "id": 339,
     "number": "313",
     "title": "Causing miscarriage without woman's consent",
     "base": 313,
@@ -6017,7 +5857,7 @@
     ]
   },
   {
-    "id": 350,
+    "id": 340,
     "number": "314",
     "title": "Death caused by act done with intent to cause miscarriage",
     "base": 314,
@@ -6035,7 +5875,7 @@
     ]
   },
   {
-    "id": 351,
+    "id": 341,
     "number": "315",
     "title": "Act done with intent to prevent child being born alive or to cause it to die after birth",
     "base": 315,
@@ -6051,7 +5891,7 @@
     "footnote_texts": []
   },
   {
-    "id": 352,
+    "id": 342,
     "number": "316",
     "title": "Causing death of quick unborn child by act amounting to culpable homicide",
     "base": 316,
@@ -6067,7 +5907,7 @@
     "footnote_texts": []
   },
   {
-    "id": 353,
+    "id": 343,
     "number": "317",
     "title": "Exposure and abandonment of child under twelve years, by parent or person having care of it",
     "base": 317,
@@ -6083,7 +5923,7 @@
     "footnote_texts": []
   },
   {
-    "id": 354,
+    "id": 344,
     "number": "318",
     "title": "Concealment of birth by secret disposal of dead body",
     "base": 318,
@@ -6099,7 +5939,7 @@
     "footnote_texts": []
   },
   {
-    "id": 355,
+    "id": 345,
     "number": "319",
     "title": "Hurt",
     "base": 319,
@@ -6115,7 +5955,7 @@
     "footnote_texts": []
   },
   {
-    "id": 356,
+    "id": 346,
     "number": "320",
     "title": "Grievous hurt",
     "base": 320,
@@ -6131,7 +5971,7 @@
     "footnote_texts": []
   },
   {
-    "id": 357,
+    "id": 347,
     "number": "321",
     "title": "Voluntarily causing hurt",
     "base": 321,
@@ -6147,7 +5987,7 @@
     "footnote_texts": []
   },
   {
-    "id": 358,
+    "id": 348,
     "number": "322",
     "title": "Voluntarily causing grievous hurt",
     "base": 322,
@@ -6163,7 +6003,7 @@
     "footnote_texts": []
   },
   {
-    "id": 359,
+    "id": 349,
     "number": "323",
     "title": "Punishment for voluntarily causing hurt",
     "base": 323,
@@ -6179,7 +6019,7 @@
     "footnote_texts": []
   },
   {
-    "id": 360,
+    "id": 350,
     "number": "324",
     "title": "Voluntarily causing hurt by dangerous weapons or means",
     "base": 324,
@@ -6195,7 +6035,7 @@
     "footnote_texts": []
   },
   {
-    "id": 361,
+    "id": 351,
     "number": "325",
     "title": "Punishment for voluntarily causing grievous hurt",
     "base": 325,
@@ -6211,7 +6051,7 @@
     "footnote_texts": []
   },
   {
-    "id": 362,
+    "id": 352,
     "number": "326",
     "title": "Voluntarily causing grievous hurt by dangerous weapons or means",
     "base": 326,
@@ -6229,7 +6069,7 @@
     ]
   },
   {
-    "id": 363,
+    "id": 353,
     "number": "326A",
     "title": "Voluntarily causing grievous hurt by use of acid, etc",
     "base": 326,
@@ -6247,7 +6087,7 @@
     ]
   },
   {
-    "id": 364,
+    "id": 354,
     "number": "326B",
     "title": "Voluntarily throwing or attempting to throw acid",
     "base": 326,
@@ -6263,7 +6103,7 @@
     "footnote_texts": []
   },
   {
-    "id": 365,
+    "id": 355,
     "number": "327",
     "title": "Voluntarily causing hurt to extort property, or to constrain to an illegal to an act",
     "base": 327,
@@ -6279,7 +6119,7 @@
     "footnote_texts": []
   },
   {
-    "id": 366,
+    "id": 356,
     "number": "328",
     "title": "Causing hurt by means of poison, etc., with intent to commit and offence",
     "base": 328,
@@ -6295,7 +6135,7 @@
     "footnote_texts": []
   },
   {
-    "id": 367,
+    "id": 357,
     "number": "329",
     "title": "Voluntarily causing grievous hurt to extort property, or to constrain to an illegal act",
     "base": 329,
@@ -6313,7 +6153,7 @@
     ]
   },
   {
-    "id": 368,
+    "id": 358,
     "number": "330",
     "title": "Voluntarily causing hurt to extort confession, or to compel restoration of property",
     "base": 330,
@@ -6329,7 +6169,7 @@
     "footnote_texts": []
   },
   {
-    "id": 369,
+    "id": 359,
     "number": "331",
     "title": "Voluntarily causing grievous hurt to extort confession, or to compel restoration of property",
     "base": 331,
@@ -6345,7 +6185,7 @@
     "footnote_texts": []
   },
   {
-    "id": 370,
+    "id": 360,
     "number": "332",
     "title": "Voluntarily causing hurt to deter public servant from his duty",
     "base": 332,
@@ -6361,7 +6201,7 @@
     "footnote_texts": []
   },
   {
-    "id": 371,
+    "id": 361,
     "number": "333",
     "title": "Voluntarily causing grievous hurt to deter public servant from his duty",
     "base": 333,
@@ -6377,7 +6217,7 @@
     "footnote_texts": []
   },
   {
-    "id": 372,
+    "id": 362,
     "number": "334",
     "title": "Voluntarily causing hurt on provocation",
     "base": 334,
@@ -6393,7 +6233,7 @@
     "footnote_texts": []
   },
   {
-    "id": 373,
+    "id": 363,
     "number": "335",
     "title": "Voluntarily causing grievous hurt on provocation",
     "base": 335,
@@ -6411,7 +6251,7 @@
     ]
   },
   {
-    "id": 374,
+    "id": 364,
     "number": "336",
     "title": "Act endangering life or personal safety of others",
     "base": 336,
@@ -6427,7 +6267,7 @@
     "footnote_texts": []
   },
   {
-    "id": 375,
+    "id": 365,
     "number": "337",
     "title": "Causing hurt by act endangering life or personal safety of others",
     "base": 337,
@@ -6443,7 +6283,7 @@
     "footnote_texts": []
   },
   {
-    "id": 376,
+    "id": 366,
     "number": "338",
     "title": "Causing grievous hurt by act endangering life or personal safety of others",
     "base": 338,
@@ -6459,7 +6299,7 @@
     "footnote_texts": []
   },
   {
-    "id": 377,
+    "id": 367,
     "number": "339",
     "title": "Wrongful restraint",
     "base": 339,
@@ -6475,7 +6315,7 @@
     "footnote_texts": []
   },
   {
-    "id": 378,
+    "id": 368,
     "number": "340",
     "title": "Wrongful confinement",
     "base": 340,
@@ -6491,7 +6331,7 @@
     "footnote_texts": []
   },
   {
-    "id": 379,
+    "id": 369,
     "number": "341",
     "title": "Punishment for wrongful restraint",
     "base": 341,
@@ -6507,7 +6347,7 @@
     "footnote_texts": []
   },
   {
-    "id": 380,
+    "id": 370,
     "number": "342",
     "title": "Punishment for wrongful confinement",
     "base": 342,
@@ -6523,7 +6363,7 @@
     "footnote_texts": []
   },
   {
-    "id": 381,
+    "id": 371,
     "number": "343",
     "title": "Wrongful confinement for three or more days",
     "base": 343,
@@ -6539,7 +6379,7 @@
     "footnote_texts": []
   },
   {
-    "id": 382,
+    "id": 372,
     "number": "344",
     "title": "Wrongful confinement for ten or more days",
     "base": 344,
@@ -6555,7 +6395,7 @@
     "footnote_texts": []
   },
   {
-    "id": 383,
+    "id": 373,
     "number": "345",
     "title": "Wrongful confinement of person for whose liberation writ has been issued",
     "base": 345,
@@ -6571,7 +6411,7 @@
     "footnote_texts": []
   },
   {
-    "id": 384,
+    "id": 374,
     "number": "346",
     "title": "Wrongful confinement in secret",
     "base": 346,
@@ -6587,7 +6427,7 @@
     "footnote_texts": []
   },
   {
-    "id": 385,
+    "id": 375,
     "number": "347",
     "title": "Wrongful confinement to extort property, or constrain to illegal act",
     "base": 347,
@@ -6603,7 +6443,7 @@
     "footnote_texts": []
   },
   {
-    "id": 386,
+    "id": 376,
     "number": "348",
     "title": "Wrongful confinement to extort confession, or compel restoration of property",
     "base": 348,
@@ -6619,7 +6459,7 @@
     "footnote_texts": []
   },
   {
-    "id": 387,
+    "id": 377,
     "number": "349",
     "title": "Force",
     "base": 349,
@@ -6635,7 +6475,7 @@
     "footnote_texts": []
   },
   {
-    "id": 388,
+    "id": 378,
     "number": "350",
     "title": "Criminal force",
     "base": 350,
@@ -6651,7 +6491,7 @@
     "footnote_texts": []
   },
   {
-    "id": 389,
+    "id": 379,
     "number": "351",
     "title": "Assault",
     "base": 351,
@@ -6667,7 +6507,7 @@
     "footnote_texts": []
   },
   {
-    "id": 390,
+    "id": 380,
     "number": "352",
     "title": "Punishment for assault or criminal force otherwise than on grave provocation",
     "base": 352,
@@ -6683,7 +6523,7 @@
     "footnote_texts": []
   },
   {
-    "id": 391,
+    "id": 381,
     "number": "353",
     "title": "Assault or criminal force to deter public servant from discharge of his duty",
     "base": 353,
@@ -6699,7 +6539,7 @@
     "footnote_texts": []
   },
   {
-    "id": 392,
+    "id": 382,
     "number": "354",
     "title": "Assault or criminal force to woman with intent to outrage her modesty",
     "base": 354,
@@ -6717,7 +6557,7 @@
     ]
   },
   {
-    "id": 393,
+    "id": 383,
     "number": "354A",
     "title": "Sexual harassment and punishment for sexual harassment",
     "base": 354,
@@ -6735,7 +6575,7 @@
     ]
   },
   {
-    "id": 394,
+    "id": 384,
     "number": "354B",
     "title": "Assault or use of criminal force to woman with intent to disrobe",
     "base": 354,
@@ -6751,7 +6591,7 @@
     "footnote_texts": []
   },
   {
-    "id": 395,
+    "id": 385,
     "number": "354C",
     "title": "Voyeurism",
     "base": 354,
@@ -6767,7 +6607,7 @@
     "footnote_texts": []
   },
   {
-    "id": 396,
+    "id": 386,
     "number": "354D",
     "title": "Stalking",
     "base": 354,
@@ -6783,7 +6623,7 @@
     "footnote_texts": []
   },
   {
-    "id": 397,
+    "id": 387,
     "number": "354E",
     "title": "Sextortion",
     "base": 354,
@@ -6799,7 +6639,7 @@
     "footnote_texts": []
   },
   {
-    "id": 398,
+    "id": 388,
     "number": "355",
     "title": "Assault or criminal force with intent to dishonour person, otherwise than on grave provocation",
     "base": 355,
@@ -6815,7 +6655,7 @@
     "footnote_texts": []
   },
   {
-    "id": 399,
+    "id": 389,
     "number": "356",
     "title": "Assault or criminal force in attempt to commit theft of property carried by a person",
     "base": 356,
@@ -6831,7 +6671,7 @@
     "footnote_texts": []
   },
   {
-    "id": 400,
+    "id": 390,
     "number": "357",
     "title": "Assault or criminal force in attempt wrongfully to confine a person",
     "base": 357,
@@ -6847,7 +6687,7 @@
     "footnote_texts": []
   },
   {
-    "id": 401,
+    "id": 391,
     "number": "358",
     "title": "Assault or criminal force on grave provocation",
     "base": 358,
@@ -6863,7 +6703,7 @@
     "footnote_texts": []
   },
   {
-    "id": 402,
+    "id": 392,
     "number": "359",
     "title": "Kidnapping",
     "base": 359,
@@ -6881,7 +6721,7 @@
     ]
   },
   {
-    "id": 403,
+    "id": 393,
     "number": "360",
     "title": "Kidnapping from India",
     "base": 360,
@@ -6899,7 +6739,7 @@
     ]
   },
   {
-    "id": 404,
+    "id": 394,
     "number": "361",
     "title": "Kidnapping from lawful guardianship",
     "base": 361,
@@ -6918,7 +6758,7 @@
     ]
   },
   {
-    "id": 405,
+    "id": 395,
     "number": "362",
     "title": "Abduction",
     "base": 362,
@@ -6934,7 +6774,7 @@
     "footnote_texts": []
   },
   {
-    "id": 406,
+    "id": 396,
     "number": "363",
     "title": "Punishment for kidnapping",
     "base": 363,
@@ -6952,7 +6792,7 @@
     ]
   },
   {
-    "id": 407,
+    "id": 397,
     "number": "363A",
     "title": "Kidnapping or maiming a minor for purposes of begging",
     "base": 363,
@@ -6970,7 +6810,7 @@
     ]
   },
   {
-    "id": 408,
+    "id": 398,
     "number": "364",
     "title": "Kidnapping or abducting in order to murder",
     "base": 364,
@@ -6989,7 +6829,7 @@
     ]
   },
   {
-    "id": 409,
+    "id": 399,
     "number": "364A",
     "title": "Kidnapping for ransom, etc",
     "base": 364,
@@ -7008,7 +6848,7 @@
     ]
   },
   {
-    "id": 410,
+    "id": 400,
     "number": "365",
     "title": "Kidnapping or abducting with intent secretly and wrongfully to confine person",
     "base": 365,
@@ -7024,7 +6864,7 @@
     "footnote_texts": []
   },
   {
-    "id": 411,
+    "id": 401,
     "number": "366",
     "title": "Kidnapping, abducting or inducing woman to compel her marriage, etc",
     "base": 366,
@@ -7042,7 +6882,7 @@
     ]
   },
   {
-    "id": 412,
+    "id": 402,
     "number": "366A",
     "title": "Procuration of minor girl",
     "base": 366,
@@ -7060,7 +6900,7 @@
     ]
   },
   {
-    "id": 413,
+    "id": 403,
     "number": "366B",
     "title": "Importation of girl from foreign country",
     "base": 366,
@@ -7080,7 +6920,7 @@
     ]
   },
   {
-    "id": 414,
+    "id": 404,
     "number": "367",
     "title": "Kidnapping or abducting in order to subject person to grievous hurt, slavery, etc",
     "base": 367,
@@ -7096,7 +6936,7 @@
     "footnote_texts": []
   },
   {
-    "id": 415,
+    "id": 405,
     "number": "368",
     "title": "Wrongfully concealing or keeping in confinement, kidnapped or abducted person",
     "base": 368,
@@ -7112,7 +6952,7 @@
     "footnote_texts": []
   },
   {
-    "id": 416,
+    "id": 406,
     "number": "369",
     "title": "Kidnapping or abducting child under ten years with intent to steal from its person",
     "base": 369,
@@ -7128,7 +6968,7 @@
     "footnote_texts": []
   },
   {
-    "id": 417,
+    "id": 407,
     "number": "370",
     "title": "Trafficking of person",
     "base": 370,
@@ -7146,7 +6986,7 @@
     ]
   },
   {
-    "id": 418,
+    "id": 408,
     "number": "370A",
     "title": "Exploitation of a trafficked person",
     "base": 370,
@@ -7162,7 +7002,7 @@
     "footnote_texts": []
   },
   {
-    "id": 419,
+    "id": 409,
     "number": "371",
     "title": "Habitual dealing in slaves",
     "base": 371,
@@ -7180,7 +7020,7 @@
     ]
   },
   {
-    "id": 420,
+    "id": 410,
     "number": "372",
     "title": "Selling minor for purposes of prostitution, etc",
     "base": 372,
@@ -7199,7 +7039,7 @@
     ]
   },
   {
-    "id": 421,
+    "id": 411,
     "number": "373",
     "title": "Buying minor for purposes of prostitution, etc",
     "base": 373,
@@ -7218,7 +7058,7 @@
     ]
   },
   {
-    "id": 422,
+    "id": 412,
     "number": "374",
     "title": "Unlawful compulsory labour",
     "base": 374,
@@ -7236,7 +7076,7 @@
     ]
   },
   {
-    "id": 423,
+    "id": 413,
     "number": "375",
     "title": "Rape",
     "base": 375,
@@ -7254,7 +7094,7 @@
     ]
   },
   {
-    "id": 424,
+    "id": 414,
     "number": "376",
     "title": "Punishment for rape",
     "base": 376,
@@ -7274,7 +7114,7 @@
     ]
   },
   {
-    "id": 425,
+    "id": 415,
     "number": "376A",
     "title": "Punishment for causing death or resulting in persistent vegetative state of victim",
     "base": 376,
@@ -7292,7 +7132,7 @@
     ]
   },
   {
-    "id": 426,
+    "id": 416,
     "number": "376AB",
     "title": "Punishment for rape on woman under twelve years of age",
     "base": 376,
@@ -7310,7 +7150,7 @@
     ]
   },
   {
-    "id": 427,
+    "id": 417,
     "number": "376B",
     "title": "Sexual intercourse by husband upon his wife during separation",
     "base": 376,
@@ -7328,7 +7168,7 @@
     ]
   },
   {
-    "id": 428,
+    "id": 418,
     "number": "376C",
     "title": "Sexual intercourse by a person in authority",
     "base": 376,
@@ -7346,7 +7186,7 @@
     ]
   },
   {
-    "id": 429,
+    "id": 419,
     "number": "376D",
     "title": "Gang rape",
     "base": 376,
@@ -7364,7 +7204,7 @@
     ]
   },
   {
-    "id": 430,
+    "id": 420,
     "number": "376DA",
     "title": "Punishment for gang rape on woman under sixteen years of age",
     "base": 376,
@@ -7382,7 +7222,7 @@
     ]
   },
   {
-    "id": 431,
+    "id": 421,
     "number": "376DB",
     "title": "Punishment for gang rape on woman under twelve years of age",
     "base": 376,
@@ -7400,7 +7240,7 @@
     ]
   },
   {
-    "id": 432,
+    "id": 422,
     "number": "376E",
     "title": "Punishment for repeat offenders",
     "base": 376,
@@ -7418,7 +7258,7 @@
     ]
   },
   {
-    "id": 433,
+    "id": 423,
     "number": "376F",
     "title": "Liability of person in-charge of workplace and others to give information about offence",
     "base": 376,
@@ -7434,7 +7274,7 @@
     "footnote_texts": []
   },
   {
-    "id": 434,
+    "id": 424,
     "number": "377",
     "title": "Unnatural offences",
     "base": 377,
@@ -7452,7 +7292,7 @@
     ]
   },
   {
-    "id": 435,
+    "id": 425,
     "number": "378",
     "title": "Theft",
     "base": 378,
@@ -7468,7 +7308,7 @@
     "footnote_texts": []
   },
   {
-    "id": 436,
+    "id": 426,
     "number": "379",
     "title": "Punishment for theft",
     "base": 379,
@@ -7484,7 +7324,7 @@
     "footnote_texts": []
   },
   {
-    "id": 437,
+    "id": 427,
     "number": "379A",
     "title": "Snatching",
     "base": 379,
@@ -7500,7 +7340,7 @@
     "footnote_texts": []
   },
   {
-    "id": 438,
+    "id": 428,
     "number": "379B",
     "title": "Snatching after preparation made for causing death, hurt or restraint in order to the committing of snatching",
     "base": 379,
@@ -7516,7 +7356,7 @@
     "footnote_texts": []
   },
   {
-    "id": 439,
+    "id": 429,
     "number": "380",
     "title": "Theft in dwelling house, etc",
     "base": 380,
@@ -7532,7 +7372,7 @@
     "footnote_texts": []
   },
   {
-    "id": 440,
+    "id": 430,
     "number": "381",
     "title": "Theft by clerk or servant of property in possession of master",
     "base": 381,
@@ -7548,7 +7388,7 @@
     "footnote_texts": []
   },
   {
-    "id": 441,
+    "id": 431,
     "number": "382",
     "title": "Theft after preparation made for causing death, hurt or restraint in order to the committing of the theft",
     "base": 382,
@@ -7564,7 +7404,7 @@
     "footnote_texts": []
   },
   {
-    "id": 442,
+    "id": 432,
     "number": "382C",
     "title": "Vehicle lifting: Whoever commits theft of a ‘vehicle’ either from open or close arena, is said to commit the offence of ‘vehicle lifting’. Note:",
     "base": 382,
@@ -7580,7 +7420,7 @@
     "footnote_texts": []
   },
   {
-    "id": 443,
+    "id": 433,
     "number": "383",
     "title": "Extortion",
     "base": 383,
@@ -7596,7 +7436,7 @@
     "footnote_texts": []
   },
   {
-    "id": 444,
+    "id": 434,
     "number": "384",
     "title": "Punishment for extortion",
     "base": 384,
@@ -7612,7 +7452,7 @@
     "footnote_texts": []
   },
   {
-    "id": 445,
+    "id": 435,
     "number": "385",
     "title": "Putting person in fear of injury in order to commit extortion",
     "base": 385,
@@ -7628,7 +7468,7 @@
     "footnote_texts": []
   },
   {
-    "id": 446,
+    "id": 436,
     "number": "386",
     "title": "Extortion by putting a person in fear of death or grievous hurt",
     "base": 386,
@@ -7644,7 +7484,7 @@
     "footnote_texts": []
   },
   {
-    "id": 447,
+    "id": 437,
     "number": "387",
     "title": "Putting person in fear of death or of grievous hurt, in order to commit extortion",
     "base": 387,
@@ -7660,7 +7500,7 @@
     "footnote_texts": []
   },
   {
-    "id": 448,
+    "id": 438,
     "number": "388",
     "title": "Extortion by threat of accusation of an offence punishable with death or imprisonment for life, etc",
     "base": 388,
@@ -7678,7 +7518,7 @@
     ]
   },
   {
-    "id": 449,
+    "id": 439,
     "number": "389",
     "title": "Putting person in fear or accusation of offence, in order to commit extortion",
     "base": 389,
@@ -7696,7 +7536,7 @@
     ]
   },
   {
-    "id": 450,
+    "id": 440,
     "number": "390",
     "title": "Robbery",
     "base": 390,
@@ -7712,7 +7552,7 @@
     "footnote_texts": []
   },
   {
-    "id": 451,
+    "id": 441,
     "number": "391",
     "title": "Dacoity",
     "base": 391,
@@ -7728,7 +7568,7 @@
     "footnote_texts": []
   },
   {
-    "id": 452,
+    "id": 442,
     "number": "392",
     "title": "Punishment for robbery",
     "base": 392,
@@ -7744,7 +7584,7 @@
     "footnote_texts": []
   },
   {
-    "id": 453,
+    "id": 443,
     "number": "393",
     "title": "Attempt to commit robbery",
     "base": 393,
@@ -7760,7 +7600,7 @@
     "footnote_texts": []
   },
   {
-    "id": 454,
+    "id": 444,
     "number": "394",
     "title": "Voluntarily causing hurt in committing robbery",
     "base": 394,
@@ -7778,7 +7618,7 @@
     ]
   },
   {
-    "id": 455,
+    "id": 445,
     "number": "395",
     "title": "Punishment for dacoity",
     "base": 395,
@@ -7796,7 +7636,7 @@
     ]
   },
   {
-    "id": 456,
+    "id": 446,
     "number": "396",
     "title": "Dacoity with murder",
     "base": 396,
@@ -7814,7 +7654,7 @@
     ]
   },
   {
-    "id": 457,
+    "id": 447,
     "number": "397",
     "title": "Robbery, or dacoity, with attempt to cause death or grievous hurt",
     "base": 397,
@@ -7830,7 +7670,7 @@
     "footnote_texts": []
   },
   {
-    "id": 458,
+    "id": 448,
     "number": "398",
     "title": "Attempt to commit robbery or dacoity when armed with deadly weapon",
     "base": 398,
@@ -7846,7 +7686,7 @@
     "footnote_texts": []
   },
   {
-    "id": 459,
+    "id": 449,
     "number": "399",
     "title": "Making preparation to commit dacoity",
     "base": 399,
@@ -7862,7 +7702,7 @@
     "footnote_texts": []
   },
   {
-    "id": 460,
+    "id": 450,
     "number": "400",
     "title": "Punishment for belonging to gang of dacoits",
     "base": 400,
@@ -7880,7 +7720,7 @@
     ]
   },
   {
-    "id": 461,
+    "id": 451,
     "number": "401",
     "title": "Punishment for belonging to gang of thieves",
     "base": 401,
@@ -7896,7 +7736,7 @@
     "footnote_texts": []
   },
   {
-    "id": 462,
+    "id": 452,
     "number": "402",
     "title": "Assembling for purpose of committing dacoity",
     "base": 402,
@@ -7912,7 +7752,7 @@
     "footnote_texts": []
   },
   {
-    "id": 463,
+    "id": 453,
     "number": "403",
     "title": "Dishonest misappropriation of property",
     "base": 403,
@@ -7928,7 +7768,7 @@
     "footnote_texts": []
   },
   {
-    "id": 464,
+    "id": 454,
     "number": "404",
     "title": "Dishonest misappropriation of property possessed by deceased person at the time of his death",
     "base": 404,
@@ -7944,7 +7784,7 @@
     "footnote_texts": []
   },
   {
-    "id": 465,
+    "id": 455,
     "number": "405",
     "title": "Criminal breach of trust",
     "base": 405,
@@ -7965,7 +7805,7 @@
     ]
   },
   {
-    "id": 466,
+    "id": 456,
     "number": "406",
     "title": "Punishment for criminal breach of trust",
     "base": 406,
@@ -7981,7 +7821,7 @@
     "footnote_texts": []
   },
   {
-    "id": 467,
+    "id": 457,
     "number": "407",
     "title": "Criminal breach of trust by carrier, etc",
     "base": 407,
@@ -7997,7 +7837,7 @@
     "footnote_texts": []
   },
   {
-    "id": 468,
+    "id": 458,
     "number": "408",
     "title": "Criminal breach of trust by clerk or servant",
     "base": 408,
@@ -8013,7 +7853,7 @@
     "footnote_texts": []
   },
   {
-    "id": 469,
+    "id": 459,
     "number": "409",
     "title": "Criminal breach of trust by public servant, or by banker, merchant or agent",
     "base": 409,
@@ -8031,7 +7871,7 @@
     ]
   },
   {
-    "id": 470,
+    "id": 460,
     "number": "410",
     "title": "Stolen property",
     "base": 410,
@@ -8052,7 +7892,7 @@
     ]
   },
   {
-    "id": 471,
+    "id": 461,
     "number": "411",
     "title": "Dishonestly receiving stolen property",
     "base": 411,
@@ -8068,7 +7908,7 @@
     "footnote_texts": []
   },
   {
-    "id": 472,
+    "id": 462,
     "number": "412",
     "title": "Dishonestly receiving property stolen in the commission of a dacoity",
     "base": 412,
@@ -8086,7 +7926,7 @@
     ]
   },
   {
-    "id": 473,
+    "id": 463,
     "number": "413",
     "title": "Habitually dealing in stolen property",
     "base": 413,
@@ -8104,7 +7944,7 @@
     ]
   },
   {
-    "id": 474,
+    "id": 464,
     "number": "414",
     "title": "Assisting in concealment of stolen property",
     "base": 414,
@@ -8120,7 +7960,7 @@
     "footnote_texts": []
   },
   {
-    "id": 475,
+    "id": 465,
     "number": "415",
     "title": "Cheating",
     "base": 415,
@@ -8136,7 +7976,7 @@
     "footnote_texts": []
   },
   {
-    "id": 476,
+    "id": 466,
     "number": "416",
     "title": "Cheating by personation",
     "base": 416,
@@ -8152,7 +7992,7 @@
     "footnote_texts": []
   },
   {
-    "id": 477,
+    "id": 467,
     "number": "417",
     "title": "Punishment for cheating",
     "base": 417,
@@ -8168,7 +8008,7 @@
     "footnote_texts": []
   },
   {
-    "id": 478,
+    "id": 468,
     "number": "418",
     "title": "Cheating with knowledge that wrongful loss may ensue to person whose interest offender is bound to protect",
     "base": 418,
@@ -8184,7 +8024,7 @@
     "footnote_texts": []
   },
   {
-    "id": 479,
+    "id": 469,
     "number": "419",
     "title": "Punishment for cheating by personation",
     "base": 419,
@@ -8200,7 +8040,7 @@
     "footnote_texts": []
   },
   {
-    "id": 480,
+    "id": 470,
     "number": "420",
     "title": "Cheating and dishonestly inducing delivery of property",
     "base": 420,
@@ -8216,7 +8056,7 @@
     "footnote_texts": []
   },
   {
-    "id": 481,
+    "id": 471,
     "number": "421",
     "title": "Dishonest or fraudulent removal or concealment of property to prevent distribution among creditors",
     "base": 421,
@@ -8232,7 +8072,7 @@
     "footnote_texts": []
   },
   {
-    "id": 482,
+    "id": 472,
     "number": "422",
     "title": "Dishonestly or fraudulently preventing debt being available for creditors",
     "base": 422,
@@ -8248,7 +8088,7 @@
     "footnote_texts": []
   },
   {
-    "id": 483,
+    "id": 473,
     "number": "423",
     "title": "Dishonest or fraudulent execution of deed of transfer containing false statement of consideration",
     "base": 423,
@@ -8264,7 +8104,7 @@
     "footnote_texts": []
   },
   {
-    "id": 484,
+    "id": 474,
     "number": "424",
     "title": "Dishonest or fraudulent removal or concealment of property",
     "base": 424,
@@ -8280,7 +8120,7 @@
     "footnote_texts": []
   },
   {
-    "id": 485,
+    "id": 475,
     "number": "425",
     "title": "Mischief",
     "base": 425,
@@ -8296,7 +8136,7 @@
     "footnote_texts": []
   },
   {
-    "id": 486,
+    "id": 476,
     "number": "426",
     "title": "Punishment for mischief",
     "base": 426,
@@ -8312,7 +8152,7 @@
     "footnote_texts": []
   },
   {
-    "id": 487,
+    "id": 477,
     "number": "427",
     "title": "Mischief causing damage to the amount of fifty rupees",
     "base": 427,
@@ -8328,7 +8168,7 @@
     "footnote_texts": []
   },
   {
-    "id": 488,
+    "id": 478,
     "number": "428",
     "title": "Mischief by killing or maiming animal of the value of ten rupees",
     "base": 428,
@@ -8344,7 +8184,7 @@
     "footnote_texts": []
   },
   {
-    "id": 489,
+    "id": 479,
     "number": "429",
     "title": "Mischief by killing or maiming cattle, etc., of any value or any animal of the value of fifty rupees",
     "base": 429,
@@ -8360,7 +8200,7 @@
     "footnote_texts": []
   },
   {
-    "id": 490,
+    "id": 480,
     "number": "430",
     "title": "Mischief by injury to works of irrigation or by wrongfully diverting water",
     "base": 430,
@@ -8376,7 +8216,7 @@
     "footnote_texts": []
   },
   {
-    "id": 491,
+    "id": 481,
     "number": "431",
     "title": "Mischief by injury to public road, bridge, river or channel",
     "base": 431,
@@ -8392,7 +8232,7 @@
     "footnote_texts": []
   },
   {
-    "id": 492,
+    "id": 482,
     "number": "432",
     "title": "Mischief by causing inundation or obstruction to public drainage attended with damage",
     "base": 432,
@@ -8408,7 +8248,7 @@
     "footnote_texts": []
   },
   {
-    "id": 493,
+    "id": 483,
     "number": "433",
     "title": "Mischief by destroying, moving or rendering less useful a light-house or sea-mark",
     "base": 433,
@@ -8424,7 +8264,7 @@
     "footnote_texts": []
   },
   {
-    "id": 494,
+    "id": 484,
     "number": "434",
     "title": "Mischief by destroying or moving, etc., a land-mark fixed by public authority",
     "base": 434,
@@ -8440,7 +8280,7 @@
     "footnote_texts": []
   },
   {
-    "id": 495,
+    "id": 485,
     "number": "435",
     "title": "Mischief by fire or explosive substance with intent to cause damage to amount of one hundred or (in case of agricultural produce) ten rupees",
     "base": 435,
@@ -8458,7 +8298,7 @@
     ]
   },
   {
-    "id": 496,
+    "id": 486,
     "number": "436",
     "title": "Mischief by fire or explosive substance with intent to destroy house, etc",
     "base": 436,
@@ -8476,7 +8316,7 @@
     ]
   },
   {
-    "id": 497,
+    "id": 487,
     "number": "437",
     "title": "Mischief with intent to destroy or make unsafe a decked vessel or one of twenty tons burden",
     "base": 437,
@@ -8492,7 +8332,7 @@
     "footnote_texts": []
   },
   {
-    "id": 498,
+    "id": 488,
     "number": "438",
     "title": "Punishment for the mischief described in section 437 committed by fire or explosive substance",
     "base": 438,
@@ -8510,7 +8350,7 @@
     ]
   },
   {
-    "id": 499,
+    "id": 489,
     "number": "439",
     "title": "Punishment for intentionally running vessel aground or ashore with intent to commit theft, etc",
     "base": 439,
@@ -8526,7 +8366,7 @@
     "footnote_texts": []
   },
   {
-    "id": 500,
+    "id": 490,
     "number": "440",
     "title": "Mischief committed after preparation made for causing death or hurt",
     "base": 440,
@@ -8542,7 +8382,7 @@
     "footnote_texts": []
   },
   {
-    "id": 501,
+    "id": 491,
     "number": "441",
     "title": "Criminal trespass",
     "base": 441,
@@ -8558,7 +8398,7 @@
     "footnote_texts": []
   },
   {
-    "id": 502,
+    "id": 492,
     "number": "442",
     "title": "House-trespass",
     "base": 442,
@@ -8574,7 +8414,7 @@
     "footnote_texts": []
   },
   {
-    "id": 503,
+    "id": 493,
     "number": "443",
     "title": "Lurking house-trespass",
     "base": 443,
@@ -8590,7 +8430,7 @@
     "footnote_texts": []
   },
   {
-    "id": 504,
+    "id": 494,
     "number": "444",
     "title": "Lurking house-trespass by night",
     "base": 444,
@@ -8606,7 +8446,7 @@
     "footnote_texts": []
   },
   {
-    "id": 505,
+    "id": 495,
     "number": "445",
     "title": "House-breaking",
     "base": 445,
@@ -8622,7 +8462,7 @@
     "footnote_texts": []
   },
   {
-    "id": 506,
+    "id": 496,
     "number": "446",
     "title": "House-breaking by night",
     "base": 446,
@@ -8638,7 +8478,7 @@
     "footnote_texts": []
   },
   {
-    "id": 507,
+    "id": 497,
     "number": "447",
     "title": "Punishment for criminal trespass",
     "base": 447,
@@ -8654,7 +8494,7 @@
     "footnote_texts": []
   },
   {
-    "id": 508,
+    "id": 498,
     "number": "448",
     "title": "Punishment for house-trespass",
     "base": 448,
@@ -8670,7 +8510,7 @@
     "footnote_texts": []
   },
   {
-    "id": 509,
+    "id": 499,
     "number": "449",
     "title": "House-trespass in order to commit offence punishable with death",
     "base": 449,
@@ -8688,7 +8528,7 @@
     ]
   },
   {
-    "id": 510,
+    "id": 500,
     "number": "450",
     "title": "House-trespass in order to commit offence punishable with imprisonment for life",
     "base": 450,
@@ -8706,7 +8546,7 @@
     ]
   },
   {
-    "id": 511,
+    "id": 501,
     "number": "451",
     "title": "House-trespass in order to commit offence punishable with imprisonment",
     "base": 451,
@@ -8722,7 +8562,7 @@
     "footnote_texts": []
   },
   {
-    "id": 512,
+    "id": 502,
     "number": "452",
     "title": "House-trespass alter preparation for hurt, assault or wrongful restraint",
     "base": 452,
@@ -8738,7 +8578,7 @@
     "footnote_texts": []
   },
   {
-    "id": 513,
+    "id": 503,
     "number": "453",
     "title": "Punishment for lurking house-trespass or house-breaking",
     "base": 453,
@@ -8754,7 +8594,7 @@
     "footnote_texts": []
   },
   {
-    "id": 514,
+    "id": 504,
     "number": "454",
     "title": "Lurking house-trespass or house-breaking in order to commit offence punishable with imprisonment",
     "base": 454,
@@ -8770,7 +8610,7 @@
     "footnote_texts": []
   },
   {
-    "id": 515,
+    "id": 505,
     "number": "455",
     "title": "Lurking house-trespass or house-breaking after preparation for hurt, assault or wrongful restraint",
     "base": 455,
@@ -8786,7 +8626,7 @@
     "footnote_texts": []
   },
   {
-    "id": 516,
+    "id": 506,
     "number": "456",
     "title": "Punishment for lurking house-trespass or house-breaking by night",
     "base": 456,
@@ -8802,7 +8642,7 @@
     "footnote_texts": []
   },
   {
-    "id": 517,
+    "id": 507,
     "number": "457",
     "title": "Lurking house-trespass or house-breaking by night in order to commit offence punishable with imprisonment",
     "base": 457,
@@ -8818,7 +8658,7 @@
     "footnote_texts": []
   },
   {
-    "id": 518,
+    "id": 508,
     "number": "458",
     "title": "Lurking house-trespass or house-breaking by night after preparation for hurt, assault, or wrongful restraint",
     "base": 458,
@@ -8834,7 +8674,7 @@
     "footnote_texts": []
   },
   {
-    "id": 519,
+    "id": 509,
     "number": "459",
     "title": "Grievous hurt caused whilst committing lurking house-trespass or house-breaking",
     "base": 459,
@@ -8852,7 +8692,7 @@
     ]
   },
   {
-    "id": 520,
+    "id": 510,
     "number": "460",
     "title": "All persons jointly concerned in lurking house-trespass or house-breaking by night punishable where death or grievous hurt caused by one of them",
     "base": 460,
@@ -8870,7 +8710,7 @@
     ]
   },
   {
-    "id": 521,
+    "id": 511,
     "number": "461",
     "title": "Dishonestly breaking open receptacle containing property",
     "base": 461,
@@ -8886,7 +8726,7 @@
     "footnote_texts": []
   },
   {
-    "id": 522,
+    "id": 512,
     "number": "462",
     "title": "Punishment for same offence when committed by person entrusted with custody",
     "base": 462,
@@ -8904,7 +8744,7 @@
     ]
   },
   {
-    "id": 523,
+    "id": 513,
     "number": "463",
     "title": "Forgery",
     "base": 463,
@@ -8922,7 +8762,7 @@
     ]
   },
   {
-    "id": 524,
+    "id": 514,
     "number": "464",
     "title": "Making a false document",
     "base": 464,
@@ -8943,7 +8783,7 @@
     ]
   },
   {
-    "id": 525,
+    "id": 515,
     "number": "465",
     "title": "Punishment for forgery",
     "base": 465,
@@ -8959,7 +8799,7 @@
     "footnote_texts": []
   },
   {
-    "id": 526,
+    "id": 516,
     "number": "466",
     "title": "Forgery of record of Court or of public register, etc",
     "base": 466,
@@ -8978,7 +8818,7 @@
     ]
   },
   {
-    "id": 527,
+    "id": 517,
     "number": "467",
     "title": "Forgery of valuable security, will, etc",
     "base": 467,
@@ -8996,7 +8836,7 @@
     ]
   },
   {
-    "id": 528,
+    "id": 518,
     "number": "468",
     "title": "Forgery for purpose of cheating",
     "base": 468,
@@ -9014,7 +8854,7 @@
     ]
   },
   {
-    "id": 529,
+    "id": 519,
     "number": "469",
     "title": "Forgery for purpose of harming reputation",
     "base": 469,
@@ -9032,7 +8872,7 @@
     ]
   },
   {
-    "id": 530,
+    "id": 520,
     "number": "470",
     "title": "Forged document",
     "base": 470,
@@ -9050,7 +8890,7 @@
     ]
   },
   {
-    "id": 531,
+    "id": 521,
     "number": "471",
     "title": "Using as genuine a forged document or electronic record",
     "base": 471,
@@ -9068,7 +8908,7 @@
     ]
   },
   {
-    "id": 532,
+    "id": 522,
     "number": "472",
     "title": "Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under section",
     "base": 472,
@@ -9086,7 +8926,7 @@
     ]
   },
   {
-    "id": 533,
+    "id": 523,
     "number": "473",
     "title": "Making or possessing counterfeit seal, etc., with intent to commit forgery punishable otherwise",
     "base": 473,
@@ -9102,7 +8942,7 @@
     "footnote_texts": []
   },
   {
-    "id": 534,
+    "id": 524,
     "number": "474",
     "title": "Having possession of document described in section 466 or 467, knowing it to be forged and intending to use it genuine",
     "base": 474,
@@ -9121,7 +8961,7 @@
     ]
   },
   {
-    "id": 535,
+    "id": 525,
     "number": "475",
     "title": "Counterfeiting device or mark used for authenticating documents described in section 467, or possessing counterfeit marked material",
     "base": 475,
@@ -9139,7 +8979,7 @@
     ]
   },
   {
-    "id": 536,
+    "id": 526,
     "number": "476",
     "title": "Counterfeiting device or mark used for authenticating documents other than those described in section 467, or possessing counterfeit marked material",
     "base": 476,
@@ -9157,7 +8997,7 @@
     ]
   },
   {
-    "id": 537,
+    "id": 527,
     "number": "477",
     "title": "Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable security",
     "base": 477,
@@ -9175,7 +9015,7 @@
     ]
   },
   {
-    "id": 538,
+    "id": 528,
     "number": "477A",
     "title": "Falsification of accounts",
     "base": 477,
@@ -9187,7 +9027,7 @@
     "chapter": "CHAPTER XVIII",
     "covers": [],
     "start": 5042,
-    "end": 5056,
+    "end": 5058,
     "footnote_texts": [
       "2. Ins. by Act 3 of 1895, s. 4.",
       "3. Subs. by Act 21 of 2000, s. 91 and the First Sch., for “book, paper, writing” (w.e.f. 17-10-2000).",
@@ -9196,23 +9036,7 @@
     ]
   },
   {
-    "id": 539,
-    "number": "478",
-    "title": "Trade Mark",
-    "base": 478,
-    "page_1based": 111,
-    "line": 5056,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER XVIII",
-    "covers": [],
-    "start": 5056,
-    "end": 5058,
-    "footnote_texts": []
-  },
-  {
-    "id": 540,
+    "id": 529,
     "number": "479",
     "title": "Property mark",
     "base": 479,
@@ -9224,27 +9048,11 @@
     "chapter": "CHAPTER XVIII",
     "covers": [],
     "start": 5058,
-    "end": 5060,
-    "footnote_texts": []
-  },
-  {
-    "id": 541,
-    "number": "480",
-    "title": "Using a false trade mark",
-    "base": 480,
-    "page_1based": 111,
-    "line": 5060,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER XVIII",
-    "covers": [],
-    "start": 5060,
     "end": 5062,
     "footnote_texts": []
   },
   {
-    "id": 542,
+    "id": 530,
     "number": "481",
     "title": "Using a false property mark",
     "base": 481,
@@ -9260,7 +9068,7 @@
     "footnote_texts": []
   },
   {
-    "id": 543,
+    "id": 531,
     "number": "482",
     "title": "Punishment for using a false property mark",
     "base": 482,
@@ -9278,7 +9086,7 @@
     ]
   },
   {
-    "id": 544,
+    "id": 532,
     "number": "483",
     "title": "Counterfeiting a property mark used by another",
     "base": 483,
@@ -9296,7 +9104,7 @@
     ]
   },
   {
-    "id": 545,
+    "id": 533,
     "number": "484",
     "title": "Counterfeiting a mark used by a public servant",
     "base": 484,
@@ -9312,7 +9120,7 @@
     "footnote_texts": []
   },
   {
-    "id": 546,
+    "id": 534,
     "number": "485",
     "title": "Making or possession of any instrument for counterfeiting a property mark",
     "base": 485,
@@ -9330,7 +9138,7 @@
     ]
   },
   {
-    "id": 547,
+    "id": 535,
     "number": "486",
     "title": "Selling goods marked with a counterfeit property mark",
     "base": 486,
@@ -9348,7 +9156,7 @@
     ]
   },
   {
-    "id": 548,
+    "id": 536,
     "number": "487",
     "title": "Making a false mark upon any receptacle containing goods",
     "base": 487,
@@ -9364,7 +9172,7 @@
     "footnote_texts": []
   },
   {
-    "id": 549,
+    "id": 537,
     "number": "488",
     "title": "Punishment for making use of any such false mark",
     "base": 488,
@@ -9380,7 +9188,7 @@
     "footnote_texts": []
   },
   {
-    "id": 550,
+    "id": 538,
     "number": "489",
     "title": "Tampering with property mark with intent to cause injury",
     "base": 489,
@@ -9398,7 +9206,7 @@
     ]
   },
   {
-    "id": 551,
+    "id": 539,
     "number": "489A",
     "title": "Counterfeiting currency-notes or bank-notes",
     "base": 489,
@@ -9417,7 +9225,7 @@
     ]
   },
   {
-    "id": 552,
+    "id": 540,
     "number": "489B",
     "title": "Using as genuine, forged or counterfeit currency-notes or bank-notes",
     "base": 489,
@@ -9435,7 +9243,7 @@
     ]
   },
   {
-    "id": 553,
+    "id": 541,
     "number": "489C",
     "title": "Possession of forged or counterfeit currency-notes or bank-notes",
     "base": 489,
@@ -9451,7 +9259,7 @@
     "footnote_texts": []
   },
   {
-    "id": 554,
+    "id": 542,
     "number": "489D",
     "title": "Making or possessing instruments or materials for forging or counterfeiting currency notes or bank-notes",
     "base": 489,
@@ -9469,7 +9277,7 @@
     ]
   },
   {
-    "id": 555,
+    "id": 543,
     "number": "489E",
     "title": "Making or using documents resembling currency-notes or bank-notes",
     "base": 489,
@@ -9481,29 +9289,13 @@
     "chapter": "CHAPTER XVIII",
     "covers": [],
     "start": 5151,
-    "end": 5166,
+    "end": 5168,
     "footnote_texts": [
       "2. Ins. by Act 6 of 1943, s. 2."
     ]
   },
   {
-    "id": 556,
-    "number": "490",
-    "title": "Breach of contract of service during voyage or journey",
-    "base": 490,
-    "page_1based": 113,
-    "line": 5166,
-    "form": "R",
-    "restated": null,
-    "status_hint": "omitted",
-    "chapter": "CHAPTER XIX - OFTHE CRIMINAL BREACHOF CONTRACTSOF SERVICE",
-    "covers": [],
-    "start": 5166,
-    "end": 5168,
-    "footnote_texts": []
-  },
-  {
-    "id": 557,
+    "id": 544,
     "number": "491",
     "title": "Breach of contract to attend on and supply wants of helpless person",
     "base": 491,
@@ -9519,7 +9311,7 @@
     "footnote_texts": []
   },
   {
-    "id": 558,
+    "id": 545,
     "number": "492",
     "title": "Breach of contract to serve at distant place to which servant is conveyed at master's expense",
     "base": 492,
@@ -9535,7 +9327,7 @@
     "footnote_texts": []
   },
   {
-    "id": 559,
+    "id": 546,
     "number": "493",
     "title": "Cohabitation caused by a man deceitfully inducing a belief of lawful marriage",
     "base": 493,
@@ -9551,7 +9343,7 @@
     "footnote_texts": []
   },
   {
-    "id": 560,
+    "id": 547,
     "number": "494",
     "title": "Marrying again during lifetime of husband or wife",
     "base": 494,
@@ -9567,7 +9359,7 @@
     "footnote_texts": []
   },
   {
-    "id": 561,
+    "id": 548,
     "number": "495",
     "title": "Same offence with concealment of former marriage from person with whom subsequent marriage is contracted",
     "base": 495,
@@ -9583,7 +9375,7 @@
     "footnote_texts": []
   },
   {
-    "id": 562,
+    "id": 549,
     "number": "496",
     "title": "Marriage ceremony fraudulently gone through without lawful marriage",
     "base": 496,
@@ -9599,7 +9391,7 @@
     "footnote_texts": []
   },
   {
-    "id": 563,
+    "id": 550,
     "number": "497",
     "title": "Adultery",
     "base": 497,
@@ -9615,7 +9407,7 @@
     "footnote_texts": []
   },
   {
-    "id": 564,
+    "id": 551,
     "number": "498",
     "title": "Enticing or taking away or detaining with criminal intent a married woman",
     "base": 498,
@@ -9631,7 +9423,7 @@
     "footnote_texts": []
   },
   {
-    "id": 565,
+    "id": 552,
     "number": "498A",
     "title": "Husband or relative of husband of a woman subjecting her to cruelty",
     "base": 498,
@@ -9649,7 +9441,7 @@
     ]
   },
   {
-    "id": 566,
+    "id": 553,
     "number": "499",
     "title": "Defamation",
     "base": 499,
@@ -9665,7 +9457,7 @@
     "footnote_texts": []
   },
   {
-    "id": 567,
+    "id": 554,
     "number": "500",
     "title": "Punishment for defamation",
     "base": 500,
@@ -9681,7 +9473,7 @@
     "footnote_texts": []
   },
   {
-    "id": 568,
+    "id": 555,
     "number": "501",
     "title": "Printing or engraving matter known to be defamatory",
     "base": 501,
@@ -9697,7 +9489,7 @@
     "footnote_texts": []
   },
   {
-    "id": 569,
+    "id": 556,
     "number": "502",
     "title": "Sale of printed or engraved substance containing defamatory matter",
     "base": 502,
@@ -9713,7 +9505,7 @@
     "footnote_texts": []
   },
   {
-    "id": 570,
+    "id": 557,
     "number": "503",
     "title": "Criminal intimidation",
     "base": 503,
@@ -9729,7 +9521,7 @@
     "footnote_texts": []
   },
   {
-    "id": 571,
+    "id": 558,
     "number": "504",
     "title": "Intentional insult with intent to provoke breach of the peace",
     "base": 504,
@@ -9745,7 +9537,7 @@
     "footnote_texts": []
   },
   {
-    "id": 572,
+    "id": 559,
     "number": "505",
     "title": "Statements conducing to public mischief",
     "base": 505,
@@ -9770,7 +9562,7 @@
     ]
   },
   {
-    "id": 573,
+    "id": 560,
     "number": "506",
     "title": "Punishment for criminal intimidation",
     "base": 506,
@@ -9788,7 +9580,7 @@
     ]
   },
   {
-    "id": 574,
+    "id": 561,
     "number": "507",
     "title": "Criminal intimidation by an anonymous communication",
     "base": 507,
@@ -9804,7 +9596,7 @@
     "footnote_texts": []
   },
   {
-    "id": 575,
+    "id": 562,
     "number": "508",
     "title": "Act caused by inducing person to believe that he will be rendered an object of the Divine displeasure",
     "base": 508,
@@ -9820,7 +9612,7 @@
     "footnote_texts": []
   },
   {
-    "id": 576,
+    "id": 563,
     "number": "509",
     "title": "Word, gesture or act intended to insult the modesty of a woman",
     "base": 509,
@@ -9838,7 +9630,7 @@
     ]
   },
   {
-    "id": 577,
+    "id": 564,
     "number": "509A",
     "title": "Sexual harassment by relative",
     "base": 509,
@@ -9854,7 +9646,7 @@
     "footnote_texts": []
   },
   {
-    "id": 578,
+    "id": 565,
     "number": "509B",
     "title": "Sexual harassment by electronic mode",
     "base": 509,
@@ -9870,7 +9662,7 @@
     "footnote_texts": []
   },
   {
-    "id": 579,
+    "id": 566,
     "number": "510",
     "title": "Misconduct in public by a drunken person",
     "base": 510,
@@ -9886,7 +9678,7 @@
     "footnote_texts": []
   },
   {
-    "id": 580,
+    "id": 567,
     "number": "511",
     "title": "Punishment for attempting to commit offences punishable with imprisonment for life or other imprisonment",
     "base": 511,

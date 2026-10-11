@@ -1,0 +1,42 @@
+{
+  "expected_source": "toc",
+  "mode": "toc",
+  "header_page_1based": 3,
+  "toc_pages_1based": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "expected_count": 105,
+  "gaps": [],
+  "duplicates": [],
+  "deduped_dropped": 0,
+  "anchor_value": 511,
+  "anchor_max_plain_seen": 87,
+  "anchor_ok": false,
+  "lettered": [
+    "11A",
+    "29A",
+    "29B",
+    "31A",
+    "42A",
+    "42B",
+    "43A",
+    "43B",
+    "43C",
+    "43D",
+    "43E",
+    "43F",
+    "43G",
+    "43H",
+    "43J",
+    "43K",
+    "43L",
+    "43M"
+  ],
+  "rejected_count": 147,
+  "body_markers": 106,
+  "body_max_plain": 87,
+  "body_gaps": []
+}

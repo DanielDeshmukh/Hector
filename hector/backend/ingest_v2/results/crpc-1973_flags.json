@@ -151,14 +151,6 @@
         "LONG_UNSPLIT"
       ],
       "chars": 3350
-    },
-    {
-      "number": "484",
-      "part_index": 0,
-      "flags": [
-        "LONG_UNSPLIT"
-      ],
-      "chars": 170893
     }
   ],
   "null_titles": [],
@@ -208,7 +200,7 @@
       "part_count": 2
     }
   ],
-  "page_spanning_records": 132,
+  "page_spanning_records": 131,
   "a1_shown": [
     "2",
     "3",

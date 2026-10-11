@@ -1,0 +1,622 @@
+[
+  {
+    "number": "1",
+    "title": "Short title. Local extent, Saving of usages relating to hundis, etc., Commencement."
+  },
+  {
+    "number": "2",
+    "title": "[Repealed.]. IndiaCode"
+  },
+  {
+    "number": "3",
+    "title": "Interpretation-clause. “Banker.”"
+  },
+  {
+    "number": "4",
+    "title": "“Promissory note.”"
+  },
+  {
+    "number": "5",
+    "title": "“Bill of exchange.”"
+  },
+  {
+    "number": "6",
+    "title": "“Cheque.”"
+  },
+  {
+    "number": "7",
+    "title": "“Drawer”, “Drawee”. “Drawee in case of need.” “Acceptor.” “Acceptor for honour.” “Payee.”"
+  },
+  {
+    "number": "8",
+    "title": "“Holder.”"
+  },
+  {
+    "number": "9",
+    "title": "“Holder in due course.”"
+  },
+  {
+    "number": "10",
+    "title": "“Payment in due course.”"
+  },
+  {
+    "number": "11",
+    "title": "Inland instrument."
+  },
+  {
+    "number": "12",
+    "title": "Foreign instrument."
+  },
+  {
+    "number": "13",
+    "title": "“Negotiable instrument.”"
+  },
+  {
+    "number": "14",
+    "title": "Negotiation."
+  },
+  {
+    "number": "15",
+    "title": "Indorsement."
+  },
+  {
+    "number": "16",
+    "title": "Indorsement “in blank” and “in full”. “Indorsee.”"
+  },
+  {
+    "number": "17",
+    "title": "Ambiguous instruments."
+  },
+  {
+    "number": "18",
+    "title": "Where amount is stated differently in figures and words."
+  },
+  {
+    "number": "19",
+    "title": "Instruments payable on demand."
+  },
+  {
+    "number": "20",
+    "title": "Inchoate stamped instruments."
+  },
+  {
+    "number": "21",
+    "title": "“At sight” —“On presentment.” “After sight.”"
+  },
+  {
+    "number": "22",
+    "title": "“Maturity.” Days of grace. IndiaCode"
+  },
+  {
+    "number": "23",
+    "title": "Calculating maturity of bill or note payable so many months after date or sight."
+  },
+  {
+    "number": "24",
+    "title": "Calculating maturity of bill or note payable so many days after date or sight."
+  },
+  {
+    "number": "25",
+    "title": "When day of maturity is a holiday."
+  },
+  {
+    "number": "26",
+    "title": "Capacity to make, etc., promissory notes, etc. Minor."
+  },
+  {
+    "number": "27",
+    "title": "Agency."
+  },
+  {
+    "number": "28",
+    "title": "Liability of agent signing."
+  },
+  {
+    "number": "29",
+    "title": "Liability of legal representative signing."
+  },
+  {
+    "number": "30",
+    "title": "Liability of drawer."
+  },
+  {
+    "number": "31",
+    "title": "Liability of drawee of cheque."
+  },
+  {
+    "number": "32",
+    "title": "Liability of maker of note and acceptor of bill."
+  },
+  {
+    "number": "33",
+    "title": "Only drawee can be acceptor except in need or for honour."
+  },
+  {
+    "number": "34",
+    "title": "Acceptance by several drawees not partners."
+  },
+  {
+    "number": "35",
+    "title": "Liability of indorser."
+  },
+  {
+    "number": "36",
+    "title": "Liability of prior parties to holder in due course."
+  },
+  {
+    "number": "37",
+    "title": "Maker, drawer and acceptor principals."
+  },
+  {
+    "number": "38",
+    "title": "Prior party a principal in respect of each subsequent party."
+  },
+  {
+    "number": "39",
+    "title": "Suretyship."
+  },
+  {
+    "number": "40",
+    "title": "Discharge of indorser’s liability."
+  },
+  {
+    "number": "41",
+    "title": "Acceptor bound, although indorsement forged."
+  },
+  {
+    "number": "42",
+    "title": "Acceptance of bill drawn in fictitious name."
+  },
+  {
+    "number": "43",
+    "title": "Negotiable instrument made, etc., without consideration."
+  },
+  {
+    "number": "44",
+    "title": "Partial absence or failure of money-consideration."
+  },
+  {
+    "number": "45",
+    "title": "Partial failure of consideration not consisting of money."
+  },
+  {
+    "number": "45A",
+    "title": "Holder’s right to duplicate of lost bill."
+  },
+  {
+    "number": "46",
+    "title": "Delivery."
+  },
+  {
+    "number": "47",
+    "title": "Negotiation by delivery."
+  },
+  {
+    "number": "48",
+    "title": "Negotiation by indorsement. IndiaCode"
+  },
+  {
+    "number": "49",
+    "title": "Conversion of indorsement in blank into indorsement in full."
+  },
+  {
+    "number": "50",
+    "title": "Effect of indorsement."
+  },
+  {
+    "number": "51",
+    "title": "Who may negotiate."
+  },
+  {
+    "number": "52",
+    "title": "Indorser who excludes his own liability or makes it conditional."
+  },
+  {
+    "number": "53",
+    "title": "Holder deriving title from holder in due course."
+  },
+  {
+    "number": "54",
+    "title": "Instrument indorsed in blank."
+  },
+  {
+    "number": "55",
+    "title": "Conversion of indorsement in blank into indorsement in full."
+  },
+  {
+    "number": "56",
+    "title": "Indorsement for part of sum due."
+  },
+  {
+    "number": "57",
+    "title": "Legal representative cannot by delivery only negotiate instrument indorsed by deceased."
+  },
+  {
+    "number": "58",
+    "title": "Instrument obtained by unlawful means or for unlawful consideration."
+  },
+  {
+    "number": "59",
+    "title": "Instrument acquired after dishonour or when overdue. Accommodation note or bill."
+  },
+  {
+    "number": "60",
+    "title": "Instrument negotiable till payment or satisfaction."
+  },
+  {
+    "number": "61",
+    "title": "Presentment for acceptance."
+  },
+  {
+    "number": "62",
+    "title": "Presentment of promissory note for sight."
+  },
+  {
+    "number": "63",
+    "title": "Drawee’s time for deliberation."
+  },
+  {
+    "number": "64",
+    "title": "Presentment for payment."
+  },
+  {
+    "number": "65",
+    "title": "Hours for presentment."
+  },
+  {
+    "number": "66",
+    "title": "Presentment for payment of instrument payable after date or sight."
+  },
+  {
+    "number": "67",
+    "title": "Presentment for payment of promissory note payable by instalments."
+  },
+  {
+    "number": "68",
+    "title": "Presentment for payment of instrument payable at specified place and not elsewhere."
+  },
+  {
+    "number": "69",
+    "title": "Instrument payable at specified place."
+  },
+  {
+    "number": "70",
+    "title": "Presentment where no exclusive place specified."
+  },
+  {
+    "number": "71",
+    "title": "Presentment when maker, etc., has no known place of business or residence."
+  },
+  {
+    "number": "72",
+    "title": "Presentment of cheque to charge drawer."
+  },
+  {
+    "number": "73",
+    "title": "Presentment of cheque to charge any other person."
+  },
+  {
+    "number": "74",
+    "title": "Presentment of instrument payable on demand."
+  },
+  {
+    "number": "75",
+    "title": "Presentment by or to agent, representative of deceased, or assignee of insolvent."
+  },
+  {
+    "number": "75A",
+    "title": "Excuse for delay in presentment for acceptance or payment."
+  },
+  {
+    "number": "76",
+    "title": "When presentment unnecessary."
+  },
+  {
+    "number": "77",
+    "title": "Liability of banker for negligently dealing with bill presented for payment. IndiaCode"
+  },
+  {
+    "number": "78",
+    "title": "To whom payment should be made."
+  },
+  {
+    "number": "79",
+    "title": "Interest when rate specified."
+  },
+  {
+    "number": "80",
+    "title": "Interest when no rate specified."
+  },
+  {
+    "number": "81",
+    "title": "Delivery of instrument on payment, or indemnity in case of loss."
+  },
+  {
+    "number": "82",
+    "title": "Discharge from liability."
+  },
+  {
+    "number": "83",
+    "title": "Discharge by allowing drawee more than forty-eight hours to accept."
+  },
+  {
+    "number": "84",
+    "title": "When cheque not duly presented and drawer damaged thereby."
+  },
+  {
+    "number": "85",
+    "title": "Cheque payable to order."
+  },
+  {
+    "number": "85A",
+    "title": "Drafts drawn by one branch of a bank on another payable to order."
+  },
+  {
+    "number": "86",
+    "title": "Parties not consenting discharged by qualified or limited acceptance."
+  },
+  {
+    "number": "87",
+    "title": "Effect of material alteration. Alteration by indorsee."
+  },
+  {
+    "number": "88",
+    "title": "Acceptor or indorser bound notwithstanding previous alteration."
+  },
+  {
+    "number": "89",
+    "title": "Payment of instrument on which alteration is not apparent."
+  },
+  {
+    "number": "90",
+    "title": "Extinguishment of rights of action on bill in acceptors’ hands."
+  },
+  {
+    "number": "91",
+    "title": "Dishonour by non-acceptance."
+  },
+  {
+    "number": "92",
+    "title": "Dishonour by non-payment."
+  },
+  {
+    "number": "93",
+    "title": "By and to whom notice should be given."
+  },
+  {
+    "number": "94",
+    "title": "Mode in which notice may be given."
+  },
+  {
+    "number": "95",
+    "title": "Party receiving must transmit notice of dishonour."
+  },
+  {
+    "number": "96",
+    "title": "Agent for presentment."
+  },
+  {
+    "number": "97",
+    "title": "When party to whom notice given is dead."
+  },
+  {
+    "number": "98",
+    "title": "When notice of dishonour is unnecessary."
+  },
+  {
+    "number": "99",
+    "title": "Noting."
+  },
+  {
+    "number": "100",
+    "title": "Protest. Protest for better security."
+  },
+  {
+    "number": "101",
+    "title": "Contents of protest."
+  },
+  {
+    "number": "102",
+    "title": "Notice of protest."
+  },
+  {
+    "number": "103",
+    "title": "Protest for non-payment after dishonour by non-acceptance."
+  },
+  {
+    "number": "104",
+    "title": "Protest of foreign bills."
+  },
+  {
+    "number": "104A",
+    "title": "When noting equivalent to protest."
+  },
+  {
+    "number": "105",
+    "title": "Reasonable time."
+  },
+  {
+    "number": "106",
+    "title": "Reasonable time of giving notice of dishonour."
+  },
+  {
+    "number": "107",
+    "title": "Reasonable time for transmitting such notice."
+  },
+  {
+    "number": "108",
+    "title": "Acceptance for honour."
+  },
+  {
+    "number": "109",
+    "title": "How acceptance for honour must be made."
+  },
+  {
+    "number": "110",
+    "title": "Acceptance not specifying for whose honour it is made."
+  },
+  {
+    "number": "111",
+    "title": "Liability of acceptor for honour."
+  },
+  {
+    "number": "112",
+    "title": "When acceptor for honour may be charged."
+  },
+  {
+    "number": "113",
+    "title": "Payment for honour."
+  },
+  {
+    "number": "114",
+    "title": "Right of payer for honour."
+  },
+  {
+    "number": "115",
+    "title": "Drawee in case of need."
+  },
+  {
+    "number": "116",
+    "title": "Acceptance and payment without protest."
+  },
+  {
+    "number": "117",
+    "title": "Rules as to compensation."
+  },
+  {
+    "number": "118",
+    "title": "Presumptions as to negotiable instruments."
+  },
+  {
+    "number": "119",
+    "title": "Presumption on proof of protest."
+  },
+  {
+    "number": "120",
+    "title": "Estoppel against denying original validity of instrument."
+  },
+  {
+    "number": "121",
+    "title": "Estoppel against denying capacity of payee to indorse."
+  },
+  {
+    "number": "122",
+    "title": "Estoppel against denying signature or capacity of prior party."
+  },
+  {
+    "number": "123",
+    "title": "Cheque crossed generally."
+  },
+  {
+    "number": "124",
+    "title": "Cheque crossed specially."
+  },
+  {
+    "number": "125",
+    "title": "Crossing after issue."
+  },
+  {
+    "number": "126",
+    "title": "Payment of cheque crossed generally. Payment of cheque crossed specially."
+  },
+  {
+    "number": "127",
+    "title": "Payment of cheque crossed specially more than once."
+  },
+  {
+    "number": "128",
+    "title": "Payment in due course of crossed cheque."
+  },
+  {
+    "number": "129",
+    "title": "Payment of crossed cheque out of due course."
+  },
+  {
+    "number": "130",
+    "title": "Cheque bearing “not negotiable”."
+  },
+  {
+    "number": "131",
+    "title": "Non-liability of banker receiving payment of cheque."
+  },
+  {
+    "number": "131A",
+    "title": "Application of Chapter to drafts."
+  },
+  {
+    "number": "132",
+    "title": "Set of bills."
+  },
+  {
+    "number": "133",
+    "title": "Holder of first acquired part entitled to."
+  },
+  {
+    "number": "134",
+    "title": "Law governing liability of maker, acceptor or indorser of foreign instrument."
+  },
+  {
+    "number": "135",
+    "title": "Law of place of payment governs dishonour."
+  },
+  {
+    "number": "136",
+    "title": "Instrument made, etc., out of India, but in accordance with the law of India."
+  },
+  {
+    "number": "137",
+    "title": "Presumption as to foreign law."
+  },
+  {
+    "number": "138",
+    "title": "Dishonour of cheque for insufficiency, etc., of funds in the account."
+  },
+  {
+    "number": "139",
+    "title": "Presumption in favour of holder."
+  },
+  {
+    "number": "140",
+    "title": "Defence which may not be allowed in any prosecution under section 138."
+  },
+  {
+    "number": "141",
+    "title": "Offences by companies."
+  },
+  {
+    "number": "142",
+    "title": "Cognizance of offences."
+  },
+  {
+    "number": "142A",
+    "title": "Validation for transfer of pending cases."
+  },
+  {
+    "number": "143",
+    "title": "Power of Court to try cases summarily."
+  },
+  {
+    "number": "143A",
+    "title": "Power to direct interim compensation."
+  },
+  {
+    "number": "144",
+    "title": "Mode of service of summons."
+  },
+  {
+    "number": "145",
+    "title": "Evidence on affidavit."
+  },
+  {
+    "number": "146",
+    "title": "Bank’s slip prima facie evidence of certain facts."
+  },
+  {
+    "number": "147",
+    "title": "Offences to be compoundable."
+  },
+  {
+    "number": "148",
+    "title": "Power of Appellate Court to order payment pending appeal against conviction."
+  }
+]

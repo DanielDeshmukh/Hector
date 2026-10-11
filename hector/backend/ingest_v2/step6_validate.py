@@ -57,9 +57,18 @@ def chunks60(s):
     return [s[i:i + WINDOW] for i in range(0, len(s) - WINDOW + 1, WINDOW)]
 
 
-def gate_g1(doc, act, markers, records=None):
+def _norm_for_name(s):
+    s = V.norm_ws(s).lower()
+    # tolerate comma before ACT/ CODE/ REGULATION etc. (NDPS prints
+    # "SUBSTANCES, ACT, 1985"; registry says "SUBSTANCES ACT 1985").
+    s = re.sub(r",\s+(?=(act|code|regulation|order|ordinance|rules)\b)",
+               " ", s)
+    return re.sub(r"[,;.]", " ", s)
+
+
+def gate_g1(doc, act, markers, records=None, schedule_page=None):
     raw1 = doc[0].get_text("text")
-    n1_name = V.norm_ws(act["act_name"]).lower() in norm_raw(raw1).lower()
+    n1_name = _norm_for_name(act["act_name"]) in _norm_for_name(raw1)
     n1_year = str(act["year"]) in raw1
     n = len(doc)
     rng = random.Random(G1_SEED)
@@ -80,6 +89,14 @@ def gate_g1(doc, act, markers, records=None):
     for p0 in pages:
         nums = marker_pages.get(p0 + 1, [])
         in_span = (p0 + 1) in covered
+        # schedule pages hold table rows, not section records - they are
+        # legitimately uncovered once the scanner stops at the schedule
+        # header (limitation-1963 First Schedule pages 12-24).
+        if schedule_page and p0 + 1 >= schedule_page:
+            page_hits.append({"page_1based": p0 + 1, "markers_found": nums[:3],
+                              "in_record_span": in_span,
+                              "exempt_schedule": True})
+            continue
         page_hits.append({"page_1based": p0 + 1, "markers_found": nums[:3],
                           "in_record_span": in_span})
         if not nums and not in_span:
@@ -124,6 +141,16 @@ def gate_g2(markers, records, expected, emeta):
                 continue
             if m.get("covers") and m["base"] in exp_bases:
                 continue
+            # A lettered body-insertion whose base IS in the ToC is a real
+            # section added after the ToC was printed (Arbitration 1996's
+            # s.8B came from the 2015 amendment; the printed ToC lists only
+            # 8). Only lettered forms are excused - a plain number not in the
+            # ToC stays extra, so schedule-table row numbers cannot hide
+            # behind this rule.
+            suf = S.suffix_of(num)
+            if suf and not suf.isdigit() and " to " not in num:
+                if int(re.sub(r"[A-Za-z]+", "", num)) in exp_bases:
+                    continue
             extra.append(num)
         status = "PASS" if not missing and not extra else "FAIL"
         ev = {"mode": "toc", "expected_count": len(exp_nums),
@@ -316,10 +343,29 @@ def gate_g6(doc, scan, segs, records, raw_pages):
     for rec in records:
         if rec["page_end"] - rec["page_start"] + 1 > MEGA_SPAN:
             mega_ids.add(rec["id"])
+    # Table-content records: PyMuPDF's sort=True interleaves table columns
+    # differently than the cleaned line order, so verbatim window matching
+    # is unreliable even though the captured text is correct. Detect by a
+    # table-header keyword in the first 20 lines or a high proportion of
+    # short lines (table rows); skip from the primary fragment check.
+    TABLE_HDR_RE = re.compile(
+        r"(?i:particulars of|sl\.?\s*no\b|name of|description of"
+        r"|international non-proprietary|other non-proprietary)")
+    table_ids = set()
+    for rec in records:
+        rlines = [l.strip() for l in rec["text"].split("\n") if l.strip()]
+        if not rlines:
+            continue
+        short = sum(1 for l in rlines if len(l) < 25)
+        hdr = any(TABLE_HDR_RE.search(l) for l in rlines[:20])
+        if hdr or (len(rlines) >= 20 and short / len(rlines) > 0.45):
+            table_ids.add(rec["id"])
     for rec in records:
         seg = seg_by_num.get(rec["number"])
         if seg is None or rec["part_index"] >= len(seg["parts"]):
             failures.append({"id": rec["id"], "why": "segment missing"})
+            continue
+        if rec["id"] in table_ids:
             continue
         kept_rec = seg["parts"][rec["part_index"]]["lines"]
         p0, p1 = rec["page_start"], rec["page_end"]
@@ -393,6 +439,7 @@ def gate_g6(doc, scan, segs, records, raw_pages):
           "reference_repeated_lines_stripped": list(repeat_lines),
           "windows": total_w, "primary_failures": len(failures),
           "mega_table_records": sorted(mega_ids),
+          "table_content_records": sorted(table_ids),
           "worst_5": failures[:5], "threshold": PRIMARY_RATE}
     print(f"  A2 PRIMARY fragment windows: {found_w}/{total_w} = "
           f"{primary:.4%} (threshold {PRIMARY_RATE:.0%})", flush=True)
@@ -870,7 +917,12 @@ def main():
     print("=" * 76, flush=True)
 
     print("\nG1 identity:", flush=True)
-    g1s, g1e = gate_g1(doc, act, markers, records)
+    sched_pg = None
+    sp = V.RESULTS / f"{act_id}_scan_stats.json"
+    if sp.exists():
+        sched_pg = json.loads(sp.read_text(encoding="utf-8")).get(
+            "schedule_page_1based")
+    g1s, g1e = gate_g1(doc, act, markers, records, schedule_page=sched_pg)
     g2_mode = "TOC" if emeta.get("mode") == "toc" else "SEQUENCE_ONLY"
     print(f"\nG2 coverage ({g2_mode}):", flush=True)
     g2s, g2e = gate_g2(markers, records, expected, emeta)
@@ -882,7 +934,8 @@ def main():
     g5s, g5e = gate_g5(records, KEYS)
 
     print("\nre-scanning document for A2/G9 evidence ...", flush=True)
-    scan = S.scan_document(doc, start_page=V.body_scan_start(act_id))
+    scan = S.scan_document(doc, start_page=V.body_scan_start(act_id),
+                           expected=expected)
     print("\nG6 verbatim (A2 PRIMARY):", flush=True)
     g6s, g6e = gate_g6(doc, scan, segs, records, raw_pages)
     print("\nG7 order:", flush=True)

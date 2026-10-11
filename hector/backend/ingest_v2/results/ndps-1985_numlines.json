@@ -1,0 +1,2016 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 127,
+    "footnote": 176,
+    "UNKNOWN": 2
+  },
+  "labels": {
+    "header": 134,
+    "boilerplate": 50,
+    "footnote": 275,
+    "page_number": 126
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [],
+  "footnote_sample": [
+    {
+      "line": 1970,
+      "page": 44,
+      "text": "1. Ins. by Act 9 of 2001, s. 39 (w.e.f. 2-10-2001).",
+      "cls": "footnote"
+    },
+    {
+      "line": 40,
+      "page": 5,
+      "text": "3. 14th November, 1985, vide notification No. S.O. 821(E), dated 14th November, 1985, see Gazette of India, Extraordinary,",
+      "cls": "footnote"
+    },
+    {
+      "line": 277,
+      "page": 10,
+      "text": "1. Ins. by Act 16 of 2014, s. 3 (w.e.f. 1-5-2014).",
+      "cls": "footnote"
+    },
+    {
+      "line": 38,
+      "page": 5,
+      "text": "1. Ins. by Act 2 of 1989, s. 2 (w.e.f. 29-5-1989).",
+      "cls": "footnote"
+    },
+    {
+      "line": 227,
+      "page": 9,
+      "text": "2. Ins. by Act 16 of 2014, s. 3 (w.e.f. 1-5-2014).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2480,
+      "page": 51,
+      "text": "107.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2446,
+      "page": 51,
+      "text": "104.",
+      "cls": "footnote"
+    },
+    {
+      "line": 370,
+      "page": 12,
+      "text": "3. Ins. by Act 16 of 2014, s. 4 (w.e.f. 1-5-2014).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1032,
+      "page": 25,
+      "text": "1. Ins. by Act 9 of 2001, s. 18 (w.e.f. 2-10-2001).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1775,
+      "page": 40,
+      "text": "2. Ins. by Act 16 of 2014, s. 23 (w.e.f. 1-5-2014).",
+      "cls": "footnote"
+    },
+    {
+      "line": 757,
+      "page": 20,
+      "text": "6. Subs. by s. 14, ibid., for “one-half of the minimum amount” (w.e.f. 1-5-2014).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1133,
+      "page": 27,
+      "text": "1. Subs. by Act 16 of 2014, s. 16, for “Provided that” (w.e.f. 1-5-2014).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2478,
+      "page": 51,
+      "text": "2C.-B(4-bromo-2,",
+      "cls": "footnote"
+    },
+    {
+      "line": 1134,
+      "page": 27,
+      "text": "2. Ins. by Act 9 of 2001, s. 20 (w.e.f. 2-10-2001).",
+      "cls": "footnote"
+    },
+    {
+      "line": 464,
+      "page": 14,
+      "text": "1. Ins. by Act 2 of 1989, s. 6 (w.e.f. 29-5-1989).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2526,
+      "page": 52,
+      "text": "110G.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2466,
+      "page": 51,
+      "text": "105D.",
+      "cls": "footnote"
+    },
+    {
+      "line": 2677,
+      "page": 53,
+      "text": "1. Ins. by vide Notification No. S.O. 1275(E), dated 23.03.2021",
+      "cls": "footnote"
+    },
+    {
+      "line": 1439,
+      "page": 33,
+      "text": "1. Sub-section (3) omitted by Act 9 of 2001, s. 29 (w.e.f. 2-10-2001).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2352,
+      "page": 50,
+      "text": "81.",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 12,
+      "page": 5,
+      "text": "1. Short title, extent and commencement.—(1) This Act may be called the Narcotic Drugs and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 23,
+      "page": 5,
+      "text": "2. Definitions.—In this Act, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 38,
+      "page": 5,
+      "text": "1. Ins. by Act 2 of 1989, s. 2 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 39,
+      "page": 5,
+      "text": "2. Ins. by Act 9 of 2001, s. 2 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 40,
+      "page": 5,
+      "text": "3. 14th November, 1985, vide notification No. S.O. 821(E), dated 14th November, 1985, see Gazette of India, Extraordinary,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 42,
+      "page": 5,
+      "text": "4. Subs. by Act 9 of 2001, s. 3, for clause (i) (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 83,
+      "page": 6,
+      "text": "1. Ins. by Act 16 of 2014, s. 2 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 84,
+      "page": 6,
+      "text": "2. Ins. by Act 9 of 2001, s. 3 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 85,
+      "page": 6,
+      "text": "3. Ins. by Act 2 of 1989, s. 3 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 86,
+      "page": 6,
+      "text": "4. Clause (viia) relettered as clause (viid) thereof by Act 9 of 2001, s. 3 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 87,
+      "page": 6,
+      "text": "5. Clause (viiia) relettered as clause (viiib) thereof by Act 16 of 2014, s. 2 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 179,
+      "page": 8,
+      "text": "1. Ins. by Act 9 of 2001, s. 3 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 200,
+      "page": 9,
+      "text": "3. Power to add to or omit from the list of psychotropic substances.—The Central Government",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 213,
+      "page": 9,
+      "text": "4. Central Government to take measures for preventing and combating abuse of and illicit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 226,
+      "page": 9,
+      "text": "1. Ins. by Act 2 of 1989, s. 3 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 227,
+      "page": 9,
+      "text": "2. Ins. by Act 16 of 2014, s. 3 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 247,
+      "page": 10,
+      "text": "5. Officers of Central Government.—(1) Without prejudice to the provisions of sub-section (3) of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 257,
+      "page": 10,
+      "text": "6. The Narcotic Drugs and Psychotropie Substances Consultative Committee.—(1) The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 275,
+      "page": 10,
+      "text": " 7. Officers of State Government.—(1) The State Government may appoint such officers with such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 277,
+      "page": 10,
+      "text": "1. Ins. by Act 16 of 2014, s. 3 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 283,
+      "page": 11,
+      "text": "7A. National Fund for Control of Drug Abuse.—(1) The Central Government may, by notification",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 308,
+      "page": 11,
+      "text": "7B. Annual report of activities financed under the Fund.—The Central Government shall, as soon",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 314,
+      "page": 11,
+      "text": "8. Prohibition of certain operations.—No person shall—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 320,
+      "page": 11,
+      "text": "1. Ins. by Act 2 of 1989, s. 4 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 321,
+      "page": 11,
+      "text": "2. Subs. by Act 9 of 2001, s. 4, for sub-sections (2) and (3) (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 347,
+      "page": 12,
+      "text": "9. Power of Central Government to permit, control and regulate.—(1) Subject to the provisions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 368,
+      "page": 12,
+      "text": "1. Ins. by Act 2 of 1989, s. 5 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 369,
+      "page": 12,
+      "text": "2. Ins. by Act 9 of 2001, s. 5 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 370,
+      "page": 12,
+      "text": "3. Ins. by Act 16 of 2014, s. 4 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 418,
+      "page": 13,
+      "text": "1. Ins. by Act 16 of 2014, s. 4 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 429,
+      "page": 14,
+      "text": "10. Power of State Government to permit, control and regulate.—(1) Subject to the provisions of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 464,
+      "page": 14,
+      "text": "1. Ins. by Act 2 of 1989, s. 6 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 465,
+      "page": 14,
+      "text": "2. Ins. by Act 16 of 2014, s. 5 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 466,
+      "page": 14,
+      "text": "3. Subs. by s. 5, ibid., for “manufactured drugs other than prepared opium” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 479,
+      "page": 15,
+      "text": "11. Narcotic drugs and psychotropic substances, etc., not liable to distress or attachment.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 485,
+      "page": 15,
+      "text": "12. Restrictions over external dealings in narcotic drugs and psychotropic substances.—No",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 489,
+      "page": 15,
+      "text": "13. Special provisions relating to coca plant and coca leaves for use in the preparation of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 495,
+      "page": 15,
+      "text": "14. Special provision relating to cannabis.—Notwithstanding anything contained in section 8,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 514,
+      "page": 15,
+      "text": "1. Subs. by Act 9 of 2001, s. 6, for sections 15 to 18 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 515,
+      "page": 15,
+      "text": "2. Subs. by Act 16 of 2014, s. 6, for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 519,
+      "page": 16,
+      "text": "16. Punishment for contravention in relation to coca plant and coca leaves.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 525,
+      "page": 16,
+      "text": "17. Punishment for contravention in relation to prepared opium.—Whoever, in contravention of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 540,
+      "page": 16,
+      "text": "18. Punishment for contravention in relation to opium poppy and opium.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 553,
+      "page": 16,
+      "text": "19. Punishment for embezzlement of opium by cultivator.—Any cultivator licensed to cultivate",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 560,
+      "page": 16,
+      "text": "20. Punishment for contravention in relation to cannabis plant and cannabis.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 564,
+      "page": 16,
+      "text": "1. Subs. by Act 16 of 2014, s. 7, for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 565,
+      "page": 16,
+      "text": "2. Subs. by s. 8, ibid., for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 600,
+      "page": 17,
+      "text": "22. Punishment for contravention in relation to psychotropic substances.—Whoever, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 609,
+      "page": 17,
+      "text": "1. Subs. by Act 9 of 2001, s. 7, for sub-clauses (i) and (ii) (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 610,
+      "page": 17,
+      "text": "2. Subs. by Act 16 of 2014, s. 9, for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 611,
+      "page": 17,
+      "text": "3. Subs. by Act 9 of 2001, s. 8, for sections 21 to 23 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 612,
+      "page": 17,
+      "text": "4. Subs. by Act 16 of 2014, s. 10, for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 613,
+      "page": 17,
+      "text": "5. Subs. by s. 11, ibid., for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 620,
+      "page": 18,
+      "text": "23. Punishment for illegal import into India, export from India or transhipment of narcotic",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 636,
+      "page": 18,
+      "text": "24. Punishment for external dealings in narcotic drugs and psychotropic substances in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 655,
+      "page": 18,
+      "text": "26. Punishment for certain acts by licensee or his servants.—If the holder of any licence, permit or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 660,
+      "page": 18,
+      "text": "1. Subs. by Act 16 of 2014, s. 12, for “six months” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 661,
+      "page": 18,
+      "text": "2. Subs. by Act 9 of 2001, s. 9, for section 25 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 662,
+      "page": 18,
+      "text": "3. Ins. by Act 2 of 1989, s. 7 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 693,
+      "page": 19,
+      "text": "28. Punishment for attempts to commit offences.—Whoever attempts to commit any offence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 696,
+      "page": 19,
+      "text": "29. Punishment for abetment and criminal conspiracy.—(1) Whoever abets, or is a party to a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 709,
+      "page": 19,
+      "text": "1. Subs. by Act 9 of 2001, s. 10, for section 27 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 710,
+      "page": 19,
+      "text": "2. Ins. by Act 2 of 1989, s. 8 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 711,
+      "page": 19,
+      "text": "3. Subs. by Act 48 of 2021, s. 2, for “clause (viiia) of section 2” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 712,
+      "page": 19,
+      "text": "4. Ins. by Act 16 of 2014, s. 13 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 714,
+      "page": 20,
+      "text": "30. Preparation.—If any person makes preparation to do or omits to do anything which constitutes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 752,
+      "page": 20,
+      "text": "1. Subs. by Act 9 of 2001, s. 11, for certain words, figures and brackets (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 753,
+      "page": 20,
+      "text": "2. Subs. by s. 12, ibid., for section 31 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 754,
+      "page": 20,
+      "text": "3. Subs. by Act 16 of 2014, s. 14, for “one-half of the maximum term” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 755,
+      "page": 20,
+      "text": "4. Subs. by s. 14, ibid., for “one-half of the maximum amount” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 756,
+      "page": 20,
+      "text": "5. Subs. by s. 14, ibid., for “one-half of the minimum term” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 757,
+      "page": 20,
+      "text": "6. Subs. by s. 14, ibid., for “one-half of the minimum amount” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 758,
+      "page": 20,
+      "text": "7. Ins. by Act 2 of 1989, s. 9 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 759,
+      "page": 20,
+      "text": "8. Subs. by Act 9 of 2001, s. 13, for “section 15 to section 25 (both inclusive) or section 27A” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 832,
+      "page": 21,
+      "text": "32. Punishment for offence for which no punishment is provided.—Whoever contravenes any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 834,
+      "page": 21,
+      "text": "1. Subs. by Act 9 of 2001, s. 13, for “1,500 grams” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 835,
+      "page": 21,
+      "text": "2. Subs. by Act 16 of 2014, s. 15, for “shall be punishable with death” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 836,
+      "page": 21,
+      "text": "3. Subs. by Act 9 of 2001, s. 13, for certain words, figures and brackets (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 862,
+      "page": 22,
+      "text": "33. Application of section 360 of the Code of Criminal Procedure, 1973 and of the Probation of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 867,
+      "page": 22,
+      "text": "34. Security for abstaining from commission of offence.—(1) Whenever any person is convicted of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 880,
+      "page": 22,
+      "text": "35. Presumption of culpable mental state.—(1) In any prosecution for an offence under this Act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 884,
+      "page": 22,
+      "text": "1. Ins. by Act 2 of 1989, s. 10 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 885,
+      "page": 22,
+      "text": "2. Ins. by Act 9 of 2001, s. 14 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 931,
+      "page": 23,
+      "text": "1. Subs. by Act 2 of 1989, s. 11, for section 36 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 932,
+      "page": 23,
+      "text": "2. Subs. by Act 9 of 2001, s. 15, for section 36A (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 951,
+      "page": 24,
+      "text": "36B. Appeal and revision.—The High Court may exercise, so for as may be applicable, all the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 955,
+      "page": 24,
+      "text": "36C. Application of Code to proceedings before a Special Court.—Save as otherwise provided in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 980,
+      "page": 24,
+      "text": "1. Subs. by Act 9 of 2001, s. 16, for section 36D (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 981,
+      "page": 24,
+      "text": "2. Subs. by Act 2 of 1989, s. 12, for section 37 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 982,
+      "page": 24,
+      "text": "3. Subs. by Act 9 of 2001, s. 17, for “a term of imprisonment of five years or more under this Act” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 990,
+      "page": 25,
+      "text": "38. Offences by companies.—(1) Where an offence under Chapter IV has been committed by a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1008,
+      "page": 25,
+      "text": "39. Power of court to release certain offenders on probation.—(1) When any addict is found guilty",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1025,
+      "page": 25,
+      "text": "40. Power of court to publish names, place of business, etc., of certain offenders.—(1) Where any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1032,
+      "page": 25,
+      "text": "1. Ins. by Act 9 of 2001, s. 18 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1070,
+      "page": 26,
+      "text": "42. Power of entry, search, seizure and arrest without warrant or authorisation.—(l) Any such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1084,
+      "page": 26,
+      "text": "1. Subs. by Act 9 of 2001, s. 19, for sections 41 to 43 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1107,
+      "page": 27,
+      "text": "43. Power of seizure and arrest in public place.—Any officer of any of the departments mentioned",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1122,
+      "page": 27,
+      "text": "44. Power of entry, search, seizure and arrest in offences relating to coca plant, opium poppy",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1128,
+      "page": 27,
+      "text": "45. Procedure where seizure of goods liable to confiscation not practicable.—Where it is not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1133,
+      "page": 27,
+      "text": "1. Subs. by Act 16 of 2014, s. 16, for “Provided that” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1134,
+      "page": 27,
+      "text": "2. Ins. by Act 9 of 2001, s. 20 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1136,
+      "page": 28,
+      "text": "46. Duty of land holder to give information of illegal cultivation.—Every holder of land shall give",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1140,
+      "page": 28,
+      "text": "47. Duty of certain officers to give information of illegal cultivation.—Every officer of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1146,
+      "page": 28,
+      "text": "48. Power of attachment of crop illegally cultivated.—Any Metropolitan Magistrate, Judicial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1151,
+      "page": 28,
+      "text": "49. Power to stop and search conveyance.—Any officer authorised under section 42, may, if he has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1161,
+      "page": 28,
+      "text": "50. Conditions under which search of persons shall be conducted.—(1) When any officer duly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1180,
+      "page": 28,
+      "text": "1. Ins. by Act 2 of 1989, s. 13 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1181,
+      "page": 28,
+      "text": "2. Ins. by Act 9 of 2001, s. 21 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1182,
+      "page": 28,
+      "text": "3. Ins. by s. 22, ibid. (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1191,
+      "page": 29,
+      "text": "51. Provisions of the code of Criminal Procedure, 1973 to apply to warrants, arrests, searches",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1195,
+      "page": 29,
+      "text": "52. Disposal of persons arrested and articles seized.—(1) Any officer arresting a person under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1229,
+      "page": 29,
+      "text": "1. Ins. by Act 9 of 2001, s. 23 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1230,
+      "page": 29,
+      "text": "2. Ins. by Act 2 of 1989, s. 14 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1231,
+      "page": 29,
+      "text": "3. Subs. by Act 16 of 2014, s. 17, for sub-section (1) (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1232,
+      "page": 29,
+      "text": "4. Subs. by s. 17, ibid., for “narcotic drug or psychotropic substance” (w.e.f. 1-5-2014)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1233,
+      "page": 29,
+      "text": "5. Subs. by s. 17, ibid., for “such drugs or substances” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1244,
+      "page": 30,
+      "text": "53. Power to invest officers of certain departments with powers of an officer-in-charge of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1279,
+      "page": 30,
+      "text": " 55. Police to take charge of articles seized and delivered.—An officer-in-charge of a police station",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1281,
+      "page": 30,
+      "text": "1. Subs. by Act 16 of 2014, s.17, for “narcotic drugs or psychotropic substances” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1282,
+      "page": 30,
+      "text": "2. Subs. by Act 9 of 2001, s. 24, for “or Border Security Force” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1283,
+      "page": 30,
+      "text": "3. Ins. by s. 24, ibid. (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1284,
+      "page": 30,
+      "text": "4. Ins. by Act 2 of 1989, s. 15 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1285,
+      "page": 30,
+      "text": "5. Subs. by Act 9 of 2001, s. 25, for section 54 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1291,
+      "page": 31,
+      "text": "56. Obligation of officers to assist each other.—All officers of the several departments mentioned",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1294,
+      "page": 31,
+      "text": "57. Report of arrest and seizure.—Whenever any person makes any arrest or seizure under this Act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1302,
+      "page": 31,
+      "text": "58. Punishment for vexatious entry, search, seizure or arrest.—(1) Any person empowered under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1317,
+      "page": 31,
+      "text": "59. Failure of officer in duty or his connivance at the contravention of the provisions of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1333,
+      "page": 31,
+      "text": "1. Ins. by Act 16 of 2014, s. 18 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1334,
+      "page": 31,
+      "text": "2. Subs. by Act 2 of 1989, s. 16, for sub-section (2) (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1339,
+      "page": 32,
+      "text": "60. Liability of illicit drugs, substances, plants, articles and conveyances to confiscation.—1[(1)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1357,
+      "page": 32,
+      "text": "61. Confiscation of goods used for concealing illicit drugs or substances.—Any goods used for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1361,
+      "page": 32,
+      "text": "62. Confiscation of sale proceeds of illicit drugs or substances.—Where any 4[narcotic drug,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1365,
+      "page": 32,
+      "text": "63. Procedure in making confiscations.—(1) In the trial of offences under this Act, whether the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1381,
+      "page": 32,
+      "text": "1. Subs. by Act 9 of 2001, s. 26, for sub-section (1) (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1382,
+      "page": 32,
+      "text": "2. Ins. by s. 26, ibid. (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1383,
+      "page": 32,
+      "text": "3. Subs. by s. 27, ibid., for “narcotic drug or psychotropic substance” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1384,
+      "page": 32,
+      "text": "4. Subs. by s. 28, ibid., for “narcotic drug or psychotropic substance” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1385,
+      "page": 32,
+      "text": "5. Ins. by s. 29, ibid. (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1392,
+      "page": 33,
+      "text": "64. Power to tender immunity from prosecution.—(1) The Central Government or the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1419,
+      "page": 33,
+      "text": "65. [Power to make rules regulating disposal of confiscated articles and rewards].—Omitted by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1422,
+      "page": 33,
+      "text": "66. Presumption as to documents in certain cases.—Where any document—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1439,
+      "page": 33,
+      "text": "1. Sub-section (3) omitted by Act 9 of 2001, s. 29 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1440,
+      "page": 33,
+      "text": "2. Subs. by s. 30, ibid., for section 64A (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1442,
+      "page": 34,
+      "text": "67. Power to call for information, etc.—Any officer referred to in section 42 who is authorised in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1450,
+      "page": 34,
+      "text": "68. Information as to commission of offences.—No officer acting in exercise of powers vested in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1455,
+      "page": 34,
+      "text": "68A. Application.—(1) The provisions of this Chapter shall apply only to the persons specified in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1483,
+      "page": 34,
+      "text": "1. Ins. by Act 2 of 1989, s. 19 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1484,
+      "page": 34,
+      "text": "2. Subs. by Act 16 of 2014, s. 19, for “FORFEITURE OF PROPERTY DERIVED FROM, OR USED, IN ILLICIT TRAFFIC”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1486,
+      "page": 34,
+      "text": "3. Subs. by Act 9 of 2001, s. 31, for “five” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1487,
+      "page": 34,
+      "text": "4. Ins. by s. 31, ibid. (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1489,
+      "page": 35,
+      "text": "68B. Definitions.—In this Chapter, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1530,
+      "page": 35,
+      "text": "1. Subs. by Act 28 of 2016, s. 227, for “for Forfeited Property constituted under” (w.e.f. 1-6-2016).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1531,
+      "page": 35,
+      "text": "2. Subs. by Act 9 of 2001, s. 32, for “illicit traffic” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1532,
+      "page": 35,
+      "text": "3. Subs. by Act 16 of 2014, s, 20, for “of this Act; or” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1567,
+      "page": 36,
+      "text": "68C. Prohibition of holding illegally acquired property.—(1) As from the commencement of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1575,
+      "page": 36,
+      "text": "1. Subs. by Act 16 of 2014, s. 20, for “such property,” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1576,
+      "page": 36,
+      "text": "2. Ins. by s. 20, ibid. (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1577,
+      "page": 36,
+      "text": "3. Subs. by s. 20, ibid., for clause (h) (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1578,
+      "page": 36,
+      "text": "4. Subs. by Act 9 of 2001, s. 33, for the proviso (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1582,
+      "page": 37,
+      "text": "68D. Competent authority.—(1) The Central Government may, by order published in the Official",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1588,
+      "page": 37,
+      "text": "68E. Identifying illegally acquired property.—2[(1) Every officer empowered under section 53 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1599,
+      "page": 37,
+      "text": "68F. Seizure or freezing of illegally acquired property.—(1) Where any officer conducting an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1622,
+      "page": 37,
+      "text": "68G. Management of properties seized or forfeited under this Chapter.—(1) The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1624,
+      "page": 37,
+      "text": "1. Subs. by Act 16 of 2014, s. 21, for “any Collector of Customs or Collector of Central Excise” (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1625,
+      "page": 37,
+      "text": "2. Subs. by Act 9 of 2001, s. 34, for sub- section (1) (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1634,
+      "page": 38,
+      "text": "68H. Notice of forfeiture of property.—(1) If, having regard to the value of the properties held by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1674,
+      "page": 38,
+      "text": "1. Ins. by Act 9 of 2001, s. 35 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1675,
+      "page": 38,
+      "text": "2. Ins. by Act 16 of 2014, s. 22 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1685,
+      "page": 39,
+      "text": "68J. Burden of proof.—In any proceedings under this Chapter, the burden of proving that any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1688,
+      "page": 39,
+      "text": "68K. Fine in lieu of forfeiture.—(1) Where the competent authority makes a declaration that any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1699,
+      "page": 39,
+      "text": "68L. Procedure in relation to certain trust properties.—In the case of any person referred to in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1717,
+      "page": 39,
+      "text": "68M. Certain transfers to be null and void.—Where after the making of an order under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1725,
+      "page": 39,
+      "text": "1. Ins. by Act 9 of 2001, s. 36 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1726,
+      "page": 39,
+      "text": "2. Subs. by Act 28 of 2016, s. 227, for section 68N (w.e.f. 1-6-2016).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1760,
+      "page": 40,
+      "text": "68P. Notice or order not to be invalid for error in description.—No notice issued or served, no",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1764,
+      "page": 40,
+      "text": "68Q. Bar of jurisdiction.—No order passed or declaration made under this Chapter shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1769,
+      "page": 40,
+      "text": "68R. Competent authority and Appellate Tribunal to have powers of civil court.—The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1774,
+      "page": 40,
+      "text": "1. Subs. by Act 9 of 2001, s. 37, for “any person aggrieved by an order of the competent authority” (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1775,
+      "page": 40,
+      "text": "2. Ins. by Act 16 of 2014, s. 23 (w.e.f. 1-5-2014).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1781,
+      "page": 41,
+      "text": "68S. Information to competent authority.—(1) Notwithstanding anything contained in any other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1789,
+      "page": 41,
+      "text": "68T. Certain officers to assist Administrator, competent authority and Appellate Tribunal.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1806,
+      "page": 41,
+      "text": "68U. Power to take possession.—(1) Where any property has been declared to be forfeited to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1818,
+      "page": 41,
+      "text": "68V. Rectification of mistakes.—With a view to rectifying any mistakes apparent from record, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1824,
+      "page": 42,
+      "text": "68W. Findings under other laws not conclusive for proceedings under this Chapter.—No finding",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1827,
+      "page": 42,
+      "text": "68X.  Service of notices and orders.—Any notice or order issued or made under this Chapter shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1835,
+      "page": 42,
+      "text": "68Y. Punishment for acquiring property in relation to which proceedings have been taken,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1850,
+      "page": 42,
+      "text": "69. Protection of action taken in good faith.—No suit, prosecution or other legal proceeding shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1855,
+      "page": 42,
+      "text": "70. Central Government and State Government to have regard to international conventions",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1863,
+      "page": 42,
+      "text": "71. Power of Government to establish centres for identification, treatment, etc., of addicts and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1870,
+      "page": 42,
+      "text": "1. Ins. by Act 9 of 2001, s. 38 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1871,
+      "page": 42,
+      "text": "2. Subs. by Act 16 of 2014, s. 24, for “The Government may, in its discretion, establish as many centres as it thinks fit for",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1878,
+      "page": 43,
+      "text": "72. Recovery of sums due to Government.—(1) In respect of any licence fee or other sum of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1893,
+      "page": 43,
+      "text": "73. Bar of jurisdiction.—No civil court shall entertain any suit or proceeding against any decision",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1901,
+      "page": 43,
+      "text": "74. Transitional provisions.—Every officer or other employee of the Government exercising or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1909,
+      "page": 43,
+      "text": "75. Power to delegate.—(1) The Central Government may, by notification in the Official Gazette,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1917,
+      "page": 43,
+      "text": "76. Power of Central Government to make rules.—(1) Subject to the other provisions of this Act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1924,
+      "page": 43,
+      "text": "1. Ins. by Act 2 of 1989, s. 20 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1959,
+      "page": 44,
+      "text": "77. Rules and notifications to be laid before Parliament.—4[Every rule made under this Act by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1970,
+      "page": 44,
+      "text": "1. Ins. by Act 9 of 2001, s. 39 (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1971,
+      "page": 44,
+      "text": "2. Ins. byAct 2 of 1989, s. 21 (w.e.f. 29-5-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1972,
+      "page": 44,
+      "text": "3. Clause (db) omitted by Act 28 of 2016, s. 227 (w.e.f. 1-6-2016).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1973,
+      "page": 44,
+      "text": "4. Subs. by Act 9 of 2001, s. 40, for certain words, brackets, figures and letter (w.e.f. 2-10-2001).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1975,
+      "page": 45,
+      "text": "78. Power of State Government to make rules.—(1) Subject to the other provisions of this Act, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1989,
+      "page": 45,
+      "text": "79. Application of the Customs Act, 1962.—All prohibitions and restrictions imposed by or under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1996,
+      "page": 45,
+      "text": "80. Application of the Drugs and Cosmetics Act, 1940 not barred.—The provisions of this Act or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1999,
+      "page": 45,
+      "text": "81. Saving of State and special laws.—Nothing in this Act or in the rules made thereunder shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2006,
+      "page": 45,
+      "text": "82. Repeal and savings.—(1) The Opium Act, 1857 (13 of 1857), the Opium Act, 1878 (1 of 1878)",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2012,
+      "page": 45,
+      "text": "83. Power to remove difficulties.—(1) If any difficulty arises in giving effect to the provisions of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 2343,
+      "page": 50,
+      "text": "78.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2346,
+      "page": 50,
+      "text": "79.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2349,
+      "page": 50,
+      "text": "80.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2352,
+      "page": 50,
+      "text": "81.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2355,
+      "page": 50,
+      "text": "82.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2358,
+      "page": 50,
+      "text": "83.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2361,
+      "page": 50,
+      "text": "84.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2367,
+      "page": 50,
+      "text": "85.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2370,
+      "page": 50,
+      "text": "86.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2373,
+      "page": 50,
+      "text": "87.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2377,
+      "page": 50,
+      "text": "88.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2382,
+      "page": 50,
+      "text": "89.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2386,
+      "page": 50,
+      "text": "90.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2393,
+      "page": 50,
+      "text": "91.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2398,
+      "page": 50,
+      "text": "92.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2402,
+      "page": 50,
+      "text": "93.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2405,
+      "page": 50,
+      "text": "94.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2410,
+      "page": 50,
+      "text": "95.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2414,
+      "page": 50,
+      "text": "96.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2419,
+      "page": 50,
+      "text": "97.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2422,
+      "page": 50,
+      "text": "98.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2426,
+      "page": 50,
+      "text": "1. Ins. by S.O. 785(E), dated 26th October, 1992.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2429,
+      "page": 51,
+      "text": "99.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2434,
+      "page": 51,
+      "text": "100.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2435,
+      "page": 51,
+      "text": "101.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2439,
+      "page": 51,
+      "text": "102.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2443,
+      "page": 51,
+      "text": "103.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2446,
+      "page": 51,
+      "text": "104.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2450,
+      "page": 51,
+      "text": "105.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2458,
+      "page": 51,
+      "text": "105B.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2461,
+      "page": 51,
+      "text": "105C.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2466,
+      "page": 51,
+      "text": "105D.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2469,
+      "page": 51,
+      "text": "105E.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2473,
+      "page": 51,
+      "text": "105F.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2478,
+      "page": 51,
+      "text": "2C.-B(4-bromo-2,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2480,
+      "page": 51,
+      "text": "107.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2483,
+      "page": 51,
+      "text": "108.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2485,
+      "page": 51,
+      "text": "109.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2504,
+      "page": 51,
+      "text": "1. Ins. by S.O. 39(E), dated 12th January, 1996.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2505,
+      "page": 51,
+      "text": "2. Ins. by G.S.R. No. 475(E), dated 11th June, 2003.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2506,
+      "page": 51,
+      "text": "3. Entry 106 re-numbered as Entry 110 by G.S.R. 475(E), dated 11th June, 2003.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2507,
+      "page": 51,
+      "text": "4. Ins. by vide Notification No. S.O. 311(E) dated 10.02.2011.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2508,
+      "page": 51,
+      "text": "5. Ins. by vide Notification No. S.O. 376(E) dated 05.02.2015.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2509,
+      "page": 51,
+      "text": "6. Ins. by vide Notification No. S.O. 2374(E) dated 12.07-2016.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2512,
+      "page": 52,
+      "text": "110D.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2517,
+      "page": 52,
+      "text": "110E.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2522,
+      "page": 52,
+      "text": "110F.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2526,
+      "page": 52,
+      "text": "110G.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2531,
+      "page": 52,
+      "text": "110H.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2536,
+      "page": 52,
+      "text": "110I.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2539,
+      "page": 52,
+      "text": "110J.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2553,
+      "page": 52,
+      "text": "110L.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2559,
+      "page": 52,
+      "text": "110M.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2563,
+      "page": 52,
+      "text": "110N.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2567,
+      "page": 52,
+      "text": "110O.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2599,
+      "page": 52,
+      "text": "1. Ins. by vide Notification No. S.O. 1383(E) dated 02.05.2017.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2600,
+      "page": 52,
+      "text": "2. Ins. by vide Notification No. S.O. 0821(E) dated 27.02.2018.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2601,
+      "page": 52,
+      "text": "3. Ins. by vide Notification No. S.O. 1761(E), dated 26.04.2018.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2602,
+      "page": 52,
+      "text": "4. Ins. by vide Notification No. S.O. 1352(E), dated 13.03.2019.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2677,
+      "page": 53,
+      "text": "1. Ins. by vide Notification No. S.O. 1275(E), dated 23.03.2021",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

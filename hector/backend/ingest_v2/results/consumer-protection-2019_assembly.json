@@ -1,0 +1,222 @@
+{
+  "act_id": "consumer-protection-2019",
+  "page_spanning_total": 25,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 6,
+      "page_end": 14,
+      "joins": [
+        {
+          "from_page": 6,
+          "to_page": 7,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "3912(E), dated 30th October, 2019, this Act is made applicable to the Union territory of Jammu and\nKashmir and the Union territory of Ladakh",
+          "after_head": "(4) “Central Authority” means the Central Consumer Protection Authority established under\nsection 10;\n(5) “complainant” means—\n(i) a consume"
+        },
+        {
+          "from_page": 7,
+          "to_page": 7,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "t, that—\n(i) an unfair contract or unfair trade practice or a restrictive trade practice has been adopted\nby any trader or service provider;",
+          "after_head": "(ii) the goods bought by him or agreed to be bought by him suffer from one or more defects;\n(iii) the services hired or availed of or agreed"
+        },
+        {
+          "from_page": 7,
+          "to_page": 8,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "a consideration which has been paid or promised or\npartly paid and partly promised, or under any system of deferred payment and includes any",
+          "after_head": "beneficiary of such service other than the person who hires or avails of the services for\nconsideration paid or promised, or partly paid and"
+        },
+        {
+          "from_page": 8,
+          "to_page": 8,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "hts” includes,—\n(i) the right to be protected against the marketing of goods, products or services which are\nhazardous to life and property;",
+          "after_head": "(ii) the right to be informed about the quality, quantity, potency, purity, standard and price of\ngoods, products or services, as the case m"
+        },
+        {
+          "from_page": 8,
+          "to_page": 9,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": " than through a permanent retail location;\n(14) “Director-General” means the Director-General appointed under sub-section (2) of\nsection 15;",
+          "after_head": "(15) “District Commission” means a District Consumer Disputes Redressal Commission\nestablished under sub-section (1) of section 28;\n(16) “e-"
+        },
+        {
+          "from_page": 9,
+          "to_page": 9,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "organisation,\nwhich makes the consumer to believe that it reflects the opinion, finding or experience of the person\nmaking such endorsement;",
+          "after_head": "(19) “establishment” includes an advertising agency, commission agent, manufacturing, trading\nor any other commercial agency which carries o"
+        },
+        {
+          "from_page": 9,
+          "to_page": 10,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": " “member” includes the President and a member of the National Commission or a State\nCommission or a District Commission, as the case may be;",
+          "after_head": "(28) “misleading advertisement” in relation to any product or service, means an advertisement,\nwhich—\n(i) falsely describes such product or "
+        },
+        {
+          "from_page": 10,
+          "to_page": 10,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "ification published in the Official Gazette and the term “notify”\nshall be construed accordingly;\n(31) “person” includes—\n(i) an individual;",
+          "after_head": "(ii) a firm whether registered or not;\n(iii) a Hindu undivided family;\n(iv) a co-operative society;\n(v) an association of persons whether re"
+        },
+        {
+          "from_page": 10,
+          "to_page": 11,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "structs or re-manufactures any product before its sale; or\n(vi) being a product seller of a product, is also a manufacturer of such product;",
+          "after_head": "(37) “product seller”, in relation to a product, means a person who, in the course of business,\nimports, sells, distributes, leases, install"
+        },
+        {
+          "from_page": 11,
+          "to_page": 11,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " to the sale of the product;\n(II) is not a manufacturer, wholesaler, distributor, retailer, direct seller or an\nelectronic service provider;",
+          "after_head": "(III) leases a product, without having a reasonable opportunity to inspect and\ndiscover defects in the product, under a lease arrangement in"
+        },
+        {
+          "from_page": 11,
+          "to_page": 12,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "s for\nsale and includes the manufacturer thereof, and where such goods are sold or distributed in\npackage form, includes the packer thereof;",
+          "after_head": "(46) “unfair contract” means a contract between a manufacturer or trader or service provider\non one hand, and a consumer on the other, havin"
+        },
+        {
+          "from_page": 12,
+          "to_page": 12,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "out his consent; or\n(vi) imposing on the consumer any unreasonable charge, obligation or condition which\nputs such consumer to disadvantage;",
+          "after_head": "(47) “unfair trade practice” means a trade practice which, for the purpose of promoting the sale,\nuse or supply of any goods or for the prov"
+        },
+        {
+          "from_page": 12,
+          "to_page": 13,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "sold or provided, and, for this purpose, a\nrepresentation as to price shall be deemed to refer to the price at which the product or goods or",
+          "after_head": "services has or have been sold by sellers or provided by suppliers generally in the relevant market\nunless it is clearly specified to be the"
+        },
+        {
+          "from_page": 13,
+          "to_page": 13,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "egard to the nature of the market in which\nthe business is carried on, the nature and size of business, and the nature of the advertisement.",
+          "after_head": "Explanation.—For the purpose of this sub-clause, “bargain price” means,—\n(A) a price that is stated in any advertisement to be a bargain pri"
+        },
+        {
+          "from_page": 13,
+          "to_page": 14,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "h hoarding or destruction or refusal\nraises or tends to raise or is intended to raise, the cost of those or other similar goods or\nservices;",
+          "after_head": "(vi) manufacturing of spurious goods or offering such goods for sale or adopting\ndeceptive practices in the provision of services;\n(vii) not"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "page_start": 14,
+      "page_end": 15,
+      "joins": [
+        {
+          "from_page": 14,
+          "to_page": 15,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "th effect from such date as it may specify in such notification, a District\nConsumer Protection Council to be known as the District Council.",
+          "after_head": "(2) The District Council shall be an advisory council and consist of the following members,\nnamely:—\n(a) the Collector of the district (by w"
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "page_start": 15,
+      "page_end": 16,
+      "joins": [
+        {
+          "from_page": 15,
+          "to_page": 16,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "ability, who have special knowledge and\nexperience in the areas of consumer rights and welfare, consumer policy, law, medicine, food safety,",
+          "after_head": "health, engineering, product safety, commerce, economics, public affairs or administration, as it deems\nnecessary to assist it in the discha"
+        }
+      ]
+    },
+    {
+      "number": "18",
+      "page_start": 16,
+      "page_end": 17,
+      "joins": [
+        {
+          "from_page": 16,
+          "to_page": 17,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "t prejudice to the generality of the provisions contained in sub-section (1), the Central\nAuthority may, for any of the purposes aforesaid,—",
+          "after_head": "(a) inquire or cause an inquiry or investigation to be made into violations of consumer rights or\nunfair trade practices, either suo motu or"
+        },
+        {
+          "from_page": 17,
+          "to_page": 17,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "of consumer rights;\n(f) undertake and promote research in the field of consumer rights;\n(g) spread and promote awareness on consumer rights;",
+          "after_head": "(h) encourage non-Governmental organisations and other institutions working in the field of\nconsumer rights to co-operate and work with cons"
+        }
+      ]
+    },
+    {
+      "number": "22",
+      "page_start": 18,
+      "page_end": 19,
+      "joins": [
+        {
+          "from_page": 18,
+          "to_page": 19,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "f Criminal Procedure, 1973 (2 of 1974), relating to search and seizure\nshall apply, as far as may be, for search and seizure under this Act.",
+          "after_head": "(3) Every document, record or article seized under clause (a) of sub-section (1) or produced under\nclause (c) of that sub-section shall be r"
+        }
+      ]
+    }
+  ]
+}

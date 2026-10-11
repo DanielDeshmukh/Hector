@@ -6,6 +6,7 @@ scan_document(doc) -> dict with lines/markers/footnotes/stats/classes.
 Rules per SPEC.md AMENDMENTS A1-A6. No hardcoding of numbers/titles.
 """
 
+import difflib
 import re
 import sys
 from bisect import bisect_left, bisect_right
@@ -46,6 +47,21 @@ FOOT_HEAD_RE = re.compile(r"^\s*(\d{1,3})\.(?:\s|$)")
 FOOTNOTE_CITE_RE = re.compile(
     r"^\s*\d{1,4}[A-Za-z]{0,2}\.\s+(?:Cf\.|See\s|The\s+Act\s+has\s+been"
     r"|Extended\s+to|The\s+words\b)", re.I)
+# Page-bottom amendment footnotes whose citation verb is not the first word
+# after the number ("5. Clause (viiia) relettered ... by Act 16 of 2014").
+# The "by Act N of YYYY" cite is the hallmark of an amendment footnote and
+# never appears in a real section title, so it is safe to reject on shape.
+AMEND_CITE_RE = re.compile(
+    r"^\s*\d{1,4}[A-Za-z]{0,2}\.\s+.*\bby\s+Act\s+\d+\s+of\s+(?:18|19|20)\d{2}",
+    re.I)
+# Schedules ("THE SCHEDULE", "FIRST SCHEDULE", ...) sit after the last
+# section of an act; their table rows are numbered continuously and would
+# otherwise leak as section markers once the row number exceeds the last
+# accepted section (limitation-1963 rows 60, 61, 63, ... leaked as s.60+).
+# Uppercase-only so a ToC's mixed-case "Schedule." entry does not trigger it.
+SCHEDULE_HDR_RE = re.compile(
+    r"^\s*(?:THE\s+)?(?:FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH"
+    r"|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH|TWELFTH)?\s*SCHEDULES?\s*$")
 # Title period + 2+ spaces + capital = title ends, body starts on the SAME
 # line with no dash (IEA s86 prints "records.  The Court may presume...").
 # Single-space periods stay out so the 4 indexed books are untouched.
@@ -177,22 +193,59 @@ def _increasing(num, last_base):
     return None, last_base
 
 
+PHANTOM_YEAR_LO = 1750
+PHANTOM_YEAR_HI = 2100
+PHANTOM_JUMP = 40
+
+
+def _is_phantom(num, last_base):
+    """Reject a schedule/repeal-list/form number that jumps the run.
+
+    A bare plain number printed far ahead of the current run is never a real
+    section of the acts in scope.  Two shapes hit this: year-like schedule and
+    amendment-extract headings (Limitation Act's "1908", NI's "2015"), and
+    repeal-list entries whose number lies above the act's own section range
+    (Transfer of Property's "297. [Application of proceeds.] Rep. by the
+    Code of Civil Procedure..." against a ToC that ends at 137).  Accepting
+    either poisons last_base, after which the increasing rule rejects every
+    real section that follows, so rejecting it before accept (leaving
+    last_base untouched) stops the poison at the source.
+
+    Range, not line shape, is the discriminator: "74. [Right of subsequent
+    mortgagee to pay off prior mortgagee.] Rep. by..." is in-range, so it
+    survives even though it is printed identically to the 297 entry.
+    """
+    if " to " in num or suffix_of(num):
+        return False
+    if not num.isdigit():
+        return False
+    b = int(num)
+    if b <= last_base + PHANTOM_JUMP:
+        return False
+    year_like = PHANTOM_YEAR_LO <= b <= PHANTOM_YEAR_HI
+    return year_like or last_base > 0
+
+
 def _strip_glue(num, last_base):
     """Undo a bare footnote-marker digit glued onto a section number.
 
     Some extractions lose the bracket marker entirely ("1145." for
     "1[145."). No bare act in scope reaches 1000 sections, so a 4+ digit
     head whose remaining tail continues the current run is a footnote
-    marker digit, not a section number. Returns the original num when
-    no strip candidate continues the run.
+    marker digit, not a section number. Also handles 3-digit glue
+    ("860." for "60." when last_base=59, CPC s.60) when the jump to the
+    glued number is implausibly large for a section run. Returns the
+    original num when no strip candidate continues the run.
     """
-    if not num.isdigit() or len(num) < 4:
+    if not num.isdigit() or len(num) < 3:
         return num
+    n = int(num)
     for cut in (1, 2):
         cand = num[cut:]
         if len(cand) >= 2 and cand.isdigit() \
                 and last_base < int(cand) <= last_base + 10:
-            return cand
+            if len(num) >= 4 or n > last_base + 20:
+                return cand
     return num
 
 
@@ -216,7 +269,17 @@ def _title_from(first, start_j, lines):
     return _clean_title(" ".join(parts)), j
 
 
-def scan_document(doc, start_page=0):
+def _norm_title(s):
+    """Canonical key for fuzzy title comparison against the ToC."""
+    if not s:
+        return ""
+    t = _clean_title(s) or ""
+    t = t.lower()
+    t = re.sub(r"[^a-z0-9]+", " ", t)
+    return t.strip()
+
+
+def scan_document(doc, start_page=0, expected=None):
     # ---- extract global lines (blank dropped; soft hyphens stripped; hyphen
     # breaks merged keeping the hyphen); start_page (0-based) excludes the
     # Arrangement/Contents pages - ONE shared rule (v2_common.body_scan_start)
@@ -273,11 +336,31 @@ def scan_document(doc, start_page=0):
     open_group = None
     consumed = set()
     accepted_nums = set()
+    in_schedule = False
+    schedule_line = None
+    # Authoritative ToC titles keyed by number, used by the expected-title
+    # fallback for bare "N." heads and repealed one-liners with no body.
+    exp_titles = {}
+    if expected:
+        for e in expected:
+            if isinstance(e, dict):
+                n_, t_ = e.get("number"), e.get("title")
+            else:
+                n_, t_ = e[0], e[1]
+            if n_ and n_ not in exp_titles:
+                exp_titles[str(n_)] = _norm_title(t_)
     last_base = 0
     chapter = None
     chapter_pending = None
     max_lookahead = 0
     restated_far = []
+
+    def title_matches(num, cand):
+        """True when cand's title matches num's ToC title (fuzzy)."""
+        key = exp_titles.get(num)
+        if not key:
+            return False
+        return difflib.SequenceMatcher(None, key, cand).ratio() >= 0.6
 
     def close_group():
         nonlocal open_group
@@ -331,6 +414,10 @@ def scan_document(doc, start_page=0):
             rejected.append((lines[i]["page"] + 1, lines[i]["text"][:90],
                              f"duplicate number {num} rejected (margin)"))
             return None, 0
+        if _is_phantom(num, last_base):
+            rejected.append((lines[i]["page"] + 1, lines[i]["text"][:90],
+                             f"phantom out-of-range {num} rejected (margin, last={last_base})"))
+            return None, 0
         b = base_of(num)
         used = 0
         r_idx = None
@@ -362,6 +449,37 @@ def scan_document(doc, start_page=0):
                 break
         max_lookahead = max(max_lookahead, used)
         if r_idx is None and r_rep is None:
+            # Expected-title fallback: a bare "N." head whose title is
+            # word-wrapped across the following lines (T.P.A. s33) never
+            # restates "N. Title" inside the window, so the restated marker
+            # above never fires. Confirm it by joining the continuation
+            # words and matching them against the ToC title for num; the
+            # next "N." head or a blank gap ends the window.
+            key = exp_titles.get(num)
+            if key:
+                parts = []
+                end_j = i
+                for j in range(i + 1, min(i + 1 + TITLE_CONT_LINES + 2,
+                                          len(lines))):
+                    ln = lines[j]
+                    if ln["kind"] in ("header", "boilerplate", "separator"):
+                        break
+                    if NUMHEAD_RE.match(ln["text"]) \
+                            or NUMDOT_RE.match(fref_strip(ln["text"])):
+                        break
+                    parts.append(ln["text"].strip())
+                    end_j = j
+                    if TITLE_CUT_RE.search(ln["text"]):
+                        break
+                cand = _norm_title(" ".join(parts))
+                if cand and title_matches(num, cand):
+                    ok, _ = _increasing(num, last_base)
+                    if ok is not None:
+                        title, end_j = _title_from(
+                            lines[i + 1]["text"], i + 2, lines)
+                        mk = accept(i, num, title, "M", end_j, "normal")
+                        mk["marker_page"] = lines[end_j]["page"] + 1
+                        return mk, end_j - i
             return None, used
         target = r_idx if r_idx is not None else r_rep
         np = num_parts(lines[target]["text"])
@@ -405,6 +523,14 @@ def scan_document(doc, start_page=0):
             rejected.append((lines[i]["page"] + 1, t[:90],
                              f"citation-verb footnote {num} rejected (direct)"))
             return None, 0
+        if AMEND_CITE_RE.match(t):
+            # amendment footnote whose verb is not first after the number
+            # ("5. Clause (viiia) relettered ... by Act 16 of 2014"). Its
+            # window can steal a stray em-dash from body text 7 lines later
+            # and poison last_base, hiding the real section behind it.
+            rejected.append((lines[i]["page"] + 1, t[:90],
+                             f"amendment-cite footnote {num} rejected (direct)"))
+            return None, 0
         if V.FOOT_RE.match(t):
             # amendment footnote (N. Subs./Ins./Rep. ...) - a free number +
             # dash would otherwise let try_direct steal it as a real section
@@ -425,6 +551,10 @@ def scan_document(doc, start_page=0):
         if num in accepted_nums:
             rejected.append((lines[i]["page"] + 1, t[:90],
                              f"duplicate number {num} rejected (direct)"))
+            return None, 0
+        if _is_phantom(num, last_base):
+            rejected.append((lines[i]["page"] + 1, t[:90],
+                             f"phantom out-of-range {num} rejected (direct, last={last_base})"))
             return None, 0
         used = 0
         dash_j = None
@@ -456,6 +586,35 @@ def scan_document(doc, start_page=0):
                 break
         max_lookahead = max(max_lookahead, used)
         if dash_j is None and rep_j is None:
+            # Expected-title fallback: a repealed one-liner ("97. [Repealed.]")
+            # has no body and no repealer word, so neither the dash nor the
+            # REP window above fires. Confirm it by its own title matching
+            # the ToC title for num (the ToC lists repealed sections too).
+            # The ToC title may carry the following sub-heading on the same
+            # entry ("[Repealed.]. Anomalous Mortgages"), which in the body
+            # sits on the next line, so join continuation lines (stopping at
+            # the next numbered marker) before matching.
+            key = exp_titles.get(num)
+            if key:
+                cand = _norm_title(t)
+                if not title_matches(num, cand):
+                    parts = [t]
+                    for j in range(i + 1, min(i + 1 + TITLE_CONT_LINES + 1,
+                                              len(lines))):
+                        ln = lines[j]
+                        if ln["kind"] in ("header", "boilerplate", "separator"):
+                            break
+                        if NUMHEAD_RE.match(ln["text"]) \
+                                or NUMDOT_RE.match(fref_strip(ln["text"])):
+                            break
+                        parts.append(ln["text"])
+                        if title_matches(num, _norm_title(" ".join(parts))):
+                            break
+                    cand = _norm_title(" ".join(parts))
+                ok, _ = _increasing(num, last_base)
+                if ok is not None and title_matches(num, cand):
+                    return accept(i, num, _clean_title(t), "D", i,
+                                  "omitted"), used
             return None, used
         ok, _ = _increasing(num, last_base)
         if ok is None:
@@ -518,6 +677,9 @@ def scan_document(doc, start_page=0):
             if open_group is not None:
                 close_group()
             ln["label"] = "header"
+            if not in_schedule and SCHEDULE_HDR_RE.match(s):
+                in_schedule = True
+                schedule_line = ln["i"]
             ch_txt = chapter_head(s)
             if ch_txt:
                 chapter = ch_txt.rstrip()
@@ -528,6 +690,30 @@ def scan_document(doc, start_page=0):
                 chapter_pending = False
             else:
                 chapter_pending = None
+            i += 1
+            continue
+        if not in_schedule and SCHEDULE_HDR_RE.match(s):
+            in_schedule = True
+            schedule_line = ln["i"]
+        if in_schedule and (NUMHEAD_RE.match(s)
+                            or NUMDOT_RE.match(fref_strip(s))):
+            # schedule table row, not a section: schedules sit after the
+            # last section and their rows are numbered continuously, so
+            # rows past the last section number would leak as sections.
+            _sn = NUMHEAD_RE.match(s)
+            _sn = _sn.group(1) if _sn else \
+                (NUMDOT_RE.match(fref_strip(s)).group(1)
+                 if NUMDOT_RE.match(fref_strip(s)) else "?")
+            rejected.append((lines[i]["page"] + 1, s[:90],
+                             f"schedule-row {_sn} rejected (in schedule)"))
+            if open_group is not None:
+                open_group["members"].append(i)
+                ln["label"] = "footnote"
+                ln["group"] = open_group["id"]
+                ln["cls"] = "footnote"
+            else:
+                start_group(i)
+                ln["cls"] = "footnote"
             i += 1
             continue
         if NUMHEAD_RE.match(s):
@@ -585,7 +771,8 @@ def scan_document(doc, start_page=0):
                 m1 = NUMDOT_RE.match(st2)
                 if (m1 and m1.group(1) == "1") or V.FOOT_RE.match(s) \
                         or FREF_RE.match(s.lstrip()) or REP_RE.search(s) \
-                        or FOOTNOTE_CITE_RE.match(st2):
+                        or FOOTNOTE_CITE_RE.match(st2) \
+                        or AMEND_CITE_RE.match(st2):
                     start_group(i)
                     ln["cls"] = "footnote"
                 else:
@@ -601,7 +788,12 @@ def scan_document(doc, start_page=0):
 
     # spans: [marker.line, next.marker.line)
     for k, mk in enumerate(markers):
-        nxt = markers[k + 1]["line"] if k + 1 < len(markers) else len(lines)
+        if k + 1 < len(markers):
+            nxt = markers[k + 1]["line"]
+        elif schedule_line is not None:
+            nxt = schedule_line
+        else:
+            nxt = len(lines)
         mk["start"] = mk["line"]
         mk["end"] = nxt
     first_start = markers[0]["line"] if markers else len(lines)
@@ -792,6 +984,74 @@ def scan_document(doc, start_page=0):
         lo, hi = min(covered), max(covered)
         gaps = [n for n in range(lo, hi + 1) if n not in covered]
 
+    # Synthetic fill: a ToC-listed section that is absent from the body and
+    # whose ToC title declares it repealed/omitted (T.P.A. s97 "97.
+    # [Repealed.].").  The body prints no line for these - the sequence goes
+    # 96 -> stray "297." -> "Schedule." -> 98 - so no line-matching fallback
+    # can find them.  Insert an empty-span marker (line = next real
+    # marker's line, so start == end) so G2 coverage holds; steps 3-5 give
+    # it a synthetic text body.  Only repealed/omitted titles are filled: a
+    # non-repeal miss is a real scanner failure that G2 must keep surfacing.
+    # Runs after the footnote-text assignment (markers[oid] is a position
+    # index there), so existing ids are left alone and only the new
+    # markers carry a fresh id equal to their insertion position.
+    if expected:
+        found = {mk["number"] for mk in markers}
+        synthetics = []
+        for e in expected:
+            if isinstance(e, dict):
+                n_, t_ = e.get("number"), e.get("title")
+            else:
+                n_, t_ = e[0], e[1]
+            if not n_ or str(n_) in found:
+                continue
+            n_ = str(n_)
+            t_ = (t_ or "").strip()
+            if not re.search(r"(?i:repealed|omitted|\bRep\.)", t_):
+                continue
+            b = base_of(n_)
+            nxt_mk = None
+            for mk in markers:
+                if mk["base"] > b:
+                    nxt_mk = mk
+                    break
+            if nxt_mk is None:
+                continue
+            synthetics.append({
+                "number": n_, "title": t_ or None, "base": b,
+                "line": nxt_mk["line"],
+                "page_1based": nxt_mk["page_1based"],
+                "form": "R", "restated": None,
+                "status_hint": "omitted",
+                "chapter": nxt_mk.get("chapter"),
+                "synthetic": True,
+                "synthetic_text": f"{n_}. {t_}" if t_ else f"{n_}. [Repealed.]",
+            })
+        for syn in synthetics:
+            ins = len(markers)
+            for k, mk in enumerate(markers):
+                if (mk["line"], mk["base"]) > (syn["line"], syn["base"]):
+                    ins = k
+                    break
+            nxt = markers[ins] if ins < len(markers) else None
+            syn["id"] = ins
+            syn["start"] = syn["line"]
+            syn["end"] = nxt["line"] if nxt else syn["line"]
+            syn["covers"] = []
+            syn["footnote_texts"] = []
+            markers.insert(ins, syn)
+        if synthetics:
+            covered = set()
+            for mk in markers:
+                if mk.get("covers"):
+                    covered.update(mk["covers"])
+                elif not suffix_of(mk["number"]):
+                    covered.add(base_of(mk["number"]))
+            gaps = []
+            if covered:
+                lo, hi = min(covered), max(covered)
+                gaps = [n for n in range(lo, hi + 1) if n not in covered]
+
     stats = {
         "markers": len(markers),
         "forms": {f: sum(1 for m in markers if m["form"] == f)
@@ -813,6 +1073,8 @@ def scan_document(doc, start_page=0):
         "lettered": [m["number"] for m in markers if suffix_of(m["number"])],
         "rejected": len(rejected),
         "lines": len(lines),
+        "schedule_page_1based": (lines[schedule_line]["page"] + 1
+                                  if schedule_line is not None else None),
     }
     return {"lines": lines, "markers": markers, "groups": groups,
             "stats": stats, "unknowns": unknowns,

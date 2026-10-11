@@ -1,0 +1,1868 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 106,
+    "footnote": 146,
+    "UNKNOWN": 1
+  },
+  "labels": {
+    "header": 85,
+    "boilerplate": 47,
+    "footnote": 360,
+    "page_number": 47
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 1540,
+      "page": 39,
+      "text": "2015.—Unless the parties otherwise agree, the amendments made to this Act by the Arbitration and",
+      "context": [
+        "made, done or taken under the corresponding provisions of this Act.",
+        "1[87. Effect of arbitral and related court proceedings commenced prior to 23rd October,",
+        "2015.—Unless the parties otherwise agree, the amendments made to this Act by the Arbitration and",
+        "Conciliation (Amendment) Act, 2015 shall—",
+        "(a) not apply to—"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 1924,
+      "page": 48,
+      "text": "16. The arbitrator has previous involvement in the case.",
+      "cls": "footnote"
+    },
+    {
+      "line": 92,
+      "page": 8,
+      "text": "1. Subs. by Act 3 of 2016, s. 2, for cl. (e) (w.e.f. 23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 321,
+      "page": 13,
+      "text": "3. Subs. by s. 6, ibid., for “the Chief Justice or the person or institution designated by him is final” (w.e.f. 23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 41,
+      "page": 7,
+      "text": "1. The proviso and Explanation omitted by the Jammu and Kashmir Reorganization (Adaptation of Central Laws) Order, 2020,",
+      "cls": "footnote"
+    },
+    {
+      "line": 320,
+      "page": 13,
+      "text": "2. Ins. by s. 6, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2072,
+      "page": 53,
+      "text": "3. Though the said UNCITRAL Model Law and Rules are intended to deal with international commercial",
+      "cls": "footnote"
+    },
+    {
+      "line": 2022,
+      "page": 51,
+      "text": "13. The arbitrator has a significant financial interest in one of the parties or the outcome of the case.",
+      "cls": "footnote"
+    },
+    {
+      "line": 374,
+      "page": 14,
+      "text": "1. Subs. by Act 3 of 2016, s. 6, for sub-section (12) (w.e.f.  23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1564,
+      "page": 40,
+      "text": "3. When signing, ratifying or acceding to this Convention, or notifying extension under article X",
+      "cls": "footnote"
+    },
+    {
+      "line": 1916,
+      "page": 48,
+      "text": "12. The arbitrator is a manager, director or part of the management, or has a similar controlling",
+      "cls": "footnote"
+    },
+    {
+      "line": 953,
+      "page": 26,
+      "text": "3. Subs. by Act 3 of 2016, s. 20, for cls. (a) and (b) (w.e.f. 23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1576,
+      "page": 40,
+      "text": "2. The term “agreement in writing” shall include an arbitral clause in a contract or an arbitration",
+      "cls": "footnote"
+    },
+    {
+      "line": 2061,
+      "page": 53,
+      "text": "2. The United Nations Commission on International Trade Law (UNCITRAL) adopted in 1985 the Model",
+      "cls": "footnote"
+    },
+    {
+      "line": 1578,
+      "page": 40,
+      "text": "3. The court of a Contracting State, when seized of an action in a matter in respect of which the",
+      "cls": "footnote"
+    },
+    {
+      "line": 376,
+      "page": 14,
+      "text": "3. Ins. by s. 7, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2030,
+      "page": 51,
+      "text": "17. The arbitrator holds shares, either directly or indirectly, in one of the parties or an affiliate of one",
+      "cls": "footnote"
+    },
+    {
+      "line": 1720,
+      "page": 44,
+      "text": "1. Each of the Contracting States recognises the validity of an agreement whether relating to existing",
+      "cls": "footnote"
+    },
+    {
+      "line": 1942,
+      "page": 49,
+      "text": "23. The arbitrator’s law firm has within the past three years acted for one of the parties or an affiliate",
+      "cls": "footnote"
+    },
+    {
+      "line": 626,
+      "page": 19,
+      "text": "1. Subs. by Act 3 of 2016, s. 14, for sub-section (3) (w.e.f. 23-10-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 2028,
+      "page": 51,
+      "text": "16. The arbitrator has previous involvement in the case.",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 23,
+      "page": 7,
+      "text": "1. Short title, extent and commencement.—(1) This Act may be called the Arbitration and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 37,
+      "page": 7,
+      "text": "2. Definitions.—(1) In this Part, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 41,
+      "page": 7,
+      "text": "1. The proviso and Explanation omitted by the Jammu and Kashmir Reorganization (Adaptation of Central Laws) Order, 2020,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 44,
+      "page": 7,
+      "text": "2. 22nd August, 1996, vide notification No. G.S.R 375(E), dated 22nd August, 1996, see Gazette of India, Extraordinary, Part II,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 92,
+      "page": 8,
+      "text": "1. Subs. by Act 3 of 2016, s. 2, for cl. (e) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 93,
+      "page": 8,
+      "text": "2. The words “a company or” omitted by s. 2, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 94,
+      "page": 8,
+      "text": "3. Ins. by s. 2, ibid. (w.e. f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 104,
+      "page": 9,
+      "text": "3. Receipt of written communications.—(1) Unless otherwise agreed by the parties,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 115,
+      "page": 9,
+      "text": "4. Waiver of right to object.—A party who knows that—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 121,
+      "page": 9,
+      "text": "5. Extent of judicial intervention.—Notwithstanding anything contained in any other law for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 124,
+      "page": 9,
+      "text": "6. Administrative assistance.—In order to facilitate the conduct of the arbitral proceedings, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 129,
+      "page": 9,
+      "text": "7. Arbitration agreement.—(1) In this Part, “arbitration agreement” means an agreement by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 139,
+      "page": 9,
+      "text": "1. Ins. by Act 3 of 2016, s. 3 (w. e. f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 146,
+      "page": 10,
+      "text": "8. Power to refer parties to arbitration where there is an arbitration agreement.—1[(1) A",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 185,
+      "page": 10,
+      "text": "1. Subs. by Act 3 of 2016, s. 4, for sub-section (1) (w. e. f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 186,
+      "page": 10,
+      "text": "2. Ins. by s. 4, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 199,
+      "page": 11,
+      "text": "8B. Power of the court, seized of matters under sections 34 or 37 of the Act, to refer the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 231,
+      "page": 12,
+      "text": "9. Interim measures, etc., by Court.—1[(1)] A party may, before or during arbitral proceedings or at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 259,
+      "page": 12,
+      "text": "10. Number of arbitrators.—(1) The parties are free to determine the number of arbitrators,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 263,
+      "page": 12,
+      "text": "11. Appointment of arbitrators.—(1) A person of any nationality may be an arbitrator, unless",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 275,
+      "page": 12,
+      "text": "1. S. 9 shall be renumbered as sub-section (1) thereof by s. 5, Act 3 of 2016 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 276,
+      "page": 12,
+      "text": "2. Ins. by s. 5, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 319,
+      "page": 13,
+      "text": "1. Subs. by Act 3 of 2016, s. 6, for “the Chief Justice or any person or institution designated by him” (w. e. f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 320,
+      "page": 13,
+      "text": "2. Ins. by s. 6, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 321,
+      "page": 13,
+      "text": "3. Subs. by s. 6, ibid., for “the Chief Justice or the person or institution designated by him is final” (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 322,
+      "page": 13,
+      "text": "4. Subs. by s. 6, ibid., for sub-section (8) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 323,
+      "page": 13,
+      "text": "5. Subs. by s. 6, ibid., for “the Chief Justice of India of India or the person or institution designated by him” (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 324,
+      "page": 13,
+      "text": "6. Subs. by s. 6, ibid., for sub-section (10) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 325,
+      "page": 13,
+      "text": "7. Subs. by s. 6, ibid., for “the Chief Justices of different High Courts or their designates, the Chief Justice or his designate to",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 358,
+      "page": 14,
+      "text": "12. Grounds for challenge.—4[(1) When a person is approached in connection with his possible",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 374,
+      "page": 14,
+      "text": "1. Subs. by Act 3 of 2016, s. 6, for sub-section (12) (w.e.f.  23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 375,
+      "page": 14,
+      "text": "2. Ins. by s. 6, ibid.(w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 376,
+      "page": 14,
+      "text": "3. Ins. by s. 7, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 377,
+      "page": 14,
+      "text": "4. Subs. by s. 8, ibid., for sub-section (1) (w.e.f.  23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 390,
+      "page": 15,
+      "text": "13. Challenge procedure.—(1) Subject to sub-section (4), the parties are free to agree on a procedure",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 406,
+      "page": 15,
+      "text": "14. Failure or impossibility to act.—(1) 2[The mandate of an arbitrator shall terminate and he shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 417,
+      "page": 15,
+      "text": "15. Termination of mandate and substitution of arbitrator.—(1) In addition to the circumstances",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 425,
+      "page": 15,
+      "text": "1. Ins. by Act 3 of 2016, s. 8 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 426,
+      "page": 15,
+      "text": "2. Subs. by s. 9, ibid., for “The mandate of an arbitrator shall terminate if” (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 433,
+      "page": 16,
+      "text": "16. Competence of arbitral tribunal to rule on its jurisdiction.—(1) The arbitral tribunal may rule",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 471,
+      "page": 16,
+      "text": "1. Subs. by Act 3 of 2016, s. 10, for s. 17 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 472,
+      "page": 16,
+      "text": "2. The words and figures “or at any time after the making of the arbitral award but before it is enforced in accordance with",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 481,
+      "page": 17,
+      "text": "18. Equal treatment of parties.—The parties shall be treated with equality and each party shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 483,
+      "page": 17,
+      "text": "19. Determination of rules of procedure.—(1) The arbitral tribunal shall not be bound by the Code",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 492,
+      "page": 17,
+      "text": "20. Place of arbitration.—(1) The parties are free to agree on the place of arbitration.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 499,
+      "page": 17,
+      "text": "21. Commencement of arbitral proceedings.—Unless otherwise agreed by the parties, the arbitral",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 502,
+      "page": 17,
+      "text": "22. Language.—(1) The parties are free to agree upon the language or languages to be used in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 511,
+      "page": 17,
+      "text": "23. Statements of claim and defence.—(1) Within the period of time agreed upon by the parties or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 523,
+      "page": 17,
+      "text": "1. Ins. by Act 3 of 2016, s. 11 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 528,
+      "page": 18,
+      "text": "24. Hearings and written proceedings.—(1) Unless otherwise agreed by the parties, the arbitral",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 544,
+      "page": 18,
+      "text": "25. Default of a party.—Unless otherwise agreed by the parties, where, without showing sufficient",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 554,
+      "page": 18,
+      "text": "26. Expert appointed by arbitral tribunal.—(1) Unless otherwise agreed by the parties, the arbitral",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 567,
+      "page": 18,
+      "text": "27. Court assistance in taking evidence.—(1) The arbitral tribunal, or a party with the approval of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 575,
+      "page": 18,
+      "text": "1. Ins. by Act 33 of 2019, s. 5 (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 576,
+      "page": 18,
+      "text": "2. Ins. by Act 3 of 2016, s. 12 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 577,
+      "page": 18,
+      "text": "3. Ins. by s. 13, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 593,
+      "page": 19,
+      "text": "28. Rules applicable to substance of dispute.—(1) Where the place of arbitration is situate in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 612,
+      "page": 19,
+      "text": "29.Decision making by panel of arbitrators.—(1) Unless otherwise agreed by the parties, in arbitral",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 626,
+      "page": 19,
+      "text": "1. Subs. by Act 3 of 2016, s. 14, for sub-section (3) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 627,
+      "page": 19,
+      "text": "2. Ins. by s. 15, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 628,
+      "page": 19,
+      "text": "3. Subs. by Act 33 of 2019, s. 6, for sub-section (1) (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 671,
+      "page": 20,
+      "text": "29B. Fast track procedure.—(1) Notwithstanding anything contained in this Act, the parties to an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 677,
+      "page": 20,
+      "text": "1. Ins. by Act 33 of 2019, s. 6 (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 696,
+      "page": 21,
+      "text": "30. Settlement.—(1) It is not incompatible with an arbitration agreement for an arbitral tribunal to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 707,
+      "page": 21,
+      "text": "31. Form and contents of arbitral award.—(1) An arbitral award shall be made in writing and shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 767,
+      "page": 22,
+      "text": "1. Subs. by Act 3 of 2016, s. 16, for cl. (b) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 768,
+      "page": 22,
+      "text": "2. Subs. by s. 16, ibid., for sub-section (8) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 769,
+      "page": 22,
+      "text": "3. Ins. by s.17, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 779,
+      "page": 23,
+      "text": "32. Termination of proceedings.—(1) The arbitral proceedings shall be terminated by the final",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 792,
+      "page": 23,
+      "text": "33. Correction and interpretation of award; additional award.—(1) Within thirty days from the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 816,
+      "page": 23,
+      "text": "34. Application for setting aside arbitral award.—(1) Recourse to a Court against an arbitral award",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 864,
+      "page": 24,
+      "text": "1. Subs. by Act 33 of 2019, s. 7, for “furnishes proof that” (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 865,
+      "page": 24,
+      "text": "2. Subs. by Act 3 of 2016, s. 18, for the Explanation (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 866,
+      "page": 24,
+      "text": "3. Ins. by s. 18, ibid. (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 894,
+      "page": 25,
+      "text": "35. Finality of arbitral awards.—Subject to this Part an arbitral award shall be final and binding on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 907,
+      "page": 25,
+      "text": "1. Ins. by Act 3 of 2016, s. 18 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 908,
+      "page": 25,
+      "text": "2. Subs. by s. 19, ibid., for s. 36 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 924,
+      "page": 26,
+      "text": "37. Appealable orders.—(1) 2[Notwithstanding anything contained in any other law for the time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 938,
+      "page": 26,
+      "text": "38. Deposits.—(1) The arbitral tribunal may fix the amount of the deposit or supplementary deposit,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 951,
+      "page": 26,
+      "text": "1. Ins. by Act 3 of 2021, s. 2 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 952,
+      "page": 26,
+      "text": "2. Subs. by Act 33 of 2019, s. 8, for “An appeal” (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 953,
+      "page": 26,
+      "text": "3. Subs. by Act 3 of 2016, s. 20, for cls. (a) and (b) (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 955,
+      "page": 27,
+      "text": "39. Lien on arbitral award and deposits as to costs.—(1) Subject to the provisions of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 970,
+      "page": 27,
+      "text": "40. Arbitration agreement not to be discharged by death of party thereto.—(1) An arbitration",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 979,
+      "page": 27,
+      "text": "41. Provisions in case of insolvency.—(1) Where it is provided by a term in a contract to which an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 992,
+      "page": 27,
+      "text": "42. Jurisdiction.—Notwithstanding anything contained elsewhere in this Part or in any other law for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1001,
+      "page": 27,
+      "text": "42B. Protection of action taken in good faith.—No suit or other legal proceedings shall lie against",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1004,
+      "page": 27,
+      "text": "1. Ins. by Act 33 of 2019, s. 9 (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1006,
+      "page": 28,
+      "text": "43. Limitations.—(1) The Limitation Act, 1963 (36 of 1963), shall apply to arbitrations as it applies",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1028,
+      "page": 28,
+      "text": "43A. Definitions. In this Part, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1033,
+      "page": 28,
+      "text": "43B. Establishment and incorporation of Arbitration Council of India.—(1) The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1043,
+      "page": 28,
+      "text": "43C. Composition of Council.–– (1) The Council shall consist of the following Members, namely:––",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1046,
+      "page": 28,
+      "text": "1. Ins. by Act 33 of 2019, s. 10 (w.e.f. 12-10-2023).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1073,
+      "page": 29,
+      "text": "43D. Duties and functions of Council.––(1) It shall be the duty of the Council to take all such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1098,
+      "page": 30,
+      "text": "43E. Vacancies, etc., not to invalidate proceedings of Council.—No act or proceeding of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1103,
+      "page": 30,
+      "text": "43F. Resignation of Members.—The Chairperson or the Full-time or Part-time Member may, by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1110,
+      "page": 30,
+      "text": "43G. Removal of Member.––(1) The Central Government may, remove a Member from his office if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1127,
+      "page": 30,
+      "text": "43H. Appointment of experts and constitution of Committees thereof.––The Council may,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1137,
+      "page": 31,
+      "text": "43K. Depository of awards.––The Council shall maintain an electronic depository of arbitral awards",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1140,
+      "page": 31,
+      "text": "43L. Power to make regulations by Council.––The Council may, in consultation with the Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1143,
+      "page": 31,
+      "text": "43M. Chief Executive Officer.––(1) There shall be a Chief Executive Officer of the Council, who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1158,
+      "page": 31,
+      "text": "44. Definition.—In this Chapter, unless the context otherwise requires, “foreign award” means an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1167,
+      "page": 31,
+      "text": "45. Power of judicial authority to refer parties to arbitration.—Notwithstanding anything",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1173,
+      "page": 31,
+      "text": "46. When foreign award binding.—Any foreign award which would be enforceable under this Chapter",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1178,
+      "page": 31,
+      "text": "1. Subs. by Act 3 of 2021, s. 3, for s. 43J (w.e.f. 4-11-2020).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1179,
+      "page": 31,
+      "text": "2. Subs. by Act 33 of 2019, s. 11, for “unless it finds” (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1181,
+      "page": 32,
+      "text": "47. Evidence.—(1) The party applying for the enforcement of a foreign award shall, at the time of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1195,
+      "page": 32,
+      "text": "48. Conditions for enforcement of foreign awards.—(1) Enforcement of a foreign award may be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1226,
+      "page": 32,
+      "text": "1. Subs. by Act 3 of 2016, s. 21, for the Explanation (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1227,
+      "page": 32,
+      "text": "2. Subs. by s. 22, ibid., for the Explanation (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1235,
+      "page": 33,
+      "text": "49. Enforcement of foreign awards.—Where the Court is satisfied that the foreign award is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1237,
+      "page": 33,
+      "text": "50. Appealable orders.—(1) 1[Notwithstanding anything contained in any other law for the time",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1245,
+      "page": 33,
+      "text": "51. Saving.—Nothing in this Chapter shall prejudice any rights which any person would have had of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1248,
+      "page": 33,
+      "text": "52. Chapter II not to apply.—Chapter II of this Part shall not apply in relation to foreign awards to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1252,
+      "page": 33,
+      "text": "53. Interpretation.—In this Chapter “foreign award” means an arbitral award on differences relating",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1266,
+      "page": 33,
+      "text": "54. Power of judicial authority to refer parties to arbitration.—Notwithstanding anything",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1274,
+      "page": 33,
+      "text": "55. Foreign awards when binding.—Any foreign award which would be enforceable under this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1276,
+      "page": 33,
+      "text": "1. Subs. by Act 33 of 2019, s. 12, for “An appeal” (w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1281,
+      "page": 34,
+      "text": "56. Evidence.—(1) The party applying for the enforcement of a foreign award shall, at the time of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1297,
+      "page": 34,
+      "text": "57. Conditions for enforcement of foreign awards.—(1) In order that a foreign award may be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1323,
+      "page": 34,
+      "text": "1. Subs. by Act 3 of 2016, s. 23, for the Explanation (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1324,
+      "page": 34,
+      "text": "2. Subs. by s. 24, ibid., for the Explanation (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1337,
+      "page": 35,
+      "text": "58. Enforcement of foreign awards.—Where the Court is satisfied that the foreign award is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1339,
+      "page": 35,
+      "text": "59. Appealable orders.—(1) An appeal shall lie from the order refusing—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1346,
+      "page": 35,
+      "text": "60. Saving.—Nothing in this Chapter shall prejudice any rights which any person would have had of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1351,
+      "page": 35,
+      "text": "61. Application and scope.—(1) Save as otherwise provided by any law for the time being in force",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1356,
+      "page": 35,
+      "text": "62. Commencement of conciliation proceedings.—(1) The party initiating conciliation shall send to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1366,
+      "page": 35,
+      "text": "63. Number of conciliators.—(1) There shall be one conciliator unless the parties agree that there",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1369,
+      "page": 35,
+      "text": "64. Appointment of conciliators.—(1) Subject to sub-section (2),—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1386,
+      "page": 36,
+      "text": "65. Submission of statements to conciliator.—(1) The conciliator, upon his appointment, may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1398,
+      "page": 36,
+      "text": "66. Conciliator not bound by certain enactments.—The conciliator is not bound by the Code of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1400,
+      "page": 36,
+      "text": "67. Role of conciliator.—(1) The conciliator shall assist the parties in an independent and impartial",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1413,
+      "page": 36,
+      "text": "68. Administrative assistance.—In order to facilitate the conduct of the conciliation proceedings, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1416,
+      "page": 36,
+      "text": "69. Communication between conciliator and parties.—(1) The conciliator may invite the parties to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1423,
+      "page": 37,
+      "text": "70. Disclosure of information.—When the conciliator receives factual information concerning the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1428,
+      "page": 37,
+      "text": "71. Co-operation of parties with conciliator.—The parties shall in good faith co-operate with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1431,
+      "page": 37,
+      "text": "72. Suggestions by parties for settlement of dispute.—Each party may, on his own initiative or at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1433,
+      "page": 37,
+      "text": "73. Settlement agreement.—(1) When it appears to the conciliator that there exist elements of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1445,
+      "page": 37,
+      "text": "74. Status and effect of settlement agreement.—The settlement agreement shall have the same",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1448,
+      "page": 37,
+      "text": "75. Confidentiality.—Notwithstanding anything contained in any other law for the time being in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1452,
+      "page": 37,
+      "text": "76. Termination of conciliation proceedings.—The conciliation proceedings shall be terminated—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1460,
+      "page": 37,
+      "text": "77. Resort to arbitral or judicial proceedings.—The parties shall not initiate, during the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1463,
+      "page": 37,
+      "text": "78. Costs.—(1) Upon termination of the conciliation proceedings, the conciliator shall fix the costs of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1475,
+      "page": 38,
+      "text": "79. Deposits.—(1) The conciliator may direct each party to deposit an equal amount as an advance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1484,
+      "page": 38,
+      "text": "80. Role of conciliator in other proceedings.—Unless otherwise agreed by the parties,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1491,
+      "page": 38,
+      "text": "81. Admissibility of evidence in other proceedings.—The parties shall not rely on or introduce as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1502,
+      "page": 38,
+      "text": "82. Power of High Court to make rules.—The High Court may make rules consistent with this Act",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1504,
+      "page": 38,
+      "text": "83. Removal of difficulties.—(1) If any difficulty arises in giving effect to the provisions of this Act,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1512,
+      "page": 38,
+      "text": "84. Power to make rules.—(1) The Central Government may, by notification in the Official Gazette,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1523,
+      "page": 39,
+      "text": "85. Repeal and savings.—(1) The Arbitration (Protocol and Convention) Act, 1937 (6 of 1937), the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1533,
+      "page": 39,
+      "text": "86. Repeal and saving.—(1) The Arbitration and Conciliation (Third) Ordinance, 1996 (Ord.27 of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1540,
+      "page": 39,
+      "text": "2015.—Unless the parties otherwise agree, the amendments made to this Act by the Arbitration and",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1551,
+      "page": 39,
+      "text": "1. Ins. by Act 33 of 2019, s. 13 (r.w.e.f. 30-8-2019).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1557,
+      "page": 40,
+      "text": "1. This Convention shall apply to the recognition and enforcement of arbitral awards made in the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1562,
+      "page": 40,
+      "text": "2. The term “arbitral awards” shall include not only awards made by arbitrators appointed for each",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1564,
+      "page": 40,
+      "text": "3. When signing, ratifying or acceding to this Convention, or notifying extension under article X",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1572,
+      "page": 40,
+      "text": "1. Each Contracting State shall recognise an agreement in writing under which the parties undertake",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1576,
+      "page": 40,
+      "text": "2. The term “agreement in writing” shall include an arbitral clause in a contract or an arbitration",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1578,
+      "page": 40,
+      "text": "3. The court of a Contracting State, when seized of an action in a matter in respect of which the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1589,
+      "page": 40,
+      "text": "1. To obtain the recognition and enforcement mentioned in the preceding article, the party applying",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1593,
+      "page": 40,
+      "text": "2. If the said award or agreement is not made in an official language of the country in which the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1599,
+      "page": 41,
+      "text": "1. Recognition and enforcement of the award may be refused, at the request of the party against",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1619,
+      "page": 41,
+      "text": "2. Recognition and enforcement of an arbitral award may also be refused if the competent authority in",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1631,
+      "page": 41,
+      "text": "1. The provisions of the present Convention shall not affect the validity of multilateral or bilateral",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1636,
+      "page": 41,
+      "text": "2. The Geneva Protocol on Arbitration Clauses of 1923 and the Geneva Convention on the Execution",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1640,
+      "page": 41,
+      "text": "1. This Convention shall be open until 31st December, 1958 for signature on behalf of any Member of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1645,
+      "page": 41,
+      "text": "2. This Convention shall be ratified and the instrument of ratification shall be deposited with the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1648,
+      "page": 41,
+      "text": "1. This Convention shall be open for accession to all States referred to in article VIII.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1649,
+      "page": 41,
+      "text": "2. Accession shall be effected by the deposit of an instrument of accession with the Secretary-General",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1653,
+      "page": 42,
+      "text": "1. Any State may, at the time of signature, ratification or accession, declare that this Convention shall",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1656,
+      "page": 42,
+      "text": "2. At any time thereafter any such extension shall be made by notification addressed to the Secretary-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1660,
+      "page": 42,
+      "text": "3. With respect to those territories to which this Convention is not extended at the time of signature,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1681,
+      "page": 42,
+      "text": "1. This Convention shall come into force on the ninetieth day following the date of deposit of the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1683,
+      "page": 42,
+      "text": "2. For each State ratifying or acceding to this Convention after the deposit of the third instrument of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1687,
+      "page": 42,
+      "text": "1. Any Contracting State may denounce this Convention by a written notification to the Secretary-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1690,
+      "page": 42,
+      "text": "2. Any State which has made a declaration or notification under article X may, at any time thereafter,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1694,
+      "page": 42,
+      "text": "3. This Convention shall continue to be applicable to arbitral awards in respect of which recognition",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1709,
+      "page": 43,
+      "text": "1. This Convention, of which the Chinese, English, French, Russian and Spanish texts shall be",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1711,
+      "page": 43,
+      "text": "2. The Secretary-General of the United Nations shall transmit a certified copy of this Convention to",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1720,
+      "page": 44,
+      "text": "1. Each of the Contracting States recognises the validity of an agreement whether relating to existing",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1730,
+      "page": 44,
+      "text": "2. The arbitral procedure, including the constitution of the Arbitral Tribunal, shall be governed by the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1736,
+      "page": 44,
+      "text": "3. Each Contracting State undertakes to ensure the execution by its authorities and in accordance with",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1738,
+      "page": 44,
+      "text": "4. The Tribunals of the Contracting Parties, on being seized of a dispute regarding a contract made",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1744,
+      "page": 44,
+      "text": "5. The present Protocol, which shall remain open for signature by all States, shall be ratified. The",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1747,
+      "page": 44,
+      "text": "6. The present Protocol will come into force as soon as two ratifications have been deposited.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1750,
+      "page": 44,
+      "text": "7. The present Protocol may be denounced by any Contracting State on giving one year's notice.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1755,
+      "page": 44,
+      "text": "8. The Contracting States may declare that their acceptance of the present Protocol does not include",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1889,
+      "page": 47,
+      "text": "1. Ins. by Act 3 of 2016, s. 25 (w.e.f. 23-10-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1896,
+      "page": 48,
+      "text": "1. The arbitrator is an employee, consultant, advisor or has any other past or present business",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1898,
+      "page": 48,
+      "text": "2. The arbitrator currently represents or advises one of the parties or an affiliate of one of the parties.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1899,
+      "page": 48,
+      "text": "3. The arbitrator currently represents the lawyer or law firm acting as counsel for one of the parties.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1900,
+      "page": 48,
+      "text": "4. The arbitrator is a lawyer in the same law firm which is representing one of the parties.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1901,
+      "page": 48,
+      "text": "5. The arbitrator is a manager, director or part of the management, or has a similar controlling",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1905,
+      "page": 48,
+      "text": "6. The arbitrator’s law firm had a previous but terminated involvement in the case without the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1907,
+      "page": 48,
+      "text": "7. The arbitrator’s law firm currently has a significant commercial relationship with one of the parties",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1909,
+      "page": 48,
+      "text": "8. The arbitrator regularly advises the appointing party or an affiliate of the appointing party even",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1911,
+      "page": 48,
+      "text": "9. The arbitrator has a close family relationship with one of the parties and in the case of companies",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1913,
+      "page": 48,
+      "text": "10. A close family member of the arbitrator has a significant financial interest in one of the parties or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1915,
+      "page": 48,
+      "text": "11.The arbitrator is a legal representative of an entity that is a party in the arbitration.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1916,
+      "page": 48,
+      "text": "12. The arbitrator is a manager, director or part of the management, or has a similar controlling",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1918,
+      "page": 48,
+      "text": "13. The arbitrator has a significant financial interest in one of the parties or the outcome of the case.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1919,
+      "page": 48,
+      "text": "14. The arbitrator regularly advises the appointing party or an affiliate of the appointing party, and the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1922,
+      "page": 48,
+      "text": "15. The arbitrator has given legal advice or provided an expert opinion on the dispute to a party or an",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1924,
+      "page": 48,
+      "text": "16. The arbitrator has previous involvement in the case.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1926,
+      "page": 48,
+      "text": "17. The arbitrator holds shares, either directly or indirectly, in one of the parties or an affiliate of one",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1928,
+      "page": 48,
+      "text": "18. A close family member of the arbitrator has a significant financial interest in the outcome of the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1930,
+      "page": 48,
+      "text": "19. The arbitrator or a close family member of the arbitrator has a close relationship with a third party",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1934,
+      "page": 49,
+      "text": "20. The arbitrator has within the past three years served as counsel for one of the parties or an affiliate",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1938,
+      "page": 49,
+      "text": "21. The arbitrator has within the past three years served as counsel against one of the parties or an",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1940,
+      "page": 49,
+      "text": "22. The arbitrator has within the past three years been appointed as arbitrator on two or more",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1942,
+      "page": 49,
+      "text": "23. The arbitrator’s law firm has within the past three years acted for one of the parties or an affiliate",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1944,
+      "page": 49,
+      "text": "24. The arbitrator currently serves, or has served within the past three years, as arbitrator in another",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1947,
+      "page": 49,
+      "text": "25. The arbitrator and another arbitrator are lawyers in the same law firm.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1949,
+      "page": 49,
+      "text": "26. The arbitrator was within the past three years a partner of, or otherwise affiliated with, another",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1951,
+      "page": 49,
+      "text": "27. A lawyer in the arbitrator’s law firm is an arbitrator in another dispute involving the same party or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1953,
+      "page": 49,
+      "text": "28. A close family member of the arbitrator is a partner or employee of the law firm representing one",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1955,
+      "page": 49,
+      "text": "29. The arbitrator has within the past three years received more than three appointments by the same",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1958,
+      "page": 49,
+      "text": "30. The arbitrator’s law firm is currently acting adverse to one of the parties or an affiliate of one of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1960,
+      "page": 49,
+      "text": "31. The arbitrator had been associated within the past three years with a party or an affiliate of one of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1963,
+      "page": 49,
+      "text": "32. The arbitrator holds shares, either directly or indirectly, which by reason of number or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1966,
+      "page": 49,
+      "text": "33. The arbitrator holds a position in an arbitration institution with appointing authority over the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1968,
+      "page": 49,
+      "text": "34. The arbitrator is a manager, director or part of the management, or has a similar controlling",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2000,
+      "page": 51,
+      "text": "1. The arbitrator is an employee, consultant, advisor or has any other past or present business",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2002,
+      "page": 51,
+      "text": "2. The arbitrator currently represents or advises one of the parties or an affiliate of one of the parties.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2003,
+      "page": 51,
+      "text": "3. The arbitrator currently represents the lawyer or law firm acting as counsel for one of the parties.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2004,
+      "page": 51,
+      "text": "4. The arbitrator is a lawyer in the same law firm which is representing one of the parties.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2005,
+      "page": 51,
+      "text": "5. The arbitrator is a manager, director or part of the management, or has a similar controlling",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2008,
+      "page": 51,
+      "text": "6. The arbitrator’s law firm had a previous but terminated involvement in the case without the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2010,
+      "page": 51,
+      "text": "7. The arbitrator’s law firm currently has a significant commercial relationship with one of the parties",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2012,
+      "page": 51,
+      "text": "8. The arbitrator regularly advises the appointing party or an affiliate of the appointing party even",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2015,
+      "page": 51,
+      "text": "9. The arbitrator has a close family relationship with one of the parties and in the case of companies",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2017,
+      "page": 51,
+      "text": "10. A close family member of the arbitrator has a significant financial interest in one of the parties or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2019,
+      "page": 51,
+      "text": "11. The arbitrator is a legal representative of an entity that is a party in the arbitration.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2020,
+      "page": 51,
+      "text": "12. The arbitrator is a manager, director or part of the management, or has a similar controlling",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2022,
+      "page": 51,
+      "text": "13. The arbitrator has a significant financial interest in one of the parties or the outcome of the case.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2023,
+      "page": 51,
+      "text": "14. The arbitrator regularly advises the appointing party or an affiliate of the appointing party, and the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2026,
+      "page": 51,
+      "text": "15. The arbitrator has given legal advice or provided an expert opinion on the dispute to a party or an",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2028,
+      "page": 51,
+      "text": "16. The arbitrator has previous involvement in the case.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2030,
+      "page": 51,
+      "text": "17. The arbitrator holds shares, either directly or indirectly, in one of the parties or an affiliate of one",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2032,
+      "page": 51,
+      "text": "18. A close family member of the arbitrator has a significant financial interest in the outcome of the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2034,
+      "page": 51,
+      "text": "19. The arbitrator or a close family member of the arbitrator has a close relationship with a third party",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2061,
+      "page": 53,
+      "text": "2. The United Nations Commission on International Trade Law (UNCITRAL) adopted in 1985 the Model",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2072,
+      "page": 53,
+      "text": "3. Though the said UNCITRAL Model Law and Rules are intended to deal with international commercial",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2077,
+      "page": 53,
+      "text": "4. The main objectives of the Bill are as under:",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 2095,
+      "page": 53,
+      "text": "5. The Bill seeks to achieve the above objects.",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

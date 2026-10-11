@@ -1,0 +1,37 @@
+{
+  "expected_source": "toc",
+  "mode": "toc",
+  "header_page_1based": 1,
+  "toc_pages_1based": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "expected_count": 148,
+  "gaps": [],
+  "duplicates": [],
+  "deduped_dropped": 0,
+  "anchor_value": 511,
+  "anchor_max_plain_seen": 137,
+  "anchor_ok": false,
+  "lettered": [
+    "53A",
+    "59A",
+    "60A",
+    "60B",
+    "63A",
+    "65A",
+    "67A",
+    "69A",
+    "114A",
+    "130A",
+    "135A"
+  ],
+  "rejected_count": 163,
+  "body_markers": 148,
+  "body_max_plain": 137,
+  "body_gaps": []
+}

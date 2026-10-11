@@ -109,15 +109,25 @@
     "G6": {
       "status": "PASS",
       "evidence": {
-        "primary_fragment_rate": 0.999587,
-        "diagnostic_whole_record_rate": 0.975962,
-        "diagnostic_line_rate": 0.999616,
+        "primary_fragment_rate": 0.999579,
+        "diagnostic_whole_record_rate": 0.975732,
+        "diagnostic_line_rate": 1.0,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [],
-        "windows": 9675,
+        "windows": 9501,
         "primary_failures": 1,
-        "mega_table_records": [
-          "crpc-1973:s:484:0"
+        "mega_table_records": [],
+        "table_content_records": [
+          "crpc-1973:s:164a:0",
+          "crpc-1973:s:213:0",
+          "crpc-1973:s:251:0",
+          "crpc-1973:s:263:0",
+          "crpc-1973:s:265b:0",
+          "crpc-1973:s:292:0",
+          "crpc-1973:s:294:0",
+          "crpc-1973:s:355:0",
+          "crpc-1973:s:50:0",
+          "crpc-1973:s:53a:0"
         ],
         "worst_5": [
           {
@@ -220,30 +230,26 @@
           [
             "439",
             0
-          ],
-          [
-            "484",
-            0
           ]
         ],
         "unflagged_over_limit": [],
-        "longest_text": 170893
+        "longest_text": 17557
       }
     },
     "G9": {
       "status": "PASS",
       "evidence": {
-        "footnotes_total": 240,
-        "footnotes_attached": 204,
-        "footnotes_unattached": 35,
-        "footnotes_ambiguous": 1,
-        "footnote_lines_detected": 272,
-        "labelled_footnote_lines": 272,
-        "attached_lines": 207,
-        "unattached_lines": 65,
-        "scope_boundaries": 866,
+        "footnotes_total": 245,
+        "footnotes_attached": 191,
+        "footnotes_unattached": 40,
+        "footnotes_ambiguous": 14,
+        "footnote_lines_detected": 335,
+        "labelled_footnote_lines": 335,
+        "attached_lines": 194,
+        "unattached_lines": 141,
+        "scope_boundaries": 864,
         "chapter_notes": 2,
-        "groups": 117,
+        "groups": 120,
         "accounting_ok": true,
         "records_containing_footnote_lines": []
       }

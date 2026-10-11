@@ -1,0 +1,230 @@
+{
+  "act_id": "ndps-1985",
+  "gates": {
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "page1_has_act_name": true,
+        "page1_has_year": true,
+        "seed": 20261010,
+        "middle_pages_0based": [
+          14,
+          20,
+          24,
+          34,
+          38
+        ],
+        "page_hits": [
+          {
+            "page_1based": 15,
+            "markers_found": [
+              "11",
+              "12",
+              "13"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 21,
+            "markers_found": [
+              "32"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 25,
+            "markers_found": [
+              "38",
+              "39",
+              "40"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 35,
+            "markers_found": [
+              "68B"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 39,
+            "markers_found": [
+              "68J",
+              "68K",
+              "68L"
+            ],
+            "in_record_span": true
+          }
+        ]
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "mode": "toc",
+        "expected_count": 127,
+        "records": 127,
+        "missing": [],
+        "extra": [],
+        "anchor_max_plain_seen": 83,
+        "anchor_ok": false
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "part0_records": 127,
+        "needed_prefix_stripping": 27,
+        "failures": []
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "page_number_lines": 0,
+        "hyphen_breaks": 0,
+        "boilerplate": 0,
+        "repeated_30pct_lines": 0,
+        "examples_page_number": [],
+        "examples_hyphen": [],
+        "examples_boiler": [],
+        "examples_repeats": []
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "records": 127,
+        "duplicate_ids": [],
+        "malformed_ids": [],
+        "empty_texts": [],
+        "missing_or_null_nonnullable": []
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "primary_fragment_rate": 0.998201,
+        "diagnostic_whole_record_rate": 0.986702,
+        "diagnostic_line_rate": 1.0,
+        "raw_reference": "get_text('text', sort=True)",
+        "reference_repeated_lines_stripped": [
+          "IndiaCode"
+        ],
+        "windows": 2223,
+        "primary_failures": 4,
+        "mega_table_records": [],
+        "table_content_records": [
+          "ndps-1985:s:31a:0",
+          "ndps-1985:s:52a:0",
+          "ndps-1985:s:68p:0"
+        ],
+        "worst_5": [
+          {
+            "id": "ndps-1985:s:9:0",
+            "missing_windows": 1,
+            "page_range": [
+              12,
+              13
+            ]
+          },
+          {
+            "id": "ndps-1985:s:13:0",
+            "missing_windows": 1,
+            "page_range": [
+              15,
+              15
+            ]
+          },
+          {
+            "id": "ndps-1985:s:24:0",
+            "missing_windows": 1,
+            "page_range": [
+              18,
+              18
+            ]
+          },
+          {
+            "id": "ndps-1985:s:68n:0",
+            "missing_windows": 1,
+            "page_range": [
+              39,
+              40
+            ]
+          }
+        ],
+        "threshold": 0.99
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "parents": 127,
+        "markers": 127,
+        "problems": []
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "limit": 3000,
+        "flagged_long_unsplit": [
+          [
+            "10",
+            0
+          ],
+          [
+            "2",
+            0
+          ],
+          [
+            "31A",
+            0
+          ],
+          [
+            "36A",
+            0
+          ],
+          [
+            "42",
+            0
+          ],
+          [
+            "68B",
+            0
+          ],
+          [
+            "68H",
+            0
+          ],
+          [
+            "9",
+            0
+          ]
+        ],
+        "unflagged_over_limit": [],
+        "longest_text": 11243
+      }
+    },
+    "G9": {
+      "status": "PASS",
+      "evidence": {
+        "footnotes_total": 163,
+        "footnotes_attached": 106,
+        "footnotes_unattached": 43,
+        "footnotes_ambiguous": 14,
+        "footnote_lines_detected": 275,
+        "labelled_footnote_lines": 275,
+        "attached_lines": 108,
+        "unattached_lines": 167,
+        "scope_boundaries": 126,
+        "chapter_notes": 2,
+        "groups": 69,
+        "accounting_ok": true,
+        "records_containing_footnote_lines": []
+      }
+    }
+  },
+  "summary": "OK"
+}

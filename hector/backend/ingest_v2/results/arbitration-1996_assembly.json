@@ -1,0 +1,147 @@
+{
+  "act_id": "arbitration-1996",
+  "page_spanning_total": 23,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 7,
+      "page_end": 9,
+      "joins": [
+        {
+          "from_page": 7,
+          "to_page": 8,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "tion whether or not administered by permanent arbitral\ninstitution;\n(b) “arbitration agreement” means an agreement referred to in section 7;",
+          "after_head": "(c) “arbitral award” includes an interim award;\n(d) “arbitral tribunal” means a sole arbitrator or a panel of arbitrators;\n1[(e) “Court” mea"
+        },
+        {
+          "from_page": 8,
+          "to_page": 8,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "elationships, whether contractual or not, considered as commercial under the law in force in\nIndia and where at least one of the parties is—",
+          "after_head": "(i) an individual who is a national of, or habitually resident in, any country other than India;\nor\n(ii) a body corporate which is incorpora"
+        },
+        {
+          "from_page": 8,
+          "to_page": 9,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ertain issue, that\nfreedom shall include the right of the parties to authorise any person including an institution, to determine\nthat issue.",
+          "after_head": "(7) An arbitral award made under this Part shall be considered as a domestic award.\n(8) Where this Part—\n(a) refers to the fact that the par"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "page_start": 9,
+      "page_end": 10,
+      "joins": [
+        {
+          "from_page": 9,
+          "to_page": 10,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "elegrams or other means of telecommunication 1[including\ncommunication through electronic means] which provide a record of the agreement; or",
+          "after_head": "(c) an exchange of statements of claim and defence in which the existence of the agreement is\nalleged by one party and not denied by the oth"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "page_start": 10,
+      "page_end": 11,
+      "joins": [
+        {
+          "from_page": 10,
+          "to_page": 10,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " praying the Court to call upon\nthe other party to produce the original arbitration agreement or its duly certified copy before that Court.]",
+          "after_head": "(3) Notwithstanding that an application has been made under sub-section (1) and that the issue is\npending before the judicial authority, an "
+        },
+        {
+          "from_page": 10,
+          "to_page": 10,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "on (1) and that the issue is\npending before the judicial authority, an arbitration may be commenced or continued and an arbitral\naward made.",
+          "after_head": "Jammu and Kashmir and Ladakh (UTs).—\nInsertion of section 8A and section 8B.—After section 8, insert the following sections, namely:–\n“8A. P"
+        },
+        {
+          "from_page": 10,
+          "to_page": 11,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ed\nrepresentatives, affirming the mediated settlement as well as a clear undertaking of the parties to\nabide by the terms of the settlement;",
+          "after_head": "(e) if satisfied, the court shall pass an order in terms of the settlement;\n(f) if the main petition, in which the reference was made is pen"
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "page_start": 12,
+      "page_end": 14,
+      "joins": [
+        {
+          "from_page": 12,
+          "to_page": 13,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "her party; or\n(b) the two appointed arbitrators fail to agree on the third arbitrator within thirty days from the\ndate of their appointment,",
+          "after_head": "the appointment shall be made, upon request of a party, by 1[the Supreme Court or, as the case may be,\nthe High Court or any person or insti"
+        },
+        {
+          "from_page": 13,
+          "to_page": 13,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " shall, notwithstanding any judgment, decree or\norder of any Court, confine to the examination of the existence of an arbitration agreement.",
+          "after_head": "(6B) The designation of any person or institution by the Supreme Court or, as the case may be, the\nHigh Court, for the purposes of this sect"
+        },
+        {
+          "from_page": 13,
+          "to_page": 14,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " or its designate to whom the request has been first made] under the\nrelevant sub-section shall alone be competent to decide on the request.",
+          "after_head": "1[(12) (a) Where the matters referred to in sub-sections (4), (5), (6), (7), (8) and sub-section (10) arise\nin an international commercial a"
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "page_start": 14,
+      "page_end": 15,
+      "joins": [
+        {
+          "from_page": 14,
+          "to_page": 15,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": ", disclose to the parties in writing any circumstances referred to in sub-section (1) unless\nthey have already been informed of them by him.",
+          "after_head": "(3) An arbitrator may be challenged only if—\n(a) circumstances exist that give rise to justifiable doubts as to his independence or impartia"
+        }
+      ]
+    }
+  ]
+}

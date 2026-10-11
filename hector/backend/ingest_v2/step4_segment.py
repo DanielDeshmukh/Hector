@@ -120,8 +120,8 @@ def _plan_parts(lines, kept):
     return slices, cut_infos, None
 
 
-def segment_sections(doc, clean, start_page=0):
-    scan = S.scan_document(doc, start_page=start_page)
+def segment_sections(doc, clean, start_page=0, expected=None):
+    scan = S.scan_document(doc, start_page=start_page, expected=expected)
     lines = scan["lines"]
     by_number = {}
     for mk in scan["markers"]:
@@ -137,6 +137,17 @@ def segment_sections(doc, clean, start_page=0):
             continue
         kept = [k for k in range(mk["start"], mk["end"])
                 if lines[k]["label"] is None]
+        if mk.get("synthetic") and not kept:
+            # repealed-with-no-body section: the span is empty, so there
+            # are no lines to plan parts from. Reuse the clean section's
+            # synthetic text (number + ToC title) as a single part.
+            part = {"part_index": 0, "text": csec["text"],
+                    "page_start": csec["page_start"],
+                    "page_end": csec["page_end"],
+                    "flags": [], "lines": []}
+            out_sections.append({"number": csec["number"], "part_count": 1,
+                                 "parts": [part]})
+            continue
         slices, cut_infos, uns_len = _plan_parts(lines, kept)
         if slices is None:
             txt, _, p0, p1 = S.assemble_text(lines, kept)
@@ -207,7 +218,8 @@ def main():
 
     doc = V.fitz.open(str(src))
     sections, flagged, all_cuts = segment_sections(
-        doc, clean, start_page=V.body_scan_start(act_id))
+        doc, clean, start_page=V.body_scan_start(act_id),
+        expected=V.expected_list(act_id))
     doc.close()
 
     total_parts = sum(s["part_count"] for s in sections)

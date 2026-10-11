@@ -1,0 +1,910 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 107,
+    "footnote": 2,
+    "UNKNOWN": 7
+  },
+  "labels": {
+    "header": 26,
+    "boilerplate": 37,
+    "footnote": 10,
+    "page_number": 37
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [
+    {
+      "line": 1686,
+      "page": 42,
+      "text": "2. Consumer markets for goods and services have undergone drastic transformation since the",
+      "context": [
+        "the disposal of cases has not been fast due to various constraints. Several shortcomings have been n",
+        "while administering the various provisions of the said Act.",
+        "2. Consumer markets for goods and services have undergone drastic transformation since the",
+        "enactment of the Consumer Protection Act in 1986. The modern market place contains a plethora of",
+        "products and services. The emergence of global supply chains, rise in international trade and the ra"
+      ]
+    },
+    {
+      "line": 1696,
+      "page": 42,
+      "text": "3. Accordingly, a Bill, namely, the Consumer Protection Bill, 2018, was introduced in Lok Sabha on",
+      "context": [
+        "consumers. In view of this, it is proposed to repeal and reenact the Act.",
+        "IndiaCode",
+        "3. Accordingly, a Bill, namely, the Consumer Protection Bill, 2018, was introduced in Lok Sabha on",
+        "the 5th January, 2018 and was passed by that House on the 20th December, 2018. While the Bill was",
+        "pending consideration in Rajya Sabha, the Sixteenth Lok Sabha was dissolved and the Bill got lapsed."
+      ]
+    },
+    {
+      "line": 1700,
+      "page": 42,
+      "text": "4. The proposed Bill provides for the establishment of an executive agency to be known as the",
+      "context": [
+        "pending consideration in Rajya Sabha, the Sixteenth Lok Sabha was dissolved and the Bill got lapsed.",
+        "Hence, the present Bill, namely, the Consumer Protection Bill, 2019.",
+        "4. The proposed Bill provides for the establishment of an executive agency to be known as the",
+        "Central Consumer Protection Authority (CCPA) to promote, protect and enforce the rights of consumers",
+        "make interventions when necessary to prevent consumer detriment arising from unfair trade practices "
+      ]
+    },
+    {
+      "line": 1708,
+      "page": 42,
+      "text": "5. The Bill also envisages provisions for product liability action on account of harm caused to",
+      "context": [
+        "envisaged for the CCPA complements that of the sector regulators and duplication, overlap or potenti",
+        "conflict is avoided.",
+        "5. The Bill also envisages provisions for product liability action on account of harm caused to",
+        "consumers due to a defective product or by deficiency in services. Further, provision of “Mediation”",
+        "Alternate Dispute Resolution Mechanism has also been provided."
+      ]
+    },
+    {
+      "line": 1711,
+      "page": 42,
+      "text": " 6. The Bill provides for several provisions aimed at simplifying the consumer dispute adjudication",
+      "context": [
+        "consumers due to a defective product or by deficiency in services. Further, provision of “Mediation”",
+        "Alternate Dispute Resolution Mechanism has also been provided.",
+        " 6. The Bill provides for several provisions aimed at simplifying the consumer dispute adjudication",
+        "process of the Consumer Disputes Redressal Agencies, inter alia, relating to enhancing the pecuniary",
+        "jurisdiction of the Consumer Disputes Redressal Agencies; increasing minimum number of Members in"
+      ]
+    },
+    {
+      "line": 1716,
+      "page": 42,
+      "text": "7. The Bill seeks to achieve the above objectives.",
+      "context": [
+        "the State Consumer Disputes Redressal Commissions and provisions for consumers to file complaints",
+        "electronically, etc.",
+        "7. The Bill seeks to achieve the above objectives.",
+        " RAM VILAS PASWAN.",
+        "    NEW DELHI;"
+      ]
+    }
+  ],
+  "footnote_sample": [
+    {
+      "line": 1086,
+      "page": 28,
+      "text": "1. Ins. by Act 33 of 2021, s. 30 (w.e.f. 04-04-2021).",
+      "cls": "footnote"
+    },
+    {
+      "line": 36,
+      "page": 6,
+      "text": "1. 20th July, 2020.—S. 2 [Except clauses (4), (13), (14), (16), (40)], s. 3 to 9 (both inclusive), s. 28 to 73 (both inclusive) [Except",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 9,
+      "page": 6,
+      "text": "1. Short title, extent, commencement and application.—(1) This Act may be called the Consumer",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 19,
+      "page": 6,
+      "text": "2. Definitions.—In this Act, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 36,
+      "page": 6,
+      "text": "1. 20th July, 2020.—S. 2 [Except clauses (4), (13), (14), (16), (40)], s. 3 to 9 (both inclusive), s. 28 to 73 (both inclusive) [Except",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 383,
+      "page": 14,
+      "text": "3. Central Consumer Protection Council.—(1) The Central Government shall, by notification,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 393,
+      "page": 14,
+      "text": "4. Procedure for meetings of Central Council.—(1) The Central Council shall meet as and when",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 397,
+      "page": 14,
+      "text": "5. Objects of Central Council.—The objects of the Central Council shall be to render advice on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 399,
+      "page": 14,
+      "text": "6. State Consumer Protection Councils.—(1) Every State Government shall, by notification,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 413,
+      "page": 14,
+      "text": "7. Objects of State Council.—The objects of every State Council shall be to render advice on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 415,
+      "page": 14,
+      "text": "8. District Consumer Protection Council.—(1) The State Government shall, by notification,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 428,
+      "page": 15,
+      "text": "9. Objects of District Council.—The objects of every District Council shall be to render advice on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 432,
+      "page": 15,
+      "text": "10. Establishment of Central Consumer Protection Authority.—(1) The Central Government",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 445,
+      "page": 15,
+      "text": "11. Qualifications, method of recruitment, etc., of Chief Commissioner and Commissioners.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 450,
+      "page": 15,
+      "text": "12. Vacancy, etc., not to invalidate proceedings of Central Authority.—No act or proceeding of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 456,
+      "page": 15,
+      "text": "13. Appointment of officers, experts, professionals and other employees of Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 468,
+      "page": 16,
+      "text": "14. Procedure of Central Authority.—(1) The Central Authority shall regulate the procedure for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 476,
+      "page": 16,
+      "text": "15. Investigation Wing.—(1) The Central Authority shall have an Investigation Wing headed by a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 492,
+      "page": 16,
+      "text": "16.  Power of District Collector.—The District Collector (by whatever name called) may, on a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 498,
+      "page": 16,
+      "text": "17. Complaints to authorities.—A complaint relating to violation of consumer rights or unfair trade",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 502,
+      "page": 16,
+      "text": "18. Powers and functions of Central Authority.—(1) The Central Authority shall—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 539,
+      "page": 17,
+      "text": "19. Power of Central Authority to refer matter for investigation or to other Regulator.—(1) The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 552,
+      "page": 17,
+      "text": "20. Power of Central Authority to recall goods, etc.—Where the Central Authority is satisfied on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 562,
+      "page": 18,
+      "text": "21. Power of Central Authority to issue directions and penalties against false or misleading",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 598,
+      "page": 18,
+      "text": "22. Search and seizure.—(1) For the purpose of conducting an investigation after preliminary",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 619,
+      "page": 19,
+      "text": "23. Designation of any statutory authority or body to function as Central Authority.—The",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 622,
+      "page": 19,
+      "text": "24. Appeal.—A person aggrieved by any order passed by the Central Authority under sections 20 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 625,
+      "page": 19,
+      "text": "25. Grants by Central Government.—The Central Government may, after due appropriation made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 629,
+      "page": 19,
+      "text": "26. Accounts and audit.—(1) The Central Authority shall maintain proper accounts and other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 645,
+      "page": 19,
+      "text": "27. Furnishing of annual reports, etc.—(1) The Central Authority shall prepare once in every year,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 653,
+      "page": 19,
+      "text": "28. Establishment of District Consumer Disputes Redressal Commission.—(1) The State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 663,
+      "page": 20,
+      "text": "29. Qualifications, etc., of President and members of District Commission.—The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 667,
+      "page": 20,
+      "text": "30. Salaries, allowances and other terms and conditions of service of President and members of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 671,
+      "page": 20,
+      "text": "31. Transitional provision.—Any person appointed as President or, as the case may be, a member of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 676,
+      "page": 20,
+      "text": "32. Vacancy in office of member of District Commission.—If, at any time, there is a vacancy in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 684,
+      "page": 20,
+      "text": "33. Officers and other employees of District Commission.—(1) The State Government shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 691,
+      "page": 20,
+      "text": "34. Jurisdiction of District Commission.—(1) Subject to the other provisions of this Act, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 710,
+      "page": 21,
+      "text": "35. Manner in which complaint shall be made.—(1) A complaint, in relation to any goods sold or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 732,
+      "page": 21,
+      "text": "36. Proceedings before District Commission.—(1) Every proceeding before the District",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 746,
+      "page": 21,
+      "text": "37.  Reference to mediation.—(1) At the first hearing of the complaint after its admission, or at any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 755,
+      "page": 22,
+      "text": "38. Procedure on admission of complaint.—(1) The District Commission shall, on admission of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 858,
+      "page": 24,
+      "text": "39. Findings of District Commission.—(1) Where the District Commission is satisfied that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 902,
+      "page": 25,
+      "text": "40. Review by District Commission in certain cases.—The District Commission shall have the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 905,
+      "page": 25,
+      "text": "41. Appeal against order of District Commission.—Any person aggrieved by an order made by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 917,
+      "page": 25,
+      "text": "42. Establishment of State Consumer Disputes Redressal Commission.—(1) The State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 929,
+      "page": 25,
+      "text": "43. Qualifications, etc., of President and members of State Commission.—The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 933,
+      "page": 25,
+      "text": "44. Salaries, allowances and other terms and conditions of service of President and members of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 937,
+      "page": 25,
+      "text": "45. Transitional provision.—Any person appointed as President or, as the case may be, a member of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 940,
+      "page": 25,
+      "text": "46. Officers and employees of State Commission.—(1) The State Government shall determine the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 949,
+      "page": 26,
+      "text": "47. Jurisdiction of State Commission.—(1) Subject to the other provisions of this Act, the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 987,
+      "page": 26,
+      "text": "48. Transfer of cases.—On the application of the complainant or of its own motion, the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 990,
+      "page": 26,
+      "text": "49. Procedure applicable to State Commission.—(1) The provisions relating to complaints under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 996,
+      "page": 27,
+      "text": "50. Review by State Commission in certain cases.—The State Commission shall have the power to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 999,
+      "page": 27,
+      "text": "51. Appeal to National Commission.—(1) Any person aggrieved by an order made by the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1021,
+      "page": 27,
+      "text": "52. Hearing of appeal.—An appeal filed before the State Commission or the National Commission,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1032,
+      "page": 27,
+      "text": "53. Establishment of National Consumer Disputes Redressal Commission.—(1) The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1040,
+      "page": 27,
+      "text": "54. Composition of National Commission.—The National Commission shall consist of—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1044,
+      "page": 28,
+      "text": "55. Qualifications, etc., of President and members of National Commission.—(1) The Central",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1062,
+      "page": 28,
+      "text": "56. Transitional provision.—The President and every other member appointed immediately before",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1066,
+      "page": 28,
+      "text": "57. Other officers and employees of National Commission.—(1) The Central Government shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1073,
+      "page": 28,
+      "text": "58. Jurisdiction of National Commission.—(1) Subject to the other provisions of this Act, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1086,
+      "page": 28,
+      "text": "1. Ins. by Act 33 of 2021, s. 30 (w.e.f. 04-04-2021).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1102,
+      "page": 29,
+      "text": "59. Procedure applicable to National Commission.—(1) The provisions relating to complaints",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1108,
+      "page": 29,
+      "text": "60. Review by National Commission in certain cases.—The National Commission shall have the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1111,
+      "page": 29,
+      "text": "61. Power to set aside ex parte orders.—Where an order is passed by the National Commission ex",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1113,
+      "page": 29,
+      "text": "62. Transfer of cases.—On the application of the complainant or of its own motion, the National",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1117,
+      "page": 29,
+      "text": "63. Vacancy in office of President of National Commission.—When the office of President of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1125,
+      "page": 29,
+      "text": "64. Vacancies or defects in appointment not to invalidate orders.—No act or proceeding of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1128,
+      "page": 29,
+      "text": "65. Service of notice, etc.—(1) All notices, required by this Act to be served, shall be served by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1158,
+      "page": 30,
+      "text": "66. Experts to assist National Commission or State Commission.—Where the National",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1162,
+      "page": 30,
+      "text": "67. Appeal against order of National Commission.—Any person, aggrieved by an order made by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1171,
+      "page": 30,
+      "text": "68. Finality of orders.—Every order of a District Commission or the State Commission or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1174,
+      "page": 30,
+      "text": "69. Limitation period.—(1) The District Commission, the State Commission or the National",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1184,
+      "page": 30,
+      "text": "70. Administrative control.—(1) The National Commission shall have the authority to lay down",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1211,
+      "page": 31,
+      "text": "71. Enforcement of orders of District Commission, State Commission and National",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1217,
+      "page": 31,
+      "text": "72. Penalty for non-compliance of order.—(1) Whoever fails to comply with any order made by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1230,
+      "page": 31,
+      "text": "73. Appeal against order passed under section 72.—(1) Notwithstanding anything contained in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1246,
+      "page": 32,
+      "text": "74. Establishment of consumer mediation cell.—(1) The State Government shall establish, by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1260,
+      "page": 32,
+      "text": "75. Empanelment of mediators.—(1) For the purpose of mediation, the National Commission or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1272,
+      "page": 32,
+      "text": "76.  Nomination of mediators from panel.—The District Commission, the State Commission or the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1275,
+      "page": 32,
+      "text": "77. Duty of mediator to disclose certain facts.—It shall be the duty of the mediator to disclose—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1280,
+      "page": 32,
+      "text": "78. Replacement of mediator in certain cases.—Where the District Commission or the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1285,
+      "page": 33,
+      "text": "79. Procedure for mediation.—(1) The mediation shall be held in the consumer mediation cell",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1295,
+      "page": 33,
+      "text": "80. Settlement through mediation.—(1) Pursuant to mediation, if an agreement is reached between",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1305,
+      "page": 33,
+      "text": "81. Recording settlement and passing of order.—(1) The District Commission or the State",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1317,
+      "page": 33,
+      "text": "82. Application of Chapter.—This Chapter shall apply to every claim for compensation under a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1320,
+      "page": 33,
+      "text": "83. Product liability action.—A product liability action may be brought by a complainant against a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1323,
+      "page": 33,
+      "text": "84. Liability of product manufacturer.—(1) A product manufacturer shall be liable in a product",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1334,
+      "page": 34,
+      "text": "85. Liability of product service provider.—A product service provider shall be liable in a product",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1343,
+      "page": 34,
+      "text": "86. Liability of product sellers.—A product seller who is not a product manufacturer shall be liable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1361,
+      "page": 34,
+      "text": "87. Exceptions to product liability action.—(1) A product liability action cannot be brought against",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1383,
+      "page": 35,
+      "text": "88. Penalty for non-compliance of direction of Central Authority.—Whoever, fails to comply",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1387,
+      "page": 35,
+      "text": "89. Punishment for false or misleading advertisement.—Any manufacturer or service provider",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1392,
+      "page": 35,
+      "text": "90. Punishment for manufacturing for sale or storing, selling or distributing or importing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1415,
+      "page": 35,
+      "text": "91. Punishment for manufacturing for sale or for storing or selling or distributing or importing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1431,
+      "page": 36,
+      "text": "92. Cognizance of offence by court.—No cognizance shall be taken by a competent court of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1434,
+      "page": 36,
+      "text": "93. Vexatious search.—The Director General or any other officer, exercising powers under section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1443,
+      "page": 36,
+      "text": "94. Measures to prevent unfair trade practices in e-commerce, direct selling, etc.—For the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1447,
+      "page": 36,
+      "text": "95. Presidents, members, Chief Commissioner, Commissioner and certain officers to be public",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1455,
+      "page": 36,
+      "text": "96. Compounding of offences.—(1) Any offence punishable under sections 88 and 89, may, either",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1477,
+      "page": 37,
+      "text": "97. Manner of crediting penalty.—The penalty collected under section 21 and the amount collected",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1479,
+      "page": 37,
+      "text": "98. Protection of action taken in good faith.—No suit, prosecution or other legal proceeding shall",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1484,
+      "page": 37,
+      "text": "99. Power to give directions by Central Government.—(1) Without prejudice to the foregoing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1492,
+      "page": 37,
+      "text": "100.  Act not in derogation of any other law.—The provisions of this Act shall be in addition to and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1494,
+      "page": 37,
+      "text": "101. Power of Central Government to make rules.—(1) The Central Government may, by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1569,
+      "page": 39,
+      "text": "102.  Power of State Government to make rules.—(1) The State Governments may, by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1612,
+      "page": 40,
+      "text": "103. Power of National Commission to make regulations.—(1) The National Commission may,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1640,
+      "page": 40,
+      "text": "104. Power of Central Authority to make regulations.—(1) The Central Authority may, with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1653,
+      "page": 40,
+      "text": "105. Rules and regulations to be laid before each House of Parliament.—(1) Every rule and every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1665,
+      "page": 41,
+      "text": "106. Power to Remove Difficulties.—If any difficulty arises in giving effect to the provisions of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1670,
+      "page": 41,
+      "text": "107.  Repeal and savings.—(1) The Consumer Protection Act, 1986 (68 of 1986) is hereby repealed.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1686,
+      "page": 42,
+      "text": "2. Consumer markets for goods and services have undergone drastic transformation since the",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1696,
+      "page": 42,
+      "text": "3. Accordingly, a Bill, namely, the Consumer Protection Bill, 2018, was introduced in Lok Sabha on",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1700,
+      "page": 42,
+      "text": "4. The proposed Bill provides for the establishment of an executive agency to be known as the",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1708,
+      "page": 42,
+      "text": "5. The Bill also envisages provisions for product liability action on account of harm caused to",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1711,
+      "page": 42,
+      "text": " 6. The Bill provides for several provisions aimed at simplifying the consumer dispute adjudication",
+      "cls": "UNKNOWN",
+      "label": null
+    },
+    {
+      "line": 1716,
+      "page": 42,
+      "text": "7. The Bill seeks to achieve the above objectives.",
+      "cls": "UNKNOWN",
+      "label": null
+    }
+  ]
+}

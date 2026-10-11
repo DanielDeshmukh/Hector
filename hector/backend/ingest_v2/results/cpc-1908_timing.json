@@ -1,0 +1,29 @@
+{
+  "act_id": "cpc-1908",
+  "steps": {
+    "step2_inspect": {
+      "exit": 0,
+      "seconds": 6.4
+    },
+    "step3_clean": {
+      "exit": 0,
+      "seconds": 1.86
+    },
+    "step4_segment": {
+      "exit": 0,
+      "seconds": 1.81
+    },
+    "step5_records": {
+      "exit": 0,
+      "seconds": 0.44
+    },
+    "step6_validate": {
+      "exit": 0,
+      "seconds": 15.92
+    },
+    "step7_report": {
+      "exit": 0,
+      "seconds": 0.49
+    }
+  }
+}

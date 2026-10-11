@@ -168,6 +168,25 @@ def reading_order(page):
 
         def key(b):
             return (round(b[1], 1), round(b[0], 1))
+    if mode == "two-column":
+        # TWO-COLUMN READING-ORDER FIX.  The historical key (col, y, x)
+        # emitted the ENTIRE left column top-to-bottom and then the entire
+        # right column.  A section head sitting in the right column was
+        # therefore thousands of lines after the previous section head (which
+        # was in the left column), so the scanner's bounded lookahead window
+        # could never bridge the gap: every real section on a two-column page
+        # was silently dropped, orphaning its number and swallowing its text
+        # into the previous record.  Reading ROW-MAJOR (y, then column) makes
+        # the next section head land within a few lines, exactly as on a
+        # single-column page.
+
+        def key(b):
+            if (b[2] - b[0]) > 0.6 * W:
+                # wide spanning block (e.g. a table caption): flush first so
+                # it keeps its body instead of being split across rows.
+                return (-1, round(b[1], 1), round(b[0], 1))
+            col = 0 if b[2] <= mid + 6 else 1
+            return (0, round(b[1], 1), col, round(b[0], 1))
     return mode, sorted(bl, key=key)
 
 
@@ -214,7 +233,9 @@ def body_scan_start(act_id):
 
     ToC mode: the Arrangement/Contents window excludes the page whose entry
     numbers restart (body page), so max(toc_pages_1based) is already the
-    0-based index of the first body page.  No ToC (sequence_only): 0.
+    0-based index of the first body page.  When step2 stored an adjusted
+    body_start_0based (CPC 1908 puts the First Schedule between the ToC
+    and the section text), that value wins.  No ToC: 0.
     """
     p = RESULTS / f"{act_id}_toc_meta.json"
     if p.exists():
@@ -222,7 +243,60 @@ def body_scan_start(act_id):
             meta = json.loads(p.read_text(encoding="utf-8"))
         except Exception:
             return 0
+        adj = meta.get("body_start_0based")
+        if isinstance(adj, int):
+            return adj
         pages = meta.get("toc_pages_1based") or []
         if meta.get("mode") == "toc" and pages:
             return max(pages)
     return 0
+
+
+def adjust_body_start(doc, start, act_name):
+    """Skip a First Schedule that sits between the ToC and the section text.
+
+    Some acts (CPC 1908) print the Arrangement of Sections, then the
+    First Schedule (Orders/rules), then the actual section text. The act
+    title repeats at the real body start; peek forward to find it.
+    Returns start unchanged when no repeat is found (normal acts).
+    """
+    name_l = (act_name or "").lower()
+    if not name_l:
+        return start
+    n = min(start + 40, len(doc))
+    for pi in range(start, n):
+        txt = doc[pi].get_text("text", sort=True)[:500].lower()
+        if name_l in txt:
+            return pi
+    return start
+
+
+def expected_list(act_id):
+    """Rebuild the ToC expected list exactly as step2_inspect saved it.
+
+    step2_inspect writes results/<act_id>_expected.json after dedupeing the
+    ToC entries first-wins.  Steps 3, 4 and 6 re-scan the document, so they
+    must pass the SAME expected list into scan_document, or the scanner's
+    expected-title fallback sees no titles and the steps produce
+    inconsistent markers (divergent parent order / missing sections).
+    Returns a list of [number, title] pairs, or None when absent (the
+    SEQUENCE_ONLY fallback path, where no ToC exists to begin with).
+    """
+    p = RESULTS / f"{act_id}_expected.json"
+    if not p.exists():
+        return None
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if not isinstance(data, list) or not data:
+        return None
+    out = []
+    for e in data:
+        if isinstance(e, dict):
+            n, t = e.get("number"), e.get("title")
+        else:
+            n, t = e[0], e[1]
+        if n:
+            out.append([str(n), t or ""])
+    return out or None

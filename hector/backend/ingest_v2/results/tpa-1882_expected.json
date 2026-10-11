@@ -1,0 +1,594 @@
+[
+  {
+    "number": "1",
+    "title": "Short title. Commencement. Extent."
+  },
+  {
+    "number": "2",
+    "title": "Repeal of Acts. Saving of certain enactments, incidents, rights, liabilities, etc. IndiaCode"
+  },
+  {
+    "number": "3",
+    "title": "Interpretation-clause."
+  },
+  {
+    "number": "4",
+    "title": "Enactments relating to contracts to be taken as part of Contract Act and supplemental to the Registration Act."
+  },
+  {
+    "number": "5",
+    "title": "“Transfer of property” defined."
+  },
+  {
+    "number": "6",
+    "title": "What may be transferred."
+  },
+  {
+    "number": "7",
+    "title": "Persons competent to transfer."
+  },
+  {
+    "number": "8",
+    "title": "Operation of transfer."
+  },
+  {
+    "number": "9",
+    "title": "Oral transfer."
+  },
+  {
+    "number": "10",
+    "title": "Condition restraining alienation."
+  },
+  {
+    "number": "11",
+    "title": "Restriction repugnant to interest cleated."
+  },
+  {
+    "number": "12",
+    "title": "Condition making interest determinable on insolvency or attempted alienation."
+  },
+  {
+    "number": "13",
+    "title": "Transfer for benefit of unborn person."
+  },
+  {
+    "number": "14",
+    "title": "Rule against perpetuity."
+  },
+  {
+    "number": "15",
+    "title": "Transfer to class some of whom come under sections 13 and 14."
+  },
+  {
+    "number": "16",
+    "title": "Transfer to take effect on failure of prior interest."
+  },
+  {
+    "number": "17",
+    "title": "Direction for accumulation."
+  },
+  {
+    "number": "18",
+    "title": "Transfer in perpetuity for benefit of public."
+  },
+  {
+    "number": "19",
+    "title": "Vested interest."
+  },
+  {
+    "number": "20",
+    "title": "When unborn person acquires vested interest on transfer for his benefit."
+  },
+  {
+    "number": "21",
+    "title": "Contingent interest."
+  },
+  {
+    "number": "22",
+    "title": "Transfer to members of a class who attain a particular age."
+  },
+  {
+    "number": "23",
+    "title": "Transfer contingent on happening of specified uncertain event."
+  },
+  {
+    "number": "24",
+    "title": "Transfer to such of certain persons as survive at some period not specified."
+  },
+  {
+    "number": "25",
+    "title": "Conditional transfer."
+  },
+  {
+    "number": "26",
+    "title": "Fulfilment of condition precedent."
+  },
+  {
+    "number": "27",
+    "title": "Conditional transfer to one person coupled with transfer to another on failure of prior disposition."
+  },
+  {
+    "number": "28",
+    "title": "Ulterior transfer conditional on happening or not happening of specified event."
+  },
+  {
+    "number": "29",
+    "title": "Fulfilment of condition subsequent."
+  },
+  {
+    "number": "30",
+    "title": "Prior disposition not affected by invalidity of ulterior disposition."
+  },
+  {
+    "number": "31",
+    "title": "Condition that transfer shall cease to have effect in case specified uncertain event happens or does not happen. IndiaCode"
+  },
+  {
+    "number": "32",
+    "title": "Such condition must not be invalid."
+  },
+  {
+    "number": "33",
+    "title": "Transfer conditional on performance of act, no time being specified for performance."
+  },
+  {
+    "number": "34",
+    "title": "Transfer conditional on performance of act, time being specified. Election"
+  },
+  {
+    "number": "35",
+    "title": "Election when necessary. Apportionment"
+  },
+  {
+    "number": "36",
+    "title": "Apportionment of periodical payments on determination of interest of person entitled."
+  },
+  {
+    "number": "37",
+    "title": "Apportionment of benefit of obligation on severance."
+  },
+  {
+    "number": "38",
+    "title": "Transfer by person authorised only under certain circumstances to transfer."
+  },
+  {
+    "number": "39",
+    "title": "Transfer where third person is entitled to maintenance."
+  },
+  {
+    "number": "40",
+    "title": "Burden of obligation imposing restriction on use of land or of obligation annexed to ownership but not amounting to interest or easement."
+  },
+  {
+    "number": "41",
+    "title": "Transfer by ostensible owner."
+  },
+  {
+    "number": "42",
+    "title": "Transfer by person having authority to revoke former transfer."
+  },
+  {
+    "number": "43",
+    "title": "Transfer by unauthorised person who subsequently acquires interest in property transferred."
+  },
+  {
+    "number": "44",
+    "title": "Transfer by one co-owner."
+  },
+  {
+    "number": "45",
+    "title": "Joint transfer for consideration."
+  },
+  {
+    "number": "46",
+    "title": "Transfer for consideration by persons having distinct interests."
+  },
+  {
+    "number": "47",
+    "title": "Transfer by co-owners of share in common property."
+  },
+  {
+    "number": "48",
+    "title": "Priority of rights created by transfer."
+  },
+  {
+    "number": "49",
+    "title": "Transferee's right under policy."
+  },
+  {
+    "number": "50",
+    "title": "Rent bona fide paid to holder under defective title."
+  },
+  {
+    "number": "51",
+    "title": "Improvements made by bona fide holders under defective titles."
+  },
+  {
+    "number": "52",
+    "title": "Transfer of property pending suit relating thereto."
+  },
+  {
+    "number": "53",
+    "title": "Fraudulent transfer."
+  },
+  {
+    "number": "53A",
+    "title": "Part performance."
+  },
+  {
+    "number": "54",
+    "title": "“Sale” defined. Sale how made. Contract for sale."
+  },
+  {
+    "number": "55",
+    "title": "Rights and liabilities of buyer and seller."
+  },
+  {
+    "number": "56",
+    "title": "Marshalling by subsequent purchaser. IndiaCode Discharge of  Incumbrances on Sale"
+  },
+  {
+    "number": "57",
+    "title": "Provision by Court for incumbrances and sale freed therefrom."
+  },
+  {
+    "number": "58",
+    "title": "“Mortgage”, “mortgagor”, “mortgagee”, “mortgage-money”and “mortgage- deed”defined. Simple mortgage. Mortgage by conditional sale. Usufructuary mortgage. English mortgage. Mortgage by deposit of title-deeds. Anomalous mortgage."
+  },
+  {
+    "number": "59",
+    "title": "Mortgage when to be by assurance."
+  },
+  {
+    "number": "59A",
+    "title": "References to mortgagors and mortgagees to include persons deriving title from them. Rights and Liabilities of Mortgagor"
+  },
+  {
+    "number": "60",
+    "title": "Right of mortgagor to redeem. Redemption of portion of mortgaged property."
+  },
+  {
+    "number": "60A",
+    "title": "Obligation to transfer to third party instead of re-transference to mortgagor."
+  },
+  {
+    "number": "60B",
+    "title": "Right to inspection and production of documents."
+  },
+  {
+    "number": "61",
+    "title": "Right to redeem separately or simultaneously."
+  },
+  {
+    "number": "62",
+    "title": "Right of usufructuary mortgagor to recover possession."
+  },
+  {
+    "number": "63",
+    "title": "Accession to mortgaged property. Accession acquired in virtue of transferred ownership."
+  },
+  {
+    "number": "63A",
+    "title": "Improvements to mortgaged property."
+  },
+  {
+    "number": "64",
+    "title": "Renewal of mortgaged lease."
+  },
+  {
+    "number": "65",
+    "title": "Implied contracts by mortgagor."
+  },
+  {
+    "number": "65A",
+    "title": "Mortgagor’s power to lease."
+  },
+  {
+    "number": "66",
+    "title": "Waste by mortgagor in possession. Rights and liabilities of Mortgagee"
+  },
+  {
+    "number": "67",
+    "title": "Right to foreclosure or sale."
+  },
+  {
+    "number": "67A",
+    "title": "Mortgagee when bound to bring one suit on several mortgages."
+  },
+  {
+    "number": "68",
+    "title": "Right to sue for mortgage-money."
+  },
+  {
+    "number": "69",
+    "title": "Power of sale when valid."
+  },
+  {
+    "number": "69A",
+    "title": "Appointment of receiver. IndiaCode"
+  },
+  {
+    "number": "70",
+    "title": "Accession to mortgaged property."
+  },
+  {
+    "number": "71",
+    "title": "Renewal of mortgaged lease."
+  },
+  {
+    "number": "72",
+    "title": "Rights of mortgagee in possession."
+  },
+  {
+    "number": "73",
+    "title": "Right to proceeds of revenue sale or compensation on acquisition."
+  },
+  {
+    "number": "74",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "75",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "76",
+    "title": "Liabilities of mortgagee in possession. Loss occasioned by his default."
+  },
+  {
+    "number": "77",
+    "title": "Receipts in lieu of interests. Priority"
+  },
+  {
+    "number": "78",
+    "title": "Postponement of prior mortgagee."
+  },
+  {
+    "number": "79",
+    "title": "Mortgage to secure uncertain amount when maximum is expressed."
+  },
+  {
+    "number": "80",
+    "title": "[Repealed.]. Marshalling and Contribution"
+  },
+  {
+    "number": "81",
+    "title": "Marshalling securities."
+  },
+  {
+    "number": "82",
+    "title": "Contribution to mortgage-debt. Deposit in Court"
+  },
+  {
+    "number": "83",
+    "title": "Power to deposit in Court money due on mortgage. Right to money deposited by mortgagor."
+  },
+  {
+    "number": "84",
+    "title": "Cessation of interest. Suits for Foreclosure, Sale or Redemption"
+  },
+  {
+    "number": "85",
+    "title": "[Repealed.]. Foreclosure and Sale"
+  },
+  {
+    "number": "86",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "87",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "88",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "89",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "90",
+    "title": "[Repealed.]. Redemption"
+  },
+  {
+    "number": "91",
+    "title": "Persons who may sue for redemption."
+  },
+  {
+    "number": "92",
+    "title": "Subrogation."
+  },
+  {
+    "number": "93",
+    "title": "Prohibition of tacking."
+  },
+  {
+    "number": "94",
+    "title": "Rights of mesne mortgagee."
+  },
+  {
+    "number": "95",
+    "title": "Right of redeeming co-mortgagor to expenses."
+  },
+  {
+    "number": "96",
+    "title": "Mortgage by deposit of title-deeds."
+  },
+  {
+    "number": "97",
+    "title": "[Repealed.]. Anomalous Mortgages"
+  },
+  {
+    "number": "98",
+    "title": "Rights and liabilities of parties to anomalous mortgages."
+  },
+  {
+    "number": "99",
+    "title": "[Repealed.]. IndiaCode Charges"
+  },
+  {
+    "number": "100",
+    "title": "Charges."
+  },
+  {
+    "number": "101",
+    "title": "No merger in case of subsequent encumbrance. Notice and Tender"
+  },
+  {
+    "number": "102",
+    "title": "Service or tender on or to agent."
+  },
+  {
+    "number": "103",
+    "title": "Notice, etc., to or by person incompetent to contract."
+  },
+  {
+    "number": "104",
+    "title": "Power to make rules."
+  },
+  {
+    "number": "105",
+    "title": "Lease defined. Lessor, lessee, premium and rent defined."
+  },
+  {
+    "number": "106",
+    "title": "Duration of certain leases in absence of written contract or local usage."
+  },
+  {
+    "number": "107",
+    "title": "Leases how made."
+  },
+  {
+    "number": "108",
+    "title": "Rights and liabilities of lessor and lessee. A.—Rights and liabilities of the lessor. B.—Rights and liabilities of the lessee."
+  },
+  {
+    "number": "109",
+    "title": "Rights of lessor’s transferee."
+  },
+  {
+    "number": "110",
+    "title": "Exclusion of day on which term commences. Duration of lease for a year. Option to determine lease."
+  },
+  {
+    "number": "111",
+    "title": "Determination of lease."
+  },
+  {
+    "number": "112",
+    "title": "Waiver of forfeiture."
+  },
+  {
+    "number": "113",
+    "title": "Waiver of notice to quit."
+  },
+  {
+    "number": "114",
+    "title": "Relief against forfeiture for non-payment of rent."
+  },
+  {
+    "number": "114A",
+    "title": "Relief against forfeiture in certain other cases."
+  },
+  {
+    "number": "115",
+    "title": "Effect of surrender and forfeiture on under-leases."
+  },
+  {
+    "number": "116",
+    "title": "Effect of holding over."
+  },
+  {
+    "number": "117",
+    "title": "Exemption of leases for agricultural purposes."
+  },
+  {
+    "number": "118",
+    "title": "“Exchange” defined."
+  },
+  {
+    "number": "119",
+    "title": "Right of party deprived of thing received in exchange."
+  },
+  {
+    "number": "120",
+    "title": "Rights and liabilities of parties."
+  },
+  {
+    "number": "121",
+    "title": "Exchange of money."
+  },
+  {
+    "number": "122",
+    "title": "“Gift” defined. IndiaCode Acceptance when to be made."
+  },
+  {
+    "number": "123",
+    "title": "Transfer how effected."
+  },
+  {
+    "number": "124",
+    "title": "Gift of existing and future property."
+  },
+  {
+    "number": "125",
+    "title": "Gift to several, of whom one does not accept."
+  },
+  {
+    "number": "126",
+    "title": "When gift may be suspended or revoked."
+  },
+  {
+    "number": "127",
+    "title": "Onerous gifts. Onerous gift to disqualified person."
+  },
+  {
+    "number": "128",
+    "title": "Universal donee."
+  },
+  {
+    "number": "129",
+    "title": "Saving of donations mortis causa and Muhammadan law."
+  },
+  {
+    "number": "130",
+    "title": "Transfer of actionable claim."
+  },
+  {
+    "number": "130A",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "131",
+    "title": "Notice to be in writing, signed."
+  },
+  {
+    "number": "132",
+    "title": "Liability of transferee of actionable claim."
+  },
+  {
+    "number": "133",
+    "title": "Warranty of solvency of debtor."
+  },
+  {
+    "number": "134",
+    "title": "Mortgaged debt."
+  },
+  {
+    "number": "135",
+    "title": "Assignment of rights under policy of insurance against fire."
+  },
+  {
+    "number": "135A",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "136",
+    "title": "Incapacity of officers connected with Courts of Justice."
+  },
+  {
+    "number": "137",
+    "title": "Saving of negotiable instruments, etc."
+  }
+]

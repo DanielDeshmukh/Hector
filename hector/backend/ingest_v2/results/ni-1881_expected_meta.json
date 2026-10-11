@@ -1,0 +1,34 @@
+{
+  "expected_source": "toc",
+  "mode": "toc",
+  "header_page_1based": 1,
+  "toc_pages_1based": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "expected_count": 155,
+  "gaps": [],
+  "duplicates": [],
+  "deduped_dropped": 0,
+  "anchor_value": 511,
+  "anchor_max_plain_seen": 148,
+  "anchor_ok": false,
+  "lettered": [
+    "45A",
+    "75A",
+    "85A",
+    "104A",
+    "131A",
+    "142A",
+    "143A"
+  ],
+  "rejected_count": 69,
+  "body_markers": 155,
+  "body_max_plain": 148,
+  "body_gaps": []
+}

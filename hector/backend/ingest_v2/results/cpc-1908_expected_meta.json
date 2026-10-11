@@ -1,0 +1,40 @@
+{
+  "expected_source": "toc",
+  "mode": "toc",
+  "header_page_1based": 4,
+  "toc_pages_1based": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "expected_count": 171,
+  "gaps": [],
+  "duplicates": [],
+  "deduped_dropped": 0,
+  "anchor_value": 511,
+  "anchor_max_plain_seen": 158,
+  "anchor_ok": false,
+  "lettered": [
+    "21A",
+    "35A",
+    "35B",
+    "44A",
+    "87A",
+    "87B",
+    "99A",
+    "100A",
+    "111A",
+    "135A",
+    "148A",
+    "153A",
+    "153B"
+  ],
+  "rejected_count": 1915,
+  "body_markers": 171,
+  "body_max_plain": 158,
+  "body_gaps": []
+}

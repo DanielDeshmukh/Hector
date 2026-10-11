@@ -1,0 +1,3341 @@
+{
+  "act_id": "ni-1881",
+  "max_chars": 3000,
+  "sections": [
+    {
+      "number": "1",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "1. Short title.—This Act  may be called the Negotiable Instruments Act, 1881.\nLocal extent. Saving of usages relating to hundis, etc.—It extends to the whole of India 2*** but\nnothing herein contained affects the 3Indian Paper Currency Act, 1871 (3 of 1871), section 21, or affects\nany local usage relating to any instrument in an oriental language: Provided that such usages may be\nexcluded by any words in the body of the instrument which indicate an intention that the legal relations of\nthe parties thereto shall he governed by this Act;\nCommencement.—and it shall come into force on the first day of March, 1882.",
+          "page_start": 8,
+          "page_end": 8,
+          "flags": [],
+          "lines": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "2. [Repeal of enactments.] Rep. by the Repealing and Amending Act, 1891(12 of 1891), s. 2 and\nthe Schedule I.",
+          "page_start": 8,
+          "page_end": 8,
+          "flags": [],
+          "lines": [
+            16,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "3. Interpretation-clause.—In this Act—\n4*\n    *\n*\n*\n*\n“Banker”.—5[“banker” includes any person acting as a banker and any post office savings bank;]\n6*\n*\n*\n*\n*",
+          "page_start": 8,
+          "page_end": 8,
+          "flags": [],
+          "lines": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "4. “Promissory note.”—A “Promissory note” is an instrument in writing (not being a bank-note or a\ncurrency-note) containing an unconditional undertaking, signed by the maker, to pay a certain sum of\nmoney only to, or to the order of, a certain person, or to the bearer of the instrument.\nIllustrations\nA signs instruments in the following terms:\n(a ) “I promise to pay B or order Rs. 500.”\n(b) “I acknowledge myself to be indebted to B in Rs. 1,000, to be paid on demand, for value received.”\n(c) “Mr. B, I O U Rs. 1,000.”\n(d) “I promise to Pay B Rs. 500 and all other sums which shall be due to him.”\n(e) “I promise to Pay B Rs. 500, first deducting thereout any money which he may owe me.”\n(f) “I promise to Pay B Rs. 500 seven days after my marriage with C.”\n(g) “I promise to Pay B Rs. 500 on D's death, provided D leaves me enough to pay that sum.”\n(h) “I promise to Pay B Rs. 500 and to deliver to him my black horse on 1st January next.”\nThe instruments respectively marked (a) and (b) are promissory notes. The instruments respectively marked (c),\n(d), (e), (f), (g) and (h)are not promissory notes.",
+          "page_start": 8,
+          "page_end": 9,
+          "flags": [],
+          "lines": [
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            56,
+            57,
+            58
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "5. “Bill of exchange.”—A “bill of exchange” is an instrument in writing containing an unconditional\norder, signed by the maker, directing a certain person to pay a certain sum of money only to, or to the\norder of, a certain person or to the bearer of the instrument.\nA promise or order to pay is not “conditional”, within the meaning of this section and section 4, by\nreason of the time for payment of the amount or any instalment thereof being expressed to be on the lapse\nof a certain period after the occurrence of a specified even which, according to the ordinary expectation of\nmankind, is certain to happen, although the time of its happening may be uncertain.\nThe sum payble may be “certain”, within the meaning of this section and section 4, although it\nincludes future interest or is payable at an indicated rate of exchange, or is according to the course of\nexchange, and although the instrument provides that, on default of payment of an instalment, the balance\nunpaid shall become due.\nThe person to whom it is clear that the direction is given or that payment is to be made may be a\n“certain person”, within the meaning of this section and section 4, although he is mis-named or\ndesignated by description only.",
+          "page_start": 9,
+          "page_end": 9,
+          "flags": [],
+          "lines": [
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72
+          ]
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "1[6. “Cheque.”—A “cheque” is a bill of exchange drawn on a specified banker and not expressed to\nbe payable otherwise than on demand and it includes the electronic image of a truncated cheque and a\ncheque in the electronic form.\nExplanation I.—For the purposes of this section, the expressions—\n2[(a) “a cheque in the electronic form” means a cheque drawn in electronic form by using any\ncomputer resource and signed in a secure system with digital signature (with or without biometrics\nsignature) and asymmetric crypto system or with electronic signature, as the case may be;]\n(b) “a truncated cheque” means a cheque which is truncated during the course of a clearing cycle,\neither by the clearing house or by the bank whether paying or receiving payment, immediately on\ngeneration of an electronic image for transmission, substituting the further physical movement of the\ncheque in writing.\nExplanation II.— For the purposes of this section, the expression “clearing house” means the clearing\nhouse managed by the Reserve Bank of India or a clearing house recognised as such by the Reserve Bank\nof India.]\n3[Explanation III.—For the purposes of this section, the expressions “asymmetric crypto system”,\n“computer resource”, “digital signature”, “electronic form” and “electronic signature” shall have the same\nmeanings respectively assigned to them in the Information Technology Act, 2000(21 of 2000).]",
+          "page_start": 9,
+          "page_end": 9,
+          "flags": [],
+          "lines": [
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "7. “Drawer” “Drawee”.—The maker of a bill of exchange or cheque is called the “drawer”; the\nperson thereby directed to pay is called the “drawee”.\n“Drawee in case of need”.— When in the Bill or in any indorsement thereon the name of any person\nis given in addition to the drawee to be resorted to in case of need such person is called a “drawee in case\nof need.”\n“Acceptor”.—After the drawee of a bill has signed his assent upon the bill, or, if there are more parts\nthereof than one, upon one of such parts, and delivered the same, or given notice of such signing to the\nholder or to some person on his behalf, he is called the “acceptor”.\n“Acceptor for honour”.— 4[When a bill of exchange has been noted or protested for non-acceptance\nor for better security,] and any person accepts it supra protest for honour of the drawer or of any one of\nthe indorsers, such person is called an “acceptor for honour”.\n“Payee”.—The person named in the instrument, to whom or to whose order the money is by the\ninstrument directed to be paid, is called the “Payee”.",
+          "page_start": 9,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            107,
+            108
+          ]
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "8. “Holder”.—The “holder” of a promissory note, bill of exchange or cheque means any person\nentitled in his own name to the possession thereof and to receive or recover the amount due thereon from\nthe parties thereto.\nWhere the note, bill or cheque is lost or destroyed, its holder is the person so entitled at the time of\nsuch loss or destruction.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            109,
+            110,
+            111,
+            112,
+            113
+          ]
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "9. “Holder in due course”.—“Holder in due course” means any person who for consideration\nbecame the possessor of a promissory note, bill of exchange or cheque if payable to bearer,\nor the payee or indorsee thereof, if 1[payable to order,]\nbefore the amount mentioned in it became payable, and without having sufficient cause to believe that\nany defect existed in the title of the person from whom he derived his title.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            114,
+            115,
+            116,
+            117,
+            118
+          ]
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "10. “Payment in due course”.—“Payment in due course” means payment in accordance with the\napparent tenor of the instrument in good faith and without negligence to any person in possession thereof\nunder circumstances which do not afford a reasonable ground for believing that he is not entitled to\nreceive payment of the amount therein mentioned.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            119,
+            120,
+            121,
+            122
+          ]
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "11. Inland instrument.—A promissory note, bill of exchange or cheque drawn or made in 2[India]\nand made payable in, or drawn upon any person resident in, 2[India] shall be deemed to be an inland\ninstrument.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            124,
+            125,
+            126
+          ]
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "12. Foreign instrument. —Any such instrument not so drawn, made or made payable shall be\ndeemed to be a foreign instrument.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            127,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "13.“Negotiable instrument”.—3[(1) A “negotiable instrument” means a promissory note, bill of\nexchange or cheque payable either to order or to bearer.\nExplanation (i)—A promissory note, bill of exchange or cheque is payable to order which is\nexpressed to be so payable or which is expressed to be payable to a particular person, and does not\ncontain words prohibiting transfer or indicating an intention that it shall not be transferable.\nExplanation (ii)—A promissory note, bill of exchange or cheque is payble to bearer which is\nexpressed to be so payable or on which the only or last indorsement is an indorsement in blank.\nExplanation (iii)—Where a promissory note, bill of exchange or cheque, either originally or by\nindorsement, is expressed to be payable to the order of a specified person, and not to him or his\norder, it is nevertheless payable to him or his order at his option.]\n4[(2) A negotiable instrument may be made payable to two or more payees jointly, or it may be made\npayable in the alternative to one of two, or one or some of serveral payees.]",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140
+          ]
+        }
+      ]
+    },
+    {
+      "number": "14",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "14. Negotiation.—When a promissory note, bill of exchange or cheque is transferred to any person,\nso as to constitute that person the holder thereof, the instrument is said to be negotiated.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            141,
+            142
+          ]
+        }
+      ]
+    },
+    {
+      "number": "15",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "15. Indorsement.—When the maker or holder of a negotiable instrument signs the same, otherwise\nthan as such maker, for the purpose of negotiation, on the back or face thereof or on a slip of paper\nannexed thereto, or so signs for the same purpose a stamped paper intended to be completed as a\nnegotiable instrument, he is said to indorse the same, and is called the “indorser”.",
+          "page_start": 10,
+          "page_end": 10,
+          "flags": [],
+          "lines": [
+            143,
+            144,
+            145,
+            146
+          ]
+        }
+      ]
+    },
+    {
+      "number": "16",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "16. Indorsement “in blank” and “in full”.—5[(1)] If the indorser signs his name only, the\nindorsement is said to be “in blank,” and if he adds a direction to pay the amount mentioned in the\ninstrument to, or to the order of, a specified person, the indorsement is said to be “in full”, and the\nperson so specified\n “Indorsee”.—is called the “indorsee” of the instrument.\n1[(2) The provisions of this Act relating to a payee shall apply with the necessary modifications to an\nindorsee.]",
+          "page_start": 10,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            147,
+            148,
+            149,
+            150,
+            157,
+            158,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "number": "17",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "17. Ambiguous instruments.—Where an instrument may be construed either as a promissory note or\nbill of exchange, the holder may at his election treat it as either, and the instrument shall be thenceforward\ntreated accordingly.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            160,
+            161,
+            162
+          ]
+        }
+      ]
+    },
+    {
+      "number": "18",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "18. Where amount is stated differently in figures and words.—If the amount undertaken or\nordered to be paid is stated differently in figures and in words, the amount stated in words shall be the\namount undertaken or ordered to be paid.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            163,
+            164,
+            165
+          ]
+        }
+      ]
+    },
+    {
+      "number": "19",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "19. Instruments payable on demand.—A promissory note or bill of exchange, in which no time for\npayment is specified, and a cheque, are payable on demand.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            166,
+            167
+          ]
+        }
+      ]
+    },
+    {
+      "number": "20",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "20. Inchoate stamped instruments.—Where one person signs and delivers to another a paper\nstamped in accordance with the law relating to negotiable instruments then in force in 2[India], and\neither wholly blank or having written thereon an incomplete negotiable instrument, he thereby gives\nprima facie authority to the holder thereof to make or complete, as the case may be, upon it a\nnegotiable instrument, for any amount specified therein and not exceeding the amount covered by the\nstamp. The person so signing shall be liable upon such instrument, in the capacity in which he signed\nthe same, to any holder in due course for such amount: provided that no person other than a holder in\ndue course shall recover from the person delivering the instrument anything in excess of the amount\nintended by him to be paid thereunder.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176
+          ]
+        }
+      ]
+    },
+    {
+      "number": "21",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "21. “At sight”.—“On presentment”.—Ina promissory note or bill of exchange the expressions “at\nsight” and “on presentment” mean on demand. The expression “After sight”—“after sight” means, in a\npromissory note, after presentment for sight, and, in a bill of exchange, after acceptance, or nothing for\nnon-acceptance, or protest for non-acceptance.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            178,
+            179,
+            180,
+            181
+          ]
+        }
+      ]
+    },
+    {
+      "number": "22",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "22. “Maturity”.—The maturity of a promissory note or bill of exchange is the date at which it falls\ndue.\nDays of grace.—Every promissory note or bill of exchange which is not expressed to be payable on\ndemand, at sight or on presentment is at maturity on the third day after the day on which it is expressed to\nbe payable.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            182,
+            183,
+            184,
+            185,
+            186
+          ]
+        }
+      ]
+    },
+    {
+      "number": "23",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "23. Calculating maturity of bill or note payable so many months after date or sight.—In\ncalculating the date at which a promissary note or bill of exchange, made payable a stated number of\nmonths after date or after sight, or after a certain event, is at maturity, the period stated shall be held to\nterminate on the day of the month which corresponds with the day on which the instrument is dated, or\npresented for acceptance or sight, or noted for non-acceptance, or protested for non-acceptance, or the\nevent happens, or, where the instrument is a bill of exchange made payable a stated number of months after\nsight and has been accepted for honour, with the day on which it was so accepted. If the month in which\nthe period would terminate has no corresponding day, the period shall be held to terminate on the last\nday of such month.\nIllustrations\n(a) A negotiable instrument, dated 29th January, 1878, it made payable at one month after date. The instrument is at\nmaturity on the third day after the 28th February, 1878.\n(b) A negotiable instrument, dated 30th August, 1878, it made payable three months after date. The instrument is at maturity\non the 3rd December, 1878.\n(c) A promissory note or bill of exchange, dated 31st August, 1878, is made payable three months after date. The instrument\nis at maturity on the 3rd December, 1878.",
+          "page_start": 11,
+          "page_end": 11,
+          "flags": [],
+          "lines": [
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202
+          ]
+        }
+      ]
+    },
+    {
+      "number": "24",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "24. Calculating maturity of bill or note payable so many days after date or sight.—In calculating\nthe date at which a promissory note or bill of exchange made payable a certain number of days after date\nor after sight or after a certain event is at maturity, the day of the date, or of presentment for acceptance or\nsight, or of protest for non-acceptance, or on which the event happens, shall be excluded.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            206,
+            207,
+            208,
+            209
+          ]
+        }
+      ]
+    },
+    {
+      "number": "25",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "25. When day of maturity is a holiday.—When the day on which a promissory note or bill of\nexchange is at maturity is a public holiday, the instrument shall be deemed to be due on the next\npreceding, business day.\nExplanation.—The expression “public holiday” includes Sundays: 1*** and any other day declared by\nthe 2[Central Government], by notification in the Official Gazette, to be a public holiday.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            210,
+            211,
+            212,
+            213,
+            214
+          ]
+        }
+      ]
+    },
+    {
+      "number": "26",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "26. Capacity to make, etc., promissory notes, etc.—Every person capable of contracting, according\nto the law to which he is subject, may bind himself and be bound by the making, drawing, acceptance,\nindorsement, delivery and negotiation of a promissory note, bill of exchange or cheque.\nMinor.—A minor may draw, indorse, deliver and negotiate such instrument so as to bind all parties\nexcept himself.\nNothing herein contained shall be deemed to empower a corporation to make, indorse or accept such\ninstruments except in cases in which, under the law for the time being in force, they are so empowered.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            217,
+            218,
+            219,
+            220,
+            221,
+            223,
+            224
+          ]
+        }
+      ]
+    },
+    {
+      "number": "27",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "27. Agency.— Every person capable of binding himself or of being bound, as mentioned in section\n26, may so bind himself or be bound by a duly authorized agent acting in his name.\nA general authority to transact business and to receive and discharge debts does not confer upon an\nagent the power of accepting or indorsing bills of exchange so as to bind his principal.\nAn authority to draw bills of exchange does not of itself import an authority to indorse.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            225,
+            226,
+            227,
+            228,
+            229
+          ]
+        }
+      ]
+    },
+    {
+      "number": "28",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "28. Liability of agent signing.—An agent who signs his name to a promissory note, bill of exchange\nor cheque without indicating thereon that he signs as agent, or that he does not intend thereby to incur\npersonal responsibility, is liable personally on the instrument, except to those who induced him to sign\nupon the belief that the principal only would be held liable.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            230,
+            231,
+            232,
+            233
+          ]
+        }
+      ]
+    },
+    {
+      "number": "29",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "29. Liability of legal representative signing.—A legal representative of a deceased person who\nsigns his name to a promissory note, bill of exchange or cheque is liable personally thereon unless he\nexpressly limits his liability to the extent of the assets received by him as such.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            234,
+            235,
+            236
+          ]
+        }
+      ]
+    },
+    {
+      "number": "30",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "30. Liability of drawer.—The drawer of a bill of exchange or cheque is bound, in case of dishonour\nby the drawee or acceptor thereof, to compensate the holder, provided due notice of dishonour has been\ngiven to, or received by, the drawer as hereinafter provided.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            237,
+            238,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "number": "31",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "31. Liability of drawee of cheque.—The drawee of a cheque having sufficient funds of the drawer in his\nhands properly applicable to the payment of such cheque must pay the cheque when duly required so to do,\nand , in default of such payment, must compensate the drawer for any loss or damage caused by such default.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            240,
+            241,
+            242
+          ]
+        }
+      ]
+    },
+    {
+      "number": "32",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "32. Liability of maker of note and acceptor of bill.—In the absence of a contract to the contrary, the\nmaker of a promissory note and the acceptor before maturity of a bill of exchange are bound to pay the\namount thereof at maturity according to the apparent tenor of the note or acceptance respectively, and the\nacceptor of a bill of exchange at or after maturity is bound to pay the amount thereof to the holder on demand.\nIn default of such payment as aforesaid, such maker or acceptor is bound to compensate any party to\nthe note or bill for any loss or damage sustained by him and caused by such default.",
+          "page_start": 12,
+          "page_end": 12,
+          "flags": [],
+          "lines": [
+            243,
+            244,
+            245,
+            246,
+            247,
+            248
+          ]
+        }
+      ]
+    },
+    {
+      "number": "33",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "33. Only drawee can be acceptor except in need or for honour.—No person except the drawee of\na bill exchange, or all or some of several drawees, or a person named therein as a drawee in case of need,\nor an acceptor for honour, can bind himself by an acceptance.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            253,
+            254,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "number": "34",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "34. Acceptance by several drawees not partners.—Where there are several drawees of a bill of\nexchange who are not partners, each of them can accept it for himself, but none of them can accept it for\nanother without his authority.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            256,
+            257,
+            258
+          ]
+        }
+      ]
+    },
+    {
+      "number": "35",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "35. Liability of indorser.—In the absence of a contract to the contrary, whoever indorses and delivers a\nnegotiable instrument before maturity without, in such it indorsement, expressly excluding or making\nconditional his own liability, is bound thereby to every subsequent holder, in case of dishonour by the\ndrawee, acceptor or maker, to compensate such holder for any loss or damage caused to him by such\ndishonour, provided due notice of dishonour has been given to, or received by, such indorser as hereinafter\nprovided.\nEvery indorser after dishonour is liable as upon an instrument payable on demand.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265
+          ]
+        }
+      ]
+    },
+    {
+      "number": "36",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "36. Liability of prior parties to holder in due course.—Every prior party to a negotiable instrument\nis liable thereon to a holder in due course until the instrument is duly satisfied.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            266,
+            267
+          ]
+        }
+      ]
+    },
+    {
+      "number": "37",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "37. Maker, drawer and acceptor principals.—The maker of a promissory note or cheque, the drawer of\na bill of exchange until acceptance, and the acceptor are, in the absence of a contract to the contrary,\nrespectively liable thereon as principal debtors, and the other parties thereto are liable thereon as sureties for\nthe maker, drawer or acceptor, as the case may be.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            268,
+            269,
+            270,
+            271
+          ]
+        }
+      ]
+    },
+    {
+      "number": "38",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "38. Prior party a principal in respect of each subsequent party.—As between the parties so liable\nas sureties, each prior party is, in the absence of a contract to the contrary, also liable thereon as a\nprincipal debtor in respect of each subsequent party.\nIllustration\nA draws a bill payable to his own order on B, who accepts. A afterwards indorses the bill to C, C to D, and D to E. As\nbetween E and B, B is the principal debtor, and A, C and D are his sureties. As between E and A, A is the principal debtor, and C\nand D are his sureties. As between E and C, C is the principal debtor and D is his surety.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            273,
+            274,
+            275,
+            276,
+            277,
+            278,
+            279
+          ]
+        }
+      ]
+    },
+    {
+      "number": "39",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "39. Suretyship.—When the holder of an accepted bill of exchange enters into any contract with the\nacceptor which, under section 134 or 135 of the Indian Contract Act, 1872 (9 of 1872), would discharge\nthe other parties, the holder may expressly reserve his right to charge the other parties, and in such case\nthey are not discharged.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            280,
+            281,
+            282,
+            283
+          ]
+        }
+      ]
+    },
+    {
+      "number": "40",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "40. Discharge of indorser's liability.—Where the holder of a negotiable instrument, without the\nconsent of the indorser, destroys or impairs the indorser’s remedy against a prior party, the indorser is\ndischarged from liability to the holder to the same extent as if the instrument had been paid at maturity.\nIllustration\nA is the holder of a bill of exchange made payable to the order of B, which contains the following indorsements in\nblank:—\nFirst indorsement, “B”.\nSecond indorsement, “Peter Williams”.\nThird indorsement, “Wright & Co.”\nFourth indorsement. “John Rozario”.\nThis bill A puts in suit against John Rozario and strikes out, without John Rozario's consent, the indorsements by Peter\nWilliams and Wright & Co. A is not entitled to recover anything from John Rozario.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            284,
+            285,
+            286,
+            287,
+            288,
+            289,
+            290,
+            291,
+            292,
+            293,
+            294,
+            295
+          ]
+        }
+      ]
+    },
+    {
+      "number": "41",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "41. Acceptor bound, although, indorsement forged.—An acceptor of a bill of exchange already\nindorsed is not relieved from liability by reason that such indorsement is forged, if he knew or had reason\nto believe the indorsement to be forged when he accepted the bill.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            296,
+            297,
+            298
+          ]
+        }
+      ]
+    },
+    {
+      "number": "42",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "42. Acceptance of bill drawn in fictitious name.—An acceptor of a bill of exchange drawn in a\nfictitious name and payable to the drawer's order is not, by reason that such name is fictitious, relieved\nfrom liability to any holder in due course claiming under an indorsement by the same hand as the drawer's\nsignature, and purporting to be made by the drawer.",
+          "page_start": 13,
+          "page_end": 13,
+          "flags": [],
+          "lines": [
+            299,
+            300,
+            301,
+            302
+          ]
+        }
+      ]
+    },
+    {
+      "number": "43",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "43. Negotiable instrument made, etc., without consideration.—A negotiable instrument made,\ndrawn, accepted, indorsed or transferred without consideration, or for a consideration which fails, creates\nno obligation of payment between the parties to the transaction. But if any such party has transferred the\ninstrument with or without indorsement to a holder for consideration, such holder, and every subsequent\nholder deriving title from him, may recover the amount due on such instrument from the transferor for\nconsideration or any prior party thereto.\nException I.—No party for whose accommodation a negotiable instrument has been made, drawn,\naccepted or indorsed can, if he have paid the amount thereof, recover thereon such amount from any\nperson who became a party to such instrument for his accommodation.\nException II.—No party to the instrument who has induced any other party to make, draw, accept, indorse\nor transfer the same to him for a consideration which he has failed to pay or perform in full shall recover\nthereon an amount exceeding the value of the consideration (if any) which he has actually paid or performed.",
+          "page_start": 14,
+          "page_end": 14,
+          "flags": [],
+          "lines": [
+            304,
+            305,
+            306,
+            307,
+            308,
+            309,
+            310,
+            311,
+            312,
+            313,
+            314,
+            315
+          ]
+        }
+      ]
+    },
+    {
+      "number": "44",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "44. Partial absence or failure of money-consideration.—When the consideration for which a\nperson signed a promissory note, bill of exchange or cheque consisted of money, and was originally\nabsent in part or has subsequently failed in part, the sum which a holder standing in immediate relation\nwith such signer is entitled to receive from him is proportionally reduced.\nExplanation.—The drawer of a bill of exchange stands in immediate relation with the acceptor. The\nmaker of a promissory note, bill of exchange or cheque stands in immediate relation with the payee, and\nthe indorser with his indorsee. Other signers may by agreement stand in immediate relation with a holder.\nIllustration\nA draws a bill on B for Rs. 500 payable to the order of A, B accepts the bill, but subsequently dishonours, it by\nnon-payment. A sues B on the bill, B proves that it was accepted for value as to Rs. 400, and as an accommodation to\nthe plaintiff as to the residue. A can only recover Rs. 400.",
+          "page_start": 14,
+          "page_end": 14,
+          "flags": [],
+          "lines": [
+            316,
+            317,
+            318,
+            319,
+            321,
+            322,
+            323,
+            324,
+            325,
+            326,
+            327
+          ]
+        }
+      ]
+    },
+    {
+      "number": "45",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "45. Partial failure of consideration not consisting of money.—Where a part of the consideration\nfor which a person signed a promissory note, bill of exchange or cheque, though not consisting of money,\nis ascertainable in money without collateral enquiry, and there has been a failure of that part, the sum\nwhich a holder standing in immediate relation with such signer is entitled to receive from him is\nproportionally reduced.",
+          "page_start": 14,
+          "page_end": 14,
+          "flags": [],
+          "lines": [
+            328,
+            329,
+            330,
+            331,
+            332
+          ]
+        }
+      ]
+    },
+    {
+      "number": "45A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "1[45A. Holder's right to duplicate of lost bill.—Where a bill of exchange has been lost before it is\nover-due, the person who was the holder of it may apply to the drawer to give him another bill of the\nsame tenor, giving security to the drawer, if required, to indemnify him against all persons whatever in\ncase the bill alleged to have been lost shall be found again.\nIf the drawer on request as aforesaid refuses to give such duplicate bill, he may be compelled to do\nso.]",
+          "page_start": 14,
+          "page_end": 14,
+          "flags": [],
+          "lines": [
+            333,
+            334,
+            335,
+            336,
+            337,
+            338
+          ]
+        }
+      ]
+    },
+    {
+      "number": "46",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "46. Delivery.—The making, acceptance or indorsement of a promissory note, bill of exchange or\ncheque is completed by delivery, actual or constructive.\nAs between parties standing in immediate relation, delivery to be effectual must be made by the party\nmaking, accepting or indorsing the instrument, or by a person authorized by him in that behalf.\nAs between such parties and any holder of the instrument other than a holder in due course, it may be\nshown that the instrument was delivered conditionally or for a special purpose only, and not for the\npurpose of transferring absolutely the property therein.\nA promissory note, bill of exchange or cheque payable to bearer is negotiable by the delivery thereof.\nA promissory note, bill of exchange or cheque payable to order is negotiable by the holder by\nindorsement and delivery thereof.",
+          "page_start": 14,
+          "page_end": 14,
+          "flags": [],
+          "lines": [
+            341,
+            342,
+            343,
+            344,
+            345,
+            346,
+            347,
+            348,
+            349,
+            350
+          ]
+        }
+      ]
+    },
+    {
+      "number": "47",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "47. Negotiation by delivery.—Subject to the provisions of section 58, a promissory note, bill of\nexchange or cheque payable to bearer is negotiable by delivery thereof.\nException.—A promissory note, bill of exchange or cheque delivered on condition that it is not to\ntake effect except in a certain event is not negotiable (except in the hands of a holder for value without\nnotice of the condition) unless such event happens.\nIllustrations\n(a) A, the holder of a negotiable instrument payable to bearer, delivers it to B's agent to keep for B. The instrument has been\nnegotiated.\n(b) A, the holder of a negotiable instrument payable to bearer, which is in the hands of A's banker, who is at the time the\nbanker of B, directs the banker to transfer the instrument to B's credit in the banker's account with B. The banker does so, and\naccordingly now possesses the instrument as B's agent. The instrument has been negotiated, and B has become the holder of it.",
+          "page_start": 15,
+          "page_end": 15,
+          "flags": [],
+          "lines": [
+            353,
+            354,
+            355,
+            356,
+            357,
+            358,
+            359,
+            360,
+            361,
+            362,
+            363
+          ]
+        }
+      ]
+    },
+    {
+      "number": "48",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "48. Negotiation by indorsement.—Subject to the provisions of section 58, a promissory note, bill of\nexchange or cheque 1[payable to order], is negotiable by the holder by indorsement and delivery thereof.",
+          "page_start": 15,
+          "page_end": 15,
+          "flags": [],
+          "lines": [
+            364,
+            365
+          ]
+        }
+      ]
+    },
+    {
+      "number": "49",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "49. Conversion of indorsement in blank into indorsement in full.—The holder of a negotiable\ninstrument indorsed in blank may, without signing his own name, by writing above the indorser’s\nsignature a direction to pay to any other person as indorsee, convert the indorsement in blank into an\nindorsement in full; and the holder does not thereby incur the responsibility of an indorser.",
+          "page_start": 15,
+          "page_end": 15,
+          "flags": [],
+          "lines": [
+            366,
+            367,
+            368,
+            369
+          ]
+        }
+      ]
+    },
+    {
+      "number": "50",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "50. Effect of indorsement.—The indorsement of a negotiable instrument followed by delivery\ntransfers to the indorsee the property therein with the right of further negotiation; but the indorsement\nmay, by express words, restrict or exclude such right, or may merely constitute the indorsee an agent to\nindorse the instrument, or to receive its contents for the indorser, or for some other specified person.\nIllustrations\nB signs the following indorsements on different negotiable instruments payable to bearer.—\n(a) “Pay the contents to C only”.\n(b) “Pay C for my use.”\n(c)  “Pay C or order for the account of B.”\n(d) “the within must be credited to C.”\nThese indorsements exclude the right of further negotiation by C.\n(e) “Pay C.”\n(f) “Pay C value in account with the Oriental Bank.”\n(g) “Pay the contents to C, being part of the consideration in a certain deed of assignment executed by C to the indorser\nand others.”\nThese indorsements do not exclude the right of further negotiation by C.",
+          "page_start": 15,
+          "page_end": 15,
+          "flags": [],
+          "lines": [
+            371,
+            372,
+            373,
+            374,
+            375,
+            376,
+            377,
+            378,
+            379,
+            380,
+            381,
+            382,
+            383,
+            384,
+            385,
+            386
+          ]
+        }
+      ]
+    },
+    {
+      "number": "51",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "51. Who may negotiate.—Every sole maker, drawer, payee or indorsee, or all of several joint\nmakers, drawers, payees or indorsees, of a negotiable instrument may, if the negotiability of such\ninstrument has not been restricted or excluded as mentioned in section 50, indorse and negotiate the same.\nExplanation.—Nothing in this section enables a maker or drawer to indorse or negotiate an\ninstrument, unless he is in lawful possession or is holder thereof; or enables a payee or indorsee to indorse\nor negotiate an instrument, unless he is holder thereof.\nIllustration\nA bill is drawn payable to A or order. A indorses it to B, the indorsement not containing the words “or order” or any\nequivalent words. B may negotiate the instrument.",
+          "page_start": 15,
+          "page_end": 15,
+          "flags": [],
+          "lines": [
+            387,
+            388,
+            389,
+            390,
+            391,
+            392,
+            393,
+            394,
+            395
+          ]
+        }
+      ]
+    },
+    {
+      "number": "52",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "52. Indorser who excludes his own liability or makes it conditional.—The indorser of a negotiable\ninstrument may, by express words in the indorsement, exclude his own liability thereon, or make such\nliability or the right of the indorsee to receive the amount due thereon depend upon the happening of a\nspecified event, although such event may never happen.\nWhere an indorser so excludes his liability and afterwards becomes the holder of the instrument, all\nintermediate indorsers are liable to him.\nIllustrations\n(a) The indorser of a negotiable instrument sign; his name adding the words— “Without recourse”.\nUpon this indorsement he incurs no liability.\n(b) A is the payee and holder of a negotiable instrument. Excluding personal liability by an indorsement\n“without recourse” he transfers the instrument to B, and B indorses it to C, who indorses it to A. A is not only\nreinstated in his former rights, but has the rights of an indorsee against B and C.",
+          "page_start": 15,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            396,
+            397,
+            400,
+            401,
+            402,
+            403,
+            404,
+            405,
+            406,
+            407,
+            408,
+            409
+          ]
+        }
+      ]
+    },
+    {
+      "number": "53",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "53. Holder deriving title from holder in due course.—A holder of a negotiable instrument who\nderives title from a holder in due course has the rights thereon of that holder in due course.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            410,
+            411
+          ]
+        }
+      ]
+    },
+    {
+      "number": "54",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "54. Instrument indorsed in blank.—Subject to the provisions hereinafter contained as to crossed\ncheques, a negotiable instrument indorsed in blank is payable to the bearer thereof even although\noriginally payable to order.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            412,
+            413,
+            414
+          ]
+        }
+      ]
+    },
+    {
+      "number": "55",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "55. Conversion of indorsement in blank into indorsement in full.—If a negotiable instrument,\nafter having been indorsed in blank, is indorsed in full, the amount of it cannot be claimed from the\nindorser in full, except by the person to whom it has been indorsed in full, or by one who derives title\nthrough such person.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            416,
+            417,
+            418,
+            419
+          ]
+        }
+      ]
+    },
+    {
+      "number": "56",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "56. Indorsement for part of sum due.—No writing on a negotiable instrument is valid for the\npurpose of negotiation if such writing purports to transfer only a part of the amount appearing to be due\non the instrument; but where such amount has been partly paid, a note to that effect may be indorsed on\nthe instrument, which may then be negotiated for the balance.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            420,
+            421,
+            422,
+            423
+          ]
+        }
+      ]
+    },
+    {
+      "number": "57",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "57. Legal representative cannot by delivery only negotiate instrument indorsed by deceased.—\nThe legal representative of a deceased person cannot negotiate by delivery only a promissory note, bill of\nexchange or cheque payable to order and indorsed by the deceased but not delivered.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            424,
+            425,
+            426
+          ]
+        }
+      ]
+    },
+    {
+      "number": "58",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "58.  Instrument obtained by unlawful means or for unlawful consideration.—When a negotiable\ninstrument has been lost, or has been obtained from any maker, acceptor or holder thereof by means of an\noffence or fraud, or for an unlawful consideration, no possessor or indorsee who claims through the\nperson who found or so obtained the instrument is entitled to receive the amount due thereon from such\nmaker, acceptor or holder, or from any party prior to such holder, unless such possessor or indorsee is, or\nsome person through whom he claims was, a holder thereof in due course.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            427,
+            428,
+            429,
+            430,
+            431,
+            432
+          ]
+        }
+      ]
+    },
+    {
+      "number": "59",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "59. Instrument acquired after dishonour or when overdue.—The holder of a negotiable\ninstrument, who has acquired it after dishonour, whether by non-acceptance or non-payment, with notice\nthereof, or after maturity, has only, as against the other parties, the rights thereon of his transferor:\nAccommodation note or bill.—Provided that any person who, in good faith and for consideration,\nbecomes the holder, after maturity, of a promissory note or bill of exchange made, drawn or accepted\nwithout consideration, for the purpose of enabling some party thereto to raise money thereon, may\nrecover the amount of the note or bill from any prior party.\nIllustration\nThe acceptor of a bill of exchange, when he accepted it, deposited with the drawer certain goods as a collateral security for\nthe payment of the bill, with power to the drawer to sell the goods and apply the proceeds in discharge of the bill if it were not\npaid at maturity. The bill not having been paid at maturity, the drawer sold the goods and retained the proceeds, but indorsed the\nbill to A. A's title is subject to the same objection as the drawer's title.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            433,
+            434,
+            435,
+            436,
+            437,
+            438,
+            439,
+            440,
+            441,
+            442,
+            443,
+            444
+          ]
+        }
+      ]
+    },
+    {
+      "number": "60",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "60. Instrument negotiable till payment or satisfaction.—A negotiable instrument may be\nnegotiated (except by the maker, drawee or acceptor after maturity) until payment or satisfaction thereof\nby the maker, drawee or acceptor at or after maturity, but not after such payment or satisfaction.",
+          "page_start": 16,
+          "page_end": 16,
+          "flags": [],
+          "lines": [
+            445,
+            446,
+            447
+          ]
+        }
+      ]
+    },
+    {
+      "number": "61",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "61. Presentment for acceptance.—A bill of exchange payable after sight must, if no time or place is\nspecified therein for presentment, be presented to the drawee thereof for acceptance, if he can, after\nreasonable search, be found, by a person entitled to demand acceptance, within a reasonable time after it\nis drawn, and in business hours on a business day. In default of such presentment, no party thereto is\nliable thereon to the person making such default.\nIf the drawee cannot, after reasonable search, be found, the bill is dishonoured.\nIf the bill is directed to the drawee at a particular place, it must be presented at that place; and if at the\ndue date for presentment he cannot, after reasonable search, be found there, the till is dishonoured.\n1[Where authorized by agreement or usage, a presentment through the post office by means of a registered\nletter is sufficient.]",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            451,
+            452,
+            453,
+            454,
+            455,
+            456,
+            457,
+            458,
+            459,
+            460
+          ]
+        }
+      ]
+    },
+    {
+      "number": "62",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "62. Presentment of promissory note for sight.—A promissory note, payable at a certain period after\nsight, must be presented to the maker thereof for sight (if he can after reasonable search be found) by a person\nentitled to demand payment, within a reasonable time after it is made and in business hours on a business day.\nIn default of such presentment, no party thereto is liable thereon to the person making such default.",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            461,
+            462,
+            463,
+            464
+          ]
+        }
+      ]
+    },
+    {
+      "number": "63",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "63. Drawee’s time for deliberation.—The holder must, if so required by the drawee of a bill of\nexchange presented to him for acceptance, allow the drawee 2[forty-eight] hours (exclusive of public\nholidays) to consider whether he will accept it.",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            466,
+            467,
+            468
+          ]
+        }
+      ]
+    },
+    {
+      "number": "64",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "64. Presentment for payment.—3[(1)] Promissory notes, bills of exchange and cheques must be\npresented for payment to the maker, acceptor or drawee thereof respectively, by or on behalf of the holder\nas hereinafter provided. In default of such presentment, the other parties thereto are not liable thereon to\nsuch holder.\n1[Where authorized by agreement or usage, a presentment through the post office by means of a\nregistered letter is sufficient.]\nException.—Where a promissory note is payable on demand and is not payable at a specified place,\nno presentment is necessary in order to charge the maker thereof.\n4[(2) Notwithstanding anything contained in section 6, where an electronic image of a truncated\ncheque is presented for payment, the drawee bank is entitled to demand any further information regarding\nthe truncated cheque from the bank holding the truncated cheque in case of any reasonable suspicion\nabout the genuineness of the apparent tenor of instrument, and if the suspicion is that of any fraud,\nforgery, tampering or destruction of the instrument, it is entitled to further demand the presentment of the\ntruncated cheque itself for verification:\nProvided that the truncated cheque so demanded by the drawee bank shall be retained by it, if the\npayment is made accordingly.]",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            469,
+            470,
+            471,
+            472,
+            473,
+            474,
+            475,
+            476,
+            477,
+            478,
+            479,
+            480,
+            481,
+            482,
+            483,
+            484
+          ]
+        }
+      ]
+    },
+    {
+      "number": "65",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "65. Hours for presentment—Presentment for payment must be made during the usual hours of\nbusiness and, if at a banker's within banking hours.",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            485,
+            486
+          ]
+        }
+      ]
+    },
+    {
+      "number": "66",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "66. Presentment for payment of instrument payable after date or sight—A promissory note or\nbill of exchange, made payable at a specified period after date or sight thereof, must be presented for\npayment at maturity.",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            487,
+            488,
+            489
+          ]
+        }
+      ]
+    },
+    {
+      "number": "67",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "67.  Presentment for payment of promissory note payable by instalments.—A promissory note\npayable by instalments must be presented for payment on the third day after the date fixed for payment of\neach instalment; and non-payment on such presentment has the same effect as non-payment of a note at\nmaturity.",
+          "page_start": 17,
+          "page_end": 17,
+          "flags": [],
+          "lines": [
+            490,
+            491,
+            492,
+            493
+          ]
+        }
+      ]
+    },
+    {
+      "number": "68",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "68. Presentment for payment of instrument payable at specified place and not elsewhere.—A\npromissory note, bill of exchange or cheque made, drawn or accepted payable at a specified place and not\nelsewhere must, in order to charge any party thereto, be presented for payment at that place.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            499,
+            500,
+            501
+          ]
+        }
+      ]
+    },
+    {
+      "number": "69",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "69. Instrument payable at specified place.—A promissory note or bill of exchange made, drawn or\naccepted payable at a specified place must, in order to charge the maker or drawer thereof, be presented\nfor payment at that place.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            502,
+            503,
+            504
+          ]
+        }
+      ]
+    },
+    {
+      "number": "70",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "70. Presentment where no exclusive place specified.—A promissory note or bill of exchange, not\nmade payable as mentioned in sections 68 and 69, must be presented for payment at the place of business\n(if any), or at the usual residence, of the maker, drawee or acceptor thereof, as the case may be.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            505,
+            506,
+            507
+          ]
+        }
+      ]
+    },
+    {
+      "number": "71",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "71. Presentment when maker, etc., has no known place of business or residence.—If the maker,\ndrawee or acceptor of a negotiable instrument has no known place of business or fixed residence, and no\nplace is specified in the instrument for presentment for acceptance or payment such presentment may be\nmade to him in person wherever he can be found.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            508,
+            509,
+            510,
+            511
+          ]
+        }
+      ]
+    },
+    {
+      "number": "72",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "72. Presentment of cheque to charge drawer.— 1[Subject to the provisions of section 84,] a cheque\nmust, in order to charge the drawer, be presented at the bank upon which it is drawn before the relation\nbetween the drawer and his banker has been altered to the prejudice of the drawer.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            512,
+            513,
+            514
+          ]
+        }
+      ]
+    },
+    {
+      "number": "73",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "73. Presentment of cheque to charge any other person.—A cheque must, in order to charge any\nperson except the drawer, be presented within a reasonable time after delivery thereof by such person.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            516,
+            517
+          ]
+        }
+      ]
+    },
+    {
+      "number": "74",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "74. Presentment of instrument payable on demand.—Subject to the provisions of section 31, a\nnegotiable instrument payable on demand must be presented for payment within a reasonable time after it\nis received by the holder.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            518,
+            519,
+            520
+          ]
+        }
+      ]
+    },
+    {
+      "number": "75",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "75. Presentment by or to agent, representative of deceased, or assignee of insolvent.—\nPresentment for acceptance or payment may be made to the duly authorized agent of the drawee, maker\nor accept or, as the case may be, or, where the drawee, maker or acceptor has died, to his legal\nrepresentative, or, where he has been declared an insolvent, to his assignee.",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            521,
+            522,
+            523,
+            524
+          ]
+        }
+      ]
+    },
+    {
+      "number": "75A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "2[75A. Excuse for delay in presentment for acceptance or payment—Delay in presentment 3[for\nacceptance or payment] is excused if the delay is caused by circumstances beyond the control of the\nholder, and not imputable to his default, misconduct or negligence. When the cause of delay ceases to\noperate, presentment must be made within a reasonable time.]",
+          "page_start": 18,
+          "page_end": 18,
+          "flags": [],
+          "lines": [
+            525,
+            526,
+            527,
+            528
+          ]
+        }
+      ]
+    },
+    {
+      "number": "76",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "76. When presentment unnecessary.—No presentment for payment is necessary, and the instrument\nis dishonoured at the due date for presentment, in any of the following cases:—\n(a) if the maker, drawee or acceptor intentionally prevents the presentment of the instrument,\nor,\nif the instrument being payable at his place of business, he closes such place on a business day\nduring the usual business hours, or,\nif the instrument being payable at some other specified place, neither he nor any person\nauthorized to pay it attends at such place during the usual business hours, or,\nif the instrument not being payable at any specified place, he cannot after due search be\nfound;\n(b) as against any party sought to be charged therewith, if he has engaged to pay notwithstanding\nnon-presentment;\n(c) as against any party if, after maturity, with knowledge that the instrument has not been\npresented—\nhe makes a part payment on account of the amount due on the instrument,\nor promises to pay the amount due thereon in whole or in part,\nor otherwise waives his right to take advantage of any default in presentment for payment;\n(d) as against the drawer, if the drawer could not suffer damage from the want of such\npresentment.",
+          "page_start": 18,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            529,
+            530,
+            531,
+            532,
+            533,
+            534,
+            535,
+            536,
+            537,
+            538,
+            539,
+            540,
+            541,
+            542,
+            543,
+            544,
+            549,
+            550,
+            551
+          ]
+        }
+      ]
+    },
+    {
+      "number": "77",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "77. Liability of banker for negligently dealing with bill presented for payment.—When a bill of\nexchange, accepted payable at a specified bank, has been duly presented there for payment and\ndishonoured, if the banker so negligently or improperly keeps, deals with or delivers back such bill as to\ncause loss to the holder, he must compensate the holder for such loss.",
+          "page_start": 19,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            552,
+            553,
+            554,
+            555
+          ]
+        }
+      ]
+    },
+    {
+      "number": "78",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "78. To whom payment should be made.—Subject to the provisions of section 82, clause (c),\npayment of the amount due on a promissory note, bill of exchange or cheque must, in order to discharge\nthe maker or acceptor, be made to the holder of the instrument.",
+          "page_start": 19,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            558,
+            559,
+            560
+          ]
+        }
+      ]
+    },
+    {
+      "number": "79",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "79. Interest when rate specified.—When interest at a specified rate is expressly made payable on a\npromissory note or bill of exchange, interest shall be calculated at the rate specified, on the amount of the\nprincipal money due thereon, from the date of the instrument, until tender or realization of such amount,\nor until such date after the institution of a suit to recover such amount as the Court directs.",
+          "page_start": 19,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            561,
+            562,
+            563,
+            564
+          ]
+        }
+      ]
+    },
+    {
+      "number": "80",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "80. Interest when no rate specified.— When no rate of interest is specified in the instrument,\ninterest on the amount due thereon shall, 1[notwithstanding any agreement relating to interest between any\nparties to the instrument], be calculated at the rate of 2[eighteen per centum] per annum, from the date at\nwhich the same ought to have been paid by the party charged, until tender or realization of the amount\ndue thereon, or until such date after the institution of a suit to recover such a mount as the Court directs.\nExplanation.—When the party charged is the indorser of an instrument dishonoured by non-payment,\nhe is liable to pay interest only from the time that he receives notice of the dishonour.",
+          "page_start": 19,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            566,
+            567,
+            568,
+            569,
+            570,
+            571,
+            572
+          ]
+        }
+      ]
+    },
+    {
+      "number": "81",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "81. Delivery of instrument on payment or indemnity in case of loss.—3[(1)] Any person liable to\npay, and called upon by the holder thereof to pay, the amount due on a promissory note, bill of exchange\nor cheque is before payment entitled to have it shown, and is on payment entitled to have it delivered up,\nto him, or if the instrument is lost or cannot be produced, to be indemnified against any further claim\nthereon against him.\n4[(2) Where the cheque is an electronic image of a truncated cheque, even after the payment the\nbanker who received the payment shall be entitled to retain the truncated cheque.\n(3) A certificate issued on the foot of the printout of the electronic image of a truncated cheque by the\nbanker who paid the instrument, shall be prima facie proof of such payment.]",
+          "page_start": 19,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            573,
+            574,
+            575,
+            576,
+            577,
+            578,
+            579,
+            580,
+            581
+          ]
+        }
+      ]
+    },
+    {
+      "number": "82",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "82. Discharge from liability.—The maker, acceptor or indorser respectively of a negotiable\ninstrument is discharged from liability thereon—\n(a) by cancellation.—to a holder thereof  who cancels such acceptor's or indorser’s name with\nintent to discharge him, and to all parties claiming under such holder;\n(b) by release.—to a holder thereof who otherwise discharges such maker, acceptor or indorser,\nand to all parties deriving title under such holder after notice of such discharge;\n(c) by payment.—to all parties thereto, if the instrument is payable to bearer, or has been\nindorsed in blank, and such maker, acceptor or indorser makes payment in due course of the amount\ndue thereon.",
+          "page_start": 19,
+          "page_end": 19,
+          "flags": [],
+          "lines": [
+            584,
+            585,
+            586,
+            587,
+            588,
+            589,
+            590,
+            591,
+            592
+          ]
+        }
+      ]
+    },
+    {
+      "number": "83",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "83. Discharge by allowing drawee more than forty-eight hours to accept.—If the holder of a bill\nof exchange allows the drawee more than 1[forty-eight] hours, exclusive of public holidays, to consider\nwhether he will accept the same, all previous parties not consenting to such allowance are thereby\ndischarge from liability to such holder.",
+          "page_start": 20,
+          "page_end": 20,
+          "flags": [],
+          "lines": [
+            598,
+            599,
+            600,
+            601
+          ]
+        }
+      ]
+    },
+    {
+      "number": "84",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "2[84. When cheque not duly presented and drawer damaged thereby.—(1) Where a cheque is not\npresented for payment within a reasonable time of its issue, and the drawer or person on whose account it\nis drawn had the right, at the time when presentment ought to have been made, as between himself and\nthe banker, to have the cheque paid and suffers actual damage through the delay, he is discharged to the\nextent of such damage, that is to say, to the extent to which such drawer or person is a creditor of the\nbanker to a large amount than he would have been if such cheque had been paid.\n(2) In determining what is a reasonble time, regard shall be had to the nature of the instrument, the\nusage of trade and of bankers, and the facts of the particular case.\n(3) The holder of the cheque as to which such drawer of person is so discharged shall be a creditor, in\nlieu of such drawer or person, of such banker to the extent of such discharge and entitled to recover the\namount from him.\nIllustrations\n(a) A draws a cheque for Rs. 1,000, and, when the cheque ought to be presented, has funds at the bank to meet\nit. The bank fails before the cheque is presented. The drawer is discharged, but the holder can prove against the bank\nfor the amount of the cheque.\n(b) A draws a cheque at Umballa on a bank in Calcutta. The bank fails before the cheque could be presented in\nordinary course. A is not discharged, for he has not suffered actual damage through any delay in presenting the\ncheque.]",
+          "page_start": 20,
+          "page_end": 20,
+          "flags": [],
+          "lines": [
+            602,
+            603,
+            604,
+            605,
+            606,
+            607,
+            608,
+            609,
+            610,
+            611,
+            612,
+            613,
+            615,
+            616,
+            617,
+            618,
+            619,
+            620
+          ]
+        }
+      ]
+    },
+    {
+      "number": "85",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "85. Cheque payable to order.—3[(1)] Where a cheque payable to order purports to be endorsed by or\non behalf of the payee, the drawee is discharged by payment in due course.\n4[(2) Where a cheque is originally expressed to be payable to bearer, the drawee is discharged\nby payment in due course to the bearer thereof, notwithstanding any endorsement whether in full or\nin blank appearing thereon, and notwithstanding that any such endorsement purports to restrict or\nexclude further negotiation.]",
+          "page_start": 20,
+          "page_end": 20,
+          "flags": [],
+          "lines": [
+            621,
+            622,
+            623,
+            624,
+            625,
+            626
+          ]
+        }
+      ]
+    },
+    {
+      "number": "85A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "5[85A. Drafts drawn by one branch of a bank on another payable to order.—where any draft, that\nis an order to pay money, drawn by one office of a bank upon another office of the same bank for a sum\nof money payable to order on demand, purports to be endorsed by or on behalf of the payee, the bank is\ndischarged by payment in due course.]",
+          "page_start": 20,
+          "page_end": 20,
+          "flags": [],
+          "lines": [
+            627,
+            628,
+            629,
+            630
+          ]
+        }
+      ]
+    },
+    {
+      "number": "86",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "86. Parties not consenting discharged by qualified or limited acceptance.—If the holder of a\nbill of exchange acquiesces in a qualified acceptance, or one limited to part of the sum mentioned in\nthe bill, or which substitutes a different place or time for payment, or which, where the drawees are\nnot partners, is not signed by all the drawees, all previous parties whose consent is not obtained to\nsuch acceptance are discharged as against the holder and those claiming under him, unless on notice\ngiven by the holder they assent to such acceptance.\nExplanation.—An acceptance is qualified\n(a) where it is conditional, declaring the payment to be dependent on the happening of an event\ntherein stated;\n(b) where it undertakes the payment of part only of the sum ordered to be paid;\n(c) where no place of payment being specified on the order, it undertakes the payment at a\nspecified place, and not otherwise or elsewhere; or where, a place of payment being specified in the\norder, it undertakes the payment at some other place and not otherwise or elsewhere;\n(d) where it undertakes the payment at a time other than that at which under the order it would be\nlegally due.",
+          "page_start": 20,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            631,
+            632,
+            633,
+            634,
+            635,
+            636,
+            637,
+            638,
+            639,
+            640,
+            647,
+            648,
+            649,
+            650,
+            651
+          ]
+        }
+      ]
+    },
+    {
+      "number": "87",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "87. Effect of material alteration.—Any material alteration of a negotiable instrument renders the\nsame void as against anyone who is a party thereto at the time of making such alteration and does not\nconsent thereto, unless it was made in order to carry out the common intention of the original parties;\nAlteration by indorsee.—And any such alteration, if made by an indorsee, discharges his indorser\nfrom all liability to him in respect of the consideration thereof.\nThe provisions of this section are subject to those of sections 20, 49, 86 and 125.",
+          "page_start": 21,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            652,
+            653,
+            654,
+            655,
+            656,
+            657
+          ]
+        }
+      ]
+    },
+    {
+      "number": "88",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "88. Acceptor or indorser bound notwithstanding previous alteration.—An acceptor or indorser of\na negotiable instrument is bound by his acceptance or indorsement notwithstanding any previous\nalteration of the instrument.",
+          "page_start": 21,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            658,
+            659,
+            660
+          ]
+        }
+      ]
+    },
+    {
+      "number": "89",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "89. Payment of instrument on which alteration is not apparent.—1[(1)] Where a promissory note,\nbill of exchange or cheque has been materially altered but does not appear to have been so altered, or\nwhere a cheque is presented for payment which does not at the time of presentation appear to be crossed\nor to have had a crossing which has been obliterated, payment thereof by a person or banker liable to pay,\nand paying the same according to the apparent tenor thereof at the time of payment and otherwise in due\ncourse, shall discharge such person or banker from all liability thereon; and such payment shall not be\nquestioned by reason of the instrument having been altered or the cheque crossed.\n2[(2) Where the cheque is an electronic image of a truncated cheque, any difference in apparent tenor\nof such electronic image and the truncated cheque shall be a material alteration and it shall be the duty of\nthe bank or the clearing house, as the case may be, to ensure the exactness of the apparent tenor of\nelectronic image of the truncated cheque while truncating and transmitting the image.\n(3) Any bank or a clearing house which receives a transmitted electronic image of a truncated cheque,\nshall verify from the party who transmitted the image to it, that the image so transmitted to it and received\nby it, is exactly the same.]",
+          "page_start": 21,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            661,
+            662,
+            663,
+            664,
+            665,
+            666,
+            667,
+            669,
+            670,
+            671,
+            672,
+            673,
+            674,
+            675
+          ]
+        }
+      ]
+    },
+    {
+      "number": "90",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "90. Extinguishment of rights of action on bill in acceptor's hands.—If a bill of exchange which\nhas been negotiated is, at or after maturity, held by the acceptor in his own right, all rights of action\nthereon are extinguished.",
+          "page_start": 21,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            676,
+            677,
+            678
+          ]
+        }
+      ]
+    },
+    {
+      "number": "91",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "91. Dishonour by non-acceptance.—A bill of exchange is said to be dishonoured by non-acceptance\nwhen the drawee, or one of several drawees not being partners, makes default in acceptance upon being\nduly required to accept the bill, or where presentment is excused and the bill is not accepted.\nWhere the drawee is incompetent to contract, or the acceptance is qualified the bill may be treated as\ndishonoured.",
+          "page_start": 21,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            681,
+            682,
+            683,
+            684,
+            685
+          ]
+        }
+      ]
+    },
+    {
+      "number": "92",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "92. Dishonour by non-payment.—A promissory note, bill of exchange or cheque is said to be\ndishonoured by non-payment when the maker of the note, acceptor of the bill or drawee of the cheque\nmakes default in payment upon being duly required to pay the same.",
+          "page_start": 21,
+          "page_end": 21,
+          "flags": [],
+          "lines": [
+            686,
+            687,
+            688
+          ]
+        }
+      ]
+    },
+    {
+      "number": "93",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "93. By and to whom notice should be given.—When a promissory note, bill of exchange or cheque\nis dishonoured by non-acceptance or non-payment, the holder thereof, or some party thereto who remains\nliable thereon, must give notice that the instrument has been so dishonoured to all other parties whom the\nholder seeks to make severally liable thereon, and to some one of several parties whom he seeks to make\njointly liable thereon.\nNothing in this section renders it necessary to give notice to the maker of the dishonoured promissory\nnote or the drawee or acceptor of the dishonoured bill of exchange or cheque.",
+          "page_start": 21,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            689,
+            690,
+            694,
+            695,
+            696,
+            697,
+            698
+          ]
+        }
+      ]
+    },
+    {
+      "number": "94",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "94. Mode in which notice may be given.—Notice of dishonour may be given to a duly authorized agent\nof the person to whom it is required to be given, or, where he has died, to his legal representative, or, where he\nhas been declared an insolvent, to his assignee; may be oral or written; may, if written, be sent by post; and\nmay be in any form; but it must inform the party to whom it is given, either in express terms or by reasonable\nintendment, that the instrument has been dishonoured, and in what way, and that he will be held liable thereon;\nand it must be given within a reasonable time after dishonour, at the place of business or (in case such party\nhas no place of business) at the residence of the party for whom it is intended.\nIf the notice is duly directed and sent by post and miscarries, such miscarriage does not render the\nnotice invalid.",
+          "page_start": 22,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            699,
+            700,
+            701,
+            702,
+            703,
+            704,
+            705,
+            706,
+            707
+          ]
+        }
+      ]
+    },
+    {
+      "number": "95",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "95. Party receiving must transmit notice of dishonour.—Any party receiving notice of dishonour\nmust, in order to render any prior party liable to himself, give notice of dishonour to such party within a\nreasonable time, unless such party otherwise receives due notice as provided by section 93.",
+          "page_start": 22,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            708,
+            709,
+            710
+          ]
+        }
+      ]
+    },
+    {
+      "number": "96",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "96. Agent for presentment.—When the instrument is deposited with an agent for presentment, the\nagent is entitled to the same time to give notice to his principal as if he were the holder giving notice of\ndishonour, and the principal is entitled to a further like period to give notice of dishonour.",
+          "page_start": 22,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            712,
+            713,
+            714
+          ]
+        }
+      ]
+    },
+    {
+      "number": "97",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "97. When party to whom notice given is dead.—when the party to whom notice of dishonour is\ndispatched is dead, but the party dispatching the notice is ignorant of his death, the notice is sufficient.",
+          "page_start": 22,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            715,
+            716
+          ]
+        }
+      ]
+    },
+    {
+      "number": "98",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "98. When notice of dishonour is unnecessary.—No notice of dishonour is necessary—\n(a) when it is dispensed with by the party entitled thereto;\n(b) in order to charge the drawer, when he has countermanded payment;\n(c)when the party charged could not suffer damage for want of notice;\n(d) when the party entitled to notice cannot after due search be found; or the party bound to give\nnotice is, for any other reason, unable without any fault of his own to give it;\n(e) to charge the drawers, when the acceptor is also a drawer;\n(f) in the case of a promissory note which is not negotiable;\n(g) when the party entitled to notice, knowing the facts, promises unconditionally to pay the\namount due on the instrument.",
+          "page_start": 22,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            717,
+            718,
+            719,
+            720,
+            721,
+            722,
+            723,
+            724,
+            725,
+            726
+          ]
+        }
+      ]
+    },
+    {
+      "number": "99",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "99. Noting.—When a promissory note or bill of exchange has been dishonoured by non-acceptance\nor non-payment, the holder may cause such dishonour to be noted by a notary public upon the instrument,\nor upon a paper attached thereto, or partly upon each.\nSuch note must be made within a reasonable time after dishonour, and must specify the date of\ndishonour, the reason, if any, assigned for such dishonour, or, if the instrument has not been expressly\ndishonoured, the reason why the holder treats it as dishonoured, and the notary's charges.",
+          "page_start": 22,
+          "page_end": 22,
+          "flags": [],
+          "lines": [
+            729,
+            730,
+            731,
+            732,
+            733,
+            734
+          ]
+        }
+      ]
+    },
+    {
+      "number": "100",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "100. Protest.—When a promissory note or bill of exchange has been dishonoured by non-acceptance\nor non-payment, the holder may, within a reasonable time, cause such dishonour to be noted and certified\nby a notary public. Such certificate is called a protest.\nProtest for better security.—When the acceptor of a bill of exchange has become insolvent, or\nhis credit has been publicly impeached, before the maturity of the bill, the holder may, within a\nreasonable time, cause a notary public to demand better security of the acceptor, and on its being\nrefused may, within a reasonable time, cause such facts to be noted and certified as aforesaid. Such\ncertificate is called a protest for better security.",
+          "page_start": 22,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            735,
+            736,
+            737,
+            738,
+            739,
+            740,
+            742,
+            743
+          ]
+        }
+      ]
+    },
+    {
+      "number": "101",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "101. Contents of protest.—A protest under section 100 must contain—\n(a)  either the instrument itself, or a literal transcript of the instrument and of everything written\nor printed thereupon;\n(b) the name of the person for whom and against whom the instrument has been protested;\n(c) a statement that payment or acceptance, or better security, as the case may be, has been\ndemanded of such person by the notary public; the terms of his answer, if any, or a statement that he\ngave no answer, or that he could not be found;\n(d) when the note or bill has been dishonoured, the place and time of dishonour, and, when better\nsecurity has been refused, the place and time of refusal;\n(e) the subscription of the notary public making the protest;\n(f) in the event of an acceptance for honour or of a payment for honour, the name of the person by\nwhom, of the person for whom, and the manner in which, such acceptance or payment was offered\nand effected.\n1[A notary public may make the demand mentioned in clause (c) of this section either in person or\nby his clerk or, where authorized by agreement or usage, by registered letter.]",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            744,
+            745,
+            746,
+            747,
+            748,
+            749,
+            750,
+            751,
+            752,
+            753,
+            754,
+            755,
+            756,
+            758,
+            759
+          ]
+        }
+      ]
+    },
+    {
+      "number": "102",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "102. Notice of protest.—When a promissory note or bill of exchange is required by law to be\nprotested, notice of such protest must be given instead of notice of dishonour, in the same manner and\nsubject to the same conditions; but the notice may be given by the notary public who makes the protest.",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            760,
+            761,
+            762
+          ]
+        }
+      ]
+    },
+    {
+      "number": "103",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "103. Protest for non-payment after dishonour by non-acceptance.—All bills of exchange drawn\npayable at some other place than the place mentioned as the residence of the drawee, and which are\ndishonoured by non-acceptance, may, without further presentment to the drawee, be protested for non-payment, in the place specified for payment, unless paid before or at maturity.",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            763,
+            764,
+            765
+          ]
+        }
+      ]
+    },
+    {
+      "number": "104",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "104. Protest of foreign bills.—Foreign bills of exchange must be protested for dishonour when such\nprotest is required by the law of the place where they are drawn.",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            766,
+            767
+          ]
+        }
+      ]
+    },
+    {
+      "number": "104A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "2[104A. When noting equivalent to protest.—For the purposes of this Act, where a bill of note is\nrequired to be protested within a specified time or before some further proceeding is taken it is sufficient\nthat the bill has been noted for protest before the expiration of the specified time or the taking of the\nproceeding; and, the formal protest may be extended at any time thereafter as of the date of the noting.]",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            768,
+            769,
+            770,
+            771
+          ]
+        }
+      ]
+    },
+    {
+      "number": "105",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "105. Reasonable time.—In determining what is a reasonable time for presentment for acceptance or\npayment, for giving notice of dishonour and for noting, regard shall be had to the nature of the instrument\nand the usual course of dealing with respect to similar instruments; and, in calculating such time, public\nholidays shall be excluded.",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            774,
+            775,
+            776,
+            777
+          ]
+        }
+      ]
+    },
+    {
+      "number": "106",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "106. Reasonable time of giving notice of dishonour.—If the holder and the party to whom notice of\ndishonour is given carry on business or live (as the case may be) in different places, such notice is given\nwithin a reasonable time if it is dispatched by the next post or on the day next after the day of dishonour.\nIf the said parties carry on business or live in the same place, such notice is given within a reasonable\ntime if it is dispatched in time to reach its destination on the day next after the day of dishonour.",
+          "page_start": 23,
+          "page_end": 23,
+          "flags": [],
+          "lines": [
+            778,
+            779,
+            780,
+            781,
+            782
+          ]
+        }
+      ]
+    },
+    {
+      "number": "107",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "107. Reasonable time for transmitting such notice.—A party receiving notice of dishonour, who\nseeks to enforce his right against a prior party, transmits the notice within a reasonable time if he\ntransmits it within the same time after its receipt as he would have had to give notice if he had been the\nholder.",
+          "page_start": 23,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            783,
+            784,
+            788,
+            789
+          ]
+        }
+      ]
+    },
+    {
+      "number": "108",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "108.  Acceptance for honour.—When a bill of exchange has been noted or protested for non-acceptance or for better security, any person not being a party already liable thereon may, with the\nconsent of the holder, by writing on the bill, accept the same for the honour of any party thereto. 1***",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            792,
+            793
+          ]
+        }
+      ]
+    },
+    {
+      "number": "109",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "109.  How acceptance for honour must be made.—A person desiring to accept for honour must,\n2[by writing on the bill under his hand,] declare that he accepts under protest the protested bill for the\nhonour of the drawer or of a particular indorser whom he names, or generally for honour. 3***",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            794,
+            795,
+            796
+          ]
+        }
+      ]
+    },
+    {
+      "number": "110",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "110. Acceptance not specifying for whose honour it is made.—Where the acceptance does not\nexpress for whose honour it is made it shall be deemed to be made for the honour of the drawer.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            797,
+            798
+          ]
+        }
+      ]
+    },
+    {
+      "number": "111",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "111. Liability of acceptor for honour.—An acceptor for honour binds himself to all parties\nsubsequent to the party for whose honour he accepts to pay the amount of the bill if the drawee do not;\nand such party and all prior parties are liable in their respective capacities to compensate the acceptor for\nhonour for all loss or damage sustained by him in consequence of such acceptance.\nBut an acceptor for honour is not liable to the holder of the bill unless it is presented, or (in case the\naddress given by such acceptor on the bill is a place other than the place where the bill is made payable)\nforwarded for presentment, not later than the day next after the day of its maturity.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            799,
+            800,
+            801,
+            802,
+            804,
+            805,
+            806
+          ]
+        }
+      ]
+    },
+    {
+      "number": "112",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "112. When acceptor for honour may be charged.—An acceptor for honour cannot be charged\nunless the bill has at its maturity been presented to the drawee for payment, and has been dishonoured by\nhim, and noted or protested for such dishonour.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            807,
+            808,
+            809
+          ]
+        }
+      ]
+    },
+    {
+      "number": "113",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "113. Payment for honour.—When a bill of exchange has been noted or protested for non-payment,\nany person may pay the same for the honour of any party liable to pay the same: provided that the person\nso paying 4[or his agent in that behalf] has previously declared before a notary public the party for whose\nhonour he pays, and that such declaration has been recorded by such notary public.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            810,
+            811,
+            812,
+            813
+          ]
+        }
+      ]
+    },
+    {
+      "number": "114",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "114.  Right of payer for honour.—Any person so paying is entitled to all the rights in respect of the\nbill, of the holder at the time of such payment, and may recover from the party for whose honour he pays\nall sums so paid, with interest thereon and with all expenses properly incurred in making such payment.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            814,
+            815,
+            816
+          ]
+        }
+      ]
+    },
+    {
+      "number": "115",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "115. Drawee in case of need.—Where a drawee in case of need is named in a bill of exchange, or in\nany indorsement thereon, the bill is not dishonoured until it has been dishonoured by such drawee.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            817,
+            818
+          ]
+        }
+      ]
+    },
+    {
+      "number": "116",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "116. Acceptance and payment without protest.—A drawee in case of need may accept and pay the\nbill of exchange without previous protest.",
+          "page_start": 24,
+          "page_end": 24,
+          "flags": [],
+          "lines": [
+            819,
+            820
+          ]
+        }
+      ]
+    },
+    {
+      "number": "117",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": " 117. Rules as to compensation.—The compensation payable in case of dishonour of a promissory\nnote, bill of exchange or cheque, by any party liable to the holder or any indorsee, shall 5*** be\ndetermined by the following rules:—\n(a) the holder is entitled to the amount due upon the instrument together with the expenses\nproperly incurred in presenting, noting and protesting it;\n(b) when the person charged resides at a place different from that at which the instrument was\npayable, the holder is entitled to receive such sum at the current rate of exchange between the two\nplaces;\n(c) an indorser who, being liable, has paid the amount due on the same is entitled to the amount\nso paid with interest at 1[eighteen per centum] per annum from the date of payment until tender or\nrealization thereof, together with all expenses caused by the dishonour and payment;\n(d) when the person charged and such indorser reside at different places, the indorser is entitled to\nreceive such sum at the current rate of exchange between the two places;\n(e) the party entitled to compensation may draw a bill upon the party liable to compensate him,\npayable at sight or on demand, for the amount due to him, together with all expenses properly\nincurred by him. Such bill must be accompanied by the instrument dishonoured and the protest\nthereof (if any). If such bill is dishonoured, the party dishonouring the same is liable to make\ncompensation thereof in the same manner as in the case of the original bill.",
+          "page_start": 24,
+          "page_end": 25,
+          "flags": [],
+          "lines": [
+            823,
+            824,
+            825,
+            826,
+            827,
+            834,
+            835,
+            836,
+            837,
+            838,
+            839,
+            840,
+            841,
+            842,
+            843,
+            844,
+            845,
+            846
+          ]
+        }
+      ]
+    },
+    {
+      "number": "118",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "118. Presumptions as to negotiable instruments.—Until the contrary is proved, the following\npresumptions shall be made:—\n(a) of consideration:—that every negotiable instrument was made or drawn for consideration,\nand that every such instrument, when it has been accepted, indorsed, negotiated or transferred, was\naccepted, indorsed, negotiated or transferred for consideration;\n(b) as to date:—that every negotiable instrument bearing a date was made or drawn on such date;\n(c) as to time of acceptance:—that every accepted bill of exchange was accepted within a\nreasonable time after its date and before its maturity;\n(d) as to time of transfer:—that every transfer of a negotiable instrument was made before its\nnaturity;\n(e) as to order of indorsements:—that the indorsements appearing upon a negotiable instrument\nwere made in the order in which they appear then on;\n(f) as to stamp:— that a lost promissory note, bill of exchange or cheque was duly stamped;\n(g) that holder is a holder in due course:—that the holder of a negotiable instrument is a holder\nin due course: provided that, where the instrutment has been obtained from its lawful owner, or from\nany person in lawful custody thereof, by means of an offence or fraud, or has been obtained from the\nmaker or acceptor thereof by means of an offence or fraud, or for unlawful consideration, the burden\nof proving that the holder is a holder in due course lies upon him.",
+          "page_start": 25,
+          "page_end": 25,
+          "flags": [],
+          "lines": [
+            850,
+            851,
+            852,
+            853,
+            854,
+            855,
+            856,
+            857,
+            858,
+            859,
+            860,
+            861,
+            862,
+            863,
+            864,
+            865,
+            866,
+            867
+          ]
+        }
+      ]
+    },
+    {
+      "number": "119",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "119. Presumption on proof of protest.—Ina suit upon an instrument which has been\ndishonoured, the Court shall, on proof of the protest, presume the fact of dishonour, unless and until\nsuch fact is disproved.",
+          "page_start": 25,
+          "page_end": 25,
+          "flags": [],
+          "lines": [
+            868,
+            869,
+            870
+          ]
+        }
+      ]
+    },
+    {
+      "number": "120",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "120. Estoppel against denying original validity of instrument.—No maker of a promissory note,\nand no drawer of a bill of exchange or cheque, and no acceptor of a bill of exchange for the honour of the\ndrawer shall, in a suit thereon by a holder in due course, be permitted to deny the validity of the\ninstrument as originally made or drawn.",
+          "page_start": 25,
+          "page_end": 25,
+          "flags": [],
+          "lines": [
+            871,
+            872,
+            873,
+            874
+          ]
+        }
+      ]
+    },
+    {
+      "number": "121",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "121. Estoppel against denying capacity of payee to indorse.—No maker of a promissory note and\nno acceptor of a bill of exchange 2[payable to order] shall, in a suit thereon by a holder in due course, be\npermitted to deny the payee's capacity, at the date of the note or bill, to indorse the same.",
+          "page_start": 25,
+          "page_end": 25,
+          "flags": [],
+          "lines": [
+            875,
+            876,
+            877
+          ]
+        }
+      ]
+    },
+    {
+      "number": "122",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "122. Estoppel against denying signature or capacity of prior party.—No indorser of a negotiable\ninstrument shall, in a suit thereon by a subsequent holder, be permitted to deny the signature or capacity\nto contract of any prior party to the instrument.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            881,
+            882,
+            883
+          ]
+        }
+      ]
+    },
+    {
+      "number": "123",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "123. Cheque crossed generally.—Where a cheque bears across its face an addition of the words\n“and company” or any abbreviation thereof, between two parallel transverse lines, or of two parallel\ntransverse lines simply, either with or without the words “not negotiable,” that addition shall be deemed a\ncrossing, and the cheque shall be deemed to be crossed generally.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            886,
+            887,
+            888,
+            889
+          ]
+        }
+      ]
+    },
+    {
+      "number": "124",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "124. Cheque crossed specially.—Where a cheque bears across its face an addition of the name of a\nbanker, either with or without the words “not negotiable,” that addition shall be deemed a crossing and\nthe cheque shall be deemed to be crossed specially, and to be crossed to that banker.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            890,
+            891,
+            892
+          ]
+        }
+      ]
+    },
+    {
+      "number": "125",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "125. Crossing after issue.—Where a cheque is uncrossed, the holder may cross it generally or\nspecially.\nWhere a cheque is crossed generally, the holder may cross it specially.\nWhere a cheque is crossed generally, or specially, the holder may add the words “not negotiable”.\nWhere a cheque is crossed specially, the banker to whom it is crossed may again cross it specially to\nanother banker, his agent, for collection.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            893,
+            894,
+            895,
+            897,
+            898,
+            899
+          ]
+        }
+      ]
+    },
+    {
+      "number": "126",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "126. Payment of cheque crossed generally.—Where a cheque is crossed generally, the banker on\nwhom it is drawn shall not pay it otherwise than to a banker.\nPayment of cheque crossed specially.—Where a cheque is crossed specially, the banker on whom it\nis drawn shall not pay it otherwise than to the banker to whom it is crossed, or his agent for collection.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            900,
+            901,
+            902,
+            903
+          ]
+        }
+      ]
+    },
+    {
+      "number": "127",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "127. Payment of cheque crossed specially more than once.—Where a cheque is crossed specially\nto more than one banker, except when crossed to an agent for the purpose of collection, the banker on\nwhom it is drawn shall refuse payment thereof.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            904,
+            905,
+            906
+          ]
+        }
+      ]
+    },
+    {
+      "number": "128",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "128. Payment in due course of crossed cheque.—Where the banker on whom a crossed cheque is\ndrawn has paid the same in due course, the banker paying the cheque, and (in case such cheque has come\nto the hands of the payee) the drawer thereof, shall respectively be entitled to the same rights, and be\nplaced in the same position in all respects, as they would respectively be entitled to and placed in if the\namount of the cheque had been paid to and received by the true owner thereof.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            907,
+            908,
+            909,
+            910,
+            911
+          ]
+        }
+      ]
+    },
+    {
+      "number": "129",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "129. Payment of crossed cheque out of due course.—Any banker paying a cheque crossed\ngenerally otherwise than to a banker, or a cheque crossed specially otherwise than to the banker to whom\nthe same is crossed, or his agent for collection, being a banker, shall be liable to the true owner of the\ncheque for any loss he may sustain owing to the cheque having been so paid.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            912,
+            913,
+            914,
+            915
+          ]
+        }
+      ]
+    },
+    {
+      "number": "130",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "130. Cheque bearing “not negotiable”.—A person taking a cheque crossed generally or specially,\nbearing in either case the words “not negotiable,” shall not have, and shall not be capable of giving, a\nbetter title to the cheque than that which the person from whom he took it had.",
+          "page_start": 26,
+          "page_end": 26,
+          "flags": [],
+          "lines": [
+            916,
+            917,
+            918
+          ]
+        }
+      ]
+    },
+    {
+      "number": "131",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "131. Non-liability of banker receiving payment of cheque.—A banker who has in good faith and\nwithout negligence received payment for a customer of a cheque crossed generally or specially to himself\nshall not, in case the title to the cheque proves defective, incur any liability to the true owner of the\ncheque by reason only of having received such payment.\n1[Explanation 2[(I)].— A banker receives payment of a crossed cheque for a customer within the\nmeaning of this section notwithstanding that he credits his customer’s account with the amount of the\ncheque before receiving payment thereof.]\n1[Explanation II.—It shall be the duty of the banker who receives payment based on an electronic\nimage of a truncated cheque held with him, to verify the prima facie genuineness of the cheque to be\ntruncated and any fraud, forgery or tampering apparent on the face of the instrument that can be verified\nwith due diligence and ordinary care.]",
+          "page_start": 26,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            919,
+            920,
+            921,
+            922,
+            923,
+            924,
+            925,
+            929,
+            930,
+            931,
+            932
+          ]
+        }
+      ]
+    },
+    {
+      "number": "131A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "2[131A. Application of Chapter to drafts.—The provisions of this Chapter shall apply to any draft,\nas defined in section 85A, as if the draft were a cheque.]",
+          "page_start": 27,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            933,
+            934
+          ]
+        }
+      ]
+    },
+    {
+      "number": "132",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "132. Set of bills.—Bills of exchange may be drawn in parts, each part being numbered and containing\na provision that it shall continue payable only so long as the others remain unpaid. All the parts together\nmake a set; but the whole set constitutes only one bill, and is extinguished when one of the parts, if a\nseparate bill, would be extinguished.\nException.—When a person accepts or indorses different parts of the bill in favour of different\npersons, he and the subsequent endorsers of each part are liable on such part as if it were a separate bill.",
+          "page_start": 27,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            937,
+            938,
+            939,
+            940,
+            941,
+            942
+          ]
+        }
+      ]
+    },
+    {
+      "number": "133",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "133. Holder of first acquired part entitled to all—As between holders in due course of different parts\nof the same set, he who first acquired title to his part is entitled to the other parts and the money represented\nby the bill.",
+          "page_start": 27,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            943,
+            944,
+            945
+          ]
+        }
+      ]
+    },
+    {
+      "number": "134",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "134. Law governing liability of maker, acceptor or indorser of foreign instrument.—In the absence\nof a contract to the contrary, the liability of the maker or drawer of a foreign promissory note, bill of\nexchange or cheque is regulated in all essential matters by the law of the place where he made the instrument,\nand the respective liabilities of the acceptor and indorser by the law of the place where the instrument is made\npayable.\nIllustration\nA bill of exchange was drawn by A in California, where the rate of interest is 25 per cent., and accepted by B, payable in\nWashington, where the rate of interest is 6 per cent. The bill is erdorsed in 3[India], and is dishonoured. An action on the bill is\nbrought against B in 3[India]. He is liable to pay interest at the rate of 6 per cent. only; but if A is charged as drawer, A is liable to\npay interest at the rate of 25 per cent.",
+          "page_start": 27,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            949,
+            950,
+            951,
+            952,
+            953,
+            954,
+            955,
+            956,
+            957,
+            958
+          ]
+        }
+      ]
+    },
+    {
+      "number": "135",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "135. Law of place of payment governs dishonour.—Where a promissory note, bill of exchange or\ncheque is made payable in a different place from that in which it is made or indorsed, the law of the place\nwhere it is made payable determines what constitutes dishonour and what notice of dishonour is\nsufficient.\nIllustration\nA bill of exchange drawn and indorsed in 3[India], but accepted payable in France, is dishonoured. The indorsee causes it to\nbe protested for such dishonour, and gives notice thereof in accordance with the law of France, though not in accordance with the\nrules herein contained in respect of bills which are not foreign. The notice is sufficient.",
+          "page_start": 27,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            959,
+            960,
+            961,
+            962,
+            963,
+            964,
+            965,
+            966
+          ]
+        }
+      ]
+    },
+    {
+      "number": "136",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "136. Instrument made, etc., out of India, but in accordance with the law of India.—If a\nnegotiable instrument is made, drawn, accepted or indorsed 4[outside India], but in accordance with the\n5[law of India], the circumstances that any agreement evidenced by such instrument is invalid according\nto the law of the country wherein it was entered into does not invalidate any subsequent acceptance or\nindorsement made thereon 6[within India].",
+          "page_start": 27,
+          "page_end": 27,
+          "flags": [],
+          "lines": [
+            967,
+            968,
+            969,
+            970,
+            971
+          ]
+        }
+      ]
+    },
+    {
+      "number": "137",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "137. Presumption as to foreign law.—The law of any foreign country 1*** regarding promissory\nnotes, bills of exchange and cheques shall be presumed to be the same as that of 2[India], unless and until\nthe contrary is proved.",
+          "page_start": 28,
+          "page_end": 28,
+          "flags": [],
+          "lines": [
+            979,
+            980,
+            981
+          ]
+        }
+      ]
+    },
+    {
+      "number": "138",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "138. Dishonour of cheque for insufficiency, etc., of funds in the account.—Where any cheque\ndrawn by a person on an account maintained by him with a banker for payment of any amount of money\nto another person from out of that account for the discharge, in whole or in part, of any debt or other\nliability, is returned by the bank unpaid, either because of the amount of money standing to the credit of\nthat account is insufficient to honour the cheque or that it exceeds the amount arranged to be paid from\nthat account by an agreement made with that bank, such person shall be deemed to have committed an\noffence and shall, without prejudice to any other provision of this Act, be punished with imprisonment for\n4[a term which may be extended to two years’], or with fine which may extend to twice the amount of the\ncheque, or with both:\nProvided that nothing contained in this section shall apply unless—\n(a) thecheque has been presented to the bank within a period of six months from the date on\nwhich it is drawn or within the period of its validity, whichever is earlier;\n(b) the payee or the holder in due course of the cheque, as the case may be, makes a demand for\nthe payment of the said amount of money by giving a notice; in writing, to the drawer of the cheque,\n5[within thirty days] of the receipt of information by him from the bank regarding the return of the\ncheque as unpaid; and\n(c) the drawer of such cheque fails to make the payment of the said amount of money to the payee\nor, as the case may be, to the holder in due course of the cheque, within fifteen days of the receipt of\nthe said notice.\nExplanation.—For the purposes of this section, “debt of other liability” means a legally enforceable debt\nor other liability.",
+          "page_start": 28,
+          "page_end": 28,
+          "flags": [],
+          "lines": [
+            985,
+            986,
+            987,
+            988,
+            989,
+            990,
+            991,
+            992,
+            993,
+            994,
+            995,
+            996,
+            998,
+            999,
+            1000,
+            1001,
+            1002,
+            1003,
+            1004,
+            1005,
+            1006
+          ]
+        }
+      ]
+    },
+    {
+      "number": "139",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "139. Presumption in favour of holder.—It shall be presumed, unless the contrary is proved, that the\nholder of a cheque received the cheque of the nature referred to in section138 for the discharge, in whole\nor in part, of any debt or other liability.",
+          "page_start": 28,
+          "page_end": 28,
+          "flags": [],
+          "lines": [
+            1007,
+            1008,
+            1009
+          ]
+        }
+      ]
+    },
+    {
+      "number": "140",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "140. Defence which may not be allowed in any prosecution under section 138.—Itshall not be a\ndefence in a prosecution for an offence under section 138 that the drawer had no reason to believe when\nhe issued the cheque that the cheque may be dishonoured on presentment for the reasons stated in that\nsection.",
+          "page_start": 28,
+          "page_end": 28,
+          "flags": [],
+          "lines": [
+            1010,
+            1011,
+            1012,
+            1013
+          ]
+        }
+      ]
+    },
+    {
+      "number": "141",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "141. Offences by companies.—(1) If the person committing an offence under section 138 is a\ncompany, every person who, at the time the offence was committed, was in charge of, and was\nresponsible to, the company for the conduct of the business of the company, as well as the company, shall\nbe deemed to be guilty of the offence and shall be liable to be proceeded against and punished\naccordingly:\nProvided that nothing contained in this sub-section shall render any person liable to punishment if he\nproves that the offence was committed without his knowledge, or that he had exercised all due diligence\nto prevent the commission of such offence:\n6[Provided further that where a person is nominated as a Director of a company by virtue of his\nholding any office or employment in the Central Government or State Government or a financial\ncorporation owned or controlled by the Central Government or the State Government, as the case may be,\nhe shall not be liable for prosecution under this Chapter.]\n(2) Notwithstanding anything contained in sub-section (1), where any offence under this Act has been\ncommitted by a company and it is proved that the offence has been committed with the consent or\nconnivance of, or is attributable to, any neglect on the part of, any director, manager, secretary or other\nofficer of the company, such director, manager, secretary or other officer shall also be deemed to be\nguilty of that offence and shall be liable to be proceeded against and punished accordingly.\nExplanation.—For the purposes of this section, —\n(a) “company” means any body corporate and includes a firm or other association of\nindividuals; and\n(b) “director”, in relation to a firm, means a partner in the firm.",
+          "page_start": 28,
+          "page_end": 29,
+          "flags": [],
+          "lines": [
+            1014,
+            1015,
+            1016,
+            1017,
+            1018,
+            1019,
+            1020,
+            1021,
+            1022,
+            1023,
+            1031,
+            1032,
+            1033,
+            1034,
+            1035,
+            1036,
+            1037,
+            1038,
+            1039,
+            1040,
+            1041
+          ]
+        }
+      ]
+    },
+    {
+      "number": "142",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "142. Cognizance of offences.—1[(1)] Notwithstanding anything contained in the Code of Criminal\nProcedure, 1973 (2 of 1974),—\n(a) no court shall take cognizance of any offence punishable under section 138 except upon a\ncomplaint, in writing, made by the payee or, as the case may be, the holder in due course of the\ncheque;\n(b) such complaint is made within one month of the date on which the cause of action arises\nunder clause (c) of the proviso to section 138:\n2[Provided that the cognizance of a complaint may be taken by the Court after the prescribed period,\nif the complainant satisfies the Court that he had sufficient cause for not making a complaint within such\nperiod;]\n(c) no court inferior to that of a Metropolitan Magistrate or a Judicial Magistrate of the first class\nshall try any offence punishable under section 138.].\n3[(2) The offence under section 138 shall be inquired into and tried only by a court within whose local\njurisdiction,—\n(a) if the cheque is delivered for collection through an account, the branch of the bank where the\npayee or holder in due course, as the case may be, maintains the account, is situated; or\n(b) if the cheque is presented for payment by the payee or holder in due course, otherwise through\nan account, the branch of the drawee bank where the drawer maintains the account, is situated.\nExplanation.—For the purposes of clause (a), where a cheque is delivered for collection at any\nbranch of the bank of the payee or holder in due course, then, the cheque shall be deemed to have been\ndelivered to the branch of the bank in which the payee or holder in due course, as the case may be,\nmaintains the account.]",
+          "page_start": 29,
+          "page_end": 29,
+          "flags": [],
+          "lines": [
+            1042,
+            1043,
+            1044,
+            1045,
+            1046,
+            1048,
+            1049,
+            1050,
+            1051,
+            1052,
+            1053,
+            1054,
+            1055,
+            1056,
+            1057,
+            1058,
+            1059,
+            1060,
+            1061,
+            1062,
+            1063,
+            1064
+          ]
+        }
+      ]
+    },
+    {
+      "number": "142A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "4[142A. Validation for transfer of pending cases.—(1) Notwithstanding anything contained in the\nCode of Criminal Procedure, 1973 (2 of 1974) or any judgment, decree, order or direction of any court,\nall cases transferred to the court having jurisdiction under sub-section (2) of section 142, as amended by\nthe Negotiable Instruments (Amendment) Ordinance, 2015 (Ord. 6 of 2015), shall be deemed to have\nbeen transferred under this Act, as if that sub-section had been in force at all material times.\n(2) Notwithstanding anything contained in sub-section (2) of section 142 or sub-section (1), where the\npayee or the holder in due course, as the case may be, has filed a complaint against the drawer of a cheque\nin the court having jurisdiction under sub-section (2) of section 142 or the case has been transferred to\nthat court under sub-section (1) and such complaint is pending in that court, all subsequent complaints\narising out of section 138 against the same drawer shall be filed before the same court irrespective of\nwhether those cheques were delivered for collection or presented for payment within the territorial\njurisdiction of that court.\n(3) If, on the date of the commencement of the Negotiable Instruments (Amendment) Act, 2015 (26\nof 2015), more than one prosecution filed by the same payee or holder in due course, as the case may be,\nagainst the same drawer of cheques is pending before different courts, upon the said fact having been\nbrought to the notice of the court, such court shall transfer the case to the court having jurisdiction under\nsub-section (2) of section 142, as amended by the Negotiable Instruments (Amendment) Ordinance, 2015\n(Ord. 6 of 2015), before which the first case was filed and is pending, as if that sub-section had been in\nforce at all material times.]",
+          "page_start": 29,
+          "page_end": 30,
+          "flags": [],
+          "lines": [
+            1065,
+            1066,
+            1067,
+            1068,
+            1069,
+            1070,
+            1071,
+            1072,
+            1073,
+            1074,
+            1080,
+            1081,
+            1082,
+            1083,
+            1084,
+            1085,
+            1086,
+            1087,
+            1088
+          ]
+        }
+      ]
+    },
+    {
+      "number": "143",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "1[143. Power of Court to try cases summarily.—(1) Notwithstanding anything contained in the\nCode of Criminal Procedure, 1973 (2 of 1974) all offences under this Chapter shall be tried by a Judicial\nMagistrate of the first class or by a Metropolitan Magistrate and the provisions of sections 262 to 265\n(both inclusive) of the said Code shall, as far as may be, apply to such trials:\nProvided that in the case of any conviction in a summary trial under this section, it shall be lawful for\nthe Magistrate to pass a sentence of imprisonment for a term not exceeding one year and an amount of\nfine exceeding five thousand rupees:\nProvided further that when at the commencement of, or in the course of, a summary trial under this\nsection, it appears to the Magistrate that the nature of the case is such that a sentence of imprisonment for\na term exceeding one year may have to be passed or that it is, for any other reason, undesirable to try the\ncase summarily, the Magistrate shall after hearing the parties, record an order to that effect and\nthereafter recall any witness who may have been examined and proceed to hear or rehear the case in the\nmanner provided by the said Code.\n(2) The trial of a case under this section shall, so far as practicable, consistently with the interests of\njustice, be continued from day to day until its conclusion, unless the Court finds the adjournment of the\ntrial beyond the following day to be necessary for reasons to be recorded in writing.\n(3)  Every trial under this section shall be conducted as expeditiously as possible and an endeavour\nshall be made to conclude the trial within six months from the date of filing of the complaint.",
+          "page_start": 30,
+          "page_end": 30,
+          "flags": [],
+          "lines": [
+            1089,
+            1090,
+            1091,
+            1092,
+            1093,
+            1094,
+            1095,
+            1097,
+            1098,
+            1099,
+            1100,
+            1101,
+            1102,
+            1103,
+            1104,
+            1105,
+            1106,
+            1107
+          ]
+        }
+      ]
+    },
+    {
+      "number": "143A",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "2[143A. Power to direct interim compensation.—(1) Notwithstanding anything contained in the\nCode of Criminal Procedure, 1973, the Court trying an offence under section 138 may order the drawer of\nthe cheque to pay interim compensation to the complainant—\n(a) in a summary trial or a summons case, where he pleads not guilty to the accusation made in the\ncomplaint; and\n(b) in any other case, upon framing of charge.\n(2) The interim compensation under sub-section (1) shall not exceed twenty per cent. of the amount\nof the cheque.\n(3) The interim compensation shall be paid within sixty days from the date of the order under sub-section (1), or within such further period not exceeding thirty days as may be directed by the Court on\nsufficient cause being shown by the drawer of the cheque.\n(4) If the drawer of the cheque is acquitted, the Court shall direct the complainant to repay to the\ndrawer the amount of interim compensation, with interest at the bank rate as published by the Reserve\nBank of India, prevalent at the beginning of the relevant financial year, within sixty days from the date of\nthe order, or within such further period not exceeding thirty days as may be directed by the Court on\nsufficient cause being shown by the complainant.\n(5) The interim compensation payable under this section may be recovered as if it were a fine under\nsection 421 of the Code of Criminal Procedure, 1973 (2 of 1974).\n(6) The amount of fine imposed under section 138 or the amount of compensation awarded under\nsection 357 of the Code of Criminal Procedure, 1973 (2 of 1974), shall be reduced by the amount paid or\nrecovered as interim compensation under this section.]",
+          "page_start": 30,
+          "page_end": 31,
+          "flags": [],
+          "lines": [
+            1108,
+            1109,
+            1110,
+            1111,
+            1112,
+            1113,
+            1114,
+            1115,
+            1116,
+            1117,
+            1118,
+            1119,
+            1120,
+            1121,
+            1122,
+            1126,
+            1127,
+            1128,
+            1129,
+            1130
+          ]
+        }
+      ]
+    },
+    {
+      "number": "144",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "144. Mode of service of summons.—(1) Notwithstanding anything contained in the Code of\nCriminal Procedure, 1973 (2 of 1974) and for the purposes of this Chapter, a Magistrate issuing a\nsummons to an accused or a witness may direct a copy of summons to be served at the place where such\naccused or witness ordinarily resides or carries on business or personally works for gain, by speed post or\nby such courier services as are approved by a Court of Session.\n(2) Where an acknowledgment purporting to be signed by the accused or the witness or an\nendorsement purported to be made by any person authorised by the postal department or the courier services\nthat the accused or the witness refused to take delivery of summons has been received, the Court issuing\nthe summons may declare that the summons has been duly served.",
+          "page_start": 31,
+          "page_end": 31,
+          "flags": [],
+          "lines": [
+            1131,
+            1132,
+            1133,
+            1134,
+            1135,
+            1136,
+            1137,
+            1138,
+            1139
+          ]
+        }
+      ]
+    },
+    {
+      "number": "145",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "145. Evidence on affidavit.—(1)Notwithstanding anything contained in the Code of Criminal\nProcedure, 1973 (2 of 1974), the evidence of the complainant may be given by him on affidavit and may,\nsubject to all just exceptions be read in evidence in any enquiry, trial or other proceeding under the said\nCode.\n(2) The Court may, if it thinks fit, and shall, on the application of the prosecution or the accused,\nsummon and examine any person giving evidence on affidavit as to the facts contained therein.",
+          "page_start": 31,
+          "page_end": 31,
+          "flags": [],
+          "lines": [
+            1140,
+            1141,
+            1142,
+            1143,
+            1145,
+            1146
+          ]
+        }
+      ]
+    },
+    {
+      "number": "146",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "146. Bank’s slip prima facie evidence of certain facts.—The Court shall, in respect of every\nproceeding under this Chapter, on production of Bank's slip or memo having thereon the official mark\ndenoting that the cheque has been dishonoured, presume the fact of dishonour of such cheque, unless and\nuntil such fact is disproved.",
+          "page_start": 31,
+          "page_end": 31,
+          "flags": [],
+          "lines": [
+            1147,
+            1148,
+            1149,
+            1150
+          ]
+        }
+      ]
+    },
+    {
+      "number": "147",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "147. Offences to be compoundable.—Notwithstanding anything contained in the Code of Criminal\nProcedure, 1973 (2 of 1974),every offence punishable under this Act shall be compoundable].",
+          "page_start": 31,
+          "page_end": 31,
+          "flags": [],
+          "lines": [
+            1151,
+            1152
+          ]
+        }
+      ]
+    },
+    {
+      "number": "148",
+      "part_count": 1,
+      "parts": [
+        {
+          "part_index": 0,
+          "text": "1 [148. Power of Appellate Court to order payment pending appeal against conviction.—(1)\nNotwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), in an appeal by\nthe drawer against conviction under section 138, the Appellate Court may order the appellant to deposit\nsuch sum which shall be a minimum of twenty per cent. of the fine or compensation awarded by the trial\nCourt:\nProvided that the amount payable under this sub-section shall be in addition to any interim\ncompensation paid by the appellant under section 143A.\n(2) The amount referred to in sub-section (1) shall be deposited within sixty days from the date of the\norder, or within such further period not exceeding thirty days as may be directed by the Court on\nsufficient cause being shown by the appellant.\n(3) The Appellate Court may direct the release of the amount deposited by the appellant to the\ncomplainant at any time during the pendency of the appeal:\nProvided that if the appellant is acquitted, the Court shall direct the complainant to repay to the\nappellant the amount so released, with interest at the bank rate as published by the Reserve Bank of India,\nprevalent at the beginning of the relevant financial year, within sixty days from the date of the order, or\nwithin such further period not exceeding thirty days as may be directed by the Court on sufficient cause\nbeing shown by the complainant.]\nSCHEDULE.—[Enactments repealed].—Rep. by the Repealing and Amending Act, 1891\n(12 of 1891),  s. 2 and Schedule I.",
+          "page_start": 31,
+          "page_end": 32,
+          "flags": [],
+          "lines": [
+            1153,
+            1154,
+            1155,
+            1156,
+            1157,
+            1158,
+            1159,
+            1160,
+            1161,
+            1162,
+            1163,
+            1164,
+            1165,
+            1166,
+            1167,
+            1168,
+            1169,
+            1172,
+            1173
+          ]
+        }
+      ]
+    }
+  ]
+}

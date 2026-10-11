@@ -100,24 +100,21 @@
     "G6": {
       "status": "PASS",
       "evidence": {
-        "primary_fragment_rate": 0.996269,
-        "diagnostic_whole_record_rate": 0.981209,
+        "primary_fragment_rate": 0.996559,
+        "diagnostic_whole_record_rate": 0.981364,
         "diagnostic_line_rate": 1.0,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [
           "IndiaCode"
         ],
-        "windows": 2412,
-        "primary_failures": 9,
+        "windows": 2325,
+        "primary_failures": 8,
+        "mega_table_records": [],
+        "table_content_records": [
+          "iea-1872:s:65b:1",
+          "iea-1872:s:9:0"
+        ],
         "worst_5": [
-          {
-            "id": "iea-1872:s:9:0",
-            "missing_windows": 1,
-            "page_range": [
-              14,
-              14
-            ]
-          },
           {
             "id": "iea-1872:s:26:0",
             "missing_windows": 1,
@@ -148,6 +145,14 @@
             "page_range": [
               44,
               44
+            ]
+          },
+          {
+            "id": "iea-1872:s:103:0",
+            "missing_windows": 1,
+            "page_range": [
+              46,
+              46
             ]
           }
         ],

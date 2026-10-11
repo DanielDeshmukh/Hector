@@ -64,8 +64,8 @@ def is_continuation(s, entries):
 
 
 HEADER_RE = re.compile(
-    r"ARRANGEMENT\s+OF\s+(THE\s+)?SECTIONS|TABLE\s+OF\s+CONTENTS|"
-    r"^\s*CONTENTS\s*$", re.I | re.M)
+    r"ARRANG?EMENT\s+OF\s+(THE\s+)?SECTIONS|TABLE\s+OF\s+CONTENTS|"
+    r"^\s*CONTENTS\s*$|^\s*SECTIONS\s*$", re.I | re.M)
 # number-only ToC line (e.g. "1." on its own line, title on the next)
 BARE_NUM_RE = re.compile(r"^(\d{1,3}[A-Z]*)\.\s*$")
 
@@ -103,8 +103,8 @@ def header_diagnostics(doc):
     hits_all = 0
     for i in range(len(doc)):
         for ln in raw_text(doc[i]).splitlines():
-            if re.search(r"\bARRANGEMENT\b|\bCONTENTS\b|TABLE OF CONTENTS",
-                         ln, re.I):
+            if re.search(r"\bARRANG?EMENT\b|\bCONTENTS\b|TABLE OF CONTENTS"
+                         r"|\bSECTIONS\b", ln, re.I):
                 hits_all += 1
                 print(f"  p{i + 1}: {ln.strip()[:110]!r}", flush=True)
     if hits_all == 0:
@@ -416,6 +416,7 @@ def main():
             print("\n  no gaps in the accepted plain sequence "
                   "(G2 stays SEQUENCE_ONLY, never PASS)", flush=True)
         V.write_json(V.RESULTS / f"{act_id}_markers.json", scan["markers"])
+        V.write_json(V.RESULTS / f"{act_id}_scan_stats.json", scan["stats"])
         V.write_json(V.RESULTS / f"{act_id}_expected.json",
                      [{"number": e["number"], "title": e["title"]}
                       for e in entries])
@@ -539,9 +540,14 @@ def main():
     # --- body marker scan (the records source for steps 3-7) --------------
     print("\n--- body marker scan (forward scanner) ---", flush=True)
     body_start = max(pages_used) if pages_used else 0
+    adj = V.adjust_body_start(doc, body_start, act.get("act_name", ""))
+    if adj != body_start:
+        print(f"  body start adjusted {body_start + 1} -> {adj + 1} "
+              f"(act title repeats after First Schedule)", flush=True)
+        body_start = adj
     print(f"  scanning body pages {body_start + 1}..{n} "
           f"(arrangement pages 1..{body_start} excluded)", flush=True)
-    scan = S.scan_document(doc, start_page=body_start)
+    scan = S.scan_document(doc, start_page=body_start, expected=entries)
     b_entries = [{"number": m["number"], "title": m["title"],
                   "page_1based": m["page_1based"], "base": m["base"],
                   "line": m["line"], "form": m["form"]}
@@ -581,6 +587,7 @@ def main():
         print("\n  body gap contexts (judge each yourself):", flush=True)
         print_gap_context(scan, b_entries, b_gaps)
     V.write_json(V.RESULTS / f"{act_id}_markers.json", scan["markers"])
+    V.write_json(V.RESULTS / f"{act_id}_scan_stats.json", scan["stats"])
 
     V.write_json(V.RESULTS / f"{act_id}_expected.json",
                  [{"number": n_, "title": t} for n_, t in entries])
@@ -606,6 +613,7 @@ def main():
         "mode": "toc",
         "header_page_1based": header + 1,
         "toc_pages_1based": pages_used,
+        "body_start_0based": body_start,
         "expected_count": len(entries),
         "gaps": gaps,
         "duplicates": dup,

@@ -1,0 +1,91 @@
+{
+  "act_id": "ni-1881",
+  "page_spanning_total": 15,
+  "shown": [
+    {
+      "number": "4",
+      "page_start": 8,
+      "page_end": 9,
+      "joins": [
+        {
+          "from_page": 8,
+          "to_page": 9,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " B Rs. 500 seven days after my marriage with C.”\n(g) “I promise to Pay B Rs. 500 on D's death, provided D leaves me enough to pay that sum.”",
+          "after_head": "(h) “I promise to Pay B Rs. 500 and to deliver to him my black horse on 1st January next.”\nThe instruments respectively marked (a) and (b) a"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "page_start": 9,
+      "page_end": 10,
+      "joins": [
+        {
+          "from_page": 9,
+          "to_page": 10,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "any person accepts it supra protest for honour of the drawer or of any one of\nthe indorsers, such person is called an “acceptor for honour”.",
+          "after_head": "“Payee”.—The person named in the instrument, to whom or to whose order the money is by the\ninstrument directed to be paid, is called the “Pa"
+        }
+      ]
+    },
+    {
+      "number": "16",
+      "page_start": 10,
+      "page_end": 11,
+      "joins": [
+        {
+          "from_page": 10,
+          "to_page": 11,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "mentioned in the\ninstrument to, or to the order of, a specified person, the indorsement is said to be “in full”, and the\nperson so specified",
+          "after_head": " “Indorsee”.—is called the “indorsee” of the instrument.\n1[(2) The provisions of this Act relating to a payee shall apply with the necessary"
+        }
+      ]
+    },
+    {
+      "number": "52",
+      "page_start": 15,
+      "page_end": 16,
+      "joins": [
+        {
+          "from_page": 15,
+          "to_page": 16,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "nditional.—The indorser of a negotiable\ninstrument may, by express words in the indorsement, exclude his own liability thereon, or make such",
+          "after_head": "liability or the right of the indorsee to receive the amount due thereon depend upon the happening of a\nspecified event, although such event"
+        }
+      ]
+    },
+    {
+      "number": "76",
+      "page_start": 18,
+      "page_end": 19,
+      "joins": [
+        {
+          "from_page": 18,
+          "to_page": 19,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "nted—\nhe makes a part payment on account of the amount due on the instrument,\nor promises to pay the amount due thereon in whole or in part,",
+          "after_head": "or otherwise waives his right to take advantage of any default in presentment for payment;\n(d) as against the drawer, if the drawer could no"
+        }
+      ]
+    }
+  ]
+}

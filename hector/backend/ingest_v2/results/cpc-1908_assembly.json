@@ -1,0 +1,156 @@
+{
+  "act_id": "cpc-1908",
+  "page_spanning_total": 34,
+  "shown": [
+    {
+      "number": "1",
+      "page_start": 34,
+      "page_end": 35,
+      "joins": [
+        {
+          "from_page": 34,
+          "to_page": 35,
+          "removed_labels": [
+            "boilerplate",
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " and extent.—(1) This Act may be cited as the Code of Civil\nProcedure, 1908.\n(2) It shall come into force on the first day of January, 1909.",
+          "after_head": " 1[(3) It extends to the whole of India except—\n2*\n       *\n              *\n       *\n    *\n(b) the State of Nagaland and the tribal areas:\nP"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "page_start": 35,
+      "page_end": 37,
+      "joins": [
+        {
+          "from_page": 35,
+          "to_page": 35,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "2. Definitions.—In this Act, unless there is anything repugnant in the subject or context,—\n       (1) “Code” includes rules;",
+          "after_head": "(2) “decree” means the formal expression of an adjudication which, so far as regards the Court\nexpressing it, conclusively determines the ri"
+        },
+        {
+          "from_page": 35,
+          "to_page": 36,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "3 and 87A, means the territory\nof India excluding the State of Jammu and Kashmir;]\n(8) “Judge” means the presiding officer of a Civil Court;",
+          "after_head": "       (9) “judgment” means the statement given by the Judge of the grounds of a decree or order;\n(10) “judgment-debtor” means any person ag"
+        },
+        {
+          "from_page": 36,
+          "to_page": 36,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " plead for another in Court, and includes an\nadvocate, a vakil and an attorney of a High Court;\n(16) “prescribed” means prescribed by rules;",
+          "after_head": "(17) “public officer” means a person falling under any of the following descriptions, namely:—\n(a) every Judge;\n(b) every member of  1[an Al"
+        },
+        {
+          "from_page": 36,
+          "to_page": 37,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "eemed to include stock, debenture stock, debentures or\nbonds; and\n(20) “signed”, save in the case of a judgment or decree, includes stamped.",
+          "after_head": "1*\n   *\n*\n*\n*"
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "page_start": 38,
+      "page_end": 39,
+      "joins": [
+        {
+          "from_page": 38,
+          "to_page": 38,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "ned) have jurisdiction to try all suits of a civil nature excepting suits of which their cognizance is\neither expressly or impliedly barred.",
+          "after_head": "4[Explanation I].—A suit in which the right to property or to an office is contested is a suit of a civil\nnature, notwithstanding that such "
+        },
+        {
+          "from_page": 38,
+          "to_page": 38,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "er or not any fees are attached\nto the office referred to in Explanation I or whether or not such office is attached to a particular place.]",
+          "after_head": "Maharashtra.—\nSection 9A of the Code of Civil Procedure, 1908, in its application to the State of Maharashtra\n(hereinafter referred to as “t"
+        },
+        {
+          "from_page": 38,
+          "to_page": 39,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ion is pending before a\nrevisional Court, on the date of commencement of the Amendment Act, such revisional proceedings shall\nstand abated :",
+          "after_head": "Provided that, where a decree in such suit is appealed from any error, defect or irregularity in the order\nupholding jurisdiction shall be t"
+        },
+        {
+          "from_page": 39,
+          "to_page": 39,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " and the Court shall, at the time of deciding the application in which such an\norder is made, either confirm or vacate or modify such order.",
+          "after_head": "[Vide Maharashtra Act 61 of 2018, sec. 3.]\nMaharashtra.—\nIn section 3 of the Code of Civil Procedure (Maharashtra Amendment) Act, 2018, for "
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "page_start": 39,
+      "page_end": 40,
+      "joins": [
+        {
+          "from_page": 39,
+          "to_page": 40,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "try\nsuch subsequent suit or the suit in which such issue has been subsequently raised, and has been heard and\nfinally decided by such Court.",
+          "after_head": "Explanation I.—The expression “former suit” shall denote a suit which has been decided prior to a suit\nin question whether or not it was ins"
+        },
+        {
+          "from_page": 40,
+          "to_page": 40,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " a\nproceeding for the execution of the decree, question arising in such proceeding and a former proceeding for the\nexecution of that decree.",
+          "after_head": "Explanation VIII.—An issue heard and finally decided by a Court of limited jurisdiction, competent to\ndecide such issue, shall operate as re"
+        }
+      ]
+    },
+    {
+      "number": "16",
+      "page_start": 40,
+      "page_end": 41,
+      "joins": [
+        {
+          "from_page": 40,
+          "to_page": 41,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " by any law, suits—\n(a) for the recovery of immovable property with or without rent or profits,\n(b) for the partition of immovable property,",
+          "after_head": "(c)  for foreclosure, sale or redemption in the case of a mortgage of or charge upon immovable\nproperty,\n(d) or the determination of any oth"
+        }
+      ]
+    }
+  ]
+}

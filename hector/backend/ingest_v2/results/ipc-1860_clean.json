@@ -481,7 +481,7 @@
       "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
       "marker_line": 95,
       "start": 95,
-      "end": 96,
+      "end": 97,
       "page_start": 15,
       "page_end": 15,
       "text": "12. “Public”.—The word “public” includes any class of the public or any community.",
@@ -494,32 +494,14 @@
           "text": "12. “Public”.—The word “public” includes any class of the public or any community."
         }
       ],
-      "removals": [],
-      "amendment_notes": []
-    },
-    {
-      "number": "13",
-      "title": "Definition of “Queen”",
-      "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
-      "marker_line": 96,
-      "start": 96,
-      "end": 97,
-      "page_start": 15,
-      "page_end": 15,
-      "text": "13. [Definition of “Queen”.] Omitted by the A. O. 1950.",
-      "fragments": [
+      "removals": [
         {
-          "first_line": 96,
-          "last_line": 96,
-          "page_start": 15,
-          "page_end": 15,
+          "line": 96,
+          "label": "footnote",
           "text": "13. [Definition of “Queen”.] Omitted by the A. O. 1950."
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "13. [Definition of “Queen”.] Omitted by the A. O. 1950."
-      ]
+      "amendment_notes": []
     },
     {
       "number": "14",
@@ -527,7 +509,7 @@
       "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
       "marker_line": 97,
       "start": 97,
-      "end": 99,
+      "end": 111,
       "page_start": 15,
       "page_end": 15,
       "text": "8[14. “Servant of Government”.—The words “servant of Government” denote any officer or servant\ncontinued, appointed or employed in India by or under the authority of Government.]",
@@ -540,55 +522,17 @@
           "text": "8[14. “Servant of Government”.—The words “servant of Government” denote any officer or servant\ncontinued, appointed or employed in India by or under the authority of Government.]"
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "8. Subs., ibid., for section 14."
-      ]
-    },
-    {
-      "number": "15",
-      "title": "Definition of “British India”",
-      "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
-      "marker_line": 99,
-      "start": 99,
-      "end": 100,
-      "page_start": 15,
-      "page_end": 15,
-      "text": "15. [Definition of “British India”.] Rep. by the A. O. 1937.",
-      "fragments": [
-        {
-          "first_line": 99,
-          "last_line": 99,
-          "page_start": 15,
-          "page_end": 15,
-          "text": "15. [Definition of “British India”.] Rep. by the A. O. 1937."
-        }
-      ],
-      "removals": [],
-      "amendment_notes": [
-        "15. [Definition of “British India”.] Rep. by the A. O. 1937."
-      ]
-    },
-    {
-      "number": "16",
-      "title": "Definition of “Government of India”",
-      "chapter": "CHAPTER II - GENERAL EXPLANATIONS",
-      "marker_line": 100,
-      "start": 100,
-      "end": 111,
-      "page_start": 15,
-      "page_end": 15,
-      "text": "16. [Definition of “Government of India”.] Rep., ibid.",
-      "fragments": [
-        {
-          "first_line": 100,
-          "last_line": 100,
-          "page_start": 15,
-          "page_end": 15,
-          "text": "16. [Definition of “Government of India”.] Rep., ibid."
-        }
-      ],
       "removals": [
+        {
+          "line": 99,
+          "label": "footnote",
+          "text": "15. [Definition of “British India”.] Rep. by the A. O. 1937."
+        },
+        {
+          "line": 100,
+          "label": "footnote",
+          "text": "16. [Definition of “Government of India”.] Rep., ibid."
+        },
         {
           "line": 101,
           "label": "footnote",
@@ -641,7 +585,7 @@
         }
       ],
       "amendment_notes": [
-        "16. [Definition of “Government of India”.] Rep., ibid."
+        "8. Subs., ibid., for section 14."
       ]
     },
     {
@@ -1996,7 +1940,7 @@
       "chapter": "CHAPTER III - OF PUNISHMENTS",
       "marker_line": 445,
       "start": 445,
-      "end": 447,
+      "end": 451,
       "page_start": 22,
       "page_end": 22,
       "text": "57. Fractions of terms of punishment.—In calculating fractions of terms of punishment,\n2[imprisonment] for life shall be reckoned as equivalent to 2[imprisonment] for twenty years.",
@@ -2009,55 +1953,22 @@
           "text": "57. Fractions of terms of punishment.—In calculating fractions of terms of punishment,\n2[imprisonment] for life shall be reckoned as equivalent to 2[imprisonment] for twenty years."
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation” (w.e.f. 1-1-1956)."
-      ]
-    },
-    {
-      "number": "58",
-      "title": "Offenders sentenced to transportation how dealt with until transported",
-      "chapter": "CHAPTER III - OF PUNISHMENTS",
-      "marker_line": 447,
-      "start": 447,
-      "end": 449,
-      "page_start": 22,
-      "page_end": 22,
-      "text": "58. [Offenders sentenced to transportation how dealt with until transported.] Rep. by the Code of\nCriminal Procedure (Amendment) Act, 1955 (26 of 1955), s. 117 and the Sch. (w.e.f. 1-1-1956).",
-      "fragments": [
-        {
-          "first_line": 447,
-          "last_line": 448,
-          "page_start": 22,
-          "page_end": 22,
-          "text": "58. [Offenders sentenced to transportation how dealt with until transported.] Rep. by the Code of\nCriminal Procedure (Amendment) Act, 1955 (26 of 1955), s. 117 and the Sch. (w.e.f. 1-1-1956)."
-        }
-      ],
-      "removals": [],
-      "amendment_notes": [
-        "58. [Offenders sentenced to transportation how dealt with until transported.] Rep. by the Code of"
-      ]
-    },
-    {
-      "number": "59",
-      "title": "Transportation instead of imprisonment",
-      "chapter": "CHAPTER III - OF PUNISHMENTS",
-      "marker_line": 449,
-      "start": 449,
-      "end": 451,
-      "page_start": 22,
-      "page_end": 22,
-      "text": "59. [Transportation instead of imprisonment.] Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956).",
-      "fragments": [
-        {
-          "first_line": 449,
-          "last_line": 449,
-          "page_start": 22,
-          "page_end": 22,
-          "text": "59. [Transportation instead of imprisonment.] Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956)."
-        }
-      ],
       "removals": [
+        {
+          "line": 447,
+          "label": "footnote",
+          "text": "58. [Offenders sentenced to transportation how dealt with until transported.] Rep. by the Code of"
+        },
+        {
+          "line": 448,
+          "label": "footnote",
+          "text": "Criminal Procedure (Amendment) Act, 1955 (26 of 1955), s. 117 and the Sch. (w.e.f. 1-1-1956)."
+        },
+        {
+          "line": 449,
+          "label": "footnote",
+          "text": "59. [Transportation instead of imprisonment.] Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956)."
+        },
         {
           "line": 450,
           "label": "boilerplate",
@@ -2065,7 +1976,7 @@
         }
       ],
       "amendment_notes": [
-        "59. [Transportation instead of imprisonment.] Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956)."
+        "2. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation” (w.e.f. 1-1-1956)."
       ]
     },
     {
@@ -2074,7 +1985,7 @@
       "chapter": "CHAPTER III - OF PUNISHMENTS",
       "marker_line": 451,
       "start": 451,
-      "end": 456,
+      "end": 458,
       "page_start": 22,
       "page_end": 22,
       "text": "60. Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple.—In\nevery case in which an offender is punishable with imprisonment which may be of either description, it\nshall be competent to the Court which sentences such offender to direct in the sentence that such\nimprisonment shall be wholly rigorous, or that such imprisonment shall be wholly simple, or that any part\nof such imprisonment shall be rigorous and the rest simple.",
@@ -2087,32 +1998,19 @@
           "text": "60. Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple.—In\nevery case in which an offender is punishable with imprisonment which may be of either description, it\nshall be competent to the Court which sentences such offender to direct in the sentence that such\nimprisonment shall be wholly rigorous, or that such imprisonment shall be wholly simple, or that any part\nof such imprisonment shall be rigorous and the rest simple."
         }
       ],
-      "removals": [],
-      "amendment_notes": []
-    },
-    {
-      "number": "61",
-      "title": "Sentence of forfeiture of property",
-      "chapter": "CHAPTER III - OF PUNISHMENTS",
-      "marker_line": 456,
-      "start": 456,
-      "end": 458,
-      "page_start": 22,
-      "page_end": 22,
-      "text": "61. [Sentence of forfeiture of property.] Rep. by the Indian Penal Code (Amendment) Act, 1921\n(16 of 1921), s. 4.",
-      "fragments": [
+      "removals": [
         {
-          "first_line": 456,
-          "last_line": 457,
-          "page_start": 22,
-          "page_end": 22,
-          "text": "61. [Sentence of forfeiture of property.] Rep. by the Indian Penal Code (Amendment) Act, 1921\n(16 of 1921), s. 4."
+          "line": 456,
+          "label": "footnote",
+          "text": "61. [Sentence of forfeiture of property.] Rep. by the Indian Penal Code (Amendment) Act, 1921"
+        },
+        {
+          "line": 457,
+          "label": "footnote",
+          "text": "(16 of 1921), s. 4."
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "61. [Sentence of forfeiture of property.] Rep. by the Indian Penal Code (Amendment) Act, 1921"
-      ]
+      "amendment_notes": []
     },
     {
       "number": "62",
@@ -4762,7 +4660,7 @@
       "chapter": "CHAPTER VII",
       "marker_line": 1292,
       "start": 1292,
-      "end": 1310,
+      "end": 1312,
       "page_start": 38,
       "page_end": 38,
       "text": "138. Abetment of act of insubordination by soldier, sailor or airman.—Whoever abets what he\nknows to be an act of insubordination by an officer, soldier, 8[sailor or airman], in the Army, 9[Navy or air\nForce], of the 10[Government of India], shall, if such act of insubordination be committed in consequence\nof that abetment, be punished with imprisonment of either description for a term which may extend to six\nmonths, or with fine, or with both.",
@@ -4840,36 +4738,22 @@
           "line": 1309,
           "label": "page_number",
           "text": "38"
+        },
+        {
+          "line": 1310,
+          "label": "footnote",
+          "text": "138A. [Application of foregoing sections to the Indian Marine Service.] Rep. by the Amending Act,"
+        },
+        {
+          "line": 1311,
+          "label": "footnote",
+          "text": "1934 (35 of 1934), s. 2 and Sch."
         }
       ],
       "amendment_notes": [
         "8. Subs. by Act 10 of 1927, s. 2 and the First Sch., for “or sailor”.",
         "9. Subs. by s. 2 and the First Sch., ibid., for “or Navy”.",
         "10. Subs. by the A. O. 1950, for “Queen”."
-      ]
-    },
-    {
-      "number": "138A",
-      "title": "Application of foregoing sections to the Indian Marine Service",
-      "chapter": "CHAPTER VII",
-      "marker_line": 1310,
-      "start": 1310,
-      "end": 1312,
-      "page_start": 39,
-      "page_end": 39,
-      "text": "138A. [Application of foregoing sections to the Indian Marine Service.] Rep. by the Amending Act,\n1934 (35 of 1934), s. 2 and Sch.",
-      "fragments": [
-        {
-          "first_line": 1310,
-          "last_line": 1311,
-          "page_start": 39,
-          "page_end": 39,
-          "text": "138A. [Application of foregoing sections to the Indian Marine Service.] Rep. by the Amending Act,\n1934 (35 of 1934), s. 2 and Sch."
-        }
-      ],
-      "removals": [],
-      "amendment_notes": [
-        "138A. [Application of foregoing sections to the Indian Marine Service.] Rep. by the Amending Act,"
       ]
     },
     {
@@ -5687,7 +5571,7 @@
       "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
       "marker_line": 1553,
       "start": 1553,
-      "end": 1555,
+      "end": 1556,
       "page_start": 44,
       "page_end": 44,
       "text": "162. [Taking  gratification, in order, by corrupt or illegal means, to influence public servant.] Rep. by\nthe Prevention of Corruption Act, 1988 (49 of 1988), s. 31.",
@@ -5700,33 +5584,15 @@
           "text": "162. [Taking  gratification, in order, by corrupt or illegal means, to influence public servant.] Rep. by\nthe Prevention of Corruption Act, 1988 (49 of 1988), s. 31."
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "162. [Taking  gratification, in order, by corrupt or illegal means, to influence public servant.] Rep. by"
-      ]
-    },
-    {
-      "number": "163",
-      "title": "Taking gratification, for the exercise personal influence with public servant",
-      "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
-      "marker_line": 1555,
-      "start": 1555,
-      "end": 1556,
-      "page_start": 44,
-      "page_end": 44,
-      "text": "163. [Taking gratification, for the exercise personal influence with public servant.] Rep. by s. 31, ibid.",
-      "fragments": [
+      "removals": [
         {
-          "first_line": 1555,
-          "last_line": 1555,
-          "page_start": 44,
-          "page_end": 44,
+          "line": 1555,
+          "label": "footnote",
           "text": "163. [Taking gratification, for the exercise personal influence with public servant.] Rep. by s. 31, ibid."
         }
       ],
-      "removals": [],
       "amendment_notes": [
-        "163. [Taking gratification, for the exercise personal influence with public servant.] Rep. by s. 31, ibid."
+        "162. [Taking  gratification, in order, by corrupt or illegal means, to influence public servant.] Rep. by"
       ]
     },
     {
@@ -5759,7 +5625,7 @@
       "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
       "marker_line": 1558,
       "start": 1558,
-      "end": 1560,
+      "end": 1561,
       "page_start": 44,
       "page_end": 44,
       "text": "165. [Public servant obtaining valuable thing, without consideration, from person concerned in\nproceeding or business transacted by such public servant.] Rep. by s. 31, ibid.",
@@ -5772,33 +5638,15 @@
           "text": "165. [Public servant obtaining valuable thing, without consideration, from person concerned in\nproceeding or business transacted by such public servant.] Rep. by s. 31, ibid."
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "proceeding or business transacted by such public servant.] Rep. by s. 31, ibid."
-      ]
-    },
-    {
-      "number": "165A",
-      "title": "Punishment for abetment of offences defined in section 161 or section 165",
-      "chapter": "CHAPTER IX - OF OFFENCES BY OR RELATING TO PUBLIC SERVANTS",
-      "marker_line": 1560,
-      "start": 1560,
-      "end": 1561,
-      "page_start": 44,
-      "page_end": 44,
-      "text": "165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid.",
-      "fragments": [
+      "removals": [
         {
-          "first_line": 1560,
-          "last_line": 1560,
-          "page_start": 44,
-          "page_end": 44,
+          "line": 1560,
+          "label": "footnote",
           "text": "165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid."
         }
       ],
-      "removals": [],
       "amendment_notes": [
-        "165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid."
+        "proceeding or business transacted by such public servant.] Rep. by s. 31, ibid."
       ]
     },
     {
@@ -8218,7 +8066,7 @@
       "chapter": "CHAPTER XI - OF FALSE EVIDENCE AND OFFENCES AGAINST PUBLIC JUSTICE",
       "marker_line": 2376,
       "start": 2376,
-      "end": 2383,
+      "end": 2386,
       "page_start": 60,
       "page_end": 60,
       "text": "225B. Resistance or obstruction to lawful apprehension, or escape or rescue in cases not\notherwise provided for.—Whoever, in any case not provided for in section 224 or section 225 or in any\nother law for the time being in force, intentionally offers any resistance or illegal obstruction to the lawful\napprehension of himself or of any other person, or escapes or attempts to escape from any custody in\nwhich he is lawfully detained, or rescues or attempts to rescue any other person from any custody in\nwhich that person is lawfully detained, shall be punished with imprisonment of either description for a\nterm which may extend to six months, or with fine, or with both.]",
@@ -8231,38 +8079,24 @@
           "text": "225B. Resistance or obstruction to lawful apprehension, or escape or rescue in cases not\notherwise provided for.—Whoever, in any case not provided for in section 224 or section 225 or in any\nother law for the time being in force, intentionally offers any resistance or illegal obstruction to the lawful\napprehension of himself or of any other person, or escapes or attempts to escape from any custody in\nwhich he is lawfully detained, or rescues or attempts to rescue any other person from any custody in\nwhich that person is lawfully detained, shall be punished with imprisonment of either description for a\nterm which may extend to six months, or with fine, or with both.]"
         }
       ],
-      "removals": [],
-      "amendment_notes": []
-    },
-    {
-      "number": "226",
-      "title": "Unlawful return from transportation",
-      "chapter": "CHAPTER XI - OF FALSE EVIDENCE AND OFFENCES AGAINST PUBLIC JUSTICE",
-      "marker_line": 2383,
-      "start": 2383,
-      "end": 2386,
-      "page_start": 60,
-      "page_end": 60,
-      "text": "226. [Unlawful return from transportation.] Rep. by the Code of Criminal Procedure (Amendment)\nAct, 1955 (26 of 1955), s. 117 and the Sch. (w.e.f. 1-1-1956).",
-      "fragments": [
-        {
-          "first_line": 2383,
-          "last_line": 2384,
-          "page_start": 60,
-          "page_end": 60,
-          "text": "226. [Unlawful return from transportation.] Rep. by the Code of Criminal Procedure (Amendment)\nAct, 1955 (26 of 1955), s. 117 and the Sch. (w.e.f. 1-1-1956)."
-        }
-      ],
       "removals": [
+        {
+          "line": 2383,
+          "label": "footnote",
+          "text": "226. [Unlawful return from transportation.] Rep. by the Code of Criminal Procedure (Amendment)"
+        },
+        {
+          "line": 2384,
+          "label": "footnote",
+          "text": "Act, 1955 (26 of 1955), s. 117 and the Sch. (w.e.f. 1-1-1956)."
+        },
         {
           "line": 2385,
           "label": "boilerplate",
           "text": "IndiaCode"
         }
       ],
-      "amendment_notes": [
-        "226. [Unlawful return from transportation.] Rep. by the Code of Criminal Procedure (Amendment)"
-      ]
+      "amendment_notes": []
     },
     {
       "number": "227",
@@ -16665,7 +16499,7 @@
       "chapter": "CHAPTER XVIII",
       "marker_line": 5042,
       "start": 5042,
-      "end": 5056,
+      "end": 5058,
       "page_start": 111,
       "page_end": 111,
       "text": "2[477A. Falsification of accounts.—Whoever, being a clerk, officer or servant, or employed or\nacting in the capacity of a clerk, officer or servant, wilfully, and with intent to defraud, destroys, alters,\nmutilates or falsifies any 3[book, electronic record, paper, writing] valuable security or account which\nbelongs to or is in the possession of his employer, or has been received by him for or on behalf of his\nemployer, or wilfully, and with intent to defraud, makes or abets the making of any false entry in, or\nomits or alters or abets the omission or alteration of any material particular from or in. any such 5[book,\nelectronic record, paper, writing] valuable security or account, shall be punished with imprisonment of\neither description for a term which may extend to seven years, or with fine, or with both.\nExplanation.—It shall be sufficient in any charge under this section to allege a general intent to\ndefraud without naming any particular person intended to be defrauded or specifying any particular sum\nof money intended to be the subject of the fraud, or any particular day on which the offence was\ncommitted.]\n4[Of  5*** property and other marks",
@@ -16690,6 +16524,16 @@
           "line": 5054,
           "label": "boilerplate",
           "text": "IndiaCode"
+        },
+        {
+          "line": 5056,
+          "label": "footnote",
+          "text": "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 andSch."
+        },
+        {
+          "line": 5057,
+          "label": "footnote",
+          "text": "(w. e. f. 25-11-1959)."
         }
       ],
       "amendment_notes": [
@@ -16700,36 +16544,12 @@
       ]
     },
     {
-      "number": "478",
-      "title": "Trade Mark",
-      "chapter": "CHAPTER XVIII",
-      "marker_line": 5056,
-      "start": 5056,
-      "end": 5058,
-      "page_start": 111,
-      "page_end": 111,
-      "text": "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 andSch.\n(w. e. f. 25-11-1959).",
-      "fragments": [
-        {
-          "first_line": 5056,
-          "last_line": 5057,
-          "page_start": 111,
-          "page_end": 111,
-          "text": "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 andSch.\n(w. e. f. 25-11-1959)."
-        }
-      ],
-      "removals": [],
-      "amendment_notes": [
-        "478. [Trade Mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 andSch."
-      ]
-    },
-    {
       "number": "479",
       "title": "Property mark",
       "chapter": "CHAPTER XVIII",
       "marker_line": 5058,
       "start": 5058,
-      "end": 5060,
+      "end": 5062,
       "page_start": 111,
       "page_end": 111,
       "text": "479. Property mark.—A mark used for denoting that movable property belongs to a particular\nperson is called a property mark.",
@@ -16742,32 +16562,19 @@
           "text": "479. Property mark.—A mark used for denoting that movable property belongs to a particular\nperson is called a property mark."
         }
       ],
-      "removals": [],
-      "amendment_notes": []
-    },
-    {
-      "number": "480",
-      "title": "Using a false trade mark",
-      "chapter": "CHAPTER XVIII",
-      "marker_line": 5060,
-      "start": 5060,
-      "end": 5062,
-      "page_start": 111,
-      "page_end": 111,
-      "text": "480. [Using a false trade mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),\ns. 135 and Sch. (w.e.f. 25- 11-1959).",
-      "fragments": [
+      "removals": [
         {
-          "first_line": 5060,
-          "last_line": 5061,
-          "page_start": 111,
-          "page_end": 111,
-          "text": "480. [Using a false trade mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),\ns. 135 and Sch. (w.e.f. 25- 11-1959)."
+          "line": 5060,
+          "label": "footnote",
+          "text": "480. [Using a false trade mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),"
+        },
+        {
+          "line": 5061,
+          "label": "footnote",
+          "text": "s. 135 and Sch. (w.e.f. 25- 11-1959)."
         }
       ],
-      "removals": [],
-      "amendment_notes": [
-        "480. [Using a false trade mark.] Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),"
-      ]
+      "amendment_notes": []
     },
     {
       "number": "481",
@@ -17156,7 +16963,7 @@
       "chapter": "CHAPTER XVIII",
       "marker_line": 5151,
       "start": 5151,
-      "end": 5166,
+      "end": 5168,
       "page_start": 113,
       "page_end": 113,
       "text": "2[489E. Making or using documents resembling currency-notes or bank-notes.—(1) Whoever\nmakes, or causes to be made, or uses for any purpose whatsoever, or delivers to any person, any document\npurporting to be, or in any way resembling, or so nearly resembling as to be calculated to deceive, any\ncurrency-note or bank-note shall be punished with fine which may extend to one hundred rupees.\n(2) If any person, whose name appears on a document the making of which is an offence under\nsub-section (1), refuses, without lawful excuse, to disclose to a police-officer on being so required the\nname and address of the person by whom it was printed or otherwise made, he shall be punished with fine\nwhich may extend to two hundred rupees.\n(3) Where the name of any person appears on any document in respect of which any person is\ncharged with an offence under sub-section (1) or on any other document used or distributed in connection\nwith that document it may, until the contrary is proved, be presumed that that person caused the document\nto be made.]",
@@ -17191,34 +16998,20 @@
           "line": 5165,
           "label": "header",
           "text": "OFTHE CRIMINAL BREACHOF CONTRACTSOF SERVICE"
+        },
+        {
+          "line": 5166,
+          "label": "footnote",
+          "text": "490. [Breach of contract of service during voyage or journey.] Rep. by the Workmen's Breach of"
+        },
+        {
+          "line": 5167,
+          "label": "footnote",
+          "text": "Contract (Repealing) Act, 1925 (3 of 1925), s. 2 and Sch."
         }
       ],
       "amendment_notes": [
         "2. Ins. by Act 6 of 1943, s. 2."
-      ]
-    },
-    {
-      "number": "490",
-      "title": "Breach of contract of service during voyage or journey",
-      "chapter": "CHAPTER XIX - OFTHE CRIMINAL BREACHOF CONTRACTSOF SERVICE",
-      "marker_line": 5166,
-      "start": 5166,
-      "end": 5168,
-      "page_start": 113,
-      "page_end": 113,
-      "text": "490. [Breach of contract of service during voyage or journey.] Rep. by the Workmen's Breach of\nContract (Repealing) Act, 1925 (3 of 1925), s. 2 and Sch.",
-      "fragments": [
-        {
-          "first_line": 5166,
-          "last_line": 5167,
-          "page_start": 113,
-          "page_end": 113,
-          "text": "490. [Breach of contract of service during voyage or journey.] Rep. by the Workmen's Breach of\nContract (Repealing) Act, 1925 (3 of 1925), s. 2 and Sch."
-        }
-      ],
-      "removals": [],
-      "amendment_notes": [
-        "490. [Breach of contract of service during voyage or journey.] Rep. by the Workmen's Breach of"
       ]
     },
     {
@@ -18056,41 +17849,53 @@
   ],
   "label_counts": {
     "boilerplate": 106,
-    "footnote": 380,
+    "footnote": 400,
     "page_number": 106,
     "header": 69
   },
   "unlabeled_removals": 0,
   "scan_stats": {
-    "markers": 581,
+    "markers": 568,
     "forms": {
       "M": 0,
       "D": 560,
-      "R": 21
+      "R": 8
     },
     "lookahead_constant": 40,
-    "max_lookahead_used": 10,
+    "max_lookahead_used": 6,
     "restated_more_than_2_pages": [],
     "labels": {
       "header": 76,
       "boilerplate": 106,
-      "footnote": 380,
+      "footnote": 400,
       "page_number": 106
     },
     "classes": {
-      "restated": 581,
-      "footnote": 329,
-      "UNKNOWN": 9
+      "restated": 568,
+      "footnote": 343,
+      "UNKNOWN": 8
     },
     "unlabeled_removed": 0,
     "hyphen_merges": 2,
-    "footnotes_total": 329,
+    "footnotes_total": 342,
     "footnotes_attached": 327,
-    "footnotes_unattached": 2,
-    "footnotes_ambiguous": 0,
+    "footnotes_unattached": 13,
+    "footnotes_ambiguous": 2,
     "scope_boundaries": 106,
     "chapter_notes": 3,
-    "gaps": [],
+    "gaps": [
+      13,
+      15,
+      16,
+      58,
+      59,
+      61,
+      163,
+      226,
+      478,
+      480,
+      490
+    ],
     "lettered": [
       "29A",
       "52A",
@@ -18101,11 +17906,9 @@
       "120B",
       "121A",
       "124A",
-      "138A",
       "153A",
       "153AA",
       "153B",
-      "165A",
       "166A",
       "166B",
       "171A",
@@ -18163,7 +17966,7 @@
       "509A",
       "509B"
     ],
-    "rejected": 323,
+    "rejected": 345,
     "lines": 5472
   },
   "unknowns": [

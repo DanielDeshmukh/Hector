@@ -21,7 +21,8 @@
               "196",
               "197",
               "198"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 130,
@@ -29,7 +30,8 @@
               "362",
               "363",
               "364"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 136,
@@ -37,7 +39,8 @@
               "380",
               "381",
               "382"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 155,
@@ -45,7 +48,8 @@
               "450",
               "451",
               "452"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 160,
@@ -53,7 +57,8 @@
               "474",
               "475",
               "476"
-            ]
+            ],
+            "in_record_span": true
           }
         ]
       }
@@ -104,24 +109,19 @@
     "G6": {
       "status": "FAIL",
       "evidence": {
-        "primary_fragment_rate": 0.884545,
-        "diagnostic_whole_record_rate": 0.858653,
+        "primary_fragment_rate": 0.989387,
+        "diagnostic_whole_record_rate": 0.975416,
         "diagnostic_line_rate": 0.999058,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [
           "IndiaCode"
         ],
-        "windows": 11944,
-        "primary_failures": 36,
+        "windows": 8951,
+        "primary_failures": 35,
+        "mega_table_records": [
+          "bnss-2023:s:531:0"
+        ],
         "worst_5": [
-          {
-            "id": "bnss-2023:s:531:0",
-            "missing_windows": 1284,
-            "page_range": [
-              174,
-              282
-            ]
-          },
           {
             "id": "bnss-2023:s:359:0",
             "missing_windows": 61,
@@ -152,6 +152,14 @@
             "page_range": [
               24,
               25
+            ]
+          },
+          {
+            "id": "bnss-2023:s:53:0",
+            "missing_windows": 1,
+            "page_range": [
+              35,
+              35
             ]
           }
         ],

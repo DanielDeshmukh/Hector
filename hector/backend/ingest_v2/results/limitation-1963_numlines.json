@@ -1,0 +1,1379 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 32,
+    "footnote": 149,
+    "UNKNOWN": 1
+  },
+  "labels": {
+    "header": 34,
+    "boilerplate": 146,
+    "footnote": 939,
+    "page_number": 22
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [],
+  "footnote_sample": [
+    {
+      "line": 1320,
+      "page": 20,
+      "text": "100. To alter or set aside any decision",
+      "cls": "footnote"
+    },
+    {
+      "line": 183,
+      "page": 6,
+      "text": "1. The words “on which the decree or order is founded” omitted by Act 46 of 1999, s. 33 (w.e.f. 1-7-2002).",
+      "cls": "footnote"
+    },
+    {
+      "line": 482,
+      "page": 12,
+      "text": "8.",
+      "cls": "footnote"
+    },
+    {
+      "line": 38,
+      "page": 3,
+      "text": "1. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule (w.e.f. 31-",
+      "cls": "footnote"
+    },
+    {
+      "line": 477,
+      "page": 12,
+      "text": "7.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1747,
+      "page": 24,
+      "text": "137. Any other application for which",
+      "cls": "footnote"
+    },
+    {
+      "line": 1656,
+      "page": 23,
+      "text": "130. For leave to appeal as a pauper—",
+      "cls": "footnote"
+    },
+    {
+      "line": 505,
+      "page": 12,
+      "text": "13. For the balance of money advanced",
+      "cls": "footnote"
+    },
+    {
+      "line": 794,
+      "page": 15,
+      "text": "52. For arrears of rent.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1239,
+      "page": 19,
+      "text": "96. By the manager of Hindu, Muslim or",
+      "cls": "footnote"
+    },
+    {
+      "line": 681,
+      "page": 14,
+      "text": "39. On a dishonoured foreign bill",
+      "cls": "footnote"
+    },
+    {
+      "line": 805,
+      "page": 15,
+      "text": "54. For specific performance of a",
+      "cls": "footnote"
+    },
+    {
+      "line": 1736,
+      "page": 24,
+      "text": "136. For the execution of any decree",
+      "cls": "footnote"
+    },
+    {
+      "line": 812,
+      "page": 15,
+      "text": "55. For compensation for the breach of",
+      "cls": "footnote"
+    },
+    {
+      "line": 515,
+      "page": 12,
+      "text": "15. For the price of goods sold and",
+      "cls": "footnote"
+    },
+    {
+      "line": 1693,
+      "page": 24,
+      "text": "133. To the Supreme Court for special",
+      "cls": "footnote"
+    },
+    {
+      "line": 1085,
+      "page": 18,
+      "text": "76. For compensation for slander.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1383,
+      "page": 20,
+      "text": "1. Subs. by Act 52 of 1964, s. 3 and the Second Schedule, for “an order under rule 63 or rule 103,” (w.e.f. 29-12-1964).",
+      "cls": "footnote"
+    },
+    {
+      "line": 586,
+      "page": 13,
+      "text": "25. For money payable for interest",
+      "cls": "footnote"
+    },
+    {
+      "line": 1688,
+      "page": 23,
+      "text": "1. Subs. by Act 104 of 1976, s. 98, for “Thirty days” (w.e.f. 1-2-1977).",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 8,
+      "page": 3,
+      "text": "1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 12,
+      "page": 3,
+      "text": "2. Definitions.—In this Act, unless the context otherwise requires,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 38,
+      "page": 3,
+      "text": "1. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule (w.e.f. 31-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 40,
+      "page": 3,
+      "text": "2. 1st January, 1964, vide notification No. S.O. 3118, dated 29th October, 1963, see Gazette of India, Part II, sec. 3 (ii).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 57,
+      "page": 4,
+      "text": "3. Bar of limitation.—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 73,
+      "page": 4,
+      "text": "4. Expiry of prescribed period when court is closed.—Where the prescribed period for any suit,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 78,
+      "page": 4,
+      "text": "5. Extension of prescribed period in certain cases.—Any appeal or any application, other than an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 85,
+      "page": 4,
+      "text": "6. Legal disability.—(1) Where a person entitled to institute a suit or make an application for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 105,
+      "page": 5,
+      "text": " 7. Disability of one of several persons.—Where one of several persons jointly entitled to institute a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 116,
+      "page": 5,
+      "text": "8. Special exceptions.—Nothing in section 6 or in section 7 applies to suits to enforce rights of pre-emption, or shall be deemed to extend, for more than three",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 118,
+      "page": 5,
+      "text": "9. Continuous running of time.—Where once time has begun to run, no subsequent disability or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 123,
+      "page": 5,
+      "text": "10. Suits against trustees and their representatives.—Notwithstanding anything contained in the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 131,
+      "page": 5,
+      "text": "11. Suits on contracts entered into outside the territories to which the Act extends.—(1) Suits",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 143,
+      "page": 6,
+      "text": "12. Exclusion of time in legal proceedings.—(1) In computing the period of limitation for any suit,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 158,
+      "page": 6,
+      "text": "13. Exclusion of time in cases where leave to sue or appeal as a pauper is applied for.—In",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 164,
+      "page": 6,
+      "text": "14. Exclusion of time of proceeding bona fide in court without jurisdiction.—(1) In computing the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 183,
+      "page": 6,
+      "text": "1. The words “on which the decree or order is founded” omitted by Act 46 of 1999, s. 33 (w.e.f. 1-7-2002).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 188,
+      "page": 7,
+      "text": "15. Exclusion of time in certain other cases.—(1) In computing the period of limitation of any suit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 212,
+      "page": 7,
+      "text": "16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 224,
+      "page": 7,
+      "text": "17. Effect of fraud or mistake.—(1) Where, in the case of any suit or application for which a period",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 254,
+      "page": 8,
+      "text": "18. Effect of acknowledgment in writing.—(1) Where, before the expiration of the prescribed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 271,
+      "page": 8,
+      "text": "19. Effect of payment on account of debt or of interest on legacy.—Where payment on account of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 283,
+      "page": 9,
+      "text": "20. Effect of acknowledgment or payment by another person.—(1) The expression “agent duly",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 299,
+      "page": 9,
+      "text": " 21. Effect of substituting or adding new plaintiff or defendant.—(1) Where after the institution of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 308,
+      "page": 9,
+      "text": "22. Continuing breaches and torts.—In the case of a continuing breach of contract or in the case of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 311,
+      "page": 9,
+      "text": " 23. Suits for compensation for acts not actionable without special damage.—In the case of a suit",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 315,
+      "page": 9,
+      "text": "24. Computation of time mentioned in instruments.—All instruments shall for the purposes of this",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 319,
+      "page": 9,
+      "text": " 25. Acquisition of easements by prescription.—(1) Where the access and use of light or air to and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 336,
+      "page": 10,
+      "text": "26. Exclusion in favour of reversioner of serivent tenement.—Where any land or water upon, over",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 342,
+      "page": 10,
+      "text": "27. Extinguishment of right to property.—At the determination of the period hereby limited to any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 348,
+      "page": 10,
+      "text": " 28. [Amendment of certain Acts.]—Rep. by Repealing and Amending Act, 1974 (56 of 1974),s.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 350,
+      "page": 10,
+      "text": "29. Savings.—(1) Nothing in this Act shall affect section 25 of the Indian Contract Act, 1872 (9 of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 362,
+      "page": 10,
+      "text": "30. Provision for suits, etc., for which the prescribed period is shorter than the period",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 374,
+      "page": 10,
+      "text": "1. Subs. by Act 10 of 1969, s. 2, for “five years” (retrospectively).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 375,
+      "page": 10,
+      "text": "2. Ins. by s. 2, ibid. (retrospectively).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 408,
+      "page": 11,
+      "text": "31. Provisions as to barred or pending suits, etc.—Nothing in this Act shall,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 414,
+      "page": 11,
+      "text": "32. [Repeal.]—Rep. by Repealing and Amending Act, 1974 (56 of 1974), s. 2 and the First Schedule",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 425,
+      "page": 12,
+      "text": "1. For the balance due on a mutual,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 437,
+      "page": 12,
+      "text": "2. Against a factor for an account.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 448,
+      "page": 12,
+      "text": "3. By a principal against his agent for",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 462,
+      "page": 12,
+      "text": "4. Other suits by principals against",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 467,
+      "page": 12,
+      "text": "5. For an account and a share of the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 472,
+      "page": 12,
+      "text": "6.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 477,
+      "page": 12,
+      "text": "7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 482,
+      "page": 12,
+      "text": "8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 488,
+      "page": 12,
+      "text": "9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 492,
+      "page": 12,
+      "text": "10. Against a carrier for compensation",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 496,
+      "page": 12,
+      "text": "11. Against a carrier for compensation",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 501,
+      "page": 12,
+      "text": "12. For the hire of animals, vehicles,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 505,
+      "page": 12,
+      "text": "13. For the balance of money advanced",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 510,
+      "page": 12,
+      "text": "14. For the price of goods sold and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 515,
+      "page": 12,
+      "text": "15. For the price of goods sold and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 525,
+      "page": 13,
+      "text": "16. For the price of goods sold and",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 532,
+      "page": 13,
+      "text": "17. For the price of trees or growing",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 538,
+      "page": 13,
+      "text": "18. For the price of work done by the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 544,
+      "page": 13,
+      "text": "19. For money payable for money lent.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 547,
+      "page": 13,
+      "text": "20. Like suit when the lender has given",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 551,
+      "page": 13,
+      "text": "21. For money lent under an agreement",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 557,
+      "page": 13,
+      "text": "22. For money deposited under an",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 564,
+      "page": 13,
+      "text": "23. For money payable to the plaintiff",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 573,
+      "page": 13,
+      "text": "24. For",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 586,
+      "page": 13,
+      "text": "25. For money payable for interest",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 591,
+      "page": 13,
+      "text": "26. For money payable to the plaintiff",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 603,
+      "page": 13,
+      "text": "27. For compensation for breach of a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 614,
+      "page": 13,
+      "text": "28. On a single bond, where a day is",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 618,
+      "page": 13,
+      "text": "29. On a single bond, where no such",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 622,
+      "page": 13,
+      "text": "30. On a bond subject to a condition.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 629,
+      "page": 14,
+      "text": "31. On a bill of exchange or promissory",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 634,
+      "page": 14,
+      "text": "32. On a bill of exchange payable at",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 639,
+      "page": 14,
+      "text": "33. On a bill of exchange accepted",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 643,
+      "page": 14,
+      "text": "34. On a bill of exchange or promissory",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 648,
+      "page": 14,
+      "text": "35. On a bill of exchange or promissory",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 655,
+      "page": 14,
+      "text": "36. On a promissory note or bond",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 663,
+      "page": 14,
+      "text": "37. On a promissory note or bond",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 675,
+      "page": 14,
+      "text": "38. On a promissory note given by the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 681,
+      "page": 14,
+      "text": "39. On a dishonoured foreign bill",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 686,
+      "page": 14,
+      "text": "40. By the payee against the drawer of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 693,
+      "page": 14,
+      "text": "41. By",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 703,
+      "page": 14,
+      "text": "42. By a surety against the principal",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 707,
+      "page": 14,
+      "text": "43. By a surety against a co-surety.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 711,
+      "page": 14,
+      "text": "44. (a) On a policy of insurance when",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 734,
+      "page": 15,
+      "text": "45. By the assured to recover premia",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 740,
+      "page": 15,
+      "text": "46. Under the Indian Succession Act,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 749,
+      "page": 15,
+      "text": "47. For money paid upon an existing",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 754,
+      "page": 15,
+      "text": "48. For contribution by a party who has",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 766,
+      "page": 15,
+      "text": "49. By a co-trustee to enforce against",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 771,
+      "page": 15,
+      "text": "50. By the manager of a joint estate of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 781,
+      "page": 15,
+      "text": "51. For the profits of immovable",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 794,
+      "page": 15,
+      "text": "52. For arrears of rent.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 797,
+      "page": 15,
+      "text": "53. By a vendor of immovable property",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 805,
+      "page": 15,
+      "text": "54. For specific performance of a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 812,
+      "page": 15,
+      "text": "55. For compensation for the breach of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 827,
+      "page": 16,
+      "text": "56. To declare the forgery of an",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 832,
+      "page": 16,
+      "text": "57. To obtain a declaration that an",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 838,
+      "page": 16,
+      "text": "58. To obtain any other declaration.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 842,
+      "page": 16,
+      "text": "59. To cancel or set aside an instrument",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 854,
+      "page": 16,
+      "text": "60. To set aside a transfer of property",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 877,
+      "page": 16,
+      "text": "61. By a mortgagor—",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 910,
+      "page": 16,
+      "text": "62. To enforce payment of money",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 922,
+      "page": 16,
+      "text": "63. By a mortgagee—",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 936,
+      "page": 17,
+      "text": "64. For",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 954,
+      "page": 17,
+      "text": "65. For",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1004,
+      "page": 17,
+      "text": "66. For",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1015,
+      "page": 17,
+      "text": "67. By a landlord to recover possession",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1020,
+      "page": 17,
+      "text": "68. For specific movable property lost,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1027,
+      "page": 17,
+      "text": "69. For other specific movable property.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1030,
+      "page": 17,
+      "text": "70. To",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1043,
+      "page": 18,
+      "text": "71. To",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1061,
+      "page": 18,
+      "text": "72. For compensation for doing or for",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1069,
+      "page": 18,
+      "text": "73. For",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1076,
+      "page": 18,
+      "text": "74. For compensation for a malicious",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1082,
+      "page": 18,
+      "text": "75. For compensation for libel.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1085,
+      "page": 18,
+      "text": "76. For compensation for slander.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1095,
+      "page": 18,
+      "text": "77. For compensation for loss of service",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1104,
+      "page": 18,
+      "text": "78. For compensation for inducing a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1109,
+      "page": 18,
+      "text": "79. For compensation for an illegal,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1113,
+      "page": 18,
+      "text": "80. For compensation for wrongful",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1118,
+      "page": 18,
+      "text": "81. By executors, administrators or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1125,
+      "page": 18,
+      "text": "82. By executors, administrators or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1131,
+      "page": 18,
+      "text": "83. Under the Legal Representatives’",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1144,
+      "page": 18,
+      "text": "84. Against one who, having a right to",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1158,
+      "page": 19,
+      "text": "85. For compensation for obstructing a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1162,
+      "page": 19,
+      "text": "86. For compensation for diverting a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1166,
+      "page": 19,
+      "text": "87. For compensation for trespass upon",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1170,
+      "page": 19,
+      "text": "88. For compensation for infringing",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1175,
+      "page": 19,
+      "text": "89. To restrain waste.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1178,
+      "page": 19,
+      "text": "90. For compensation for injury caused",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1186,
+      "page": 19,
+      "text": "91. For compensation,—",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1203,
+      "page": 19,
+      "text": "92. To recover possession of immovable",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1213,
+      "page": 19,
+      "text": "93. To recover possession of movable",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1221,
+      "page": 19,
+      "text": "94. To set aside a transfer of immovable",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1230,
+      "page": 19,
+      "text": "95. To set aside a transfer of movable",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1239,
+      "page": 19,
+      "text": "96. By the manager of Hindu, Muslim or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1277,
+      "page": 20,
+      "text": "97.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1288,
+      "page": 20,
+      "text": "98.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1309,
+      "page": 20,
+      "text": "99.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1320,
+      "page": 20,
+      "text": "100. To alter or set aside any decision",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1330,
+      "page": 20,
+      "text": "101. Upon a judgment, including a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1338,
+      "page": 20,
+      "text": "102. For property which the plaintiff has",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1343,
+      "page": 20,
+      "text": "103. To make good out of the general",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1351,
+      "page": 20,
+      "text": "104. To",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1359,
+      "page": 20,
+      "text": "105. By",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1368,
+      "page": 20,
+      "text": "106. For a legacy or for a share of a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1383,
+      "page": 20,
+      "text": "1. Subs. by Act 52 of 1964, s. 3 and the Second Schedule, for “an order under rule 63 or rule 103,” (w.e.f. 29-12-1964).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1388,
+      "page": 21,
+      "text": "107. For possession of a hereditary",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1399,
+      "page": 21,
+      "text": "108. Suit during the life of a Hindu or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1415,
+      "page": 21,
+      "text": "109. By",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1426,
+      "page": 21,
+      "text": "110. By a person excluded from a joint",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1432,
+      "page": 21,
+      "text": "111. By or on behalf of any local",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1446,
+      "page": 21,
+      "text": "112. Any suit (except a suit before the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1467,
+      "page": 21,
+      "text": "113. Any suit for which no period of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1473,
+      "page": 21,
+      "text": "114. Appeal",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1499,
+      "page": 22,
+      "text": "115. Under",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1524,
+      "page": 22,
+      "text": "116. Under the Code of Civil Procedure,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1535,
+      "page": 22,
+      "text": "117. From a decree or order of any High",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1541,
+      "page": 22,
+      "text": "118. For leave to appear and defend a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1548,
+      "page": 22,
+      "text": "119. Under the Arbitration Act, 1940",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1561,
+      "page": 22,
+      "text": "120. Under",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1576,
+      "page": 22,
+      "text": "121. Under the same Code for an order",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1580,
+      "page": 22,
+      "text": "122. To restore a suit or appeal or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1596,
+      "page": 23,
+      "text": "123. To set aside a decree passed ex",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1614,
+      "page": 23,
+      "text": "124. For a review of judgment by a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1619,
+      "page": 23,
+      "text": "125. To record an adjustment or",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1623,
+      "page": 23,
+      "text": "126. For the payment of the amount of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1630,
+      "page": 23,
+      "text": "127. To set aside a sale in execution of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1633,
+      "page": 23,
+      "text": "128. For",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1648,
+      "page": 23,
+      "text": "129. For possession after removing",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1656,
+      "page": 23,
+      "text": "130. For leave to appeal as a pauper—",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1663,
+      "page": 23,
+      "text": "131. To any court for the exercise of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1672,
+      "page": 23,
+      "text": "132. To",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1688,
+      "page": 23,
+      "text": "1. Subs. by Act 104 of 1976, s. 98, for “Thirty days” (w.e.f. 1-2-1977).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1693,
+      "page": 24,
+      "text": "133. To the Supreme Court for special",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1708,
+      "page": 24,
+      "text": "134. For delivery of possession by a",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1716,
+      "page": 24,
+      "text": "135. For the enforcement of a decree",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1736,
+      "page": 24,
+      "text": "136. For the execution of any decree",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1747,
+      "page": 24,
+      "text": "137. Any other application for which",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1753,
+      "page": 24,
+      "text": "1. Subs. by Act 53 of 1964, s. 3 and the Second Schedule, for “Where” (w.e.f. 12-12-1964.)",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

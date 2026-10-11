@@ -1,0 +1,175 @@
+{
+  "act_id": "limitation-1963",
+  "gates": {
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "page1_has_act_name": true,
+        "page1_has_year": true,
+        "seed": 20261010,
+        "middle_pages_0based": [
+          6,
+          9,
+          10,
+          11,
+          17
+        ],
+        "page_hits": [
+          {
+            "page_1based": 7,
+            "markers_found": [
+              "15",
+              "16",
+              "17"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 10,
+            "markers_found": [
+              "26",
+              "27",
+              "28"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 11,
+            "markers_found": [
+              "31",
+              "32"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 12,
+            "markers_found": [],
+            "in_record_span": false,
+            "exempt_schedule": true
+          },
+          {
+            "page_1based": 18,
+            "markers_found": [],
+            "in_record_span": false,
+            "exempt_schedule": true
+          }
+        ]
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "mode": "toc",
+        "expected_count": 32,
+        "records": 32,
+        "missing": [],
+        "extra": [],
+        "anchor_max_plain_seen": 32,
+        "anchor_ok": false
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "part0_records": 32,
+        "needed_prefix_stripping": 0,
+        "failures": []
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "page_number_lines": 0,
+        "hyphen_breaks": 0,
+        "boilerplate": 0,
+        "repeated_30pct_lines": 0,
+        "examples_page_number": [],
+        "examples_hyphen": [],
+        "examples_boiler": [],
+        "examples_repeats": []
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "records": 32,
+        "duplicate_ids": [],
+        "malformed_ids": [],
+        "empty_texts": [],
+        "missing_or_null_nonnullable": []
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "primary_fragment_rate": 0.997959,
+        "diagnostic_whole_record_rate": 0.97992,
+        "diagnostic_line_rate": 1.0,
+        "raw_reference": "get_text('text', sort=True)",
+        "reference_repeated_lines_stripped": [
+          "Description of suit",
+          "IndiaCode",
+          "Period of limitation",
+          "Three years.",
+          "Time from which period begins to run"
+        ],
+        "windows": 490,
+        "primary_failures": 1,
+        "mega_table_records": [],
+        "table_content_records": [],
+        "worst_5": [
+          {
+            "id": "limitation-1963:s:21:0",
+            "missing_windows": 1,
+            "page_range": [
+              9,
+              9
+            ]
+          }
+        ],
+        "threshold": 0.99
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "parents": 32,
+        "markers": 32,
+        "problems": []
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "limit": 3000,
+        "flagged_long_unsplit": [
+          [
+            "30",
+            0
+          ]
+        ],
+        "unflagged_over_limit": [],
+        "longest_text": 3533
+      }
+    },
+    "G9": {
+      "status": "PASS",
+      "evidence": {
+        "footnotes_total": 145,
+        "footnotes_attached": 4,
+        "footnotes_unattached": 139,
+        "footnotes_ambiguous": 2,
+        "footnote_lines_detected": 939,
+        "labelled_footnote_lines": 939,
+        "attached_lines": 5,
+        "unattached_lines": 934,
+        "scope_boundaries": 22,
+        "chapter_notes": 0,
+        "groups": 103,
+        "accounting_ok": true,
+        "records_containing_footnote_lines": []
+      }
+    }
+  },
+  "summary": "OK"
+}

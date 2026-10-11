@@ -38,8 +38,8 @@ def group_fragments(idxs):
     return groups
 
 
-def clean_sections(doc, start_page=0):
-    scan = S.scan_document(doc, start_page=start_page)
+def clean_sections(doc, start_page=0, expected=None):
+    scan = S.scan_document(doc, start_page=start_page, expected=expected)
     lines = scan["lines"]
     sections = []
     label_counts = {}
@@ -59,6 +59,13 @@ def clean_sections(doc, start_page=0):
                 removals.append({"line": k, "label": lab,
                                  "text": lines[k]["text"][:200]})
         text, _all_frags, p0, p1 = S.assemble_text(lines, kept)
+        if mk.get("synthetic") and not text:
+            # repealed-with-no-body section: the body prints no line for it,
+            # so the span is empty. Use the synthetic text (number + ToC
+            # title) so the record is non-empty and starts with its own
+            # number (G3); page range follows the next real marker.
+            text = mk.get("synthetic_text") or ""
+            p0 = p1 = mk.get("page_1based")
         fragments = []
         for g in group_fragments(kept):
             ft, _, gp0, gp1 = S.assemble_text(lines, g)
@@ -113,7 +120,8 @@ def main():
     print("=" * 76, flush=True)
 
     doc = V.fitz.open(str(src))
-    result = clean_sections(doc, start_page=V.body_scan_start(act_id))
+    result = clean_sections(doc, start_page=V.body_scan_start(act_id),
+                            expected=V.expected_list(act_id))
     doc.close()
 
     secs = result["sections"]

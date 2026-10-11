@@ -1,0 +1,118 @@
+{
+  "act_id": "tpa-1882",
+  "page_spanning_total": 29,
+  "shown": [
+    {
+      "number": "1",
+      "page_start": 7,
+      "page_end": 8,
+      "joins": [
+        {
+          "from_page": 7,
+          "to_page": 7,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": " 5 notification in the Official Gazette be\nextended to the whole or any part of 6 [the said territories] by the State Government\nconcerned.]",
+          "after_head": "7[And any State Government may 8*** from time to time, by notification in the Official\nGazette, exempt, either retrospectively or prospectiv"
+        },
+        {
+          "from_page": 7,
+          "to_page": 8,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ministered by such State Government from all or any of the following provisions,\nnamely:—\nSections 54, paragraphs 2 and 3, 59, 107 and 123.]",
+          "after_head": "1[Notwithstanding anything in the foregoing part of this section, sections 54, paragraphs 2\nand 3, 59, 107 and 123 shall not extend or be ex"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "page_start": 8,
+      "page_end": 9,
+      "joins": [
+        {
+          "from_page": 8,
+          "to_page": 9,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "neficial enjoyment of that to which it\nis attached:\n9[“actionable claim” means a claim to any debt, other than a debt secured by mortgage\nof",
+          "after_head": "immoveable property or by hypothecation or pledge of moveable property, or to any beneficial\ninterest in moveable property not in the posses"
+        },
+        {
+          "from_page": 9,
+          "to_page": 9,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "b-district any part of the\nproperty which is being acquired, or of the property wherein a share or interest is being acquired, is\nsituated]:",
+          "after_head": "Provided that—\n(1) the instrument has been registered and its registration completed in the manner\nprescribed by the Indian Registration Act"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "page_start": 9,
+      "page_end": 10,
+      "joins": [
+        {
+          "from_page": 9,
+          "to_page": 10,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "\n4[And sections 54, paragraphs 2 and 3, 59, 107 and 123 shall be read as supplemental to the Indian\nRegistration Act, 5[1908 (16 of 1908)].]",
+          "after_head": "CHAPTER II1"
+        },
+        {
+          "from_page": 10,
+          "to_page": 10,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "CHAPTER II1",
+          "after_head": "(A) Transfer of Property, whether moveable or immoveable"
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "page_start": 11,
+      "page_end": 12,
+      "joins": [
+        {
+          "from_page": 11,
+          "to_page": 12,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "he\nbenefit of such person shall not take effect, unless it extends to the whole of the remaining\ninterest of the transferor in the property.",
+          "after_head": "Illustration\nA transfers property of which he is the owner to B in trust for A and his intended wife succesively for their lives, and, after"
+        }
+      ]
+    },
+    {
+      "number": "19",
+      "page_start": 12,
+      "page_end": 13,
+      "joins": [
+        {
+          "from_page": 12,
+          "to_page": 13,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": ", or whereby a prior interest in the same\nproperty is given or reserved to some other person, or whereby income arising from the property is",
+          "after_head": "directed to be accumulated until the time of enjoyment arrives, or from a provision that if a\nparticular event shall happen the interest sha"
+        }
+      ]
+    }
+  ]
+}

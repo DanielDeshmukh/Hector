@@ -313,3 +313,6 @@ skills-lock.json
 pitch.md
 Hector-interview-prep.md
 .vercel
+
+# Derived embedding caches (regenerable, large binaries)
+*.npz

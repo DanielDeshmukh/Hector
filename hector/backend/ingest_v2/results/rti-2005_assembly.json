@@ -1,0 +1,142 @@
+{
+  "act_id": "rti-2005",
+  "page_spanning_total": 15,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 5,
+      "page_end": 7,
+      "joins": [
+        {
+          "from_page": 5,
+          "to_page": 6,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "nformation Commissioner” mean the Chief\nInformation Commissioner and Information Commissioner appointed under sub-section (3) of\nsection 12;",
+          "after_head": "(e) “competent authority” means—\n(i) the Speaker in the case of the House of the People or the Legislative Assembly of a State\nor a Union te"
+        },
+        {
+          "from_page": 6,
+          "to_page": 6,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "(g) “prescribed” means prescribed by rules made under this Act by the appropriate Government\nor the competent authority, as the case may be;",
+          "after_head": "(h) “public authority” means any authority or body or institution of self- government established\nor constituted—\n(a) by or under the Consti"
+        },
+        {
+          "from_page": 6,
+          "to_page": 7,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "any other device;\n(k) “State Information Commission” means the State Information Commission constituted under\nsub-section (1) of section 15;",
+          "after_head": "(l) “State Chief Information Commissioner” and “State Information Commissioner” mean the\nState Chief Information Commissioner and the State "
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "page_start": 7,
+      "page_end": 8,
+      "joins": [
+        {
+          "from_page": 7,
+          "to_page": 7,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "urces, computerised and\nconnected through a network all over the country on different systems so that access to such records\nis facilitated;",
+          "after_head": "(b) publish within one hundred and twenty days from the enactment of this Act,—\n(i) the particulars of its organisation, functions and dutie"
+        },
+        {
+          "from_page": 7,
+          "to_page": 8,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "its or authorisations granted by it;\n(xiv) details in respect of the information, available to or held by it, reduced in an electronic\nform;",
+          "after_head": "(xv) the particulars of facilities available to citizens for obtaining information, including the\nworking hours of a library or reading room"
+        },
+        {
+          "from_page": 8,
+          "to_page": 8,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "ses of sub-section (1), every information shall be disseminated widely and in such\nform and manner which is easily accessible to the public.",
+          "after_head": "(4) All materials shall be disseminated taking into consideration the cost effectiveness, local language\nand the most effective method of co"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "page_start": 9,
+      "page_end": 10,
+      "joins": [
+        {
+          "from_page": 9,
+          "to_page": 10,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "\nfees charged or the form of access provided, including the particulars of the appellate authority, time\nlimit, process and any other forms.",
+          "after_head": "(4) Where access to the record or a part thereof is required to be provided under this Act and the\nperson to whom access is to be provided i"
+        },
+        {
+          "from_page": 10,
+          "to_page": 10,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "ral Public Information Officer or\nState Public Information Officer, as the case may be, shall communicate to the person making the\nrequest,—",
+          "after_head": "(i) the reasons for such rejection;\n(ii) the period within which an appeal against such rejection may be preferred; and\n(iii) the particular"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "page_start": 10,
+      "page_end": 11,
+      "joins": [
+        {
+          "from_page": 10,
+          "to_page": 11,
+          "removed_labels": [
+            "page_number"
+          ],
+          "before_tail": "prosecution\nof offenders;\n(i) cabinet papers including records of deliberations of the Council of Ministers, Secretaries and\nother officers:",
+          "after_head": "Provided that the decisions of Council of Ministers, the reasons thereof, and the material on the\nbasis of which the decisions were taken sh"
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "page_start": 11,
+      "page_end": 12,
+      "joins": [
+        {
+          "from_page": 11,
+          "to_page": 12,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "y a third party and has been treated as\nconfidential by that third party, the Central Public Information Officer or State Public Information",
+          "after_head": "Officer, as the case may be, shall, within five days from the receipt of the request, give a written notice to\nsuch third party of the reque"
+        },
+        {
+          "from_page": 12,
+          "to_page": 12,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "s to whether or not to disclose the information or record or part thereof and give in\nwriting the notice of his decision to the third party.",
+          "after_head": "(4) A notice given under sub-section (3) shall include a statement that the third party to whom the\nnotice is given is entitled to prefer an"
+        }
+      ]
+    }
+  ]
+}

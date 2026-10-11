@@ -1,0 +1,223 @@
+{
+  "act_id": "consumer-protection-2019",
+  "gates": {
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "page1_has_act_name": true,
+        "page1_has_year": true,
+        "seed": 20261010,
+        "middle_pages_0based": [
+          11,
+          17,
+          18,
+          21,
+          31
+        ],
+        "page_hits": [
+          {
+            "page_1based": 12,
+            "markers_found": [],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 18,
+            "markers_found": [
+              "21",
+              "22"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 19,
+            "markers_found": [
+              "23",
+              "24",
+              "25"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 22,
+            "markers_found": [
+              "38"
+            ],
+            "in_record_span": true
+          },
+          {
+            "page_1based": 32,
+            "markers_found": [
+              "74",
+              "75",
+              "76"
+            ],
+            "in_record_span": true
+          }
+        ]
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "mode": "toc",
+        "expected_count": 107,
+        "records": 107,
+        "missing": [],
+        "extra": [],
+        "anchor_max_plain_seen": 107,
+        "anchor_ok": false
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "part0_records": 107,
+        "needed_prefix_stripping": 0,
+        "failures": []
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "page_number_lines": 0,
+        "hyphen_breaks": 0,
+        "boilerplate": 0,
+        "repeated_30pct_lines": 0,
+        "examples_page_number": [],
+        "examples_hyphen": [],
+        "examples_boiler": [],
+        "examples_repeats": []
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "records": 107,
+        "duplicate_ids": [],
+        "malformed_ids": [],
+        "empty_texts": [],
+        "missing_or_null_nonnullable": []
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "primary_fragment_rate": 0.997076,
+        "diagnostic_whole_record_rate": 0.980843,
+        "diagnostic_line_rate": 1.0,
+        "raw_reference": "get_text('text', sort=True)",
+        "reference_repeated_lines_stripped": [
+          "IndiaCode"
+        ],
+        "windows": 2052,
+        "primary_failures": 6,
+        "mega_table_records": [],
+        "table_content_records": [],
+        "worst_5": [
+          {
+            "id": "consumer-protection-2019:s:2:0",
+            "missing_windows": 1,
+            "page_range": [
+              6,
+              14
+            ]
+          },
+          {
+            "id": "consumer-protection-2019:s:67:0",
+            "missing_windows": 1,
+            "page_range": [
+              30,
+              30
+            ]
+          },
+          {
+            "id": "consumer-protection-2019:s:74:0",
+            "missing_windows": 1,
+            "page_range": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "consumer-protection-2019:s:81:0",
+            "missing_windows": 1,
+            "page_range": [
+              33,
+              33
+            ]
+          },
+          {
+            "id": "consumer-protection-2019:s:95:0",
+            "missing_windows": 1,
+            "page_range": [
+              36,
+              36
+            ]
+          }
+        ],
+        "threshold": 0.99
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "parents": 107,
+        "markers": 107,
+        "problems": []
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "limit": 3000,
+        "flagged_long_unsplit": [
+          [
+            "101",
+            0
+          ],
+          [
+            "102",
+            0
+          ],
+          [
+            "107",
+            0
+          ],
+          [
+            "2",
+            0
+          ],
+          [
+            "38",
+            0
+          ],
+          [
+            "39",
+            0
+          ]
+        ],
+        "unflagged_over_limit": [],
+        "longest_text": 24278
+      }
+    },
+    "G9": {
+      "status": "PASS",
+      "evidence": {
+        "footnotes_total": 2,
+        "footnotes_attached": 1,
+        "footnotes_unattached": 1,
+        "footnotes_ambiguous": 0,
+        "footnote_lines_detected": 10,
+        "labelled_footnote_lines": 10,
+        "attached_lines": 1,
+        "unattached_lines": 9,
+        "scope_boundaries": 37,
+        "chapter_notes": 0,
+        "groups": 2,
+        "accounting_ok": true,
+        "records_containing_footnote_lines": []
+      }
+    }
+  },
+  "summary": "OK"
+}

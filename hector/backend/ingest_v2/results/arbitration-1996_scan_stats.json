@@ -1,0 +1,55 @@
+{
+  "markers": 106,
+  "forms": {
+    "M": 0,
+    "D": 106,
+    "R": 0
+  },
+  "lookahead_constant": 40,
+  "max_lookahead_used": 1,
+  "restated_more_than_2_pages": [],
+  "labels": {
+    "header": 85,
+    "boilerplate": 47,
+    "footnote": 360,
+    "page_number": 47
+  },
+  "classes": {
+    "restated": 106,
+    "footnote": 146,
+    "UNKNOWN": 1
+  },
+  "unlabeled_removed": 0,
+  "hyphen_merges": 3,
+  "footnotes_total": 145,
+  "footnotes_attached": 53,
+  "footnotes_unattached": 91,
+  "footnotes_ambiguous": 1,
+  "scope_boundaries": 47,
+  "chapter_notes": 0,
+  "gaps": [],
+  "lettered": [
+    "8B",
+    "11A",
+    "29A",
+    "29B",
+    "31A",
+    "42A",
+    "42B",
+    "43A",
+    "43B",
+    "43C",
+    "43D",
+    "43E",
+    "43F",
+    "43G",
+    "43H",
+    "43J",
+    "43K",
+    "43L",
+    "43M"
+  ],
+  "rejected": 147,
+  "lines": 2100,
+  "schedule_page_1based": 40
+}

@@ -1,0 +1,42 @@
+{
+  "mode": "toc",
+  "header_page_1based": 3,
+  "toc_pages_1based": [
+    3,
+    4
+  ],
+  "body_start_0based": 4,
+  "expected_count": 31,
+  "gaps": [],
+  "duplicates": [],
+  "deduped_dropped": 0,
+  "body_markers": 31,
+  "raw_vs_block_order_diff_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "hyphen_line_breaks": 3
+}

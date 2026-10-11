@@ -1,0 +1,2372 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 268,
+    "footnote": 54
+  },
+  "labels": {
+    "header": 29,
+    "boilerplate": 44,
+    "footnote": 86,
+    "page_number": 44
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [],
+  "footnote_sample": [
+    {
+      "line": 749,
+      "page": 25,
+      "text": "2. C.f. ss. 62 and 63, infra.",
+      "cls": "footnote"
+    },
+    {
+      "line": 19,
+      "page": 10,
+      "text": "1. For the Statement of Objects and Reasons for the Bill which was based on a a report of Her Majesty’s Commissioners",
+      "cls": "footnote"
+    },
+    {
+      "line": 1520,
+      "page": 42,
+      "text": "3. Ss. 178 and 178A subs. by Act 4 of 1930, s. 2, for the original s. 178.",
+      "cls": "footnote"
+    },
+    {
+      "line": 43,
+      "page": 10,
+      "text": "4. The words “The enactments mentioned in the Schedule hereto are repealed to the extent specified in the third column thereof,",
+      "cls": "footnote"
+    },
+    {
+      "line": 1836,
+      "page": 49,
+      "text": "1. See s. 24, supra.",
+      "cls": "footnote"
+    },
+    {
+      "line": 41,
+      "page": 10,
+      "text": "3. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule",
+      "cls": "footnote"
+    },
+    {
+      "line": 925,
+      "page": 29,
+      "text": "2. See ss. 151 and 152, infra.",
+      "cls": "footnote"
+    },
+    {
+      "line": 879,
+      "page": 28,
+      "text": "2. The property of a Government ward in Madhya Pradesh is not liable under this section, see the C.P. Court of Wards Act, 1899",
+      "cls": "footnote"
+    },
+    {
+      "line": 1341,
+      "page": 38,
+      "text": "1. See s. 43, supra.",
+      "cls": "footnote"
+    },
+    {
+      "line": 170,
+      "page": 13,
+      "text": "1. Subs. by Act 3 of 1951, s. 3 and Sch., for “Part A States and Part C States” which had been subs. by the A.O. 1950, for",
+      "cls": "footnote"
+    },
+    {
+      "line": 322,
+      "page": 16,
+      "text": "3. The second Illustration to s. 21 rep. by Act 24 of 1917, s. 3 and the Second Schedule.",
+      "cls": "footnote"
+    },
+    {
+      "line": 748,
+      "page": 25,
+      "text": "1. See s. 73, infra.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1561,
+      "page": 43,
+      "text": "1. See, however, the Registration Act, 1908 (16 of 1908), s. 33; see also the Code of Civil Procedure, 1908 (5 of 1908), Sch. I,",
+      "cls": "footnote"
+    },
+    {
+      "line": 270,
+      "page": 15,
+      "text": "1. The words “undue influence” rep. by Act 6 of 1899, s. 3.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1382,
+      "page": 39,
+      "text": "1. The responsibility of the Trustees of the Port of Madras constituted under the Madras Port Trust Act, 1905 (Madras Act",
+      "cls": "footnote"
+    },
+    {
+      "line": 1474,
+      "page": 41,
+      "text": "1. See the Indian Evidence Act, 1872 (1 of 1872), s. 117.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1027,
+      "page": 31,
+      "text": "3. Subs. by the A.O. 1950, for “Provincial Government”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1070,
+      "page": 32,
+      "text": "1. Added by Act 6 of 1899, s. 4.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1385,
+      "page": 39,
+      "text": "2.As to railway contracts see the Indian Railways Act, 1890 (9 of 1890), s. 72. As to the liability of common carriers, see the",
+      "cls": "footnote"
+    },
+    {
+      "line": 923,
+      "page": 29,
+      "text": "1. As to suits by minors under s. 70 in Presidency Small Cause Courts, see the Presidency Small Cause Courts Act, 1882",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 7,
+      "page": 10,
+      "text": "1. Short title.—This Act may be called the Indian Contract Act, 1872.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 14,
+      "page": 10,
+      "text": "2. Interpretation-clause.—In this Act the following words and expressions are used in the following",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 19,
+      "page": 10,
+      "text": "1. For the Statement of Objects and Reasons for the Bill which was based on a a report of Her Majesty’s Commissioners",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 40,
+      "page": 10,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and Sch., for “except Part B States.”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 41,
+      "page": 10,
+      "text": "3. The words “except the State of Jammu and Kashmir” omitted by Act 34 of 2019, s. 95 and the Fifth Schedule",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 43,
+      "page": 10,
+      "text": "4. The words “The enactments mentioned in the Schedule hereto are repealed to the extent specified in the third column thereof,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 66,
+      "page": 11,
+      "text": "3.Communication, acceptance and revocation of proposals.—The communication of proposals,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 70,
+      "page": 11,
+      "text": "4. Communication when complete.—The communication of a proposal is complete when it comes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 92,
+      "page": 12,
+      "text": "5. Revocation of proposals and acceptances.—A proposal may be revoked at any time before the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 112,
+      "page": 12,
+      "text": "6. Revocation how made.—A proposal is revoked—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 119,
+      "page": 12,
+      "text": "7. Acceptance must be absolute.—In order to convert a proposal into a promise, the acceptance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 127,
+      "page": 12,
+      "text": "8. Acceptance by performing conditions, or receiving consideration.—Performance of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 130,
+      "page": 12,
+      "text": "9. Promises, express and implied.—In so far as the proposal or acceptance of any promise is made",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 136,
+      "page": 13,
+      "text": "10. What agreements are contracts.—All agreements are contracts if they are made by the free",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 142,
+      "page": 13,
+      "text": "11. Who are competent to contract.—Every person is competent to contract who is of the age of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 145,
+      "page": 13,
+      "text": "12. What is a sound mind for the purposes of contracting.—A person is said to be of sound mind",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 157,
+      "page": 13,
+      "text": "13. “Consent” defined.—Two or more persons are said to consent when they agree upon the same",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 159,
+      "page": 13,
+      "text": "14. “Free consent” defined.—Consent is said to be free when it is not caused by—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 167,
+      "page": 13,
+      "text": "15. “Coercion” defined.—“Coercion” is the committing, or threatening to commit, any act forbidden",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 170,
+      "page": 13,
+      "text": "1. Subs. by Act 3 of 1951, s. 3 and Sch., for “Part A States and Part C States” which had been subs. by the A.O. 1950, for",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 172,
+      "page": 13,
+      "text": "2. See e.g., s. 25, infra; the Copyright Act, 1957 (14 of 1957), s. 19; the Carriers Act, 1865 (3 of 1865) ss. 6 and 7;",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 174,
+      "page": 13,
+      "text": "3. See the Indian Majority Act, 1875 (9 of 1875).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 210,
+      "page": 14,
+      "text": "17. “Fraud” defined.—“Fraud” means and includes any of the following acts committed by a party",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 221,
+      "page": 14,
+      "text": "1. Subs. by Act 6 of 1899, s. 2, for the original s. 16.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 222,
+      "page": 14,
+      "text": "2. Cf. s. 238, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 223,
+      "page": 14,
+      "text": "3. See s. 143, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 234,
+      "page": 15,
+      "text": "18. “Misrepresentation” defined.—“Misrepresentation” means and includes—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 243,
+      "page": 15,
+      "text": "19. Voidability of agreements without free consent.—When consent to an agreement is caused by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 270,
+      "page": 15,
+      "text": "1. The words “undue influence” rep. by Act 6 of 1899, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 271,
+      "page": 15,
+      "text": "2. Ins. by Act 6 of 1899, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 281,
+      "page": 16,
+      "text": "20.Agreement void where both parties are under mistake as to matter of fact.—Where both the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 295,
+      "page": 16,
+      "text": "21. Effect of mistakes as to law.—A contract is not voidable because it was caused by a mistake as",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 311,
+      "page": 16,
+      "text": "22. Contract caused by mistake of one party as to matter of fact.—A contract is not voidable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 313,
+      "page": 16,
+      "text": "23. What considerations and objects are lawful, and what not.—The consideration or object of an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 320,
+      "page": 16,
+      "text": "1. The original words ‘British India” have successively been amended by the A.O. 1948 and the A.O. 1950 to read as above.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 321,
+      "page": 16,
+      "text": "2. Paragraph 2, ins. by the A.O. 1937, and as amended by the A. O. 1948 was Rep. by the A. O. 1950.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 322,
+      "page": 16,
+      "text": "3. The second Illustration to s. 21 rep. by Act 24 of 1917, s. 3 and the Second Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 323,
+      "page": 16,
+      "text": "4. See ss. 26, 27, 28 and 30, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 358,
+      "page": 17,
+      "text": "24.Agreements void, if considerations and objects unlawful in part.—If any part of a single",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 365,
+      "page": 17,
+      "text": "25. Agreement without consideration, void, unless it is in writing and registered,or is a promise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 374,
+      "page": 17,
+      "text": "1. Subs. by Act 12 of 1891, s. 2 and the Second Schedule, Pt. I, for “assurances”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 399,
+      "page": 18,
+      "text": "26. Agreement in restraint of marriage, void.—Every agreement in restraint of the marriage of any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 401,
+      "page": 18,
+      "text": "27. Agreement in restraint of trade, void.—Every agreement by which any one is restrained from",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 413,
+      "page": 18,
+      "text": "28.Agreements in restraint of legal proceedings, void.—2[Every agreement,—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 430,
+      "page": 18,
+      "text": "1. Exceptions 2 and 3 rep. by Act 9 of 1932, s. 73 and the Second Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 431,
+      "page": 18,
+      "text": "2. Subs. by Act 1 of 1997, s. 2, for certain words (w.e.f. 8-1-1997).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 432,
+      "page": 18,
+      "text": "3. The second clause of Exception 1 to section 28 rep. by Act 1 of 1877, s. 2 and Sch.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 433,
+      "page": 18,
+      "text": "4. Cf. the Arbitration Act, 1940 (10 of 1940) and the Companies Act, 1956 (1 of 1956), s. 389.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 459,
+      "page": 19,
+      "text": "29. Agreements void for uncertainty.—Agreements, the meaning of which is not certain, or capable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 473,
+      "page": 19,
+      "text": "30. Agreements by way of wager void.—Agreements by way of wager are void; and no suit shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 476,
+      "page": 19,
+      "text": "1. Ins. by Act 4 of 2013, s. 17 and the Schedule (w.e.f. 18-1-2013).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 487,
+      "page": 20,
+      "text": "31. “Contingent contract” defined.—A “contingent contract is a contract to do or not to do",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 492,
+      "page": 20,
+      "text": "32. Enforcement of contracts contingent on an event happening.—Contingent contracts to do or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 502,
+      "page": 20,
+      "text": "33. Enforcement of contracts contingent on an event not happening.—Contingent contracts to do",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 508,
+      "page": 20,
+      "text": "34.When event on which contract is contingent to be deemed impossible, if it is the future",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 516,
+      "page": 20,
+      "text": "35.When contracts become void which are contingent on happening of specified event within",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 530,
+      "page": 21,
+      "text": "36. Agreement contingent on impossible events void.—Contingent agreements to do or not to do",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 541,
+      "page": 21,
+      "text": "37. Obligation of parties to contracts.—The parties to a contract must either perform, or offer to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 551,
+      "page": 21,
+      "text": "38. Effect of refusal to accept offer of performance.—Where a promisor has made an offer of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 569,
+      "page": 22,
+      "text": "39. Effect of refusal of party to perform promise wholly.—When a party to a contract has refused",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 583,
+      "page": 22,
+      "text": "40.Person by whom promise is to be performed.—If it appears from the nature of the case that it",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 592,
+      "page": 22,
+      "text": "41. Effect of accepting performance from third person.—When a promisee accepts performance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 594,
+      "page": 22,
+      "text": "42. Devolution of joint liabilities.—When two or more persons have made a joint promise, then,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 598,
+      "page": 22,
+      "text": "43.Any one of joint promisors may be compelled to perform.—When two or more persons make a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 607,
+      "page": 22,
+      "text": "1. Subs. by Act 12 of 1891, s. 2 and the Second Schedule, Pt. I, for “one”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 620,
+      "page": 23,
+      "text": "44.Effect of release of one joint promisor.—Where two or more persons have made a joint promise,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 625,
+      "page": 23,
+      "text": "45. Devolution of joint rights.—When a person has made a promise to two or more persons jointly,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 635,
+      "page": 23,
+      "text": "46. Time for performance of promise, when no application is to be made and no time is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 640,
+      "page": 23,
+      "text": "47.Time and place for performance of promise, where time is specified and no application to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 647,
+      "page": 23,
+      "text": "48. Application for performance on certain day to be at proper time and place.—When a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 651,
+      "page": 23,
+      "text": "1. See s. 138, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 652,
+      "page": 23,
+      "text": "2. For an Exception to s. 45 in case of Government securities, see the Public Debt Act, 1944 (18 of 1944), s. 8.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 656,
+      "page": 24,
+      "text": "49. Place for performance of promise, where no application to be made and no place fixed for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 663,
+      "page": 24,
+      "text": "50. Performance in manner or at time prescribed or sanctioned by promisee.—The performance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 678,
+      "page": 24,
+      "text": "51.Promisor not bound to perform, unless reciprocal promisee ready and willing to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 689,
+      "page": 24,
+      "text": "52.Order of performance of reciprocal promises.—Where the order in which reciprocal promises",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 700,
+      "page": 25,
+      "text": "53. Liability of party preventing event on which the contract is to take effect.—When a contract",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 708,
+      "page": 25,
+      "text": "54. Effect of default as to that promise which should be first performed, in contract consisting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 728,
+      "page": 25,
+      "text": "55. Effect of failure to perform at fixed time, in contract in which time is essential.—When a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 748,
+      "page": 25,
+      "text": "1. See s. 73, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 749,
+      "page": 25,
+      "text": "2. C.f. ss. 62 and 63, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 751,
+      "page": 26,
+      "text": "56. Agreement to do impossible act.—An agreement to do an act impossible in itself is void.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 769,
+      "page": 26,
+      "text": "57.Reciprocal promise to do things legal, and also other things illegal.—Where persons",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 778,
+      "page": 26,
+      "text": "58. Alternative promise, one branch being illegal.—In the case of an alternative promise, one",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 784,
+      "page": 26,
+      "text": "59.Application of payment where debt to be discharged is indicated.—Where a debtor, owing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 788,
+      "page": 26,
+      "text": "1. See s. 65, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 795,
+      "page": 27,
+      "text": "60. Application of payment where debt to be discharged is not indicated.—Where the debtor has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 800,
+      "page": 27,
+      "text": "61. Application of payment where neither party appropriates.—Where neither party makes any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 806,
+      "page": 27,
+      "text": "62. Effect of novation, rescission, and alteration of contract.—If the parties to a contract agree to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 815,
+      "page": 27,
+      "text": "63. Promisee may dispense with or remit performance of promisee.—Every promisee may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 828,
+      "page": 27,
+      "text": "64. Consequences of rescission of voidable contract.—When a person at whose option a contract is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 833,
+      "page": 27,
+      "text": "1. But see s. 135, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 834,
+      "page": 27,
+      "text": "2. See s. 41, supra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 835,
+      "page": 27,
+      "text": "3. Subs. by Act 12 of 1891, s. 2 and the Second Schedule, Pt. I, for “compensation”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 836,
+      "page": 27,
+      "text": "4. See s. 75, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 838,
+      "page": 28,
+      "text": "65. Obligation of person who has received advantage under void agreement, or contract that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 854,
+      "page": 28,
+      "text": "66. Mode of communicating or revoking rescission of voidable contract.—The rescission of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 857,
+      "page": 28,
+      "text": "67. Effect of neglect of promisee to afford promisor reasonable facilities for performance.—If",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 866,
+      "page": 28,
+      "text": "68. Claim for necessaries supplied to person incapable of contracting, or on his account.—If a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 875,
+      "page": 28,
+      "text": "69.Reimbursement of person paying money due by another, in payment of which he is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 878,
+      "page": 28,
+      "text": "1. See ss. 3 and 5, supra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 879,
+      "page": 28,
+      "text": "2. The property of a Government ward in Madhya Pradesh is not liable under this section, see the C.P. Court of Wards Act, 1899",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 887,
+      "page": 29,
+      "text": "70.Obligation of person enjoying benefit of non-gratuitous act.—Where a person lawfully does",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 895,
+      "page": 29,
+      "text": "71.Responsibility of finder of goods.—A person who finds goods belonging to another, and takes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 898,
+      "page": 29,
+      "text": "72. Liability of person to whom money is paid, or thing delivered, by mistake or under",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 909,
+      "page": 29,
+      "text": "73.Compensation for loss or damage caused by breach of contract.—When a contract has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 923,
+      "page": 29,
+      "text": "1. As to suits by minors under s. 70 in Presidency Small Cause Courts, see the Presidency Small Cause Courts Act, 1882",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 925,
+      "page": 29,
+      "text": "2. See ss. 151 and 152, infra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1003,
+      "page": 31,
+      "text": "74. Compensation for breach of contract where penalty stipulated for.—1[When a contract has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1025,
+      "page": 31,
+      "text": "1. Subs. by Act 6 of 1899, s. 4, for the first paragraph of s. 74.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1026,
+      "page": 31,
+      "text": "2. Subs. by the A.O. 1937, for “Government of India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1027,
+      "page": 31,
+      "text": "3. Subs. by the A.O. 1950, for “Provincial Government”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1040,
+      "page": 32,
+      "text": "75.Party rightfully rescinding contract, entitled to compensation.—A person who rightfully",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1050,
+      "page": 32,
+      "text": "76.[‘Goods’ of defined.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1051,
+      "page": 32,
+      "text": "77.[‘Sale defined.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1052,
+      "page": 32,
+      "text": "78.[Sale how effected.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1053,
+      "page": 32,
+      "text": "79.[Transferofownershipofthingsold,whichhasyettobeascertained,madeorfinished.]Rep.bys. 65, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1054,
+      "page": 32,
+      "text": "80. [Completion of sale of goods which the seller is to put into state in which buyer is to take them.]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1056,
+      "page": 32,
+      "text": "81. [Completion of sale of goods, when seller has to do anything thereto in order to as certain",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1058,
+      "page": 32,
+      "text": "82. [Completion of sale, when goods are uncertained at date of contract.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1059,
+      "page": 32,
+      "text": "83. [Ascertainment of goods by subsequent appropriation.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1060,
+      "page": 32,
+      "text": "84. [Ascertainment of goods by seller’s selection.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1061,
+      "page": 32,
+      "text": "85. [Transfer of ownership of moveable property, when sold together with immoveable.] Rep. by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1063,
+      "page": 32,
+      "text": "86. [Buyer to bear loss after good have become his property.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1064,
+      "page": 32,
+      "text": "87. [Transfer of ownership of goods agreed to be sold while non existent.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1065,
+      "page": 32,
+      "text": "88. [Contract to sell and deliver, at a future day, goods not in seller’s possession at date of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1067,
+      "page": 32,
+      "text": "89. [Determination of price not fixed by contract.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1069,
+      "page": 32,
+      "text": "90. [Delivery how made.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1070,
+      "page": 32,
+      "text": "1. Added by Act 6 of 1899, s. 4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1072,
+      "page": 33,
+      "text": "91. [Effect of delivery to wharfinger or carrier.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1073,
+      "page": 33,
+      "text": "92. [Effect of part-delivery.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1074,
+      "page": 33,
+      "text": "93. [Seller not bound to deliver until buyer applies for delivery.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1075,
+      "page": 33,
+      "text": "94.[Place of delivery.] Rep.by the Indian Sale of Goods Act, 1930 (3 of 1930), s.65.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1077,
+      "page": 33,
+      "text": "95.[Seller’s lien.]Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1078,
+      "page": 33,
+      "text": "96. [Lien where payment to be made at a future day, but no time fixed for delivery.] Rep. by s. 65,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1080,
+      "page": 33,
+      "text": "97. [Seller’s lien where payment to be made at future day, and buyer allows goods to remain in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1082,
+      "page": 33,
+      "text": "98. [Seller’s lien against subsequent buyer.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1085,
+      "page": 33,
+      "text": "99. [Power of seller to stop in transit.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1086,
+      "page": 33,
+      "text": "100.[When goods are to be deemed in transit.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1087,
+      "page": 33,
+      "text": "101. [Continuance of right of stoppage.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1088,
+      "page": 33,
+      "text": "102. [Cessation of right on assignment, by buyer, of document showing title.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1089,
+      "page": 33,
+      "text": "103. [How seller may stop where instrument of title assigned to secure specific advance.] Rep. by s.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1091,
+      "page": 33,
+      "text": "104. [Stoppage how effected.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1092,
+      "page": 33,
+      "text": "105. [Notice of seller’s claim.] Rep. by s. 65, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1093,
+      "page": 33,
+      "text": "106.[Right of seller on stoppage.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1095,
+      "page": 33,
+      "text": "107.[Resale on buyer’s failure to perform.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1097,
+      "page": 33,
+      "text": "108. [Title conveyed by seller of goods to buyer.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1099,
+      "page": 33,
+      "text": "109.[Seller’s responsibility for badness of title.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1100,
+      "page": 33,
+      "text": "110. [Establishment of implied warranty of goodness or quality.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1101,
+      "page": 33,
+      "text": "111. [Warranty of soundness implied on sale of provisions.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1102,
+      "page": 33,
+      "text": "112. [Warranty of bulk implied on sale of goods by sample.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1103,
+      "page": 33,
+      "text": "113.[Warranty implied where goods are sold as being of a certain denomination.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1104,
+      "page": 33,
+      "text": "114. [Warranty where goods ordered for a specified purpose.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1105,
+      "page": 33,
+      "text": "115.[Warranty on sale of article of well known ascertained kind.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1106,
+      "page": 33,
+      "text": "116. [Seller when not responsible for latent defects.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1107,
+      "page": 33,
+      "text": "117. [Buyer’s right on breach of warranty.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1108,
+      "page": 33,
+      "text": "118. [Right of buyer on breach of warranty in respect of goods not ascertained.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1110,
+      "page": 33,
+      "text": "119. [When buyer may refused to accept, if goods not ordered are sent with goods ordered.]Rep. by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1113,
+      "page": 34,
+      "text": "120. [Effect of wrongful refusal to accept.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1114,
+      "page": 34,
+      "text": "121. [Right of seller as to rescission, on failure of buyer to pay price at time fixed.] Rep.by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1116,
+      "page": 34,
+      "text": "122. [Sale and transfer of lots sold by auction.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1117,
+      "page": 34,
+      "text": "123. [Effect of use, by seller, of pretended biddings to raise price.] Rep. by s. 65,ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1120,
+      "page": 34,
+      "text": "124.“Contract of indemnity” defined.—A contract by which one party promises to save the other",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1127,
+      "page": 34,
+      "text": "125.Rights of indemnity-holder when sued.—The promisee in a contract of indemnity, acting",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1139,
+      "page": 34,
+      "text": "126. “Contract of guarantee”, “surety”, “principal debtor” and “creditor”.—A “contract of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1144,
+      "page": 34,
+      "text": "127. Consideration for guarantee.—Anything done, or any promise made, for the benefit of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1156,
+      "page": 35,
+      "text": "128. Surety’s liability.—The liability of the surety is co- extensive with that of the principal debtor,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1161,
+      "page": 35,
+      "text": "129. “Continuing guarantee”.—A guarantee which extends to a series of transactions, is called a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1173,
+      "page": 35,
+      "text": "130.Revocation of continuing guarantee.—A continuing guarantee may at any time be revoked by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1182,
+      "page": 35,
+      "text": "131.Revocation of continuing guarantee by surety’s death.—The death of the surety operates, in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1185,
+      "page": 35,
+      "text": "132. Liability of two persons, primarily liable, not affected by arrangement between them that",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1195,
+      "page": 35,
+      "text": "133.Discharge of surety by variance in terms of contract.—Any variance, made without the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1201,
+      "page": 35,
+      "text": "1. Ins. by Act 24 of 1917, s. 2 and the first  Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1219,
+      "page": 36,
+      "text": "134.Discharge of surety by release or discharge of principal debtor.—The surety is discharged by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1233,
+      "page": 36,
+      "text": "135. Discharge of surety when creditor compounds with, gives time to, or agrees not to sue,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1237,
+      "page": 36,
+      "text": "136. Surety not discharged when agreement made with third person to give time to principal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1243,
+      "page": 36,
+      "text": "137. Creditor’s forbearance to sue does not discharge surety.—Mere forbearance on the part of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1250,
+      "page": 37,
+      "text": "138.Release of one co-surety does not discharge others.—Where there are co-sureties, a release by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1253,
+      "page": 37,
+      "text": "139. Discharge of surety by creditor’s act or omission impairing surety’s eventual remedy.—If",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1268,
+      "page": 37,
+      "text": "140.Rights of surety on payment or performance.—Where a guaranteed debt has become due, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1272,
+      "page": 37,
+      "text": "141.Surety’s right to benefit of creditor’s securities.—A surety is entitled to the benefit of every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1285,
+      "page": 37,
+      "text": "142. Guarantee obtained by misrepresentation invalid.—Any guarantee which has been obtained",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1288,
+      "page": 37,
+      "text": "143. Guarantee obtained by concealment invalid.—Any guarantee which the creditor has obtained",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1294,
+      "page": 37,
+      "text": "1. See s. 44, supra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1299,
+      "page": 38,
+      "text": "144. Guarantee on contract that creditor shall not act on it until co-surety joins.—Where a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1302,
+      "page": 38,
+      "text": "145.Implied promise to indemnify surety.—In every contract of guarantee there is an implied",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1318,
+      "page": 38,
+      "text": "146. Co-sureties liable to contribute equally.—Where two or more persons are co-sureties for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1329,
+      "page": 38,
+      "text": "147.Liability of co-sureties bound in different sums.—Co-sureties who are bound in different sums",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1341,
+      "page": 38,
+      "text": "1. See s. 43, supra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1345,
+      "page": 39,
+      "text": "148.“Bailment”“bailor” and “bailee” defined.—A “bailment” is the delivery of goods by one",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1352,
+      "page": 39,
+      "text": "149. Delivery to bailee how made.—The delivery to the bailee may be made by doing anything",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1355,
+      "page": 39,
+      "text": "150.Bailor’s duty to disclose faults in goods bailed.—The bailor is bound to disclose to the bailee",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1367,
+      "page": 39,
+      "text": "151. Care to be taken by bailee.—In all cases of bailment the bailee is bound to take as much care",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1370,
+      "page": 39,
+      "text": "152.Bailee when not liable for loss, etc., of thing bailed.—The bailee, in the absence of any special",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1373,
+      "page": 39,
+      "text": "153. Termination of bailment by bailee’s act inconsistent with conditions.—A contract of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1379,
+      "page": 39,
+      "text": "154. Liability of bailee making unauthorized use of goods bailed.—If the bailee makes any use of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1382,
+      "page": 39,
+      "text": "1. The responsibility of the Trustees of the Port of Madras constituted under the Madras Port Trust Act, 1905 (Madras Act",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1385,
+      "page": 39,
+      "text": "2.As to railway contracts see the Indian Railways Act, 1890 (9 of 1890), s. 72. As to the liability of common carriers, see the",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1393,
+      "page": 40,
+      "text": "155. Effect of mixture, with bailor’s consent, of his goods with bailee’s.—If the bailee, with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1396,
+      "page": 40,
+      "text": "156.Effect of mixture without bailor’s consent, when the goods can be separated.—If the bailee,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1405,
+      "page": 40,
+      "text": "157. Effect of mixture, without bailor’s consent, when the goods cannot be separated.—If the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1412,
+      "page": 40,
+      "text": "158. Repayment, by bailor, of necessary expenses.—Where, by the conditions of the bailment, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1416,
+      "page": 40,
+      "text": "159.Restoration of goods lent gratuitously.—The lender of a thing for use may at any time require",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1422,
+      "page": 40,
+      "text": "160.Return of goods bailed, on expiration of time or accomplishment of purpose.—It is the duty",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1426,
+      "page": 40,
+      "text": "161. Bailee’s responsibility when goods are not duly returned.—If, by the default of the bailee,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1429,
+      "page": 40,
+      "text": "1. S. 161 has been declared to apply to the responsibility of the Trustees of the Port of Madras as to goods in their possession",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1431,
+      "page": 40,
+      "text": "2. As to Railway contracts, see the Indian Railways Act, 1890 (9 of 1890), s. 72.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1433,
+      "page": 41,
+      "text": "162. Termination of gratuitous bailment by death.—A gratuitous bailment is terminated by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1435,
+      "page": 41,
+      "text": "163. Bailor entitled to increase or profit from goods bailed.—In the absence of any contract to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1441,
+      "page": 41,
+      "text": "164. Bailor’s responsibility to bailee.—The bailor is responsible to the bailee for any loss which the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1444,
+      "page": 41,
+      "text": "165.Bailment by several joint owners.—If several joint owners of goods bail them, the bailee may",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1448,
+      "page": 41,
+      "text": "166.Bailee not responsible on re-delivery to bailor without title.—If the bailor has no title to the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1451,
+      "page": 41,
+      "text": "167.Right of third person claiming goods bailed.—If a person, other than the bailor, claims goods",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1454,
+      "page": 41,
+      "text": "168.Right of finder of goods, may sue for specific reward offered.—The finder of goods has no",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1459,
+      "page": 41,
+      "text": "169.When finder of thing commonly on sale may sell it.—When a thing which is commonly the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1465,
+      "page": 41,
+      "text": "170. Bailee’s particular lien.—Where the bailee has, in accordance with the purpose of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1474,
+      "page": 41,
+      "text": "1. See the Indian Evidence Act, 1872 (1 of 1872), s. 117.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1476,
+      "page": 42,
+      "text": "171.General lien of bankers, factors, wharfingers, attorneys and policy-brokers.—Bankers,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1482,
+      "page": 42,
+      "text": "172.“Pledge”“pawnor”,and “pawnee” defined.—The bailment of goods as security for payment of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1485,
+      "page": 42,
+      "text": "173.Pawnee’s right of retainer.—Thepawnee may retain the goods pledged, not only for payment of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1488,
+      "page": 42,
+      "text": "174.Pawnee not to retain for debt or promise other than that for which goods pledged.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1494,
+      "page": 42,
+      "text": "175. Pawnee’s right as to extraordinary expenses incurred.—Thepawnee is entitled to receive",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1496,
+      "page": 42,
+      "text": "176. Pawnee’s right where pawnor makes default.—If the pawnor makes default in payment of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1503,
+      "page": 42,
+      "text": "177. Defaulting pawner’s right to redeem.—If a time is stipulated for the payment of the debt, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1515,
+      "page": 42,
+      "text": "178A. Pledge by person in possession under voidable contract.—When the pawnor has obtained",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1517,
+      "page": 42,
+      "text": "1. As to lien of an agent, see s. 221, infra. As to lien of a Railway Administration, see the Indian Railways Act, 1890 (9 of 1890),",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1519,
+      "page": 42,
+      "text": "2. For limitation, see the Limitation Act, 1963 (36 of 1963), the Second Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1520,
+      "page": 42,
+      "text": "3. Ss. 178 and 178A subs. by Act 4 of 1930, s. 2, for the original s. 178.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1524,
+      "page": 43,
+      "text": "179. Pledge where pawnor has only a limited interest.—Where a person pledges goods in which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1527,
+      "page": 43,
+      "text": "180.Suit by bailor or bailee against wrong-doer.—If a third person wrongfully deprives the bailee",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1531,
+      "page": 43,
+      "text": "181. Apportionment of relief or compensation obtained by such suits.—Whatever is obtained by",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1538,
+      "page": 43,
+      "text": "182.“Agent” and “principal” defined.—An “agent” is a person employed to do any act for another,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1541,
+      "page": 43,
+      "text": "183. Who may employ agent.—Any person who is of the age of majority according to the law to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1543,
+      "page": 43,
+      "text": "184. Who may be an agent.—As between the principal and third persons, any person may become",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1546,
+      "page": 43,
+      "text": "185. Consideration not necessary.—No consideration is necessary to create an agency.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1547,
+      "page": 43,
+      "text": "186. Agent’s authority may be expressed or implied.—The authority of an agent may be expressed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1549,
+      "page": 43,
+      "text": "187. Definitions of express and implied authority.—An authority is said to be express when it is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1557,
+      "page": 43,
+      "text": "188. Extent of agent’s authority.—An agent, having an authority to do an act, has authority to do",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1561,
+      "page": 43,
+      "text": "1. See, however, the Registration Act, 1908 (16 of 1908), s. 33; see also the Code of Civil Procedure, 1908 (5 of 1908), Sch. I,",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1569,
+      "page": 44,
+      "text": "189.Agent’s authority in an emergency.—An agent has authority, in an emergency, to do all such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1577,
+      "page": 44,
+      "text": "190. When agent cannot delegate.—An agent cannot lawfully employ another to perform acts",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1581,
+      "page": 44,
+      "text": "191. “Sub-agent” defined.—A “sub-agent” is a person employed by, and acting under the control of,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1583,
+      "page": 44,
+      "text": "192. Representation of principal by sub-agent properly appointed.—Where a sub-agent is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1590,
+      "page": 44,
+      "text": "193. Agent’s responsibility for sub-agent appointed without authority.—Where an agent, without",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1595,
+      "page": 44,
+      "text": "194.Relation between principal and person duly appointed by agent to act in business of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1604,
+      "page": 44,
+      "text": "195. Agent’s duty in naming such person.—In selecting such agent for his principal, an agent is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1617,
+      "page": 45,
+      "text": "196. Right of person as to acts done for him without his authority. Effect of ratification.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1621,
+      "page": 45,
+      "text": "197.Ratification may be expressed or implied.—Ratification may be expressed or may be implied",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1629,
+      "page": 45,
+      "text": "198.Knowledge requisite for valid ratification.—No valid ratification can be made by a person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1631,
+      "page": 45,
+      "text": "199.Effect of ratifying unauthorized act forming part of a transaction.—A person ratifying any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1633,
+      "page": 45,
+      "text": "200.Ratification of unauthorized act cannot injure third person.—An act done by one person on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1643,
+      "page": 45,
+      "text": "201. Termination of agency.—An agency is terminated by the principal revoking his authority; or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1647,
+      "page": 45,
+      "text": "202.Termination of agency, where agent has an interest in subject-matter.—Where the agent has",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1657,
+      "page": 46,
+      "text": "203.When principal may revoke agent’s authority.—The principal may, save as is otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1660,
+      "page": 46,
+      "text": "204.Revocation where authority has been partly exercised.—The principal cannot revoke the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1671,
+      "page": 46,
+      "text": "205.Compensation for revocation by principal, or renunciation by agent.—Where there is an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1675,
+      "page": 46,
+      "text": "206. Notice of revocation or renunciation.—Reasonable notice must be given of such revocation or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1678,
+      "page": 46,
+      "text": "207.Revocation and renunciation may be expressed or implied.—Revocation and renunciation",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1683,
+      "page": 46,
+      "text": "208.When termination of agent’s authority takes effect as to agent, and as to third persons.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1696,
+      "page": 46,
+      "text": "209.Agent’s duty on termination of agency by principal’s death or insanity.—When an agency is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1701,
+      "page": 47,
+      "text": "210. Termination of sub-agent’s authority.—The termination of the authority of an agent causes",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1705,
+      "page": 47,
+      "text": "211.Agent’s duty in conducting principal’s business.—An agent is bound to conduct the business",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1717,
+      "page": 47,
+      "text": "212. Skill and diligence required from agent.—An agent is bound to conduct the business of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1738,
+      "page": 47,
+      "text": "213.Agent’s accounts.—An agent is bound to render proper accounts to his principal on demand.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1739,
+      "page": 47,
+      "text": "214.Agent’s duty to communicate with principal.—It is the duty of an agent, in cases of difficulty,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1742,
+      "page": 47,
+      "text": "215.Right of principal when agent deals, on his own account, in business of agency without",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1757,
+      "page": 48,
+      "text": "216. Principal’s right to benefit gained by agent dealing on his own account in business of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1765,
+      "page": 48,
+      "text": "217.Agent’s right of retainer out of sums received on principal’s account.—An agent may retain,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1769,
+      "page": 48,
+      "text": "218. Agent’s duty to pay sums received for principal.—Subject to such deductions, the agent is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1771,
+      "page": 48,
+      "text": "219.When agent’s remuneration becomes due.—In the absence of any special contract, payment",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1775,
+      "page": 48,
+      "text": "220.Agent not entitled to remuneration for business misconducted.—An agent who is guilty of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1785,
+      "page": 48,
+      "text": "221. Agent’s lien on principal’s property.—In the absence of any contract to the contrary, an agent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1790,
+      "page": 48,
+      "text": "222.Agent to be indemnified against consequences of lawful acts.—The employer of an agent is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1801,
+      "page": 49,
+      "text": "223.Agent to be indemnified against consequences of acts done in good faith.—Where one person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1812,
+      "page": 49,
+      "text": "224.Non-liability of employer of agent to do a criminal act.—Where one person employs another",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1821,
+      "page": 49,
+      "text": "225.Compensation to agent for injury caused by principal’s neglect.—The principal must make",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1828,
+      "page": 49,
+      "text": "226. Enforcement and consequences of agent’s contracts.—Contracts entered into through an",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1836,
+      "page": 49,
+      "text": "1. See s. 24, supra.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1837,
+      "page": 49,
+      "text": "2. Cf. the Indian Fatal Accidents Act, 1855 (13 of 1855).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1841,
+      "page": 50,
+      "text": "227. Principal how far bound, when agent exceeds authority.—When an agent does more than he",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1849,
+      "page": 50,
+      "text": "228.Principal not bound when excess of agent’s authority is not separable.—Where an agent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1856,
+      "page": 50,
+      "text": "229.Consequences of notice given to agent.—Any notice given to or information obtained by the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1867,
+      "page": 50,
+      "text": "230.Agent cannot personally enforce, nor be bound by, contracts on behalf of principal.—In the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1876,
+      "page": 50,
+      "text": "231.Rights of parties to a contract made by agent not disclosed.—If an agent makes a contract",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1884,
+      "page": 51,
+      "text": "232. Performance of contract with agent supposed to be principal.—Where one man makes a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1892,
+      "page": 51,
+      "text": "233.Right of person dealing with agent personally liable.—In cases where the agent is personally",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1897,
+      "page": 51,
+      "text": "234. Consequence of inducing agent or principal to act on belief that principal or agent will be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1902,
+      "page": 51,
+      "text": "235. Liability of pretended agent.—A person untruly representing himself to be the authorized",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1906,
+      "page": 51,
+      "text": "236.Person falsely contracting as agent not entitled to performance.—A person with whom a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1909,
+      "page": 51,
+      "text": "237.Liability of principal inducing belief that agent’s unauthorized acts were authorized.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1918,
+      "page": 51,
+      "text": "238. Effect, on agreement, of misrepresentation of fraud, by agent.—Misrepresentation made, or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1931,
+      "page": 52,
+      "text": "239. [‘Partnership’ defined.] Rep. by s. 73 and the Second Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1932,
+      "page": 52,
+      "text": "240. [Lender not a partner by advancing money for share of profits.] Rep. by s. 73 and the Second",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1934,
+      "page": 52,
+      "text": "241. [Property left in business by retiring partner, or decreased partner’s preventative.] Rep. by s. 73",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1936,
+      "page": 52,
+      "text": "242. [Servant or agent remunerated by share of profits, not a partner.] Rep. by s. 73 and the Second",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1938,
+      "page": 52,
+      "text": "243. [Widow or child of deceased partner receiving annuity out of profits, not a partner.] Rep. by s.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1940,
+      "page": 52,
+      "text": "244. [Person receiving portion of profits for sale of good-will, no a partner.] Rep. by s. 73 and the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1943,
+      "page": 52,
+      "text": "245. [Responsibility of person leading another to believe him a partner.] Rep. by s. 73 and the Second",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1945,
+      "page": 52,
+      "text": "246. [Liability of person permitting him self to be represented as a partner.] Rep. by s. 73 and the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1947,
+      "page": 52,
+      "text": "247. [Minor partner not personally liable, but his share is.] Rep. by s. 73 and the Second Schedule,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1949,
+      "page": 52,
+      "text": "248. [Liability of minor partner on attaining majority.] Rep. by s. 73 and the Second Schedule, ibid",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1950,
+      "page": 52,
+      "text": "249. [Partner’s liability for debts of partnership.] Rep. bys. 73 and the Second Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1951,
+      "page": 52,
+      "text": "250. [Partner’s liability to third person for neglect or fraud of co-partner.] Rep. by s. 73 and the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1953,
+      "page": 52,
+      "text": "251. [Partner’s power to bind co-partners.] Rep. by s. 73 and the Second Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1954,
+      "page": 52,
+      "text": "252. [Annulment of contract defining partner’s rights and obligations.] Rep. by s. 73 and the Second",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1956,
+      "page": 52,
+      "text": "253. [Rules determining partner’s mutual relations, where no contract to contrary.] Rep. by s. 73 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1958,
+      "page": 52,
+      "text": "254. [When Court may dissolve partnership.] Rep. by s. 73 and the Second Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1959,
+      "page": 52,
+      "text": "255. [Dissolution of partnership by prohibition of business.] Rep. by s. 73 and the Second Schedule,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1961,
+      "page": 52,
+      "text": "256. [Rights and obligations of partners in partnership continued after expiry of term for which it was",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1963,
+      "page": 52,
+      "text": "257. [General duties of partners.] Rep. by s. 73 and the Second Schedule, ibid",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1964,
+      "page": 52,
+      "text": "258. [Account, to firm, of benefit derived from transaction affecting partnership.]Rep. by s. 73 and the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1966,
+      "page": 52,
+      "text": "259. [Obligations, to firm, of partner carrying on business.] Rep. by s. 73 and the Second Schedule,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1969,
+      "page": 53,
+      "text": "260. [Revocation of continuing guarantee by charge by change in firm.] Rep. by the Indian",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1971,
+      "page": 53,
+      "text": "261. [Non-liability of deceased partner’s estate for subsequent obligations.] Rep. by s. 73 and the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1973,
+      "page": 53,
+      "text": "262. [Payment of partnership debts, and of separate debts.] Rep. by s. 73and the Second Schedule,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1975,
+      "page": 53,
+      "text": "263. [Continuance, of partners rights and obligations after dissolution.] Rep. by s. 73and the Second",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1977,
+      "page": 53,
+      "text": "264. [Notice of dissolution.] Rep. by s. 73and the Second Schedule, ibid.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1978,
+      "page": 53,
+      "text": "265. [Right of partners to apply for winding-up after termination of partnership.] Rep. by s. 73 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1980,
+      "page": 53,
+      "text": "266. [Limited-liability partnerships, incorporate partnerships, and joint-stock companies.] Rep. by s.",
+      "cls": "restated",
+      "label": null
+    }
+  ]
+}

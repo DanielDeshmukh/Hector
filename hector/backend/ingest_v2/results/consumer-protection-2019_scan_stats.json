@@ -1,0 +1,35 @@
+{
+  "markers": 107,
+  "forms": {
+    "M": 0,
+    "D": 107,
+    "R": 0
+  },
+  "lookahead_constant": 40,
+  "max_lookahead_used": 1,
+  "restated_more_than_2_pages": [],
+  "labels": {
+    "header": 26,
+    "boilerplate": 37,
+    "footnote": 10,
+    "page_number": 37
+  },
+  "classes": {
+    "restated": 107,
+    "footnote": 2,
+    "UNKNOWN": 7
+  },
+  "unlabeled_removed": 0,
+  "hyphen_merges": 2,
+  "footnotes_total": 2,
+  "footnotes_attached": 1,
+  "footnotes_unattached": 1,
+  "footnotes_ambiguous": 0,
+  "scope_boundaries": 37,
+  "chapter_notes": 0,
+  "gaps": [],
+  "lettered": [],
+  "rejected": 9,
+  "lines": 1721,
+  "schedule_page_1based": null
+}

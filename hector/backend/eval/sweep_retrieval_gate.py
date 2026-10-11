@@ -79,6 +79,15 @@ GOLD = {
     "bsa": os.path.join(SCRIPT_DIR, "gold_bsa.jsonl"),
     "iea": os.path.join(SCRIPT_DIR, "gold_iea.jsonl"),
     "crpc": os.path.join(SCRIPT_DIR, "gold_crpc.jsonl"),
+    "cpc": os.path.join(SCRIPT_DIR, "gold_cpc.jsonl"),
+    "contract": os.path.join(SCRIPT_DIR, "gold_contract.jsonl"),
+    "tpa": os.path.join(SCRIPT_DIR, "gold_tpa.jsonl"),
+    "limitation": os.path.join(SCRIPT_DIR, "gold_limitation.jsonl"),
+    "ni": os.path.join(SCRIPT_DIR, "gold_ni.jsonl"),
+    "ndps": os.path.join(SCRIPT_DIR, "gold_ndps.jsonl"),
+    "rti": os.path.join(SCRIPT_DIR, "gold_rti.jsonl"),
+    "consumer": os.path.join(SCRIPT_DIR, "gold_consumer.jsonl"),
+    "arbitration": os.path.join(SCRIPT_DIR, "gold_arbitration.jsonl"),
 }
 
 _write_lock = threading.Lock()

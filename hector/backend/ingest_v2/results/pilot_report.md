@@ -1,24 +1,24 @@
-# HECTOR ingest_v2 pilot report - The Code of Criminal Procedure, 1973 (crpc-1973)
+# HECTOR ingest_v2 pilot report - The Limitation Act, 1963 (limitation-1963)
 
-- source: sources/crpc-1973.pdf (261 pages as scanned)
-- records written: 543 (output/crpc-1973.jsonl)
+- source: sources/limitation-1963.pdf (24 pages as scanned)
+- records written: 32 (output/limitation-1963.jsonl)
 - gate summary: all gates OK
 - seeds: G1 middle pages 20261010; A2 removed-line sample 20261012; step7 record sample 20261011
-- external anchor: max plain section = 484 (expected 511) -> WARNING
+- external anchor: max plain section = 32 (expected 511) -> WARNING
 
 ## Gate table (G1-G9)
 
 | Gate | Status | Evidence |
 |---|---|---|
-| G1 | **PASS** | page1 act_name=True, year=True; middle pages 76, 125, 131, 150, 155 all have markers (seed 20261010) |
-| G2 | **PASS** | mode=toc; expected 532 sections; records 543; missing 0 []; extra 0 []; external anchor max_plain=484 vs 511 -> WARNING |
-| G3 | **PASS** | part-0 records 532; prefix stripping needed 25; failures 0 |
+| G1 | **PASS** | page1 act_name=True, year=True; middle pages 7, 10, 11, 12, 18 all have markers (seed 20261010) |
+| G2 | **PASS** | mode=toc; expected 32 sections; records 32; missing 0 []; extra 0 []; external anchor max_plain=32 vs 511 -> WARNING |
+| G3 | **PASS** | part-0 records 32; prefix stripping needed 0; failures 0 |
 | G4 | **PASS** | page-number lines 0; hyphen breaks 0; boilerplate 0; repeated>=30% pages 0 |
-| G5 | **PASS** | records 543; duplicates []; empty []; non-nullable problems 0 |
-| G6 | **PASS** | PRIMARY fragment windows 9675 total, 99.9587% found (>=99% required; reference get_text('text', sort=True)); DIAG whole-record 97.5962%, DIAG lines 99.9616%; failures 1 |
+| G5 | **PASS** | records 32; duplicates []; empty []; non-nullable problems 0 |
+| G6 | **PASS** | PRIMARY fragment windows 490 total, 99.7959% found (>=99% required; reference get_text('text', sort=True)); DIAG whole-record 97.992%, DIAG lines 100.0%; failures 1 |
 | G7 | **PASS** | parent order matches marker order; parts consistent; problems [] |
-| G8 | **PASS** | limit 3000 chars; longest 170893; unflagged overs 0; flagged 20 |
-| G9 | **PASS** | detected 272 = attached 207 + unattached 65; accounting_ok=True; records containing footnote lines 0 |
+| G8 | **PASS** | limit 3000 chars; longest 3533; unflagged overs 0; flagged 1 |
+| G9 | **PASS** | detected 939 = attached 5 + unattached 934; accounting_ok=True; records containing footnote lines 0 |
 
 Notes:
 - G2 is the ToC cross-check: every section listed in the book's Arrangement of Sections must have at least one record (100% coverage required; missing and extra numbers listed in gate evidence). Range markers count as covering their printed span; the external anchor 511 is reported separately above.
@@ -26,171 +26,159 @@ Notes:
 
 ## Coverage / sequence detail (A4, A5, A6)
 
-- accepted markers: 532; forms: {'M': 0, 'D': 532, 'R': 0}
-- lettered/other non-plain numbers: 48 entries (25A, 41A, 41B, 41C, 41D, 50A, 53A, 54A, 55A, 60A, 105A, 105B...)
-- rejected candidates: 247
+- accepted markers: 32; forms: {'M': 0, 'D': 30, 'R': 2}
+- lettered/other non-plain numbers: 0 entries ()
+- rejected candidates: 150
 - gaps: []
-- A4 classification counts (number-lines): {'restated': 532, 'footnote': 240, 'UNKNOWN': 10}; unlabeled removals 0
-- A4 UNKNOWN lines: 6 (full context in results/crpc-1973_numlines.json):
-  - line 6788 p173: '409. Appeals to Court of Section how heard.—An appeal to the Court of Session or Sessions Judge shall'
-  - line 14388 p259: '16. Insertion of new section 144A.—In Chapter X of the principal Act, under sub-heading'
-  - line 14431 p260: '28. Amendment of section 320.—In section 320 of the principal Act, in the Table under sub-section'
-  - line 14438 p260: '38. Amendment of section 438.—In section 438 of the principal Act, for sub-section (1), the'
-  - line 14465 p261: '42. Amendment of the First Schedule.—In the First Schedule to the principal Act, under the'
-  - line 14492 p261: '44. Amendment of Act 45 of 1860.—In the Indian Penal Code,—'
-- A5 LOOKAHEAD_LINES=40, longest actually used=10, restated >2 pages away: []
+- A4 classification counts (number-lines): {'restated': 32, 'footnote': 149, 'UNKNOWN': 1}; unlabeled removals 0
+- A4 UNKNOWN lines: 0 (full context in results/limitation-1963_numlines.json):
+- A5 LOOKAHEAD_LINES=40, longest actually used=1, restated >2 pages away: []
 - A6 scanner iterations: 3 of the A6 maximum (see ASSUMPTIONS); iteration outcome: 0 gaps in 1..511.
 
 ## A1 page-joining evidence (first 5 page-spanning records)
 
-- page-spanning records: 132
-- section 2 pages p21-p23
-  - join 21->22 removed between: ['footnote', 'page_number']
-  - before: ...'r in writing to a Magistrate, with a view to his\ntaking action under this Code, that some person, whether known or unknown, has committed an'
-  - after: 'offence, but does not include a police report.\nExplanation.—A report made by a police officer in a case which discloses, after investigation'
-  - join 22->23 removed between: ['footnote', 'page_number']
-  - before: ...'or specially by the State\nGovernment, to be a police station, and includes any local area specified by the State Government in\nthis behalf;'
-  - after: '(t) “prescribed” means prescribed by rules made under this Code;\n(u) “Public Prosecutor” means any person appointed under section 24, and in'
-  - join 23->23 removed between: ['header']
-  - before: ...'used herein and not defined but defined in the Indian Penal Code\n(45 of 1860) have the meanings respectively assigned to them in that Code.'
-  - after: 'Haryana\nIn section 2, for the words “State of Haryana”, the words “Union territory of Chandigarh” shall be\nsubstituted.\n[Vide Notification N'
-- section 3 pages p23-p24
-  - join 23->24 removed between: ['footnote', 'page_number']
-  - before: ...'cement of this Code,—\n(a) to a Magistrate of the first class, shall be construed as a reference to a Judicial Magistrate of\nthe first class;'
-  - after: '(b) to a Magistrate of the second class or of the third class, shall be construed as a reference to a\nJudicial Magistrate of the second clas'
-  - join 24->24 removed between: ['header']
-  - before: ...'e, sanctioning a prosecution or withdrawing from a prosecution,\nthey shall, subject as aforesaid, be exercisable by an Executive Magistrate.'
-  - after: 'Andaman and Nicobar Islands (U.T.).\nInsertion of New section 3A. —In the Code, as it applies to the Union territory of Andaman and\nNicobar I'
-- section 8 pages p25-p26
-  - join 25->26 removed between: ['header', 'page_number']
-  - before: ...'expression “population” means the population as\nascertained at the last preceding census of which the relevant figures have been published.'
-  - after: 'Delhi\nIn its application to the National Capital Territory of Delhi, in section 8,—\n(a) in sub-section (1), for the words “a city or town”,'
-- section 9 pages p26-p27
-  - join 26->26 removed between: ['header']
-  - before: ...'th the affairs of\nthe Union or of a State, where under any law, such appointment, posting or promotion is required to be\nmade by Government.'
-  - after: 'West Bengal.—\nTo sub-section (3) of section 9 of the principal Act, the following provisos shall be added:—\nProvided that notwithstanding an'
-  - join 26->27 removed between: ['page_number']
-  - before: ...'d, wherein the headquarters of\nthe Sessions Judges are situated, exercising jurisdiction in a Court of Session, shall have all the powers of'
-  - after: 'the Sessions Judge under this Code, in respect of the cases and proceedings in the Criminal Courts in that\nsub-division, for the purposes of'
-- section 12 pages p27-p28
-  - join 27->28 removed between: ['footnote', 'page_number']
-  - before: ...'ied in this section as\noccasion requires.\n(b) Subject to the general control of the Chief Judicial Magistrate, every Sub-divisional Judicial'
-  - after: 'Magistrate shall also have and exercise, such powers of supervision and control over the work of the\nJudicial Magistrates (other than Additi'
+- page-spanning records: 8
+- section 2 pages p3-p4
+  - join 3->3 removed between: ['boilerplate']
+  - before: ...'2. Definitions.—In this Act, unless the context otherwise requires,—\n(a) “applicant” includes—'
+  - after: '(i) a petitioner;\n(ii) any person from or through whom an applicant derives his right to apply;\n(iii) any person whose estate is represented'
+  - join 3->4 removed between: ['footnote', 'page_number']
+  - before: ...'f derives his right to sue;\n(ii) any person whose estate is represented by the plaintiff as executor, administrator or other\nrepresentative;'
+  - after: '(j) “period of limitation” means the period of limitation prescribed for any suit, appeal or\napplication by the Schedule, and “prescribed pe'
+- section 6 pages p4-p5
+  - join 4->5 removed between: ['page_number']
+  - before: ...'after the disability has\nceased, as would otherwise have been allowed from the time specified there for in the third column of the\nSchedule.'
+  - after: '(2) Where such person is, at the time from which the prescribed period is to be reckoned, affected by\ntwo such disabilities, or where, befor'
+- section 11 pages p5-p6
+  - join 5->6 removed between: ['page_number']
+  - before: ...'try shall be a\ndefence to a suit instituted in the said territories on a contract entered into in that State on in a foreign\ncountry unless—'
+  - after: '(a) the rule has extinguished the contract; and\n(b) the parties were domiciled in that State or in the foreign country during the period pre'
+- section 14 pages p6-p7
+  - join 6->7 removed between: ['footnote', 'page_number']
+  - before: ...'a former civil proceeding was pending, the day on which\nthat proceeding was instituted and the day on which it ended shall both be counted;'
+  - after: '(b) a plaintiff or an applicant resisting an appeal shall be deemed to be prosecuting a proceeding;\n(c) misjoinder of parties or of causes o'
+- section 17 pages p7-p8
+  - join 7->8 removed between: ['page_number']
+  - before: ...'mistake; or\n(d) where any document necessary to establish the right of the plaintiff or applicant has been\nfraudulently concealed from him,'
+  - after: 'the period of limitation shall not begin to run until the plaintiff or applicant has discovered the fraud or\nthe mistake or could, with reas'
+  - join 8->8 removed between: ['boilerplate']
+  - before: ...'s not a party to the concealment and, did not at the time of purchase know, or have\nreason to believe, that the document had been concealed.'
+  - after: '(2) Where a judgment-debtor has, by fraud or force, prevented the execution of a decree or order\nwithin the period of limitation, the court'
 
 ## A2 verbatim / removal labels
 
-- A2 PRIMARY fragment windows: 99.9587% (threshold 99%)
-- DIAGNOSTIC whole-record windows: 97.5962%
-- DIAGNOSTIC cleaned-lines-in-raw: 99.9616%
-- removal label counts: {'header': 221, 'footnote': 272, 'page_number': 864, 'separator': 66}; unlabeled removals: 0 (unlabeled = FAIL)
-- 20-line removed sample printed with seed 20261012: see results/crpc-1973_step6_validate.log
+- A2 PRIMARY fragment windows: 99.7959% (threshold 99%)
+- DIAGNOSTIC whole-record windows: 97.992%
+- DIAGNOSTIC cleaned-lines-in-raw: 100.0%
+- removal label counts: {'boilerplate': 9, 'footnote': 9, 'page_number': 9, 'header': 9}; unlabeled removals: 0 (unlabeled = FAIL)
+- 20-line removed sample printed with seed 20261012: see results/limitation-1963_step6_validate.log
 
 ## A3 statuses
 
-- status counts: {'repealed': 543}
-- R-form (omitted) sections: 
+- status counts: {'in_force': 30, 'omitted': 2}
+- R-form (omitted) sections: 28, 32
 
 ## 20 random records (seed 20261011)
 
-### 1. crpc-1973:s:446:0
-- number='446', title='Procedure when bond has been forfeited', chapter='CHAPTER XXXIII - PROVISIONS AS TO BAIL AND BONDS', pages 185-186, status=repealed, chars=2328, parts 1/1
-- has: proviso=True, explanation=True, exception=False, illustration=False, amendment_notes=2
-- text: 446. Procedure when bond has been forfeited.—(1) Where a bond under this Code is for appearance, or for production of property, before a Court and it is proved to the satisfaction of that Court, or of any Court to which the case has subsequ...
-
-### 2. crpc-1973:s:307:0
-- number='307', title='Power to direct tender of pardon', chapter='CHAPTER XXIV - GENERAL PROVISIONS AS TO INQUIRIES AND TRIALS', pages 134-134, status=repealed, chars=364, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 307. Power to direct tender of pardon.—At any time after commitment of a case but before judgment is passed, the Court to which the commitment is made may, with a view to obtaining at the trial the evidence of any person supposed to have be...
-
-### 3. crpc-1973:s:449:0
-- number='449', title='Appeal from orders under section 446', chapter='CHAPTER XXXIII - PROVISIONS AS TO BAIL AND BONDS', pages 186-186, status=repealed, chars=301, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 449. Appeal from orders under section 446.—All orders passed under section 446 shall be appealable,— (i) in the case of an order made by a Magistrate, to the Sessions Judge; (ii) in the case of an order made by a Court of Session, to the Co...
-
-### 4. crpc-1973:s:300:0
-- number='300', title='Person once convicted or acquitted not to be tried for same offence', chapter='CHAPTER XXIV - GENERAL PROVISIONS AS TO INQUIRIES AND TRIALS', pages 131-131, status=repealed, chars=554, parts 1/2
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 300. Person once convicted or acquitted not to be tried for same offence.—(1) A person who has once been tried by a Court of competent jurisdiction for an offence and convicted or acquitted of such offence shall, while such conviction or ac...
-
-### 5. crpc-1973:s:251:0
-- number='251', title='Substance of accusation to be stated', chapter='CHAPTER XX - TRIAL OF SUMMONS-CASES BY MAGISTRATES', pages 118-118, status=repealed, chars=605, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 251. Substance of accusation to be stated.—When in a summons-case the accused appears or is brought before the Magistrate, the particulars of the offence of which he is accused shall be stated to him, and he shall be asked whether he pleads...
-
-### 6. crpc-1973:s:50:0
-- number='50', title='Person arrested to be informed of grounds of arrest and of right to bail', chapter='CHAPTER V - ARREST OF  PERSONS', pages 42-42, status=repealed, chars=529, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 50. Person arrested to be informed of grounds of arrest and of right to bail.—(1) Every police officer or other person arresting any person without warrant shall forthwith communicate to him full particulars of the offence for which he is a...
-
-### 7. crpc-1973:s:38:0
-- number='38', title='Aid to person, other than police officer, executing warrant', chapter='CHAPTER IV - A.—POWERS OF SUPERIOR OFFICERS OF POLICE', pages 37-37, status=repealed, chars=297, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 38. Aid to person, other than police officer, executing warrant.—When a warrant is directed to a person other than a police officer, any other person may aid in the execution of such warrant, if the person to whom the warrant is directed be...
-
-### 8. crpc-1973:s:318:0
-- number='318', title='Procedure where accused does not understand proceedings', chapter='CHAPTER XXIV - GENERAL PROVISIONS AS TO INQUIRIES AND TRIALS', pages 138-138, status=repealed, chars=465, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 318. Procedure where accused does not understand proceedings.—If the accused, though not of unsound mind, cannot be made to understand the proceedings, the Court may proceed with the inquiry or trial; and, in the case of a Court other than ...
-
-### 9. crpc-1973:s:437:0
-- number='437', title='When bail may be taken in case of non-bailable offence', chapter='CHAPTER XXXIII - PROVISIONS AS TO BAIL AND BONDS', pages 179-181, status=repealed, chars=4736, parts 1/1
-- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=6
-- text: 437. When bail may be taken in case of non-bailable offence.—5[(1) When any person accused of, or suspected of, the commission of any non-bailable offence is arrested or detained without warrant by an officer in charge of a police station o...
-
-### 10. crpc-1973:s:36:0
-- number='36', title='Powers of superior officers of police', chapter='CHAPTER IV - A.—POWERS OF SUPERIOR OFFICERS OF POLICE', pages 36-36, status=repealed, chars=274, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 36. Powers of superior officers of police.—Police officers superior in rank to an officer in charge of a police station may exercise the same powers, throughout the local area to which they are appointed, as may be exercised by such officer...
-
-### 11. crpc-1973:s:13:0
-- number='13', title='Special Judicial Magistrates', chapter='CHAPTER II - CONSTITUTION OF CRIMINAL COURTS AND OFFICES', pages 28-28, status=repealed, chars=1763, parts 1/1
-- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=2
-- text: 13. Special Judicial Magistrates.—(1) The High Court may, if requested by the Central or State Government so to do, confer upon any person who holds or has held any post under the Government, all or any of the powers conferred or conferrabl...
-
-### 12. crpc-1973:s:306:0
-- number='306', title='Tender of pardon to accomplice', chapter='CHAPTER XXIV - GENERAL PROVISIONS AS TO INQUIRIES AND TRIALS', pages 133-134, status=repealed, chars=2287, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 306. Tender of pardon to accomplice.—(1) With a view to obtaining the evidence of any person supposed to have been directly or indirectly concerned in or privy to an offence to which this section applies, the Chief Judicial Magistrate or a ...
-
-### 13. crpc-1973:s:193:0
-- number='193', title='Cognizance of offences by Courts of Session', chapter='CHAPTER XIV - CONDITIONS REQUISITE FOR INITIATION OF PROCEEDINGS', pages 96-96, status=repealed, chars=317, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 193. Cognizance of offences by Courts of Session.—Except as otherwise expressly provided by this Code or by any other law for the time being in force, no Court of Session shall take cognizance of any offence as a Court of original jurisdict...
-
-### 14. crpc-1973:s:109:0
-- number='109', title='Security for good behaviour from suspected persons', chapter='CHAPTER VIII - SECURITY FOR KEEPING THE PEACE AND FOR GOOD BEHAVIOUR', pages 60-60, status=repealed, chars=568, parts 1/1
+### 1. limitation-1963:s:32:0
+- number='32', title='Repeal', chapter=None, pages 11-11, status=omitted, chars=117, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
-- text: 109. Security for good behaviour from suspected persons.—When 1[an Executive Magistrate]  receives information that there is within his local jurisdiction a person taking precautions to conceal his presence and that there is reason to belie...
+- text: 32. [Repeal.]—Rep. by Repealing and Amending Act, 1974 (56 of 1974), s. 2 and the First Schedule (w.e.f. 20-12-1974)....
 
-### 15. crpc-1973:s:431:0
-- number='431', title='Money ordered to be paid recoverable as a fine', chapter='CHAPTER XXXII - EXECUTION, SUSPENSION, REMISSION AND COMMUTATION OF SENTENCES', pages 177-177, status=repealed, chars=631, parts 1/1
+### 2. limitation-1963:s:12:0
+- number='12', title='Exclusion of time in legal proceedings', chapter=None, pages 6-6, status=in_force, chars=1175, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=1
+- text: 12. Exclusion of time in legal proceedings.—(1) In computing the period of limitation for any suit, appeal or application, the day from which such period is to be reckoned, shall be excluded. (2) In computing the period of limitation for an...
+
+### 3. limitation-1963:s:16:0
+- number='16', title='Effect of death on or before the accrual of the right to sue', chapter=None, pages 7-7, status=in_force, chars=1107, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if he were living, have a right to institute a suit or make an application dies before the right accrues, or where a right to institute a suit o...
+
+### 4. limitation-1963:s:11:0
+- number='11', title='Suits on contracts entered into outside the territories to which the Act extends', chapter=None, pages 5-6, status=in_force, chars=694, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 11. Suits on contracts entered into outside the territories to which the Act extends.—(1) Suits instituted in the territories to which this Act extends on contracts entered into in the State of Jammu and Kashmir or in a foreign country shal...
+
+### 5. limitation-1963:s:9:0
+- number='9', title='Continuous running of time', chapter=None, pages 5-5, status=in_force, chars=389, parts 1/1
 - has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 431. Money ordered to be paid recoverable as a fine.—Any money (other than a fine) payable by virtue of any order made under this Code, and the method of recovery of which is not otherwise expressly provided for, shall be recoverable as if ...
+- text: 9. Continuous running of time.—Where once time has begun to run, no subsequent disability or inability to institute a suit or make an application stops it: Provided that, where letters of administration to the estate of a creditor have been...
 
-### 16. crpc-1973:s:25:0
-- number='25', title='Assistant Public prosecutors', chapter='CHAPTER II - CONSTITUTION OF CRIMINAL COURTS AND OFFICES', pages 32-33, status=repealed, chars=934, parts 1/1
-- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=1
-- text: 25. Assistant Public prosecutors.—(1) The State Government shall appoint in every district one or more Assistant  Public Prosecutors for conducting prosecutions in the Courts of Magistrates. 1[(1A) The Central Government may appoint one or ...
-
-### 17. crpc-1973:s:3:1
-- number='3', title='Construction of references', chapter='CHAPTER I - PRELIMINARY', pages 24-24, status=repealed, chars=2395, parts 2/2
+### 6. limitation-1963:s:2:0
+- number='2', title='Definitions', chapter=None, pages 3-4, status=in_force, chars=2217, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: (4) Where, under any law, other than this Code, the function exercisable by a Magistrate relate to matters,— (a) which involve the appreciation or sifting of evidence or the formulation of any decision which exposes any person to any punish...
+- text: 2. Definitions.—In this Act, unless the context otherwise requires,— (a) “applicant” includes— (i) a petitioner; (ii) any person from or through whom an applicant derives his right to apply; (iii) any person whose estate is represented by t...
 
-### 18. crpc-1973:s:202:0
-- number='202', title='Postponement of issue of process', chapter='CHAPTER XV - COMPLAINTS TO MAGISTRATES', pages 102-103, status=repealed, chars=1552, parts 1/1
-- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=1
-- text: 202. Postponement of issue of process.—(1) Any Magistrate, on receipt of a complaint of an offence of which he is authorised to take cognizance or which has been made over to him under section 192, may, if he thinks fit, 1[and shall, in a c...
-
-### 19. crpc-1973:s:214:0
-- number='214', title='Words in charge taken in sense of law under which offence is punishable', chapter='CHAPTER XVII - THE CHARGE', pages 107-107, status=repealed, chars=257, parts 1/1
+### 7. limitation-1963:s:27:0
+- number='27', title='Extinguishment of right to property', chapter=None, pages 10-10, status=in_force, chars=209, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 214. Words in charge taken in sense of law under which offence is punishable.—In every charge words used in describing an offence shall be deemed to have been used in the sense attached to them respectively by the law under which such offen...
+- text: 27. Extinguishment of right to property.—At the determination of the period hereby limited to any person for instituting a suit for possession of any property, his right to such property shall be extinguished....
 
-### 20. crpc-1973:s:129:0
-- number='129', title='Dispersal of assembly by use of civil force', chapter='CHAPTER X - MAINTENANCE OF PUBLIC ORDER AND TRANQUILLITY', pages 69-69, status=repealed, chars=1088, parts 1/1
+### 8. limitation-1963:s:31:0
+- number='31', title='Provisions as to barred or pending suits, etc', chapter=None, pages 11-11, status=in_force, chars=416, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 129. Dispersal of assembly by use of civil force.—(1) Any Executive Magistrate or officer in charge of a police station or, in the absence of such officer in charge, any police officer, not below the rank of a sub-inspector, may command any...
+- text: 31. Provisions as to barred or pending suits, etc.—Nothing in this Act shall,— (a) enable any suit, appeal or application to be instituted, preferred or made, for which the period of limitation prescribed by the Indian Limitation Act, 1908 ...
+
+### 9. limitation-1963:s:30:0
+- number='30', title='Provision for suits, etc., for which the prescribed period is shorter than the period prescribed by the Indian Limitation Act, 1908', chapter=None, pages 10-11, status=in_force, chars=3533, parts 1/1
+- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=2
+- text: 30. Provision for suits, etc., for which the prescribed period is shorter than the period prescribed by the Indian Limitation Act, 1908.—Notwithstanding anything contained in this Act,— (a) any suit for which the period of limitation is sho...
+
+### 10. limitation-1963:s:26:0
+- number='26', title='Exclusion in favour of reversioner of serivent tenement', chapter=None, pages 10-10, status=in_force, chars=611, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 26. Exclusion in favour of reversioner of serivent tenement.—Where any land or water upon, over or from, which any easement has been enjoyed or derived has been held under or by virtue of any interest for life or in terms of years exceeding...
+
+### 11. limitation-1963:s:1:0
+- number='1', title='Short title, extent and commencement', chapter=None, pages 3-3, status=in_force, chars=260, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
+- text: 1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. (2) It extends to the whole of India 1***. (3) It shall come into force on such date2 as the Central Government may, by notification in the Offici...
+
+### 12. limitation-1963:s:25:0
+- number='25', title='Acquisition of easements by prescription', chapter=None, pages 9-10, status=in_force, chars=1444, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text:  25. Acquisition of easements by prescription.—(1) Where the access and use of light or air to and for any building have been peaceably enjoyed therewith as an easement, and as of right, without interruption, and for twenty years, and where...
+
+### 13. limitation-1963:s:7:0
+- number='7', title='Disability of one of several persons', chapter=None, pages 5-5, status=in_force, chars=939, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text:  7. Disability of one of several persons.—Where one of several persons jointly entitled to institute a suit or make an application for the execution of a decree is under any such disability, and a discharge can be given without the concurre...
+
+### 14. limitation-1963:s:17:0
+- number='17', title='Effect of fraud or mistake', chapter=None, pages 7-8, status=in_force, chars=2279, parts 1/1
+- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 17. Effect of fraud or mistake.—(1) Where, in the case of any suit or application for which a period of limitation is prescribed by this Act,— (a) the suit or application is based upon the fraud of the defendant or respondent or his agent; ...
+
+### 15. limitation-1963:s:5:0
+- number='5', title='Extension of prescribed period in certain cases', chapter=None, pages 4-4, status=in_force, chars=635, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text: 5. Extension of prescribed period in certain cases.—Any appeal or any application, other than an application under any of the provisions of Order XXI of the Code of Civil Procedure, 1908 (5 of 1908), may be admitted after the prescribed per...
+
+### 16. limitation-1963:s:24:0
+- number='24', title='Computation of time mentioned in instruments', chapter=None, pages 9-9, status=in_force, chars=163, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 24. Computation of time mentioned in instruments.—All instruments shall for the purposes of this Act be deemed to be made with reference to the Gregorian calendar....
+
+### 17. limitation-1963:s:22:0
+- number='22', title='Continuing breaches and torts', chapter=None, pages 9-9, status=in_force, chars=257, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 22. Continuing breaches and torts.—In the case of a continuing breach of contract or in the case of a continuing tort, a fresh period of limitation begins to run at every moment of the time during which the breach or the tort, as the case m...
+
+### 18. limitation-1963:s:19:0
+- number='19', title='Effect of payment on account of debt or of interest on legacy', chapter=None, pages 8-9, status=in_force, chars=856, parts 1/1
+- has: proviso=True, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text: 19. Effect of payment on account of debt or of interest on legacy.—Where payment on account of a debt or of interest on a legacy is made before the expiration of the prescribed period by the person liable to pay the debt or legacy or by his...
+
+### 19. limitation-1963:s:4:0
+- number='4', title='Expiry of prescribed period when court is closed', chapter=None, pages 4-4, status=in_force, chars=438, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text: 4. Expiry of prescribed period when court is closed.—Where the prescribed period for any suit, appeal or application expires on a day when the court is closed, the suit, appeal or application may be instituted, preferred or made on the day ...
+
+### 20. limitation-1963:s:14:0
+- number='14', title='Exclusion of time of proceeding bona fide in court without jurisdiction', chapter=None, pages 6-7, status=in_force, chars=1857, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text: 14. Exclusion of time of proceeding bona fide in court without jurisdiction.—(1) In computing the period of limitation for any suit the time during which the plaintiff has been prosecuting with due diligence another civil proceeding, whethe...
 
 ## Consumer Protection 2019 (paused at checkpoint 1)
 
@@ -199,7 +187,7 @@ Notes:
 
 ## Block-order note
 
-- pages where raw extraction order differs from (y,x) reading order: 261/261 (total counter: {'pages': 889, 'diff_pages': 889}); (y,x) order kept. G6 evidence: see ASSUMPTIONS (ghost-whitespace-block artifact, sorted raw reference).
+- pages where raw extraction order differs from (y,x) reading order: 24/24 (total counter: {'pages': 1565, 'diff_pages': 1565}); (y,x) order kept. G6 evidence: see ASSUMPTIONS (ghost-whitespace-block artifact, sorted raw reference).
 
 ## ASSUMPTIONS (verbatim from SPEC.md)
 
@@ -235,7 +223,7 @@ ASSUMPTIONS (stricter interpretations, recorded as directed):
 
 ## Files produced
 
-- output/crpc-1973.jsonl (543 records)
-- results/crpc-1973_gates.json, _clean.json, _segments.json, _flags.json, _assembly.json, _markers.json, _numlines.json, _expected.json, _expected_meta.json, _toc_meta.json
-- results/crpc-1973_step2_inspect.log ... _crpc-1973_step7_report.log (one per step)
+- output/limitation-1963.jsonl (32 records)
+- results/limitation-1963_gates.json, _clean.json, _segments.json, _flags.json, _assembly.json, _markers.json, _numlines.json, _expected.json, _expected_meta.json, _toc_meta.json
+- results/limitation-1963_step2_inspect.log ... _limitation-1963_step7_report.log (one per step)
 - results/pilot_report.md (this file)

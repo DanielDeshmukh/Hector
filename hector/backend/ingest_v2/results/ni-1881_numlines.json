@@ -1,0 +1,1630 @@
+{
+  "seed": 20261012,
+  "counts": {
+    "restated": 155,
+    "footnote": 69
+  },
+  "labels": {
+    "header": 41,
+    "boilerplate": 25,
+    "footnote": 75,
+    "page_number": 25
+  },
+  "unlabeled_removed": 0,
+  "unknowns": [],
+  "footnote_sample": [
+    {
+      "line": 974,
+      "page": 27,
+      "text": "3. Subs. by Act 3 of 1951, s. 3 and the Schedule for “the States”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 48,
+      "page": 8,
+      "text": "2. The words “except the State of Jammu and Kashmir”, which were subs. by Act 3 of 1951, for “except Part B States”, omitted",
+      "cls": "footnote"
+    },
+    {
+      "line": 102,
+      "page": 9,
+      "text": "1. Subs. by Act 55 of 2002, s. 2, for section 6 (w.e.f. 6-2-2003).",
+      "cls": "footnote"
+    },
+    {
+      "line": 44,
+      "page": 8,
+      "text": "1. The Act has been extended to Goa, Daman and Diu with modifications, by Reg. 12 of 1962, s. 3 and Sch., (w.e.f. 1-10-1965)",
+      "cls": "footnote"
+    },
+    {
+      "line": 54,
+      "page": 8,
+      "text": "6. Omitted by Act 53 of 1952, s. 16 (w.e.f. 14-2-1956).",
+      "cls": "footnote"
+    },
+    {
+      "line": 104,
+      "page": 9,
+      "text": "3. The Explanation III, ins. by s. 2, ibid, (w.e.f. 15-6-2015).",
+      "cls": "footnote"
+    },
+    {
+      "line": 1028,
+      "page": 28,
+      "text": "5. Subs. by s. 7, ibid., for “within fifteen days” (w.e.f. 6-2-2003).",
+      "cls": "footnote"
+    },
+    {
+      "line": 155,
+      "page": 10,
+      "text": "5. S. 16 renumbered as sub-section (1) by s. 3, ibid.",
+      "cls": "footnote"
+    },
+    {
+      "line": 545,
+      "page": 18,
+      "text": "1. Ins. by Act 6 of 1897, s. 2.",
+      "cls": "footnote"
+    },
+    {
+      "line": 51,
+      "page": 8,
+      "text": "4. Definition of the word “India”, which was subs. by Act 3 of 1951, for the definition of the word “State”, omitted by Act 62 of",
+      "cls": "footnote"
+    },
+    {
+      "line": 151,
+      "page": 10,
+      "text": "1. Subs. by Act 8 of 1919. s. 2, for “payable to, or to the order of, a payee,”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1029,
+      "page": 28,
+      "text": "6. Ins. by s. 8, ibid. (w.e.f. 6-2-2003).",
+      "cls": "footnote"
+    },
+    {
+      "line": 644,
+      "page": 20,
+      "text": "4. Ins. by s. 2, ibid.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1024,
+      "page": 28,
+      "text": "1. The words “or the State of Jammu and Kashmir” omitted by Act 62 of 1956, s. 2 and the Schedule.",
+      "cls": "footnote"
+    },
+    {
+      "line": 1025,
+      "page": 28,
+      "text": "2. Subs. by the A.O. 1948, A.O. 1950 and the Act 3 of 1951, s. 3 and the Schedule for “British India”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 53,
+      "page": 8,
+      "text": "5. Subs. by Act 37 of 1955, s. 2, for the definition of the word “banker”.",
+      "cls": "footnote"
+    },
+    {
+      "line": 692,
+      "page": 21,
+      "text": "2. Ins. by, s. 5, ibid, (w.e.f. 6-2-2003).",
+      "cls": "footnote"
+    },
+    {
+      "line": 643,
+      "page": 20,
+      "text": "3. S. 85 re-numbered as sub-section (1) thereof by Act 17 of 1934, s. 2.",
+      "cls": "footnote"
+    },
+    {
+      "line": 828,
+      "page": 24,
+      "text": "1. The second sentence rep. by Act 2 of 1885, s. 7.",
+      "cls": "footnote"
+    },
+    {
+      "line": 398,
+      "page": 15,
+      "text": "1. Subs. by Act 8 of 1919, s. 4, for “payable to the order of a specified person, or to a specified person or order”.",
+      "cls": "footnote"
+    }
+  ],
+  "lines": [
+    {
+      "line": 8,
+      "page": 8,
+      "text": "1. Short title.—This Act  may be called the Negotiable Instruments Act, 1881.",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 16,
+      "page": 8,
+      "text": "2. [Repeal of enactments.] Rep. by the Repealing and Amending Act, 1891(12 of 1891), s. 2 and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 18,
+      "page": 8,
+      "text": "3. Interpretation-clause.—In this Act—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 32,
+      "page": 8,
+      "text": "4. “Promissory note.”—A “Promissory note” is an instrument in writing (not being a bank-note or a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 44,
+      "page": 8,
+      "text": "1. The Act has been extended to Goa, Daman and Diu with modifications, by Reg. 12 of 1962, s. 3 and Sch., (w.e.f. 1-10-1965)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 48,
+      "page": 8,
+      "text": "2. The words “except the State of Jammu and Kashmir”, which were subs. by Act 3 of 1951, for “except Part B States”, omitted",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 50,
+      "page": 8,
+      "text": "3. Rep. by the Indian Paper Currency Act, 1923 (10 of 1923). See now the Reserve Bank of India Act, 1934 (2 of 1934), s. 31.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 51,
+      "page": 8,
+      "text": "4. Definition of the word “India”, which was subs. by Act 3 of 1951, for the definition of the word “State”, omitted by Act 62 of",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 53,
+      "page": 8,
+      "text": "5. Subs. by Act 37 of 1955, s. 2, for the definition of the word “banker”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 54,
+      "page": 8,
+      "text": "6. Omitted by Act 53 of 1952, s. 16 (w.e.f. 14-2-1956).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 59,
+      "page": 9,
+      "text": "5. “Bill of exchange.”—A “bill of exchange” is an instrument in writing containing an unconditional",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 91,
+      "page": 9,
+      "text": "7. “Drawer” “Drawee”.—The maker of a bill of exchange or cheque is called the “drawer”; the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 102,
+      "page": 9,
+      "text": "1. Subs. by Act 55 of 2002, s. 2, for section 6 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 103,
+      "page": 9,
+      "text": "2. Subs. by Act 26 of 2015, s.2, for clause (a) (w.e.f. 15-6-2015)",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 104,
+      "page": 9,
+      "text": "3. The Explanation III, ins. by s. 2, ibid, (w.e.f. 15-6-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 105,
+      "page": 9,
+      "text": "4. Subs. by Act 2 of 1885, s. 2, for “When acceptance is refused and the bill is protested for non -acceptance.”",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 109,
+      "page": 10,
+      "text": "8. “Holder”.—The “holder” of a promissory note, bill of exchange or cheque means any person",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 114,
+      "page": 10,
+      "text": "9. “Holder in due course”.—“Holder in due course” means any person who for consideration",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 119,
+      "page": 10,
+      "text": "10. “Payment in due course”.—“Payment in due course” means payment in accordance with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 124,
+      "page": 10,
+      "text": "11. Inland instrument.—A promissory note, bill of exchange or cheque drawn or made in 2[India]",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 127,
+      "page": 10,
+      "text": "12. Foreign instrument. —Any such instrument not so drawn, made or made payable shall be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 129,
+      "page": 10,
+      "text": "13.“Negotiable instrument”.—3[(1) A “negotiable instrument” means a promissory note, bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 141,
+      "page": 10,
+      "text": "14. Negotiation.—When a promissory note, bill of exchange or cheque is transferred to any person,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 143,
+      "page": 10,
+      "text": "15. Indorsement.—When the maker or holder of a negotiable instrument signs the same, otherwise",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 147,
+      "page": 10,
+      "text": "16. Indorsement “in blank” and “in full”.—5[(1)] If the indorser signs his name only, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 151,
+      "page": 10,
+      "text": "1. Subs. by Act 8 of 1919. s. 2, for “payable to, or to the order of, a payee,”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 152,
+      "page": 10,
+      "text": "2. Subs. by Act 36 of 1957, s. 3 and the Second Schedule “a State”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 153,
+      "page": 10,
+      "text": "3. Subs. by Act 8 of 1919, s. 3, for the sub-section (1).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 154,
+      "page": 10,
+      "text": "4. Ins. by Act 5 of 1914, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 155,
+      "page": 10,
+      "text": "5. S. 16 renumbered as sub-section (1) by s. 3, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 160,
+      "page": 11,
+      "text": "17. Ambiguous instruments.—Where an instrument may be construed either as a promissory note or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 163,
+      "page": 11,
+      "text": "18. Where amount is stated differently in figures and words.—If the amount undertaken or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 166,
+      "page": 11,
+      "text": "19. Instruments payable on demand.—A promissory note or bill of exchange, in which no time for",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 168,
+      "page": 11,
+      "text": "20. Inchoate stamped instruments.—Where one person signs and delivers to another a paper",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 178,
+      "page": 11,
+      "text": "21. “At sight”.—“On presentment”.—Ina promissory note or bill of exchange the expressions “at",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 182,
+      "page": 11,
+      "text": "22. “Maturity”.—The maturity of a promissory note or bill of exchange is the date at which it falls",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 187,
+      "page": 11,
+      "text": "23. Calculating maturity of bill or note payable so many months after date or sight.—In",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 203,
+      "page": 11,
+      "text": "1. Ins. by Act 5 of 1914, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 204,
+      "page": 11,
+      "text": "2. Subs. by Act 3 of 1951, s. 3 and the Sch., for “the States”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 206,
+      "page": 12,
+      "text": "24. Calculating maturity of bill or note payable so many days after date or sight.—In calculating",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 210,
+      "page": 12,
+      "text": "25. When day of maturity is a holiday.—When the day on which a promissory note or bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 217,
+      "page": 12,
+      "text": "26. Capacity to make, etc., promissory notes, etc.—Every person capable of contracting, according",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 225,
+      "page": 12,
+      "text": "27. Agency.— Every person capable of binding himself or of being bound, as mentioned in section",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 230,
+      "page": 12,
+      "text": "28. Liability of agent signing.—An agent who signs his name to a promissory note, bill of exchange",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 234,
+      "page": 12,
+      "text": "29. Liability of legal representative signing.—A legal representative of a deceased person who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 237,
+      "page": 12,
+      "text": "30. Liability of drawer.—The drawer of a bill of exchange or cheque is bound, in case of dishonour",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 240,
+      "page": 12,
+      "text": "31. Liability of drawee of cheque.—The drawee of a cheque having sufficient funds of the drawer in his",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 243,
+      "page": 12,
+      "text": "32. Liability of maker of note and acceptor of bill.—In the absence of a contract to the contrary, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 249,
+      "page": 12,
+      "text": "1. The words “New Year's day, Christmas day:  if either of such days falls on a Sunday, the next following Monday: Good-",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 251,
+      "page": 12,
+      "text": "2. Subs by the A.O. 1937, for “L.G”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 253,
+      "page": 13,
+      "text": "33. Only drawee can be acceptor except in need or for honour.—No person except the drawee of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 256,
+      "page": 13,
+      "text": "34. Acceptance by several drawees not partners.—Where there are several drawees of a bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 259,
+      "page": 13,
+      "text": "35. Liability of indorser.—In the absence of a contract to the contrary, whoever indorses and delivers a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 266,
+      "page": 13,
+      "text": "36. Liability of prior parties to holder in due course.—Every prior party to a negotiable instrument",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 268,
+      "page": 13,
+      "text": "37. Maker, drawer and acceptor principals.—The maker of a promissory note or cheque, the drawer of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 273,
+      "page": 13,
+      "text": "38. Prior party a principal in respect of each subsequent party.—As between the parties so liable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 280,
+      "page": 13,
+      "text": "39. Suretyship.—When the holder of an accepted bill of exchange enters into any contract with the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 284,
+      "page": 13,
+      "text": "40. Discharge of indorser's liability.—Where the holder of a negotiable instrument, without the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 296,
+      "page": 13,
+      "text": "41. Acceptor bound, although, indorsement forged.—An acceptor of a bill of exchange already",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 299,
+      "page": 13,
+      "text": "42. Acceptance of bill drawn in fictitious name.—An acceptor of a bill of exchange drawn in a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 304,
+      "page": 14,
+      "text": "43. Negotiable instrument made, etc., without consideration.—A negotiable instrument made,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 316,
+      "page": 14,
+      "text": "44. Partial absence or failure of money-consideration.—When the consideration for which a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 328,
+      "page": 14,
+      "text": "45. Partial failure of consideration not consisting of money.—Where a part of the consideration",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 341,
+      "page": 14,
+      "text": "46. Delivery.—The making, acceptance or indorsement of a promissory note, bill of exchange or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 351,
+      "page": 14,
+      "text": "1. Ins. by Act 2 of 1885, s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 353,
+      "page": 15,
+      "text": "47. Negotiation by delivery.—Subject to the provisions of section 58, a promissory note, bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 364,
+      "page": 15,
+      "text": "48. Negotiation by indorsement.—Subject to the provisions of section 58, a promissory note, bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 366,
+      "page": 15,
+      "text": "49. Conversion of indorsement in blank into indorsement in full.—The holder of a negotiable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 371,
+      "page": 15,
+      "text": "50. Effect of indorsement.—The indorsement of a negotiable instrument followed by delivery",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 387,
+      "page": 15,
+      "text": "51. Who may negotiate.—Every sole maker, drawer, payee or indorsee, or all of several joint",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 396,
+      "page": 15,
+      "text": "52. Indorser who excludes his own liability or makes it conditional.—The indorser of a negotiable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 398,
+      "page": 15,
+      "text": "1. Subs. by Act 8 of 1919, s. 4, for “payable to the order of a specified person, or to a specified person or order”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 410,
+      "page": 16,
+      "text": "53. Holder deriving title from holder in due course.—A holder of a negotiable instrument who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 412,
+      "page": 16,
+      "text": "54. Instrument indorsed in blank.—Subject to the provisions hereinafter contained as to crossed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 416,
+      "page": 16,
+      "text": "55. Conversion of indorsement in blank into indorsement in full.—If a negotiable instrument,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 420,
+      "page": 16,
+      "text": "56. Indorsement for part of sum due.—No writing on a negotiable instrument is valid for the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 424,
+      "page": 16,
+      "text": "57. Legal representative cannot by delivery only negotiate instrument indorsed by deceased.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 427,
+      "page": 16,
+      "text": "58.  Instrument obtained by unlawful means or for unlawful consideration.—When a negotiable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 433,
+      "page": 16,
+      "text": "59. Instrument acquired after dishonour or when overdue.—The holder of a negotiable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 445,
+      "page": 16,
+      "text": "60. Instrument negotiable till payment or satisfaction.—A negotiable instrument may be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 451,
+      "page": 17,
+      "text": "61. Presentment for acceptance.—A bill of exchange payable after sight must, if no time or place is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 461,
+      "page": 17,
+      "text": "62. Presentment of promissory note for sight.—A promissory note, payable at a certain period after",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 466,
+      "page": 17,
+      "text": "63. Drawee’s time for deliberation.—The holder must, if so required by the drawee of a bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 469,
+      "page": 17,
+      "text": "64. Presentment for payment.—3[(1)] Promissory notes, bills of exchange and cheques must be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 485,
+      "page": 17,
+      "text": "65. Hours for presentment—Presentment for payment must be made during the usual hours of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 487,
+      "page": 17,
+      "text": "66. Presentment for payment of instrument payable after date or sight—A promissory note or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 490,
+      "page": 17,
+      "text": "67.  Presentment for payment of promissory note payable by instalments.—A promissory note",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 494,
+      "page": 17,
+      "text": "1. Added by Act 2 of 1885, s. 4.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 495,
+      "page": 17,
+      "text": "2. Subs. by Act 12 of 1921, s. 2, for “twenty-four”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 496,
+      "page": 17,
+      "text": "3. Section 64 renumbered as sub-section (1) thereof by Act 55 of 2002, s. 3 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 497,
+      "page": 17,
+      "text": "4. Ins. by s. 3, ibid, (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 499,
+      "page": 18,
+      "text": "68. Presentment for payment of instrument payable at specified place and not elsewhere.—A",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 502,
+      "page": 18,
+      "text": "69. Instrument payable at specified place.—A promissory note or bill of exchange made, drawn or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 505,
+      "page": 18,
+      "text": "70. Presentment where no exclusive place specified.—A promissory note or bill of exchange, not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 508,
+      "page": 18,
+      "text": "71. Presentment when maker, etc., has no known place of business or residence.—If the maker,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 512,
+      "page": 18,
+      "text": "72. Presentment of cheque to charge drawer.— 1[Subject to the provisions of section 84,] a cheque",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 516,
+      "page": 18,
+      "text": "73. Presentment of cheque to charge any other person.—A cheque must, in order to charge any",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 518,
+      "page": 18,
+      "text": "74. Presentment of instrument payable on demand.—Subject to the provisions of section 31, a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 521,
+      "page": 18,
+      "text": "75. Presentment by or to agent, representative of deceased, or assignee of insolvent.—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 529,
+      "page": 18,
+      "text": "76. When presentment unnecessary.—No presentment for payment is necessary, and the instrument",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 545,
+      "page": 18,
+      "text": "1. Ins. by Act 6 of 1897, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 546,
+      "page": 18,
+      "text": "2. Ins. by Act 25 of 1920, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 547,
+      "page": 18,
+      "text": "3. Subs. by Act 12 of 1921, s. 3, for “for payment”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 552,
+      "page": 19,
+      "text": "77. Liability of banker for negligently dealing with bill presented for payment.—When a bill of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 558,
+      "page": 19,
+      "text": "78. To whom payment should be made.—Subject to the provisions of section 82, clause (c),",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 561,
+      "page": 19,
+      "text": "79. Interest when rate specified.—When interest at a specified rate is expressly made payable on a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 566,
+      "page": 19,
+      "text": "80. Interest when no rate specified.— When no rate of interest is specified in the instrument,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 573,
+      "page": 19,
+      "text": "81. Delivery of instrument on payment or indemnity in case of loss.—3[(1)] Any person liable to",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 584,
+      "page": 19,
+      "text": "82. Discharge from liability.—The maker, acceptor or indorser respectively of a negotiable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 593,
+      "page": 19,
+      "text": "1. Subs. by Act 30 of 1926, s. 2, for “except in cases provided for by the Code of Civil Procedure, s. 532”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 594,
+      "page": 19,
+      "text": "2. Subs. by Act 66 of 1988, s. 2, for “six per centum” (w.e.f. 30-12-1988).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 595,
+      "page": 19,
+      "text": "3. Section 81 re-numbered as sub-section (1) thereof by Act 55 of 2002, s. 4 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 596,
+      "page": 19,
+      "text": "4. Ins. by s. 4, ibid. (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 598,
+      "page": 20,
+      "text": "83. Discharge by allowing drawee more than forty-eight hours to accept.—If the holder of a bill",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 621,
+      "page": 20,
+      "text": "85. Cheque payable to order.—3[(1)] Where a cheque payable to order purports to be endorsed by or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 631,
+      "page": 20,
+      "text": "86. Parties not consenting discharged by qualified or limited acceptance.—If the holder of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 641,
+      "page": 20,
+      "text": "1. Subs. by Act 12 of 1921, s. 2, for “twenty-four”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 642,
+      "page": 20,
+      "text": "2. Subs. by Act 6 of 1897, s. 3, for s. 84.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 643,
+      "page": 20,
+      "text": "3. S. 85 re-numbered as sub-section (1) thereof by Act 17 of 1934, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 644,
+      "page": 20,
+      "text": "4. Ins. by s. 2, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 645,
+      "page": 20,
+      "text": "5. Ins. by Act 25 of 1930, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 652,
+      "page": 21,
+      "text": "87. Effect of material alteration.—Any material alteration of a negotiable instrument renders the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 658,
+      "page": 21,
+      "text": "88. Acceptor or indorser bound notwithstanding previous alteration.—An acceptor or indorser of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 661,
+      "page": 21,
+      "text": "89. Payment of instrument on which alteration is not apparent.—1[(1)] Where a promissory note,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 676,
+      "page": 21,
+      "text": "90. Extinguishment of rights of action on bill in acceptor's hands.—If a bill of exchange which",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 681,
+      "page": 21,
+      "text": "91. Dishonour by non-acceptance.—A bill of exchange is said to be dishonoured by non-acceptance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 686,
+      "page": 21,
+      "text": "92. Dishonour by non-payment.—A promissory note, bill of exchange or cheque is said to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 689,
+      "page": 21,
+      "text": "93. By and to whom notice should be given.—When a promissory note, bill of exchange or cheque",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 691,
+      "page": 21,
+      "text": "1. Section 89 re-numbered as sub-section (1) thereof by Act 55 of 2002, s. 5 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 692,
+      "page": 21,
+      "text": "2. Ins. by, s. 5, ibid, (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 699,
+      "page": 22,
+      "text": "94. Mode in which notice may be given.—Notice of dishonour may be given to a duly authorized agent",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 708,
+      "page": 22,
+      "text": "95. Party receiving must transmit notice of dishonour.—Any party receiving notice of dishonour",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 712,
+      "page": 22,
+      "text": "96. Agent for presentment.—When the instrument is deposited with an agent for presentment, the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 715,
+      "page": 22,
+      "text": "97. When party to whom notice given is dead.—when the party to whom notice of dishonour is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 717,
+      "page": 22,
+      "text": "98. When notice of dishonour is unnecessary.—No notice of dishonour is necessary—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 729,
+      "page": 22,
+      "text": "99. Noting.—When a promissory note or bill of exchange has been dishonoured by non-acceptance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 735,
+      "page": 22,
+      "text": "100. Protest.—When a promissory note or bill of exchange has been dishonoured by non-acceptance",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 744,
+      "page": 23,
+      "text": "101. Contents of protest.—A protest under section 100 must contain—",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 760,
+      "page": 23,
+      "text": "102. Notice of protest.—When a promissory note or bill of exchange is required by law to be",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 763,
+      "page": 23,
+      "text": "103. Protest for non-payment after dishonour by non-acceptance.—All bills of exchange drawn",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 766,
+      "page": 23,
+      "text": "104. Protest of foreign bills.—Foreign bills of exchange must be protested for dishonour when such",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 774,
+      "page": 23,
+      "text": "105. Reasonable time.—In determining what is a reasonable time for presentment for acceptance or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 778,
+      "page": 23,
+      "text": "106. Reasonable time of giving notice of dishonour.—If the holder and the party to whom notice of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 783,
+      "page": 23,
+      "text": "107. Reasonable time for transmitting such notice.—A party receiving notice of dishonour, who",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 785,
+      "page": 23,
+      "text": "1. Ins. by Act 2 of 1885, s. 5.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 786,
+      "page": 23,
+      "text": "2. Ins. by s. 6,  ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 792,
+      "page": 24,
+      "text": "108.  Acceptance for honour.—When a bill of exchange has been noted or protested for non-acceptance or for better security, any person not being a party already",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 794,
+      "page": 24,
+      "text": "109.  How acceptance for honour must be made.—A person desiring to accept for honour must,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 797,
+      "page": 24,
+      "text": "110. Acceptance not specifying for whose honour it is made.—Where the acceptance does not",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 799,
+      "page": 24,
+      "text": "111. Liability of acceptor for honour.—An acceptor for honour binds himself to all parties",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 807,
+      "page": 24,
+      "text": "112. When acceptor for honour may be charged.—An acceptor for honour cannot be charged",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 810,
+      "page": 24,
+      "text": "113. Payment for honour.—When a bill of exchange has been noted or protested for non-payment,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 814,
+      "page": 24,
+      "text": "114.  Right of payer for honour.—Any person so paying is entitled to all the rights in respect of the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 817,
+      "page": 24,
+      "text": "115. Drawee in case of need.—Where a drawee in case of need is named in a bill of exchange, or in",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 819,
+      "page": 24,
+      "text": "116. Acceptance and payment without protest.—A drawee in case of need may accept and pay the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 823,
+      "page": 24,
+      "text": " 117. Rules as to compensation.—The compensation payable in case of dishonour of a promissory",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 828,
+      "page": 24,
+      "text": "1. The second sentence rep. by Act 2 of 1885, s. 7.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 829,
+      "page": 24,
+      "text": "2. Subs. by s. 8, ibid., for “in the presence of a notary public, subscribe the bill with his own hand, and”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 830,
+      "page": 24,
+      "text": "3. The words “and such declaration must be recorded by the notary in his register” rep. by s. 8, ibid.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 831,
+      "page": 24,
+      "text": "4. Ins. by Act 2 of 1885, s. 9.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 832,
+      "page": 24,
+      "text": "5. The brackets, words and figures “(except in cases provided for by the Code of Civil Procedure, s. 532)” omitted by Act 30 of 1926 , s. 3.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 850,
+      "page": 25,
+      "text": "118. Presumptions as to negotiable instruments.—Until the contrary is proved, the following",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 868,
+      "page": 25,
+      "text": "119. Presumption on proof of protest.—Ina suit upon an instrument which has been",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 871,
+      "page": 25,
+      "text": "120. Estoppel against denying original validity of instrument.—No maker of a promissory note,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 875,
+      "page": 25,
+      "text": "121. Estoppel against denying capacity of payee to indorse.—No maker of a promissory note and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 878,
+      "page": 25,
+      "text": "1. Subs. by Act 66 of 1988, s. 3, for “six per centum” (w.e.f . 30 - 12 - 1988 ).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 879,
+      "page": 25,
+      "text": "2. Subs. by Act 8 of 1919, s. 5, for “payable to, or to the order- of, a specified person”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 881,
+      "page": 26,
+      "text": "122. Estoppel against denying signature or capacity of prior party.—No indorser of a negotiable",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 886,
+      "page": 26,
+      "text": "123. Cheque crossed generally.—Where a cheque bears across its face an addition of the words",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 890,
+      "page": 26,
+      "text": "124. Cheque crossed specially.—Where a cheque bears across its face an addition of the name of a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 893,
+      "page": 26,
+      "text": "125. Crossing after issue.—Where a cheque is uncrossed, the holder may cross it generally or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 900,
+      "page": 26,
+      "text": "126. Payment of cheque crossed generally.—Where a cheque is crossed generally, the banker on",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 904,
+      "page": 26,
+      "text": "127. Payment of cheque crossed specially more than once.—Where a cheque is crossed specially",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 907,
+      "page": 26,
+      "text": "128. Payment in due course of crossed cheque.—Where the banker on whom a crossed cheque is",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 912,
+      "page": 26,
+      "text": "129. Payment of crossed cheque out of due course.—Any banker paying a cheque crossed",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 916,
+      "page": 26,
+      "text": "130. Cheque bearing “not negotiable”.—A person taking a cheque crossed generally or specially,",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 919,
+      "page": 26,
+      "text": "131. Non-liability of banker receiving payment of cheque.—A banker who has in good faith and",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 926,
+      "page": 26,
+      "text": "1. Ins. by Act 18 of 1922, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 927,
+      "page": 26,
+      "text": "2. Explanation re-numbered as Explanation I thereof by Act 55 of 2002, s. 6 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 937,
+      "page": 27,
+      "text": "132. Set of bills.—Bills of exchange may be drawn in parts, each part being numbered and containing",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 943,
+      "page": 27,
+      "text": "133. Holder of first acquired part entitled to all—As between holders in due course of different parts",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 949,
+      "page": 27,
+      "text": "134. Law governing liability of maker, acceptor or indorser of foreign instrument.—In the absence",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 959,
+      "page": 27,
+      "text": "135. Law of place of payment governs dishonour.—Where a promissory note, bill of exchange or",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 967,
+      "page": 27,
+      "text": "136. Instrument made, etc., out of India, but in accordance with the law of India.—If a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 972,
+      "page": 27,
+      "text": "1. Ins. by Act 55 of 2002, s. 6 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 973,
+      "page": 27,
+      "text": "2. Ins. by Act 33 of 1947, s. 2.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 974,
+      "page": 27,
+      "text": "3. Subs. by Act 3 of 1951, s. 3 and the Schedule for “the States”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 975,
+      "page": 27,
+      "text": "4. Subs. by the A.O. 1948, A.O. 1950 and the Act 3 of 1951, s. 3 and the Sch. for “out of British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 976,
+      "page": 27,
+      "text": "5. Subs. by s. 3, ibid., for “law of  British India” .",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 977,
+      "page": 27,
+      "text": "6. Subs. by s. 3, ibid., for “in British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 979,
+      "page": 28,
+      "text": "137. Presumption as to foreign law.—The law of any foreign country 1*** regarding promissory",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 985,
+      "page": 28,
+      "text": "138. Dishonour of cheque for insufficiency, etc., of funds in the account.—Where any cheque",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1007,
+      "page": 28,
+      "text": "139. Presumption in favour of holder.—It shall be presumed, unless the contrary is proved, that the",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1010,
+      "page": 28,
+      "text": "140. Defence which may not be allowed in any prosecution under section 138.—Itshall not be a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1014,
+      "page": 28,
+      "text": "141. Offences by companies.—(1) If the person committing an offence under section 138 is a",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1024,
+      "page": 28,
+      "text": "1. The words “or the State of Jammu and Kashmir” omitted by Act 62 of 1956, s. 2 and the Schedule.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1025,
+      "page": 28,
+      "text": "2. Subs. by the A.O. 1948, A.O. 1950 and the Act 3 of 1951, s. 3 and the Schedule for “British India”.",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1026,
+      "page": 28,
+      "text": "3. Ins. by Act 66 of 1988, s, 4 (w.e.f. 1-4-1989).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1027,
+      "page": 28,
+      "text": "4. Subs. by Act 55 of 2002, s. 7, for certain words (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1028,
+      "page": 28,
+      "text": "5. Subs. by s. 7, ibid., for “within fifteen days” (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1029,
+      "page": 28,
+      "text": "6. Ins. by s. 8, ibid. (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1042,
+      "page": 29,
+      "text": "142. Cognizance of offences.—1[(1)] Notwithstanding anything contained in the Code of Criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1075,
+      "page": 29,
+      "text": "1. Section 142 numbered as sub-section (1) thereof by Act 26 of 2015, s. 3 (w.e.f. 15-6-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1076,
+      "page": 29,
+      "text": "2. Ins. by Act 55 of 2002, s. 9 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1077,
+      "page": 29,
+      "text": "3. Ins. Act 26 of 2015, s. 3 (w.e.f. 15-6-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1078,
+      "page": 29,
+      "text": "4. Ins. by, s. 4, ibid. (w.e.f.15-6-2015).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1123,
+      "page": 30,
+      "text": "1. Ins. by Act 55 of 2002, s. 10 (w.e.f. 6-2-2003).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1124,
+      "page": 30,
+      "text": "2. Ins. by Act 20 of 2018, s. 2 (w.e.f. 1-9-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    },
+    {
+      "line": 1131,
+      "page": 31,
+      "text": "144. Mode of service of summons.—(1) Notwithstanding anything contained in the Code of",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1140,
+      "page": 31,
+      "text": "145. Evidence on affidavit.—(1)Notwithstanding anything contained in the Code of Criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1147,
+      "page": 31,
+      "text": "146. Bank’s slip prima facie evidence of certain facts.—The Court shall, in respect of every",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1151,
+      "page": 31,
+      "text": "147. Offences to be compoundable.—Notwithstanding anything contained in the Code of Criminal",
+      "cls": "restated",
+      "label": null
+    },
+    {
+      "line": 1170,
+      "page": 31,
+      "text": "1. Ins. by Act 20 of 2018, s. 3 (w.e.f. 1-9-2018).",
+      "cls": "footnote",
+      "label": "footnote"
+    }
+  ]
+}

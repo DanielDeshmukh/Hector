@@ -23247,7 +23247,7 @@
       "R": 0
     },
     "lookahead_constant": 40,
-    "max_lookahead_used": 10,
+    "max_lookahead_used": 1,
     "restated_more_than_2_pages": [],
     "labels": {
       "header": 162,
@@ -23271,7 +23271,7 @@
     "chapter_notes": 0,
     "gaps": [],
     "lettered": [],
-    "rejected": 9,
+    "rejected": 12,
     "lines": 14006
   },
   "unknowns": [

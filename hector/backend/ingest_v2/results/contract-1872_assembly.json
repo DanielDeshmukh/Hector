@@ -1,0 +1,109 @@
+{
+  "act_id": "contract-1872",
+  "page_spanning_total": 27,
+  "shown": [
+    {
+      "number": "2",
+      "page_start": 10,
+      "page_end": 11,
+      "joins": [
+        {
+          "from_page": 10,
+          "to_page": 11,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": " to abstain from doing anything,\nwith a view to obtaining the assent of that other to such act or abstinence, he is said to make a\nproposal;",
+          "after_head": "(b) When the person to whom the proposal is made signifies his assent thereto, the proposal is\nsaid to be accepted. A proposal, when accepte"
+        },
+        {
+          "from_page": 11,
+          "to_page": 11,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "nforceable by law at the option of one or more of the parties thereto,\nbut not at the option of the other or others, is a voidable contract;",
+          "after_head": "(j) A contract which ceases to be enforceable by law becomes void when it ceases to be\nenforceable."
+        }
+      ]
+    },
+    {
+      "number": "15",
+      "page_start": 13,
+      "page_end": 14,
+      "joins": [
+        {
+          "from_page": 13,
+          "to_page": 14,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ening to detain, any property, to\nthe prejudice of any person whatever, with the intention of causing any person to enter into an agreement.",
+          "after_head": "Explanation.—It is immaterial whether the Indian Penal Code (45 of 1860) is or is not in force in the\nplace where the coercion is employed.\n"
+        }
+      ]
+    },
+    {
+      "number": "17",
+      "page_start": 14,
+      "page_end": 15,
+      "joins": [
+        {
+          "from_page": 14,
+          "to_page": 15,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "regard being had to them, it is the\nduty of the person keeping silence to speak3, or unless his silence is, in itself, equivalent to speech.",
+          "after_head": "Illustrations\n(a)  A sells, by auction, to B, a horse which A knows to be unsound. A says nothing to B about the horse’s unsoundness.\nThis i"
+        }
+      ]
+    },
+    {
+      "number": "19A",
+      "page_start": 15,
+      "page_end": 16,
+      "joins": [
+        {
+          "from_page": 15,
+          "to_page": 16,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "t to an agreement is\ncaused by undue influence, the agreement is a contract voidable at the option of the party whose consent\nwas so caused.",
+          "after_head": "Any such contract may be set aside either absolutely or, if the party who was entitled to avoid it has\nreceived any benefit thereunder, upon"
+        }
+      ]
+    },
+    {
+      "number": "23",
+      "page_start": 16,
+      "page_end": 17,
+      "joins": [
+        {
+          "from_page": 16,
+          "to_page": 17,
+          "removed_labels": [
+            "footnote",
+            "page_number"
+          ],
+          "before_tail": "ulent ; or\ninvolves or implies injury to the person or property of another; or\nthe Court regards it as immoral, or opposed to public policy.",
+          "after_head": "In each of these cases, the consideration or object of an agreement is said to be unlawful. Every\nagreement of which the object or considera"
+        },
+        {
+          "from_page": 17,
+          "to_page": 17,
+          "removed_labels": [
+            "boilerplate"
+          ],
+          "before_tail": "reement for the division among them of gains acquired or to be acquired, by them by fraud.\nThe agreement is void, as its object is unlawful.",
+          "after_head": "(f) A promises to obtain for B an employment in the public service and B promises to pay 1,000 rupees to A. The agreement\nis void, as the co"
+        }
+      ]
+    }
+  ]
+}

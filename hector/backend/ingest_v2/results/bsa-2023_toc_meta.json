@@ -10,6 +10,7 @@
     8,
     9
   ],
+  "body_start_0based": 9,
   "expected_count": 170,
   "gaps": [],
   "duplicates": [],

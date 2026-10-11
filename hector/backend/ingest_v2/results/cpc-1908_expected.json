@@ -1,0 +1,686 @@
+[
+  {
+    "number": "1",
+    "title": "Short title, commencement and extent."
+  },
+  {
+    "number": "2",
+    "title": "Definitions."
+  },
+  {
+    "number": "3",
+    "title": "Subordination of Courts."
+  },
+  {
+    "number": "4",
+    "title": "Savings."
+  },
+  {
+    "number": "5",
+    "title": "Application of the Code to Revenue Courts."
+  },
+  {
+    "number": "6",
+    "title": "Pecuniary jurisdiction."
+  },
+  {
+    "number": "7",
+    "title": "Provincial Small Cause Courts. IndiaCode"
+  },
+  {
+    "number": "8",
+    "title": "Presidency Small Cause Courts."
+  },
+  {
+    "number": "9",
+    "title": "Courts to try all civil suits unless barred."
+  },
+  {
+    "number": "10",
+    "title": "Stay of suit."
+  },
+  {
+    "number": "11",
+    "title": "Res judicata."
+  },
+  {
+    "number": "12",
+    "title": "Bar to further suit."
+  },
+  {
+    "number": "13",
+    "title": "When foreign judgment not conclusive."
+  },
+  {
+    "number": "14",
+    "title": "Presumption as to foreign judgments."
+  },
+  {
+    "number": "15",
+    "title": "Court in which suits to be instituted."
+  },
+  {
+    "number": "16",
+    "title": "Suits to be instituted where subject-matter situate."
+  },
+  {
+    "number": "17",
+    "title": "Suits for immovable property situate within jurisdiction of different Courts."
+  },
+  {
+    "number": "18",
+    "title": "Place of Institution of suit where local limits of jurisdiction of Courts are uncertain."
+  },
+  {
+    "number": "19",
+    "title": "Suits for compensation for wrongs to person or movables."
+  },
+  {
+    "number": "20",
+    "title": "Other suits to be instituted where defendants reside or cause of action arises."
+  },
+  {
+    "number": "21",
+    "title": "Objections to jurisdiction."
+  },
+  {
+    "number": "21A",
+    "title": "Bar on suit to set aside decree on objection as to place of suing."
+  },
+  {
+    "number": "22",
+    "title": "Power to transfer suits which may be instituted in more than one Court."
+  },
+  {
+    "number": "23",
+    "title": "To what Court application lies."
+  },
+  {
+    "number": "24",
+    "title": "General power of transfer and withdrawal."
+  },
+  {
+    "number": "25",
+    "title": "Power of Supreme Court to transfer suits, etc."
+  },
+  {
+    "number": "26",
+    "title": "Institution of suits."
+  },
+  {
+    "number": "27",
+    "title": "Summons to defendants."
+  },
+  {
+    "number": "28",
+    "title": "Service of summons where defendant resides in another State."
+  },
+  {
+    "number": "29",
+    "title": "Service of foreign summonses."
+  },
+  {
+    "number": "30",
+    "title": "Power to order discovery and the like."
+  },
+  {
+    "number": "31",
+    "title": "Summons to witness."
+  },
+  {
+    "number": "32",
+    "title": "Penalty for default."
+  },
+  {
+    "number": "33",
+    "title": "Judgment and decree."
+  },
+  {
+    "number": "34",
+    "title": "Interest."
+  },
+  {
+    "number": "35",
+    "title": "Costs."
+  },
+  {
+    "number": "35A",
+    "title": "Compensatory costs in respect of false or vexatious claims or defences."
+  },
+  {
+    "number": "35B",
+    "title": "Costs for causing delay."
+  },
+  {
+    "number": "36",
+    "title": "Application to orders."
+  },
+  {
+    "number": "37",
+    "title": "Definition of Court which passed a decree."
+  },
+  {
+    "number": "38",
+    "title": "Court by which decree may be executed."
+  },
+  {
+    "number": "39",
+    "title": "Transfer of decree."
+  },
+  {
+    "number": "40",
+    "title": "Transfer of decree to Court in another State."
+  },
+  {
+    "number": "41",
+    "title": "Result of execution proceedings to be certified."
+  },
+  {
+    "number": "42",
+    "title": "Powers of Court in executing transferred decree."
+  },
+  {
+    "number": "43",
+    "title": "Execution of decrees passed by Civil Courts in places to which this Code does not extend."
+  },
+  {
+    "number": "44",
+    "title": "Execution of decrees passed by Revenue Courts in places to which this Code does not extend."
+  },
+  {
+    "number": "44A",
+    "title": "Execution of decrees passed by Courts in reciprocating territory."
+  },
+  {
+    "number": "45",
+    "title": "Execution of decrees outside India."
+  },
+  {
+    "number": "46",
+    "title": "Precepts."
+  },
+  {
+    "number": "47",
+    "title": "Questions to be determined by the Court executing decree."
+  },
+  {
+    "number": "48",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "49",
+    "title": "Transferee."
+  },
+  {
+    "number": "50",
+    "title": "Legal representative."
+  },
+  {
+    "number": "51",
+    "title": "Powers of Court to enforce execution."
+  },
+  {
+    "number": "52",
+    "title": "Enforcement of decree against legal representative."
+  },
+  {
+    "number": "53",
+    "title": "Liability of ancestral property."
+  },
+  {
+    "number": "54",
+    "title": "Partition of estate or separation of share."
+  },
+  {
+    "number": "55",
+    "title": "Arrest and detention."
+  },
+  {
+    "number": "56",
+    "title": "Prohibition of arrest or detention of women in execution of decree for money."
+  },
+  {
+    "number": "57",
+    "title": "Subsistence-allowance."
+  },
+  {
+    "number": "58",
+    "title": "Detention and release."
+  },
+  {
+    "number": "59",
+    "title": "Release on ground of illness. IndiaCode"
+  },
+  {
+    "number": "60",
+    "title": "Property liable to attachment and sale in execution of decree."
+  },
+  {
+    "number": "61",
+    "title": "Partial exemption of agricultural produce."
+  },
+  {
+    "number": "62",
+    "title": "Seizure of property in dwelling-house."
+  },
+  {
+    "number": "63",
+    "title": "Property attached in execution of decrees of several Courts."
+  },
+  {
+    "number": "64",
+    "title": "Private alienation of property after attachment to be void."
+  },
+  {
+    "number": "65",
+    "title": "Purchaser’s title."
+  },
+  {
+    "number": "66",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "67",
+    "title": "Power for State Government to make rules as to sales of land in execution of decrees for payment of money."
+  },
+  {
+    "number": "68",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "69",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "70",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "71",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "72",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "73",
+    "title": "Proceeds of execution-sale to be rateably distributed among decree-holders."
+  },
+  {
+    "number": "74",
+    "title": "Resistance to execution."
+  },
+  {
+    "number": "75",
+    "title": "Power of Court to issue commissions."
+  },
+  {
+    "number": "76",
+    "title": "Commission to another Court."
+  },
+  {
+    "number": "77",
+    "title": "Letter of request."
+  },
+  {
+    "number": "78",
+    "title": "Commissions issued by foreign Courts."
+  },
+  {
+    "number": "79",
+    "title": "Suits by or against Government."
+  },
+  {
+    "number": "80",
+    "title": "Notice. IndiaCode"
+  },
+  {
+    "number": "81",
+    "title": "Exemption from arrest and personal appearance."
+  },
+  {
+    "number": "82",
+    "title": "Execution of decree."
+  },
+  {
+    "number": "83",
+    "title": "When aliens may sue."
+  },
+  {
+    "number": "84",
+    "title": "When foreign States may sue."
+  },
+  {
+    "number": "85",
+    "title": "Persons specially appointed by Government to prosecute or defend on behalf of foreign Rulers."
+  },
+  {
+    "number": "86",
+    "title": "Suits against foreign Rulers, Ambassadors and Envoys."
+  },
+  {
+    "number": "87",
+    "title": "Style of foreign Rulers as parties to suits."
+  },
+  {
+    "number": "87A",
+    "title": "Definitions of “foreign State” and “Rulers”."
+  },
+  {
+    "number": "87B",
+    "title": "Application of sections 85 and 86 to Rulers of former Indian States."
+  },
+  {
+    "number": "88",
+    "title": "Where interpleader-suit may be instituted."
+  },
+  {
+    "number": "89",
+    "title": "Settlement of disputes outside the Court."
+  },
+  {
+    "number": "90",
+    "title": "Power to state case for opinion of Court."
+  },
+  {
+    "number": "91",
+    "title": "Public nuisances and other wrongful acts affecting the public."
+  },
+  {
+    "number": "92",
+    "title": "Public charities."
+  },
+  {
+    "number": "93",
+    "title": "Exercise of powers of Advocate-General outside presidency-towns."
+  },
+  {
+    "number": "94",
+    "title": "Supplemental proceedings."
+  },
+  {
+    "number": "95",
+    "title": "Compensation for obtaining arrest, attachment or injunction on insufficient ground."
+  },
+  {
+    "number": "96",
+    "title": "Appeal from original decree."
+  },
+  {
+    "number": "97",
+    "title": "Appeal from final decree where no appeal from preliminary decree."
+  },
+  {
+    "number": "98",
+    "title": "Decision where appeal heard by two or more Judges."
+  },
+  {
+    "number": "99",
+    "title": "No decree to be reversed or modified for error or irregularity not affecting merits or jurisdiction. IndiaCode"
+  },
+  {
+    "number": "99A",
+    "title": "No order under section 47 to be reversed or modified unless decision of the case is prejudicially affected."
+  },
+  {
+    "number": "100",
+    "title": "Second appeal."
+  },
+  {
+    "number": "100A",
+    "title": "No further appeal in certain cases."
+  },
+  {
+    "number": "101",
+    "title": "Second appeal on no other grounds."
+  },
+  {
+    "number": "102",
+    "title": "No second appeal in certain cases."
+  },
+  {
+    "number": "103",
+    "title": "Power of High Court to determine issue of fact."
+  },
+  {
+    "number": "104",
+    "title": "Orders from which appeal lies."
+  },
+  {
+    "number": "105",
+    "title": "Other orders."
+  },
+  {
+    "number": "106",
+    "title": "What Courts to hear appeals."
+  },
+  {
+    "number": "107",
+    "title": "Powers of Appellate Court."
+  },
+  {
+    "number": "108",
+    "title": "Procedure in appeals from appellate decrees and orders."
+  },
+  {
+    "number": "109",
+    "title": "When appeals lie to the Supreme Court."
+  },
+  {
+    "number": "110",
+    "title": "[Omitted.]."
+  },
+  {
+    "number": "111",
+    "title": "[Omitted.]."
+  },
+  {
+    "number": "111A",
+    "title": "[Omitted.]."
+  },
+  {
+    "number": "112",
+    "title": "Savings."
+  },
+  {
+    "number": "113",
+    "title": "Reference to High Court."
+  },
+  {
+    "number": "114",
+    "title": "Review."
+  },
+  {
+    "number": "115",
+    "title": "Revision."
+  },
+  {
+    "number": "116",
+    "title": "Part to apply only to certain High Courts."
+  },
+  {
+    "number": "117",
+    "title": "Application of Code to High Courts."
+  },
+  {
+    "number": "118",
+    "title": "Execution of decree before ascertainment of costs."
+  },
+  {
+    "number": "119",
+    "title": "Unauthorised persons not to address Court."
+  },
+  {
+    "number": "120",
+    "title": "Provisions not applicable to High Court in original civil jurisdiction."
+  },
+  {
+    "number": "121",
+    "title": "Effect of rules in First Schedule."
+  },
+  {
+    "number": "122",
+    "title": "Power of certain High Courts to make rules."
+  },
+  {
+    "number": "123",
+    "title": "Constitution of Rules Committees in certain States."
+  },
+  {
+    "number": "124",
+    "title": "Committee to report to High Court."
+  },
+  {
+    "number": "125",
+    "title": "Power of other High Courts to make rules."
+  },
+  {
+    "number": "126",
+    "title": "Rules to be subject to approval."
+  },
+  {
+    "number": "127",
+    "title": "Publication of rules."
+  },
+  {
+    "number": "128",
+    "title": "Matters for which rules may provide."
+  },
+  {
+    "number": "129",
+    "title": "Power of High Courts to make rules as to their original civil procedure."
+  },
+  {
+    "number": "130",
+    "title": "Powers of other High Courts to make rules as to matters other than procedure."
+  },
+  {
+    "number": "131",
+    "title": "Publication of rules."
+  },
+  {
+    "number": "132",
+    "title": "Exemption of certain women from personal appearance."
+  },
+  {
+    "number": "133",
+    "title": "Exemption of other persons."
+  },
+  {
+    "number": "134",
+    "title": "Arrest other than in execution of decree."
+  },
+  {
+    "number": "135",
+    "title": "Exemption from arrest under civil process."
+  },
+  {
+    "number": "135A",
+    "title": "Exemption of members of legislative bodies from arrest and detention under civil process."
+  },
+  {
+    "number": "136",
+    "title": "Procedure where person to be arrested or property to be attached is outside district."
+  },
+  {
+    "number": "137",
+    "title": "Language of subordinate Courts."
+  },
+  {
+    "number": "138",
+    "title": "Power of High Court to require evidence to be recorded in English."
+  },
+  {
+    "number": "139",
+    "title": "Oath on affidavit by whom to be administered."
+  },
+  {
+    "number": "140",
+    "title": "Assessors in causes of salvage, etc."
+  },
+  {
+    "number": "141",
+    "title": "Miscellaneous proceedings."
+  },
+  {
+    "number": "142",
+    "title": "Orders and notices to be in writing."
+  },
+  {
+    "number": "143",
+    "title": "Postage."
+  },
+  {
+    "number": "144",
+    "title": "Application for restitution."
+  },
+  {
+    "number": "145",
+    "title": "Enforcement of liability of surety."
+  },
+  {
+    "number": "146",
+    "title": "Proceedings by or against representatives."
+  },
+  {
+    "number": "147",
+    "title": "Consent or agreement by persons under disability."
+  },
+  {
+    "number": "148",
+    "title": "Enlargement of time."
+  },
+  {
+    "number": "148A",
+    "title": "Right to lodge a caveat."
+  },
+  {
+    "number": "149",
+    "title": "Power to make up deficiency of court-fees."
+  },
+  {
+    "number": "150",
+    "title": "Transfer of business."
+  },
+  {
+    "number": "151",
+    "title": "Saving of inherent powers of Court."
+  },
+  {
+    "number": "152",
+    "title": "Amendment of judgments, decrees or orders. IndiaCode"
+  },
+  {
+    "number": "153",
+    "title": "General power to amend."
+  },
+  {
+    "number": "153A",
+    "title": "Power to amend decree or order where appeal is summarily dismissed."
+  },
+  {
+    "number": "153B",
+    "title": "Place of trial to be deemed to be open Court."
+  },
+  {
+    "number": "154",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "155",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "156",
+    "title": "[Repealed.]."
+  },
+  {
+    "number": "157",
+    "title": "Continuance of orders under repealed enactments."
+  },
+  {
+    "number": "158",
+    "title": "Reference to Code of Civil Procedure and other repealed enactments."
+  }
+]

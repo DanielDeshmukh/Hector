@@ -19,7 +19,8 @@
             "page_1based": 31,
             "markers_found": [
               "46"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 43,
@@ -27,7 +28,8 @@
               "90",
               "91",
               "92"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 51,
@@ -35,7 +37,8 @@
               "114",
               "115",
               "116"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 71,
@@ -43,7 +46,8 @@
               "209",
               "210",
               "211"
-            ]
+            ],
+            "in_record_span": true
           },
           {
             "page_1based": 80,
@@ -51,7 +55,8 @@
               "252",
               "253",
               "254"
-            ]
+            ],
+            "in_record_span": true
           }
         ]
       }
@@ -102,17 +107,26 @@
     "G6": {
       "status": "PASS",
       "evidence": {
-        "primary_fragment_rate": 0.996737,
-        "diagnostic_whole_record_rate": 0.984317,
-        "diagnostic_line_rate": 0.999768,
+        "primary_fragment_rate": 0.996687,
+        "diagnostic_whole_record_rate": 0.984415,
+        "diagnostic_line_rate": 0.999764,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [
           "Illustration.",
           "Illustrations.",
           "IndiaCode"
         ],
-        "windows": 5823,
+        "windows": 5735,
         "primary_failures": 19,
+        "mega_table_records": [],
+        "table_content_records": [
+          "bns-2023:s:102:0",
+          "bns-2023:s:106:0",
+          "bns-2023:s:172:0",
+          "bns-2023:s:182:0",
+          "bns-2023:s:203:0",
+          "bns-2023:s:217:0"
+        ],
         "worst_5": [
           {
             "id": "bns-2023:s:2:0",
