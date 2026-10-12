@@ -28,6 +28,7 @@ import json
 import os
 import re
 import sys
+from gold_common import qualify_title, collect_dup_titles
 
 from gen_gold_ipc import answer_points, grounded
 
@@ -79,7 +80,7 @@ def log(msg: str) -> None:
 def make_questions(rec: dict, i: int) -> list[dict]:
     n = str(rec["number"])
     title = (rec.get("title") or "").strip() or f"Article {n}"
-    t = re.sub(r"\s+", " ", title).lower().rstrip(".")
+    t = qualify_title(title, rec.get("chapter") or "", DUP_TITLES, ACT.lower(), n)
     text = rec.get("text") or ""
     doc = rec.get("embedding_text") or ""
 
@@ -88,13 +89,6 @@ def make_questions(rec: dict, i: int) -> list[dict]:
         return []  # never emit an ungrounded item
 
     spec = [f"{ACT} {n}"]
-    # Duplicate titles (e.g. recurring titles across Parts) make the
-    # number-free question ambiguous - qualify it with chapter context so
-    # retrieval can disambiguate the intended section.
-    if title.lower().rstrip(".") in DUP_TITLES:
-        chapter = (rec.get("chapter") or "").strip()
-        if chapter:
-            t = f"{t} in {chapter}"
     a = NO_NUM[i % len(NO_NUM)].format(t=t, n=n, title=title)
     b = WITH_NUM[(i * 5 + 1) % len(WITH_NUM)].format(t=t, n=n, title=title)
     if a == b:

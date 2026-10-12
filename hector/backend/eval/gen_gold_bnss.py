@@ -34,6 +34,7 @@ import json
 import os
 import re
 import sys
+from gold_common import qualify_title, collect_dup_titles
 
 from gen_gold_ipc import answer_points, grounded
 
@@ -45,6 +46,9 @@ OUT_IT1 = os.path.join(HERE, "gold_bnss_iteration1.jsonl")
 EXISTING = os.path.join(HERE, "gold_set.jsonl")
 
 ACT = "BNSS"
+
+# Titles shared by 2+ sections; filled in main() via collect_dup_titles.
+DUP_TITLES: set[str] = set()
 SEED = 20261013
 
 # Carried into every run: the act-independent guards (21) keep abstention,
@@ -84,7 +88,7 @@ def log(msg: str) -> None:
 def make_questions(rec: dict, i: int) -> list[dict]:
     n = str(rec["number"])
     title = (rec.get("title") or "").strip() or f"Section {n}"
-    t = re.sub(r"\s+", " ", title).lower().rstrip(".")
+    t = qualify_title(title, rec.get("chapter") or "", DUP_TITLES, ACT.lower(), n)
     text = rec.get("text") or ""
     doc = rec.get("embedding_text") or ""
 
@@ -131,6 +135,11 @@ def main() -> int:
         seen.add(n)
         sections.append(rec)
     log(f"seed={SEED} v2 records={len(recs)} distinct sections={len(sections)}")
+
+    # Detect duplicate titles so number-free questions can be chapter-qualified.
+    DUP_TITLES.update(collect_dup_titles(sections))
+    if DUP_TITLES:
+        log(f"duplicate titles (chapter-qualified): {len(DUP_TITLES)}")
 
     if args.limit:
         sections = sections[: args.limit]

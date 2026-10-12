@@ -365,7 +365,12 @@ class QueryExpander:
                     # the 9 residual misses while the raw question hit top-10.
                     if self._STATUTE_NAME.search(val_lower):
                         continue
-                    if val_lower in query_lower and key not in matched:
+                    # Word-boundary match: "section 15" must not match inside
+                    # "section 153aa". Anchor the trailing number token.
+                    if re.search(
+                        rf"(?<![a-z0-9]){re.escape(val_lower)}(?![a-z0-9])",
+                        query_lower,
+                    ) and key not in matched:
                         matched.append(key)
                         break
 

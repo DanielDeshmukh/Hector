@@ -35,6 +35,8 @@ import os
 import re
 import sys
 
+from gold_common import qualify_title, collect_dup_titles
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 INGEST = os.path.abspath(os.path.join(HERE, "..", "ingest_v2"))
 V2_RECORDS = os.path.join(INGEST, "output", "ipc-1860.jsonl")
@@ -44,6 +46,9 @@ OUT_IT1 = os.path.join(EVAL, "gold_iteration1.jsonl")
 EXISTING = os.path.join(EVAL, "gold_set.jsonl")
 
 ACT = "IPC"
+
+# Titles shared by 2+ sections; filled in main() via collect_dup_titles.
+DUP_TITLES: set[str] = set()
 SEED = 20261013
 
 # carried over: corpus-independent (abstain / out-of-scope / injection / one
@@ -146,7 +151,7 @@ def grounded(points: list[str], doc: str) -> bool:
 def make_questions(rec: dict, i: int) -> list[dict]:
     n = str(rec["number"])
     title = (rec.get("title") or "").strip() or f"Section {n}"
-    t = re.sub(r"\s+", " ", title).lower().rstrip(".")
+    t = qualify_title(title, rec.get("chapter") or "", DUP_TITLES, ACT.lower(), n)
     text = rec.get("text") or ""
     doc = rec.get("embedding_text") or ""
 
@@ -183,6 +188,11 @@ def main() -> int:
     with open(V2_RECORDS, encoding="utf-8") as fh:
         recs = [json.loads(l) for l in fh if l.strip()]
     log(f"seed={SEED} v2 records={len(recs)}")
+
+    # Detect duplicate titles so number-free questions can be chapter-qualified.
+    DUP_TITLES.update(collect_dup_titles(recs))
+    if DUP_TITLES:
+        log(f"duplicate titles (chapter-qualified): {len(DUP_TITLES)}")
 
     if args.limit:
         recs = recs[: args.limit]
