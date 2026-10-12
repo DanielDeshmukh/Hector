@@ -1,0 +1,151 @@
+{
+  "long_unsplit": [
+    {
+      "number": "22",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 5049
+    },
+    {
+      "number": "31A",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3093
+    },
+    {
+      "number": "239AA",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 5297
+    },
+    {
+      "number": "279A",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 4016
+    },
+    {
+      "number": "320",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3592
+    },
+    {
+      "number": "338",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3920
+    },
+    {
+      "number": "338A",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3623
+    },
+    {
+      "number": "338B",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3942
+    },
+    {
+      "number": "352",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 5372
+    },
+    {
+      "number": "356",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 5118
+    },
+    {
+      "number": "371A",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 7152
+    },
+    {
+      "number": "371D",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 7947
+    },
+    {
+      "number": "371F",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 6333
+    },
+    {
+      "number": "395",
+      "part_index": 0,
+      "flags": [
+        "LONG_UNSPLIT"
+      ],
+      "chars": 3825
+    }
+  ],
+  "null_titles": [],
+  "split_sections": [
+    {
+      "number": "19",
+      "part_count": 2
+    },
+    {
+      "number": "145",
+      "part_count": 2
+    },
+    {
+      "number": "323B",
+      "part_count": 2
+    },
+    {
+      "number": "332",
+      "part_count": 2
+    },
+    {
+      "number": "366",
+      "part_count": 3
+    },
+    {
+      "number": "372",
+      "part_count": 2
+    }
+  ],
+  "page_spanning_records": 198,
+  "a1_shown": [
+    "3",
+    "7",
+    "11",
+    "15",
+    "16"
+  ]
+}

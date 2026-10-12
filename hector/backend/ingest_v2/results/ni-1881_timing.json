@@ -3,27 +3,27 @@
   "steps": {
     "step2_inspect": {
       "exit": 0,
-      "seconds": 1.07
+      "seconds": 2.14
     },
     "step3_clean": {
       "exit": 0,
-      "seconds": 0.58
+      "seconds": 0.98
     },
     "step4_segment": {
       "exit": 0,
-      "seconds": 0.62
+      "seconds": 0.96
     },
     "step5_records": {
       "exit": 0,
-      "seconds": 0.45
+      "seconds": 0.77
     },
     "step6_validate": {
       "exit": 0,
-      "seconds": 1.93
+      "seconds": 4.3
     },
     "step7_report": {
       "exit": 0,
-      "seconds": 0.43
+      "seconds": 0.83
     }
   }
 }

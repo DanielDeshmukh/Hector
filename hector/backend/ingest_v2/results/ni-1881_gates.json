@@ -79,7 +79,7 @@
       "status": "PASS",
       "evidence": {
         "part0_records": 155,
-        "needed_prefix_stripping": 11,
+        "needed_prefix_stripping": 0,
         "failures": []
       }
     },
@@ -110,7 +110,7 @@
       "status": "PASS",
       "evidence": {
         "primary_fragment_rate": 0.996885,
-        "diagnostic_whole_record_rate": 0.986111,
+        "diagnostic_whole_record_rate": 0.98534,
         "diagnostic_line_rate": 1.0,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [
@@ -175,7 +175,7 @@
         "limit": 3000,
         "flagged_long_unsplit": [],
         "unflagged_over_limit": [],
-        "longest_text": 1803
+        "longest_text": 1801
       }
     },
     "G9": {

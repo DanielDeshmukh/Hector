@@ -67,7 +67,7 @@ HEADER_RE = re.compile(
     r"ARRANG?EMENT\s+OF\s+(THE\s+)?SECTIONS|TABLE\s+OF\s+CONTENTS|"
     r"^\s*CONTENTS\s*$|^\s*SECTIONS\s*$", re.I | re.M)
 # number-only ToC line (e.g. "1." on its own line, title on the next)
-BARE_NUM_RE = re.compile(r"^(\d{1,3}[A-Z]*)\.\s*$")
+BARE_NUM_RE = re.compile(r"^\[?\s*(\d{1,3}[A-Z]*)\.\s*\]?\s*$")
 
 
 def find_header_page(doc):
@@ -124,7 +124,7 @@ def collect_entries(doc, header_page):
     # expected_count came out 498 while the body held 531 (G2 anchor_ok
     # false, and G6 because the missing ToC tail left the last record
     # absorbing the schedules). The termination is decided by the
-    # data-driven checks below: density < 0.25 marks the first body page,
+    # data-driven checks below: density < 0.10 marks the first body page,
     # a backward numbering step marks a restart, and 700 entries caps the
     # pathological case.
     for i in range(header_page, len(doc)):
@@ -136,6 +136,16 @@ def collect_entries(doc, header_page):
             m = V.ENTRY_RE.match(s)
             bare = BARE_NUM_RE.match(s)
             if m and not V.FOOT_RE.match(s):
+                num_base = int(re.sub(r"[A-Za-z]+", "", m.group(1)))
+                # sanity: a jump of >200 ahead of the current max is a
+                # wrapped title tail (e.g. "1950. Omitted.]" after art 389),
+                # not a real entry - treat as continuation
+                if max_base is not None and num_base > max_base + 200:
+                    if cont and is_continuation(s, entries):
+                        entries[-1][1] = (entries[-1][1] + " " + s).strip()
+                    else:
+                        cont = False
+                    continue
                 title = re.sub(r"\.{2,}\s*\d{1,3}\s*$", "", m.group(2)).strip()
                 entries.append([m.group(1), title])
                 cont = True
@@ -149,7 +159,7 @@ def collect_entries(doc, header_page):
         n_entries = len(entries) - mark
         density = n_entries / max(1, len(texts))
         page_log.append((i + 1, mode, len(texts), n_entries, density))
-        if not started and density >= 0.25:
+        if not started and density >= 0.10:
             started = True
         page_bases = [int(re.sub(r"[A-Za-z]+", "", e[0]))
                       for e in entries[mark:]]
@@ -160,7 +170,7 @@ def collect_entries(doc, header_page):
             # and drop that page's entries (body is scanned separately)
             del entries[mark:]
             break
-        if started and density < 0.25:
+        if started and density < 0.10:
             # first page at/after start below threshold is the body page:
             # its entries were already collected above - take them back out
             del entries[mark:]

@@ -6,7 +6,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 11243
+      "chars": 11241
     },
     {
       "number": "9",
@@ -30,7 +30,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 3154
+      "chars": 3152
     },
     {
       "number": "36A",
@@ -38,7 +38,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 3632
+      "chars": 3630
     },
     {
       "number": "42",
@@ -54,7 +54,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 4985
+      "chars": 4983
     },
     {
       "number": "68H",
@@ -62,7 +62,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 4442
+      "chars": 4440
     }
   ],
   "null_titles": [],

@@ -1,24 +1,24 @@
-# HECTOR ingest_v2 pilot report - The Limitation Act, 1963 (limitation-1963)
+# HECTOR ingest_v2 pilot report - The Code of Civil Procedure, 1908 (cpc-1908)
 
-- source: sources/limitation-1963.pdf (24 pages as scanned)
-- records written: 32 (output/limitation-1963.jsonl)
+- source: sources/cpc-1908.pdf (347 pages as scanned)
+- records written: 174 (output/cpc-1908.jsonl)
 - gate summary: all gates OK
 - seeds: G1 middle pages 20261010; A2 removed-line sample 20261012; step7 record sample 20261011
-- external anchor: max plain section = 32 (expected 511) -> WARNING
+- external anchor: max plain section = 158 (expected 511) -> WARNING
 
 ## Gate table (G1-G9)
 
 | Gate | Status | Evidence |
 |---|---|---|
-| G1 | **PASS** | page1 act_name=True, year=True; middle pages 7, 10, 11, 12, 18 all have markers (seed 20261010) |
-| G2 | **PASS** | mode=toc; expected 32 sections; records 32; missing 0 []; extra 0 []; external anchor max_plain=32 vs 511 -> WARNING |
-| G3 | **PASS** | part-0 records 32; prefix stripping needed 0; failures 0 |
+| G1 | **PASS** | page1 act_name=True, year=True; middle pages 97, 146, 152, 176, 256 all have markers (seed 20261010) |
+| G2 | **PASS** | mode=toc; expected 171 sections; records 174; missing 0 []; extra 0 []; external anchor max_plain=158 vs 511 -> WARNING |
+| G3 | **PASS** | part-0 records 171; prefix stripping needed 0; failures 0 |
 | G4 | **PASS** | page-number lines 0; hyphen breaks 0; boilerplate 0; repeated>=30% pages 0 |
-| G5 | **PASS** | records 32; duplicates []; empty []; non-nullable problems 0 |
-| G6 | **PASS** | PRIMARY fragment windows 490 total, 99.7959% found (>=99% required; reference get_text('text', sort=True)); DIAG whole-record 97.992%, DIAG lines 100.0%; failures 1 |
+| G5 | **PASS** | records 174; duplicates []; empty []; non-nullable problems 0 |
+| G6 | **PASS** | PRIMARY fragment windows 2599 total, 99.7691% found (>=99% required; reference get_text('text', sort=True)); DIAG whole-record 97.8699%, DIAG lines 100.0%; failures 6 |
 | G7 | **PASS** | parent order matches marker order; parts consistent; problems [] |
-| G8 | **PASS** | limit 3000 chars; longest 3533; unflagged overs 0; flagged 1 |
-| G9 | **PASS** | detected 939 = attached 5 + unattached 934; accounting_ok=True; records containing footnote lines 0 |
+| G8 | **PASS** | limit 3000 chars; longest 14222; unflagged overs 0; flagged 6 |
+| G9 | **PASS** | detected 7001 = attached 264 + unattached 6737; accounting_ok=True; records containing footnote lines 0 |
 
 Notes:
 - G2 is the ToC cross-check: every section listed in the book's Arrangement of Sections must have at least one record (100% coverage required; missing and extra numbers listed in gate evidence). Range markers count as covering their printed span; the external anchor 511 is reported separately above.
@@ -26,159 +26,177 @@ Notes:
 
 ## Coverage / sequence detail (A4, A5, A6)
 
-- accepted markers: 32; forms: {'M': 0, 'D': 30, 'R': 2}
-- lettered/other non-plain numbers: 0 entries ()
-- rejected candidates: 150
+- accepted markers: 171; forms: {'M': 1, 'D': 158, 'R': 12}
+- lettered/other non-plain numbers: 13 entries (21A, 35A, 35B, 44A, 87A, 87B, 99A, 100A, 111A, 135A, 148A, 153A...)
+- rejected candidates: 1917
 - gaps: []
-- A4 classification counts (number-lines): {'restated': 32, 'footnote': 149, 'UNKNOWN': 1}; unlabeled removals 0
-- A4 UNKNOWN lines: 0 (full context in results/limitation-1963_numlines.json):
-- A5 LOOKAHEAD_LINES=40, longest actually used=1, restated >2 pages away: []
+- A4 classification counts (number-lines): {'restated': 171, 'footnote': 1911, 'UNKNOWN': 6, 'margin': 1}; unlabeled removals 0
+- A4 UNKNOWN lines: 3 (full context in results/cpc-1908_numlines.json):
+  - line 1970 p72: '115. Revision.—The High Court, in cases arising out of original suits or other proceedings of the'
+  - line 1995 p73: '3. Saving.—The amendment made by this Act shall not affect the validity, invalidity, effect  or'
+  - line 2003 p73: '115. Revision.—(1) The High Court, in cases arising out of original suits or other proceedings of the'
+- A5 LOOKAHEAD_LINES=40, longest actually used=23, restated >2 pages away: []
 - A6 scanner iterations: 3 of the A6 maximum (see ASSUMPTIONS); iteration outcome: 0 gaps in 1..511.
 
 ## A1 page-joining evidence (first 5 page-spanning records)
 
-- page-spanning records: 8
-- section 2 pages p3-p4
-  - join 3->3 removed between: ['boilerplate']
-  - before: ...'2. Definitions.—In this Act, unless the context otherwise requires,—\n(a) “applicant” includes—'
-  - after: '(i) a petitioner;\n(ii) any person from or through whom an applicant derives his right to apply;\n(iii) any person whose estate is represented'
-  - join 3->4 removed between: ['footnote', 'page_number']
-  - before: ...'f derives his right to sue;\n(ii) any person whose estate is represented by the plaintiff as executor, administrator or other\nrepresentative;'
-  - after: '(j) “period of limitation” means the period of limitation prescribed for any suit, appeal or\napplication by the Schedule, and “prescribed pe'
-- section 6 pages p4-p5
-  - join 4->5 removed between: ['page_number']
-  - before: ...'after the disability has\nceased, as would otherwise have been allowed from the time specified there for in the third column of the\nSchedule.'
-  - after: '(2) Where such person is, at the time from which the prescribed period is to be reckoned, affected by\ntwo such disabilities, or where, befor'
-- section 11 pages p5-p6
-  - join 5->6 removed between: ['page_number']
-  - before: ...'try shall be a\ndefence to a suit instituted in the said territories on a contract entered into in that State on in a foreign\ncountry unless—'
-  - after: '(a) the rule has extinguished the contract; and\n(b) the parties were domiciled in that State or in the foreign country during the period pre'
-- section 14 pages p6-p7
-  - join 6->7 removed between: ['footnote', 'page_number']
-  - before: ...'a former civil proceeding was pending, the day on which\nthat proceeding was instituted and the day on which it ended shall both be counted;'
-  - after: '(b) a plaintiff or an applicant resisting an appeal shall be deemed to be prosecuting a proceeding;\n(c) misjoinder of parties or of causes o'
-- section 17 pages p7-p8
-  - join 7->8 removed between: ['page_number']
-  - before: ...'mistake; or\n(d) where any document necessary to establish the right of the plaintiff or applicant has been\nfraudulently concealed from him,'
-  - after: 'the period of limitation shall not begin to run until the plaintiff or applicant has discovered the fraud or\nthe mistake or could, with reas'
-  - join 8->8 removed between: ['boilerplate']
-  - before: ...'s not a party to the concealment and, did not at the time of purchase know, or have\nreason to believe, that the document had been concealed.'
-  - after: '(2) Where a judgment-debtor has, by fraud or force, prevented the execution of a decree or order\nwithin the period of limitation, the court'
+- page-spanning records: 34
+- section 1 pages p34-p35
+  - join 34->35 removed between: ['boilerplate', 'footnote', 'page_number']
+  - before: ...'and extent.—(1) This Act may be cited as the Code of Civil\nProcedure, 1908.\n(2) It shall come into force on the first day of January, 1909.'
+  - after: '(3) It extends to the whole of India except—\n2*\n       *\n              *\n       *\n    *\n(b) the State of Nagaland and the tribal areas:\nProv'
+- section 2 pages p35-p37
+  - join 35->35 removed between: ['boilerplate']
+  - before: ...'2. Definitions.—In this Act, unless there is anything repugnant in the subject or context,—\n       (1) “Code” includes rules;'
+  - after: '(2) “decree” means the formal expression of an adjudication which, so far as regards the Court\nexpressing it, conclusively determines the ri'
+  - join 35->36 removed between: ['footnote', 'page_number']
+  - before: ...'3 and 87A, means the territory\nof India excluding the State of Jammu and Kashmir;]\n(8) “Judge” means the presiding officer of a Civil Court;'
+  - after: '(9) “judgment” means the statement given by the Judge of the grounds of a decree or order;\n(10) “judgment-debtor” means any person ag'
+  - join 36->36 removed between: ['boilerplate']
+  - before: ...'plead for another in Court, and includes an\nadvocate, a vakil and an attorney of a High Court;\n(16) “prescribed” means prescribed by rules;'
+  - after: '(17) “public officer” means a person falling under any of the following descriptions, namely:—\n(a) every Judge;\n(b) every member of  1[an Al'
+  - join 36->37 removed between: ['footnote', 'page_number']
+  - before: ...'eemed to include stock, debenture stock, debentures or\nbonds; and\n(20) “signed”, save in the case of a judgment or decree, includes stamped.'
+  - after: '*\n*\n*\n*'
+- section 9 pages p38-p39
+  - join 38->38 removed between: ['boilerplate']
+  - before: ...'ned) have jurisdiction to try all suits of a civil nature excepting suits of which their cognizance is\neither expressly or impliedly barred.'
+  - after: 'Explanation I].—A suit in which the right to property or to an office is contested is a suit of a civil\nnature, notwithstanding that such ri'
+  - join 38->38 removed between: ['header']
+  - before: ...'er or not any fees are attached\nto the office referred to in Explanation I or whether or not such office is attached to a particular place.]'
+  - after: 'Maharashtra.—\nSection 9A of the Code of Civil Procedure, 1908, in its application to the State of Maharashtra\n(hereinafter referred to as “t'
+  - join 38->39 removed between: ['footnote', 'page_number']
+  - before: ...'ion is pending before a\nrevisional Court, on the date of commencement of the Amendment Act, such revisional proceedings shall\nstand abated :'
+  - after: 'Provided that, where a decree in such suit is appealed from any error, defect or irregularity in the order\nupholding jurisdiction shall be t'
+  - join 39->39 removed between: ['boilerplate']
+  - before: ...'and the Court shall, at the time of deciding the application in which such an\norder is made, either confirm or vacate or modify such order.'
+  - after: 'Vide Maharashtra Act 61 of 2018, sec. 3.]\nMaharashtra.—\nIn section 3 of the Code of Civil Procedure (Maharashtra Amendment) Act, 2018, for c'
+- section 11 pages p39-p40
+  - join 39->40 removed between: ['footnote', 'page_number']
+  - before: ...'try\nsuch subsequent suit or the suit in which such issue has been subsequently raised, and has been heard and\nfinally decided by such Court.'
+  - after: 'Explanation I.—The expression “former suit” shall denote a suit which has been decided prior to a suit\nin question whether or not it was ins'
+  - join 40->40 removed between: ['boilerplate']
+  - before: ...'a\nproceeding for the execution of the decree, question arising in such proceeding and a former proceeding for the\nexecution of that decree.'
+  - after: 'Explanation VIII.—An issue heard and finally decided by a Court of limited jurisdiction, competent to\ndecide such issue, shall operate as re'
+- section 16 pages p40-p41
+  - join 40->41 removed between: ['footnote', 'page_number']
+  - before: ...'by any law, suits—\n(a) for the recovery of immovable property with or without rent or profits,\n(b) for the partition of immovable property,'
+  - after: '(c)  for foreclosure, sale or redemption in the case of a mortgage of or charge upon immovable\nproperty,\n(d) or the determination of any oth'
 
 ## A2 verbatim / removal labels
 
-- A2 PRIMARY fragment windows: 99.7959% (threshold 99%)
-- DIAGNOSTIC whole-record windows: 97.992%
+- A2 PRIMARY fragment windows: 99.7691% (threshold 99%)
+- DIAGNOSTIC whole-record windows: 97.8699%
 - DIAGNOSTIC cleaned-lines-in-raw: 100.0%
-- removal label counts: {'boilerplate': 9, 'footnote': 9, 'page_number': 9, 'header': 9}; unlabeled removals: 0 (unlabeled = FAIL)
-- 20-line removed sample printed with seed 20261012: see results/limitation-1963_step6_validate.log
+- removal label counts: {'boilerplate': 52, 'footnote': 318, 'page_number': 52, 'header': 37, 'separator': 2}; unlabeled removals: 0 (unlabeled = FAIL)
+- 20-line removed sample printed with seed 20261012: see results/cpc-1908_step6_validate.log
 
 ## A3 statuses
 
-- status counts: {'in_force': 30, 'omitted': 2}
-- R-form (omitted) sections: 28, 32
+- status counts: {'in_force': 162, 'omitted': 12}
+- R-form (omitted) sections: 110, 111, 111A, 154, 155, 156, 48, 66, 69, 70, 71, 72
 
 ## 20 random records (seed 20261011)
 
-### 1. limitation-1963:s:32:0
-- number='32', title='Repeal', chapter=None, pages 11-11, status=omitted, chars=117, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
-- text: 32. [Repeal.]—Rep. by Repealing and Amending Act, 1974 (56 of 1974), s. 2 and the First Schedule (w.e.f. 20-12-1974)....
+### 1. cpc-1908:s:114:0
+- number='114', title='Review', chapter=None, pages 71-71, status=in_force, chars=480, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 114. Review.—Subject as aforesaid, any person considering himself aggrieved— (a) by a decree or order from which an appeal is allowed by this Code, but from which no appeal has been preferred, (b) by a decree or order from which no appeal i...
 
-### 2. limitation-1963:s:12:0
-- number='12', title='Exclusion of time in legal proceedings', chapter=None, pages 6-6, status=in_force, chars=1175, parts 1/1
+### 2. cpc-1908:s:83:0
+- number='83', title='When aliens may sue', chapter=None, pages 63-63, status=in_force, chars=656, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
+- text: 83. When aliens may sue.—Alien enemies residing in India with the permission of the Central Government, and alien friends, may sue in any Court otherwise competent to try the suit, as if they were citizens of India, but alien enemies residi...
+
+### 3. cpc-1908:s:115:0
+- number='115', title='Revision', chapter=None, pages 71-76, status=in_force, chars=14222, parts 1/1
+- has: proviso=True, explanation=True, exception=False, illustration=False, amendment_notes=6
+- text: 115. Revision.—4[(1)] The High Court may call for the record of any case which has been decided by any Court subordinate to such High Court and in which no appeal lies thereto, and if such subordinate Court appears— (a) to have exercised a ...
+
+### 4. cpc-1908:s:81:0
+- number='81', title='Exemption from arrest and personal appearance', chapter=None, pages 62-62, status=in_force, chars=473, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 81. Exemption from arrest and personal appearance.—In a suit instituted against a public officer in respect of any act purporting to be done by him in his official capacity— (a) the defendant shall not be liable to arrest nor his property t...
+
+### 5. cpc-1908:s:66:0
+- number='66', title='Suit against purchaser not maintainable on ground of purchase being on behalf of plaintiff', chapter=None, pages 59-59, status=omitted, chars=155, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
+- text: 66. [Suit against purchaser not maintainable on ground of purchase being on behalf of plaintiff.]— Rep. by Act, 1988 (45 of 1988), s. 7 (w.e.f. 19-5-1988)....
+
+### 6. cpc-1908:s:15:0
+- number='15', title='Court in which suits to be instituted', chapter=None, pages 40-40, status=in_force, chars=127, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 15. Court in which suits to be instituted.—Every suit shall be instituted in the Court of the lowest grade competent to try it....
+
+### 7. cpc-1908:s:11:0
+- number='11', title='Res judicata', chapter=None, pages 39-40, status=in_force, chars=2317, parts 1/1
 - has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=1
-- text: 12. Exclusion of time in legal proceedings.—(1) In computing the period of limitation for any suit, appeal or application, the day from which such period is to be reckoned, shall be excluded. (2) In computing the period of limitation for an...
+- text: 11. Res judicata.—No Court shall try any suit or issue in which the matter directly and substantially in issue has been directly and substantially in issue in a former suit between the same parties, or between parties under whom they or any...
 
-### 3. limitation-1963:s:16:0
-- number='16', title='Effect of death on or before the accrual of the right to sue', chapter=None, pages 7-7, status=in_force, chars=1107, parts 1/1
+### 8. cpc-1908:s:86:0
+- number='86', title='Suits against foreign Rulers, Ambassadors and Envoys', chapter=None, pages 63-64, status=in_force, chars=2698, parts 1/1
+- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=11
+- text: 86. Suits against foreign Rulers, Ambassadors and Envoys.—(1) No. 2*** foreign State may be sued in any Court otherwise competent to try the suit except with the consent of the Central Government certified in writing by a Secretary to that ...
+
+### 9. cpc-1908:s:111a:0
+- number='111A', title='Appeals to Federal Court', chapter=None, pages 71-71, status=omitted, chars=106, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=2
+- text: 111A. [Appeals to Federal Court] Rep. by the Federal Court Act, 1941 (21 of 1941), s. 2 (w.e.f. 1-9-1942)....
+
+### 10. cpc-1908:s:10:0
+- number='10', title='Stay of suit', chapter=None, pages 39-39, status=in_force, chars=723, parts 1/1
+- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=4
+- text: 10. Stay of suit.—No Court shall proceed with the trial of any suit in which the matter in issue is also directly and substantially in issue in a previously instituted suit between the same parties, or between parties under whom they or any...
+
+### 11. cpc-1908:s:4:0
+- number='4', title='Savings', chapter=None, pages 37-37, status=in_force, chars=668, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if he were living, have a right to institute a suit or make an application dies before the right accrues, or where a right to institute a suit o...
+- text: 4. Savings.—(1) In the absence of any specific provision to the contrary, nothing in this Code shall be deemed to limit or otherwise affect any special or local law now in force or any special jurisdiction or power conferred, or any special...
 
-### 4. limitation-1963:s:11:0
-- number='11', title='Suits on contracts entered into outside the territories to which the Act extends', chapter=None, pages 5-6, status=in_force, chars=694, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 11. Suits on contracts entered into outside the territories to which the Act extends.—(1) Suits instituted in the territories to which this Act extends on contracts entered into in the State of Jammu and Kashmir or in a foreign country shal...
-
-### 5. limitation-1963:s:9:0
-- number='9', title='Continuous running of time', chapter=None, pages 5-5, status=in_force, chars=389, parts 1/1
-- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 9. Continuous running of time.—Where once time has begun to run, no subsequent disability or inability to institute a suit or make an application stops it: Provided that, where letters of administration to the estate of a creditor have been...
-
-### 6. limitation-1963:s:2:0
-- number='2', title='Definitions', chapter=None, pages 3-4, status=in_force, chars=2217, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 2. Definitions.—In this Act, unless the context otherwise requires,— (a) “applicant” includes— (i) a petitioner; (ii) any person from or through whom an applicant derives his right to apply; (iii) any person whose estate is represented by t...
-
-### 7. limitation-1963:s:27:0
-- number='27', title='Extinguishment of right to property', chapter=None, pages 10-10, status=in_force, chars=209, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 27. Extinguishment of right to property.—At the determination of the period hereby limited to any person for instituting a suit for possession of any property, his right to such property shall be extinguished....
-
-### 8. limitation-1963:s:31:0
-- number='31', title='Provisions as to barred or pending suits, etc', chapter=None, pages 11-11, status=in_force, chars=416, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 31. Provisions as to barred or pending suits, etc.—Nothing in this Act shall,— (a) enable any suit, appeal or application to be instituted, preferred or made, for which the period of limitation prescribed by the Indian Limitation Act, 1908 ...
-
-### 9. limitation-1963:s:30:0
-- number='30', title='Provision for suits, etc., for which the prescribed period is shorter than the period prescribed by the Indian Limitation Act, 1908', chapter=None, pages 10-11, status=in_force, chars=3533, parts 1/1
-- has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=2
-- text: 30. Provision for suits, etc., for which the prescribed period is shorter than the period prescribed by the Indian Limitation Act, 1908.—Notwithstanding anything contained in this Act,— (a) any suit for which the period of limitation is sho...
-
-### 10. limitation-1963:s:26:0
-- number='26', title='Exclusion in favour of reversioner of serivent tenement', chapter=None, pages 10-10, status=in_force, chars=611, parts 1/1
-- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 26. Exclusion in favour of reversioner of serivent tenement.—Where any land or water upon, over or from, which any easement has been enjoyed or derived has been held under or by virtue of any interest for life or in terms of years exceeding...
-
-### 11. limitation-1963:s:1:0
-- number='1', title='Short title, extent and commencement', chapter=None, pages 3-3, status=in_force, chars=260, parts 1/1
+### 12. cpc-1908:s:156:0
+- number='156', title='Repeals', chapter=None, pages 84-84, status=omitted, chars=99, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
-- text: 1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. (2) It extends to the whole of India 1***. (3) It shall come into force on such date2 as the Central Government may, by notification in the Offici...
+- text: 156. [Repeals.] Rep. by the Second Repealing and Amending Act, 1914 (17 of 1914), s. 3 and Sch. II....
 
-### 12. limitation-1963:s:25:0
-- number='25', title='Acquisition of easements by prescription', chapter=None, pages 9-10, status=in_force, chars=1444, parts 1/1
-- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
-- text:  25. Acquisition of easements by prescription.—(1) Where the access and use of light or air to and for any building have been peaceably enjoyed therewith as an easement, and as of right, without interruption, and for twenty years, and where...
+### 13. cpc-1908:s:50:0
+- number='50', title='Legal representative', chapter=None, pages 53-53, status=in_force, chars=687, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
+- text: 50. Legal representative.—(1) Where a judgment-debtor dies before the decree has been fully satisfied, the holder of the decree may apply to the Court which passed it to execute the same against the legal representative of the deceased. (2)...
 
-### 13. limitation-1963:s:7:0
-- number='7', title='Disability of one of several persons', chapter=None, pages 5-5, status=in_force, chars=939, parts 1/1
-- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
-- text:  7. Disability of one of several persons.—Where one of several persons jointly entitled to institute a suit or make an application for the execution of a decree is under any such disability, and a discharge can be given without the concurre...
-
-### 14. limitation-1963:s:17:0
-- number='17', title='Effect of fraud or mistake', chapter=None, pages 7-8, status=in_force, chars=2279, parts 1/1
+### 14. cpc-1908:s:153b:0
+- number='153B', title='Place of trial to be deemed to be open Court', chapter=None, pages 84-84, status=in_force, chars=531, parts 1/1
 - has: proviso=True, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 17. Effect of fraud or mistake.—(1) Where, in the case of any suit or application for which a period of limitation is prescribed by this Act,— (a) the suit or application is based upon the fraud of the defendant or respondent or his agent; ...
+- text: 153B. Place of trial to be deemed to be open Court.—The place in which any Civil Court is held for the purpose of trying any suit shall be deemed to be an open Court, to which the public generally may have access so far as the same can conv...
 
-### 15. limitation-1963:s:5:0
-- number='5', title='Extension of prescribed period in certain cases', chapter=None, pages 4-4, status=in_force, chars=635, parts 1/1
-- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
-- text: 5. Extension of prescribed period in certain cases.—Any appeal or any application, other than an application under any of the provisions of Order XXI of the Code of Civil Procedure, 1908 (5 of 1908), may be admitted after the prescribed per...
-
-### 16. limitation-1963:s:24:0
-- number='24', title='Computation of time mentioned in instruments', chapter=None, pages 9-9, status=in_force, chars=163, parts 1/1
+### 15. cpc-1908:s:142:0
+- number='142', title='Orders and notices to be in writing', chapter=None, pages 82-82, status=in_force, chars=152, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 24. Computation of time mentioned in instruments.—All instruments shall for the purposes of this Act be deemed to be made with reference to the Gregorian calendar....
+- text: 142. Orders and notices to be in writing.—All orders and notices served on or given to any person under the provisions of this Code shall be in writing....
 
-### 17. limitation-1963:s:22:0
-- number='22', title='Continuing breaches and torts', chapter=None, pages 9-9, status=in_force, chars=257, parts 1/1
+### 16. cpc-1908:s:124:0
+- number='124', title='Committee to report to High Court', chapter=None, pages 78-78, status=in_force, chars=350, parts 1/1
 - has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=0
-- text: 22. Continuing breaches and torts.—In the case of a continuing breach of contract or in the case of a continuing tort, a fresh period of limitation begins to run at every moment of the time during which the breach or the tort, as the case m...
+- text: 124. Committee to report to High Court.—Every Rule Committee shall make a report to the High Court established at the town at which it is constituted on any proposal to annul, alter or add to the rules in the First Schedule or to make new r...
 
-### 18. limitation-1963:s:19:0
-- number='19', title='Effect of payment on account of debt or of interest on legacy', chapter=None, pages 8-9, status=in_force, chars=856, parts 1/1
-- has: proviso=True, explanation=True, exception=False, illustration=False, amendment_notes=0
-- text: 19. Effect of payment on account of debt or of interest on legacy.—Where payment on account of a debt or of interest on a legacy is made before the expiration of the prescribed period by the person liable to pay the debt or legacy or by his...
+### 17. cpc-1908:s:32:0
+- number='32', title='Penalty for default', chapter=None, pages 44-45, status=in_force, chars=407, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
+- text: 32. Penalty for default.—The Court may compel the attendance of any person to whom a summons has been issued under section 30 and for that purpose may— (a) issue a warrant for his arrest; (b) attach and sell his property; (c) impose a fine ...
 
-### 19. limitation-1963:s:4:0
-- number='4', title='Expiry of prescribed period when court is closed', chapter=None, pages 4-4, status=in_force, chars=438, parts 1/1
-- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
-- text: 4. Expiry of prescribed period when court is closed.—Where the prescribed period for any suit, appeal or application expires on a day when the court is closed, the suit, appeal or application may be instituted, preferred or made on the day ...
+### 18. cpc-1908:s:110:0
+- number='110', title='Value of subject matters', chapter=None, pages 71-71, status=omitted, chars=130, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=1
+- text: 110. [Value of subject matters.] Rep. by the Code of Civil Procedure (Amendment) Act, 1973 (49 of 1973), s. 3 (w.e.f. 29-11-1973)....
 
-### 20. limitation-1963:s:14:0
-- number='14', title='Exclusion of time of proceeding bona fide in court without jurisdiction', chapter=None, pages 6-7, status=in_force, chars=1857, parts 1/1
-- has: proviso=False, explanation=True, exception=False, illustration=False, amendment_notes=0
-- text: 14. Exclusion of time of proceeding bona fide in court without jurisdiction.—(1) In computing the period of limitation for any suit the time during which the plaintiff has been prosecuting with due diligence another civil proceeding, whethe...
+### 19. cpc-1908:s:7:0
+- number='7', title='Provincial Small Cause Courts', chapter=None, pages 37-37, status=in_force, chars=1044, parts 1/1
+- has: proviso=False, explanation=False, exception=False, illustration=False, amendment_notes=5
+- text: 7. Provincial Small Cause Courts.—The following provisions shall not extend to Courts constituted under the Provincial Small Cause Courts Act, 1887 (9 of 1887) 4[or under the Berar Small Cause Courts Law, 1905], or to Courts exercising the ...
+
+### 20. cpc-1908:s:1:0
+- number='1', title='Short title, commencement and extent', chapter=None, pages 34-35, status=in_force, chars=1302, parts 1/1
+- has: proviso=True, explanation=True, exception=False, illustration=False, amendment_notes=2
+- text: 1. Short title, commencement and extent.—(1) This Act may be cited as the Code of Civil Procedure, 1908. (2) It shall come into force on the first day of January, 1909. (3) It extends to the whole of India except— 2*        *               ...
 
 ## Consumer Protection 2019 (paused at checkpoint 1)
 
@@ -187,7 +205,7 @@ Notes:
 
 ## Block-order note
 
-- pages where raw extraction order differs from (y,x) reading order: 24/24 (total counter: {'pages': 1565, 'diff_pages': 1565}); (y,x) order kept. G6 evidence: see ASSUMPTIONS (ghost-whitespace-block artifact, sorted raw reference).
+- pages where raw extraction order differs from (y,x) reading order: 347/347 (total counter: {'pages': 1969, 'diff_pages': 1964}); (y,x) order kept. G6 evidence: see ASSUMPTIONS (ghost-whitespace-block artifact, sorted raw reference).
 
 ## ASSUMPTIONS (verbatim from SPEC.md)
 
@@ -223,7 +241,7 @@ ASSUMPTIONS (stricter interpretations, recorded as directed):
 
 ## Files produced
 
-- output/limitation-1963.jsonl (32 records)
-- results/limitation-1963_gates.json, _clean.json, _segments.json, _flags.json, _assembly.json, _markers.json, _numlines.json, _expected.json, _expected_meta.json, _toc_meta.json
-- results/limitation-1963_step2_inspect.log ... _limitation-1963_step7_report.log (one per step)
+- output/cpc-1908.jsonl (174 records)
+- results/cpc-1908_gates.json, _clean.json, _segments.json, _flags.json, _assembly.json, _markers.json, _numlines.json, _expected.json, _expected_meta.json, _toc_meta.json
+- results/cpc-1908_step2_inspect.log ... _cpc-1908_step7_report.log (one per step)
 - results/pilot_report.md (this file)

@@ -77,7 +77,7 @@
       "status": "PASS",
       "evidence": {
         "part0_records": 106,
-        "needed_prefix_stripping": 8,
+        "needed_prefix_stripping": 0,
         "failures": []
       }
     },
@@ -108,7 +108,7 @@
       "status": "PASS",
       "evidence": {
         "primary_fragment_rate": 0.99824,
-        "diagnostic_whole_record_rate": 0.980858,
+        "diagnostic_whole_record_rate": 0.980278,
         "diagnostic_line_rate": 1.0,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [

@@ -75,7 +75,7 @@
       "status": "PASS",
       "evidence": {
         "part0_records": 127,
-        "needed_prefix_stripping": 27,
+        "needed_prefix_stripping": 0,
         "failures": []
       }
     },
@@ -105,14 +105,14 @@
     "G6": {
       "status": "PASS",
       "evidence": {
-        "primary_fragment_rate": 0.998201,
-        "diagnostic_whole_record_rate": 0.986702,
+        "primary_fragment_rate": 0.9982,
+        "diagnostic_whole_record_rate": 0.986253,
         "diagnostic_line_rate": 1.0,
         "raw_reference": "get_text('text', sort=True)",
         "reference_repeated_lines_stripped": [
           "IndiaCode"
         ],
-        "windows": 2223,
+        "windows": 2222,
         "primary_failures": 4,
         "mega_table_records": [],
         "table_content_records": [
@@ -204,7 +204,7 @@
           ]
         ],
         "unflagged_over_limit": [],
-        "longest_text": 11243
+        "longest_text": 11241
       }
     },
     "G9": {

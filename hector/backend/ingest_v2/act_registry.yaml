@@ -174,3 +174,14 @@ acts:
     status: in_force
     sequence_only_fallback: true
     status_note: "53-page PDF; no ToC found by naive sweep (page1 blank). Naive triage 169 markers, base 85, density 0.988, 23 order violations. sequence_only_fallback=true."
+
+  - act_id: constitution-1950
+    act_name: "The Constitution of India"
+    act_short: "Constitution of India"
+    year: 1950
+    year_on_page1: 2022
+    source_file: sources/constitution-1950.pdf
+    source_type: bare_act
+    language: en
+    status: in_force
+    status_note: "404-page pocket edition (May 2022, up to 105th Amendment). Articles use NN. Title format like bare acts. 22 Parts, 12 Schedules. Repealed articles present as [Title].—Omitted stubs. Glued footnote digits (2[226.) need strip_glue."

@@ -57,6 +57,7 @@ GOLD = {
     "rti": os.path.join(SCRIPT_DIR, "gold_rti.jsonl"),
     "consumer": os.path.join(SCRIPT_DIR, "gold_consumer.jsonl"),
     "arbitration": os.path.join(SCRIPT_DIR, "gold_arbitration.jsonl"),
+    "constitution": os.path.join(SCRIPT_DIR, "gold_constitution.jsonl"),
 }
 EMBED_CACHE = os.path.join(SCRIPT_DIR, "query_embeds.npz")
 EMBED_MODEL = "nvidia/nemotron-3-embed-1b"  # hybrid_retriever.EMBED_NIM_MODEL

@@ -18,7 +18,9 @@ DIRECT_LOOKAHEAD_LINES = 10
 TITLE_CONT_LINES = 8
 MISTYPE_TOLERANCE = 100
 
-FREF_RE = re.compile(r"^\s*(?:\d{1,3}\s*)?\*+(?:\[+)?|^\s*\d{1,3}\s*\[+")
+FREF_RE = re.compile(
+    r"^\s*(?:\d{1,3}\s*)?(?:[\*\uf000-\uf8ff]+\[*|\[+)"  # fn digit + */PUA/bracket
+)
 NUMHEAD_RE = re.compile(r"^\s*(\d{1,4}[A-Za-z]{0,2})\.\s*$")
 NUMDOT_RE = re.compile(r"^\s*(\d{1,4}[A-Za-z]{0,2})\.\s*(.*)$")
 DIRECT_RE = re.compile(r"^\s*(\d{1,4}[A-Za-z]{0,2})\.\s+\S")
@@ -1111,7 +1113,9 @@ def assemble_text(lines, idxs):
         for n, gi in enumerate(fr):
             t = lines[gi]["text"]
             if n == 0:
-                out = t
+                # strip footnote-marker prefix from the first line so the
+                # text starts with the section's own number (G3)
+                out = fref_strip(t)
             elif re.search(r"[A-Za-z0-9]-$", out) and re.match(r"[a-z]", t):
                 out += t
             else:

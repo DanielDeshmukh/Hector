@@ -30,7 +30,7 @@ EMBED_MODEL = "nvidia/nemotron-3-embed-1b"
 DIM = 2048
 EMBED_BATCH = 16
 UPSERT_BATCH = 64
-WORKERS = 4
+WORKERS = 2
 SEED = 20261013
 
 
@@ -156,7 +156,7 @@ def main() -> int:
 
     from pinecone import Pinecone
 
-    pc = Pinecone(api_key=api_key)
+    pc = Pinecone(api_key=api_key, timeout=180)
     if INDEX_NAME not in [i.name for i in pc.list_indexes()]:
         raise SystemExit(f"index {INDEX_NAME} not found")
     ix = pc.Index(INDEX_NAME)
@@ -192,19 +192,32 @@ def main() -> int:
                 log(f"truncated {r['id']} document to {len(doc)} chars")
             meta["document"] = doc  # dense leg reads this
             upserts.append({"id": r["id"], "values": v, "metadata": meta})
-        ix.upsert(vectors=upserts, namespace="")
-        return len(upserts)
+        # retry upsert on transient Pinecone timeouts
+        delay = 3.0
+        for attempt in range(8):
+            try:
+                ix.upsert(vectors=upserts, namespace="")
+                return len(upserts)
+            except Exception as exc:
+                if attempt == 7:
+                    raise
+                log(f"upsert retry {attempt + 1}: {type(exc).__name__}: {exc}")
+                time.sleep(delay)
+                delay = min(delay * 2, 30.0)
+        raise RuntimeError("unreachable")
 
     chunks = [rows[i:i + EMBED_BATCH] for i in range(0, len(rows), EMBED_BATCH)]
+    log(f"pushing {len(rows)} vectors in {len(chunks)} batches "
+        f"(batch={EMBED_BATCH}, workers={args.workers})")
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         for n, result in enumerate(pool.map(work, chunks), 1):
             done += result
-            if n % 25 == 0 or n == len(chunks):
+            if n % 5 == 0 or n == len(chunks):
                 el = time.time() - t0
                 rate = done / el if el else 0
                 eta = (len(rows) - done) / rate if rate else 0
-                log(f"  {n}/{len(chunks)} batches | {done} vectors | "
-                    f"{el:.0f}s | {rate:.0f}/s | eta {eta:.0f}s")
+                log(f"  {n}/{len(chunks)} batches | {done}/{len(rows)} vectors | "
+                    f"{el:.0f}s elapsed | {rate:.1f} vec/s | eta {eta:.0f}s")
 
     after = ix.describe_index_stats().total_vector_count
     stats = {

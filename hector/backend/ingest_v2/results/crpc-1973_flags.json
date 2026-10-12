@@ -14,7 +14,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 6904
+      "chars": 6902
     },
     {
       "number": "25A",
@@ -22,7 +22,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 5173
+      "chars": 5171
     },
     {
       "number": "41",
@@ -78,7 +78,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 3766
+      "chars": 3764
     },
     {
       "number": "197",
@@ -150,7 +150,7 @@
       "flags": [
         "LONG_UNSPLIT"
       ],
-      "chars": 3350
+      "chars": 3348
     }
   ],
   "null_titles": [],

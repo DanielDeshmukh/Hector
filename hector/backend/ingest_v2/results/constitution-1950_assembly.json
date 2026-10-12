@@ -1,0 +1,108 @@
+{
+  "act_id": "constitution-1950",
+  "page_spanning_total": 198,
+  "shown": [
+    {
+      "number": "3",
+      "page_start": 33,
+      "page_end": 34,
+      "joins": [
+        {
+          "from_page": 33,
+          "to_page": 34,
+          "removed_labels": [
+            "footnote",
+            "header",
+            "page_number",
+            "separator"
+          ],
+          "before_tail": " of any State:\n1[Provided that no Bill for the purpose shall be introduced in\neither House of Parliament except on the recommendation of the",
+          "after_head": "(Part I.—Union and its territory)\nPresident and unless, where the proposal contained in the Bill affects\nthe area, boundaries or name of any"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "page_start": 35,
+      "page_end": 36,
+      "joins": [
+        {
+          "from_page": 35,
+          "to_page": 36,
+          "removed_labels": [
+            "header",
+            "page_number"
+          ],
+          "before_tail": "of March, 1947, migrated from the territory of India to the territory now\nincluded in Pakistan shall not be deemed to be a citizen of India:",
+          "after_head": "(Part II.—Citizenship)\nProvided that nothing in this article shall apply to a person who, after\nhaving so migrated to the territory now incl"
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "page_start": 36,
+      "page_end": 37,
+      "joins": [
+        {
+          "from_page": 36,
+          "to_page": 37,
+          "removed_labels": [
+            "header"
+          ],
+          "before_tail": "rliament to make any provision with respect to the acquisition and\ntermination of citizenship and all other matters relating to citizenship.",
+          "after_head": "General"
+        }
+      ]
+    },
+    {
+      "number": "15",
+      "page_start": 37,
+      "page_end": 39,
+      "joins": [
+        {
+          "from_page": 37,
+          "to_page": 38,
+          "removed_labels": [
+            "footnote",
+            "header",
+            "page_number",
+            "separator"
+          ],
+          "before_tail": "religion, race, caste, sex, place of\nbirth or any of them, be subject to any disability, liability, restriction or\ncondition with regard to—",
+          "after_head": "(Part III.—Fundamental Rights)\n(a) access to shops, public restaurants, hotels and places of public\nentertainment; or\n(b) the use of wells, "
+        },
+        {
+          "from_page": 38,
+          "to_page": 39,
+          "removed_labels": [
+            "footnote",
+            "header",
+            "page_number",
+            "separator"
+          ],
+          "before_tail": "reservation would be in addition to the\nexisting reservations and subject to a maximum of ten per cent. of the\ntotal seats in each category.",
+          "after_head": "(Part III.—Fundamental Rights)\nExplanation.—For the purposes of this article and article 16,\n\"economically weaker sections\" shall be such as"
+        }
+      ]
+    },
+    {
+      "number": "16",
+      "page_start": 39,
+      "page_end": 40,
+      "joins": [
+        {
+          "from_page": 39,
+          "to_page": 40,
+          "removed_labels": [
+            "footnote",
+            "header",
+            "page_number",
+            "separator"
+          ],
+          "before_tail": "ear in which they are being filled up for determining the\nceiling of fifty per cent. reservation on total number of vacancies of that year.]",
+          "after_head": "(Part III.—Fundamental Rights)\n(5) Nothing in this article shall affect the operation of any law which\nprovides that the incumbent of an off"
+        }
+      ]
+    }
+  ]
+}

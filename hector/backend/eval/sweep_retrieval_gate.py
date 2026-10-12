@@ -88,6 +88,7 @@ GOLD = {
     "rti": os.path.join(SCRIPT_DIR, "gold_rti.jsonl"),
     "consumer": os.path.join(SCRIPT_DIR, "gold_consumer.jsonl"),
     "arbitration": os.path.join(SCRIPT_DIR, "gold_arbitration.jsonl"),
+    "constitution": os.path.join(SCRIPT_DIR, "gold_constitution.jsonl"),
 }
 
 _write_lock = threading.Lock()
