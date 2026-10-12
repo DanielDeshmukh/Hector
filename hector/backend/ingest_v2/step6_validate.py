@@ -69,7 +69,10 @@ def _norm_for_name(s):
 def gate_g1(doc, act, markers, records=None, schedule_page=None):
     raw1 = doc[0].get_text("text")
     n1_name = _norm_for_name(act["act_name"]) in _norm_for_name(raw1)
-    n1_year = str(act["year"]) in raw1
+    # year_on_page1 overrides year for the G1 check (e.g. Constitution
+    # edition year 2022 vs enactment year 1950)
+    check_year = act.get("year_on_page1") or act["year"]
+    n1_year = str(check_year) in raw1
     n = len(doc)
     rng = random.Random(G1_SEED)
     mid = list(range(n // 4, n - n // 4))

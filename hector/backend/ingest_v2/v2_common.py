@@ -113,7 +113,7 @@ FOOT_RE = re.compile(
     re.I)
 WHITELIST_PREFIX = ("illustration", "illustrations", "explanation", "exception",
                     "exceptions", "provided", "chapter", "part", "schedule")
-ENTRY_RE = re.compile(r"^\s*(\d{1,4}[A-Za-z]{0,2})\.\s*(\.*\S.*\S)\s*$")
+ENTRY_RE = re.compile(r"^\s*\[?\s*(\d{1,4}[A-Za-z]{0,2})\.\s*(\.*\S.*\S)\s*$")
 CHAPTER_RE = re.compile(
     r"^\s*\[?\s*CHAPTER\s+([IVXLCDM]{1,8}[A-Z]?)\b\s*[-.:]?\s*(.*)$", re.I)
 HYPHEN_BREAK_RE = re.compile(r"(?<=[A-Za-z])-\n(?=[a-z])")
