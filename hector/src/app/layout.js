@@ -1,6 +1,6 @@
 import "./globals.css";
 
-const SITE_URL = "https://hector-legal.vercel.app";
+const SITE_URL = "https://hector-nine.vercel.app";
 
 export const metadata = {
   title: {
