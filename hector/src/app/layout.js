@@ -27,13 +27,9 @@ export const metadata = {
   creator: "Daniel Deshmukh",
   publisher: "Daniel Deshmukh",
   metadataBase: new URL(SITE_URL),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: SITE_URL,
     siteName: "HECTOR",
     title: "HECTOR — Zero-Hallucination Legal Research for Indian Law",
     description:
