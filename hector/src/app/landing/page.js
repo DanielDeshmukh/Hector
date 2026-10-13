@@ -1,9 +1,9 @@
 import LandingPage from "@/components/landing/LandingPage";
 
 export const metadata = {
-  title: "HECTOR — Zero-Hallucination Legal Research for Indian Law",
+  title: "HECTOR — Bare-Act Retrieval for Indian Law",
   description:
-    "AI-powered legal research engine for Indian Law. 38 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing, chain-of-verification for zero-hallucination cited responses.",
+    "How the HECTOR corpus is built: the regex boundary grammar that divides a bare act at its section heads, the cut rules that keep provisos attached, and the validation gates every statute must pass.",
 };
 
 export default function Page() {

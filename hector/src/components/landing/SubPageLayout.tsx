@@ -4,16 +4,17 @@ import Link from "next/link";
 import { Icons } from "./Icons";
 
 const navLinks = [
-  { label: "Features", href: "/landing#features" },
-  { label: "Technology", href: "/landing#technology" },
-  { label: "Coverage", href: "/landing#coverage" },
+  { label: "Corpus", href: "/landing#corpus" },
+  { label: "Grammar", href: "/landing#grammar" },
+  { label: "Chunking", href: "/landing#chunking" },
+  { label: "Compare", href: "/landing#compare" },
   { label: "FAQ", href: "/landing#faq" },
 ];
 
 const footerLinks = {
   Product: [
-    { label: "Features", href: "/landing#features" },
-    { label: "Technology", href: "/landing#technology" },
+    { label: "Corpus", href: "/landing#corpus" },
+    { label: "Grammar", href: "/landing#grammar" },
     { label: "API Access", href: "/landing/api-access" },
     { label: "Analytics", href: "/analytics" },
     { label: "Changelog", href: "/landing/changelog" },

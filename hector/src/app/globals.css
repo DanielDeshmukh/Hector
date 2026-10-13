@@ -12,9 +12,21 @@
   --color-error: #ef4444;
   --color-info: #3b82f6;
 
-  --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-serif: "Bodoni Moda", "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* ---- brutalist landing: extension of the palette above ---- */
+  --color-ink: #0c0e10;
+  --color-panel: #14171a;
+  --color-panel-2: #191d21;
+  --color-hair: #262c33;
+  --color-paper: #e7e9ea;
+  --color-muted: #6d7985;
+
+  --font-display: "Bodoni Moda", "Times New Roman", serif;
+  --font-plex-sans: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 ::-webkit-scrollbar {
@@ -47,7 +59,7 @@ html {
 body {
   background: #111315;
   color: #d2dbe4;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -93,4 +105,117 @@ body {
 .animate-fade-in-delay-3 {
   animation: fadeIn 0.3s ease-out 0.3s forwards;
   opacity: 0;
+}
+
+/* =====================================================================
+   Brutalist landing — everything below is scoped to .brutalist so the
+   app routes (/, /compare, /analytics) are untouched.
+   ===================================================================== */
+
+.brutalist {
+  /* override the inherited font tokens for this subtree only */
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.brutalist *,
+.brutalist *::before,
+.brutalist *::after {
+  border-color: var(--color-hair);
+}
+
+.brutalist ::selection {
+  background: var(--color-gold);
+  color: #0c0e10;
+}
+
+.brutalist h1,
+.brutalist h2,
+.brutalist h3,
+.brutalist h4 {
+  font-weight: 500;
+}
+
+.brutalist mark {
+  background: transparent;
+  color: inherit;
+}
+
+.brutalist input,
+.brutalist textarea,
+.brutalist button,
+.brutalist select {
+  font: inherit;
+  color: inherit;
+}
+
+.brutalist input:focus-visible,
+.brutalist textarea:focus-visible,
+.brutalist button:focus-visible,
+.brutalist a:focus-visible,
+.brutalist select:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+.brutalist section[id] {
+  scroll-margin-top: 74px;
+}
+
+.brutalist table {
+  border-collapse: separate;
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes blink-cursor {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+.brutalist .animate-marquee {
+  animation: marquee 46s linear infinite;
+}
+.brutalist .animate-blink {
+  animation: blink-cursor 1.05s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brutalist *,
+  .brutalist *::before,
+  .brutalist *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility label-xs {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility rule-grid {
+  background-image: linear-gradient(to right, rgba(149, 162, 175, 0.055) 1px, transparent 1px);
+  background-size: 84px 100%;
+}
+
+@utility ledger-lines {
+  background-image: repeating-linear-gradient(to bottom, rgba(149, 162, 175, 0.05) 0px, rgba(149, 162, 175, 0.05) 1px, transparent 1px, transparent 32px);
+}
+
+@utility grain-layer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
 }
