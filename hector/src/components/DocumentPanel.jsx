@@ -64,6 +64,12 @@ export default function DocumentPanel({ source, onClose }) {
   const citationEntries = formatObjectEntries(source.citation);
   const metadataEntries = formatObjectEntries(source.metadata);
 
+  // Switching sources must restart the highlight cursor, otherwise a source
+  // with fewer ranges leaves activeHighlight pointing past the end.
+  useEffect(() => {
+    setActiveHighlight(0);
+  }, [source.id]);
+
   useEffect(() => {
     if (!highlightCount) return;
     const el = document.getElementById(`highlight-${activeHighlight}`);

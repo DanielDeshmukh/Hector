@@ -114,7 +114,6 @@ export default function QueryInput({
   isLoading,
   showSuggestions,
   suggestions = [],
-  resetKey = 0,
 }) {
   const [query, setQuery] = useState("");
   const [isListening, setIsListening] = useState(false);
@@ -127,14 +126,6 @@ export default function QueryInput({
   const textareaRef = useRef(null);
   const fileInputRef = useRef(null);
   const recognitionRef = useRef(null);
-
-  useEffect(() => {
-    setQuery("");
-    setAttachedFile(null);
-    setPreviewUrl(null);
-    setTextPreview(null);
-    setFileError(null);
-  }, [resetKey]);
 
   // Cleanup preview URL on unmount
   useEffect(() => {

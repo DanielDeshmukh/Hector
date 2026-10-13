@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Icons } from "./Icons";
 
 function cn(...classes: (string | boolean | undefined)[]) {
@@ -35,7 +36,7 @@ export default function Navigation() {
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-            <a href="/landing" className="flex items-center gap-3 group">
+            <Link href="/landing" className="flex items-center gap-3 group">
             <img
               src="/tab-icon.png"
               alt="HECTOR"
@@ -49,7 +50,7 @@ export default function Navigation() {
                 Legal Intelligence
               </span>
             </div>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -65,13 +66,13 @@ export default function Navigation() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-charcoal text-sm font-sans font-medium rounded-lg hover:bg-gold-light transition-colors"
             >
               Try HECTOR
               <Icons.ArrowRight />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -96,13 +97,13 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
-            <a
+            <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
               className="block w-full py-3 px-4 bg-gold text-charcoal text-center font-sans font-medium rounded-lg mt-4"
             >
               Try HECTOR
-            </a>
+            </Link>
           </div>
         </div>
       )}
