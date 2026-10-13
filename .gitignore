@@ -291,6 +291,10 @@ hector/node_modules/
 hector/.next/
 hector/out/
 
+# The stock Python pattern `lib/` above matches any directory named lib at any
+# depth, which silently swallowed the frontend's src/lib. Keep it Python-only.
+!hector/src/lib/
+
 # --- Python backend ---
 hector/backend/__pycache__/
 hector/backend/.pytest_cache/
