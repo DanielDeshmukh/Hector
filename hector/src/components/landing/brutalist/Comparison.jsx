@@ -250,7 +250,7 @@ export function ComparisonSection() {
             <p className="mx-auto mt-3 max-w-md text-[13px] leading-[1.7] text-muted">
               No text is shown because none was returned. Open the app to run the same comparison directly.
             </p>
-            <a href="/" className="mt-5 inline-block">
+            <a href="/search" className="mt-5 inline-block">
               <Btn variant="ghost">Open the app</Btn>
             </a>
           </div>

@@ -87,7 +87,7 @@ export function Masthead({ records, recordsLoading, recordsFailed }) {
         <div className="ml-auto flex items-center gap-4 lg:ml-0">
           <Clock />
           <LiveCount records={records} loading={recordsLoading} failed={recordsFailed} className="hidden xl:inline-flex" />
-          <Link href="/" className="hidden sm:block">
+          <Link href="/search" className="hidden sm:block">
             <Btn className="px-3.5 py-2">
               Open the app
               <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -128,7 +128,7 @@ export function Masthead({ records, recordsLoading, recordsFailed }) {
           </div>
           <div className="mt-4 flex items-center justify-between">
             <LiveCount records={records} loading={recordsLoading} failed={recordsFailed} />
-            <Link href="/" onClick={() => setOpen(false)}>
+            <Link href="/search" onClick={() => setOpen(false)}>
               <Btn className="px-3.5 py-2">Open the app</Btn>
             </Link>
           </div>

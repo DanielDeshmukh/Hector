@@ -17,7 +17,7 @@ const SIDEBAR_STATE_KEY = "hector.sidebarCollapsed";
 const MAX_HISTORY_ITEMS = 8;
 const MAX_BOOKMARK_ITEMS = 20;
 const COMPARE_PATH = "/compare";
-const SEARCH_PATH = "/";
+const SEARCH_PATH = "/search";
 const TOP_SEARCH_QUERIES = [
   "What is the BNS equivalent of IPC Section 302?",
   "Compare the punishment for theft under IPC and BNS",

@@ -87,9 +87,9 @@ export function GrammarSection() {
       }
       lede={
         <>
-          Chunking is usually a hyper-parameter: a token count, an overlap, a splitter. Here it is a set of
-          regular expressions compiled once at ingest and run over the bare-act text. What follows is not a
-          description of them. It is the Python, copied from the pipeline that built the index.
+          This panel displays a browser-side copy of regular expressions from the repository's v2 ingestion
+          workflow, with source file and line references. That workflow is separate from the current API PDF
+          ingestion path, which uses the section-aware chunker in the backend.
         </>
       }
       aside={

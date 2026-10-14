@@ -103,17 +103,18 @@ export function Hero({ records, recordsLoading, recordsFailed }) {
 
             <Reveal delay={140}>
               <p className="mt-8 max-w-[46ch] text-[15.5px] leading-[1.78] text-silver">
-                The corpus is not sliced to fit a context window. It is divided by regular expressions that
-                recognise the printed section number, and only then partitioned at cuts that cannot land inside
-                a proviso, an exception or an explanation.{" "}
-                <span className="text-paper">A section therefore travels whole</span>, and every sentence
-                returned can be traced back to the provision it was taken from.
+                HECTOR's current PDF ingestion path recognises printed section headings and groups text around
+                those boundaries. Sections longer than 4,000 characters may be split at sub-section or paragraph
+                boundaries; very short sections may be merged with a neighbour. Search responses can include
+                source citations, which should be checked against the published statute.
               </p>
             </Reveal>
 
             <Reveal delay={200}>
               <div className="mt-8 border-l border-gold/40 bg-panel/40 py-4 pl-5 pr-4">
                 <p className="font-mono text-[12.5px] leading-[1.9] text-silver/90">
+                  <span className="text-gold">Illustrative wording, not a statutory extract.</span>
+                  <br />
                   <span className="text-gold">2. Definitions.</span>&mdash;In this instrument, unless the context otherwise
                   requires,&mdash;
                   <br />
@@ -155,7 +156,7 @@ export function Hero({ records, recordsLoading, recordsFailed }) {
                 <Tag tone="neutral">section comparison</Tag>
                 <Tag tone="neutral">batch runs</Tag>
                 <Tag tone="active">
-                  <span className="h-1 w-1 bg-success" /> cited answers only
+                  <span className="h-1 w-1 bg-success" /> source citations may appear
                 </Tag>
               </div>
               <p className="mt-5 max-w-[52ch] font-mono text-[10.5px] leading-[1.7] text-muted">
@@ -212,7 +213,7 @@ export function Hero({ records, recordsLoading, recordsFailed }) {
                   </button>
                 </form>
 
-                {/* what happens on submit — the real stages the API reports */}
+                {/* Values below come from the live search response. */}
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-b border-hair bg-cream/60 px-4 py-2 font-mono text-[11px] text-muted">
                   <span>
                     route.<span className="text-silver/70">{res?.domain ?? "awaiting"}</span>
@@ -230,18 +231,10 @@ export function Hero({ records, recordsLoading, recordsFailed }) {
 
                 {state === "running" && (
                   <ul className="divide-y divide-hair/70 border-b border-hair">
-                    {(res?.pipeline?.length ? res.pipeline : [
-                      { id: "s1", name: "Route", detail: "…" },
-                      { id: "s2", name: "Retrieve", detail: "…" },
-                      { id: "s3", name: "Assemble", detail: "…" },
-                      { id: "s4", name: "Verify", detail: "…" },
-                    ]).map((s) => (
-                      <li key={s.id} className="flex items-center gap-3 px-4 py-2 font-mono text-[11.5px] text-muted">
-                        <span className="h-1.5 w-1.5 animate-pulse bg-gold/70" />
-                        {s.name}
-                        <span className="ml-auto text-muted/70">{s.detail}</span>
-                      </li>
-                    ))}
+                    <li className="flex items-center gap-3 px-4 py-2 font-mono text-[11.5px] text-muted">
+                      <span className="h-1.5 w-1.5 animate-pulse bg-gold/70" />
+                      Waiting for the search API response
+                    </li>
                   </ul>
                 )}
 
@@ -252,7 +245,7 @@ export function Hero({ records, recordsLoading, recordsFailed }) {
                       This page does not fall back to a stored answer. Open the app to query the same endpoint
                       directly.
                     </p>
-                    <a href="/" className="mt-4 inline-block">
+                    <a href="/search" className="mt-4 inline-block">
                       <Btn variant="ghost">Open the app</Btn>
                     </a>
                   </div>

@@ -17,7 +17,7 @@ export default function AnalyticsPage() {
             </p>
           </div>
           <Link
-            href="/"
+            href="/search"
             className="rounded-lg border border-slate-custom/60 px-4 py-2 text-[12px] font-medium text-silver/60 transition-colors hover:border-gold/40 hover:text-gold"
           >
             Back to HECTOR

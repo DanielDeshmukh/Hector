@@ -40,9 +40,9 @@ export function ChunkingSection() {
       }
       lede={
         <>
-          Same text, two splitters, both run here in your browser. The left splitter is the one every retrieval
-          stack reaches for by default. The right splitter is the one this index uses, and it is the JavaScript
-          port of the Python you just read. The text is six sections lifted verbatim from the ingest output.
+          Both splitters run here in your browser on bundled sample text. The left is a configurable fixed-window
+          simulation; the right is a JavaScript port of the repository's v2 section scanner. This lab does not
+          read the live index or represent the current API ingestion path.
         </>
       }
       aside={
@@ -312,7 +312,7 @@ export function ChunkingSection() {
             <div className="px-4 py-4">
               <p className="text-[12px] leading-[1.65] text-muted">
                 {mode === "window"
-                  ? "Every cut above is a sentence a court would have to read without its condition attached. Raise the window and the count falls; it never reaches zero."
+                  ? "This local comparison counts sample sentences crossing a fixed-window boundary. It illustrates a possible split; it does not assess legal effect."
                   : `The grammar has no size to raise. A section longer than ${MAX_CHARS.toLocaleString("en-IN")} characters with no safe cut is kept whole and flagged LONG_UNSPLIT, because a wrong cut is worse than a long record.`}
               </p>
               <Btn
@@ -333,8 +333,7 @@ export function ChunkingSection() {
 
       <p className="mt-3 font-mono text-[10.5px] text-muted">
         Extract: {FIXTURES.map((f) => `${f.code} §${f.section}`).join(" · ")} &mdash;{" "}
-        {text.length.toLocaleString("en-IN")} characters total, taken from the ingest output rather than typed
-        in for the demo.
+        {text.length.toLocaleString("en-IN")} characters total, from bundled sample text; not a live index record.
       </p>
     </SectionShell>
   );

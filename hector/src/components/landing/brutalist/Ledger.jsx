@@ -39,29 +39,28 @@ export function LedgerSection() {
     <SectionShell
       id="ledger"
       no="06"
-      kicker="Assembly & the ledger"
+      kicker="Example ledger"
       title={
         <>
-          Four stages.
-          <span className="block italic text-gold-light">One traceable provision.</span>
+          A sample provision.
+          <span className="block italic text-gold-light">A local trace.</span>
         </>
       }
       lede={
         <>
-          Retrieval is only half the instrument. The other half is the ledger: the record of which provision
-          answered, under which anchor, and at which character offset in the stored text. An answer that cannot
-          name its provision does not leave the pipeline.
+          The right-hand table computes sentence offsets and labels from bundled sample text in this browser.
+          It is an illustration, not a live API response or a record read from the deployed index.
         </>
       }
       aside={
         <div className="flex flex-wrap gap-2">
-          <Tag tone="gold">per-request trace</Tag>
-          <Tag tone="neutral">no orphan quotes</Tag>
+          <Tag tone="gold">browser-computed</Tag>
+          <Tag tone="neutral">bundled fixture</Tag>
         </div>
       }
     >
       <div className="grid gap-px bg-hair lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-        {/* the four stages the API reports on every response */}
+        {/* Search service flow for uncached legal-research requests. */}
         <ol className="bg-cream">
           {QUERY_STAGES.map((p, i) => (
             <li
@@ -86,19 +85,19 @@ export function LedgerSection() {
           ))}
           <li className="border-t border-hair bg-panel/40 px-4 py-4">
             <p className="text-[12.5px] leading-[1.7] text-muted">
-              Every stage above is named in the response the API returns. The hero console and the batch ledger
-              both print that same trace rather than an animation of one.
+              The search service returns route, retrieval and generation timings, plus a confidence value and
+              hallucination summary. Cached responses may follow a shorter path.
             </p>
           </li>
         </ol>
 
-        {/* the ledger, computed here from the stored unit */}
+        {/* A local ledger computed from bundled fixture text. */}
         <div className="bg-cream">
           <Panel className="border-0 bg-transparent">
             <div className="flex items-center justify-between border-b border-hair bg-panel-2 px-4 py-2.5">
               <span className="flex items-center gap-2 label-xs text-silver">
                 <BookOpen className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} />
-                ledger · {fixture.code} s. {fixture.section}
+                example · {fixture.code} s. {fixture.section}
               </span>
               <span className="font-mono text-[10.5px] text-muted">
                 {unit?.chars?.toLocaleString("en-IN")} ch · {unit?.lines?.length} lines
@@ -107,7 +106,7 @@ export function LedgerSection() {
             <table className="w-full border-collapse text-left">
               <thead>
                 <tr className="border-b border-hair label-xs text-muted">
-                  <th className="px-4 py-2 font-normal">sentence in the stored unit</th>
+                  <th className="px-4 py-2 font-normal">sentence in sample text</th>
                   <th className="w-[104px] px-2 py-2 font-normal">offset</th>
                   <th className="w-[110px] px-2 py-2 text-right font-normal">anchor</th>
                 </tr>
@@ -148,8 +147,8 @@ export function LedgerSection() {
           </Panel>
           <p className="flex items-start gap-2 border-t border-hair bg-panel px-4 py-2.5 font-mono text-[10.5px] leading-relaxed text-muted">
             <Layers className="mt-0.5 h-3 w-3 shrink-0 text-gold/70" strokeWidth={1.6} />
-            the offsets above were computed in this browser from the stored unit, not typed in. A sentence a
-            model returns without its provision attached is the failure this ledger exists to catch.
+            the offsets above were computed in this browser from bundled sample text. They do not describe the
+            source positions or citations in a live search response.
           </p>
         </div>
       </div>

@@ -22,7 +22,7 @@ export function Colophon({ records, recordsLoading, recordsFailed }) {
                   <ArrowDown className="h-3 w-3" />
                 </Btn>
               </a>
-              <Link href="/">
+              <Link href="/search">
                 <Btn variant="ghost">Open the app</Btn>
               </Link>
             </div>
@@ -47,8 +47,8 @@ export function Colophon({ records, recordsLoading, recordsFailed }) {
             <FooterCol
               title="Product"
               links={[
-                ["Ask a question", "/", false],
-                ["Compare a section", "/", false],
+                ["Ask a question", "/search", false],
+                ["Compare a section", "/search", false],
                 ["Bare Act index", "/landing/acts", false],
                 ["API access", "/landing/api-access", false],
               ]}
@@ -67,12 +67,10 @@ export function Colophon({ records, recordsLoading, recordsFailed }) {
 
         <div className="mt-14 grid gap-6 border-t border-hair pt-8 lg:grid-cols-12">
           <p className="text-[12px] leading-relaxed text-muted lg:col-span-7">
-            Hector is a retrieval instrument for bare acts. Every provision it returns is printed with its
-            act, section and clause, and must be read against the authoritative text published by the
-            Legislative Department before it is relied on in any proceeding. Nothing on this page is legal
-            advice, and nothing on this page is a substitute for the statute. Section text shown here is
-            extracted verbatim from ingested PDFs and is displayed only where it is used to demonstrate the
-            segmentation rules.
+            Hector retrieves text from an indexed legal corpus. Search responses can include source and section
+            references; check any result against the authoritative text published by the Legislative Department
+            before relying on it. Nothing on this page is legal advice or a substitute for the statute. The
+            grammar and chunking labs use bundled sample text and do not display live index records.
           </p>
           <div className="flex flex-col justify-between gap-4 lg:col-span-5 lg:items-end">
             <div className="flex items-center gap-3 font-mono text-[11px] text-muted">

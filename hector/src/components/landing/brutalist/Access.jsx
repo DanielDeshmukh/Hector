@@ -24,14 +24,14 @@ export function AccessSection({ records, recordsLoading, recordsFailed }) {
         }
         lede={
           <>
-            This page describes how the corpus is built and lets you watch the segmentation rules run. The
-            product itself is a separate application: you ask it questions, it answers with provisions and
-            citations. Everything above is the same index that answers there.
+            Search and comparison panels on this page call the live API. The grammar and chunking labs run in
+            your browser on bundled sample text; they illustrate repository rules and do not inspect or change
+            live index records. The search app is available separately.
           </>
         }
         controls={
           <div className="flex flex-wrap items-center gap-2 lg:justify-end">
-            <Tag tone="gold">same index</Tag>
+            <Tag tone="gold">live search + compare</Tag>
             <Tag tone="neutral">no meter on the statute book</Tag>
           </div>
         }
@@ -44,7 +44,7 @@ export function AccessSection({ records, recordsLoading, recordsFailed }) {
             title: "Ask a question",
             body: "The application. Type a question in plain language or name a section directly; the answer arrives with the provision and the citation it was drawn from.",
             cta: "Open the app",
-            href: "/",
+            href: "/search",
           },
           {
             icon: KeyRound,

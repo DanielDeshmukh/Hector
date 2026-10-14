@@ -44,9 +44,9 @@ export function CorpusSection({ records, recordsLoading, recordsFailed }) {
         }
         lede={
           <>
-            A bare act is a printed object: a long title, chapters, sections, sub-sections, provisos, exceptions,
-            explanations, illustrations, schedules. The index preserves that object and then verifies that nothing
-            was lost between the PDF and the record. Seven steps, and the seventh only runs if the sixth passes.
+            The seven-step display below documents the repository's v2 ingestion workflow; it is not a live trace
+            of the current API ingestion path. The API uses EnhancedHectorIngestor and SectionAwareChunker, which
+            identify section boundaries, split long sections, and can merge very short sections.
           </>
         }
         controls={

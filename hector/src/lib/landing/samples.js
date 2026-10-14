@@ -127,12 +127,12 @@ export const INGEST_STEPS = [
   },
 ];
 
-/** The four stages the query pipeline reports on every request. */
+/** High-level uncached search path summarized in the local ledger. */
 export const QUERY_STAGES = [
-  { id: "route", name: "Route", detail: "Classify the question and select the corpus slice." },
-  { id: "retrieve", name: "Retrieve", detail: "Hybrid dense and lexical search, fused by record id." },
-  { id: "assemble", name: "Assemble", detail: "Pull parent provisions so a clause is never quoted alone." },
-  { id: "verify", name: "Verify", detail: "Re-check every citation against the source text before answering." },
+  { id: "route", name: "Route", detail: "Classify the query and choose whether corpus retrieval applies." },
+  { id: "retrieve", name: "Retrieve", detail: "Search the legal index for a legal-research request." },
+  { id: "generate", name: "Generate", detail: "Build a response from the retrieved results." },
+  { id: "report", name: "Report", detail: "Return confidence and a hallucination summary with the response." },
 ];
 
 /** Gates step6_validate.py enforces; shown as a compact manifest, not a claim. */
@@ -151,26 +151,26 @@ export const VALIDATION_GATES = [
 export const FAQ = [
   {
     q: "Where does the text come from?",
-    a: "Bare Acts and the Constitution of India, as published PDFs. Each file is inspected for its table of contents, cleaned line by line against a rule set, segmented, validated by nine gates, and only then embedded. The pipeline does not paraphrase or summarise at ingest time; the units in the index are the statute's own text.",
+    a: "The API accepts PDFs and processes them through EnhancedHectorIngestor. Its current section-aware chunker recognises section boundaries; long sections may be split at sub-section or paragraph boundaries, and very short sections may be merged. The seven-step display on this page documents a separate v2 workflow, not a live API ingestion run.",
   },
   {
     q: "Does HECTOR give legal advice?",
-    a: "No. It retrieves provisions and shows the citations it used. Every answer on this page is the live system responding to a real question, and the provision it grounded on is printed beside it. Read the provision, not the paraphrase.",
+    a: "No. Search and comparison responses may include retrieved text and source references, but citations and confidence values do not guarantee legal correctness. Check the authoritative statute and consult a qualified legal professional.",
   },
   {
-    q: "Why are the old codes still in the corpus alongside the new ones?",
-    a: "Because the questions still get asked. The Bharatiya Nyaya Sanhita, Bharatiya Nagarik Suraksha Sanhita and Bharatiya Sakshya Adhiniyam replaced the IPC, CrPC and Indian Evidence Act, but the conduct being asked about frequently predates them. Both sets are indexed, and the comparison tool maps a provision across the two.",
+    q: "Can the comparison tool always find a counterpart?",
+    a: "The search and comparison interfaces accept references to older and newer codes. A corresponding provision is not guaranteed: the comparison endpoint may return no counterpart when it cannot resolve one. Check any proposed mapping against the authoritative texts.",
   },
   {
     q: "How do I know what is actually indexed?",
-    a: "This page asks the index. The record count beside the hero is a live reading from the service's readiness probe, not a figure typed into the source. If the index is down, the figure disappears rather than freezing at a stale number.",
+    a: "The record count is read from the service's unauthenticated readiness probe when the page loads; it is hidden if the request fails. Search and comparison panels call the live API. Grammar and chunking labs use bundled browser-side fixtures, not live records.",
   },
   {
     q: "What happens when the system is not confident?",
-    a: "It says so. A search response carries a confidence level and, where retrieval was thin, a warning that the answer should be treated as incomplete. The comparison endpoint will refuse to invent a correspondence and returns an explicit note when it cannot find one.",
+    a: "Search responses include a confidence value and may include a hallucination summary. The response generator abstains when it receives no results. Neither confidence nor citations guarantee legal correctness; review the returned sources directly.",
   },
   {
     q: "Can I see the chunking rules?",
-    a: "They are printed on this page, in Python, with the file and line they come from. The chunking lab runs the JavaScript port of those same rules against a real section so you can watch the cuts land — and watch a fixed-window splitter fail on the same text.",
+    a: "The grammar panel shows a browser-side copy of patterns from the repository's v2 workflow, with source file and line references. The chunking lab runs that scanner against bundled sample text. These panels demonstrate code behavior; they are not a live trace of the current API ingestion path.",
   },
 ];
