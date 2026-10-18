@@ -44,7 +44,7 @@ export function Masthead({ records, recordsLoading, recordsFailed }) {
         compact ? "border-hair" : "border-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center gap-6 px-5 sm:px-8">
+      <div className="mx-auto flex max-w-[1400px] items-center gap-4 px-5 sm:px-8">
         <a href="#top" className="group flex shrink-0 items-center gap-3 py-3.5">
           <span className="grid h-8 w-8 place-items-center border border-gold/50 text-gold transition-colors duration-300 group-hover:bg-gold group-hover:text-ink">
             <Scale className="h-[15px] w-[15px]" strokeWidth={1.4} />
@@ -53,17 +53,17 @@ export function Masthead({ records, recordsLoading, recordsFailed }) {
             <span className="font-display text-[19px] font-semibold uppercase leading-none tracking-[0.3em] text-paper">
               Hector
             </span>
-            <span className="hidden label-xs text-muted sm:inline">bare-act retrieval</span>
+            <span className="hidden label-xs text-muted lg:inline">bare-act retrieval</span>
           </span>
         </a>
 
-        <nav className="ml-auto hidden items-center gap-0.5 xl:flex">
+        <nav className="ml-auto hidden min-w-0 items-center gap-0.5 xl:flex">
           {NAV.map((n) => (
             <a
               key={n.id}
               href={`#${n.id}`}
               className={cn(
-                "group relative flex items-baseline gap-1.5 px-3 py-2 label-xs transition-colors duration-200",
+                "group relative flex items-baseline gap-1.5 whitespace-nowrap px-2.5 py-2 label-xs transition-colors duration-200",
                 active === n.id ? "text-gold" : "text-silver hover:text-paper",
               )}
             >
@@ -84,7 +84,7 @@ export function Masthead({ records, recordsLoading, recordsFailed }) {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-4 lg:ml-0">
+        <div className="ml-auto flex shrink-0 items-center gap-3 lg:ml-0">
           <Clock />
           <LiveCount records={records} loading={recordsLoading} failed={recordsFailed} className="hidden xl:inline-flex" />
           <Link href="/search" className="hidden sm:block">

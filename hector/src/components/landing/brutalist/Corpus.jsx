@@ -8,20 +8,16 @@ import { LiveCount } from "./ui";
 
 const EXCLUSIONS = [
   {
-    label: "commentary",
-    why: "A digest sentence is an editor's opinion of an enactment. It must not be able to answer as though it were the enactment.",
+    label: "commentary, headnotes",
+    why: "The sources are bare acts, not digests. An editor's paraphrase is not in the text to begin with; nothing has to be filtered out.",
   },
   {
-    label: "headnotes",
-    why: "A headnote is written after the fact, from the judgment, not from the statute. It would retrieve as though the legislature had drafted it.",
+    label: "schedule table rows",
+    why: "A schedule heading is recognised so its numbered table rows are never mistaken for sections. Schedules are not cut into section units.",
   },
   {
-    label: "schedules of forms, abridged",
-    why: "Where a schedule is forms or tables, it is indexed whole or not at all. A half-schedule is not a source.",
-  },
-  {
-    label: "amendment notes, as body text",
-    why: "Amendment markers are preserved inside the unit, but the marginal note that records them is not treated as operative text.",
+    label: "amendment footnotes as sections",
+    why: "Footnote lines that cite an amendment are rejected as section heads and accounted for by gate G9; the in-text amendment markers stay with their section.",
   },
 ];
 
@@ -100,7 +96,7 @@ export function CorpusSection({ records, recordsLoading, recordsFailed }) {
         <div className="bg-cream px-5 py-5">
           <p className="flex items-center gap-2 label-xs text-gold">
             <Trash2 className="h-3.5 w-3.5" strokeWidth={1.6} />
-            what is kept out, on purpose
+            what is not in the index, and why
           </p>
           <ul className="mt-4 space-y-3">
             {EXCLUSIONS.map((e) => (
@@ -133,12 +129,12 @@ export function CorpusSection({ records, recordsLoading, recordsFailed }) {
             index is unreachable the line is blank rather than stale.
           </p>
           <p className="mt-4 max-w-[54ch] text-[12.5px] leading-[1.7] text-silver">
-            For the list of statutes and the provisions held under each, the{" "}
+            The{" "}
             <Link href="/landing/acts" className="text-gold-light underline underline-offset-4 hover:text-gold">
               bare act index
             </Link>{" "}
-            is the reference. It is maintained alongside the ingest registry, not derived from a number on this
-            page.
+            page is a catalogue of the statutes the project is oriented around, not a live coverage report of
+            the index. The record count above is what the index actually holds.
           </p>
           <div className="mt-5">
             <LiveCount records={records} loading={recordsLoading} failed={recordsFailed} />

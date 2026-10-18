@@ -60,7 +60,7 @@ function Clock() {
     s = t.toTimeString().slice(0, 8);
   }
   return (
-    <span className="hidden items-center gap-2 font-mono text-[10.5px] text-muted 2xl:flex">
+    <span className="hidden shrink-0 items-center gap-2 whitespace-nowrap font-mono text-[10.5px] text-muted 2xl:flex">
       <span className="h-1 w-1 bg-gold/70" />
       {s} IST
     </span>
@@ -73,7 +73,7 @@ function Clock() {
  * printed as requests rather than as settled facts about the law.
  */
 export function Ticker({ pairs }) {
-  const row = pairs.map((p) => `${p.act} §${p.section}  ⇄  counterpart resolved at request time`);
+  const row = pairs.map((p) => `${p.act} §${p.section}  ⇄  counterpart asked of the API, not asserted here`);
   return (
     <div className="group relative overflow-hidden border-y border-hair bg-panel-2/70">
       <div className="flex w-max animate-marquee items-center whitespace-nowrap group-hover:[animation-play-state:paused]">

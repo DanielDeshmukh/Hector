@@ -79,7 +79,7 @@ export function Colophon({ records, recordsLoading, recordsFailed }) {
               <span>Hierarchical Evaluation of Civil-Criminal Textual&rsquo;s Orchestrator &amp; Retrieval</span>
             </div>
             <div className="flex flex-wrap items-center gap-4 label-xs text-muted">
-              <span>&copy; {new Date().getFullYear()} Hector Legal Systems</span>
+              <span>&copy; {new Date().getFullYear()} Hector</span>
               <span className="hidden h-3 w-px bg-slate-custom/40 sm:block" />
               <Link href="#top" className="text-silver transition-colors hover:text-gold">
                 Back to the top

@@ -122,30 +122,29 @@ export const INGEST_STEPS = [
     name: "Push",
     file: "step9_push.py",
     detail:
-      "Embed with nemotron-3-embed-1b at 2,048 dimensions, cosine, and upsert into Pinecone. The same embeddings are reused for both the index and the evaluation's BM25 leg.",
+      "Embed with nemotron-3-embed-1b at 2,048 dimensions, cosine, and upsert into Pinecone. The dense leg and the evaluation's BM25 leg share one id space and one text source (metadata.document).",
     writes: "Pinecone upsert",
   },
 ];
 
-/** High-level uncached search path summarized in the local ledger. */
+/** High-level uncached search path; matches the three timed stages the API returns. */
 export const QUERY_STAGES = [
   { id: "route", name: "Route", detail: "Classify the query and choose whether corpus retrieval applies." },
   { id: "retrieve", name: "Retrieve", detail: "Search the legal index for a legal-research request." },
-  { id: "generate", name: "Generate", detail: "Build a response from the retrieved results." },
-  { id: "report", name: "Report", detail: "Return confidence and a hallucination summary with the response." },
+  { id: "generate", name: "Generate", detail: "Build a response from the retrieved results, with confidence and a hallucination summary." },
 ];
 
-/** Gates step6_validate.py enforces; shown as a compact manifest, not a claim. */
+/** The nine gates step6_validate.py runs (G1–G9), in the order the validator prints them. */
 export const VALIDATION_GATES = [
-  "Whitelist only removes labelled noise",
-  "Hyphen joins restored across line breaks",
-  "Page-run continuity preserved",
-  "Section numbering strictly increasing",
-  "Every expected section accounted for",
-  "No orphan fragments between sections",
-  "Amendment markers preserved, not stripped",
-  "Provision headers survive cleaning",
-  "Record ids stable across rebuilds",
+  "Act identity holds on sampled pages",
+  "Every expected section is accounted for",
+  "Each record starts with its own section number",
+  "Cleaned text matches the raw document",
+  "All 27 record keys present",
+  "Re-scan proves text survived verbatim",
+  "Section order is preserved",
+  "Part sizes within the limit, or flagged whole",
+  "Footnote removals fully accounted for",
 ];
 
 export const FAQ = [

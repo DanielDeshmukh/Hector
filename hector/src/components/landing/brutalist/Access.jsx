@@ -56,7 +56,7 @@ export function AccessSection({ records, recordsLoading, recordsFailed }) {
           {
             icon: BookOpen,
             title: "Bare act index",
-            body: "The maintained list of statutes and the provisions held under each, kept alongside the ingest registry rather than derived from a figure on this page.",
+            body: "A catalogue of Indian legal texts the project is oriented around. Not every statute on that page is in the live index; the live index reports its own record count above.",
             cta: "Browse the index",
             href: "/landing/acts",
           },

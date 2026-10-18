@@ -15,7 +15,10 @@ const GROUPS = [
   { id: "noise", title: "Removed, not cut at", note: "step 3 / step 6", items: NOISE },
 ];
 
-const PATTERN_COUNT = GROUPS.reduce((n, g) => n + g.items.length, 0);
+const PATTERN_COUNT = GROUPS.reduce(
+  (n, g) => n + g.items.filter((it) => it.js).length,
+  0,
+);
 
 /** Classify one printed line using the same predicates the scanner uses. */
 function kindOf(line) {
@@ -235,7 +238,7 @@ export function GrammarSection() {
           },
           {
             t: "What it yields",
-            b: "One unit per section, addressable by act and section number, and stampable with the character offset every sentence was taken from.",
+            b: "One unit per section, addressable by act and section number, stampable with its page range and a content hash of the kept text.",
           },
         ].map((c) => (
           <div key={c.t} className="bg-cream px-4 py-4 transition-colors duration-300 hover:bg-panel/70">

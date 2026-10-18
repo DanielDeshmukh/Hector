@@ -179,7 +179,7 @@ export function ChunkingSection() {
           </div>
           {mode === "window" && (
             <p className="mt-2 font-mono text-[10.5px] text-muted">
-              gold ticks mark where the grammar would have opened a unit — every one of them lands mid-window.
+              gold ticks mark where the grammar would have opened a unit — the fixed grid ignores them, so none is guaranteed to sit on a window edge.
             </p>
           )}
         </div>

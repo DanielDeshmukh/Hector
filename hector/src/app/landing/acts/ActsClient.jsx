@@ -7,21 +7,27 @@ function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * records = section-record count from the v2 corpus that is actually
+ * upserted into the live Pinecone index (eval_corpus.jsonl, 4034 records
+ * across 16 acts). Acts with records: null are catalogue only — they are
+ * not searchable through the API.
+ */
 const allActs = [
-  { name: "Bharatiya Nyaya Sanhita, 2023", short: "BNS", year: 2023, status: "Active", category: "Criminal", icon: Icons.Scale },
-  { name: "Bharatiya Nagarik Suraksha Sanhita, 2023", short: "BNSS", year: 2023, status: "Active", category: "Criminal Procedure", icon: Icons.Shield },
-  { name: "Bharatiya Sakshya Adhiniyam, 2023", short: "BSA", year: 2023, status: "Active", category: "Evidence", icon: Icons.FileText },
-  { name: "Indian Penal Code, 1860", short: "IPC", year: 1860, status: "Repealed", category: "Criminal", icon: Icons.Scale },
-  { name: "Code of Criminal Procedure, 1973", short: "CrPC", year: 1973, status: "Repealed", category: "Criminal Procedure", icon: Icons.BookOpen },
-  { name: "Code of Civil Procedure, 1908", short: "CPC", year: 1908, status: "Active", category: "Civil", icon: Icons.BookOpen },
-  { name: "Indian Evidence Act, 1872", short: "IEA", year: 1872, status: "Repealed", category: "Evidence", icon: Icons.FileText },
-  { name: "Constitution of India", short: "Constitution", year: 1950, status: "Active", category: "Constitutional", icon: Icons.Scale },
-  { name: "Indian Contract Act, 1872", short: "ICA", year: 1872, status: "Active", category: "Civil", icon: Icons.BookOpen },
-  { name: "Transfer of Property Act, 1882", short: "TPA", year: 1882, status: "Active", category: "Civil", icon: Icons.BookOpen },
+  { name: "Bharatiya Nyaya Sanhita, 2023", short: "BNS", year: 2023, status: "Active", category: "Criminal", icon: Icons.Scale, records: 364 },
+  { name: "Bharatiya Nagarik Suraksha Sanhita, 2023", short: "BNSS", year: 2023, status: "Active", category: "Criminal Procedure", icon: Icons.Shield, records: 541 },
+  { name: "Bharatiya Sakshya Adhiniyam, 2023", short: "BSA", year: 2023, status: "Active", category: "Evidence", icon: Icons.FileText, records: 172 },
+  { name: "Indian Penal Code, 1860", short: "IPC", year: 1860, status: "Repealed", category: "Criminal", icon: Icons.Scale, records: 568 },
+  { name: "Code of Criminal Procedure, 1973", short: "CrPC", year: 1973, status: "Repealed", category: "Criminal Procedure", icon: Icons.BookOpen, records: 543 },
+  { name: "Code of Civil Procedure, 1908", short: "CPC", year: 1908, status: "Active", category: "Civil", icon: Icons.BookOpen, records: 174 },
+  { name: "Indian Evidence Act, 1872", short: "IEA", year: 1872, status: "Repealed", category: "Evidence", icon: Icons.FileText, records: 186 },
+  { name: "Constitution of India", short: "Constitution", year: 1950, status: "Active", category: "Constitutional", icon: Icons.Scale, records: 507 },
+  { name: "Indian Contract Act, 1872", short: "ICA", year: 1872, status: "Active", category: "Civil", icon: Icons.BookOpen, records: 268 },
+  { name: "Transfer of Property Act, 1882", short: "TPA", year: 1882, status: "Active", category: "Civil", icon: Icons.BookOpen, records: 149 },
   { name: "Indian Trusts Act, 1882", short: "ITA", year: 1882, status: "Active", category: "Civil", icon: Icons.BookOpen },
   { name: "Easements Act, 1882", short: "EA", year: 1882, status: "Active", category: "Civil", icon: Icons.BookOpen },
-  { name: "Negotiable Instruments Act, 1881", short: "NI Act", year: 1881, status: "Active", category: "Civil", icon: Icons.FileText },
-  { name: "Limitation Act, 1963", short: "LA", year: 1963, status: "Active", category: "Civil", icon: Icons.FileText },
+  { name: "Negotiable Instruments Act, 1881", short: "NI Act", year: 1881, status: "Active", category: "Civil", icon: Icons.FileText, records: 155 },
+  { name: "Limitation Act, 1963", short: "LA", year: 1963, status: "Active", category: "Civil", icon: Icons.FileText, records: 32 },
   { name: "Specific Relief Act, 1963", short: "SRA", year: 1963, status: "Active", category: "Civil", icon: Icons.FileText },
   { name: "Hindu Marriage Act, 1955", short: "HMA", year: 1955, status: "Active", category: "Family Law", icon: Icons.Scale },
   { name: "Hindu Minority and Guardianship Act, 1956", short: "HMGA", year: 1956, status: "Active", category: "Family Law", icon: Icons.Scale },
@@ -30,7 +36,7 @@ const allActs = [
   { name: "Family Courts Act, 1984", short: "FCA", year: 1984, status: "Active", category: "Family Law", icon: Icons.Scale },
   { name: "Protection of Women from Domestic Violence Act, 2005", short: "PWDVA", year: 2005, status: "Active", category: "Family Law", icon: Icons.Shield },
   { name: "Juvenile Justice Act, 2015", short: "JJ Act", year: 2015, status: "Active", category: "Family Law", icon: Icons.Shield },
-  { name: "Arbitration and Conciliation Act, 1996", short: "Arb Act", year: 1996, status: "Active", category: "Civil", icon: Icons.Link },
+  { name: "Arbitration and Conciliation Act, 1996", short: "Arb Act", year: 1996, status: "Active", category: "Civil", icon: Icons.Link, records: 109 },
   { name: "Competition Act, 2002", short: "CA", year: 2002, status: "Active", category: "Civil", icon: Icons.FileText },
   { name: "Industrial Disputes Act, 1947", short: "IDA", year: 1947, status: "Active", category: "Labour", icon: Icons.Database },
   { name: "Factories Act, 1948", short: "FA", year: 1948, status: "Active", category: "Labour", icon: Icons.Database },
@@ -38,17 +44,18 @@ const allActs = [
   { name: "Arms Act, 1959", short: "AA", year: 1959, status: "Active", category: "Other", icon: Icons.Shield },
   { name: "Copyright Act, 1957", short: "CA", year: 1957, status: "Active", category: "Other", icon: Icons.FileText },
   { name: "Forest Act, 1927", short: "FA", year: 1927, status: "Active", category: "Other", icon: Icons.Database },
-  { name: "Narcotic Drugs and Psychotropic Substances Act, 1985", short: "NDPS", year: 1985, status: "Active", category: "Other", icon: Icons.Shield },
+  { name: "Narcotic Drugs and Psychotropic Substances Act, 1985", short: "NDPS", year: 1985, status: "Active", category: "Other", icon: Icons.Shield, records: 127 },
   { name: "Prevention of Corruption Act, 1988", short: "PCA", year: 1988, status: "Active", category: "Other", icon: Icons.Shield },
   { name: "Environment Protection Act, 1986", short: "EPA", year: 1986, status: "Active", category: "Other", icon: Icons.Database },
   { name: "Information Technology Act, 2000", short: "ITA", year: 2000, status: "Active", category: "Other", icon: Icons.Cpu },
-  { name: "Right to Information Act, 2005", short: "RTI", year: 2005, status: "Active", category: "Other", icon: Icons.FileText },
-  { name: "Consumer Protection Act, 2019", short: "CPA", year: 2019, status: "Active", category: "Other", icon: Icons.Shield },
+  { name: "Right to Information Act, 2005", short: "RTI", year: 2005, status: "Active", category: "Other", icon: Icons.FileText, records: 32 },
+  { name: "Consumer Protection Act, 2019", short: "CPA", year: 2019, status: "Active", category: "Other", icon: Icons.Shield, records: 107 },
   { name: "Legal Services Authorities Act, 1987", short: "LSAA", year: 1987, status: "Active", category: "Other", icon: Icons.Scale },
   { name: "Gram Nyayalayas Act, 2008", short: "GNA", year: 2008, status: "Active", category: "Other", icon: Icons.Scale },
 ];
 
 const categories = [...new Set(allActs.map((a) => a.category))];
+const indexedCount = allActs.filter((a) => a.records != null).length;
 
 export default function ActsPage() {
   return (
@@ -84,72 +91,119 @@ export default function ActsPage() {
       <main className="pt-24 pb-20">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-10">
               <span className="inline-block px-4 py-1.5 bg-gold-light/50 text-gold text-sm font-medium rounded-full mb-4">
                 Legal Coverage
               </span>
               <h1 className="font-serif text-3xl lg:text-5xl font-semibold text-white mb-6">
-                All 38 Bare Acts
+                Indian Legal Texts
               </h1>
               <p className="text-lg text-silver">
-                Complete list of Indian legal texts indexed in HECTOR. Each act
-                has been parsed into searchable chunks with IPC-to-BNS
-                cross-referencing.
+                {indexedCount} of these acts are in the live search index.
+                Cards marked <span className="text-gold font-medium">in index</span>{" "}
+                show the record count pushed to Pinecone. The rest are catalogue
+                only — not searchable through the API.
               </p>
+            </div>
+
+            <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/15 border border-gold/40 text-xs font-medium text-gold">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                {indexedCount} in index · 4,034 records
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-silver">
+                <span className="w-1.5 h-1.5 rounded-full bg-silver/40" />
+                {allActs.length - indexedCount} catalogue only
+              </span>
             </div>
 
             {categories.map((category) => {
               const categoryActs = allActs.filter(
                 (a) => a.category === category
               );
+              const catIndexed = categoryActs.filter((a) => a.records != null).length;
               return (
                 <div key={category} className="mb-12">
                   <h2 className="font-serif text-xl font-semibold text-white mb-4 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     {category}
                     <span className="text-sm text-silver font-normal">
-                      ({categoryActs.length})
+                      ({catIndexed}/{categoryActs.length} in index)
                     </span>
                   </h2>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {categoryActs.map((act) => (
-                      <div
-                        key={act.name}
-                        className="group p-5 bg-slate-custom rounded-xl border border-white/5 hover:border-gold-light hover:bg-gold-light/10 transition-all"
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-charcoal text-silver flex items-center justify-center group-hover:bg-gold group-hover:text-charcoal transition-colors flex-shrink-0">
-                            <act.icon />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-medium text-white text-sm truncate">
-                                {act.name}
-                              </h3>
+                    {categoryActs.map((act) => {
+                      const indexed = act.records != null;
+                      return (
+                        <div
+                          key={act.name}
+                          className={cn(
+                            "group p-5 rounded-xl border transition-all",
+                            indexed
+                              ? "bg-slate-custom border-gold/25 hover:border-gold-light hover:bg-gold-light/10"
+                              : "bg-slate-custom/50 border-white/5 opacity-80 hover:opacity-100"
+                          )}
+                        >
+                          <div className="flex items-start gap-3">
+                            <div
+                              className={cn(
+                                "w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors",
+                                indexed
+                                  ? "bg-charcoal text-gold group-hover:bg-gold group-hover:text-charcoal"
+                                  : "bg-charcoal/60 text-silver/60"
+                              )}
+                            >
+                              <act.icon />
                             </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs text-silver">
-                                {act.year}
-                              </span>
-                              <span className="text-xs text-silver">&middot;</span>
-                              <span className="text-xs text-silver font-mono">
-                                {act.short}
-                              </span>
-                              <span
-                                className={cn(
-                                  "text-[10px] font-medium px-1.5 py-0.5 rounded-full ml-auto",
-                                  act.status === "Active"
-                                    ? "bg-success/20 text-success"
-                                    : "bg-gold/20 text-gold"
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between gap-2 mb-1">
+                                <h3
+                                  className={cn(
+                                    "font-medium text-sm truncate",
+                                    indexed ? "text-white" : "text-silver"
+                                  )}
+                                >
+                                  {act.name}
+                                </h3>
+                                {indexed ? (
+                                  <span className="shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/40">
+                                    in index
+                                  </span>
+                                ) : (
+                                  <span className="shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-white/5 text-silver/60 border border-white/10">
+                                    catalogue
+                                  </span>
                                 )}
-                              >
-                                {act.status}
-                              </span>
+                              </div>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="text-xs text-silver">
+                                  {act.year}
+                                </span>
+                                <span className="text-xs text-silver">&middot;</span>
+                                <span className="text-xs text-silver font-mono">
+                                  {act.short}
+                                </span>
+                                <span
+                                  className={cn(
+                                    "text-[10px] font-medium px-1.5 py-0.5 rounded-full",
+                                    act.status === "Active"
+                                      ? "bg-success/20 text-success"
+                                      : "bg-gold/20 text-gold"
+                                  )}
+                                >
+                                  {act.status}
+                                </span>
+                                {indexed && (
+                                  <span className="ml-auto font-mono text-[11px] text-gold-light tabular-nums">
+                                    {act.records.toLocaleString("en-IN")} rec
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               );

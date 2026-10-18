@@ -1,9 +1,9 @@
 import LandingPage from "@/components/landing/LandingPage";
 
 export const metadata = {
-  title: "HECTOR — Bare-Act Retrieval for Indian Law",
+  title: "HECTOR — Deterministic Retrieval across 38 Indian Bare Acts",
   description:
-    "How the HECTOR corpus is built: the regex boundary grammar that divides a bare act at its section heads, the cut rules that keep provisos attached, and the validation gates every statute must pass.",
+    "Hector — Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval. Deterministic regex corpus chunking across 38 Indian bare acts, with section integrity and citation-level attribution.",
 };
 
 export default function Page() {

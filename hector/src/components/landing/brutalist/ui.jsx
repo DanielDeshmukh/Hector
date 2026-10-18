@@ -152,7 +152,7 @@ export function Btn({ children, onClick, href, variant = "solid", className, typ
     quiet: "border-transparent text-silver hover:text-gold-light hover:border-hair",
   };
   const cls = cn(
-    "group inline-flex items-center justify-center gap-2 border px-4 py-2.5 label-xs transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40",
+    "group inline-flex items-center justify-center gap-2 whitespace-nowrap border px-4 py-2.5 label-xs transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40",
     variants[variant],
     className,
   );
@@ -210,14 +210,14 @@ export function CodeBlock({ file, line, python, children, tone = "neutral", comp
 export function LiveCount({ records, loading, failed, className }) {
   if (loading) {
     return (
-      <span className={cn("font-mono text-[11px] text-muted", className)}>
+      <span className={cn("whitespace-nowrap font-mono text-[11px] text-muted", className)}>
         <span className="animate-pulse">reading index…</span>
       </span>
     );
   }
   if (failed || records === null) return null;
   return (
-    <span className={cn("inline-flex items-baseline gap-1.5 font-mono text-[11px] text-gold", className)}>
+    <span className={cn("inline-flex shrink-0 items-baseline gap-1.5 whitespace-nowrap font-mono text-[11px] text-gold", className)}>
       <span className="relative flex h-1.5 w-1.5 translate-y-[-2px]">
         <span className="absolute inline-flex h-full w-full animate-ping bg-success/60" />
         <span className="relative inline-flex h-1.5 w-1.5 bg-success" />

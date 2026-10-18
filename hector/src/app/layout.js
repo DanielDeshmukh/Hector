@@ -8,7 +8,7 @@ export const metadata = {
     template: "%s | HECTOR",
   },
   description:
-    "Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval. AI-powered legal research engine for Indian Law with 13,479 chunks across 38 bare acts, IPC-to-BNS cross-referencing, and chain-of-verification for zero-hallucination cited responses.",
+    "Hierarchical Evaluation of Civil-Criminal Textual's Orchestrator & Retrieval. AI-powered legal research engine for Indian Law with IPC-to-BNS cross-referencing and chain-of-verification for cited responses.",
   keywords: [
     "Indian law",
     "legal research",

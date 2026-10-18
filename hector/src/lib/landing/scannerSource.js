@@ -84,10 +84,9 @@ export const ANCHOR_KINDS = [
     file: "backend/ingest_v2/v2_scanner.py",
     line: 64,
     role: "A schedule heading. Schedules sit after the last section; their numbered table rows must not leak out as sections.",
-    python: String.raw`re.compile(r"^\s*(?:THE\s+)?(?:FIRST|SECOND|...|TWELFTH)?\s*SCHEDULES?\s*$")`,
+    python: String.raw`re.compile(r"^\s*(?:THE\s+)?(?:FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH|TWELFTH)?\s*SCHEDULES?\s*$")`,
     js: new RegExp(
       String.raw`^\s*(?:THE\s+)?(?:FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH|TWELFTH)?\s*SCHEDULES?\s*$`,
-      "i",
     ),
     key: "schedule",
   },
@@ -212,7 +211,7 @@ export const NOISE = [
     file: "backend/ingest_v2/v2_scanner.py",
     line: 21,
     python: String.raw`re.compile(r"^\s*(?:\d{1,3}\s*)?(?:[\*\uf000-\uf8ff]+\[*|\[+)")`,
-    js: new RegExp(String.raw`^\s*(?:\d{1,3}\s*)?(?:[*\uF000-\uF8FF]+\[+|\[+)`),
+    js: new RegExp(String.raw`^\s*(?:\d{1,3}\s*)?(?:[*\uF000-\uF8FF]+\[*|\[+)`),
     role: "The scanner's own footnote stripper. Applied repeatedly until the line stops changing.",
   },
 ];
