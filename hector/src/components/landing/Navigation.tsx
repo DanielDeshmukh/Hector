@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -36,7 +36,7 @@ export default function Navigation() {
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link href="/landing" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
             <img
               src="/tab-icon.png"
               alt="HECTOR"

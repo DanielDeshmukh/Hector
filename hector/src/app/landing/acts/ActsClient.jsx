@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { Icons } from "@/components/landing/Icons";
@@ -10,7 +10,7 @@ function cn(...classes) {
 /**
  * records = section-record count from the v2 corpus that is actually
  * upserted into the live Pinecone index (eval_corpus.jsonl, 4034 records
- * across 16 acts). Acts with records: null are catalogue only — they are
+ * across 16 acts). Acts with records: null are catalogue only â€” they are
  * not searchable through the API.
  */
 const allActs = [
@@ -63,7 +63,7 @@ export default function ActsPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md shadow-sm border-b border-white/5">
         <div className="w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link href="/landing" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <img
                 src="/tab-icon.png"
                 alt="HECTOR"
@@ -79,7 +79,7 @@ export default function ActsPage() {
               </div>
             </Link>
             <Link
-              href="/landing"
+              href="/"
               className="text-sm font-medium text-silver hover:text-gold transition-colors"
             >
               &larr; Back to Home
@@ -102,14 +102,14 @@ export default function ActsPage() {
                 {indexedCount} of these acts are in the live search index.
                 Cards marked <span className="text-gold font-medium">in index</span>{" "}
                 show the record count pushed to Pinecone. The rest are catalogue
-                only — not searchable through the API.
+                only â€” not searchable through the API.
               </p>
             </div>
 
             <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/15 border border-gold/40 text-xs font-medium text-gold">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                {indexedCount} in index · 4,034 records
+                {indexedCount} in index Â· 4,034 records
               </span>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-silver">
                 <span className="w-1.5 h-1.5 rounded-full bg-silver/40" />

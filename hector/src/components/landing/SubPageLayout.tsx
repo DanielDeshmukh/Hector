@@ -1,20 +1,20 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { Icons } from "./Icons";
 
 const navLinks = [
-  { label: "Corpus", href: "/landing#corpus" },
-  { label: "Grammar", href: "/landing#grammar" },
-  { label: "Chunking", href: "/landing#chunking" },
-  { label: "Compare", href: "/landing#compare" },
-  { label: "FAQ", href: "/landing#faq" },
+  { label: "Corpus", href: "/#corpus" },
+  { label: "Grammar", href: "/#grammar" },
+  { label: "Chunking", href: "/#chunking" },
+  { label: "Compare", href: "/#compare" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 const footerLinks = {
   Product: [
-    { label: "Corpus", href: "/landing#corpus" },
-    { label: "Grammar", href: "/landing#grammar" },
+    { label: "Corpus", href: "/#corpus" },
+    { label: "Grammar", href: "/#grammar" },
     { label: "API Access", href: "/landing/api-access" },
     { label: "Analytics", href: "/analytics" },
     { label: "Changelog", href: "/landing/changelog" },
@@ -51,7 +51,7 @@ export default function SubPageLayout({
       <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md shadow-sm border-b border-white/5">
         <div className="w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link href="/landing" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <img
                 src="/tab-icon.png"
                 alt="HECTOR"
@@ -78,7 +78,7 @@ export default function SubPageLayout({
               ))}
             </div>
             <Link
-              href="/landing"
+              href="/"
               className="text-sm font-medium text-silver hover:text-gold transition-colors"
             >
               &larr; Home

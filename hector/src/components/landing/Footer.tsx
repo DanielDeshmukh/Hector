@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 const footerLinks = {
   Product: [
-    { label: "Features", href: "/landing#features" },
-    { label: "Technology", href: "/landing#technology" },
+    { label: "Features", href: "/#features" },
+    { label: "Technology", href: "/#technology" },
     { label: "API Access", href: "/landing/api-access" },
     { label: "Analytics", href: "/analytics" },
     { label: "Changelog", href: "/landing/changelog" },
