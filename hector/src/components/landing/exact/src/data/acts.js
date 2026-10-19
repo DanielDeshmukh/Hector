@@ -1,28 +1,4 @@
-export type ActStatus = "Active" | "Repealed";
-
-export interface Act {
-  /** index within its category */
-  name: string;
-  year: number;
-  code: string;
-  status: ActStatus;
-  /** statute repealed / superseded by this act, where applicable */
-  repeals?: string;
-  /** for the three successor criminal statutes */
-  note?: string;
-}
-
-export interface ActCategory {
-  title: string;
-  slug: string;
-  acts: Act[];
-}
-
-/**
- * The indexed corpus. 38 statutes, held as bare-act text only —
- * no commentary, no digests, no secondary material inside the retrieval set.
- */
-export const ACT_CATEGORIES: ActCategory[] = [
+const ACT_CATEGORIES = [
   {
     title: "Criminal",
     slug: "criminal",
@@ -33,16 +9,16 @@ export const ACT_CATEGORIES: ActCategory[] = [
         code: "BNS",
         status: "Active",
         repeals: "Indian Penal Code, 1860",
-        note: "Commenced 01.07.2024. Applies to offences committed on or after commencement.",
+        note: "Commenced 01.07.2024. Applies to offences committed on or after commencement."
       },
       {
         name: "Indian Penal Code, 1860",
         year: 1860,
         code: "IPC",
         status: "Repealed",
-        note: "Continues to govern offences committed before 01.07.2024.",
-      },
-    ],
+        note: "Continues to govern offences committed before 01.07.2024."
+      }
+    ]
   },
   {
     title: "Criminal Procedure",
@@ -54,16 +30,16 @@ export const ACT_CATEGORIES: ActCategory[] = [
         code: "BNSS",
         status: "Active",
         repeals: "Code of Criminal Procedure, 1973",
-        note: "Serial numbers of cases of institution to be allocated throughout the year.",
+        note: "Serial numbers of cases of institution to be allocated throughout the year."
       },
       {
         name: "Code of Criminal Procedure, 1973",
         year: 1973,
         code: "CrPC",
         status: "Repealed",
-        note: "Governs trials instituted before 01.07.2024.",
-      },
-    ],
+        note: "Governs trials instituted before 01.07.2024."
+      }
+    ]
   },
   {
     title: "Evidence",
@@ -75,16 +51,16 @@ export const ACT_CATEGORIES: ActCategory[] = [
         code: "BSA",
         status: "Active",
         repeals: "Indian Evidence Act, 1872",
-        note: "Electronic records brought at par with documents of primary evidence.",
+        note: "Electronic records brought at par with documents of primary evidence."
       },
       {
         name: "Indian Evidence Act, 1872",
         year: 1872,
         code: "IEA",
         status: "Repealed",
-        note: "Applies to proceedings commenced before 01.07.2024.",
-      },
-    ],
+        note: "Applies to proceedings commenced before 01.07.2024."
+      }
+    ]
   },
   {
     title: "Civil",
@@ -99,8 +75,8 @@ export const ACT_CATEGORIES: ActCategory[] = [
       { name: "Limitation Act, 1963", year: 1963, code: "LA", status: "Active", repeals: "Limitation Act, 1908" },
       { name: "Specific Relief Act, 1963", year: 1963, code: "SRA", status: "Active", repeals: "Specific Relief Act, 1877" },
       { name: "Arbitration and Conciliation Act, 1996", year: 1996, code: "Arb Act", status: "Active", repeals: "Arbitration (Protocol and Convention) Act, 1937" },
-      { name: "Competition Act, 2002", year: 2002, code: "CA", status: "Active", repeals: "Monopolies and Restrictive Trade Practices Act, 1969" },
-    ],
+      { name: "Competition Act, 2002", year: 2002, code: "CA", status: "Active", repeals: "Monopolies and Restrictive Trade Practices Act, 1969" }
+    ]
   },
   {
     title: "Constitutional",
@@ -111,9 +87,9 @@ export const ACT_CATEGORIES: ActCategory[] = [
         year: 1950,
         code: "Constitution",
         status: "Active",
-        note: "Parts, Articles, Clauses and Schedules indexed on separate anchors.",
-      },
-    ],
+        note: "Parts, Articles, Clauses and Schedules indexed on separate anchors."
+      }
+    ]
   },
   {
     title: "Family Law",
@@ -125,8 +101,8 @@ export const ACT_CATEGORIES: ActCategory[] = [
       { name: "Dowry Prohibition Act, 1961", year: 1961, code: "DPA", status: "Active" },
       { name: "Family Courts Act, 1984", year: 1984, code: "FCA", status: "Active" },
       { name: "Protection of Women from Domestic Violence Act, 2005", year: 2005, code: "PWDVA", status: "Active" },
-      { name: "Juvenile Justice (Care and Protection of Children) Act, 2015", year: 2015, code: "JJ Act", status: "Active", repeals: "Juvenile Justice (Care and Protection of Children) Act, 2000" },
-    ],
+      { name: "Juvenile Justice (Care and Protection of Children) Act, 2015", year: 2015, code: "JJ Act", status: "Active", repeals: "Juvenile Justice (Care and Protection of Children) Act, 2000" }
+    ]
   },
   {
     title: "Labour",
@@ -134,8 +110,8 @@ export const ACT_CATEGORIES: ActCategory[] = [
     acts: [
       { name: "Industrial Disputes Act, 1947", year: 1947, code: "IDA", status: "Active" },
       { name: "Factories Act, 1948", year: 1948, code: "FA", status: "Active", repeals: "Factories Act, 1934" },
-      { name: "Motor Vehicles Act, 1988", year: 1988, code: "MVA", status: "Active", repeals: "Motor Vehicles Act, 1939" },
-    ],
+      { name: "Motor Vehicles Act, 1988", year: 1988, code: "MVA", status: "Active", repeals: "Motor Vehicles Act, 1939" }
+    ]
   },
   {
     title: "Other",
@@ -147,17 +123,24 @@ export const ACT_CATEGORIES: ActCategory[] = [
       { name: "Narcotic Drugs and Psychotropic Substances Act, 1985", year: 1985, code: "NDPS", status: "Active" },
       { name: "Prevention of Corruption Act, 1988", year: 1988, code: "PCA", status: "Active", repeals: "Prevention of Corruption Act, 1947" },
       { name: "Environment (Protection) Act, 1986", year: 1986, code: "EPA", status: "Active" },
-      { name: "Information Technology Act, 2000", year: 2000, code: "IT Act", status: "Active" },
+      { name: "Information Technology Act, 2000", year: 2e3, code: "IT Act", status: "Active" },
       { name: "Right to Information Act, 2005", year: 2005, code: "RTI", status: "Active", repeals: "Freedom of Information Act, 2002" },
       { name: "Consumer Protection Act, 2019", year: 2019, code: "CPA", status: "Active", repeals: "Consumer Protection Act, 1986" },
       { name: "Legal Services Authorities Act, 1987", year: 1987, code: "LSAA", status: "Active" },
-      { name: "Gram Nyayalayas Act, 2008", year: 2008, code: "GNA", status: "Active" },
-    ],
-  },
+      { name: "Gram Nyayalayas Act, 2008", year: 2008, code: "GNA", status: "Active" }
+    ]
+  }
 ];
-
-export const ALL_ACTS: Act[] = ACT_CATEGORIES.flatMap((c) => c.acts);
-export const TOTAL_ACTS = ALL_ACTS.length;
-export const ACTIVE_ACTS = ALL_ACTS.filter((a) => a.status === "Active").length;
-export const REPEALED_ACTS = ALL_ACTS.filter((a) => a.status === "Repealed").length;
-export const REPEAL_LINKS = ALL_ACTS.filter((a) => a.repeals).length;
+const ALL_ACTS = ACT_CATEGORIES.flatMap((c) => c.acts);
+const TOTAL_ACTS = ALL_ACTS.length;
+const ACTIVE_ACTS = ALL_ACTS.filter((a) => a.status === "Active").length;
+const REPEALED_ACTS = ALL_ACTS.filter((a) => a.status === "Repealed").length;
+const REPEAL_LINKS = ALL_ACTS.filter((a) => a.repeals).length;
+export {
+  ACTIVE_ACTS,
+  ACT_CATEGORIES,
+  ALL_ACTS,
+  REPEALED_ACTS,
+  REPEAL_LINKS,
+  TOTAL_ACTS
+};

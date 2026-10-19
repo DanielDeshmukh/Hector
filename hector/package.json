@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/node": "^26.6.5",
     "clsx": "^2.1.1",
     "lucide-react": "^0.378.0",
     "next": "15.5.20",
@@ -18,11 +17,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.14",
-    "tailwindcss": "^4.3.0",
-    "typescript": "5.8.2"
+    "tailwindcss": "^4.3.0"
   }
 }

@@ -1,4 +1,4 @@
-import ExactLanding from "@/components/landing/exact/src/App";
+import ExactLanding from "@/components/landing/exact/src/App.jsx";
 
 export const metadata = {
   title: "HECTOR — Bare-Act Retrieval for Indian Law",
