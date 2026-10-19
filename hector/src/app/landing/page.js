@@ -1,4 +1,4 @@
-import LandingPage from "@/components/landing/LandingPage";
+import ExactLanding from "@/components/landing/exact/src/App";
 
 export const metadata = {
   title: "HECTOR — Deterministic Retrieval across 38 Indian Bare Acts",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <LandingPage />;
+  return <ExactLanding />;
 }

@@ -1,66 +1,44 @@
-"use client";
-
 import { useMemo, useState } from "react";
 import { ScanLine, TriangleAlert, Regex, Check } from "lucide-react";
-import { cn } from "@/lib/landing/cn";
+import { cn } from "../utils/cn";
 import { Btn, Reveal, Tag, WideHead, WideSection } from "./ui";
-import { FIXTURES, CHUNK_PAGE_TEXT } from "@/lib/landing/fixtures";
-import { scanUnits, anchorTotals, numParts } from "@/lib/landing/boundary";
-import { SOURCE_BUNDLE } from "@/lib/landing/scannerSource";
-import { useCopy } from "@/lib/landing/hooks";
+import { BOUNDARY_SOURCE, canon, regexUnits } from "../lib/text";
+import { byId } from "../data/corpus";
+import { useCopy } from "../lib/hooks";
 
-/**
- * A page as it comes off a scan, assembled by injecting scan furniture around
- * real section text. The section bodies are the fixtures; only the page
- * headers, page numbers and separators between them are synthetic.
- */
-const SCANNED_PAGE = (() => {
-  const bns101 = FIXTURES.find((f) => f.id === "bns-101");
-  const bns103 = FIXTURES.find((f) => f.id === "bns-103");
-  const a = (bns101?.text || "").split("\n").filter(Boolean);
-  const b = (bns103?.text || "").split("\n").filter(Boolean);
-  const mid = a.slice(8, 26).join("\n").replace("culpable homicide", "culpable-\nhomicide");
-  return [
-    "THE BHARATIYA NYAYA SANHITA, 2023",
-    "(46 of 2023, 25.12.2023)",
-    "",
-    a.slice(0, 8).join("\n"),
-    "",
-    "—9—",
-    "",
-    "... continued from the preceding page ...",
-    "",
-    mid,
-    "",
-    "148",
-    "",
-    "* * *",
-    "",
-    a.slice(26).join("\n"),
-    "",
-    b.join("\n"),
-  ].join("\n");
-})();
+const MESSY = `THE BHARATIYA NYAYA SANHITA, 2023
+(46 of 2023, 25.12.2023)
+101. Culpable homicide.—Whoever causes death by doing an act with the intention of causing death, or with such intention as aforesaid, shall be punishable with imprisonment for life or with fine which may extend to ten years.
+102. Murder.—Except in the cases hereinafter excepted, culpable homicide is murder,—
+first, if the act by which the death is caused is done with the intention of causing death;
+secondly, if it is done with the intention of causing such bodily injury as the offender knows to be likely to cause death.
+Exception 1.—Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation.
+Illustration.—A is provoked by B and kills him in the heat of passion.
+Short title and commencement.
+103. Punishment for murder.—Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine.`;
+
+const CLEAN = [byId("ipc-124a"), byId("bns-152")].map((s) => canon(s!)).join("\n");
 
 const NOT_LAW = `Memorandum for the learned Senior:
-Kindly settle the bail application. The Court took a view on 14.08 that the proviso to Section 37 NDPS is
-not merely procedural. Three grounds, two of which are already in the paper. Revisiting the citation is not
-necessary at this stage.`;
+Kindly settle the bail application. The Court took a view on 14.08 that the proviso to Section 37 NDPS is not merely procedural. Three grounds, two of which are already in thePaper. Revisiting the citation is not necessary at this stage.`;
 
 export function TesterSection() {
-  const [text, setText] = useState(SCANNED_PAGE);
+  const [text, setText] = useState(MESSY);
   const { copied, copy } = useCopy();
 
-  const scan = useMemo(() => scanUnits(text), [text]);
-  const units = scan.units;
-  const totals = useMemo(() => anchorTotals(units), [units]);
-  const headsSeen = useMemo(() => {
-    let n = 0;
-    text.split("\n").forEach((l) => {
-      if (numParts(l)) n += 1;
-    });
-    return n;
-  }, [text]);
+  const units = useMemo(() => regexUnits(text), [text]);
+  const covered = units.reduce((n, u) => n + u.text.length, 0);
+  const residual = Math.max(0, text.length - covered);
+  const totalAnchors = units.reduce(
+    (a, u) => ({
+      proviso: a.proviso + u.anchors.proviso,
+      exception: a.exception + u.anchors.exception,
+      explanation: a.explanation + u.anchors.explanation,
+      illustration: a.illustration + u.anchors.illustration,
+      clause: a.clause + u.anchors.clause,
+    }),
+    { proviso: 0, exception: 0, explanation: 0, illustration: 0, clause: 0 },
+  );
 
   return (
     <WideSection id="tester">
@@ -75,21 +53,21 @@ export function TesterSection() {
         }
         lede={
           <>
-            The patterns printed above are compiled and running in this page, against whatever you put in the
-            left pane. Drop in a scanned page, a clean set of sections, or a memorandum that is not law at all,
-            and read what the splitter decides — including what it refuses to treat as a unit.
+            The pattern compiled above is running in this page. Drop in a section, a page torn out of a bare act, or
+            a memorandum that is not law at all — and read what the splitter decides, including what it refuses to
+            treat as a chunk.
           </>
         }
         controls={
           <div className="flex flex-wrap items-center gap-2 lg:justify-end">
-            <Btn variant="ghost" onClick={() => setText(SCANNED_PAGE)}>
-              A page off a scan
+            <Btn variant="ghost" onClick={() => setText(MESSY)}>
+              Messy bare-act page
             </Btn>
-            <Btn variant="ghost" onClick={() => setText(CHUNK_PAGE_TEXT)}>
-              Four sections, clean
+            <Btn variant="ghost" onClick={() => setText(CLEAN)}>
+              Two mapped sections
             </Btn>
             <Btn variant="quiet" onClick={() => setText(NOT_LAW)}>
-              Something that isn&rsquo;t law
+              Something that isn’t law
             </Btn>
           </div>
         }
@@ -113,15 +91,14 @@ export function TesterSection() {
           />
           <div className="flex flex-wrap items-center gap-2 border-t border-hair bg-panel-2 px-4 py-2.5">
             <span className="font-mono text-[10.5px] text-muted">
-              heads found {headsSeen} · units {units.length} · covered {scan.covered.toLocaleString("en-IN")} ch
-              · unabsorbed {scan.residual.toLocaleString("en-IN")} ch
+              units {units.length} · covered {covered.toLocaleString("en-IN")} ch · unabsorbed {residual.toLocaleString("en-IN")} ch
             </span>
             <button
-              onClick={() => copy(SOURCE_BUNDLE, "src")}
+              onClick={() => copy(BOUNDARY_SOURCE, "src")}
               className="ml-auto flex items-center gap-1.5 border border-hair px-2 py-1 font-mono text-[10.5px] text-silver transition-colors hover:border-gold/60 hover:text-gold"
             >
               {copied === "src" ? <Check className="h-3 w-3 text-success" /> : <ScanLine className="h-3 w-3" />}
-              {copied === "src" ? "source copied" : "copy all patterns"}
+              {copied === "src" ? "source copied" : "copy pattern"}
             </button>
           </div>
         </div>
@@ -139,7 +116,7 @@ export function TesterSection() {
                   <span className="h-1 w-1 bg-error" /> refused
                 </Tag>
               )}
-              <span className="font-mono text-[10.5px] text-muted">{scan.dropped.length} dropped</span>
+              <span className="font-mono text-[10.5px] text-muted">/g</span>
             </span>
           </div>
 
@@ -151,8 +128,8 @@ export function TesterSection() {
               </p>
               <p className="mt-3 max-w-[54ch] text-[13px] leading-[1.7] text-silver">
                 Nothing was invented to fill the gap. Input that is not drafted as a numbered provision does not
-                become a unit, and a corpus that cannot be opened at a section boundary is not a statute index —
-                it is a pile.
+                become a unit, and a corpus that cannot be opened at a section boundary is not a statute index — it is
+                a pile.
               </p>
               <p className="mt-4 border-l-2 border-error/50 pl-3 font-mono text-[11.5px] leading-relaxed text-muted">
                 expected: a line beginning with a section number and a marginal note, e.g.
@@ -169,25 +146,22 @@ export function TesterSection() {
                     <span className="font-mono text-[12.5px] text-paper">§ {u.number}</span>
                     <span className="truncate text-[13px] italic text-silver/90">{u.marginal || "—"}</span>
                     <span className="ml-auto font-mono text-[10.5px] text-muted">
-                      off {u.start}–{u.end} · {u.chars} ch
+                      off {u.start}–{u.end} · {u.text.length} ch
                     </span>
                   </div>
                   <p className="mt-1.5 line-clamp-2 whitespace-pre-wrap font-mono text-[11.5px] leading-[1.7] text-muted transition-colors duration-200 group-hover:text-silver/85">
-                    {u.lines
-                      .map((l) => l.text)
-                      .join(" ")
-                      .replace(/\s+/g, " ")
-                      .trim()
-                      .slice(0, 240)}
+                    {u.text.replace(/\s+/g, " ").trim()}
                   </p>
                   <p className="mt-1.5 flex flex-wrap gap-x-3 font-mono text-[10.5px]">
-                    {[
-                      ["clause", u.anchors.clause],
-                      ["proviso", u.anchors.proviso],
-                      ["exception", u.anchors.exception],
-                      ["explanation", u.anchors.explanation],
-                      ["illustration", u.anchors.illustration],
-                    ].map(([k, v]) => (
+                    {(
+                      [
+                        ["clause", u.anchors.clause],
+                        ["proviso", u.anchors.proviso],
+                        ["exception", u.anchors.exception],
+                        ["explanation", u.anchors.explanation],
+                        ["illustration", u.anchors.illustration],
+                      ] as const
+                    ).map(([k, v]) => (
                       <span key={k} className={cn(v ? "text-gold/80" : "text-slate-custom")}>
                         {k} {v}
                       </span>
@@ -202,10 +176,10 @@ export function TesterSection() {
             <div className="grid grid-cols-2 gap-px border-t border-hair bg-hair sm:grid-cols-5">
               {[
                 ["units", String(units.length)],
-                ["provisos kept", String(totals.proviso)],
-                ["exceptions kept", String(totals.exception)],
-                ["explanations kept", String(totals.explanation)],
-                ["illustrations kept", String(totals.illustration)],
+                ["provisos kept", String(totalAnchors.proviso)],
+                ["exceptions kept", String(totalAnchors.exception)],
+                ["explanations kept", String(totalAnchors.explanation)],
+                ["illustrations kept", String(totalAnchors.illustration)],
               ].map(([k, v]) => (
                 <div key={k} className="bg-cream px-3 py-2.5">
                   <p className="label-xs text-muted">{k}</p>
@@ -217,9 +191,9 @@ export function TesterSection() {
             </div>
           </Reveal>
           <p className="border-t border-hair bg-panel px-4 py-2.5 font-mono text-[10.5px] leading-relaxed text-muted">
-            unabsorbed matter ({scan.residual.toLocaleString("en-IN")} ch) is text lying outside any section
-            anchor — running heads, the extent note, page furniture. It is dropped, never promoted to a chunk of
-            its own; matter between two anchors belongs to the unit it sits in.
+            unabsorbed matter ({residual.toLocaleString("en-IN")} ch) is text lying outside any anchor — running
+            heads, the extent note, page furniture. It is dropped, never promoted to a chunk of its own; matter
+            between two anchors belongs to the unit it sits in.
           </p>
         </div>
       </div>

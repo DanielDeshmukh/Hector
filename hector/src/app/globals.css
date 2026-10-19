@@ -27,6 +27,11 @@
   --font-display: "Bodoni Moda", "Times New Roman", serif;
   --font-plex-sans: "IBM Plex Sans", "Helvetica Neue", sans-serif;
   --font-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --animate-marquee: marquee 46s linear infinite;
+  --animate-marquee-slow: marquee 80s linear infinite;
+  --animate-blink: blink 1.05s steps(1, end) infinite;
+  --animate-scan: scan 7s linear infinite;
 }
 
 ::-webkit-scrollbar {
@@ -237,6 +242,18 @@ html:has(.zip-landing)::-webkit-scrollbar-thumb:hover {
 @keyframes blink-cursor {
   0%, 55% { opacity: 1; }
   56%, 100% { opacity: 0; }
+}
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1400%); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
 .brutalist .animate-marquee {
