@@ -12,7 +12,7 @@ export default function Page() {
           cross-referencing to deliver zero-hallucination cited responses.
         </p>
         <p>
-          The system indexes 38 bare acts into 13,479 searchable chunks, covering both
+          The system indexes 16 bare acts into 4,034 section units, covering both
           the legacy Indian Penal Code and the new Bharatiya Nyaya Sanhita. Every citation
           is verified against primary legal sources before being presented.
         </p>
@@ -24,8 +24,8 @@ export default function Page() {
         <div className="p-6 bg-slate-custom rounded-xl border border-white/5">
           <h3 className="font-semibold text-white mb-3">Key Numbers</h3>
           <div className="grid grid-cols-2 gap-4">
-            <div><span className="text-2xl font-bold text-gold">38</span><p className="text-sm text-silver">Bare Acts Indexed</p></div>
-            <div><span className="text-2xl font-bold text-gold">13,479</span><p className="text-sm text-silver">Searchable Chunks</p></div>
+            <div><span className="text-2xl font-bold text-gold">16</span><p className="text-sm text-silver">Bare Acts Indexed</p></div>
+            <div><span className="text-2xl font-bold text-gold">4,034</span><p className="text-sm text-silver">Section Units</p></div>
             <div><span className="text-2xl font-bold text-gold">496</span><p className="text-sm text-silver">IPC-BNS Mappings</p></div>
             <div><span className="text-2xl font-bold text-gold">94%</span><p className="text-sm text-silver">Evaluation Accuracy</p></div>
           </div>

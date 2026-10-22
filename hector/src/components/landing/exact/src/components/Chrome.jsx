@@ -5,7 +5,7 @@ import { cn } from "../utils/cn";
 import { useActiveSection, useScrollProgress } from "../lib/hooks";
 import { MAPPINGS, byId } from "../data/corpus";
 import { citationOf } from "../lib/text";
-import { ALL_ACTS, TOTAL_ACTS } from "../data/acts";
+import { ALL_ACTS, INDEXED_ACTS } from "../data/acts";
 import { Btn } from "./ui";
 const NAV = [
   { id: "corpus", label: "Corpus" },
@@ -133,11 +133,11 @@ function Masthead() {
                 /* @__PURE__ */ jsx("span", { className: "absolute inline-flex h-full w-full animate-ping bg-success/60" }),
                 /* @__PURE__ */ jsx("span", { className: "relative inline-flex h-1.5 w-1.5 bg-success" })
               ] }),
-              TOTAL_ACTS,
+              INDEXED_ACTS,
               " acts indexed"
             ] }),
-            /* @__PURE__ */ jsx("a", { href: "#access", className: "hidden sm:block", children: /* @__PURE__ */ jsxs(Btn, { className: "px-3.5 py-2", children: [
-              "Request access",
+            /* @__PURE__ */ jsx("a", { href: "/search", className: "hidden sm:block", children: /* @__PURE__ */ jsxs(Btn, { className: "px-3.5 py-2", children: [
+              "Try Hector",
               /* @__PURE__ */ jsx(ArrowRight, { className: "h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" })
             ] }) }),
             /* @__PURE__ */ jsx(
@@ -207,7 +207,7 @@ function Colophon() {
               "Open the corpus",
               /* @__PURE__ */ jsx(ArrowDown, { className: "h-3 w-3" })
             ] }) }),
-            /* @__PURE__ */ jsx("a", { href: "#access", children: /* @__PURE__ */ jsx(Btn, { variant: "ghost", children: "Request an index key" }) })
+            /* @__PURE__ */ jsx("a", { href: "/search", children: /* @__PURE__ */ jsx(Btn, { variant: "ghost", children: "Try Hector" }) })
           ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "grid gap-8 sm:grid-cols-3 lg:col-span-7", children: [
@@ -272,7 +272,7 @@ function Colophon() {
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: "overflow-hidden border-t border-hair py-3", children: /* @__PURE__ */ jsx("p", { className: "whitespace-nowrap text-center font-display text-[13vw] leading-[0.8] tracking-[-0.04em] text-silver/[0.055] select-none", children: "HECTOR \xB7 38 BARE ACTS \xB7 ONE GRAMMAR" }) })
+    /* @__PURE__ */ jsx("div", { className: "overflow-hidden border-t border-hair py-3", children: /* @__PURE__ */ jsx("p", { className: "whitespace-nowrap text-center font-display text-[13vw] leading-[0.8] tracking-[-0.04em] text-silver/[0.055] select-none", children: "HECTOR \xB7 16 BARE ACTS \xB7 ONE GRAMMAR" }) })
   ] });
 }
 function FooterCol({ title, links }) {

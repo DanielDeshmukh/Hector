@@ -5,7 +5,7 @@ import { cn } from "../utils/cn";
 import { Btn, Reveal, Tag } from "./ui";
 import { Ticker } from "./Chrome";
 import { CORPUS, MAPPINGS } from "../data/corpus";
-import { TOTAL_ACTS, ACT_CATEGORIES, REPEAL_LINKS } from "../data/acts";
+import { INDEXED_ACTS, ACT_CATEGORIES, REPEAL_LINKS } from "../data/acts";
 import { canon, digest, parseQuery, retrieve, SAMPLE_QUERY } from "../lib/text";
 const SUGGESTIONS = [
   "Section 302 IPC punishment for murder",
@@ -136,7 +136,7 @@ function Hero() {
         ] }) }),
         /* @__PURE__ */ jsx(Reveal, { delay: 140, children: /* @__PURE__ */ jsxs("p", { className: "mt-8 max-w-[46ch] text-[15.5px] leading-[1.78] text-silver", children: [
           "Hector is a retrieval instrument over ",
-          /* @__PURE__ */ jsx("span", { className: "text-paper", children: "38 Indian bare acts" }),
+          /* @__PURE__ */ jsx("span", { className: "text-paper", children: "16 Indian bare acts" }),
           ". The corpus is not sliced to fit a window \u2014 it is divided by one deterministic regular expression that recognises a single boundary: the printed section number. Provisos, exceptions, explanations and illustrations therefore travel with the rule they qualify, and every sentence returned can be traced to a clause and a character offset."
         ] }) }),
         /* @__PURE__ */ jsx(Reveal, { delay: 200, children: /* @__PURE__ */ jsx("div", { className: "mt-8 border-l border-gold/40 bg-panel/40 py-4 pl-5 pr-4", children: /* @__PURE__ */ jsxs("p", { className: "font-mono text-[12.5px] leading-[1.9] text-silver/90", children: [
@@ -175,7 +175,7 @@ function Hero() {
             "HECTOR \u2014 Hierarchical Evaluation of Civil-Criminal Textual\u2019s",
             " ",
             /* @__PURE__ */ jsx("span", { className: "text-silver/80", children: "Orchestrator & Retrieval" }),
-            " \xB7 index of 38 bare acts \xB7 statutory text only"
+            " \xB7 16 acts indexed \xB7 statutory text only"
           ] })
         ] })
       ] }),
@@ -244,8 +244,8 @@ function Hero() {
             /* @__PURE__ */ jsxs("span", { className: "text-silver/70", children: [
               CORPUS.length,
               " shown \xB7 ",
-              TOTAL_ACTS,
-              " acts"
+              INDEXED_ACTS,
+              "-act index"
             ] })
           ] })
         ] }),
@@ -322,7 +322,7 @@ function Hero() {
           /* @__PURE__ */ jsx("p", { className: "font-mono text-[12px] text-silver", children: "No unit in the demonstration extract answers that query." }),
           /* @__PURE__ */ jsxs("p", { className: "mx-auto mt-2 max-w-sm text-[12px] leading-relaxed text-muted", children: [
             "The live index resolves across all ",
-            TOTAL_ACTS,
+            INDEXED_ACTS,
             " statutes; this page ships a",
             " ",
             CORPUS.length,
@@ -349,8 +349,8 @@ function Hero() {
     /* @__PURE__ */ jsx(Ticker, {}),
     /* @__PURE__ */ jsxs("div", { className: "mx-auto w-full max-w-[1400px] px-5 sm:px-8", children: [
       /* @__PURE__ */ jsx("div", { className: "grid grid-cols-2 gap-px border-x border-b border-hair bg-hair md:grid-cols-5", children: [
-        { v: String(TOTAL_ACTS), k: "bare acts indexed", s: "8 categories \xB7 3 repealed" },
-        { v: "1", k: "boundary grammar", s: "9 capture groups" },
+        { v: String(INDEXED_ACTS), k: "bare acts indexed", s: "38 catalogued \xB7 8 categories \xB7 3 repealed" },
+        { v: "1", k: "boundary grammar", s: "8 real patterns" },
         { v: "\u226450", k: "queries per batch", s: "one queue, one table" },
         { v: "2-pane", k: "section comparison", s: `${MAPPINGS.length} mapped pairs live` },
         { v: String(REPEAL_LINKS), k: "repeal entries", s: "repealed statutes pinned" }

@@ -1,11 +1,10 @@
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useMemo, useState } from "react";
-import { ChevronDown, Check, Minus, Mail, BookOpen as BookMarked, Gavel, Landmark, ScrollText } from "lucide-react";
+import { ChevronDown, Check, Minus, BookOpen as BookMarked, Gavel, Landmark, ScrollText } from "lucide-react";
 import { cn } from "../utils/cn";
 import { Btn, Panel, Reveal, SectionShell, Tag, WideHead, WideSection } from "./ui";
-import { ACCESS, FAQ, PIPELINE, byId } from "../data/corpus";
+import { FAQ, PIPELINE, byId } from "../data/corpus";
 import { canon, digest } from "../lib/text";
-import { TOTAL_ACTS } from "../data/acts";
 function sentences(text) {
   const out = [];
   const re = /[^.]+\.?/g;
@@ -96,7 +95,7 @@ function LedgerSection() {
             ] }, l.start)) })
           ] }),
           /* @__PURE__ */ jsx("div", { className: "grid grid-cols-2 gap-px border-t border-hair bg-hair sm:grid-cols-4", children: [
-            ["units in index", String(TOTAL_ACTS)],
+            ["section units in index", "4,034"],
             ["untraceable sentences", "0"],
             ["citations per answer", "\u2264 12"],
             ["format", "statute \xB7 \xA7 \xB7 cl."]
@@ -163,22 +162,7 @@ function ForWhomSection() {
     ] }) }, f.who)) })
   ] });
 }
-const FEATURES = [
-  ["Bare-act index", `${TOTAL_ACTS} statutes`, `${TOTAL_ACTS} statutes`, `${TOTAL_ACTS} + private overlay`],
-  ["Regex boundary units", "whole sections", "whole sections", "whole sections"],
-  ["Section comparison", "2-pane, mapped pairs", "2-pane + free pairing", "custom pairs per matter"],
-  ["Queries per batch run", "10", "50", "queued, uncapped"],
-  ["Citation strings", "copy-ready", "copy-ready", "copy-ready + annexure"],
-  ["Exports", "\u2014", "CSV \xB7 annexure", "CSV \xB7 annexure \xB7 JSON"],
-  ["Offset ledger", "per sentence", "per sentence", "per sentence"],
-  ["Seats", "1", "up to 10", "named counsel"],
-  ["Case-report corpus", "\u2014", "read-only add-on", "second index"],
-  ["Deployment", "hosted", "hosted", "VPC / on-premise"]
-];
 function AccessSection() {
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(null);
-  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
   return /* @__PURE__ */ jsxs(WideSection, { id: "access", children: [
     /* @__PURE__ */ jsx(
       WideHead,
@@ -186,97 +170,37 @@ function AccessSection() {
         no: "08",
         kicker: "Access",
         title: /* @__PURE__ */ jsxs(Fragment, { children: [
-          "Priced per desk.",
-          /* @__PURE__ */ jsx("span", { className: "block italic text-gold-light", children: "Not per word." })
+          "Free for everyone.",
+          /* @__PURE__ */ jsx("span", { className: "block italic text-gold-light", children: "No plan, no seat, no meter." })
         ] }),
-        lede: /* @__PURE__ */ jsx(Fragment, { children: "The index is maintained against the Gazette, the Legislative Department\u2019s amendments and the correction orders. One subscription, no meter on the statute book." }),
+        lede: /* @__PURE__ */ jsx(Fragment, { children: "Hector carries no subscription and no per-desk pricing. The index is maintained against the Gazette, the Legislative Department\u2019s amendments and the correction orders \u2014 and it is open to the Bar, the Bench and students alike." }),
         controls: /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap items-center gap-2 lg:justify-end", children: [
+          /* @__PURE__ */ jsx(Tag, { tone: "gold", children: "free for everyone" }),
           /* @__PURE__ */ jsx(Tag, { tone: "neutral", children: "no token counting" }),
-          /* @__PURE__ */ jsx(Tag, { tone: "neutral", children: "cancel at any quarter" }),
-          /* @__PURE__ */ jsx(Tag, { tone: "gold", children: "request reviewed by hand" })
+          /* @__PURE__ */ jsx(Tag, { tone: "neutral", children: "no account required" })
         ] })
       }
     ),
-    /* @__PURE__ */ jsx("div", { className: "mt-10 overflow-x-auto", children: /* @__PURE__ */ jsxs("table", { className: "w-full min-w-[720px] border-collapse text-left", children: [
-      /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
-        /* @__PURE__ */ jsx("th", { className: "w-[240px] border-b border-hair px-4 py-5 align-bottom", children: /* @__PURE__ */ jsx("span", { className: "label-xs text-muted", children: "plan" }) }),
-        ACCESS.map((t) => /* @__PURE__ */ jsxs(
-          "th",
-          {
-            className: cn(
-              "relative border-b px-5 py-5 align-bottom transition-colors duration-300",
-              t.featured ? "border-gold/70 bg-gold/[0.05]" : "border-hair bg-cream"
-            ),
-            children: [
-              t.featured && /* @__PURE__ */ jsx("span", { className: "absolute inset-x-0 top-0 h-[2px] bg-gold" }),
-              /* @__PURE__ */ jsx("p", { className: "label-xs text-gold", children: t.tier }),
-              /* @__PURE__ */ jsx("p", { className: "mt-3 font-display text-[clamp(1.7rem,3.2vw,2.5rem)] leading-none tracking-tight text-paper", children: t.price }),
-              /* @__PURE__ */ jsx("p", { className: "mt-2 font-mono text-[11px] text-muted", children: t.per }),
-              /* @__PURE__ */ jsx("ul", { className: "mt-4 hidden space-y-1.5 lg:block", children: t.lines.map((l) => /* @__PURE__ */ jsxs("li", { className: "flex items-start gap-2 text-[12px] leading-snug text-silver", children: [
-                /* @__PURE__ */ jsx(Check, { className: "mt-[3px] h-3 w-3 shrink-0 text-gold/80", strokeWidth: 2 }),
-                l
-              ] }, l)) })
-            ]
-          },
-          t.tier
-        ))
-      ] }) }),
-      /* @__PURE__ */ jsx("tbody", { children: FEATURES.map(([label, ...cells]) => /* @__PURE__ */ jsxs("tr", { className: "group border-b border-hair/60 transition-colors hover:bg-panel/40", children: [
-        /* @__PURE__ */ jsx("th", { scope: "row", className: "px-4 py-2.5 text-left text-[12.5px] font-normal text-silver", children: label }),
-        cells.map((c, i) => /* @__PURE__ */ jsx(
-          "td",
-          {
-            className: cn(
-              "px-5 py-2.5 font-mono text-[11.5px]",
-              c === "\u2014" ? "text-slate-custom" : "text-paper/90",
-              ACCESS[i]?.featured && "bg-gold/[0.03]"
-            ),
-            children: c
-          },
-          i
-        ))
-      ] }, label)) })
-    ] }) }),
-    /* @__PURE__ */ jsx(Reveal, { y: false, children: /* @__PURE__ */ jsxs("div", { className: "mt-6 grid gap-px border border-hair bg-hair lg:grid-cols-[minmax(0,1fr)_420px]", children: [
+    /* @__PURE__ */ jsx(Reveal, { y: false, children: /* @__PURE__ */ jsxs("div", { className: "mt-10 grid gap-px border border-hair bg-hair lg:grid-cols-[minmax(0,1fr)_420px]", children: [
       /* @__PURE__ */ jsxs("div", { className: "bg-panel px-5 py-6", children: [
-        /* @__PURE__ */ jsx("p", { className: "label-xs text-gold", children: "Index keys" }),
-        /* @__PURE__ */ jsx("p", { className: "mt-3 max-w-[44ch] font-display text-[clamp(1.4rem,2.6vw,2rem)] leading-[1.1] text-paper", children: "Keys are issued to members of the Bar, to the Bench, and to registries \u2014 by name, and after a look at the roll." }),
-        /* @__PURE__ */ jsx("p", { className: "mt-3 max-w-[58ch] text-[12.5px] leading-[1.7] text-muted", children: "Send the enrolment number or the department. A person reads every request; the corpus is not sold to anyone who intends to let it speak for itself." })
+        /* @__PURE__ */ jsx("p", { className: "label-xs text-gold", children: "What every account gets" }),
+        /* @__PURE__ */ jsx("ul", { className: "mt-4 space-y-2", children: [
+          "Full statutory index \u2014 16 acts indexed, 38 catalogued",
+          "Section comparison, 2-pane, every mapped pair",
+          "Batch runs \u2014 50 queries, one queue",
+          "Citation strings and the offset ledger, copy-ready"
+        ].map((l) => /* @__PURE__ */ jsxs("li", { className: "flex items-start gap-2 text-[13px] leading-snug text-silver", children: [
+          /* @__PURE__ */ jsx(Check, { className: "mt-[3px] h-3 w-3 shrink-0 text-gold/80", strokeWidth: 2 }),
+          l
+        ] }, l)) }),
+        /* @__PURE__ */ jsx("p", { className: "mt-5 max-w-[58ch] text-[12.5px] leading-[1.7] text-muted", children: "There is no gate in front of the statute book: no key request, no trial meter, no seat count. If you can open the page, you have the index." })
       ] }),
-      /* @__PURE__ */ jsxs(
-        "form",
-        {
-          onSubmit: (e) => {
-            e.preventDefault();
-            if (valid) setSent(email.trim());
-          },
-          className: "flex flex-col justify-center gap-3 bg-cream px-5 py-6",
-          children: [
-            /* @__PURE__ */ jsxs("label", { className: "flex items-center gap-3 border border-hair bg-panel px-3 py-2.5 transition-colors focus-within:border-gold/60", children: [
-              /* @__PURE__ */ jsx(Mail, { className: "h-3.5 w-3.5 text-muted", strokeWidth: 1.7 }),
-              /* @__PURE__ */ jsx(
-                "input",
-                {
-                  value: email,
-                  onChange: (e) => {
-                    setEmail(e.target.value);
-                    setSent(null);
-                  },
-                  placeholder: "counsel@chambers.in",
-                  className: "min-w-0 flex-1 bg-transparent font-mono text-[12.5px] text-paper outline-none placeholder:text-muted/70"
-                }
-              )
-            ] }),
-            !valid && email.trim().length > 3 && /* @__PURE__ */ jsx("p", { className: "font-mono text-[10.5px] text-error/80", children: "that address does not parse" }),
-            /* @__PURE__ */ jsx(Btn, { type: "submit", disabled: !valid, className: "w-full", children: "Request a key" }),
-            /* @__PURE__ */ jsx("p", { className: "min-h-[16px] font-mono text-[10.5px] text-muted", children: sent ? /* @__PURE__ */ jsxs("span", { className: "text-success", children: [
-              "logged \xB7 ",
-              sent,
-              " \xB7 you will hear from a person"
-            ] }) : "no card, no trial meter \xB7 reply within two working days" })
-          ]
-        }
-      )
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col justify-center gap-3 bg-cream px-5 py-6", children: [
+        /* @__PURE__ */ jsx("p", { className: "label-xs text-gold", children: "Open the index" }),
+        /* @__PURE__ */ jsx("p", { className: "max-w-[26ch] font-display text-[clamp(1.4rem,2.6vw,2rem)] leading-[1.1] text-paper", children: "No sign-up wall. Ask the statute a question." }),
+        /* @__PURE__ */ jsx("a", { href: "/search", children: /* @__PURE__ */ jsx(Btn, { className: "w-full", children: "Try Hector" }) }),
+        /* @__PURE__ */ jsx("p", { className: "min-h-[16px] font-mono text-[10.5px] text-muted", children: "free \xB7 no account \xB7 no meter" })
+      ] })
     ] }) })
   ] });
 }

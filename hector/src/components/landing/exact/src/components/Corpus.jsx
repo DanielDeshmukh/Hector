@@ -47,7 +47,7 @@ function CorpusSection() {
       WideHead,
       {
         no: "01",
-        kicker: "The indexed corpus",
+        kicker: "The statute catalogue",
         title: /* @__PURE__ */ jsxs(Fragment, { children: [
           "Thirty-eight bare acts.",
           /* @__PURE__ */ jsx("span", { className: "block italic text-gold-light", children: "Nothing between you and the text." })
@@ -129,7 +129,7 @@ function CorpusSection() {
           "\u201D."
         ] }),
         /* @__PURE__ */ jsxs("p", { className: "mt-2 text-[12px] text-muted", children: [
-          "The index holds ",
+          "The catalogue holds ",
           TOTAL_ACTS,
           " statutes; try a short code instead."
         ] })

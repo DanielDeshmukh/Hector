@@ -14,19 +14,19 @@ import {
 import { useCopy } from "../lib/hooks";
 function kindOf(line) {
   const t = line.replace(/^\t+/, "");
-  if (/^[ \t]*\d{1,4}[A-Za-z]?\.\s/.test(t) || /^[ \t]*[Aa]rticle\s\d/.test(t)) return "section";
-  if (/^[ \t]*Provided\b/.test(t)) return "proviso";
-  if (/^[ \t]*Exception\b/.test(t)) return "exception";
-  if (/^[ \t]*Explanation\b/.test(t)) return "explanation";
-  if (/^[ \t]*Illustration\b/.test(t)) return "illustration";
-  if (/^[ \t]*[—–-]\s*\(|^[ \t]*[—–-]/.test(t)) return "clause";
+  if (/^(?:[Ss]ection|[Ss]ec\.?|s\.)\s*\d{1,4}[A-Z]?\.\s+/.test(t) || /^\d{1,4}[A-Z]?\.\s+[^a-z\d]/.test(t)) return "section";
+  if (/^[ \t]*Provided\b/i.test(t)) return "proviso";
+  if (/^[ \t]*Exception/i.test(t)) return "exception";
+  if (/^[ \t]*Explanation/i.test(t)) return "explanation";
+  if (/^[ \t]*Illustration/i.test(t)) return "illustration";
+  if (/^[ \t]*\([a-zA-Z0-9]+\)/.test(t) || /^[ \t]*[—–-]/.test(t)) return "clause";
   return "body";
 }
 function GrammarSection() {
   const [active, setActive] = useState("exception");
   const { copied, copy } = useCopy();
   const sample = useMemo(
-    () => [byId("bns-102"), byId("bns-152")].filter(Boolean).map((s) => canon(s)).join("\n"),
+    () => [byId("bns-101"), byId("bns-152")].filter(Boolean).map((s) => canon(s)).join("\n"),
     []
   );
   const lines = useMemo(() => sample.split("\n"), [sample]);
@@ -35,10 +35,6 @@ function GrammarSection() {
     if (!activeGroup) return /* @__PURE__ */ new Set();
     const set = new Set(activeGroup.highlights);
     if (!activeGroup.highlights.length) ["section", "clause", "proviso", "exception", "explanation", "illustration"].forEach((k) => set.add(k));
-    if (activeGroup.group === "stop") {
-      set.clear();
-      set.add("section");
-    }
     return set;
   }, [activeGroup]);
   return /* @__PURE__ */ jsxs(
@@ -48,12 +44,12 @@ function GrammarSection() {
       no: "02",
       kicker: "The boundary grammar",
       title: /* @__PURE__ */ jsxs(Fragment, { children: [
-        "Nine groups.",
+        "Eight groups.",
         /* @__PURE__ */ jsx("span", { className: "block italic text-gold-light", children: "No length parameter." })
       ] }),
-      lede: /* @__PURE__ */ jsx(Fragment, { children: "Chunking is usually a hyper-parameter: a token count, an overlap, a splitter. Here it is a pattern \u2014 compiled once per statute and run over the bare-act text. Hover a group to see what it seizes in a real section." }),
+      lede: /* @__PURE__ */ jsx(Fragment, { children: "Chunking is usually a hyper-parameter: a token count, an overlap, a splitter. Here it is a pattern \u2014 the same eight the index runs, compiled once and run over the bare-act text. Hover a group to see what it seizes in a real section." }),
       aside: /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap gap-2", children: [
-        /* @__PURE__ */ jsx(Tag, { tone: "gold", children: "flags: g" }),
+        /* @__PURE__ */ jsx(Tag, { tone: "gold", children: "flags: gm" }),
         /* @__PURE__ */ jsx(Tag, { tone: "neutral", children: "lazy body, eager boundary" }),
         /* @__PURE__ */ jsx(Tag, { tone: "neutral", children: "deterministic \xB7 idempotent" })
       ] }),
@@ -62,7 +58,7 @@ function GrammarSection() {
           /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap items-center justify-between gap-3 border-b border-hair bg-panel-2 px-4 py-2.5", children: [
             /* @__PURE__ */ jsxs("span", { className: "flex items-center gap-2 label-xs text-silver", children: [
               /* @__PURE__ */ jsx(Regex, { className: "h-3.5 w-3.5 text-gold", strokeWidth: 1.5 }),
-              "boundary.g \u2014 compiled on this page, on the extract to the right"
+              "boundary.gm \u2014 compiled on this page, on the extract to the right"
             ] }),
             /* @__PURE__ */ jsxs(
               "button",
@@ -92,7 +88,7 @@ function GrammarSection() {
               },
               g.group
             )),
-            /* @__PURE__ */ jsx("span", { className: "text-slate-custom", children: "/g" })
+            /* @__PURE__ */ jsx("span", { className: "text-slate-custom", children: "/gm" })
           ] }) }),
           /* @__PURE__ */ jsxs("div", { className: "grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]", children: [
             /* @__PURE__ */ jsx("ul", { className: "divide-y divide-hair border-b border-hair lg:border-b-0 lg:border-r", children: GRAMMAR.map((g) => {
@@ -191,7 +187,7 @@ function ChunkingSection() {
   const [mode, setMode] = useState("window");
   const [sel, setSel] = useState(0);
   const text = useMemo(
-    () => [byId("bns-102"), byId("bns-103"), byId("bns-104"), byId("bns-152")].filter(Boolean).map((s) => canon(s)).join("\n"),
+    () => [byId("bns-101"), byId("bns-103"), byId("bns-105"), byId("bns-152")].filter(Boolean).map((s) => canon(s)).join("\n"),
     []
   );
   const units = useMemo(() => regexUnits(text), [text]);

@@ -6,7 +6,7 @@ const CORPUS = [
     year: 2023,
     section: "103",
     note: "Punishment for murder",
-    chapter: "Chapter XV \xB7 Offences affecting the human life",
+    chapter: "Chapter VI \xB7 Offences affecting the human body",
     status: "Active",
     counterpart: "ipc-302",
     parts: [
@@ -24,7 +24,7 @@ const CORPUS = [
     year: 1860,
     section: "302",
     note: "Punishment for murder",
-    chapter: "Chapter XVI \xB7 Offences affecting the human life",
+    chapter: "Chapter XVI \xB7 Offences affecting the human body",
     status: "Repealed",
     counterpart: "bns-103",
     flag: "renumbered",
@@ -37,13 +37,13 @@ const CORPUS = [
     ]
   },
   {
-    id: "bns-102",
+    id: "bns-101",
     code: "BNS",
     act: "Bharatiya Nyaya Sanhita, 2023",
     year: 2023,
-    section: "102",
+    section: "101",
     note: "Murder",
-    chapter: "Chapter XV \xB7 Offences affecting the human life",
+    chapter: "Chapter VI \xB7 Offences affecting the human body",
     status: "Active",
     counterpart: "ipc-300",
     parts: [
@@ -53,53 +53,63 @@ const CORPUS = [
       },
       {
         kind: "clause",
-        label: "first",
-        text: "if the act by which the death is caused is done with the intention of causing death;"
+        label: "(a)",
+        text: "if the act by which the death is caused is done with the intention of causing death; or"
       },
       {
         kind: "clause",
-        label: "secondly",
-        text: "if it is done with the intention of causing such bodily injury as the offender knows to be likely to cause death;"
+        label: "(b)",
+        text: "if the act by which the death is caused is done with the intention of causing such bodily injury as the offender knows to be likely to cause the death of the person to whom the harm is caused; or"
       },
       {
         kind: "clause",
-        label: "thirdly",
-        text: "if it is done with the intention of causing bodily injury which the offender knows to be sufficient in the ordinary course of nature to cause death;"
+        label: "(c)",
+        text: "if the act by which the death is caused is done with the intention of causing bodily injury to any person and the bodily injury intended to be inflicted is sufficient in the ordinary course of nature to cause death; or"
       },
       {
         kind: "clause",
-        label: "fourthly",
-        text: "if the offender does the act known to be so imminently dangerous that it must in all probability cause death\u2026"
-      },
-      {
-        kind: "exception",
-        label: "Exception 1",
-        text: "Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation\u2026"
-      },
-      {
-        kind: "exception",
-        label: "Exception 2",
-        text: "Culpable homicide is not murder if the offender, in the exercise in good faith of private defence of person or property, exceeds the power given to him\u2026"
-      },
-      {
-        kind: "exception",
-        label: "Exception 3",
-        text: "Culpable homicide is not murder if a public servant, acting in the discharge of his duty, exceeds the powers of a public servant\u2026"
-      },
-      {
-        kind: "exception",
-        label: "Exception 4",
-        text: "Culpable homicide is not murder if the offender, whilst in sudden fight, causes death in the heat of passion without premeditation\u2026"
-      },
-      {
-        kind: "exception",
-        label: "Exception 5",
-        text: "Culpable homicide is not murder if the person whose death is caused, being above the age of eighteen years, suffers death at the hands of the victim with his own consent\u2026"
+        label: "(d)",
+        text: "if the person committing the act by which the death is caused, knows that it is so imminently dangerous that it must, in all probability, cause death, or such bodily injury as is likely to cause death, and commits such act without any excuse for incurring the risk of causing death or such injury as aforesaid."
       },
       {
         kind: "illustration",
         label: "Illustration (a)",
-        text: "A, on sudden provocation received from B, kills B in the heat of passion. A has committed culpable homicide not amounting to murder."
+        text: "A shoots Z with the intention of killing him. Z dies in consequence. A commits murder."
+      },
+      {
+        kind: "exception",
+        label: "Exception 1",
+        text: "Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation or causes the death of any other person by mistake or accident:"
+      },
+      {
+        kind: "proviso",
+        label: "Proviso",
+        text: "Provided that the provocation is not,\u2014 (a) sought or voluntarily provoked by the offender as an excuse for killing or doing harm to any person; (b) given by anything done in obedience to the law, or by a public servant in the lawful exercise of the powers of such public servant; (c) given by anything done in the lawful exercise of the right of private defence."
+      },
+      {
+        kind: "explanation",
+        label: "Explanation",
+        text: "Whether the provocation was grave and sudden enough to prevent the offence from amounting to murder is a question of fact."
+      },
+      {
+        kind: "exception",
+        label: "Exception 2",
+        text: "Culpable homicide is not murder if the offender in the exercise in good faith of the right of private defence of person or property, exceeds the power given to him by law and causes the death of the person against whom he is exercising such right of defence without premeditation\u2026"
+      },
+      {
+        kind: "exception",
+        label: "Exception 3",
+        text: "Culpable homicide is not murder if the offender, being a public servant or aiding a public servant acting for the advancement of public justice, exceeds the powers given to him by law, and causes death by doing an act which he, in good faith, believes to be lawful\u2026"
+      },
+      {
+        kind: "exception",
+        label: "Exception 4",
+        text: "Culpable homicide is not murder if it is committed without premeditation in a sudden fight in the heat of passion upon a sudden quarrel and without the offender's having taken undue advantage or acted in a cruel or unusual manner."
+      },
+      {
+        kind: "exception",
+        label: "Exception 5",
+        text: "Culpable homicide is not murder when the person whose death is caused, being above the age of eighteen years, suffers death or takes the risk of death with his own consent."
       }
     ]
   },
@@ -110,9 +120,9 @@ const CORPUS = [
     year: 1860,
     section: "300",
     note: "Murder",
-    chapter: "Chapter XVI \xB7 Offences affecting the human life",
+    chapter: "Chapter XVI \xB7 Offences affecting the human body",
     status: "Repealed",
-    counterpart: "bns-102",
+    counterpart: "bns-101",
     flag: "retained",
     parts: [
       {
@@ -172,19 +182,19 @@ const CORPUS = [
     ]
   },
   {
-    id: "bns-104",
+    id: "bns-105",
     code: "BNS",
     act: "Bharatiya Nyaya Sanhita, 2023",
     year: 2023,
-    section: "104",
-    note: "Punishment for culpable homicide not amounting to murder (intention)",
-    chapter: "Chapter XV \xB7 Offences affecting the human life",
+    section: "105",
+    note: "Punishment for culpable homicide not amounting to murder",
+    chapter: "Chapter VI \xB7 Offences affecting the human body",
     status: "Active",
     counterpart: "ipc-304",
     parts: [
       {
         kind: "section",
-        text: "Whoever commits culpable homicide not amounting to murder, where the act by which death is caused is done with the intention of causing death, or of causing such bodily injury as is likely to cause death, shall be punished with imprisonment for life, or with imprisonment which may extend to ten years, and shall also be liable to fine."
+        text: "Whoever commits culpable homicide not amounting to murder, shall be punished with imprisonment for life, or imprisonment of either description for a term which shall not be less than five years but which may extend to ten years, and shall also be liable to fine, if the act by which the death is caused is done with the intention of causing death, or of causing such bodily injury as is likely to cause death; or with imprisonment of either description for a term which may extend to ten years and with fine, if the act is done with the knowledge that it is likely to cause death, but without any intention to cause death, or to cause such bodily injury as is likely to cause death."
       }
     ]
   },
@@ -195,10 +205,10 @@ const CORPUS = [
     year: 1860,
     section: "304",
     note: "Punishment for culpable homicide not amounting to murder",
-    chapter: "Chapter XVI \xB7 Offences affecting the human life",
+    chapter: "Chapter XVI \xB7 Offences affecting the human body",
     status: "Repealed",
-    counterpart: "bns-104",
-    flag: "split",
+    counterpart: "bns-105",
+    flag: "renumbered",
     parts: [
       {
         kind: "section",
@@ -212,19 +222,39 @@ const CORPUS = [
     ]
   },
   {
-    id: "bns-316",
+    id: "bns-318",
     code: "BNS",
     act: "Bharatiya Nyaya Sanhita, 2023",
     year: 2023,
-    section: "316",
-    note: "Cheating and dishonestly inducing delivery of property",
-    chapter: "Chapter XI \xB7 Offences against property",
+    section: "318",
+    note: "Cheating",
+    chapter: "Chapter XVII \xB7 Offences against property",
     status: "Active",
     counterpart: "ipc-420",
     parts: [
       {
         kind: "section",
-        text: "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is a document of title to property shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine."
+        text: "(1) Whoever, by deceiving any person, fraudulently or dishonestly induces the person so deceived to deliver any property to any person, or to consent that any person shall retain any property, or intentionally induces the person so deceived to do or omit to do anything which he would not do or omit if he were not so deceived, and which act or omission causes or is likely to cause damage or harm to that person in body, mind, reputation or property, is said to cheat."
+      },
+      {
+        kind: "explanation",
+        label: "Explanation",
+        text: "A dishonest concealment of facts is a deception within the meaning of this section."
+      },
+      {
+        kind: "clause",
+        label: "(2)",
+        text: "Whoever cheats shall be punished with imprisonment of either description for a term which may extend to three years, or with fine, or with both."
+      },
+      {
+        kind: "clause",
+        label: "(3)",
+        text: "Whoever cheats with the knowledge that he is likely thereby to cause wrongful loss to a person whose interest in the transaction to which the cheating relates, he was bound, either by law, or by a legal contract, to protect, shall be punished with imprisonment of either description for a term which may extend to five years, or with fine, or with both."
+      },
+      {
+        kind: "clause",
+        label: "(4)",
+        text: "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine."
       }
     ]
   },
@@ -235,14 +265,14 @@ const CORPUS = [
     year: 1860,
     section: "420",
     note: "Cheating and dishonestly inducing delivery of property",
-    chapter: "Chapter XII \xB7 Offences affecting the human body",
+    chapter: "Chapter XVII \xB7 Offences against property",
     status: "Repealed",
-    counterpart: "bns-316",
+    counterpart: "bns-318",
     flag: "renumbered",
     parts: [
       {
         kind: "section",
-        text: "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is a document of title to property, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine."
+        text: "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine."
       }
     ]
   },
@@ -387,19 +417,19 @@ const CORPUS = [
     ]
   },
   {
-    id: "bsa-49",
+    id: "bsa-47",
     code: "BSA",
     act: "Bharatiya Sakshya Adhiniyam, 2023",
     year: 2023,
-    section: "49",
-    note: "Proof of previous good character in criminal proceedings",
-    chapter: "Chapter VI \xB7 Of the proof of facts",
+    section: "47",
+    note: "In criminal cases previous good character relevant",
+    chapter: "Chapter II \xB7 Relevancy of facts",
     status: "Active",
     counterpart: "iea-53",
     parts: [
       {
         kind: "section",
-        text: "In criminal proceedings the fact that the accused is a person of previous good character shall be deemed to be relevant."
+        text: "In criminal proceedings the fact that the person accused is of a good character, is relevant."
       }
     ]
   },
@@ -409,15 +439,15 @@ const CORPUS = [
     act: "Indian Evidence Act, 1872",
     year: 1872,
     section: "53",
-    note: "Character affecting damages or punishment",
-    chapter: "Chapter IX \xB7 Of such facts as relate to admission and communication",
+    note: "In criminal cases previous good character relevant",
+    chapter: "Chapter II \xB7 Of the relevancy of facts",
     status: "Repealed",
-    counterpart: "bsa-49",
+    counterpart: "bsa-47",
     flag: "renumbered",
     parts: [
       {
         kind: "section",
-        text: "In suits for damages, the fact that the defendant was, or was not, a person of good character, is relevant. In criminal proceedings, the fact that the accused was a person of good character is relevant."
+        text: "In criminal proceedings, the fact that the person accused is of a good character is relevant."
       }
     ]
   },
@@ -532,23 +562,23 @@ const MAPPINGS = [
   },
   {
     from: "ipc-300",
-    to: "bns-102",
-    relation: "Retained verbatim",
-    delta: "All five exceptions and the illustration block remain inside the section boundary. A window chunker severs Exception 2 from the operative clause 11 times in this section.",
+    to: "bns-101",
+    relation: "Retained",
+    delta: "Same definition carried over; the ordinal limbs were re-lettered to (a)\u2013(d). All five exceptions and the illustration block remain inside the section boundary. A window chunker severs Exception 2 from the operative clause 11 times in this section.",
     risk: "low"
   },
   {
     from: "ipc-304",
-    to: "bns-104",
-    relation: "Split",
-    delta: "One section, two limbs \u2192 two sections. The mental requirement decides which provision is charged; retrieval must not treat s.304 as one-to-one.",
-    risk: "high"
+    to: "bns-105",
+    relation: "Renumbered",
+    delta: "Both limbs sit in one section under the Sanhita, and limb 1 now carries a five-year floor. The mental requirement decides which provision is charged; retrieval must not treat s.304 as one-to-one.",
+    risk: "medium"
   },
   {
     from: "ipc-420",
-    to: "bns-316",
+    to: "bns-318",
     relation: "Renumbered",
-    delta: "Text and sentence unchanged. Compoundability now tracks the Sanhita\u2019s schedule, not the Code\u2019s.",
+    delta: "The seven-year limb for inducing delivery of property is now s.318(4) \u2014 a clause-level citation, not a standalone section. Compoundability now tracks the Sanhita\u2019s schedule, not the Code\u2019s.",
     risk: "medium"
   },
   {
@@ -574,66 +604,60 @@ const MAPPINGS = [
   },
   {
     from: "iea-53",
-    to: "bsa-49",
+    to: "bsa-47",
     relation: "Renumbered",
-    delta: "The civil limb on damages is no longer restated inside the section. Retrieval returns BSA s.49 with the IEA s.53 context note attached.",
-    risk: "medium"
+    delta: "Word-for-word the same sentence in both enactments. The civil limb on damages is no longer restated inside the section. Retrieval returns BSA s.47 with the IEA s.53 context note attached.",
+    risk: "low"
   }
 ];
 const GRAMMAR = [
   {
     group: "open",
-    pattern: String.raw`(?:^|\r?\n)[ \t]{0,8}`,
+    pattern: String.raw`(?:^|\n)`,
     role: "A unit may begin only at the start of a line. Running heads, chapter rules and page furniture are stripped before this runs, so nothing but a printed section number can open a chunk.",
     highlights: []
   },
   {
     group: "number",
-    pattern: String.raw`(?<number>\d{1,4}[A-Za-z]?|[Aa]rticle\s+\d+[A-Z]*)`,
-    role: "103, 124A, 304B, Article 21. The letter suffix is precisely where slicing by length fails \u2014 124A is not 124, and 304A is not 304.",
+    pattern: String.raw`(?:(?:[Ss]ection|[Ss]ec\.?|s\.)\s*(\d{1,4}[A-Z]?)\.?\s+|(\d{1,4}[A-Z]?)\.\s+[^a-z\d])`,
+    role: "Section 103, Sec. 124A, s. 304B \u2014 or a printed 103. at line start. The letter suffix is precisely where slicing by length fails: 124A is not 124, and 304A is not 304.",
     highlights: ["section"]
   },
   {
     group: "marginal",
-    pattern: String.raw`\.[ \t]*(?<marginal>[^\n]{2,140}?\.[ \t]*—)`,
-    role: "The marginal note is bound to its number by the em-dash the drafter printed. It travels with the unit and is never indexed as a paragraph of its own.",
+    pattern: String.raw`\.\s*[-\u2013\u2014]|--|[\u2013\u2014]`,
+    role: "The marginal note is cut from the first line at the dash the drafter printed \u2014 .\u2014, \u2014 or \u2013. It travels with the unit and is never indexed as a paragraph of its own.",
     highlights: ["section"]
   },
   {
     group: "clause",
-    pattern: `(?<clause>\\n\\s*(?:\\([a-z0-9ivx]+\\)|first|secondly|thirdly|fourthly)[,.)]?\\s)`,
-    role: "Keeps (a), (b), (i), (ii) and the ordinal drafting style attached to the operative sentence that governs them.",
+    pattern: String.raw`\(([a-zA-Z0-9]+)\)\s+`,
+    role: "Keeps (a), (b), (i), (ii) and (1), (2) attached to the operative sentence that governs them \u2014 a sub-clause is a citation target, not a paragraph of its own.",
     highlights: ["clause"]
   },
   {
     group: "proviso",
-    pattern: `(?<proviso>\\n\\s*(?:Provided\\s+that|Provided\\s+further\\s+that)[\\s\\S]*?(?=\\n\\s*(?:Provided|Explanation|Illustration|SECTION)|\\Z))`,
-    role: "A proviso that leaves the section is a different case. Anchored, always.",
+    pattern: String.raw`Provided\s+(?:that|also|further|nevertheless)`,
+    role: "One rule, four printed openers: Provided that, Provided also, Provided further, Provided nevertheless. A proviso that leaves the section is a different case. Anchored, always.",
     highlights: ["proviso"]
   },
   {
     group: "exception",
-    pattern: `(?<exception>\\n\\s*Exception\\s*\\d*[\\s\\S]*?(?=\\n\\s*(?:Exception|Illustration|SECTION\\s+\\d)|\\Z))`,
+    pattern: String.raw`^[ \t]*Exception`,
     role: "Exceptions are pulled into the parent unit so that \u201Cnot murder\u201D cannot be retrieved without \u201Cmurder\u201D.",
     highlights: ["exception"]
   },
   {
     group: "explanation",
-    pattern: `(?<explanation>\\n\\s*Explanation\\s*\\d*[\\s\\S]*?(?=\\n\\s*(?:Explanation|Illustration|SECTION\\s+\\d)|\\Z))`,
+    pattern: String.raw`^[ \t]*Explanation`,
     role: "Deeming provisions and definitional explanations stay with the section they explain.",
     highlights: ["explanation"]
   },
   {
     group: "illustration",
-    pattern: `(?<illustration>\\n\\s*Illustration[s]?[\\s\\S]*?(?=\\n\\s*(?:SECTION\\s+\\d)|\\Z))`,
-    role: "Retained so that the worked example is cited with the same authority as the rule.",
+    pattern: String.raw`^[ \t]*Illustration`,
+    role: "The acts print it as Illustration.\u2014, not Illustration: \u2014 so the anchor is the word itself, and the worked example is cited with the same authority as the rule.",
     highlights: ["illustration"]
-  },
-  {
-    group: "stop",
-    pattern: String.raw`(?=(?:\r?\n)[ \t]{0,8}(?:\d{1,4}[A-Za-z]?\.|[Aa]rticle\s+\d+[A-Z]*\.)|\r?\n*[ \t]*$)`,
-    role: "The look-ahead that closes the unit: the next printed section number, or the end of the statute. Chunk length is a consequence of drafting, never a parameter.",
-    highlights: []
   }
 ];
 const ANCHOR_LABELS = [
@@ -654,13 +678,13 @@ const PIPELINE = [
     n: "01",
     title: "Bare-act ingest",
     body: "Legislative Department text, amendment Acts and Gazette corrections merged into one canonical string per statute. No commentary, no digests, no headnote language enters the index.",
-    meta: "38 statutes"
+    meta: "16 statutes indexed"
   },
   {
     n: "02",
     title: "Boundary grammar",
     body: "One deterministic regular expression per statute walks the text and closes a unit only at the next section anchor. Chunk length is a consequence of drafting, never a parameter.",
-    meta: "9 capture groups"
+    meta: "8 real patterns"
   },
   {
     n: "03",
@@ -713,45 +737,7 @@ const FAQ = [
     a: "No. It is an index with a grammar and a ledger. Every answer is a pointer to text you can open and read; the judgement on that text stays with you."
   }
 ];
-const ACCESS = [
-  {
-    tier: "Chambers",
-    price: "\u20B9 2,400",
-    per: "per month \xB7 1 user",
-    lines: [
-      "Full 38-act statutory index",
-      "Section comparison, 2-pane",
-      "Batch runs \u2014 10 queries",
-      "Citation strings, copy-ready"
-    ]
-  },
-  {
-    tier: "Bench & Registry",
-    price: "\u20B9 9,800",
-    per: "per month \xB7 up to 10 users",
-    lines: [
-      "Everything in Chambers",
-      "Batch runs \u2014 50 queries",
-      "CSV and annexure export",
-      "Offset ledger on every answer",
-      "Older, unrepealed texts on request"
-    ],
-    featured: true
-  },
-  {
-    tier: "Firm / Litigation desk",
-    price: "On request",
-    per: "named counsel, unlimited queue",
-    lines: [
-      "Private corpus overlay",
-      "API with the same grammar",
-      "Report corpus as a second index",
-      "Deployment in your VPC"
-    ]
-  }
-];
 export {
-  ACCESS,
   ANCHOR_LABELS,
   CORPUS,
   FAQ,

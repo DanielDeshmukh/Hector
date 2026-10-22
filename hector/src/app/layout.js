@@ -33,7 +33,7 @@ export const metadata = {
     siteName: "HECTOR",
     title: "HECTOR — Zero-Hallucination Legal Research for Indian Law",
     description:
-      "AI-powered legal research engine for Indian Law. 38 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing, chain-of-verification.",
+      "AI-powered legal research engine for Indian Law. 16 bare acts, 4,034 section units, IPC-to-BNS cross-referencing, chain-of-verification.",
     images: [
       {
         url: "/tab-icon.png",
@@ -47,7 +47,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "HECTOR — Zero-Hallucination Legal Research for Indian Law",
     description:
-      "AI-powered legal research engine for Indian Law. 38 bare acts, 13,479 chunks, IPC-to-BNS cross-referencing.",
+      "AI-powered legal research engine for Indian Law. 16 bare acts, 4,034 section units, IPC-to-BNS cross-referencing.",
     images: ["/tab-icon.png"],
   },
   icons: {

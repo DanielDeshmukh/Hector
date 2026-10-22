@@ -4,7 +4,7 @@ import { Check, Copy, Download, Play, Square } from "lucide-react";
 import { cn } from "../utils/cn";
 import { Btn, Reveal } from "./ui";
 import { CORPUS } from "../data/corpus";
-import { TOTAL_ACTS } from "../data/acts";
+import { INDEXED_ACTS } from "../data/acts";
 import { digest, parseQuery, retrieve, SAMPLE_BATCH } from "../lib/text";
 import { useCopy } from "../lib/hooks";
 const MAX = 50;
@@ -310,7 +310,7 @@ ${line.trim()}` : line.trim());
       "Demonstration runner \xB7 resolves against the ",
       CORPUS.length,
       "-unit extract on this page, by the same parse \u2192 statutory identity \u2192 unit sequence the hosted index runs over ",
-      TOTAL_ACTS,
+      INDEXED_ACTS,
       " statutes."
     ] })
   ] }) });

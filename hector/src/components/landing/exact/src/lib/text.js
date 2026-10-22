@@ -3,9 +3,13 @@ function partToText(p) {
   switch (p.kind) {
     case "section":
       return p.text.trim();
-    case "clause":
+    case "clause": {
+      const l = (p.label ?? "").trim();
+      if (/^\([a-zA-Z0-9]+\)$/.test(l)) return `
+	${l} ${p.text.trim()}`;
       return `
-	\u2014${p.label ? `${p.label},` : ""} ${p.text.trim()}`;
+	\u2014${l ? `${l},` : ""} ${p.text.trim()}`;
+    }
     case "exception":
       return `
 	${p.label ?? "Exception"}.\u2014${p.text.trim()}`;
@@ -36,35 +40,48 @@ const canonById = (id) => {
   const s = CORPUS.find((x) => x.id === id);
   return s ? canon(s) : "";
 };
-const BOUNDARY_SOURCE = String.raw`(?:^|\r?\n)[ \t]{0,8}(?<number>\d{1,4}[A-Za-z]?|[Aa]rticle\s+\d+[A-Z]*)\.[ \t]*(?<marginal>[^\n]{2,140}?\.[ \t]*—)(?<body>[\s\S]*?)(?=(?:\r?\n)[ \t]{0,8}(?:\d{1,4}[A-Za-z]?\.|[Aa]rticle\s+\d+[A-Z]*\.)|\r?\n*[ \t]*$)`;
-const BOUNDARY = new RegExp(BOUNDARY_SOURCE, "g");
+const BOUNDARY_SOURCE = String.raw`(?:^|\n)(?:[Ss]ection|[Ss]ec\.?|s\.)\s*(\d{1,4}[A-Z]?)\.?\s+|(?:^|\n)(\d{1,4}[A-Z]?)\.\s+[^a-z\d]`;
+const BOUNDARY = new RegExp(BOUNDARY_SOURCE, "gm");
 const countAll = (haystack, re) => (haystack.match(re) ?? []).length;
+const TITLE_CUT_RE = /\.\s*[-\u2013\u2014]|--|[\u2013\u2014]/;
+function marginalOf(unit) {
+  const first = unit.split("\n").find((l) => l.trim()) ?? "";
+  const after = first.replace(/^\s*(?:[Ss]ection|[Ss]ec\.?|s\.)?\s*\d{1,4}[A-Z]?\.\s*/, "");
+  const cut = after.search(TITLE_CUT_RE);
+  return (cut >= 0 ? after.slice(0, cut) : after).trim();
+}
 function anchorMap(text) {
   return {
-    proviso: countAll(text, /Provided\s+(?:also\s+)?that/g),
-    exception: countAll(text, /^\s*Exception/gm),
-    explanation: countAll(text, /^\s*Explanation/gm),
-    illustration: countAll(text, /^\s*Illustration/gm),
-    clause: countAll(text, /\n\s*[—–-]\s*\(|\b(?:first|secondly|thirdly|fourthly|fifthly)\b,/g)
+    proviso: countAll(text, /^[ \t]*Provided\s+(?:that|also|further|nevertheless)/gim),
+    exception: countAll(text, /^[ \t]*Exception/gim),
+    explanation: countAll(text, /^[ \t]*Explanation/gim),
+    illustration: countAll(text, /^[ \t]*Illustration/gim),
+    clause: countAll(text, /\([a-zA-Z0-9]+\)\s+/g)
   };
 }
 function regexUnits(text) {
   const out = [];
-  const re = new RegExp(BOUNDARY_SOURCE, "g");
+  const re = new RegExp(BOUNDARY_SOURCE, "gm");
+  const marks = [];
   let m;
-  let i = 0;
-  while (m = re.exec(text)) {
-    const body = m[0];
+  while ((m = re.exec(text)) !== null) {
+    marks.push({ at: m.index, number: (m[1] ?? m[2] ?? "").trim() });
+    if (m[0].length === 0) re.lastIndex++;
+  }
+  for (let i = 0; i < marks.length; i++) {
+    const raw = marks[i].at;
+    const start = text[raw] === "\n" ? raw + 1 : raw;
+    const end = i + 1 < marks.length ? marks[i + 1].at : text.length;
+    const body = text.slice(start, end);
     out.push({
-      index: i++,
-      number: (m.groups?.number ?? "").trim(),
-      marginal: (m.groups?.marginal ?? "").trim().replace(/\.\s*—$/, ""),
+      index: i,
+      number: marks[i].number,
+      marginal: marginalOf(body),
       text: body,
-      start: m.index,
-      end: m.index + body.length,
+      start,
+      end,
       anchors: anchorMap(body)
     });
-    if (m[0].length === 0) re.lastIndex++;
   }
   return out;
 }

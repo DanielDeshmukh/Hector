@@ -133,6 +133,7 @@ const ACT_CATEGORIES = [
 ];
 const ALL_ACTS = ACT_CATEGORIES.flatMap((c) => c.acts);
 const TOTAL_ACTS = ALL_ACTS.length;
+const INDEXED_ACTS = 16;
 const ACTIVE_ACTS = ALL_ACTS.filter((a) => a.status === "Active").length;
 const REPEALED_ACTS = ALL_ACTS.filter((a) => a.status === "Repealed").length;
 const REPEAL_LINKS = ALL_ACTS.filter((a) => a.repeals).length;
@@ -140,6 +141,7 @@ export {
   ACTIVE_ACTS,
   ACT_CATEGORIES,
   ALL_ACTS,
+  INDEXED_ACTS,
   REPEALED_ACTS,
   REPEAL_LINKS,
   TOTAL_ACTS

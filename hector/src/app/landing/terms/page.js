@@ -13,7 +13,7 @@ export default function Page() {
         </div>
         <div>
           <h3 className="font-semibold text-white mb-2">2. Service Description</h3>
-          <p>HECTOR is an AI-powered legal research tool that provides information about Indian law. It indexes 38 bare acts and provides IPC-to-BNS cross-referencing with chain-of-verification technology.</p>
+          <p>HECTOR is an AI-powered legal research tool that provides information about Indian law. It indexes 16 bare acts and provides IPC-to-BNS cross-referencing with chain-of-verification technology.</p>
         </div>
         <div>
           <h3 className="font-semibold text-white mb-2">3. Not Legal Advice</h3>
