@@ -109,7 +109,7 @@ function TesterSection() {
               /* @__PURE__ */ jsx("span", { className: "h-1 w-1 bg-error" }),
               " refused"
             ] }),
-            /* @__PURE__ */ jsx("span", { className: "font-mono text-[10.5px] text-muted", children: "/g" })
+            /* @__PURE__ */ jsx("span", { className: "font-mono text-[10.5px] text-muted", children: "/gm" })
           ] })
         ] }),
         units.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "flex h-[360px] flex-col justify-center px-6", children: [
