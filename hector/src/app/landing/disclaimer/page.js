@@ -16,7 +16,7 @@ export default function Page() {
         </div>
         <div>
           <h3 className="font-semibold text-white mb-2">Accuracy Limitations</h3>
-          <p>HECTOR indexes 16 bare acts and maintains 496 IPC-to-BNS cross-references. While we strive for completeness, the database may not include all amendments, notifications, or judicial interpretations. Legal information is subject to change.</p>
+          <p>HECTOR indexes 16 bare acts and maintains 522 IPC-to-BNS cross-references. While we strive for completeness, the database may not include all amendments, notifications, or judicial interpretations. Legal information is subject to change.</p>
         </div>
         <div>
           <h3 className="font-semibold text-white mb-2">No Attorney-Client Relationship</h3>

@@ -31,11 +31,11 @@ const mappings = [
 
 export default function Page() {
   return (
-    <SubPageLayout title="IPC to BNS Cross-Reference Guide" description="Complete mapping of Indian Penal Code sections to their Bharatiya Nyaya Sanhita equivalents. HECTOR maintains 496 cross-reference entries.">
+    <SubPageLayout title="IPC to BNS Cross-Reference Guide" description="Complete mapping of Indian Penal Code sections to their Bharatiya Nyaya Sanhita equivalents. HECTOR maintains 522 cross-reference entries.">
       <div className="mb-6">
         <p className="text-sm text-silver">
           The Bharatiya Nyaya Sanhita (BNS) 2023 replaced the Indian Penal Code (IPC) 1860.
-          Below are the most commonly referenced cross-references. HECTOR indexes all 496 mappings.
+          Below are the most commonly referenced cross-references. HECTOR indexes all 522 mappings.
         </p>
       </div>
       <div className="bg-slate-custom rounded-xl border border-white/5 overflow-hidden">
@@ -55,7 +55,7 @@ export default function Page() {
         </div>
       </div>
       <p className="text-xs text-silver mt-4">
-        Showing 24 of 496 cross-reference entries. Full mapping available via the API.
+        Showing 24 of 522 cross-reference entries. Full mapping available via the API.
       </p>
     </SubPageLayout>
   );

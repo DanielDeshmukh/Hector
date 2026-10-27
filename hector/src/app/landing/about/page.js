@@ -26,7 +26,7 @@ export default function Page() {
           <div className="grid grid-cols-2 gap-4">
             <div><span className="text-2xl font-bold text-gold">16</span><p className="text-sm text-silver">Bare Acts Indexed</p></div>
             <div><span className="text-2xl font-bold text-gold">4,034</span><p className="text-sm text-silver">Section Units</p></div>
-            <div><span className="text-2xl font-bold text-gold">496</span><p className="text-sm text-silver">IPC-BNS Mappings</p></div>
+            <div><span className="text-2xl font-bold text-gold">522</span><p className="text-sm text-silver">IPC-BNS Mappings</p></div>
             <div><span className="text-2xl font-bold text-gold">94%</span><p className="text-sm text-silver">Evaluation Accuracy</p></div>
           </div>
         </div>
